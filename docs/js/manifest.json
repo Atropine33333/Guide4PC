@@ -63,6 +63,20 @@
         "path": "附录8_游戏.md",
         "key": "8",
         "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "技巧和名词表",
+        "path": "附录9_技巧和名词表.md",
+        "key": "9",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "Office",
+        "path": "附录10_Office.md",
+        "key": "10",
+        "lang": "chs"
       }
     ],
     "en": [
@@ -135,6 +149,20 @@
         "path": "Appendix8_Gaming.md",
         "key": "8",
         "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "TipsANDGlossary",
+        "path": "Appendix9_TipsANDGlossary.md",
+        "key": "9",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Office",
+        "path": "Appendix10_Office.md",
+        "key": "10",
+        "lang": "en"
       }
     ]
   },
@@ -174,6 +202,14 @@
     "8": {
       "chs": "附录8_游戏.md",
       "en": "Appendix8_Gaming.md"
+    },
+    "9": {
+      "chs": "附录9_技巧和名词表.md",
+      "en": "Appendix9_TipsANDGlossary.md"
+    },
+    "10": {
+      "chs": "附录10_Office.md",
+      "en": "Appendix10_Office.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
