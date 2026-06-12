@@ -1,0 +1,183 @@
+{
+  "tree": {
+    "chs": [
+      {
+        "type": "file",
+        "name": "欢迎信",
+        "path": "0_欢迎信.md",
+        "key": "home",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "笔记本电脑入门",
+        "path": "附录1_笔记本电脑入门.md",
+        "key": "1",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "系统调优和杀毒软件",
+        "path": "附录2_系统调优和杀毒软件.md",
+        "key": "2",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "文件管理与存储理念",
+        "path": "附录3_文件管理与存储理念.md",
+        "key": "3",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "常见接口",
+        "path": "附录4_常见接口.md",
+        "key": "4",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "浏览器",
+        "path": "附录5_浏览器.md",
+        "key": "5",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "代理和clash",
+        "path": "附录6_代理和clash.md",
+        "key": "6",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "常用软件",
+        "path": "附录7_常用软件.md",
+        "key": "7",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "游戏",
+        "path": "附录8_游戏.md",
+        "key": "8",
+        "lang": "chs"
+      }
+    ],
+    "en": [
+      {
+        "type": "file",
+        "name": "Welcome Letter",
+        "path": "0_WelcomeLetter.md",
+        "key": "home",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Appendix0",
+        "path": "Appendix0.md",
+        "key": "0",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "LaptopBasics",
+        "path": "Appendix1_LaptopBasics.md",
+        "key": "1",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "SystemTuningANDAntimalware",
+        "path": "Appendix2_SystemTuningANDAntimalware.md",
+        "key": "2",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "FileManagement",
+        "path": "Appendix3_FileManagement.md",
+        "key": "3",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Ports",
+        "path": "Appendix4_Ports.md",
+        "key": "4",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Browsers",
+        "path": "Appendix5_Browsers.md",
+        "key": "5",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Proxy",
+        "path": "Appendix6_Proxy.md",
+        "key": "6",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Softwares",
+        "path": "Appendix7_Softwares.md",
+        "key": "7",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Gaming",
+        "path": "Appendix8_Gaming.md",
+        "key": "8",
+        "lang": "en"
+      }
+    ]
+  },
+  "pairs": {
+    "0": {
+      "chs": null,
+      "en": "Appendix0.md"
+    },
+    "1": {
+      "chs": "附录1_笔记本电脑入门.md",
+      "en": "Appendix1_LaptopBasics.md"
+    },
+    "2": {
+      "chs": "附录2_系统调优和杀毒软件.md",
+      "en": "Appendix2_SystemTuningANDAntimalware.md"
+    },
+    "3": {
+      "chs": "附录3_文件管理与存储理念.md",
+      "en": "Appendix3_FileManagement.md"
+    },
+    "4": {
+      "chs": "附录4_常见接口.md",
+      "en": "Appendix4_Ports.md"
+    },
+    "5": {
+      "chs": "附录5_浏览器.md",
+      "en": "Appendix5_Browsers.md"
+    },
+    "6": {
+      "chs": "附录6_代理和clash.md",
+      "en": "Appendix6_Proxy.md"
+    },
+    "7": {
+      "chs": "附录7_常用软件.md",
+      "en": "Appendix7_Softwares.md"
+    },
+    "8": {
+      "chs": "附录8_游戏.md",
+      "en": "Appendix8_Gaming.md"
+    },
+    "home": {
+      "chs": "0_欢迎信.md",
+      "en": "0_WelcomeLetter.md"
+    }
+  }
+}
