@@ -68,30 +68,30 @@
   <!-- Settings panel -->
   <div id="settings-panel" class="settings-panel hidden">
     <div class="settings-panel-header">
-      <span>显示设置</span>
+      <span data-i18n="settings-title">显示设置</span>
       <button id="settings-close" class="settings-close" aria-label="关闭设置">
         <svg class="icon" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
       </button>
     </div>
     <div class="settings-row">
-      <label>字号缩放 <span id="font-scale-val">1.0x</span></label>
+      <label><span data-i18n="font-scale">字号缩放</span> <span id="font-scale-val">1.0x</span></label>
       <input type="range" id="font-scale" min="0.8" max="1.5" step="0.05" value="1">
     </div>
     <div class="settings-row">
-      <label>内容宽度 <span id="content-width-val">75%</span></label>
+      <label><span data-i18n="content-width">内容宽度</span> <span id="content-width-val">75%</span></label>
       <input type="range" id="content-width" min="50" max="100" step="5" value="75">
     </div>
     <div class="settings-row">
-      <label>侧边栏宽度 <span id="sidebar-width-val">280px</span></label>
+      <label><span data-i18n="sidebar-width">侧边栏宽度</span> <span id="sidebar-width-val">280px</span></label>
       <input type="range" id="sidebar-width" min="200" max="400" step="10" value="280">
     </div>
     <div class="settings-row">
-      <label>主题配色</label>
+      <label><span data-i18n="theme">主题配色</span></label>
       <div class="theme-options" id="theme-options">
-        <button class="theme-btn active" data-theme="light">亮白</button>
-        <button class="theme-btn" data-theme="cream">米黄</button>
-        <button class="theme-btn" data-theme="dark">暗夜</button>
-        <button class="theme-btn" data-theme="green">青青</button>
+        <button class="theme-btn active" data-theme="light"><span data-i18n="theme-light">亮白</span></button>
+        <button class="theme-btn" data-theme="cream"><span data-i18n="theme-cream">米黄</span></button>
+        <button class="theme-btn" data-theme="dark"><span data-i18n="theme-dark">暗夜</span></button>
+        <button class="theme-btn" data-theme="green"><span data-i18n="theme-green">青青</span></button>
       </div>
     </div>
   </div>

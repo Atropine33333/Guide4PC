@@ -45,6 +45,40 @@
   const SETTINGS_KEY = 'guide4pc_settings';
   const ALLOWED_HTML_TAGS = /^<\/?(ins|mark|kbd|br|strong|em|span|a|code|sub|sup|small|abbr|cite)(\s[^>]*)?\/?>$/i;
 
+  // ─── I18N ───────────────────────────────────────────────────────────────
+  const I18N = {
+    chs: {
+      'settings-title': '显示设置',
+      'font-scale': '字号缩放',
+      'content-width': '内容宽度',
+      'sidebar-width': '侧边栏宽度',
+      'theme': '主题配色',
+      'theme-light': '亮白',
+      'theme-cream': '米黄',
+      'theme-dark': '暗夜',
+      'theme-green': '青青',
+    },
+    en: {
+      'settings-title': 'Display Settings',
+      'font-scale': 'Font Scale',
+      'content-width': 'Content Width',
+      'sidebar-width': 'Sidebar Width',
+      'theme': 'Color Theme',
+      'theme-light': 'Light',
+      'theme-cream': 'Cream',
+      'theme-dark': 'Dark',
+      'theme-green': 'Mint',
+    },
+  };
+
+  function translateUI(lang) {
+    const dict = I18N[lang] || I18N['en'];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key]) el.textContent = dict[key];
+    });
+  }
+
   // ─── Markdown-it setup ──────────────────────────────────────────────────
   const md = window.markdownit({
     html: true,
@@ -434,10 +468,10 @@
     if (kaTeXLoading) return kaTeXLoading;
 
     kaTeXLoading = Promise.all([
-      loadCSS('https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css'),
-      loadScript('https://lib.baomitu.com/KaTeX/0.16.9/katex.min.js'),
+      loadCSS('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css'),
+      loadScript('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js'),
     ]).then(() => {
-      return loadScript('https://lib.baomitu.com/KaTeX/0.16.9/contrib/auto-render.min.js');
+      return loadScript('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js');
     }).then(() => {
       kaTeXLoaded = true;
     });
@@ -889,6 +923,7 @@
     currentKey = getPairKey(targetLang, targetPath);
     setHash(targetLang, targetPath);
     updateLangSwitchButton();
+    translateUI(targetLang);
 
     // Rebuild sidebar for new language (if not searching)
     if (!isSearching) {
@@ -1079,6 +1114,7 @@
       currentKey = currentPath ? getPairKey(currentLang, currentPath) : null;
 
       updateLangSwitchButton();
+      translateUI(currentLang);
 
       // Build sidebar
       populateSidebar(currentLang);
