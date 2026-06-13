@@ -655,6 +655,11 @@ body {
   text-decoration: underline;
 }
 
+.footer-sep {
+  margin: 0 0.35rem;
+  color: var(--color-border);
+}
+
 /* ─── Responsive: Mobile (≤768px) ───────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {
