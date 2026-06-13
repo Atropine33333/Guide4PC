@@ -39,6 +39,7 @@
   const $sidebarWidth = document.getElementById('sidebar-width');
   const $sidebarWidthVal = document.getElementById('sidebar-width-val');
   const $themeOptions = document.getElementById('theme-options');
+  const $forceRefresh = document.getElementById('force-refresh');
 
   // ─── Constants ──────────────────────────────────────────────────────────
   const PROGRESS_KEY_PREFIX = 'guide4pc_progress_';
@@ -57,6 +58,7 @@
       'theme-cream': '米黄',
       'theme-dark': '暗夜',
       'theme-green': '青青',
+      'force-refresh': '强制刷新',
     },
     en: {
       'settings-title': 'Display Settings',
@@ -68,6 +70,7 @@
       'theme-cream': 'Cream',
       'theme-dark': 'Dark',
       'theme-green': 'Mint',
+      'force-refresh': 'Hard Refresh',
     },
   };
 
@@ -267,6 +270,13 @@
       saveSettings(s);
       applyTheme(theme);
       syncThemeButtons(theme);
+    });
+  }
+
+  // Force refresh button
+  if ($forceRefresh) {
+    $forceRefresh.addEventListener('click', () => {
+      window.location.reload(true);
     });
   }
 

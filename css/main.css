@@ -814,6 +814,25 @@ body {
   border-color: var(--color-primary);
 }
 
+/* Hard refresh button */
+.settings-btn {
+  width: 100%;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.settings-btn:hover {
+  background: var(--color-hover-bg);
+  color: var(--color-text);
+}
+
 /* ─── Print Styles ──────────────────────────────────────────────────────── */
 @media print {
   .sidebar,
