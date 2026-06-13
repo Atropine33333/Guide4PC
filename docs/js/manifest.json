@@ -91,6 +91,20 @@
         "path": "附录12_开源.md",
         "key": "12",
         "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "Markdown",
+        "path": "附录13_Markdown.md",
+        "key": "13",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "色彩",
+        "path": "附录14_色彩.md",
+        "key": "14",
+        "lang": "chs"
       }
     ],
     "en": [
@@ -191,6 +205,20 @@
         "path": "Appendix12_OpenSource.md",
         "key": "12",
         "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Mrakdown",
+        "path": "Appendix13_Mrakdown.md",
+        "key": "13",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Color",
+        "path": "Appendix14_Color.md",
+        "key": "14",
+        "lang": "en"
       }
     ]
   },
@@ -246,6 +274,14 @@
     "12": {
       "chs": "附录12_开源.md",
       "en": "Appendix12_OpenSource.md"
+    },
+    "13": {
+      "chs": "附录13_Markdown.md",
+      "en": "Appendix13_Mrakdown.md"
+    },
+    "14": {
+      "chs": "附录14_色彩.md",
+      "en": "Appendix14_Color.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
