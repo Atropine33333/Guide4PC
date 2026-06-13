@@ -3,6 +3,7 @@
 
 # Build output
 dist/
+.build-cache.json
 
 # Dependencies
 node_modules/

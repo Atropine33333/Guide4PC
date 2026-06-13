@@ -635,6 +635,26 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 0.75rem 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 /* ─── Responsive: Mobile (≤768px) ───────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {

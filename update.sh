@@ -12,7 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 echo "==> Running build script..."
-node js/build.js
+node js/build.js "$@"
 
 echo ""
 echo "==> Done! Deploy the dist/ directory to GitHub Pages."

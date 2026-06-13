@@ -77,6 +77,20 @@
         "path": "附录10_Office.md",
         "key": "10",
         "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "LaTeX",
+        "path": "附录11_LaTeX.md",
+        "key": "11",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "开源",
+        "path": "附录12_开源.md",
+        "key": "12",
+        "lang": "chs"
       }
     ],
     "en": [
@@ -163,6 +177,20 @@
         "path": "Appendix10_Office.md",
         "key": "10",
         "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "LaTeX",
+        "path": "Appendix11_LaTeX.md",
+        "key": "11",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "OpenSource",
+        "path": "Appendix12_OpenSource.md",
+        "key": "12",
+        "lang": "en"
       }
     ]
   },
@@ -210,6 +238,14 @@
     "10": {
       "chs": "附录10_Office.md",
       "en": "Appendix10_Office.md"
+    },
+    "11": {
+      "chs": "附录11_LaTeX.md",
+      "en": "Appendix11_LaTeX.md"
+    },
+    "12": {
+      "chs": "附录12_开源.md",
+      "en": "Appendix12_OpenSource.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
