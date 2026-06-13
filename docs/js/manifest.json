@@ -105,6 +105,20 @@
         "path": "附录14_色彩.md",
         "key": "14",
         "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "音视频",
+        "path": "附录15_音视频.md",
+        "key": "15",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "照片",
+        "path": "附录16_照片.md",
+        "key": "16",
+        "lang": "chs"
       }
     ],
     "en": [
@@ -219,6 +233,20 @@
         "path": "Appendix14_Color.md",
         "key": "14",
         "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "VideoANDAudio",
+        "path": "Appendix15_VideoANDAudio.md",
+        "key": "15",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Photography",
+        "path": "Appendix16_Photography.md",
+        "key": "16",
+        "lang": "en"
       }
     ]
   },
@@ -282,6 +310,14 @@
     "14": {
       "chs": "附录14_色彩.md",
       "en": "Appendix14_Color.md"
+    },
+    "15": {
+      "chs": "附录15_音视频.md",
+      "en": "Appendix15_VideoANDAudio.md"
+    },
+    "16": {
+      "chs": "附录16_照片.md",
+      "en": "Appendix16_Photography.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
