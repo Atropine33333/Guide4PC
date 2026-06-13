@@ -283,6 +283,15 @@ function build() {
     copyDir(srcImg, distImg);
   }
 
+  // Copy favicon/ to dist root (referenced as /favicon.ico etc.)
+  const srcFavicon = path.join(SRC, 'favicon');
+  if (fs.existsSync(srcFavicon)) {
+    const favFiles = fs.readdirSync(srcFavicon);
+    for (const f of favFiles) {
+      fs.copyFileSync(path.join(srcFavicon, f), path.join(DIST, f));
+    }
+  }
+
   console.log(`\n✅ Build complete! Output in ${DIST}/`);
   console.log(`   manifest.json: ${manifest.tree.chs.length + manifest.tree.en.length} tree nodes`);
   console.log(`   search_index.json: ${searchIndex.length} documents indexed`);
