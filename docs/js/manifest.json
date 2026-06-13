@@ -119,6 +119,34 @@
         "path": "附录16_照片.md",
         "key": "16",
         "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "安全",
+        "path": "附录17_安全.md",
+        "key": "17",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "SSH和内网穿透",
+        "path": "附录18_SSH和内网穿透.md",
+        "key": "18",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "远程传输",
+        "path": "附录19_远程传输.md",
+        "key": "19",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "总结",
+        "path": "附录20_总结.md",
+        "key": "20",
+        "lang": "chs"
       }
     ],
     "en": [
@@ -247,6 +275,34 @@
         "path": "Appendix16_Photography.md",
         "key": "16",
         "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Security",
+        "path": "Appendix17_Security.md",
+        "key": "17",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "SSHandNATTraversal",
+        "path": "Appendix18_SSHandNATTraversal.md",
+        "key": "18",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "RemoteTransfer",
+        "path": "Appendix19_RemoteTransfer.md",
+        "key": "19",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "Conclusion",
+        "path": "Appendix20_Conclusion.md",
+        "key": "20",
+        "lang": "en"
       }
     ]
   },
@@ -318,6 +374,22 @@
     "16": {
       "chs": "附录16_照片.md",
       "en": "Appendix16_Photography.md"
+    },
+    "17": {
+      "chs": "附录17_安全.md",
+      "en": "Appendix17_Security.md"
+    },
+    "18": {
+      "chs": "附录18_SSH和内网穿透.md",
+      "en": "Appendix18_SSHandNATTraversal.md"
+    },
+    "19": {
+      "chs": "附录19_远程传输.md",
+      "en": "Appendix19_RemoteTransfer.md"
+    },
+    "20": {
+      "chs": "附录20_总结.md",
+      "en": "Appendix20_Conclusion.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
