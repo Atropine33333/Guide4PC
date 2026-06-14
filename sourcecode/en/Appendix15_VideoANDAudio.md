@@ -81,7 +81,7 @@ For some full‑screen games, if OBS cannot capture the game window, **right‑c
 - **After Effects**: Visual effects, compositing, motion graphics.
 - **Audition**: Audio editing, noise reduction, mixing.
 
-Adobe software is subscription‑based. You can download a trial version from Creative Cloud, then – **without opening the software** – immediately run Adobe GenP to activate it. I am not providing download links. Search GitHub or relevant forums for the steps. This touches on copyright issues, so please use your own judgement.
+Adobe software is subscription‑based. You can download a trial version from Creative Cloud, then – **without opening the software** – immediately run [AdobeGenP](https://gen.paramore.su/GenP.v3.8.0-CGP.zip) to activate it. I am not providing copies. This touches on copyright issues, so please use your own judgement.
 
 ### 15.5.2 DaVinci Resolve
 

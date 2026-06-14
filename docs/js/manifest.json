@@ -147,6 +147,20 @@
         "path": "附录20_总结.md",
         "key": "20",
         "lang": "chs"
+      },
+      {
+        "type": "directory",
+        "name": "AfterStory",
+        "path": "AfterStory",
+        "children": [
+          {
+            "type": "file",
+            "name": "资源",
+            "path": "AfterStory/附录21_资源.md",
+            "key": "21",
+            "lang": "chs"
+          }
+        ]
       }
     ],
     "en": [
@@ -303,6 +317,20 @@
         "path": "Appendix20_Conclusion.md",
         "key": "20",
         "lang": "en"
+      },
+      {
+        "type": "directory",
+        "name": "AfterStory",
+        "path": "AfterStory",
+        "children": [
+          {
+            "type": "file",
+            "name": "Resources",
+            "path": "AfterStory/Appendix21_Resources.md",
+            "key": "21",
+            "lang": "en"
+          }
+        ]
       }
     ]
   },
@@ -390,6 +418,10 @@
     "20": {
       "chs": "附录20_总结.md",
       "en": "Appendix20_Conclusion.md"
+    },
+    "21": {
+      "chs": "AfterStory/附录21_资源.md",
+      "en": "AfterStory/Appendix21_Resources.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
