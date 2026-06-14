@@ -159,6 +159,13 @@
             "path": "AfterStory/附录21_资源.md",
             "key": "21",
             "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "游戏推荐",
+            "path": "AfterStory/附录22_游戏推荐.md",
+            "key": "22",
+            "lang": "chs"
           }
         ]
       }
@@ -329,6 +336,13 @@
             "path": "AfterStory/Appendix21_Resources.md",
             "key": "21",
             "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "GameRecommendation",
+            "path": "AfterStory/Appendix22_GameRecommendation.md",
+            "key": "22",
+            "lang": "en"
           }
         ]
       }
@@ -422,6 +436,10 @@
     "21": {
       "chs": "AfterStory/附录21_资源.md",
       "en": "AfterStory/Appendix21_Resources.md"
+    },
+    "22": {
+      "chs": "AfterStory/附录22_游戏推荐.md",
+      "en": "AfterStory/Appendix22_GameRecommendation.md"
     },
     "home": {
       "chs": "0_欢迎信.md",
