@@ -168,6 +168,34 @@
             "lang": "chs"
           }
         ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter0",
+        "path": "main/Chapter0",
+        "children": [
+          {
+            "type": "file",
+            "name": "绪论",
+            "path": "main/Chapter0/Section1_绪论.md",
+            "key": "1",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter1",
+        "path": "main/Chapter1",
+        "children": [
+          {
+            "type": "file",
+            "name": "WSL2",
+            "path": "main/Chapter1/Section1_WSL2.md",
+            "key": "1",
+            "lang": "chs"
+          }
+        ]
       }
     ],
     "en": [
@@ -345,6 +373,34 @@
             "lang": "en"
           }
         ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter0",
+        "path": "main/Chapter0",
+        "children": [
+          {
+            "type": "file",
+            "name": "Introduction",
+            "path": "main/Chapter0/Section1_Introduction.md",
+            "key": "1",
+            "lang": "en"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter1",
+        "path": "main/Chapter1",
+        "children": [
+          {
+            "type": "file",
+            "name": "WSL2",
+            "path": "main/Chapter1/Section1_WSL2.md",
+            "key": "1",
+            "lang": "en"
+          }
+        ]
       }
     ]
   },
@@ -354,8 +410,8 @@
       "en": "Appendix0.md"
     },
     "1": {
-      "chs": "附录1_笔记本电脑入门.md",
-      "en": "Appendix1_LaptopBasics.md"
+      "chs": "main/Chapter1/Section1_WSL2.md",
+      "en": "main/Chapter1/Section1_WSL2.md"
     },
     "2": {
       "chs": "附录2_系统调优和杀毒软件.md",
