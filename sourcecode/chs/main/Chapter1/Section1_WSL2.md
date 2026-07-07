@@ -37,7 +37,7 @@ WSL2不是虚拟机，但也离不开虚拟化技术。下面解释它们的关�
 
 **第一步：开启必要的Windows功能**
 
-以管理员身份打开PowerShell或Windows Terminal，执行：
+以**管理员**身份打开PowerShell或Windows Terminal，执行：
 
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart

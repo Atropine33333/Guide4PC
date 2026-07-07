@@ -166,6 +166,13 @@
             "path": "AfterStory/附录22_游戏推荐.md",
             "key": "22",
             "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "Git",
+            "path": "AfterStory/附录23_Git.md",
+            "key": "23",
+            "lang": "chs"
           }
         ]
       },
@@ -371,6 +378,13 @@
             "path": "AfterStory/Appendix22_GameRecommendation.md",
             "key": "22",
             "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Git",
+            "path": "AfterStory/Appendix23_Git.md",
+            "key": "23",
+            "lang": "en"
           }
         ]
       },
@@ -496,6 +510,10 @@
     "22": {
       "chs": "AfterStory/附录22_游戏推荐.md",
       "en": "AfterStory/Appendix22_GameRecommendation.md"
+    },
+    "23": {
+      "chs": "AfterStory/附录23_Git.md",
+      "en": "AfterStory/Appendix23_Git.md"
     },
     "home": {
       "chs": "0_欢迎信.md",

@@ -37,7 +37,7 @@ These steps assume you're on Windows 11.
 
 **Step 1: Turn on the necessary Windows features**
 
-Open PowerShell or Windows Terminal as Administrator and run:
+Open PowerShell or Windows Terminal as **Administrator** and run:
 
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
