@@ -46,7 +46,7 @@
   // ─── Constants ──────────────────────────────────────────────────────────
   const PROGRESS_KEY_PREFIX = 'guide4pc_progress_';
   const SETTINGS_KEY = 'guide4pc_settings';
-  const ALLOWED_HTML_TAGS = /^<\/?(ins|mark|kbd|br|strong|em|span|a|code|sub|sup|small|abbr|cite)(\s[^>]*)?\/?>$/i;
+  const ALLOWED_HTML_TAGS = /^<\/?(ins|mark|kbd|br|strong|em|span|a|code|sub|sup|small|abbr|cite|u)(\s[^>]*)?\/?>$/i;
 
   // ─── I18N ───────────────────────────────────────────────────────────────
   const I18N = {
@@ -562,7 +562,24 @@
       // If a newer render started while we were fetching, discard this result
       if (seq !== undefined && seq !== _switchSeq) return;
 
-      let html = md.render(mdText);
+      // Protect LaTeX math blocks from markdown-it's backslash escaping.
+      // markdown-it consumes backslashes before punctuation (e.g. \( → (, \{ → {),
+      // corrupting LaTeX delimiters and commands. Replace math blocks with
+      // placeholders, render markdown, then swap them back.
+      var PLACEHOLDER = '\u{E000}'; // Private Use Area char, safe through markdown-it
+      var mathBlocks = [];
+      var protectedMD = mdText
+        // Order: display math before inline to avoid $ inside $$ being matched
+        .replace(/\$\$([\s\S]*?)\$\$/g, function (_, m) { mathBlocks.push('$$' + m + '$$'); return PLACEHOLDER + 'MATH' + (mathBlocks.length - 1) + PLACEHOLDER; })
+        .replace(/\\\[([\s\S]*?)\\\]/g, function (_, m) { mathBlocks.push('\\[' + m + '\\]'); return PLACEHOLDER + 'MATH' + (mathBlocks.length - 1) + PLACEHOLDER; })
+        .replace(/\$(?=\S)([\s\S]*?)(?<=\S)\$/g, function (_, m) { mathBlocks.push('$' + m + '$'); return PLACEHOLDER + 'MATH' + (mathBlocks.length - 1) + PLACEHOLDER; })
+        .replace(/\\\(([\s\S]*?)\\\)/g, function (_, m) { mathBlocks.push('\\(' + m + '\\)'); return PLACEHOLDER + 'MATH' + (mathBlocks.length - 1) + PLACEHOLDER; });
+
+      var html = md.render(protectedMD);
+
+      // Restore math blocks
+      var placeholderRegex = new RegExp(PLACEHOLDER + 'MATH(\\d+)' + PLACEHOLDER, 'g');
+      html = html.replace(placeholderRegex, function (_, idx) { return mathBlocks[parseInt(idx)]; });
 
       $content.innerHTML = html;
 
