@@ -9,6 +9,7 @@
   // ─── State ──────────────────────────────────────────────────────────────
   let manifest = null;       // manifest.json data
   let searchIndex = null;    // search_index.json data
+  let dlFiles = null;        // dl/files.json data (maps dl folder names → file lists)
   let currentLang = 'en';    // current language
   let currentPath = null;    // current document relative path (within lang dir)
   let currentKey = null;     // current document pairing key
@@ -29,6 +30,7 @@
   const $content    = document.getElementById('content');
   const $topbar     = document.querySelector('.topbar');
   const $toastContainer = document.getElementById('toast-container');
+  const $downloadBtn = document.getElementById('download-btn');
   const $settingsToggle = document.getElementById('settings-toggle');
   const $settingsPanel = document.getElementById('settings-panel');
   const $settingsClose = document.getElementById('settings-close');
@@ -59,6 +61,7 @@
       'theme-dark': '暗夜',
       'theme-green': '青青',
       'force-refresh': '强制刷新',
+      'download': '下载',
     },
     en: {
       'settings-title': 'Display Settings',
@@ -71,6 +74,7 @@
       'theme-dark': 'Dark',
       'theme-green': 'Mint',
       'force-refresh': 'Hard Refresh',
+      'download': 'Download',
     },
   };
 
@@ -608,6 +612,9 @@
       // Update sidebar active state
       updateSidebarActive(lang, docPath);
 
+      // Update download button visibility
+      updateDownloadButton();
+
     } catch (err) {
       console.error(err);
       $content.innerHTML = `<div class="loading"><p>加载文档失败：${err.message}</p></div>`;
@@ -645,6 +652,80 @@
     } else {
       $langSwitchText.textContent = '中文';
     }
+  }
+
+  // ─── Download button ─────────────────────────────────────────────────────
+  /**
+   * Extract [dlX] prefix from a document path.
+   * Returns the dl folder name (e.g. "dl1") or null if no prefix found.
+   */
+  function extractDlPrefix(docPath) {
+    if (!docPath) return null;
+    // Look for [dlX] in any path segment (directory or filename)
+    const match = docPath.match(/\[(dl\d+)\]/);
+    return match ? match[1] : null;
+  }
+
+  function updateDownloadButton() {
+    if (!$downloadBtn || !dlFiles) return;
+
+    const dlFolder = extractDlPrefix(currentPath);
+    if (dlFolder && dlFiles[dlFolder] && dlFiles[dlFolder].length > 0) {
+      // Show button
+      $downloadBtn.classList.remove('hidden');
+      // Store current dl folder for click handler
+      $downloadBtn._dlFolder = dlFolder;
+    } else {
+      $downloadBtn.classList.add('hidden');
+      $downloadBtn._dlFolder = null;
+    }
+  }
+
+  /** Trigger download of a single file via a temporary anchor. */
+  function triggerDownload(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    // Remove after a short delay to allow the download to start
+    setTimeout(() => {
+      if (a.parentNode) a.parentNode.removeChild(a);
+    }, 300);
+  }
+
+  async function handleDownload() {
+    const dlFolder = $downloadBtn._dlFolder;
+    if (!dlFolder || !dlFiles || !dlFiles[dlFolder]) return;
+
+    const files = dlFiles[dlFolder];
+    const dict = I18N[currentLang] || I18N['en'];
+    const downloadingText = currentLang === 'chs' ? '正在下载…' : 'Downloading…';
+
+    // Visual feedback
+    const origHTML = $downloadBtn.innerHTML;
+    $downloadBtn.innerHTML = '<div class="spinner"></div> <span>' + downloadingText + '</span>';
+    $downloadBtn.disabled = true;
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const url = 'dl/' + dlFolder + '/' + file;
+      triggerDownload(url, file);
+      // Small delay between downloads to avoid browser blocking
+      if (i < files.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    }
+
+    // Restore button
+    $downloadBtn.innerHTML = origHTML;
+    $downloadBtn.disabled = false;
+    translateUI(currentLang); // re-apply i18n to restore text
+  }
+
+  if ($downloadBtn) {
+    $downloadBtn.addEventListener('click', handleDownload);
   }
 
   // ─── Sidebar tree building ──────────────────────────────────────────────
@@ -1115,6 +1196,14 @@
         fetchJSON('js/manifest.json'),
         fetchJSON('js/search_index.json'),
       ]);
+
+      // Load dl files manifest (non-critical, don't block on failure)
+      try {
+        dlFiles = await fetchJSON('dl/files.json');
+      } catch (e) {
+        // dl/files.json may not exist if no downloadable content
+        dlFiles = {};
+      }
 
       // Parse initial hash
       const { lang, path } = parseHash();

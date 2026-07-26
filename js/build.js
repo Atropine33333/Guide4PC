@@ -111,6 +111,27 @@ function copyDir(src, dest) {
   }
 }
 
+/** Generate dl/files.json manifest from sourcecode/dl/ directory structure. */
+function buildDlManifest(srcDlDir) {
+  const manifest = {};
+  if (!fs.existsSync(srcDlDir)) return manifest;
+
+  const entries = fs.readdirSync(srcDlDir, { withFileTypes: true });
+  for (const ent of entries) {
+    if (ent.isDirectory()) {
+      const folderName = ent.name;
+      const folderPath = path.join(srcDlDir, folderName);
+      const files = fs.readdirSync(folderPath)
+        .filter(f => fs.statSync(path.join(folderPath, f)).isFile())
+        .sort();
+      if (files.length > 0) {
+        manifest[folderName] = files;
+      }
+    }
+  }
+  return manifest;
+}
+
 /** Copy markdown files preserving structure (used in full build). */
 function copyMarkdownFiles(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -305,6 +326,24 @@ function syncAllStatics(cache) {
     }
   }
 
+  // sourcecode/dl/** → dist/dl/ (downloadable files)
+  changed.push(...syncDir(
+    path.join(SRC, 'dl'),
+    path.join(DIST, 'dl'),
+    'sourcecode/dl', cache
+  ));
+  // Always regenerate dl/files.json (it reflects current state of sourcecode/dl/)
+  const srcDlDir = path.join(SRC, 'dl');
+  if (fs.existsSync(srcDlDir)) {
+    const dlManifest = buildDlManifest(srcDlDir);
+    ensureDir(path.join(DIST, 'dl'));
+    fs.writeFileSync(
+      path.join(DIST, 'dl', 'files.json'),
+      JSON.stringify(dlManifest, null, 2),
+      'utf-8'
+    );
+  }
+
   return changed;
 }
 
@@ -438,6 +477,19 @@ function fullBuild(cache) {
     for (const f of fs.readdirSync(srcFav)) {
       fs.copyFileSync(path.join(srcFav, f), path.join(DIST, f));
     }
+  }
+
+  // Copy dl/ → dist/dl/ (downloadable files)
+  const srcDl = path.join(SRC, 'dl');
+  if (fs.existsSync(srcDl)) {
+    copyDir(srcDl, path.join(DIST, 'dl'));
+    // Generate dl files manifest
+    const dlManifest = buildDlManifest(srcDl);
+    fs.writeFileSync(
+      path.join(DIST, 'dl', 'files.json'),
+      JSON.stringify(dlManifest, null, 2),
+      'utf-8'
+    );
   }
 
   // Record static mtimes in cache

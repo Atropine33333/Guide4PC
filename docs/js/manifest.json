@@ -201,6 +201,83 @@
             "path": "main/Chapter1/Section1_WSL2.md",
             "key": "1",
             "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "环境配置",
+            "path": "main/Chapter1/Section2_环境配置.md",
+            "key": "2",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter2_Cpp_PDE",
+        "path": "main/Chapter2_Cpp_PDE",
+        "children": [
+          {
+            "type": "file",
+            "name": "代码",
+            "path": "main/Chapter2_Cpp_PDE/[dl1]Section0_代码.md",
+            "key": "1",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "数学基础",
+            "path": "main/Chapter2_Cpp_PDE/Section1_数学基础.md",
+            "key": "1",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "代码分析",
+            "path": "main/Chapter2_Cpp_PDE/Section2_代码分析.md",
+            "key": "2",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "Cpp基础",
+            "path": "main/Chapter2_Cpp_PDE/Section3_Cpp基础.md",
+            "key": "3",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业1",
+            "path": "main/Chapter2_Cpp_PDE/Section4_作业1.md",
+            "key": "4",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "从论文到工程",
+            "path": "main/Chapter2_Cpp_PDE/Section5_从论文到工程.md",
+            "key": "5",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "逐步实现",
+            "path": "main/Chapter2_Cpp_PDE/Section6_逐步实现.md",
+            "key": "6",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "未尽之路",
+            "path": "main/Chapter2_Cpp_PDE/Section7_未尽之路.md",
+            "key": "7",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "杂谈",
+            "path": "main/Chapter2_Cpp_PDE/Section10_杂谈.md",
+            "key": "10",
+            "lang": "chs"
           }
         ]
       }
@@ -413,6 +490,83 @@
             "path": "main/Chapter1/Section1_WSL2.md",
             "key": "1",
             "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "EnvConfiguration",
+            "path": "main/Chapter1/Section2_EnvConfiguration.md",
+            "key": "2",
+            "lang": "en"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter2",
+        "path": "main/Chapter2",
+        "children": [
+          {
+            "type": "file",
+            "name": "Code",
+            "path": "main/Chapter2/[dl1]Section0_Code.md",
+            "key": "1",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "MathematicalFoundations",
+            "path": "main/Chapter2/Section1_MathematicalFoundations.md",
+            "key": "1",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "CodeOverview",
+            "path": "main/Chapter2/Section2_CodeOverview.md",
+            "key": "2",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "CppSyntax",
+            "path": "main/Chapter2/Section3_CppSyntax.md",
+            "key": "3",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Homework1",
+            "path": "main/Chapter2/Section4_Homework1.md",
+            "key": "4",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "FromPapertoProduction",
+            "path": "main/Chapter2/Section5_FromPapertoProduction.md",
+            "key": "5",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "StepbyStep",
+            "path": "main/Chapter2/Section6_StepbyStep.md",
+            "key": "6",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "UnfinishedPath",
+            "path": "main/Chapter2/Section7_UnfinishedPath.md",
+            "key": "7",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Tittle-tattle",
+            "path": "main/Chapter2/Section10_Tittle-tattle.md",
+            "key": "10",
+            "lang": "en"
           }
         ]
       }
@@ -424,32 +578,32 @@
       "en": "Appendix0.md"
     },
     "1": {
-      "chs": "main/Chapter1/Section1_WSL2.md",
-      "en": "main/Chapter1/Section1_WSL2.md"
+      "chs": "附录1_笔记本电脑入门.md",
+      "en": "main/Chapter2/[dl1]Section0_Code.md"
     },
     "2": {
       "chs": "附录2_系统调优和杀毒软件.md",
-      "en": "Appendix2_SystemTuningANDAntimalware.md"
+      "en": "main/Chapter2/Section2_CodeOverview.md"
     },
     "3": {
       "chs": "附录3_文件管理与存储理念.md",
-      "en": "Appendix3_FileManagement.md"
+      "en": "main/Chapter2/Section3_CppSyntax.md"
     },
     "4": {
       "chs": "附录4_常见接口.md",
-      "en": "Appendix4_Ports.md"
+      "en": "main/Chapter2/Section4_Homework1.md"
     },
     "5": {
       "chs": "附录5_浏览器.md",
-      "en": "Appendix5_Browsers.md"
+      "en": "main/Chapter2/Section5_FromPapertoProduction.md"
     },
     "6": {
       "chs": "附录6_代理和clash.md",
-      "en": "Appendix6_Proxy.md"
+      "en": "main/Chapter2/Section6_StepbyStep.md"
     },
     "7": {
       "chs": "附录7_常用软件.md",
-      "en": "Appendix7_Softwares.md"
+      "en": "main/Chapter2/Section7_UnfinishedPath.md"
     },
     "8": {
       "chs": "附录8_游戏.md",
@@ -461,7 +615,7 @@
     },
     "10": {
       "chs": "附录10_Office.md",
-      "en": "Appendix10_Office.md"
+      "en": "main/Chapter2/Section10_Tittle-tattle.md"
     },
     "11": {
       "chs": "附录11_LaTeX.md",

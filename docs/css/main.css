@@ -385,6 +385,32 @@ body {
   flex: 1;
 }
 
+/* Download button */
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  color: var(--color-primary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.download-btn:hover {
+  background: var(--color-hover-bg);
+  border-color: var(--color-primary);
+}
+
+.download-btn.hidden {
+  display: none;
+}
+
 /* Language switch */
 .lang-switch {
   display: flex;
@@ -631,6 +657,18 @@ body {
   margin-bottom: 1rem;
 }
 
+/* General spinner utility (for buttons etc.) */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -847,6 +885,7 @@ body {
   .toast-container,
   .sidebar-toggle,
   .settings-toggle,
+  .download-btn,
   .settings-panel {
     display: none !important;
   }
