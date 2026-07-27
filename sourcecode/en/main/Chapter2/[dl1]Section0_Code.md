@@ -1,7 +1,7 @@
 # 第0节：Code, output and log file
 
-> The code for this project is hosted on Lanzouyun. As for why it's not on GitHub—well, GitHub has banned all three of my accounts.
-> And why not just offer it for direct download from this page? Because I haven't written that part yet. I'll update it once I get to it.
+> The code for this project is hosted on Lanzouyun. As for why it's not on GitHub—well, GitHub has banned all three of my accounts.  
+> Updates available! Now you can click the download button on the topbar to obtain all the code you need.   
 > .
 
 https://wwbnb.lanzouw.com/b009i7k6if
