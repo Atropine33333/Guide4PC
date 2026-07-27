@@ -833,6 +833,51 @@
   }
 
   // ─── Search ─────────────────────────────────────────────────────────────
+
+  /**
+   * Tokenize a search query the same way build.js tokenizes documents.
+   * - CJK characters → bigrams only (single chars are too noisy)
+   * - Everything else → lowercase words ≥ 2 chars, split on [^a-z0-9]
+   * - Purely numeric terms are skipped
+   */
+  function tokenizeQuery(text) {
+    const terms = new Set();
+
+    // Normalize common technical abbreviations and US→UK spellings
+    // (must match build.js tokenize exactly)
+    text = text.replace(/\bC\+\+(?![a-z0-9])/gi, 'cpp');
+    text = text.replace(/\bC#\b/g, 'csharp');
+    text = text.replace(/\.NET\b/gi, 'dotnet');
+    text = text.replace(/\boptimization\b/gi, 'optimisation');
+    text = text.replace(/\bnormalization\b/gi, 'normalisation');
+    text = text.replace(/\bvisualization\b/gi, 'visualisation');
+    text = text.replace(/\bcharacterization\b/gi, 'characterisation');
+
+    // Split so CJK runs and non-CJK runs are separate segments
+    const segments = text.split(/([一-鿿㐀-䶿]+)/);
+
+    for (const seg of segments) {
+      if (!seg) continue;
+
+      if (/^[一-鿿㐀-䶿]+$/.test(seg)) {
+        // Chinese → bigrams only
+        for (let i = 0; i < seg.length - 1; i++) {
+          terms.add(seg.slice(i, i + 2));
+        }
+      } else {
+        // English / code → words ≥ 2 chars, skip pure numbers
+        const words = seg.toLowerCase().split(/[^a-z0-9]+/);
+        for (const word of words) {
+          if (word.length >= 2 && !/^\d+$/.test(word)) {
+            terms.add(word);
+          }
+        }
+      }
+    }
+
+    return [...terms];
+  }
+
   function performSearch(term) {
     searchTerm = term;
     isSearching = !!term;
@@ -853,20 +898,32 @@
     $searchClear.classList.remove('hidden');
     const lowerTerm = term.toLowerCase();
 
-    // Search in search_index.json
+    // Search using inverted index — term-based, not substring
     const matchedPaths = new Set();
-    if (searchIndex) {
-      for (const entry of searchIndex) {
-        const haystack = (entry.title + ' ' + entry.content).toLowerCase();
-        if (haystack.includes(lowerTerm)) {
-          matchedPaths.add(entry.path); // format: "chs/path.md" or "en/path.md"
+    if (searchIndex && searchIndex.idx && searchIndex.docs) {
+      const queryTerms = tokenizeQuery(lowerTerm);
+      const scores = {}; // path → accumulated weight
+
+      for (const qterm of queryTerms) {
+        const postings = searchIndex.idx[qterm];
+        if (!postings) continue;
+        for (const entry of postings) {
+          const docIdx = entry[0];
+          const weight = entry[1];
+          const doc = searchIndex.docs[docIdx];
+          if (doc && doc.p) {
+            scores[doc.p] = (scores[doc.p] || 0) + weight;
+          }
         }
       }
+
+      // Sort by score descending, collect paths
+      Object.entries(scores)
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([p]) => matchedPaths.add(p));
     }
 
-    // Filter sidebar tree
-    // First, show all files from all languages
-    // Rebuild tree with both languages
+    // Filter sidebar tree with results from both languages
     rebuildSearchTree(lowerTerm, matchedPaths);
   }
 

@@ -16,6 +16,49 @@ const DIST = path.join(ROOT, 'docs');
 const CACHE_FILE = path.join(ROOT, '.build-cache.json');
 const BUILD_VERSION = Date.now().toString(36);
 
+// ─── Stop-word lists for search-index tokenization ──────────────────────────
+
+// English function words — filtered out to keep the index lean
+const EN_STOP_WORDS = new Set([
+  'the','a','an','is','are','was','were','be','been','being',
+  'have','has','had','do','does','did','will','would','shall',
+  'should','may','might','must','can','could',
+  'i','you','he','she','it','we','they',
+  'me','him','her','us','them',
+  'my','your','his','its','our','their',
+  'this','that','these','those',
+  'in','on','at','to','for','of','with','by','from','up',
+  'about','into','through','during','before','after','above','below',
+  'between','and','but','or','nor','not','so','yet',
+  'both','either','neither','each','every','all','any',
+  'few','more','most','other','some','such','no','than',
+  'too','very','just','also','if','then','else',
+  'when','where','why','how','which','who','whom','what',
+  'here','there','now','only','own','same','so',
+  'because','as','until','over','while','again',
+  'into','onto','upon','within','without',
+  'one','two','three','first','second','third',
+  'am','been','being','had','having','does','did','doing',
+]);
+
+// Chinese function characters — filtered from single-char terms (bigrams
+// that contain a stop char are kept when the other char is contentful)
+const ZH_STOP_CHARS = new Set([
+  '的','了','在','是','我','有','和','就','不','人',
+  '都','一','上','也','很','到','说','要','去','你',
+  '会','着','没','看','好','自','己','这','他','她',
+  '它','们','那','些','所','为','以','因','但','而',
+  '如','果','虽','然','可','个','什','么','怎','哪',
+  '吗','啊','吧','呢','哦','嗯','与','之','其','中',
+  '等','被','把','让','将','从','对','向','往','当',
+  '时','来','去','能','做','得','过','已','还','又',
+  '再','才','刚','便','即','只','非','常','更','最',
+  '较','多','少','大','小','新','旧','前','后','里',
+  '外','下','内','年','月','日','点','种','次','用',
+  '或','且','及','于','则','呵','哈','呀','哇','啦',
+  '嘛','呗','咯','嘿','噢','哎','唉','喂','嗯','吧',
+]);
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 /** Recursively list all .md files under dir, returning relative paths (forward-slash). */
@@ -110,6 +153,139 @@ function stripMarkdown(md) {
   text = text.replace(/<[^>]+>/g, ' ');
   text = text.replace(/\s+/g, ' ').trim();
   return text;
+}
+
+/** Extract headings from raw markdown (before stripping). Returns array of heading strings. */
+function extractHeadings(md) {
+  const headings = [];
+  const lines = md.split('\n');
+  for (const line of lines) {
+    const m = line.match(/^#{1,6}\s+(.+)$/);
+    if (!m) continue;
+    let text = m[1];
+    // Strip inline markdown but keep the text
+    text = text.replace(/`([^`]+)`/g, '$1');
+    text = text.replace(/!\[[^\]]*\]\([^)]+\)/g, '');
+    text = text.replace(/\[([^\]]*)\]\([^)]+\)/g, '$1');
+    text = text.replace(/\*{1,3}([^*]+)\*{1,3}/g, '$1');
+    text = text.replace(/_{1,3}([^_]+)_{1,3}/g, '$1');
+    text = text.replace(/~~([^~]+)~~/g, '$1');
+    text = text.replace(/<[^>]+>/g, '');
+    text = text.trim();
+    if (text) headings.push(text);
+  }
+  return headings;
+}
+
+/**
+ * Tokenize plain text into a term → frequency map.
+ * - CJK chars (U+4E00–9FFF) → character bigrams only (single chars are too noisy)
+ * - Everything else → lowercase words ≥ 2 chars, split on [^a-z0-9]
+ * - Purely numeric terms are skipped
+ * - Stop words / stop chars are filtered
+ */
+function tokenize(text) {
+  const terms = new Map();
+
+  // Normalize common technical abbreviations that would be mangled by
+  // punctuation stripping (e.g. "C++" → just "c" which is too short)
+  text = text.replace(/\bC\+\+(?![a-z0-9])/gi, 'cpp');
+  text = text.replace(/\bC#\b/g, 'csharp');
+  text = text.replace(/\.NET\b/gi, 'dotnet');
+  // Normalize US → UK spellings so both variants hit the same index term
+  text = text.replace(/\boptimization\b/gi, 'optimisation');
+  text = text.replace(/\bnormalization\b/gi, 'normalisation');
+  text = text.replace(/\bvisualization\b/gi, 'visualisation');
+  text = text.replace(/\bcharacterization\b/gi, 'characterisation');
+
+  // Split so CJK runs and non-CJK runs are separate segments
+  const segments = text.split(/([一-鿿㐀-䶿]+)/);
+
+  for (const seg of segments) {
+    if (!seg) continue;
+
+    if (/^[一-鿿㐀-䶿]+$/.test(seg)) {
+      // ── CJK segment ──
+      // Bigrams only — single characters are too common to be useful
+      for (let i = 0; i < seg.length - 1; i++) {
+        const bigram = seg.slice(i, i + 2);
+        // Skip bigrams where BOTH characters are stop chars
+        if (ZH_STOP_CHARS.has(bigram[0]) && ZH_STOP_CHARS.has(bigram[1])) continue;
+        terms.set(bigram, (terms.get(bigram) || 0) + 1);
+      }
+    } else {
+      // ── Non-CJK segment ──
+      const words = seg.toLowerCase().split(/[^a-z0-9]+/);
+      for (const word of words) {
+        if (word.length < 2) continue;
+        if (EN_STOP_WORDS.has(word)) continue;
+        // Skip purely numeric terms (version numbers, list indices, etc.)
+        if (/^\d+$/.test(word)) continue;
+        terms.set(word, (terms.get(word) || 0) + 1);
+      }
+    }
+  }
+
+  return terms;
+}
+
+/**
+ * Build an inverted-index search structure from document metadata.
+ *
+ * Output format (compact keys for small payload):
+ *   { docs: [{ p, t, l, k, h }], idx: { term: [[docIdx, weight], ...] } }
+ *
+ * Weighting:
+ *   Title terms  × 10
+ *   Heading terms × 5
+ *   Body terms    × 1
+ */
+function buildInvertedIndex(allMeta) {
+  const docs = [];
+  const idx = Object.create(null); // no prototype — avoids collisions with 'constructor' etc.
+
+  for (const m of allMeta) {
+    const docIdx = docs.length;
+
+    // Tokenize each zone separately so we can weight them
+    const titleTerms = tokenize(m.title);
+    const headingText = (m.headings || []).join(' ');
+    const headingTerms = tokenize(headingText);
+    const bodyTerms = tokenize(m.content);
+
+    // Merge weighted terms
+    const merged = new Map(); // term → weight
+    for (const [t, f] of titleTerms)  merged.set(t, (merged.get(t) || 0) + f * 10);
+    for (const [t, f] of headingTerms) merged.set(t, (merged.get(t) || 0) + f * 5);
+    for (const [t, f] of bodyTerms)    merged.set(t, (merged.get(t) || 0) + f);
+
+    // Doc record (no content — just metadata)
+    docs.push({
+      p: `${m.lang}/${m.relPath}`,
+      t: m.title,
+      l: m.lang,
+      k: m.key,
+      h: m.headings || [],
+    });
+
+    // Populate inverted index
+    for (const [term, weight] of merged) {
+      if (!idx[term]) idx[term] = [];
+      idx[term].push([docIdx, weight]);
+    }
+  }
+
+  // ── Post-filter: drop terms with poor signal-to-noise ratio ──
+  const maxDocFreq = Math.floor(docs.length * 0.5);
+  for (const term of Object.keys(idx)) {
+    const df = idx[term].length;
+    // Drop terms that appear in >50% of docs (no discriminatory power)
+    if (df > maxDocFreq) { delete idx[term]; continue; }
+    // Drop single-document terms with negligible weight (pure noise)
+    if (df === 1 && idx[term][0][1] < 2) { delete idx[term]; continue; }
+  }
+
+  return { docs, idx };
 }
 
 /** Get file mtime as ISO string, or null if file doesn't exist. */
@@ -416,13 +592,14 @@ function fullBuild(cache) {
     const key = extractKey(basename, relPath);
     const title = (key === 'home') ? (lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
+    const headings = extractHeadings(md);
     const content = stripMarkdown(md);
     const mtime = getMtime(fullPath);
 
     const cacheKey = `${lang}/${relPath}`;
-    cache.mdFiles[cacheKey] = { mtime, key, title, content };
+    cache.mdFiles[cacheKey] = { mtime, key, title, headings, content };
 
-    allMeta.push({ relPath, lang, key, title, content });
+    allMeta.push({ relPath, lang, key, title, headings, content });
   }
 
   for (const f of chsFiles) processFile(f, 'chs');
@@ -453,14 +630,8 @@ function fullBuild(cache) {
     pairs[m.key][m.lang] = m.relPath;
   }
 
-  // 5. Build search index
-  const searchIndex = allMeta.map(m => ({
-    path: `${m.lang}/${m.relPath}`,
-    title: m.title,
-    lang: m.lang,
-    key: m.key,
-    content: m.content,
-  }));
+  // 5. Build search index (inverted index — compact & fast)
+  const searchIndex = buildInvertedIndex(allMeta);
 
   // 6. Write dist/
   console.log('\n  Writing dist/...');
@@ -480,10 +651,10 @@ function fullBuild(cache) {
   // .nojekyll
   fs.writeFileSync(path.join(DIST, '.nojekyll'), '', 'utf-8');
 
-  // Write manifests
+  // Write manifests (search index uses compact JSON to save bandwidth)
   const manifest = { tree, pairs, version: BUILD_VERSION };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
-  fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex, null, 2), 'utf-8');
+  fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex), 'utf-8');
 
   // Copy index.html
   const srcIndex = path.join(ROOT, 'index.html');
@@ -548,7 +719,7 @@ function fullBuild(cache) {
 
   console.log(`\n✅ Full build complete! Output in ${DIST}/`);
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
-  console.log(`   search_index.json: ${searchIndex.length} documents indexed`);
+  console.log(`   search_index.json: ${searchIndex.docs.length} docs, ${Object.keys(searchIndex.idx).length} unique terms`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
   console.log(`   version: ${BUILD_VERSION}`);
 }
@@ -626,9 +797,10 @@ function incrementalBuild(cache) {
     const key = extractKey(basename, f.relPath);
     const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
+    const headings = extractHeadings(md);
     const content = stripMarkdown(md);
 
-    cache.mdFiles[f.cacheKey] = { mtime: f.mtime, key, title, content };
+    cache.mdFiles[f.cacheKey] = { mtime: f.mtime, key, title, headings, content };
     console.log(`  + ${f.cacheKey}`);
   }
 
@@ -639,9 +811,10 @@ function incrementalBuild(cache) {
     const key = extractKey(basename, f.relPath);
     const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
+    const headings = extractHeadings(md);
     const content = stripMarkdown(md);
 
-    cache.mdFiles[f.cacheKey] = { mtime: f.mtime, key, title, content };
+    cache.mdFiles[f.cacheKey] = { mtime: f.mtime, key, title, headings, content };
     console.log(`  ~ ${f.cacheKey}`);
   }
 
@@ -662,6 +835,7 @@ function incrementalBuild(cache) {
       lang,
       key: entry.key,
       title: entry.title,
+      headings: entry.headings || [],
       content: entry.content,
     });
   }
@@ -691,14 +865,8 @@ function incrementalBuild(cache) {
     pairs[m.key][m.lang] = m.relPath;
   }
 
-  // 9. Rebuild search index
-  const searchIndex = allMeta.map(m => ({
-    path: `${m.lang}/${m.relPath}`,
-    title: m.title,
-    lang: m.lang,
-    key: m.key,
-    content: m.content,
-  }));
+  // 9. Rebuild search index (inverted index)
+  const searchIndex = buildInvertedIndex(allMeta);
 
   // 10. Write manifest & search index
   const manifest = { tree, pairs, version: BUILD_VERSION };
@@ -754,7 +922,7 @@ function incrementalBuild(cache) {
 
   console.log(`\n✅ Incremental build complete!`);
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
-  console.log(`   search_index.json: ${searchIndex.length} documents indexed`);
+  console.log(`   search_index.json: ${searchIndex.docs.length} docs, ${Object.keys(searchIndex.idx).length} unique terms`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
   console.log(`   version: ${BUILD_VERSION}`);
 }

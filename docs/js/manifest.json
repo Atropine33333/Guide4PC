@@ -274,6 +274,13 @@
           },
           {
             "type": "file",
+            "name": "作业2",
+            "path": "main/Chapter2_Cpp_PDE/Section8_作业2.md",
+            "key": "main/Chapter2/8",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
             "name": "杂谈",
             "path": "main/Chapter2_Cpp_PDE/Section10_杂谈.md",
             "key": "main/Chapter2/10",
@@ -563,6 +570,13 @@
           },
           {
             "type": "file",
+            "name": "Homework2",
+            "path": "main/Chapter2/Section8_Homework2.md",
+            "key": "main/Chapter2/8",
+            "lang": "en"
+          },
+          {
+            "type": "file",
             "name": "Tittle-tattle",
             "path": "main/Chapter2/Section10_Tittle-tattle.md",
             "key": "main/Chapter2/10",
@@ -632,6 +646,10 @@
     "main/Chapter2/7": {
       "chs": "main/Chapter2_Cpp_PDE/Section7_未尽之路.md",
       "en": "main/Chapter2/Section7_UnfinishedPath.md"
+    },
+    "main/Chapter2/8": {
+      "chs": "main/Chapter2_Cpp_PDE/Section8_作业2.md",
+      "en": "main/Chapter2/Section8_Homework2.md"
     },
     "main/Chapter2/0": {
       "chs": "main/Chapter2_Cpp_PDE/[dl1]Section0_代码.md",
@@ -722,5 +740,5 @@
       "en": "Appendix0.md"
     }
   },
-  "version": "ms2kuw5i"
+  "version": "ms2wuh68"
 }

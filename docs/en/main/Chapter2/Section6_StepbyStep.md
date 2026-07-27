@@ -1,6 +1,6 @@
 # Section 6: From Minimum Viable Product to Complete Project
 
-> I recommend reading Section 10 first – it contains my personal reflections on the journey.
+> I recommend reading Tittle-tattle first – it contains my personal reflections on the journey.
 
 ## Quick Reference Table
 
