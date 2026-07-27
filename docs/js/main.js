@@ -583,9 +583,9 @@
 
       $content.innerHTML = html;
 
-      // Add home-page class for welcome/home documents
+      // Add home-page class for welcome/home documents and Appendix 20 (serif font)
       currentKey = getPairKey(lang, docPath);
-      if (currentKey === 'home') {
+      if (currentKey === 'home' || currentKey === 'appendix/20' || currentKey === 'root/20') {
         $content.classList.add('home-page');
       } else {
         $content.classList.remove('home-page');

@@ -14,6 +14,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'sourcecode');
 const DIST = path.join(ROOT, 'docs');
 const CACHE_FILE = path.join(ROOT, '.build-cache.json');
+const BUILD_VERSION = Date.now().toString(36);
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -45,17 +46,48 @@ function extractTitle(filename) {
 }
 
 /**
+ * Normalize a directory path for cross-language pairing.
+ * Chinese Chapter2 dir is "main/Chapter2_Cpp_PDE", English is "main/Chapter2".
+ * We normalize both to "main/Chapter2" so pairs match across languages.
+ */
+function normalizeDir(dirPath) {
+  return dirPath.replace(/Chapter2_Cpp_PDE/, 'Chapter2');
+}
+
+/**
  * Extract pairing key from filename.
  * - Files starting with "0_" → key "home"
- * - Others: extract the first consecutive digits from the filename
+ * - [dlX] prefix is stripped before extracting digits (it's metadata)
+ * - The key is namespaced by directory to prevent collisions:
+ *   - Top-level "附录N" or "AppendixN" → "appendix/N"
+ *   - Top-level other files → "root/N"
+ *   - Subdirectory files → "<normalized-dir>/N"
  * - If no digits found, use the title as key
  */
-function extractKey(filename) {
-  const name = path.basename(filename);
+function extractKey(filename, relPath) {
+  let name = path.basename(filename);
+
+  // Strip [dlX] metadata prefix (e.g. "[dl1]Section0_代码" → "Section0_代码")
+  name = name.replace(/^\[dl\d+\]/, '');
+
   if (/^0_/.test(name)) return 'home';
+
   const match = name.match(/(\d+)/);
-  if (match) return match[1];
-  return extractTitle(name);
+  const numKey = match ? match[1] : extractTitle(name);
+
+  const dir = path.dirname(relPath);
+
+  if (dir === '.' || dir === '') {
+    // Top-level files: namespace by content type
+    if (/^(附录|Appendix)\d+/.test(name)) {
+      return 'appendix/' + numKey;
+    }
+    return 'root/' + numKey;
+  }
+
+  // Subdirectory files: namespace by normalized directory path
+  const ns = normalizeDir(dir);
+  return ns + '/' + numKey;
 }
 
 /** Strip Markdown formatting to get plain text for search index. */
@@ -109,6 +141,15 @@ function copyDir(src, dest) {
       fs.copyFileSync(srcPath, destPath);
     }
   }
+}
+
+/** Inject build version into the dist index.html (replaces GUIDE4PC_BUILD_VER placeholder). */
+function injectVersion() {
+  const indexPath = path.join(DIST, 'index.html');
+  if (!fs.existsSync(indexPath)) return;
+  let html = fs.readFileSync(indexPath, 'utf-8');
+  html = html.replace(/GUIDE4PC_BUILD_VER/g, BUILD_VERSION);
+  fs.writeFileSync(indexPath, html, 'utf-8');
 }
 
 /** Generate dl/files.json manifest from sourcecode/dl/ directory structure. */
@@ -197,8 +238,12 @@ function buildTree(nodes, lang) {
     arr.sort((a, b) => {
       if (a.key === 'home') return -1;
       if (b.key === 'home') return 1;
-      const aNum = parseInt(a.key, 10);
-      const bNum = parseInt(b.key, 10);
+      // For composite keys like "appendix/1" or "main/Chapter2/3",
+      // extract the numeric portion from the last segment
+      const aLast = a.key.split('/').pop();
+      const bLast = b.key.split('/').pop();
+      const aNum = parseInt(aLast, 10);
+      const bNum = parseInt(bLast, 10);
       if (!isNaN(aNum) && !isNaN(bNum)) {
         if (aNum !== bNum) return aNum - bNum;
       }
@@ -368,7 +413,7 @@ function fullBuild(cache) {
   function processFile(relPath, lang) {
     const fullPath = path.join(SRC, lang, relPath);
     const basename = path.basename(relPath);
-    const key = extractKey(basename);
+    const key = extractKey(basename, relPath);
     const title = (key === 'home') ? (lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const content = stripMarkdown(md);
@@ -436,7 +481,7 @@ function fullBuild(cache) {
   fs.writeFileSync(path.join(DIST, '.nojekyll'), '', 'utf-8');
 
   // Write manifests
-  const manifest = { tree, pairs };
+  const manifest = { tree, pairs, version: BUILD_VERSION };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
   fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex, null, 2), 'utf-8');
 
@@ -495,6 +540,9 @@ function fullBuild(cache) {
   // Record static mtimes in cache
   syncAllStatics(cache);
 
+  // Inject build version into index.html
+  injectVersion();
+
   // Write cache
   writeCache(cache);
 
@@ -502,6 +550,7 @@ function fullBuild(cache) {
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
   console.log(`   search_index.json: ${searchIndex.length} documents indexed`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
+  console.log(`   version: ${BUILD_VERSION}`);
 }
 
 // ─── Incremental build ──────────────────────────────────────────────────────
@@ -574,7 +623,7 @@ function incrementalBuild(cache) {
   for (const f of newFiles) {
     const fullPath = path.join(SRC, f.lang, f.relPath);
     const basename = path.basename(f.relPath);
-    const key = extractKey(basename);
+    const key = extractKey(basename, f.relPath);
     const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const content = stripMarkdown(md);
@@ -587,7 +636,7 @@ function incrementalBuild(cache) {
   for (const f of modifiedFiles) {
     const fullPath = path.join(SRC, f.lang, f.relPath);
     const basename = path.basename(f.relPath);
-    const key = extractKey(basename);
+    const key = extractKey(basename, f.relPath);
     const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const content = stripMarkdown(md);
@@ -652,7 +701,7 @@ function incrementalBuild(cache) {
   }));
 
   // 10. Write manifest & search index
-  const manifest = { tree, pairs };
+  const manifest = { tree, pairs, version: BUILD_VERSION };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
   fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex, null, 2), 'utf-8');
 
@@ -697,13 +746,17 @@ function incrementalBuild(cache) {
     }
   }
 
-  // 14. Write updated cache
+  // 14. Inject build version into index.html (always, even if no content changes)
+  injectVersion();
+
+  // 15. Write updated cache
   writeCache(cache);
 
   console.log(`\n✅ Incremental build complete!`);
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
   console.log(`   search_index.json: ${searchIndex.length} documents indexed`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
+  console.log(`   version: ${BUILD_VERSION}`);
 }
 
 // ─── Entry ──────────────────────────────────────────────────────────────────

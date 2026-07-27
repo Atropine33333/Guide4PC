@@ -2,15 +2,20 @@
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Guide4PC — A Gentle Guide to Your First Computer">
+  <meta name="guide4pc-version" content="ms2kuw5i">
   <title>Guide4PC</title>
 
   <!-- Fonts (via jsdelivr fontsource) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5.1.0/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.1.0/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.0/index.css">
+
+  <!-- KaTeX CSS preloaded for priority (JS loads on-demand when math detected) -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style">
 
   <!-- highlight.js -->
   <link rel="stylesheet" id="hljs-light" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
@@ -32,6 +37,23 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+
+  <!-- Version check: force hard-reload if deployed version differs from cookie -->
+  <script>
+  (function(){
+    var verMeta = document.querySelector('meta[name="guide4pc-version"]');
+    if (!verMeta) return;
+    var currentVer = verMeta.content;
+    var cookieVer = ('; '+document.cookie).split('; guide4pc_version=').pop().split(';')[0];
+    if (cookieVer && cookieVer !== currentVer) {
+      // Version changed — hard reload to bust browser cache
+      document.cookie = 'guide4pc_version=' + currentVer + '; path=/; max-age=31536000; SameSite=Lax';
+      location.reload(true);
+      return;
+    }
+    document.cookie = 'guide4pc_version=' + currentVer + '; path=/; max-age=31536000; SameSite=Lax';
+  })();
+  </script>
 
   <!-- Mobile overlay backdrop -->
   <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>

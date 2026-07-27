@@ -18,7 +18,8 @@
   --content-width:  75%;
   --sidebar-width-dyn: 280px;
 
-  /* Fonts */
+  /* Fonts — Noto Serif SC has font-display:swap via fontsource;
+     KaTeX fonts are preloaded in <head> */
   --font-sans:   'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif:  'Noto Serif SC', 'Inter', Georgia, serif;
   --font-mono:   'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Noto Sans SC', monospace;
@@ -455,7 +456,7 @@ body {
 .content h5, .content h6 { font-size: 0.95em; font-weight: 600; margin: 0.8em 0 0.2em; }
 
 .content p { margin: 0.6em 0; }
-.content a { color: var(--color-primary); text-decoration: none; }
+.content a { color: var(--color-primary); text-decoration: none; word-break: break-all; overflow-wrap: break-word; }
 .content a:hover { text-decoration: underline; }
 
 .content blockquote {
@@ -484,7 +485,7 @@ body {
   border-collapse: collapse;
   width: 100%;
   margin: 1em 0;
-  font-size: 0.9rem;
+  font-size: calc(0.9rem * var(--font-scale));
 }
 
 .content th, .content td {
