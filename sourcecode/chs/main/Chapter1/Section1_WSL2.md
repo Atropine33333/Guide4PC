@@ -4,192 +4,211 @@
 
 | 术语 | 简单解释 |
 |------|----------|
-| Linux | 一种操作系统内核，和Windows是两套不同的东西 |
-| 发行版 | 在Linux内核基础上打包了各种工具软件的完整系统，比如Ubuntu |
-| Ubuntu | 最流行的Linux发行版之一，本书所有命令都在Ubuntu 24.04上验证 |
-| WSL2 | Windows Subsystem for Linux 2，Windows里跑Linux的一个方式 |
-| 虚拟机 | 用软件模拟出一台完整的电脑，里面可以装另一个操作系统 |
-| Hyper-V | Windows自带的虚拟化技术，WSL2和虚拟机都依赖它 |
-| 镜像网络 | WSL2的一种网络模式，让WSL的IP和Windows保持一致 |
-| DNS隧道 | 让WSL通过Windows去解析域名，解决某些网络环境下DNS不通的问题 |
+| 内核 | 操作系统的核心，负责管理硬件、进程、内存、文件系统 |
+| Linux内核 | Linux操作系统的内核，由林纳斯·托瓦兹在1991年发起 |
+| 发行版 | 在内核基础上打包各种软件形成的完整系统，比如Ubuntu |
+| Ubuntu 26.04 | Ubuntu的最新长期支持版本，代号Resolute |
+| WSL2 | Windows Subsystem for Linux 2，Windows里跑Linux的方式 |
+| 虚拟机平台 | Windows里的虚拟化功能，WSL2依赖它运行 |
+| Hyper-V | Windows专业版/教育版自带的完整虚拟化平台 |
+| apt | Ubuntu的包管理器，负责安装、更新、卸载软件 |
+| 软件源 | apt下载软件包的服务器地址，国内常用阿里云镜像加速 |
 
 ---
 
 ## 1.1 为什么需要Linux
 
-如果你的大学比较不错，不使用老掉牙的vc6.0作为IDE，那么你在大学里学的CS课程——操作系统、计算机网络、编译原理、并行计算——它们的实验代码，几乎都默认在Linux环境下运行。
+你在大学里学的课程——操作系统、计算机网络、编译原理、并行计算——它们的实验代码，几乎都默认在Linux环境下运行。
 
-我大致可以给出如下原因：
+原因大致有三条：
 
-- 绝大多数服务器跑的是Linux。你写的代码最终要部署到服务器上，在本地用Linux开发可以避免“在我电脑上能跑”这种尴尬。
-- 超算中心跑的是Linux。如果你以后做科研、跑仿真、调模型，你得用SSH连上去，在命令行里操作。
-- 开源工具链首选Linux。这些工具在Linux上的体验最顺畅，文档最多，遇到问题最容易找到答案。
+- 服务器跑的是Linux。你写的代码最终要部署到服务器上，在本地用Linux开发可以避免环境不一致导致的问题。
+- 超算中心跑的是Linux。做科研、跑仿真、调模型，你得用SSH连上去，在命令行里操作。
+- 开源工具链首选Linux。gcc、clang、meson、git、python这些工具在Linux上的体验最顺畅，文档最多，遇到问题最容易找到答案。
 
-你当然可以在Windows上用虚拟机跑Linux，也可以在macOS上折腾。但WSL2是目前在Windows上获得Linux环境门槛最低、体验最顺的方式。它不需要你单独分一个分区，不需要你在虚拟机里忍受卡顿，不需要你每次开机等Linux慢慢启动。
-
-WSL2不是虚拟机，但也离不开虚拟化技术。下面解释它们的关系。
+WSL2是目前在Windows上获得Linux环境门槛最低、体验最顺的方式。它不需要单独分区，不需要忍受虚拟机卡顿，不需要每次等Linux慢慢启动。
 
 ---
 
-## 1.2 安装WSL2
+## 1.2 什么是Linux内核
 
-以下步骤在Windows 11上执行。
+严格来说，“Linux”这个词指的不是一个完整的操作系统，而是操作系统最底层的那个部分——**内核**。
 
-**第一步：开启必要的Windows功能**
+内核是操作系统的心脏。它管理着：
 
-以**管理员**身份打开PowerShell或Windows Terminal，执行：
+- **CPU**：决定哪个程序在什么时候运行、运行多久。
+- **内存**：给每个程序分配地址空间，防止它们互相踩踏。
+- **文件系统**：管理硬盘上的数据怎么存、怎么读、怎么索引。
+- **设备驱动**：让键盘、鼠标、网卡、显卡这些硬件能被程序使用。
+- **网络**：管理网络数据的收发、连接、路由。
+
+你打开Ubuntu终端输入命令，那个叫Bash的程序并不是内核。它跑在用户空间，通过内核提供的系统调用来完成读写文件、创建进程、收发网络数据等操作。
+
+1991年，林纳斯·托瓦兹在赫尔辛基大学读书时发布了Linux内核的第一个版本。当时他21岁。三十多年后，Linux内核成了世界上最大的开源项目，全世界超过90%的服务器在跑它，Android手机在跑它，绝大多数超级计算机在跑它。
+
+你不需要现在就懂内核的实现，但需要知道一件事：**WSL2里跑的就是这个内核**，只不过微软自己维护了一个专门适配Windows虚拟化环境的版本。
+
+---
+
+## 1.3 开启Windows功能
+
+在Windows 11上跑WSL2，需要开启两个Windows功能：**虚拟机平台**和**适用于Linux的Windows子系统**。
+
+打开“启用或关闭Windows功能”：
+- 按`Win + R`，输入`optionalfeatures`，回车
+- 或者直接在开始菜单搜索“启用或关闭Windows功能”
+
+在弹出的窗口中，勾选以下两项：
+- **虚拟机平台**（Virtual Machine Platform）
+- **适用于Linux的Windows子系统**（Windows Subsystem for Linux）
+
+**关于Hyper-V**：如果你用的是Windows 11专业版或教育版，在同一个窗口里会看到“Hyper-V”这个选项。勾上它不会有什么坏处，WSL2不依赖它但也不冲突。如果你用的是家庭版，压根没有这个选项，不用管。这个功能开不开都不影响WSL2的正常使用。
+
+确认后，Windows会开始安装这些功能，完成后提示重启。**必须重启**，否则后续操作会失败。
+
+---
+
+## 1.4 安装PowerShell 7
+
+Windows自带的PowerShell版本是5.1（在Windows终端里叫“Windows PowerShell”）。我们需要安装PowerShell 7，它在WSL集成方面体验更好。
+
+用**管理员身份**打开Windows终端，然后打开一个**Windows PowerShell**选项卡（就是系统自带那个），执行：
 
 ```powershell
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+winget install --id Microsoft.PowerShell --source winget
 ```
 
-第一条命令开启WSL功能。第二条命令开启虚拟机平台。WSL2需要虚拟化技术支持才能运行完整的Linux内核。
+安装完成后，关掉Windows终端再重新打开，新建选项卡时应该能看到“PowerShell 7”的选项（图标通常是深蓝色的）。之后的命令都在**PowerShell 7**选项卡里执行，不要用“Windows PowerShell”那个选项卡。
 
-执行完后**重启电脑**。
+---
 
-**第二步：将WSL2设为默认版本**
+## 1.5 安装Ubuntu 26.04
 
-重启后，以管理员身份执行：
+在PowerShell 7选项卡中执行：
 
 ```powershell
-wsl --set-default-version 2
+wsl --install -d Ubuntu-26.04
 ```
 
-这之后安装的所有Linux发行版都会默认使用WSL2。如果要在WSL1和WSL2之间切换，可以用`wsl --set-version <发行版名> 1`或`2`。
+等待下载和安装完成。Ubuntu 26.04是2026年4月发布的长期支持版本，代号Resolute。本书所有命令和操作都在这个版本上验证。
 
-**第三步：安装Ubuntu 24.04**
+安装完成后，从开始菜单启动Ubuntu 26.04，或者在PowerShell中执行`wsl -d Ubuntu-26.04`。
 
-在终端执行：
+首次启动会提示创建用户名和密码：
+- 用户名不要用`root`。root是系统管理员账户，日常操作使用自己的用户名。
+- 输入密码时屏幕上没有任何显示（星号也没有），这是正常行为，照着敲就行。
 
-```powershell
-wsl --install -d Ubuntu-24.04
-```
+---
 
-安装完成后，从开始菜单启动Ubuntu 24.04，或者在终端执行`wsl -d Ubuntu-24.04`。
+## 1.6 配置WSL网络
 
-**首次启动**：会提示你创建用户名和密码。注意：
-- 用户名不要用`root`。`root`是系统管理员账户，日常操作用自己的用户名。
-- 输入密码时不显示任何字符（星号也没有）。这是正常的，照着敲就行。
+WSL的网络有一些默认行为在实际使用中不太友好：IP地址频繁变动、DNS解析偶尔失败、内存不释放。推荐使用一个叫**WSL Settings**的图形化工具来配置。
 
-**验证安装**：
+安装WSL Settings：
+- 在Microsoft Store中搜索“WSL Settings”并安装
+- 或者访问其GitHub仓库获取最新版本
+
+打开WSL Settings，在**网络（Network）** 栏中做以下设置：
+
+- **网络模式**：设置为`mirrored`（镜像模式）。WSL的IP会和Windows保持一致，从局域网其他设备访问WSL里跑的服务不需要额外配端口转发。
+- **启用主机地址环回**（Host Address Loopback）：开启。允许WSL访问Windows本地监听的端口。
+- **启用自动代理**：开启。WSL里的命令行工具（curl、apt、git等）会自动使用Windows的代理设置。
+- **启用DNS隧道**：开启。WSL的DNS请求被转发给Windows解析，避免校园网或运营商劫持DNS导致解析失败。
+- **启用尽力DNS解析**：开启。DNS解析失败时自动尝试其他方式，提高稳定性。
+
+在**可选功能（Experimental）** 中找到**内存回收**，设置为`gradual`（渐进式）。WSL空闲时会温和地释放占用的内存还给Windows，避免越用越卡。
+
+配置完成后，**重启Windows终端**（不是重启电脑，关掉终端窗口再打开就行）。重启之后，新建终端时应该能看到一个名叫“Ubuntu-26.04”的可选发行版。
+
+---
+
+## 1.7 更换软件源并更新系统
+
+Ubuntu默认的软件源服务器在海外，国内访问速度慢。需要换成国内镜像。
+
+### 1.7.1 备份原有配置
+
+在Ubuntu终端中执行：
 
 ```bash
-wsl -l -v
+sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
 ```
 
-输出应该类似：
+这条命令把原始软件源配置文件复制一份作为备份。如果后面改出问题，可以执行下面的命令恢复：
+
+```bash
+sudo cp /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
+```
+
+### 1.7.2 编辑软件源配置
+
+Ubuntu 26.04的软件源配置文件路径是`/etc/apt/sources.list.d/ubuntu.sources`。用vim打开：
+
+```bash
+sudo vim /etc/apt/sources.list.d/ubuntu.sources
+```
+
+如果你不熟悉vim，可以用nano代替：
+
+```bash
+sudo nano /etc/apt/sources.list.d/ubuntu.sources
+```
+
+用vim的话，操作步骤如下：
+1. 按方向键下，将光标移动到注释区域之外
+2. 输入`13dd`，删除原有的13行配置
+3. 按`o`键，在下方新建一行，进入插入模式
+4. 将下面内容复制进去（右键粘贴，或者`Shift+Insert`）：
 
 ```
-  NAME                   STATE           VERSION
-* Ubuntu-24.04           Running         2
+Types: deb
+URIs: https://mirrors.aliyun.com/ubuntu/
+Suites: resolute resolute-updates resolute-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: https://mirrors.aliyun.com/ubuntu/
+Suites: resolute-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
-星号`*`表示默认发行版。当你只输入`wsl`不加参数时，进入的就是带星号的这个。
+5. 按`Esc`退出插入模式
+6. 输入`:w`保存
+7. 输入`:q`退出
+
+使用nano的话更直观：粘贴内容后按`Ctrl+O`保存，再按`Ctrl+X`退出。
+
+### 1.7.3 更新软件包列表
+
+换源完成后，执行：
+
+```bash
+sudo apt update
+```
+
+这会从阿里云镜像拉取最新的软件包列表。接下来执行：
+
+```bash
+sudo apt full-upgrade -y
+```
+
+`full-upgrade`会更新所有已安装的软件包到最新版本，包括内核和系统组件。`-y`表示自动确认所有更新提示，不需要手动按`Y`。
+
+第一次更新可能需要几分钟到十几分钟，取决于网络速度。
 
 ---
 
-## 1.3 WSL2与虚拟机的区别
+## 1.8 这一节你做了什么
 
-很多人会问：WSL2不就是虚拟机吗？
+停下来回顾一下。这一节完成了以下工作：
 
-答案是：它用了虚拟机的技术（Hyper-V），但体验不像虚拟机。
+1. 在Windows功能中开启了虚拟机平台和适用于Linux的Windows子系统
+2. 安装了PowerShell 7，并确认在Windows终端中使用PowerShell 7选项卡
+3. 安装了Ubuntu 26.04
+4. 用WSL Settings配置了网络模式、DNS、代理和内存回收
+5. 把Ubuntu的软件源换成了阿里云镜像
+6. 更新了所有系统软件包
 
-**虚拟机（比如VirtualBox、VMware）做了什么**：
-
-用软件模拟出一整套硬件——CPU、内存、硬盘、网卡、显卡、声卡、USB控制器——然后在上面装一个完整的操作系统。这个操作系统不直接接触你电脑的真实硬件，它看到的都是虚拟机软件模拟出来的东西。
-
-结果就是：启动慢、吃内存、图形性能差、文件共享麻烦。当然隔离性好，但对你日常开发来说，隔离性换来的代价太大了。
-
-**WSL2做了什么**：
-
-WSL2也跑在一个轻量级虚拟机上（基于Hyper-V），但这个虚拟机有几个特殊之处：
-
-- **没有完整硬件模拟**：它只虚拟了运行Linux内核必需的硬件，其他设备（显卡、声卡、USB）直接走Windows的驱动。
-- **内核是特制的**：微软自己维护了一份Linux内核，针对WSL场景做了大量优化，尤其是文件系统和网络部分。
-- **和Windows无缝集成**：`\\wsl.localhost`里直接看到WSL的文件系统，Windows进程和WSL进程可以互相通信。
-
-**什么时候用虚拟机**：你需要完整的图形桌面环境（比如必须用Linux桌面）、需要直接访问USB设备、需要跑多个独立隔离的环境。
-
-**什么时候用WSL2**：你需要Linux命令行、需要在Linux环境下编译代码。
-
----
-
-## 1.4 配置文件：.wslconfig
-
-WSL2默认的网络配置在有些场景下不太好用。最常见的问题：
-
-- WSL的IP地址和Windows不在同一个网段，想从局域网其他设备访问WSL里跑的服务（比如Jupyter、HTTP Server）需要额外配置端口转发。
-- DNS解析偶尔会失败，表现为WSL里能ping通IP但ping不通域名。
-- WSL2长时间运行后会占用大量内存（因为Linux会把空闲内存用作缓存，不会主动释放）。
-
-这些问题可以通过一个配置文件解决。
-
-在`%UserProfile%`目录下（也就是`C:\Users\你的用户名\`）新建一个文件，名叫`.wslconfig`。注意文件名以点开头，没有扩展名。
-
-写入以下内容：
-
-```ini
-[wsl2]
-networkingMode=mirrored
-dnsTunneling=true
-firewall=true
-autoProxy=true
-autoMemoryReclaim=gradual
-```
-
-**每一项的作用**：
-
-`networkingMode=mirrored`
-：镜像网络模式。开启后，WSL的IP地址和Windows完全一样，所有网络接口被“镜像”到WSL内部。好处是：从局域网其他设备可以直接访问WSL里跑的服务，不需要配端口转发。WSL里的应用绑定的端口会自动在Windows的同一个端口上监听。
-
-`dnsTunneling=true`
-：DNS隧道。WSL内部的DNS请求被转发给Windows，由Windows去解析域名。绕过WSL直接发DNS包可能遇到的各种网络问题（比如某些校园网劫持DNS）。打开这个之后，WSL里执行`apt update`、`git clone`、`curl`等操作时，域名解析会更稳定。
-
-`firewall=true`
-：让Windows防火墙对WSL的流量生效。默认情况下WSL的流量绕过Windows防火墙，这在某些企业或校园网络环境下可能被网络策略拦截。打开后WSL的出入流量受Windows防火墙规则管理。
-
-`autoProxy=true`
-：自动继承Windows的系统代理设置。如果你在Windows里开了代理工具（比如Clash、v2ray），WSL里的命令行工具（curl、apt、git等）会自动使用这个代理，不需要在WSL里单独配置。
-
-`autoMemoryReclaim=gradual`
-：自动内存回收，模式为渐进式。WSL2空闲时，后台会逐步释放Linux内核占用的内存还给Windows。默认是`disabled`。打开后可以避免WSL越用越占内存最后需要手动`wsl --shutdown`才能释放的问题。`gradual`表示温和地回收，避免对正在运行的程序造成性能冲击。还有一个值是`dropcache`，更激进，但可能导致首次访问文件时变慢。
-
-**如何生效**：修改`.wslconfig`后，需要完全关闭WSL才能让新配置生效。在PowerShell中执行：
-
-```powershell
-wsl --shutdown
-```
-
-然后重新启动WSL（打开Ubuntu终端或执行`wsl`）。配置就会加载。
-
-**验证**：重启后执行`ip addr`，可以看到网络接口的配置和之前不一样了。具体差异取决于你的网络环境，不用太纠结。
-
----
-
-## 1.5 本节验证动作
-
-完成以下检查，确认WSL2环境就绪：
-
-1. **确认版本**：`wsl -l -v`显示Ubuntu 24.04的VERSION是2。
-2. **确认能联网**：在WSL终端里执行`ping -c 4 www.baidu.com`，应该能收到回复。
-3. **确认文件系统正常**：执行`ls /`，应该能看到`bin`、`home`、`usr`等目录。执行`ls /mnt/c/`，应该能看到你的Windows C盘内容。
-
-如果第2步ping不通，先检查`.wslconfig`里`dnsTunneling=true`和`autoProxy=true`是否写对，然后执行`wsl --shutdown`重试。
-
----
-
-## 1.6 可能遇到的问题
-
-**安装WSL时提示“需要更新WSL内核”**
-：去微软官方搜索“WSL2内核更新包”，下载安装后重试。
-
-**启动Ubuntu时卡在“Installing...”很久**
-：网络问题。关掉代理工具试试，或者换个时间段。
-
-**执行wsl --shutdown后Ubuntu启动变慢**
-：第一次启动会重建一些缓存，正常。再启动一次就好了。
-
-**配置文件不生效**
-：确认文件名是`.wslconfig`（不是`.wslconfig.txt`）。确认文件放在`%UserProfile%`目录下（`C:\Users\你的用户名\`），不是在WSL里面。修改后记得`wsl --shutdown`。
-
+现在你的WSL2 Ubuntu已经是一个网络通畅、源已换好、系统最新的开发环境了。下一步，我们会安装编译器、构建工具和Python环境，把开发工具链补齐。

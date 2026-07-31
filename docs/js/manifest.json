@@ -213,6 +213,83 @@
       },
       {
         "type": "directory",
+        "name": "Chapter2",
+        "path": "main/Chapter2",
+        "children": [
+          {
+            "type": "file",
+            "name": "代码",
+            "path": "main/Chapter2/[dl1]Section0_代码.md",
+            "key": "main/Chapter2/0",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "数学基础",
+            "path": "main/Chapter2/Section1_数学基础.md",
+            "key": "main/Chapter2/1",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "代码分析",
+            "path": "main/Chapter2/Section2_代码分析.md",
+            "key": "main/Chapter2/2",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "Cpp基础",
+            "path": "main/Chapter2/Section3_Cpp基础.md",
+            "key": "main/Chapter2/3",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业1",
+            "path": "main/Chapter2/Section4_作业1.md",
+            "key": "main/Chapter2/4",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "从论文到工程",
+            "path": "main/Chapter2/Section5_从论文到工程.md",
+            "key": "main/Chapter2/5",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "逐步实现",
+            "path": "main/Chapter2/Section6_逐步实现.md",
+            "key": "main/Chapter2/6",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "未尽之路",
+            "path": "main/Chapter2/Section7_未尽之路.md",
+            "key": "main/Chapter2/7",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业2",
+            "path": "main/Chapter2/Section8_作业2.md",
+            "key": "main/Chapter2/8",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "杂谈",
+            "path": "main/Chapter2/Section10_杂谈.md",
+            "key": "main/Chapter2/10",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
         "name": "Chapter2_Cpp_PDE",
         "path": "main/Chapter2_Cpp_PDE",
         "children": [
@@ -616,43 +693,43 @@
       "en": "main/Chapter1/Section2_EnvConfiguration.md"
     },
     "main/Chapter2/10": {
-      "chs": "main/Chapter2_Cpp_PDE/Section10_杂谈.md",
+      "chs": "main/Chapter2/Section10_杂谈.md",
       "en": "main/Chapter2/Section10_Tittle-tattle.md"
     },
     "main/Chapter2/1": {
-      "chs": "main/Chapter2_Cpp_PDE/Section1_数学基础.md",
+      "chs": "main/Chapter2/Section1_数学基础.md",
       "en": "main/Chapter2/Section1_MathematicalFoundations.md"
     },
     "main/Chapter2/2": {
-      "chs": "main/Chapter2_Cpp_PDE/Section2_代码分析.md",
+      "chs": "main/Chapter2/Section2_代码分析.md",
       "en": "main/Chapter2/Section2_CodeOverview.md"
     },
     "main/Chapter2/3": {
-      "chs": "main/Chapter2_Cpp_PDE/Section3_Cpp基础.md",
+      "chs": "main/Chapter2/Section3_Cpp基础.md",
       "en": "main/Chapter2/Section3_CppSyntax.md"
     },
     "main/Chapter2/4": {
-      "chs": "main/Chapter2_Cpp_PDE/Section4_作业1.md",
+      "chs": "main/Chapter2/Section4_作业1.md",
       "en": "main/Chapter2/Section4_Homework1.md"
     },
     "main/Chapter2/5": {
-      "chs": "main/Chapter2_Cpp_PDE/Section5_从论文到工程.md",
+      "chs": "main/Chapter2/Section5_从论文到工程.md",
       "en": "main/Chapter2/Section5_FromPapertoProduction.md"
     },
     "main/Chapter2/6": {
-      "chs": "main/Chapter2_Cpp_PDE/Section6_逐步实现.md",
+      "chs": "main/Chapter2/Section6_逐步实现.md",
       "en": "main/Chapter2/Section6_StepbyStep.md"
     },
     "main/Chapter2/7": {
-      "chs": "main/Chapter2_Cpp_PDE/Section7_未尽之路.md",
+      "chs": "main/Chapter2/Section7_未尽之路.md",
       "en": "main/Chapter2/Section7_UnfinishedPath.md"
     },
     "main/Chapter2/8": {
-      "chs": "main/Chapter2_Cpp_PDE/Section8_作业2.md",
+      "chs": "main/Chapter2/Section8_作业2.md",
       "en": "main/Chapter2/Section8_Homework2.md"
     },
     "main/Chapter2/0": {
-      "chs": "main/Chapter2_Cpp_PDE/[dl1]Section0_代码.md",
+      "chs": "main/Chapter2/[dl1]Section0_代码.md",
       "en": "main/Chapter2/[dl1]Section0_Code.md"
     },
     "appendix/10": {
@@ -740,5 +817,5 @@
       "en": "Appendix0.md"
     }
   },
-  "version": "ms2yef2a"
+  "version": "ms8j67mg"
 }
