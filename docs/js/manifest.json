@@ -213,77 +213,77 @@
       },
       {
         "type": "directory",
-        "name": "Chapter2_C++",
-        "path": "main/Chapter2_C++",
+        "name": "Chapter2_Cpp",
+        "path": "main/Chapter2_Cpp",
         "children": [
           {
             "type": "file",
             "name": "代码",
-            "path": "main/Chapter2_C++/[dl1]Section0_代码.md",
-            "key": "main/Chapter2_C++/0",
+            "path": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
+            "key": "main/Chapter2_Cpp/0",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "数学基础",
-            "path": "main/Chapter2_C++/Section1_数学基础.md",
-            "key": "main/Chapter2_C++/1",
+            "path": "main/Chapter2_Cpp/Section1_数学基础.md",
+            "key": "main/Chapter2_Cpp/1",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "代码分析",
-            "path": "main/Chapter2_C++/Section2_代码分析.md",
-            "key": "main/Chapter2_C++/2",
+            "path": "main/Chapter2_Cpp/Section2_代码分析.md",
+            "key": "main/Chapter2_Cpp/2",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "Cpp基础",
-            "path": "main/Chapter2_C++/Section3_Cpp基础.md",
-            "key": "main/Chapter2_C++/3",
+            "path": "main/Chapter2_Cpp/Section3_Cpp基础.md",
+            "key": "main/Chapter2_Cpp/3",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "作业1",
-            "path": "main/Chapter2_C++/Section4_作业1.md",
-            "key": "main/Chapter2_C++/4",
+            "path": "main/Chapter2_Cpp/Section4_作业1.md",
+            "key": "main/Chapter2_Cpp/4",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "从论文到工程",
-            "path": "main/Chapter2_C++/Section5_从论文到工程.md",
-            "key": "main/Chapter2_C++/5",
+            "path": "main/Chapter2_Cpp/Section5_从论文到工程.md",
+            "key": "main/Chapter2_Cpp/5",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "逐步实现",
-            "path": "main/Chapter2_C++/Section6_逐步实现.md",
-            "key": "main/Chapter2_C++/6",
+            "path": "main/Chapter2_Cpp/Section6_逐步实现.md",
+            "key": "main/Chapter2_Cpp/6",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "未尽之路",
-            "path": "main/Chapter2_C++/Section7_未尽之路.md",
-            "key": "main/Chapter2_C++/7",
+            "path": "main/Chapter2_Cpp/Section7_未尽之路.md",
+            "key": "main/Chapter2_Cpp/7",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "作业2",
-            "path": "main/Chapter2_C++/Section8_作业2.md",
-            "key": "main/Chapter2_C++/8",
+            "path": "main/Chapter2_Cpp/Section8_作业2.md",
+            "key": "main/Chapter2_Cpp/8",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "杂谈",
-            "path": "main/Chapter2_C++/Section10_杂谈.md",
-            "key": "main/Chapter2_C++/10",
+            "path": "main/Chapter2_Cpp/Section10_杂谈.md",
+            "key": "main/Chapter2_Cpp/10",
             "lang": "chs"
           }
         ]
@@ -579,77 +579,77 @@
       },
       {
         "type": "directory",
-        "name": "Chapter2_C++",
-        "path": "main/Chapter2_C++",
+        "name": "Chapter2_Cpp",
+        "path": "main/Chapter2_Cpp",
         "children": [
           {
             "type": "file",
             "name": "Code",
-            "path": "main/Chapter2_C++/[dl1]Section0_Code.md",
-            "key": "main/Chapter2_C++/0",
+            "path": "main/Chapter2_Cpp/[dl1]Section0_Code.md",
+            "key": "main/Chapter2_Cpp/0",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "MathematicalFoundations",
-            "path": "main/Chapter2_C++/Section1_MathematicalFoundations.md",
-            "key": "main/Chapter2_C++/1",
+            "path": "main/Chapter2_Cpp/Section1_MathematicalFoundations.md",
+            "key": "main/Chapter2_Cpp/1",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "CodeOverview",
-            "path": "main/Chapter2_C++/Section2_CodeOverview.md",
-            "key": "main/Chapter2_C++/2",
+            "path": "main/Chapter2_Cpp/Section2_CodeOverview.md",
+            "key": "main/Chapter2_Cpp/2",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "CppSyntax",
-            "path": "main/Chapter2_C++/Section3_CppSyntax.md",
-            "key": "main/Chapter2_C++/3",
+            "path": "main/Chapter2_Cpp/Section3_CppSyntax.md",
+            "key": "main/Chapter2_Cpp/3",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Homework1",
-            "path": "main/Chapter2_C++/Section4_Homework1.md",
-            "key": "main/Chapter2_C++/4",
+            "path": "main/Chapter2_Cpp/Section4_Homework1.md",
+            "key": "main/Chapter2_Cpp/4",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "FromPapertoProduction",
-            "path": "main/Chapter2_C++/Section5_FromPapertoProduction.md",
-            "key": "main/Chapter2_C++/5",
+            "path": "main/Chapter2_Cpp/Section5_FromPapertoProduction.md",
+            "key": "main/Chapter2_Cpp/5",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "StepbyStep",
-            "path": "main/Chapter2_C++/Section6_StepbyStep.md",
-            "key": "main/Chapter2_C++/6",
+            "path": "main/Chapter2_Cpp/Section6_StepbyStep.md",
+            "key": "main/Chapter2_Cpp/6",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "UnfinishedPath",
-            "path": "main/Chapter2_C++/Section7_UnfinishedPath.md",
-            "key": "main/Chapter2_C++/7",
+            "path": "main/Chapter2_Cpp/Section7_UnfinishedPath.md",
+            "key": "main/Chapter2_Cpp/7",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Homework2",
-            "path": "main/Chapter2_C++/Section8_Homework2.md",
-            "key": "main/Chapter2_C++/8",
+            "path": "main/Chapter2_Cpp/Section8_Homework2.md",
+            "key": "main/Chapter2_Cpp/8",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Tittle-tattle",
-            "path": "main/Chapter2_C++/Section10_Tittle-tattle.md",
-            "key": "main/Chapter2_C++/10",
+            "path": "main/Chapter2_Cpp/Section10_Tittle-tattle.md",
+            "key": "main/Chapter2_Cpp/10",
             "lang": "en"
           }
         ]
@@ -839,46 +839,6 @@
       "chs": null,
       "en": "Appendix0.md"
     },
-    "main/Chapter2_C++/10": {
-      "chs": "main/Chapter2_C++/Section10_杂谈.md",
-      "en": "main/Chapter2_C++/Section10_Tittle-tattle.md"
-    },
-    "main/Chapter2_C++/1": {
-      "chs": "main/Chapter2_C++/Section1_数学基础.md",
-      "en": "main/Chapter2_C++/Section1_MathematicalFoundations.md"
-    },
-    "main/Chapter2_C++/2": {
-      "chs": "main/Chapter2_C++/Section2_代码分析.md",
-      "en": "main/Chapter2_C++/Section2_CodeOverview.md"
-    },
-    "main/Chapter2_C++/3": {
-      "chs": "main/Chapter2_C++/Section3_Cpp基础.md",
-      "en": "main/Chapter2_C++/Section3_CppSyntax.md"
-    },
-    "main/Chapter2_C++/4": {
-      "chs": "main/Chapter2_C++/Section4_作业1.md",
-      "en": "main/Chapter2_C++/Section4_Homework1.md"
-    },
-    "main/Chapter2_C++/5": {
-      "chs": "main/Chapter2_C++/Section5_从论文到工程.md",
-      "en": "main/Chapter2_C++/Section5_FromPapertoProduction.md"
-    },
-    "main/Chapter2_C++/6": {
-      "chs": "main/Chapter2_C++/Section6_逐步实现.md",
-      "en": "main/Chapter2_C++/Section6_StepbyStep.md"
-    },
-    "main/Chapter2_C++/7": {
-      "chs": "main/Chapter2_C++/Section7_未尽之路.md",
-      "en": "main/Chapter2_C++/Section7_UnfinishedPath.md"
-    },
-    "main/Chapter2_C++/8": {
-      "chs": "main/Chapter2_C++/Section8_作业2.md",
-      "en": "main/Chapter2_C++/Section8_Homework2.md"
-    },
-    "main/Chapter2_C++/0": {
-      "chs": "main/Chapter2_C++/[dl1]Section0_代码.md",
-      "en": "main/Chapter2_C++/[dl1]Section0_Code.md"
-    },
     "main/Chapter3_Python/1": {
       "chs": "main/Chapter3_Python/Section1_环境.md",
       "en": "main/Chapter3_Python/Section1_Environments.md"
@@ -910,7 +870,47 @@
     "main/Chapter3_Python/0": {
       "chs": "main/Chapter3_Python/[dl2]Section0_代码.md",
       "en": "main/Chapter3_Python/[dl2]Section0_Code.md"
+    },
+    "main/Chapter2_Cpp/10": {
+      "chs": "main/Chapter2_Cpp/Section10_杂谈.md",
+      "en": "main/Chapter2_Cpp/Section10_Tittle-tattle.md"
+    },
+    "main/Chapter2_Cpp/1": {
+      "chs": "main/Chapter2_Cpp/Section1_数学基础.md",
+      "en": "main/Chapter2_Cpp/Section1_MathematicalFoundations.md"
+    },
+    "main/Chapter2_Cpp/2": {
+      "chs": "main/Chapter2_Cpp/Section2_代码分析.md",
+      "en": "main/Chapter2_Cpp/Section2_CodeOverview.md"
+    },
+    "main/Chapter2_Cpp/3": {
+      "chs": "main/Chapter2_Cpp/Section3_Cpp基础.md",
+      "en": "main/Chapter2_Cpp/Section3_CppSyntax.md"
+    },
+    "main/Chapter2_Cpp/4": {
+      "chs": "main/Chapter2_Cpp/Section4_作业1.md",
+      "en": "main/Chapter2_Cpp/Section4_Homework1.md"
+    },
+    "main/Chapter2_Cpp/5": {
+      "chs": "main/Chapter2_Cpp/Section5_从论文到工程.md",
+      "en": "main/Chapter2_Cpp/Section5_FromPapertoProduction.md"
+    },
+    "main/Chapter2_Cpp/6": {
+      "chs": "main/Chapter2_Cpp/Section6_逐步实现.md",
+      "en": "main/Chapter2_Cpp/Section6_StepbyStep.md"
+    },
+    "main/Chapter2_Cpp/7": {
+      "chs": "main/Chapter2_Cpp/Section7_未尽之路.md",
+      "en": "main/Chapter2_Cpp/Section7_UnfinishedPath.md"
+    },
+    "main/Chapter2_Cpp/8": {
+      "chs": "main/Chapter2_Cpp/Section8_作业2.md",
+      "en": "main/Chapter2_Cpp/Section8_Homework2.md"
+    },
+    "main/Chapter2_Cpp/0": {
+      "chs": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
+      "en": "main/Chapter2_Cpp/[dl1]Section0_Code.md"
     }
   },
-  "version": "mto56nvn"
+  "version": "mto5kmxc"
 }
