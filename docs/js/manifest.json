@@ -290,6 +290,83 @@
       },
       {
         "type": "directory",
+        "name": "Chapter2_C++",
+        "path": "main/Chapter2_C++",
+        "children": [
+          {
+            "type": "file",
+            "name": "代码",
+            "path": "main/Chapter2_C++/[dl1]Section0_代码.md",
+            "key": "main/Chapter2_C++/0",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "数学基础",
+            "path": "main/Chapter2_C++/Section1_数学基础.md",
+            "key": "main/Chapter2_C++/1",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "代码分析",
+            "path": "main/Chapter2_C++/Section2_代码分析.md",
+            "key": "main/Chapter2_C++/2",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "Cpp基础",
+            "path": "main/Chapter2_C++/Section3_Cpp基础.md",
+            "key": "main/Chapter2_C++/3",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业1",
+            "path": "main/Chapter2_C++/Section4_作业1.md",
+            "key": "main/Chapter2_C++/4",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "从论文到工程",
+            "path": "main/Chapter2_C++/Section5_从论文到工程.md",
+            "key": "main/Chapter2_C++/5",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "逐步实现",
+            "path": "main/Chapter2_C++/Section6_逐步实现.md",
+            "key": "main/Chapter2_C++/6",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "未尽之路",
+            "path": "main/Chapter2_C++/Section7_未尽之路.md",
+            "key": "main/Chapter2_C++/7",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业2",
+            "path": "main/Chapter2_C++/Section8_作业2.md",
+            "key": "main/Chapter2_C++/8",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "杂谈",
+            "path": "main/Chapter2_C++/Section10_杂谈.md",
+            "key": "main/Chapter2_C++/10",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
         "name": "Chapter3",
         "path": "main/Chapter3",
         "children": [
@@ -354,6 +431,76 @@
             "name": "作业1",
             "path": "main/Chapter3/Section7_作业1.md",
             "key": "main/Chapter3/7",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter3_Python",
+        "path": "main/Chapter3_Python",
+        "children": [
+          {
+            "type": "file",
+            "name": "代码",
+            "path": "main/Chapter3_Python/[dl2]Section0_代码.md",
+            "key": "main/Chapter3_Python/0",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "环境",
+            "path": "main/Chapter3_Python/Section1_环境.md",
+            "key": "main/Chapter3_Python/1",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "Python基本语法",
+            "path": "main/Chapter3_Python/Section2_Python基本语法.md",
+            "key": "main/Chapter3_Python/2",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "控制流",
+            "path": "main/Chapter3_Python/Section3_控制流.md",
+            "key": "main/Chapter3_Python/3",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "补充语法",
+            "path": "main/Chapter3_Python/Section4_补充语法.md",
+            "key": "main/Chapter3_Python/4",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "函数基础",
+            "path": "main/Chapter3_Python/Section5_函数基础.md",
+            "key": "main/Chapter3_Python/5",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "数据结构",
+            "path": "main/Chapter3_Python/Section6_数据结构.md",
+            "key": "main/Chapter3_Python/6",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "数据来源",
+            "path": "main/Chapter3_Python/Section7.9_数据来源.md",
+            "key": "main/Chapter3_Python/7",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "作业1",
+            "path": "main/Chapter3_Python/Section7_作业1.md",
+            "key": "main/Chapter3_Python/7",
             "lang": "chs"
           }
         ]
@@ -656,6 +803,83 @@
       },
       {
         "type": "directory",
+        "name": "Chapter2_C++",
+        "path": "main/Chapter2_C++",
+        "children": [
+          {
+            "type": "file",
+            "name": "Code",
+            "path": "main/Chapter2_C++/[dl1]Section0_Code.md",
+            "key": "main/Chapter2_C++/0",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "MathematicalFoundations",
+            "path": "main/Chapter2_C++/Section1_MathematicalFoundations.md",
+            "key": "main/Chapter2_C++/1",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "CodeOverview",
+            "path": "main/Chapter2_C++/Section2_CodeOverview.md",
+            "key": "main/Chapter2_C++/2",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "CppSyntax",
+            "path": "main/Chapter2_C++/Section3_CppSyntax.md",
+            "key": "main/Chapter2_C++/3",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Homework1",
+            "path": "main/Chapter2_C++/Section4_Homework1.md",
+            "key": "main/Chapter2_C++/4",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "FromPapertoProduction",
+            "path": "main/Chapter2_C++/Section5_FromPapertoProduction.md",
+            "key": "main/Chapter2_C++/5",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "StepbyStep",
+            "path": "main/Chapter2_C++/Section6_StepbyStep.md",
+            "key": "main/Chapter2_C++/6",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "UnfinishedPath",
+            "path": "main/Chapter2_C++/Section7_UnfinishedPath.md",
+            "key": "main/Chapter2_C++/7",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Homework2",
+            "path": "main/Chapter2_C++/Section8_Homework2.md",
+            "key": "main/Chapter2_C++/8",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Tittle-tattle",
+            "path": "main/Chapter2_C++/Section10_Tittle-tattle.md",
+            "key": "main/Chapter2_C++/10",
+            "lang": "en"
+          }
+        ]
+      },
+      {
+        "type": "directory",
         "name": "Chapter3",
         "path": "main/Chapter3",
         "children": [
@@ -720,6 +944,76 @@
             "name": "Homework1",
             "path": "main/Chapter3/Section7_Homework1.md",
             "key": "main/Chapter3/7",
+            "lang": "en"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter3_Python",
+        "path": "main/Chapter3_Python",
+        "children": [
+          {
+            "type": "file",
+            "name": "Code",
+            "path": "main/Chapter3_Python/[dl2]Section0_Code.md",
+            "key": "main/Chapter3_Python/0",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Environments",
+            "path": "main/Chapter3_Python/Section1_Environments.md",
+            "key": "main/Chapter3_Python/1",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "BasicSyntax",
+            "path": "main/Chapter3_Python/Section2_BasicSyntax.md",
+            "key": "main/Chapter3_Python/2",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "ControlFlow",
+            "path": "main/Chapter3_Python/Section3_ControlFlow.md",
+            "key": "main/Chapter3_Python/3",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "ExplainationsOFSyntax",
+            "path": "main/Chapter3_Python/Section4_ExplainationsOFSyntax.md",
+            "key": "main/Chapter3_Python/4",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Functions",
+            "path": "main/Chapter3_Python/Section5_Functions.md",
+            "key": "main/Chapter3_Python/5",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "DataStructures",
+            "path": "main/Chapter3_Python/Section6_DataStructures.md",
+            "key": "main/Chapter3_Python/6",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "DataLogging",
+            "path": "main/Chapter3_Python/Section7.9_DataLogging.md",
+            "key": "main/Chapter3_Python/7",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Homework1",
+            "path": "main/Chapter3_Python/Section7_Homework1.md",
+            "key": "main/Chapter3_Python/7",
             "lang": "en"
           }
         ]
@@ -910,7 +1204,79 @@
     "main/Chapter3/0": {
       "chs": "main/Chapter3/[dl2]Section0_代码.md",
       "en": "main/Chapter3/[dl2]Section0_Code.md"
+    },
+    "main/Chapter2_C++/10": {
+      "chs": "main/Chapter2_C++/Section10_杂谈.md",
+      "en": "main/Chapter2_C++/Section10_Tittle-tattle.md"
+    },
+    "main/Chapter2_C++/1": {
+      "chs": "main/Chapter2_C++/Section1_数学基础.md",
+      "en": "main/Chapter2_C++/Section1_MathematicalFoundations.md"
+    },
+    "main/Chapter2_C++/2": {
+      "chs": "main/Chapter2_C++/Section2_代码分析.md",
+      "en": "main/Chapter2_C++/Section2_CodeOverview.md"
+    },
+    "main/Chapter2_C++/3": {
+      "chs": "main/Chapter2_C++/Section3_Cpp基础.md",
+      "en": "main/Chapter2_C++/Section3_CppSyntax.md"
+    },
+    "main/Chapter2_C++/4": {
+      "chs": "main/Chapter2_C++/Section4_作业1.md",
+      "en": "main/Chapter2_C++/Section4_Homework1.md"
+    },
+    "main/Chapter2_C++/5": {
+      "chs": "main/Chapter2_C++/Section5_从论文到工程.md",
+      "en": "main/Chapter2_C++/Section5_FromPapertoProduction.md"
+    },
+    "main/Chapter2_C++/6": {
+      "chs": "main/Chapter2_C++/Section6_逐步实现.md",
+      "en": "main/Chapter2_C++/Section6_StepbyStep.md"
+    },
+    "main/Chapter2_C++/7": {
+      "chs": "main/Chapter2_C++/Section7_未尽之路.md",
+      "en": "main/Chapter2_C++/Section7_UnfinishedPath.md"
+    },
+    "main/Chapter2_C++/8": {
+      "chs": "main/Chapter2_C++/Section8_作业2.md",
+      "en": "main/Chapter2_C++/Section8_Homework2.md"
+    },
+    "main/Chapter2_C++/0": {
+      "chs": "main/Chapter2_C++/[dl1]Section0_代码.md",
+      "en": "main/Chapter2_C++/[dl1]Section0_Code.md"
+    },
+    "main/Chapter3_Python/1": {
+      "chs": "main/Chapter3_Python/Section1_环境.md",
+      "en": "main/Chapter3_Python/Section1_Environments.md"
+    },
+    "main/Chapter3_Python/2": {
+      "chs": "main/Chapter3_Python/Section2_Python基本语法.md",
+      "en": "main/Chapter3_Python/Section2_BasicSyntax.md"
+    },
+    "main/Chapter3_Python/3": {
+      "chs": "main/Chapter3_Python/Section3_控制流.md",
+      "en": "main/Chapter3_Python/Section3_ControlFlow.md"
+    },
+    "main/Chapter3_Python/4": {
+      "chs": "main/Chapter3_Python/Section4_补充语法.md",
+      "en": "main/Chapter3_Python/Section4_ExplainationsOFSyntax.md"
+    },
+    "main/Chapter3_Python/5": {
+      "chs": "main/Chapter3_Python/Section5_函数基础.md",
+      "en": "main/Chapter3_Python/Section5_Functions.md"
+    },
+    "main/Chapter3_Python/6": {
+      "chs": "main/Chapter3_Python/Section6_数据结构.md",
+      "en": "main/Chapter3_Python/Section6_DataStructures.md"
+    },
+    "main/Chapter3_Python/7": {
+      "chs": "main/Chapter3_Python/Section7_作业1.md",
+      "en": "main/Chapter3_Python/Section7_Homework1.md"
+    },
+    "main/Chapter3_Python/0": {
+      "chs": "main/Chapter3_Python/[dl2]Section0_代码.md",
+      "en": "main/Chapter3_Python/[dl2]Section0_Code.md"
     }
   },
-  "version": "mto4hz8s"
+  "version": "mto548g5"
 }
