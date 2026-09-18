@@ -1,9 +1,11 @@
 {
   "dl1": [
-    "PDE.zip",
-    "PDE.zip:Zone.Identifier"
+    "PDE.zip"
   ],
   "dl2": [
     "blackjack_strategy.zip"
+  ],
+  "dl3": [
+    "TankBattle.zip"
   ]
 }
