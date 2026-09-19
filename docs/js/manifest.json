@@ -344,13 +344,6 @@
           },
           {
             "type": "file",
-            "name": "数据来源",
-            "path": "main/Chapter3_Python/Section7.9_数据来源.md",
-            "key": "main/Chapter3_Python/7",
-            "lang": "chs"
-          },
-          {
-            "type": "file",
             "name": "作业1",
             "path": "main/Chapter3_Python/Section7_作业1.md",
             "key": "main/Chapter3_Python/7",
@@ -358,37 +351,44 @@
           },
           {
             "type": "file",
-            "name": "单元测试与集成测试",
-            "path": "main/Chapter3_Python/Section8E_单元测试与集成测试.md",
-            "key": "main/Chapter3_Python/8",
+            "name": "数据来源",
+            "path": "main/Chapter3_Python/Section7.9_数据来源.md",
+            "key": "main/Chapter3_Python/7.9",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "多文件与导入",
             "path": "main/Chapter3_Python/[dl3]Section8A_多文件与导入.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8A",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "项目剖析",
             "path": "main/Chapter3_Python/Section8B_项目剖析.md",
-            "key": "main/Chapter3_Python/8",
-            "lang": "chs"
-          },
-          {
-            "type": "file",
-            "name": "阅读与练习",
-            "path": "main/Chapter3_Python/Section8D_阅读与练习.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8B",
             "lang": "chs"
           },
           {
             "type": "file",
             "name": "知识补充",
             "path": "main/Chapter3_Python/Section8C_知识补充.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8C",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "阅读与练习",
+            "path": "main/Chapter3_Python/Section8D_阅读与练习.md",
+            "key": "main/Chapter3_Python/8D",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "单元测试与集成测试",
+            "path": "main/Chapter3_Python/Section8E_单元测试与集成测试.md",
+            "key": "main/Chapter3_Python/8E",
             "lang": "chs"
           }
         ]
@@ -745,13 +745,6 @@
           },
           {
             "type": "file",
-            "name": "DataLogging",
-            "path": "main/Chapter3_Python/Section7.9_DataLogging.md",
-            "key": "main/Chapter3_Python/7",
-            "lang": "en"
-          },
-          {
-            "type": "file",
             "name": "Homework1",
             "path": "main/Chapter3_Python/Section7_Homework1.md",
             "key": "main/Chapter3_Python/7",
@@ -759,37 +752,44 @@
           },
           {
             "type": "file",
-            "name": "Dissection",
-            "path": "main/Chapter3_Python/Section8B_Dissection.md",
-            "key": "main/Chapter3_Python/8",
-            "lang": "en"
-          },
-          {
-            "type": "file",
-            "name": "LearnToLearn",
-            "path": "main/Chapter3_Python/Section8D_LearnToLearn.md",
-            "key": "main/Chapter3_Python/8",
+            "name": "DataLogging",
+            "path": "main/Chapter3_Python/Section7.9_DataLogging.md",
+            "key": "main/Chapter3_Python/7.9",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Multifile",
             "path": "main/Chapter3_Python/[dl3]Section8A_Multifile.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8A",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "Dissection",
+            "path": "main/Chapter3_Python/Section8B_Dissection.md",
+            "key": "main/Chapter3_Python/8B",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Supplements",
             "path": "main/Chapter3_Python/Section8C_Supplements.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8C",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "LearnToLearn",
+            "path": "main/Chapter3_Python/Section8D_LearnToLearn.md",
+            "key": "main/Chapter3_Python/8D",
             "lang": "en"
           },
           {
             "type": "file",
             "name": "Testing",
             "path": "main/Chapter3_Python/Section8E_Testing.md",
-            "key": "main/Chapter3_Python/8",
+            "key": "main/Chapter3_Python/8E",
             "lang": "en"
           }
         ]
@@ -824,6 +824,102 @@
     "main/Chapter1/2": {
       "chs": "main/Chapter1/Section2_环境配置.md",
       "en": "main/Chapter1/Section2_EnvConfiguration.md"
+    },
+    "main/Chapter2_Cpp/10": {
+      "chs": "main/Chapter2_Cpp/Section10_杂谈.md",
+      "en": "main/Chapter2_Cpp/Section10_Tittle-tattle.md"
+    },
+    "main/Chapter2_Cpp/1": {
+      "chs": "main/Chapter2_Cpp/Section1_数学基础.md",
+      "en": "main/Chapter2_Cpp/Section1_MathematicalFoundations.md"
+    },
+    "main/Chapter2_Cpp/2": {
+      "chs": "main/Chapter2_Cpp/Section2_代码分析.md",
+      "en": "main/Chapter2_Cpp/Section2_CodeOverview.md"
+    },
+    "main/Chapter2_Cpp/3": {
+      "chs": "main/Chapter2_Cpp/Section3_Cpp基础.md",
+      "en": "main/Chapter2_Cpp/Section3_CppSyntax.md"
+    },
+    "main/Chapter2_Cpp/4": {
+      "chs": "main/Chapter2_Cpp/Section4_作业1.md",
+      "en": "main/Chapter2_Cpp/Section4_Homework1.md"
+    },
+    "main/Chapter2_Cpp/5": {
+      "chs": "main/Chapter2_Cpp/Section5_从论文到工程.md",
+      "en": "main/Chapter2_Cpp/Section5_FromPapertoProduction.md"
+    },
+    "main/Chapter2_Cpp/6": {
+      "chs": "main/Chapter2_Cpp/Section6_逐步实现.md",
+      "en": "main/Chapter2_Cpp/Section6_StepbyStep.md"
+    },
+    "main/Chapter2_Cpp/7": {
+      "chs": "main/Chapter2_Cpp/Section7_未尽之路.md",
+      "en": "main/Chapter2_Cpp/Section7_UnfinishedPath.md"
+    },
+    "main/Chapter2_Cpp/8": {
+      "chs": "main/Chapter2_Cpp/Section8_作业2.md",
+      "en": "main/Chapter2_Cpp/Section8_Homework2.md"
+    },
+    "main/Chapter2_Cpp/0": {
+      "chs": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
+      "en": "main/Chapter2_Cpp/[dl1]Section0_Code.md"
+    },
+    "main/Chapter3_Python/1": {
+      "chs": "main/Chapter3_Python/Section1_环境.md",
+      "en": "main/Chapter3_Python/Section1_Environments.md"
+    },
+    "main/Chapter3_Python/2": {
+      "chs": "main/Chapter3_Python/Section2_Python基本语法.md",
+      "en": "main/Chapter3_Python/Section2_BasicSyntax.md"
+    },
+    "main/Chapter3_Python/3": {
+      "chs": "main/Chapter3_Python/Section3_控制流.md",
+      "en": "main/Chapter3_Python/Section3_ControlFlow.md"
+    },
+    "main/Chapter3_Python/4": {
+      "chs": "main/Chapter3_Python/Section4_补充语法.md",
+      "en": "main/Chapter3_Python/Section4_ExplainationsOFSyntax.md"
+    },
+    "main/Chapter3_Python/5": {
+      "chs": "main/Chapter3_Python/Section5_函数基础.md",
+      "en": "main/Chapter3_Python/Section5_Functions.md"
+    },
+    "main/Chapter3_Python/6": {
+      "chs": "main/Chapter3_Python/Section6_数据结构.md",
+      "en": "main/Chapter3_Python/Section6_DataStructures.md"
+    },
+    "main/Chapter3_Python/7.9": {
+      "chs": "main/Chapter3_Python/Section7.9_数据来源.md",
+      "en": "main/Chapter3_Python/Section7.9_DataLogging.md"
+    },
+    "main/Chapter3_Python/7": {
+      "chs": "main/Chapter3_Python/Section7_作业1.md",
+      "en": "main/Chapter3_Python/Section7_Homework1.md"
+    },
+    "main/Chapter3_Python/8B": {
+      "chs": "main/Chapter3_Python/Section8B_项目剖析.md",
+      "en": "main/Chapter3_Python/Section8B_Dissection.md"
+    },
+    "main/Chapter3_Python/8C": {
+      "chs": "main/Chapter3_Python/Section8C_知识补充.md",
+      "en": "main/Chapter3_Python/Section8C_Supplements.md"
+    },
+    "main/Chapter3_Python/8D": {
+      "chs": "main/Chapter3_Python/Section8D_阅读与练习.md",
+      "en": "main/Chapter3_Python/Section8D_LearnToLearn.md"
+    },
+    "main/Chapter3_Python/8E": {
+      "chs": "main/Chapter3_Python/Section8E_单元测试与集成测试.md",
+      "en": "main/Chapter3_Python/Section8E_Testing.md"
+    },
+    "main/Chapter3_Python/0": {
+      "chs": "main/Chapter3_Python/[dl2]Section0_代码.md",
+      "en": "main/Chapter3_Python/[dl2]Section0_Code.md"
+    },
+    "main/Chapter3_Python/8A": {
+      "chs": "main/Chapter3_Python/[dl3]Section8A_多文件与导入.md",
+      "en": "main/Chapter3_Python/[dl3]Section8A_Multifile.md"
     },
     "appendix/10": {
       "chs": "附录10_Office.md",
@@ -908,83 +1004,7 @@
     "appendix/0": {
       "chs": null,
       "en": "Appendix0.md"
-    },
-    "main/Chapter3_Python/1": {
-      "chs": "main/Chapter3_Python/Section1_环境.md",
-      "en": "main/Chapter3_Python/Section1_Environments.md"
-    },
-    "main/Chapter3_Python/2": {
-      "chs": "main/Chapter3_Python/Section2_Python基本语法.md",
-      "en": "main/Chapter3_Python/Section2_BasicSyntax.md"
-    },
-    "main/Chapter3_Python/3": {
-      "chs": "main/Chapter3_Python/Section3_控制流.md",
-      "en": "main/Chapter3_Python/Section3_ControlFlow.md"
-    },
-    "main/Chapter3_Python/4": {
-      "chs": "main/Chapter3_Python/Section4_补充语法.md",
-      "en": "main/Chapter3_Python/Section4_ExplainationsOFSyntax.md"
-    },
-    "main/Chapter3_Python/5": {
-      "chs": "main/Chapter3_Python/Section5_函数基础.md",
-      "en": "main/Chapter3_Python/Section5_Functions.md"
-    },
-    "main/Chapter3_Python/6": {
-      "chs": "main/Chapter3_Python/Section6_数据结构.md",
-      "en": "main/Chapter3_Python/Section6_DataStructures.md"
-    },
-    "main/Chapter3_Python/7": {
-      "chs": "main/Chapter3_Python/Section7_作业1.md",
-      "en": "main/Chapter3_Python/Section7_Homework1.md"
-    },
-    "main/Chapter3_Python/0": {
-      "chs": "main/Chapter3_Python/[dl2]Section0_代码.md",
-      "en": "main/Chapter3_Python/[dl2]Section0_Code.md"
-    },
-    "main/Chapter2_Cpp/10": {
-      "chs": "main/Chapter2_Cpp/Section10_杂谈.md",
-      "en": "main/Chapter2_Cpp/Section10_Tittle-tattle.md"
-    },
-    "main/Chapter2_Cpp/1": {
-      "chs": "main/Chapter2_Cpp/Section1_数学基础.md",
-      "en": "main/Chapter2_Cpp/Section1_MathematicalFoundations.md"
-    },
-    "main/Chapter2_Cpp/2": {
-      "chs": "main/Chapter2_Cpp/Section2_代码分析.md",
-      "en": "main/Chapter2_Cpp/Section2_CodeOverview.md"
-    },
-    "main/Chapter2_Cpp/3": {
-      "chs": "main/Chapter2_Cpp/Section3_Cpp基础.md",
-      "en": "main/Chapter2_Cpp/Section3_CppSyntax.md"
-    },
-    "main/Chapter2_Cpp/4": {
-      "chs": "main/Chapter2_Cpp/Section4_作业1.md",
-      "en": "main/Chapter2_Cpp/Section4_Homework1.md"
-    },
-    "main/Chapter2_Cpp/5": {
-      "chs": "main/Chapter2_Cpp/Section5_从论文到工程.md",
-      "en": "main/Chapter2_Cpp/Section5_FromPapertoProduction.md"
-    },
-    "main/Chapter2_Cpp/6": {
-      "chs": "main/Chapter2_Cpp/Section6_逐步实现.md",
-      "en": "main/Chapter2_Cpp/Section6_StepbyStep.md"
-    },
-    "main/Chapter2_Cpp/7": {
-      "chs": "main/Chapter2_Cpp/Section7_未尽之路.md",
-      "en": "main/Chapter2_Cpp/Section7_UnfinishedPath.md"
-    },
-    "main/Chapter2_Cpp/8": {
-      "chs": "main/Chapter2_Cpp/Section8_作业2.md",
-      "en": "main/Chapter2_Cpp/Section8_Homework2.md"
-    },
-    "main/Chapter2_Cpp/0": {
-      "chs": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
-      "en": "main/Chapter2_Cpp/[dl1]Section0_Code.md"
-    },
-    "main/Chapter3_Python/8": {
-      "chs": "main/Chapter3_Python/[dl3]Section8A_多文件与导入.md",
-      "en": "main/Chapter3_Python/[dl3]Section8A_Multifile.md"
     }
   },
-  "version": "mu75byly"
+  "version": "mu8kmheg"
 }

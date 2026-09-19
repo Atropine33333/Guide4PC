@@ -16,6 +16,11 @@ const DIST = path.join(ROOT, 'docs');
 const CACHE_FILE = path.join(ROOT, '.build-cache.json');
 const BUILD_VERSION = Date.now().toString(36);
 
+// Bump whenever key extraction / metadata logic changes. When the cached
+// version differs, the next `./update.sh` performs a full rebuild by itself —
+// no need to remember `--force`, and stale keys can never mix with new ones.
+const CACHE_VERSION = 2;
+
 // ─── Stop-word lists for search-index tokenization ──────────────────────────
 
 // English function words — filtered out to keep the index lean
@@ -100,12 +105,20 @@ function normalizeDir(dirPath) {
 /**
  * Extract pairing key from filename.
  * - Files starting with "0_" → key "home"
- * - [dlX] prefix is stripped before extracting digits (it's metadata)
+ * - [dlX] prefix is stripped before extracting the key (it's metadata)
+ * - Numeric keys keep decimal parts and letter suffixes so documents stay
+ *   distinct, sortable and pairable (letter suffix is uppercased, so
+ *   "8a" and "8A" produce the same key and pair across languages):
+ *     Section7_作业1.md        → "7"
+ *     Section7.10_数据来源.md   → "7.10"
+ *     Section8A_多文件与导入.md → "8A"
+ * - Letter-only names after a known section prefix keep the letter:
+ *     SectionA_前言.md → "A"   AppendixB_… → "B"
  * - The key is namespaced by directory to prevent collisions:
- *   - Top-level "附录N" or "AppendixN" → "appendix/N"
- *   - Top-level other files → "root/N"
- *   - Subdirectory files → "<normalized-dir>/N"
- * - If no digits found, use the title as key
+ *   - Top-level "附录…" or "Appendix…" → "appendix/<key>"
+ *   - Top-level other files → "root/<key>"
+ *   - Subdirectory files → "<normalized-dir>/<key>"
+ * - If no key can be derived, use the title as key
  */
 function extractKey(filename, relPath) {
   let name = path.basename(filename);
@@ -115,22 +128,31 @@ function extractKey(filename, relPath) {
 
   if (/^0_/.test(name)) return 'home';
 
-  const match = name.match(/(\d+)/);
-  const numKey = match ? match[1] : extractTitle(name);
+  // Numeric key: digits (with optional decimal parts) plus optional letters.
+  const numMatch = name.match(/(\d+(?:\.\d+)*)([A-Za-z]+)?/);
+  const numKey = numMatch
+    ? numMatch[1] + (numMatch[2] ? numMatch[2].toUpperCase() : '')
+    : null;
+
+  // Letter-only key, e.g. "SectionA_前言.md" or "AppendixB_…" (no digits).
+  const letterMatch = numKey ? null
+    : name.match(/^(?:Section|Chapter|Part|附录|Appendix)([A-Za-z]+)(?=[._\s-]|$)/);
+
+  const key = numKey || (letterMatch ? letterMatch[1].toUpperCase() : extractTitle(name));
 
   const dir = path.dirname(relPath);
 
   if (dir === '.' || dir === '') {
     // Top-level files: namespace by content type
-    if (/^(附录|Appendix)\d+/.test(name)) {
-      return 'appendix/' + numKey;
+    if (/^(附录|Appendix)/.test(name)) {
+      return 'appendix/' + key;
     }
-    return 'root/' + numKey;
+    return 'root/' + key;
   }
 
   // Subdirectory files: namespace by normalized directory path
   const ns = normalizeDir(dir);
-  return ns + '/' + numKey;
+  return ns + '/' + key;
 }
 
 /** Strip Markdown formatting to get plain text for search index. */
@@ -372,7 +394,12 @@ function readCache() {
     try {
       const raw = fs.readFileSync(CACHE_FILE, 'utf-8');
       const cache = JSON.parse(raw);
+      if ((cache.version || 0) !== CACHE_VERSION) {
+        console.log(`  ⚠  Cache format v${cache.version || 0} → v${CACHE_VERSION}: full rebuild required.`);
+        return { version: CACHE_VERSION, mdFiles: {}, statics: {} };
+      }
       return {
+        version: CACHE_VERSION,
         mdFiles: cache.mdFiles || {},
         statics: cache.statics || {},
       };
@@ -380,14 +407,68 @@ function readCache() {
       console.log('  ⚠  Cache corrupted, will do full build.');
     }
   }
-  return { mdFiles: {}, statics: {} };
+  return { version: CACHE_VERSION, mdFiles: {}, statics: {} };
 }
 
 function writeCache(cache) {
+  cache.version = CACHE_VERSION;
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
 }
 
 // ─── Tree building ──────────────────────────────────────────────────────────
+
+/**
+ * Parse the last segment of a key for natural sorting.
+ * Numeric keys ("7", "7.9", "8A") rank before letter-only keys ("A"),
+ * which rank before title-based keys (null is returned for those).
+ */
+function parseSortKey(key) {
+  const last = key.split('/').pop();
+
+  const numMatch = last.match(/^(\d+(?:\.\d+)*)([A-Za-z]*)$/);
+  if (numMatch) {
+    return {
+      rank: 0,
+      parts: numMatch[1].split('.').map(Number),
+      suffix: numMatch[2].toUpperCase(),
+    };
+  }
+
+  if (/^[A-Za-z]+$/.test(last)) {
+    return { rank: 1, str: last.toUpperCase() };
+  }
+
+  return null;
+}
+
+/**
+ * Natural key order: 7 < 7.9 < 7.10 < 8 < 8A < 8B < 10 < A < B < titles.
+ * Returns 0 when both keys are equal / not comparable, so the caller can
+ * fall back to comparing display names.
+ */
+function compareKeys(a, b) {
+  const ka = parseSortKey(a);
+  const kb = parseSortKey(b);
+  if (ka && kb) {
+    if (ka.rank !== kb.rank) return ka.rank - kb.rank;
+    if (ka.rank === 0) {
+      const len = Math.max(ka.parts.length, kb.parts.length);
+      for (let i = 0; i < len; i++) {
+        // Missing decimal levels sort before explicit ones (7 < 7.0)
+        const pa = ka.parts[i] === undefined ? -1 : ka.parts[i];
+        const pb = kb.parts[i] === undefined ? -1 : kb.parts[i];
+        if (pa !== pb) return pa - pb;
+      }
+      if (ka.suffix !== kb.suffix) return ka.suffix < kb.suffix ? -1 : 1;
+    } else if (ka.str !== kb.str) {
+      return ka.str < kb.str ? -1 : 1;
+    }
+  } else if (ka || kb) {
+    // Keyed files come before title-based keys
+    return ka ? -1 : 1;
+  }
+  return 0;
+}
 
 function buildTree(nodes, lang) {
   const rootNodes = [];
@@ -414,16 +495,10 @@ function buildTree(nodes, lang) {
     arr.sort((a, b) => {
       if (a.key === 'home') return -1;
       if (b.key === 'home') return 1;
-      // For composite keys like "appendix/1" or "main/Chapter2/3",
-      // extract the numeric portion from the last segment
-      const aLast = a.key.split('/').pop();
-      const bLast = b.key.split('/').pop();
-      const aNum = parseInt(aLast, 10);
-      const bNum = parseInt(bLast, 10);
-      if (!isNaN(aNum) && !isNaN(bNum)) {
-        if (aNum !== bNum) return aNum - bNum;
-      }
-      return a.name.localeCompare(b.name, 'zh-Hans-CN');
+      // Composite keys like "appendix/1" or "main/Chapter3_Python/8A":
+      // compare natural key order first, then fall back to display name.
+      const cmp = compareKeys(a.key, b.key);
+      return cmp !== 0 ? cmp : a.name.localeCompare(b.name, 'zh-Hans-CN');
     });
   }
 
@@ -868,10 +943,10 @@ function incrementalBuild(cache) {
   // 9. Rebuild search index (inverted index)
   const searchIndex = buildInvertedIndex(allMeta);
 
-  // 10. Write manifest & search index
+  // 10. Write manifest & search index (search index is compact to save bandwidth)
   const manifest = { tree, pairs, version: BUILD_VERSION };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
-  fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex, null, 2), 'utf-8');
+  fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex), 'utf-8');
 
   // 11. Copy new & modified .md files to dist
   const toCopy = [...newFiles, ...modifiedFiles];
@@ -933,7 +1008,7 @@ function build() {
   const forceFull = process.argv.includes('--force');
   const cache = readCache();
 
-  // Full build when: --force flag, no cache yet, or dist/ missing
+  // Full build when: --force flag, empty/invalidated cache, or dist/ missing
   if (forceFull || Object.keys(cache.mdFiles).length === 0 || !fs.existsSync(DIST)) {
     if (forceFull) console.log('  (--force: full rebuild)');
     if (!fs.existsSync(DIST)) console.log('  (dist/ missing: full rebuild)');
@@ -943,4 +1018,10 @@ function build() {
   }
 }
 
-build();
+// Only run when invoked directly (`node js/build.js`), so the internals can
+// also be required for quick checks in `node -e`.
+if (require.main === module) {
+  build();
+}
+
+module.exports = { extractKey, parseSortKey, compareKeys, buildTree };

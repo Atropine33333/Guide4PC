@@ -84,6 +84,25 @@ Create a workflow that runs `./update.sh` and deploys `dist/` automatically on p
 
 Subdirectories are supported and should mirror between `chs/` and `en/`.
 
+### Sub-section numbering (decimals and letters)
+
+Numbered sub-sections may use decimal parts and letter suffixes. The whole
+number+letter combination is the pairing key, so files never collide and
+each Chinese/English version must use the same one:
+
+| File (chs / en) | Pairing Key |
+|-----------------|-------------|
+| `Section7_作业1.md` / `Section7_Homework1.md` | `7` |
+| `Section7.9_数据来源.md` / `Section7.9_DataLogging.md` | `7.9` |
+| `Section8A_多文件与导入.md` / `Section8A_Multifile.md` | `8A` |
+| `SectionA_前言.md` / `SectionA_Preface.md` | `A` |
+
+- Letter suffixes are case-insensitive (`8a` pairs with `8A`).
+- Sidebar order is natural: `7 < 7.9 < 7.10 < 8 < 8A < 8B < 10`, with
+  letter-only keys (`A`, `B`, …) after numeric ones.
+- Pairing is driven by this key, so `Section8A` and `Section8B` switch
+  languages independently.
+
 ## License
 
 Content and code are provided as-is for personal use.
