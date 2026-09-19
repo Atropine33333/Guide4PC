@@ -48,6 +48,22 @@
   const SETTINGS_KEY = 'guide4pc_settings';
   const ALLOWED_HTML_TAGS = /^<\/?(ins|mark|kbd|br|strong|em|span|a|code|sub|sup|small|abbr|cite|u)(\s[^>]*)?\/?>$/i;
 
+  // Build version injected into index.html by js/build.js ('' when running
+  // the sources directly without a build).
+  const APP_VERSION = (window.GUIDE4PC_VERSION && window.GUIDE4PC_VERSION !== 'GUIDE4PC_BUILD_VER')
+    ? window.GUIDE4PC_VERSION
+    : '';
+
+  /**
+   * Append the build version to a local URL so browser/CDN caches can never
+   * serve stale copies. External URLs are returned untouched.
+   */
+  function versioned(url) {
+    if (!APP_VERSION || !url) return url;
+    if (/^(?:[a-z]+:)?\/\//i.test(url) || url.indexOf('data:') === 0) return url;
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + encodeURIComponent(APP_VERSION);
+  }
+
   // ─── I18N ───────────────────────────────────────────────────────────────
   const I18N = {
     chs: {
@@ -135,13 +151,13 @@
 
   // ─── Fetch with error handling ──────────────────────────────────────────
   async function fetchJSON(url) {
-    const resp = await fetch(url);
+    const resp = await fetch(versioned(url));
     if (!resp.ok) throw new Error(`Failed to load ${url}: ${resp.status}`);
     return resp.json();
   }
 
   async function fetchMD(url) {
-    const resp = await fetch(url);
+    const resp = await fetch(versioned(url));
     if (!resp.ok) throw new Error(`Failed to load ${url}: ${resp.status}`);
     return resp.text();
   }
@@ -583,6 +599,13 @@
 
       $content.innerHTML = html;
 
+      // Version local images too, so a replaced image file is never served
+      // from cache under its old URL.
+      $content.querySelectorAll('img[src]').forEach(img => {
+        const src = img.getAttribute('src');
+        if (src) img.setAttribute('src', versioned(src));
+      });
+
       // Add home-page class for welcome/home documents and Appendix 20 (serif font)
       currentKey = getPairKey(lang, docPath);
       if (currentKey === 'home' || currentKey === 'appendix/20' || currentKey === 'root/20') {
@@ -727,7 +750,7 @@
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const url = 'dl/' + dlFolder + '/' + file;
+      const url = versioned('dl/' + dlFolder + '/' + file);
       triggerDownload(url, file);
       // Small delay between downloads to avoid browser blocking
       if (i < files.length - 1) {
@@ -1262,6 +1285,43 @@
     return str.replace(/"/g, '\\"');
   }
 
+  // ─── New-deployment detection ───────────────────────────────────────────
+  /**
+   * Fetch manifest.json bypassing caches and compare its version with the one
+   * baked into this page. When a newer deployment exists, navigate to a fresh
+   * URL (?v=<version>) so even an aggressively cached index.html cannot keep
+   * serving the old build.
+   */
+  async function checkForUpdate() {
+    if (!APP_VERSION) return;
+    try {
+      const resp = await fetch('js/version.json?_=' + Date.now(), { cache: 'no-store' });
+      if (!resp.ok) return;
+      const data = await resp.json();
+      if (!data.version || data.version === APP_VERSION) return;
+      // Already on that version's URL — don't reload in a loop
+      if (new URLSearchParams(window.location.search).get('v') === data.version) return;
+      window.location.replace(
+        window.location.pathname + '?v=' + encodeURIComponent(data.version) + window.location.hash
+      );
+    } catch (e) {
+      // Offline or server hiccup — retry on the next visibility change
+    }
+  }
+
+  let _lastUpdateCheck = 0;
+  function maybeCheckForUpdate() {
+    const now = Date.now();
+    if (now - _lastUpdateCheck < 60000) return; // at most once a minute
+    _lastUpdateCheck = now;
+    checkForUpdate();
+  }
+
+  // Re-check when the reader comes back to a long-lived tab
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) maybeCheckForUpdate();
+  });
+
   // ─── Initialize ─────────────────────────────────────────────────────────
   async function init() {
     try {
@@ -1304,6 +1364,9 @@
 
       updateSidebarActive(currentLang, currentPath);
       await renderDocument(currentLang, currentPath);
+
+      // Check whether a newer deployment is available
+      maybeCheckForUpdate();
 
     } catch (err) {
       console.error('Initialization error:', err);

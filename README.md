@@ -47,6 +47,23 @@ Guide4PC/
 
 4. The `dist/` directory will be created/updated with all necessary files.
 
+## Automatic Cache Updates
+
+Every build computes a content hash over all sources (`index.html`, `main.css`,
+`main.js`, markdown, images, downloads) and writes it into `docs/index.html`
+as the build version:
+
+- `css/main.css?v=<version>` and `js/main.js?v=<version>` bust browser/CDN caches.
+- `window.GUIDE4PC_VERSION` lets `main.js` version every data fetch
+  (`manifest.json`, `search_index.json`, markdown, images, downloads).
+- The running page re-checks `js/version.json` (bypassing caches) on load and
+  whenever the tab becomes visible again. If a newer version was deployed, it
+  reloads onto a fresh URL, so returning visitors always get the new content.
+
+Same sources → same version (no unnecessary reloads); any change → new version.
+For best results serve `index.html` with `Cache-Control: no-cache` on the host
+(e.g. Alibaba Cloud OSS object metadata); versioned assets can be cached long.
+
 ## How to Deploy to GitHub Pages
 
 ### Option A: Deploy from `dist/` directly

@@ -7,6 +7,7 @@
  * (called from ./update.sh)
  */
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
@@ -14,12 +15,55 @@ const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'sourcecode');
 const DIST = path.join(ROOT, 'docs');
 const CACHE_FILE = path.join(ROOT, '.build-cache.json');
-const BUILD_VERSION = Date.now().toString(36);
 
 // Bump whenever key extraction / metadata logic changes. When the cached
 // version differs, the next `./update.sh` performs a full rebuild by itself —
 // no need to remember `--force`, and stale keys can never mix with new ones.
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 3;
+
+// ─── Build version ──────────────────────────────────────────────────────────
+
+/**
+ * Content-derived build version (10 hex chars).
+ * - Same sources → same version: no pointless reloads for visitors.
+ * - Any change → new version: cache-busts assets and lets a running page
+ *   detect that a newer deployment exists.
+ * Covers everything that ends up in dist/: page template, stylesheet, app
+ * script, markdown, images, downloads and favicons.
+ */
+let _buildVersion = null;
+function getBuildVersion() {
+  if (_buildVersion) return _buildVersion;
+
+  const hash = crypto.createHash('sha1');
+  const add = (file) => {
+    hash.update(path.relative(ROOT, file));
+    hash.update('\0');
+    hash.update(fs.readFileSync(file));
+    hash.update('\0');
+  };
+  const walk = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+      .sort((a, b) => a.name.localeCompare(b.name));
+    for (const ent of entries) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) walk(full);
+      else if (ent.isFile()) add(full);
+    }
+  };
+
+  for (const f of ['index.html', 'css/main.css', 'js/main.js', 'js/build.js']) {
+    const full = path.join(ROOT, f);
+    if (fs.existsSync(full)) add(full);
+  }
+  for (const d of ['chs', 'en', 'img', 'dl', 'favicon']) {
+    walk(path.join(SRC, d));
+  }
+
+  _buildVersion = hash.digest('hex').slice(0, 10);
+  return _buildVersion;
+}
 
 // ─── Stop-word lists for search-index tokenization ──────────────────────────
 
@@ -341,13 +385,58 @@ function copyDir(src, dest) {
   }
 }
 
-/** Inject build version into the dist index.html (replaces GUIDE4PC_BUILD_VER placeholder). */
+/**
+ * Regenerate dist/index.html from the root template on every build, replacing
+ * every GUIDE4PC_BUILD_VER placeholder with the current build version. The
+ * template itself carries the placeholders on the css/js URLs and in
+ * window.GUIDE4PC_VERSION, so here we only substitute.
+ * Also writes js/version.json (tiny no-cache endpoint the app polls to detect
+ * new deployments). Both files are only written when their content changed.
+ */
 function injectVersion() {
-  const indexPath = path.join(DIST, 'index.html');
-  if (!fs.existsSync(indexPath)) return;
-  let html = fs.readFileSync(indexPath, 'utf-8');
-  html = html.replace(/GUIDE4PC_BUILD_VER/g, BUILD_VERSION);
-  fs.writeFileSync(indexPath, html, 'utf-8');
+  const srcIndex = path.join(ROOT, 'index.html');
+  const distIndex = path.join(DIST, 'index.html');
+  const version = getBuildVersion();
+
+  if (fs.existsSync(srcIndex)) {
+    const html = fs.readFileSync(srcIndex, 'utf-8')
+      .replace(/GUIDE4PC_BUILD_VER/g, version);
+    const previous = fs.existsSync(distIndex) ? fs.readFileSync(distIndex, 'utf-8') : null;
+    if (previous !== html) {
+      ensureDir(DIST);
+      fs.writeFileSync(distIndex, html, 'utf-8');
+    }
+  }
+
+  // Tiny endpoint used by the running app to detect new deployments.
+  const versionFile = path.join(DIST, 'js', 'version.json');
+  const versionJson = JSON.stringify({ version });
+  const previousVersion = fs.existsSync(versionFile) ? fs.readFileSync(versionFile, 'utf-8') : null;
+  if (previousVersion !== versionJson) {
+    ensureDir(path.join(DIST, 'js'));
+    fs.writeFileSync(versionFile, versionJson, 'utf-8');
+  }
+}
+
+/**
+ * Keep the version field of the existing dist manifest in sync with the
+ * current content version. Needed on incremental runs where only static
+ * files (main.js/main.css/images/build.js) changed and the markdown-derived
+ * manifest was not rebuilt.
+ */
+function syncManifestVersion() {
+  const manifestPath = path.join(DIST, 'js', 'manifest.json');
+  if (!fs.existsSync(manifestPath)) return;
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    const version = getBuildVersion();
+    if (manifest.version === version) return;
+    manifest.version = version;
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
+    console.log(`  ✓ manifest version → ${version}`);
+  } catch (e) {
+    // Unreadable manifest — the next full build will recreate it
+  }
 }
 
 /** Generate dl/files.json manifest from sourcecode/dl/ directory structure. */
@@ -727,7 +816,7 @@ function fullBuild(cache) {
   fs.writeFileSync(path.join(DIST, '.nojekyll'), '', 'utf-8');
 
   // Write manifests (search index uses compact JSON to save bandwidth)
-  const manifest = { tree, pairs, version: BUILD_VERSION };
+  const manifest = { tree, pairs, version: getBuildVersion() };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
   fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex), 'utf-8');
 
@@ -786,9 +875,6 @@ function fullBuild(cache) {
   // Record static mtimes in cache
   syncAllStatics(cache);
 
-  // Inject build version into index.html
-  injectVersion();
-
   // Write cache
   writeCache(cache);
 
@@ -796,7 +882,7 @@ function fullBuild(cache) {
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
   console.log(`   search_index.json: ${searchIndex.docs.length} docs, ${Object.keys(searchIndex.idx).length} unique terms`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
-  console.log(`   version: ${BUILD_VERSION}`);
+  console.log(`   version: ${getBuildVersion()}`);
 }
 
 // ─── Incremental build ──────────────────────────────────────────────────────
@@ -861,6 +947,9 @@ function incrementalBuild(cache) {
     } else {
       console.log('  Nothing changed. Build skipped.');
     }
+    // A static file or build.js may have changed the content version even
+    // though no markdown was rebuilt — keep the manifest in sync.
+    syncManifestVersion();
     writeCache(cache);
     return;
   }
@@ -944,7 +1033,7 @@ function incrementalBuild(cache) {
   const searchIndex = buildInvertedIndex(allMeta);
 
   // 10. Write manifest & search index (search index is compact to save bandwidth)
-  const manifest = { tree, pairs, version: BUILD_VERSION };
+  const manifest = { tree, pairs, version: getBuildVersion() };
   fs.writeFileSync(path.join(DIST, 'js', 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
   fs.writeFileSync(path.join(DIST, 'js', 'search_index.json'), JSON.stringify(searchIndex), 'utf-8');
 
@@ -989,17 +1078,14 @@ function incrementalBuild(cache) {
     }
   }
 
-  // 14. Inject build version into index.html (always, even if no content changes)
-  injectVersion();
-
-  // 15. Write updated cache
+  // 14. Write updated cache (index.html is regenerated in build())
   writeCache(cache);
 
   console.log(`\n✅ Incremental build complete!`);
   console.log(`   manifest.json: ${tree.chs.length + tree.en.length} tree nodes`);
   console.log(`   search_index.json: ${searchIndex.docs.length} docs, ${Object.keys(searchIndex.idx).length} unique terms`);
   console.log(`   pairs: ${Object.keys(pairs).length} pair groups`);
-  console.log(`   version: ${BUILD_VERSION}`);
+  console.log(`   version: ${getBuildVersion()}`);
 }
 
 // ─── Entry ──────────────────────────────────────────────────────────────────
@@ -1016,6 +1102,11 @@ function build() {
   } else {
     incrementalBuild(cache);
   }
+
+  // Regenerate index.html from the template with the current content version.
+  // Runs on every build (including "nothing changed") so the deployed version
+  // and the cache-busting query strings always reflect the sources.
+  injectVersion();
 }
 
 // Only run when invoked directly (`node js/build.js`), so the internals can

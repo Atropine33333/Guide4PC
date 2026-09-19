@@ -34,26 +34,9 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=GUIDE4PC_BUILD_VER">
 </head>
 <body>
-
-  <!-- Version check: force hard-reload if deployed version differs from cookie -->
-  <script>
-  (function(){
-    var verMeta = document.querySelector('meta[name="guide4pc-version"]');
-    if (!verMeta) return;
-    var currentVer = verMeta.content;
-    var cookieVer = ('; '+document.cookie).split('; guide4pc_version=').pop().split(';')[0];
-    if (cookieVer && cookieVer !== currentVer) {
-      // Version changed — hard reload to bust browser cache
-      document.cookie = 'guide4pc_version=' + currentVer + '; path=/; max-age=31536000; SameSite=Lax';
-      location.reload(true);
-      return;
-    }
-    document.cookie = 'guide4pc_version=' + currentVer + '; path=/; max-age=31536000; SameSite=Lax';
-  })();
-  </script>
 
   <!-- Mobile overlay backdrop -->
   <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
@@ -151,7 +134,8 @@
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-footnote@4.0.0/dist/markdown-it-footnote.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-deflist@3.0.0/dist/markdown-it-deflist.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-  <!-- App logic -->
-  <script src="js/main.js"></script>
+  <!-- App logic (version placeholders are substituted by js/build.js) -->
+  <script>window.GUIDE4PC_VERSION = 'GUIDE4PC_BUILD_VER';</script>
+  <script src="js/main.js?v=GUIDE4PC_BUILD_VER"></script>
 </body>
 </html>
