@@ -800,6 +800,27 @@ function fullBuild(cache) {
   // 6. Write dist/
   console.log('\n  Writing dist/...');
 
+  // Files at the dist root that this build does not generate (site-verification
+  // tokens, CNAME, robots.txt, 404.html …) must survive a full rebuild, which
+  // otherwise wipes dist/ completely. Read them before the wipe, restore later.
+  const preservedRootFiles = [];
+  if (fs.existsSync(DIST)) {
+    const generatedRoot = new Set(['.nojekyll', 'index.html']);
+    const favDir = path.join(SRC, 'favicon');
+    if (fs.existsSync(favDir)) {
+      for (const f of fs.readdirSync(favDir)) generatedRoot.add(f);
+    }
+    for (const ent of fs.readdirSync(DIST, { withFileTypes: true })) {
+      if (!ent.isFile() || generatedRoot.has(ent.name)) continue;
+      const full = path.join(DIST, ent.name);
+      if (fs.statSync(full).size > 32 * 1024 * 1024) {
+        console.warn(`  ! Skipping oversized non-build file in dist/: ${ent.name}`);
+        continue;
+      }
+      preservedRootFiles.push({ name: ent.name, data: fs.readFileSync(full) });
+    }
+  }
+
   // Clean dist/ fully
   if (fs.existsSync(DIST)) {
     fs.rmSync(DIST, { recursive: true, force: true });
@@ -870,6 +891,11 @@ function fullBuild(cache) {
       JSON.stringify(dlManifest, null, 2),
       'utf-8'
     );
+  }
+
+  // Restore preserved dist-root files (see snapshot above)
+  for (const { name, data } of preservedRootFiles) {
+    fs.writeFileSync(path.join(DIST, name), data);
   }
 
   // Record static mtimes in cache
