@@ -36,6 +36,8 @@
   const $settingsClose = document.getElementById('settings-close');
   const $fontScale = document.getElementById('font-scale');
   const $fontScaleVal = document.getElementById('font-scale-val');
+  const $codeFontSize = document.getElementById('code-font-size');
+  const $codeFontSizeVal = document.getElementById('code-font-size-val');
   const $contentWidth = document.getElementById('content-width');
   const $contentWidthVal = document.getElementById('content-width-val');
   const $sidebarWidth = document.getElementById('sidebar-width');
@@ -69,6 +71,7 @@
     chs: {
       'settings-title': '显示设置',
       'font-scale': '字号缩放',
+      'code-font-size': '编辑器字号',
       'content-width': '内容宽度',
       'sidebar-width': '侧边栏宽度',
       'theme': '主题配色',
@@ -82,6 +85,7 @@
     en: {
       'settings-title': 'Display Settings',
       'font-scale': 'Font Scale',
+      'code-font-size': 'Editor Font Size',
       'content-width': 'Content Width',
       'sidebar-width': 'Sidebar Width',
       'theme': 'Color Theme',
@@ -207,7 +211,7 @@
       const raw = localStorage.getItem(SETTINGS_KEY);
       if (raw) return JSON.parse(raw);
     } catch (e) { /* ignore */ }
-    return { fontScale: 1, contentWidth: 75, sidebarWidth: 280, theme: 'light' };
+    return { fontScale: 1, codeFontSize: 15, contentWidth: 75, sidebarWidth: 280, theme: 'light' };
   }
 
   function saveSettings(s) {
@@ -218,6 +222,11 @@
 
   function applySettings(s) {
     document.documentElement.style.setProperty('--font-scale', s.fontScale);
+    const codeFontSize = parseInt(s.codeFontSize, 10) || 15;
+    document.documentElement.style.setProperty('--pg-code-size', codeFontSize + 'px');
+    if (window.G4PCPlayground && window.G4PCPlayground.applyCodeFontSize) {
+      window.G4PCPlayground.applyCodeFontSize(codeFontSize);
+    }
     document.documentElement.style.setProperty('--content-width', s.contentWidth + '%');
     document.documentElement.style.setProperty('--sidebar-width-dyn', s.sidebarWidth + 'px');
   }
@@ -225,6 +234,8 @@
   function syncSliders(s) {
     $fontScale.value = s.fontScale;
     $fontScaleVal.textContent = Number(s.fontScale).toFixed(2) + 'x';
+    $codeFontSize.value = s.codeFontSize || 15;
+    $codeFontSizeVal.textContent = (s.codeFontSize || 15) + 'px';
     $contentWidth.value = s.contentWidth;
     $contentWidthVal.textContent = s.contentWidth + '%';
     $sidebarWidth.value = s.sidebarWidth;
@@ -284,6 +295,14 @@
   $fontScale.addEventListener('input', () => {
     const s = loadSettings();
     s.fontScale = parseFloat($fontScale.value);
+    saveSettings(s);
+    applySettings(s);
+    syncSliders(s);
+  });
+
+  $codeFontSize.addEventListener('input', () => {
+    const s = loadSettings();
+    s.codeFontSize = parseInt($codeFontSize.value, 10);
     saveSettings(s);
     applySettings(s);
     syncSliders(s);

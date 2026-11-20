@@ -22,3 +22,6 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Local reference material (third-party, GPL-3.0 — design reference only)
+ref/

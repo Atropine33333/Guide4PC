@@ -72,6 +72,8 @@
     return TEXT.downloading + ' ' + formatMb(loaded) + ' / ' + formatMb(total) + ' MB';
   }
 
+  var allViews = [];
+
   function broadcastWarmup(msg) {
     warmup.listeners.forEach(function (fn) {
       try { fn(msg); } catch (e) { /* 单个卡片出错不影响别的 */ }
@@ -701,24 +703,12 @@
     resetBtn.addEventListener('click', resetEditor);
 
     ensureEditorBundle().then(function () {
-      var G = window.G4PCEditor;
-      var extensions = [G.basicSetup, G.cpp()];
-      if (G.EditorView.domEventHandlers) {
-        extensions.push(G.EditorView.domEventHandlers({
-          keydown: function (event) {
-            if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
-              event.preventDefault();
-              doRun();
-              return true;
-            }
-            return false;
-          },
-        }));
-      }
-      view = new G.EditorView({
-        state: G.EditorState.create({ doc: starter, extensions: extensions }),
+      view = window.G4PCEditor.createEditor({
         parent: editorHost,
+        doc: starter,
+        onRun: doRun,
       });
+      allViews.push(view);
     }).catch(function (err) {
       showError(TEXT.workerError, err && err.message);
     });
@@ -772,7 +762,16 @@
     return mounts.length;
   }
 
-  window.G4PCPlayground = { mountAll: mountAll };
+  function applyCodeFontSize(size) {
+    for (var i = 0; i < allViews.length; ++i) {
+      try {
+        allViews[i].requestMeasure();
+      } catch (e) { /* 视图可能已销毁 */ }
+    }
+    return size;
+  }
+
+  window.G4PCPlayground = { mountAll: mountAll, applyCodeFontSize: applyCodeFontSize };
 
   // 自测钩子：?g4pc-autorun=1 时依次运行页面上所有练习，结果写到 body[data-g4pc-autorun]。
   // 加 &g4pc-solution=1 时先从 exercises/<id>/solution.cpp 载入参考实现再运行。
