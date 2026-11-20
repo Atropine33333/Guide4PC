@@ -215,7 +215,7 @@
   display: flex;
   align-items: center;
   gap: var(--ex-s2);
-  padding: 0 var(--ex-s4) var(--ex-s4);
+  padding: 0 var(--ex-s5) var(--ex-s4);
   flex-wrap: wrap;
 }
 
@@ -297,11 +297,17 @@
   background: var(--color-pre-bg);
 }
 
+/* CodeMirror lives inside the card shell; keep its gutter on the same
+   left edge as the header, toolbar and checks. */
+.ex-card .ex-editor {
+  padding: 0 var(--ex-s5);
+}
+
 .ex-file {
   display: flex;
   align-items: center;
   gap: var(--ex-s2);
-  padding: 8px 20px;
+  padding: 8px var(--ex-s5);
   border-bottom: 1px solid oklch(0 0 0 / 0.06);
   font-family: var(--font-mono);
   font-size: 12px;
@@ -339,7 +345,7 @@
 .ex-editor .cm-scroller {
   font-family: inherit;
   padding: 12px 0;
-  min-height: 16rem;
+  min-height: 14rem;
   max-height: 26rem;
   overflow: auto;
 }
@@ -391,7 +397,7 @@
   justify-content: space-between;
   gap: var(--ex-s2);
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 650;
   letter-spacing: 0;
   color: var(--color-text);
@@ -421,7 +427,9 @@
 
 /* 检查清单 */
 
-.ex-checks {
+/* .content ol/li in the site stylesheet would otherwise add a 1.5em
+   indent and a 0.2em margin here; scope these rules a level deeper. */
+.ex-card .ex-checks {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -429,18 +437,19 @@
   gap: 0;
 }
 
-.ex-check {
+.ex-card .ex-check {
   display: grid;
   grid-template-columns: 18px minmax(0, 1fr);
   gap: 10px;
-  padding: 10px 0;
+  margin: 0;
+  padding: 8px 0;
   border-top: 1px solid oklch(0 0 0 / 0.05);
   align-items: start;
 }
 
-.ex-check:first-child {
+.ex-card .ex-check:first-child {
   border-top: none;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
 .ex-mark {
@@ -674,4 +683,9 @@
   --cm-red: #f38ba8;
   --cm-overlay: #6c7086;
   --cm-text: #cdd6f4;
+}
+
+/* While the progress row carries the status text, keep the toolbar clean. */
+.ex-card .ex-status:empty {
+  display: none;
 }

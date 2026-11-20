@@ -357,7 +357,7 @@
 
     var rowByCheck = {};
     checks.forEach(function (check) {
-      var mark = h('span', { class: 'ex-mark', text: '·' });
+      var mark = h('span', { class: 'ex-mark', text: '' });
       var label = h('span', { class: 'ex-check-label', text: pickLabel(check.label) || check.id });
       var detail = h('div', { class: 'ex-check-detail', hidden: '' });
       var row = h('li', { class: 'ex-check', 'data-check': check.id }, [
@@ -427,6 +427,7 @@
         return;
       }
       progress.hidden = false;
+      setStatus('', 'muted');
       progress.setAttribute('data-mode', opts.mode || 'determinate');
       if (opts.mode === 'indeterminate') {
         progressFill.style.width = '100%';
@@ -443,10 +444,8 @@
       if (total > 0) {
         var pct = Math.round((loaded / total) * 100);
         setProgress({ value: loaded / total, text: text });
-        setStatus(TEXT.preparing, 'muted');
       } else {
         setProgress({ mode: 'indeterminate', text: text });
-        setStatus(TEXT.preparing, 'muted');
       }
     }
 
@@ -459,7 +458,6 @@
         if (msg.total > 0) showDownload(0, msg.total);
         else {
           setProgress({ mode: 'indeterminate', text: TEXT.connecting });
-          setStatus(TEXT.connecting, 'muted');
         }
       } else if (msg.type === 'download') {
         if (busy) return;
@@ -467,7 +465,6 @@
       } else if (msg.type === 'phase' && msg.phase === 'install') {
         if (busy) return;
         setProgress({ mode: 'indeterminate', text: TEXT.unpacking });
-        setStatus(TEXT.unpacking, 'muted');
       } else if (msg.type === 'progress') {
         if (busy) return;
         showDownload(Math.round((msg.value || 0) * 28900 * 1024), 28900 * 1024);
@@ -483,7 +480,6 @@
       if (warmup.total > 0) showDownload(warmup.loaded, warmup.total);
       else {
         setProgress({ mode: 'indeterminate', text: TEXT.connecting });
-        setStatus(TEXT.connecting, 'muted');
       }
     }
 
@@ -638,7 +634,6 @@
               if (msg.total > 0) showDownload(0, msg.total);
               else {
                 setProgress({ mode: 'indeterminate', text: TEXT.connecting });
-                setStatus(TEXT.connecting, 'muted');
               }
               return;
             }
@@ -650,21 +645,16 @@
             if (msg.type === 'phase') {
               if (msg.phase === 'loading') {
                 setProgress({ mode: 'indeterminate', text: TEXT.loading });
-                setStatus(TEXT.loading, 'muted');
               } else if (msg.phase === 'install') {
                 setProgress({ mode: 'indeterminate', text: TEXT.unpacking });
-                setStatus(TEXT.unpacking, 'muted');
               } else if (msg.phase === 'compile') {
                 setProgress({ mode: 'indeterminate', text: TEXT.compiling });
-                setStatus(TEXT.compiling, 'muted');
               } else if (msg.phase === 'run') {
                 var label = TEXT.runTest + (msg.index ? ' ' + msg.index + '/' + (msg.total || checks.length) : '');
                 setProgress({ mode: 'indeterminate', text: label });
-                setStatus(label, 'muted');
               }
             } else if (msg.type === 'progress') {
               setProgress({ value: msg.value, text: TEXT.downloading });
-              setStatus(TEXT.downloading + ' ' + Math.round((msg.value || 0) * 100) + '%', 'muted');
             } else if (msg.type === 'check') {
               var row = rowByCheck[msg.id];
               if (row) {
