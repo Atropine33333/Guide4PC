@@ -1,0 +1,61 @@
+{
+  "$schema": "../schema.json",
+  "id": "circular-buffer",
+  "lang": "cpp",
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-size",
+      "label": {
+        "chs": "空缓冲区的 size() 为 0",
+        "en": "size() is 0 when empty"
+      }
+    },
+    {
+      "id": "empty-pop",
+      "label": {
+        "chs": "空缓冲区 pop() 返回 false",
+        "en": "pop() returns false when empty"
+      }
+    },
+    {
+      "id": "fifo-order",
+      "label": {
+        "chs": "按写入顺序取出（FIFO）",
+        "en": "Elements come out in FIFO order"
+      }
+    },
+    {
+      "id": "full-rejects",
+      "label": {
+        "chs": "满时 push() 返回 false 且不覆盖旧值",
+        "en": "push() returns false when full and keeps old values"
+      }
+    },
+    {
+      "id": "wrap-around",
+      "label": {
+        "chs": "下标回绕后顺序仍然正确",
+        "en": "Order stays correct after the indices wrap around"
+      }
+    },
+    {
+      "id": "zero-capacity",
+      "label": {
+        "chs": "容量为 0 时 push/pop 都返回 false",
+        "en": "With capacity 0, push/pop both return false"
+      }
+    },
+    {
+      "id": "single-slot",
+      "label": {
+        "chs": "容量为 1 时先进后出边界正确",
+        "en": "With capacity 1, the single slot behaves correctly"
+      }
+    }
+  ]
+}

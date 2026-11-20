@@ -1,0 +1,244 @@
+{
+  "_readme": {
+    "这是什么": "编译器报错的“人话”映射表。构建时原样复制到 docs/diag/messages.json，由 pg/pg.js 读取。",
+    "怎么用": "match 是正则，匹配 clang/wasm-ld 的诊断正文（只有冒号后面那句，不含文件名、行号、颜色）。按数组顺序取第一条命中的规则。human 留空时页面显示原始英文；填上之后，原始英文会作为小字保留在下面。",
+    "human 怎么写": "写给刚学 C++ 的人看，短、具体、可爱一点没关系，但要指出怎么改。例如：\"这里少了一个分号。C++ 用分号断句，像写完一句话要画个句号。\"",
+    "hint 是什么": "可选的第二行，给一个更具体的改法或对照写法。",
+    "字段": {
+      "id": "稳定标识，别随意改",
+      "match": "JS 正则字符串（不区分大小写）",
+      "category": "分组用：语法 / 类型 / 名字与作用域 / 链接 / 运行时限制",
+      "example": "真实出现过的原文，方便对照",
+      "human": "你来填的人话（空字符串 = 暂未翻译）",
+      "hint": "可选的补充提示（空字符串 = 不显示）"
+    },
+    "注意": "clang 的 note: 行（候选函数、前一次定义在哪里）不会单独翻译，会折叠在对应错误下面。"
+  },
+  "version": 1,
+  "rules": [
+    {
+      "id": "missing-semicolon",
+      "match": "expected ';'",
+      "category": "语法",
+      "example": "error: expected ';' at end of declaration",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "missing-brace",
+      "match": "expected '\\}'",
+      "category": "语法",
+      "example": "error: expected '}'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "missing-paren",
+      "match": "expected '\\)'",
+      "category": "语法",
+      "example": "error: expected ')'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "expected-expression",
+      "match": "expected expression",
+      "category": "语法",
+      "example": "error: expected expression",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "expected-unqualified-id",
+      "match": "expected unqualified-id",
+      "category": "语法",
+      "example": "error: expected unqualified-id",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "undeclared-identifier",
+      "match": "use of undeclared identifier '([^']+)'",
+      "category": "名字与作用域",
+      "example": "error: use of undeclared identifier 'x'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "unknown-type-name",
+      "match": "unknown type name '([^']+)'",
+      "category": "名字与作用域",
+      "example": "error: unknown type name 'string'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "no-member",
+      "match": "no member named '([^']+)' in",
+      "category": "名字与作用域",
+      "example": "error: no member named 'foo' in 'std::vector<int>'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "missing-namespace-member",
+      "match": "no member named '([^']+)' in namespace '([^']+)'",
+      "category": "名字与作用域",
+      "example": "error: no member named 'cout' in namespace 'std'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "redefinition",
+      "match": "redefinition of '([^']+)'",
+      "category": "名字与作用域",
+      "example": "error: redefinition of 'x'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "header-not-found",
+      "match": "'([^']+)' file not found",
+      "category": "名字与作用域",
+      "example": "error: 'vector' file not found",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "bad-init-type",
+      "match": "cannot initialize a variable of type '([^']+)' with an? (?:rvalue|lvalue) of type '([^']+)'",
+      "category": "类型",
+      "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "invalid-operands",
+      "match": "invalid operands to binary expression",
+      "category": "类型",
+      "example": "error: invalid operands to binary expression ('std::string' and 'int')",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "no-viable-conversion",
+      "match": "no viable conversion from",
+      "category": "类型",
+      "example": "error: no viable conversion from 'std::string' to 'int'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "assign-incompatible",
+      "match": "assigning to '([^']+)' from incompatible type '([^']+)'",
+      "category": "类型",
+      "example": "error: assigning to 'int' from incompatible type 'const char *'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "no-matching-function",
+      "match": "no matching (?:member )?function for call to '([^']+)'",
+      "category": "类型",
+      "example": "error: no matching member function for call to 'append'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "no-matching-constructor",
+      "match": "no matching constructor for initialization of '([^']+)'",
+      "category": "类型",
+      "example": "error: no matching constructor for initialization of 'Buffer'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "too-few-arguments",
+      "match": "too few arguments to function call",
+      "category": "类型",
+      "example": "error: too few arguments to function call, expected 2, have 1",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "too-many-arguments",
+      "match": "too many arguments to function call",
+      "category": "类型",
+      "example": "error: too many arguments to function call, expected 1, have 3",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "missing-return-value",
+      "match": "non-void function (?:'([^']+)' )?(?:does not return a value|should return a value)",
+      "category": "类型",
+      "example": "warning: non-void function does not return a value in all control paths",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "indirection-not-pointer",
+      "match": "indirection requires pointer operand",
+      "category": "类型",
+      "example": "error: indirection requires pointer operand ('int' invalid)",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "member-of-non-class",
+      "match": "member reference base type '[^']+' is not a structure or union",
+      "category": "类型",
+      "example": "error: member reference base type 'int' is not a structure or union",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "undefined-symbol",
+      "match": "undefined symbol: ([^\\s(]+)",
+      "category": "链接",
+      "example": "wasm-ld: error: main.o: undefined symbol: f()",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "undefined-reference",
+      "match": "undefined reference to '([^']+)'",
+      "category": "链接",
+      "example": "error: undefined reference to 'foo()'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "throw-disabled",
+      "match": "cannot use 'throw' with exceptions disabled",
+      "category": "运行时限制",
+      "example": "error: cannot use 'throw' with exceptions disabled",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "try-disabled",
+      "match": "cannot use 'try' with exceptions disabled",
+      "category": "运行时限制",
+      "example": "error: cannot use 'try' with exceptions disabled",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "no-viable-overload",
+      "match": "no matching function for call to '([^']+)'",
+      "category": "类型",
+      "example": "error: no matching function for call to 'max'",
+      "human": "",
+      "hint": ""
+    },
+    {
+      "id": "array-subscript-not-integer",
+      "match": "array subscript is not an integer",
+      "category": "类型",
+      "example": "error: array subscript is not an integer",
+      "human": "",
+      "hint": ""
+    }
+  ]
+}

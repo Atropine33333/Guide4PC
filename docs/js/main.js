@@ -115,8 +115,8 @@
   md.use(window.markdownitDeflist);
 
   // Exercise mounts: :::exercise{id="..." variant="..."}
-  // For now this only renders a placeholder card; the wasm editor/runner
-  // hydrates .ex-mount nodes with the exercise data from docs/ex/<id>.json.
+  // The placeholder is hydrated by pg/pg.js (lazy-loaded only on pages that
+  // actually contain an exercise), which renders the editor + runner.
   if (window.markdownitContainer) {
     md.use(window.markdownitContainer, 'exercise', {
       validate: function (params) {
@@ -133,15 +133,9 @@
         const id = md.utils.escapeHtml(attrs.id || '');
         const variant = md.utils.escapeHtml(attrs.variant || '');
         const isZh = (document.documentElement.lang || '').indexOf('zh') === 0;
-        const head = isZh ? '在线练习' : 'Online exercise';
-        const badge = isZh ? 'C++ · 运行器接入中' : 'C++ · runner coming soon';
-        const body = isZh
-          ? '题目数据：<code>exercises/' + id + '/spec.json</code>'
-          : 'Exercise data: <code>exercises/' + id + '/spec.json</code>';
+        const loading = isZh ? '在线练习 · 正在准备编辑器…' : 'Online exercise · preparing the editor…';
         return '<div class="ex-mount" data-ex="' + id + '" data-variant="' + variant + '">' +
-          '<div class="ex-mount-head"><span>' + head + '</span>' +
-          '<span class="ex-mount-badge">' + badge + '</span></div>' +
-          '<div class="ex-mount-body">' + body + '</div></div>';
+          '<div class="ex-loading">' + loading + '</div></div>';
       }
     });
   }
@@ -595,6 +589,53 @@
   }
 
   // ─── Render document ────────────────────────────────────────────────────
+  // ─── Exercise playground (lazy) ─────────────────────────────────────────
+  // Pages without :::exercise mounts pay zero bytes; pages with mounts load
+  // pg/pg.css + pg/pg.js on first render and hydrate every .ex-mount node.
+  let _playgroundLoading = null;
+  function hydratePlayground() {
+    const mounts = $content.querySelectorAll('.ex-mount');
+    if (!mounts.length) return;
+    if (window.G4PCPlayground) {
+      window.G4PCPlayground.mountAll();
+      return;
+    }
+    if (!_playgroundLoading) {
+      const css = new Promise((resolve) => {
+        if (document.getElementById('g4pc-pg-css')) return resolve();
+        const link = document.createElement('link');
+        link.id = 'g4pc-pg-css';
+        link.rel = 'stylesheet';
+        link.href = 'pg/pg.css';
+        link.onload = link.onerror = resolve;
+        document.head.appendChild(link);
+      });
+      const js = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'pg/pg.js';
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('pg/pg.js failed to load'));
+        document.head.appendChild(script);
+      });
+      _playgroundLoading = Promise.all([css, js])
+        .catch((err) => {
+          console.error(err);
+          _playgroundLoading = null;
+          $content.querySelectorAll('.ex-mount').forEach((el) => {
+            el.innerHTML = '<div class="ex-loading">在线练习加载失败：' +
+              String(err && err.message || err) + '</div>';
+          });
+        })
+        .then(() => {
+          if (window.G4PCPlayground) window.G4PCPlayground.mountAll();
+        });
+    } else {
+      _playgroundLoading.then(() => {
+        if (window.G4PCPlayground) window.G4PCPlayground.mountAll();
+      });
+    }
+  }
+
   async function renderDocument(lang, docPath, seq) {
     if (!docPath) return;
 
@@ -669,6 +710,9 @@
 
       // Add copy buttons
       addCopyButtons();
+
+      // Hydrate online-exercise cards (lazy-loads the playground runtime)
+      hydratePlayground();
 
       // Restore reading progress
       const saved = loadProgress(lang, docPath);

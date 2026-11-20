@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Guide4PC — online exercise playground (pg/pg.js)
+   Only loaded on pages that contain an :::exercise mount.
+   ========================================================================== */
+
+.ex-mount {
+  margin: 1.25rem 0;
+}
+
+.ex-loading {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.ex-card {
+  --ex-ok: oklch(0.55 0.15 150);
+  --ex-fail: oklch(0.55 0.19 25);
+  --ex-warn: oklch(0.62 0.13 75);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.ex-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ex-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.08rem 0.55rem;
+  white-space: nowrap;
+}
+
+.ex-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.ex-lang {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.ex-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.ex-toolbar button {
+  font: inherit;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong, var(--color-border));
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.28rem 0.9rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.ex-toolbar .ex-run {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.ex-toolbar .ex-run:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.ex-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.ex-btn-ghost:hover:not(:disabled),
+.ex-reset:hover:not(:disabled) {
+  background: var(--color-hover-bg, var(--color-code-bg));
+}
+
+.ex-kbd {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+.ex-status {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  min-width: 6em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── editor ─────────────────────────────────────────────────────────────── */
+
+.ex-editor {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ex-editor .cm-editor {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  background: var(--color-surface);
+}
+
+.ex-editor .cm-editor.cm-focused {
+  outline: 2px solid var(--color-active-bg, var(--color-primary));
+  outline-offset: -2px;
+}
+
+.ex-editor .cm-scroller {
+  max-height: 22rem;
+  overflow: auto;
+  line-height: 1.55;
+}
+
+.ex-editor .cm-gutters {
+  background: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.ex-editor .cm-activeLine,
+.ex-editor .cm-activeLineGutter {
+  background: var(--color-hover-bg, var(--color-code-bg));
+}
+
+/* ── panel: checks + output ─────────────────────────────────────────────── */
+
+.ex-panel {
+  padding: 0.7rem 0.9rem 0.9rem;
+}
+
+.ex-checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.ex-check {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-size: 0.86rem;
+  padding: 0.15rem 0;
+}
+
+.ex-mark {
+  width: 1.1em;
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.ex-check[data-ok="true"] .ex-mark {
+  color: var(--ex-ok);
+}
+
+.ex-check[data-ok="false"] .ex-mark {
+  color: var(--ex-fail);
+}
+
+.ex-check[data-ok="true"] .ex-check-label {
+  color: var(--color-text-muted);
+}
+
+.ex-check-detail {
+  flex-basis: 100%;
+  margin: 0.25rem 0 0.4rem 1.65em;
+  padding: 0.5rem 0.7rem;
+  border-left: 2px solid var(--ex-fail);
+  background: var(--color-code-bg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ex-result {
+  margin-top: 0.6rem;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.ex-result[data-ok="true"] {
+  color: var(--ex-ok);
+}
+
+.ex-result[data-ok="false"] {
+  color: var(--ex-fail);
+}
+
+.ex-diagnostics {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ex-diag {
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--ex-fail);
+  border-radius: var(--radius-sm);
+  background: var(--color-code-bg);
+  padding: 0.55rem 0.7rem;
+}
+
+.ex-diag-human {
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.ex-diag-hint {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.ex-diag-raw {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ex-diag-notes {
+  margin-top: 0.3rem;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+}
+
+.ex-diag-notes summary {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ex-diag-notes pre {
+  margin: 0.35rem 0 0;
+  padding: 0.4rem 0.55rem;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ex-output {
+  margin-top: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-pre-bg, var(--color-code-bg));
+  border: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 18rem;
+  overflow: auto;
+}
+
+.ex-error {
+  border: 1px solid var(--ex-fail);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  font-size: 0.88rem;
+}
+
+.ex-error code {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  white-space: pre-wrap;
+}
+
+/* ── 状态：整卡通过 / 失败 ──────────────────────────────────────────────── */
+
+.ex-card[data-result="pass"] {
+  border-color: color-mix(in oklch, var(--ex-ok) 45%, var(--color-border));
+}
+
+.ex-card[data-result="fail"] {
+  border-color: color-mix(in oklch, var(--ex-fail) 40%, var(--color-border));
+}
+
+/* 编辑器横向滚动：正文有全局 wheel 拦截，这里恢复原生行为 */
+.ex-mount .cm-scroller,
+.ex-mount .ex-output,
+.ex-mount .ex-check-detail {
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 640px) {
+  .ex-kbd {
+    display: none;
+  }
+
+  .ex-editor .cm-scroller {
+    max-height: 17rem;
+  }
+
+  .ex-status {
+    min-width: 0;
+  }
+}

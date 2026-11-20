@@ -740,6 +740,55 @@ function syncAllStatics(cache) {
   return changed;
 }
 
+// ─── Playground runtime ─────────────────────────────────────────────────────
+
+/**
+ * Copy the in-browser playground runtime, exercise data and diagnostics into
+ * dist/:
+ *   playground/{pg.js,pg-worker.js,pg.css,vendor/*} → docs/pg/
+ *   exercises/<id>/{spec.json,*.cpp}               → docs/ex/<id>/
+ *   diagnostics/messages.json                      → docs/diag/
+ */
+function syncPlayground() {
+  let copied = 0;
+  const copyFile = (from, to) => {
+    ensureDir(path.dirname(to));
+    fs.copyFileSync(from, to);
+    copied++;
+  };
+
+  const pgSrc = path.join(ROOT, 'playground');
+  for (const f of ['pg.js', 'pg-worker.js', 'pg.css']) {
+    const from = path.join(pgSrc, f);
+    if (fs.existsSync(from)) copyFile(from, path.join(DIST, 'pg', f));
+  }
+  const vendorDir = path.join(pgSrc, 'vendor');
+  if (fs.existsSync(vendorDir)) {
+    for (const f of fs.readdirSync(vendorDir)) {
+      const from = path.join(vendorDir, f);
+      if (fs.statSync(from).isFile()) copyFile(from, path.join(DIST, 'pg', 'vendor', f));
+    }
+  }
+
+  const exSrc = path.join(ROOT, 'exercises');
+  if (fs.existsSync(exSrc)) {
+    for (const id of fs.readdirSync(exSrc)) {
+      const dir = path.join(exSrc, id);
+      if (!fs.statSync(dir).isDirectory()) continue;
+      for (const f of fs.readdirSync(dir)) {
+        if (f === 'spec.json' || f.endsWith('.cpp')) {
+          copyFile(path.join(dir, f), path.join(DIST, 'ex', id, f));
+        }
+      }
+    }
+  }
+
+  const diag = path.join(ROOT, 'diagnostics', 'messages.json');
+  if (fs.existsSync(diag)) copyFile(diag, path.join(DIST, 'diag', 'messages.json'));
+
+  return copied;
+}
+
 // ─── Full build ─────────────────────────────────────────────────────────────
 
 function fullBuild(cache) {
@@ -908,6 +957,7 @@ function fullBuild(cache) {
 
   // Record static mtimes in cache
   syncAllStatics(cache);
+  syncPlayground();
 
   // Write cache
   writeCache(cache);
@@ -973,6 +1023,7 @@ function incrementalBuild(cache) {
   if (totalChanges === 0) {
     // Only sync static files (they might have changed)
     const staticChanged = syncAllStatics(cache);
+    syncPlayground();
     if (staticChanged.length > 0) {
       console.log(`\n  Static files changed: ${staticChanged.length}`);
       for (const f of staticChanged) {
@@ -1106,6 +1157,7 @@ function incrementalBuild(cache) {
   // 13. Sync static files (compare mtimes, copy only changed)
   console.log('');
   const staticChanged = syncAllStatics(cache);
+  syncPlayground();
   if (staticChanged.length > 0) {
     for (const f of staticChanged) {
       console.log(`  ✓ ${f}`);
