@@ -1,294 +1,27 @@
 /* ==========================================================================
-   Guide4PC — online exercise playground (pg/pg.js)
-   Only loaded on pages that contain an :::exercise mount.
+   Guide4PC — 在线练习卡片（playground/pg.js 生成）
+   与 css/main.css 共用 Adwaita token；这里只负责练习区的排版与状态。
    ========================================================================== */
 
 .ex-mount {
-  margin: 1.25rem 0;
+  margin: 1.75rem 0 2rem;
 }
 
 .ex-loading {
+  padding: 1.4rem 1.2rem;
   border: 1px dashed var(--color-border);
   border-radius: var(--radius);
-  padding: 1rem;
   color: var(--color-text-muted);
-  font-size: 0.9rem;
-}
-
-.ex-card {
-  --ex-ok: oklch(0.55 0.15 150);
-  --ex-fail: oklch(0.55 0.19 25);
-  --ex-warn: oklch(0.62 0.13 75);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: var(--color-surface);
-  overflow: hidden;
-}
-
-.ex-head {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.9rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.ex-badge {
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 0.08rem 0.55rem;
-  white-space: nowrap;
-}
-
-.ex-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  flex: 1;
-}
-
-.ex-lang {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.ex-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.9rem;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-bg);
-}
-
-.ex-toolbar button {
-  font: inherit;
   font-size: 0.85rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-strong, var(--color-border));
-  background: var(--color-surface);
-  color: var(--color-text);
-  padding: 0.28rem 0.9rem;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.ex-toolbar .ex-run {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-}
-
-.ex-toolbar .ex-run:hover:not(:disabled) {
-  background: var(--color-primary-hover);
-}
-
-.ex-toolbar button:disabled {
-  opacity: 0.55;
-  cursor: progress;
-}
-
-.ex-btn-ghost:hover:not(:disabled),
-.ex-reset:hover:not(:disabled) {
-  background: var(--color-hover-bg, var(--color-code-bg));
-}
-
-.ex-kbd {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-  margin-left: auto;
-}
-
-.ex-status {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-  min-width: 6em;
-  text-align: right;
-  white-space: nowrap;
-}
-
-/* ── editor ─────────────────────────────────────────────────────────────── */
-
-.ex-editor {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.ex-editor .cm-editor {
-  font-family: var(--font-mono);
-  font-size: 0.86rem;
-  background: var(--color-surface);
-}
-
-.ex-editor .cm-editor.cm-focused {
-  outline: 2px solid var(--color-active-bg, var(--color-primary));
-  outline-offset: -2px;
-}
-
-.ex-editor .cm-scroller {
-  max-height: 22rem;
-  overflow: auto;
-  line-height: 1.55;
-}
-
-.ex-editor .cm-gutters {
-  background: var(--color-bg);
-  border-right: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-}
-
-.ex-editor .cm-activeLine,
-.ex-editor .cm-activeLineGutter {
-  background: var(--color-hover-bg, var(--color-code-bg));
-}
-
-/* ── panel: checks + output ─────────────────────────────────────────────── */
-
-.ex-panel {
-  padding: 0.7rem 0.9rem 0.9rem;
-}
-
-.ex-checks {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.3rem;
-}
-
-.ex-check {
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
-  font-size: 0.86rem;
-  padding: 0.15rem 0;
-}
-
-.ex-mark {
-  width: 1.1em;
-  text-align: center;
-  font-weight: 700;
-  color: var(--color-text-muted);
-}
-
-.ex-check[data-ok="true"] .ex-mark {
-  color: var(--ex-ok);
-}
-
-.ex-check[data-ok="false"] .ex-mark {
-  color: var(--ex-fail);
-}
-
-.ex-check[data-ok="true"] .ex-check-label {
-  color: var(--color-text-muted);
-}
-
-.ex-check-detail {
-  flex-basis: 100%;
-  margin: 0.25rem 0 0.4rem 1.65em;
-  padding: 0.5rem 0.7rem;
-  border-left: 2px solid var(--ex-fail);
-  background: var(--color-code-bg);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.ex-result {
-  margin-top: 0.6rem;
-  font-weight: 600;
-  font-size: 0.88rem;
-}
-
-.ex-result[data-ok="true"] {
-  color: var(--ex-ok);
-}
-
-.ex-result[data-ok="false"] {
-  color: var(--ex-fail);
-}
-
-.ex-diagnostics {
-  margin-top: 0.6rem;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.ex-diag {
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--ex-fail);
-  border-radius: var(--radius-sm);
-  background: var(--color-code-bg);
-  padding: 0.55rem 0.7rem;
-}
-
-.ex-diag-human {
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.ex-diag-hint {
-  margin-top: 0.2rem;
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
-
-.ex-diag-raw {
-  display: block;
-  margin-top: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--color-text-muted);
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.ex-diag-notes {
-  margin-top: 0.3rem;
-  font-size: 0.76rem;
-  color: var(--color-text-muted);
-}
-
-.ex-diag-notes summary {
-  cursor: pointer;
-  user-select: none;
-}
-
-.ex-diag-notes pre {
-  margin: 0.35rem 0 0;
-  padding: 0.4rem 0.55rem;
-  background: var(--color-bg);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.ex-output {
-  margin-top: 0.6rem;
-  padding: 0.55rem 0.7rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-pre-bg, var(--color-code-bg));
-  border: 1px solid var(--color-border);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  max-height: 18rem;
-  overflow: auto;
 }
 
 .ex-error {
-  border: 1px solid var(--ex-fail);
+  padding: 1rem 1.2rem;
+  border: 1px solid oklch(0.62 0.17 25 / 0.45);
   border-radius: var(--radius);
-  padding: 0.8rem 1rem;
-  font-size: 0.88rem;
+  background: oklch(0.62 0.17 25 / 0.06);
+  font-size: 0.9rem;
 }
 
 .ex-error code {
@@ -297,36 +30,596 @@
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--color-text-muted);
-  white-space: pre-wrap;
 }
 
-/* ── 状态：整卡通过 / 失败 ──────────────────────────────────────────────── */
+/* ── 卡片外壳 ─────────────────────────────────────────────────────────────── */
+
+.ex-card {
+  --ex-ok: oklch(0.55 0.13 155);
+  --ex-ok-soft: oklch(0.55 0.13 155 / 0.09);
+  --ex-fail: oklch(0.55 0.19 25);
+  --ex-fail-soft: oklch(0.55 0.19 25 / 0.08);
+  --ex-warn: oklch(0.6 0.12 75);
+
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-surface);
+  box-shadow: 0 1px 1px oklch(0 0 0 / 0.03), 0 10px 30px -24px oklch(0 0 0 / 0.4);
+  overflow: clip;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
 
 .ex-card[data-result="pass"] {
-  border-color: color-mix(in oklch, var(--ex-ok) 45%, var(--color-border));
+  border-color: oklch(0.55 0.13 155 / 0.4);
 }
 
 .ex-card[data-result="fail"] {
-  border-color: color-mix(in oklch, var(--ex-fail) 40%, var(--color-border));
+  border-color: oklch(0.55 0.19 25 / 0.35);
 }
 
-/* 编辑器横向滚动：正文有全局 wheel 拦截，这里恢复原生行为 */
-.ex-mount .cm-scroller,
-.ex-mount .ex-output,
-.ex-mount .ex-check-detail {
-  overscroll-behavior: contain;
+.ex-card[data-busy="1"] {
+  cursor: progress;
 }
 
-@media (max-width: 640px) {
+/* ── 头部 ─────────────────────────────────────────────────────────────────── */
+
+.ex-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.15rem 0.85rem;
+}
+
+.ex-head-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.ex-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ex-kicker::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.ex-title {
+  margin: 0.3rem 0 0;
+  font-size: 1.06rem;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.ex-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding-top: 0.15rem;
+}
+
+.ex-chip {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  line-height: 1;
+  padding: 0.32rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.ex-chip-lang {
+  color: var(--color-primary);
+  border-color: oklch(0.55 0.18 255 / 0.35);
+  background: oklch(0.55 0.18 255 / 0.07);
+}
+
+.ex-chip-var {
+  color: var(--ex-warn);
+  border-color: oklch(0.6 0.12 75 / 0.35);
+}
+
+/* ── 进度条 ───────────────────────────────────────────────────────────────── */
+
+.ex-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0 1.15rem 0.75rem;
+}
+
+.ex-progress[hidden] {
+  display: none;
+}
+
+.ex-progress-track {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.ex-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--color-primary);
+  transition: width 180ms ease;
+}
+
+.ex-progress[data-mode="indeterminate"] .ex-progress-fill {
+  width: 34% !important;
+  animation: ex-progress-indeterminate 1.2s ease-in-out infinite;
+}
+
+@keyframes ex-progress-indeterminate {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(300%); }
+}
+
+.ex-progress-text {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  min-width: 9.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── 工具栏 ───────────────────────────────────────────────────────────────── */
+
+.ex-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.9rem 0.8rem;
+  flex-wrap: wrap;
+}
+
+.ex-toolbar button {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform 60ms ease;
+}
+
+.ex-toolbar button:active {
+  transform: translateY(0.5px);
+}
+
+.ex-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ex-run {
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: oklch(0.99 0 0);
+  font-weight: 600;
+  box-shadow: 0 1px 0 oklch(1 0 0 / 0.18) inset, 0 2px 8px -4px oklch(0.55 0.18 255 / 0.6);
+}
+
+.ex-run:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.ex-reset {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.ex-reset:hover:not(:disabled) {
+  background: var(--color-hover-bg);
+  color: var(--color-text);
+}
+
+.ex-spacer {
+  flex: 1;
+}
+
+.ex-kbd {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.45rem;
+  border: 1px solid var(--color-border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.ex-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  max-width: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.ex-status[data-tone="ok"] { color: var(--ex-ok); }
+.ex-status[data-tone="fail"] { color: var(--ex-fail); }
+
+/* ── 编辑器 ───────────────────────────────────────────────────────────────── */
+
+.ex-editor-wrap {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-pre-bg);
+}
+
+.ex-file {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 1rem;
+  border-bottom: 1px solid oklch(0 0 0 / 0.05);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+}
+
+.ex-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: oklch(0.62 0.16 30);
+}
+
+.ex-file-name {
+  color: var(--color-text);
+}
+
+.ex-file-note {
+  opacity: 0.75;
+}
+
+.ex-editor .cm-editor {
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.ex-editor .cm-editor.cm-focused {
+  outline: none;
+  box-shadow: inset 0 0 0 2px oklch(0.55 0.18 255 / 0.35);
+}
+
+.ex-editor .cm-scroller {
+  font-family: inherit;
+  min-height: 15.5rem;
+  max-height: 26rem;
+  overflow: auto;
+}
+
+.ex-editor .cm-content {
+  padding: 0.7rem 0 0.9rem;
+  caret-color: var(--color-primary);
+}
+
+.ex-editor .cm-gutters {
+  background: transparent;
+  border: none;
+  color: oklch(0.62 0 0);
+  font-size: 0.72rem;
+  padding-left: 0.4rem;
+}
+
+.ex-editor .cm-lineNumbers .cm-gutterElement {
+  padding: 0 0.5rem 0 0.6rem;
+  min-width: 2rem;
+}
+
+.ex-editor .cm-activeLine {
+  background: oklch(0.55 0.18 255 / 0.055);
+}
+
+.ex-editor .cm-activeLineGutter {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.ex-editor .cm-selectionBackground,
+.ex-editor .cm-editor.cm-focused .cm-selectionBackground {
+  background: oklch(0.55 0.18 255 / 0.16) !important;
+}
+
+/* ── 结果面板 ─────────────────────────────────────────────────────────────── */
+
+.ex-panel {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.85rem 1.15rem 1.05rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.ex-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ex-score {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ex-card[data-result="pass"] .ex-score {
+  color: var(--ex-ok);
+  border-color: oklch(0.55 0.13 155 / 0.4);
+  background: var(--ex-ok-soft);
+}
+
+.ex-card[data-result="fail"] .ex-score {
+  color: var(--ex-fail);
+  border-color: oklch(0.55 0.19 25 / 0.4);
+  background: var(--ex-fail-soft);
+}
+
+/* 检查清单 */
+
+.ex-checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.ex-check {
+  display: grid;
+  grid-template-columns: 1.15rem minmax(0, 1fr);
+  gap: 0.55rem;
+  padding: 0.42rem 0;
+  border-top: 1px solid oklch(0 0 0 / 0.045);
+  align-items: start;
+}
+
+.ex-check:first-child {
+  border-top: none;
+}
+
+.ex-mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.12rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-strong);
+  font-size: 0.62rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.ex-check[data-ok="true"] .ex-mark {
+  border-color: var(--ex-ok);
+  background: var(--ex-ok);
+  color: oklch(0.99 0 0);
+}
+
+.ex-check[data-ok="false"] .ex-mark {
+  border-color: var(--ex-fail);
+  background: var(--ex-fail);
+  color: oklch(0.99 0 0);
+}
+
+.ex-check-main {
+  min-width: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.ex-check-label {
+  font-size: 0.86rem;
+  color: var(--color-text);
+}
+
+.ex-check-detail {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.ex-check-detail[hidden] {
+  display: none;
+}
+
+.ex-detail {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+.ex-detail-row {
+  display: grid;
+  grid-template-columns: 4.2rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.ex-detail-key {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.ex-detail-value {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--color-text);
+}
+
+.ex-detail-note {
+  color: var(--ex-fail);
+  font-size: 0.74rem;
+}
+
+/* 结果行 */
+
+.ex-result {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+}
+
+.ex-result[hidden] { display: none; }
+.ex-result[data-ok="true"] { color: var(--ex-ok); }
+.ex-result[data-ok="false"] { color: var(--ex-fail); }
+
+/* 诊断 */
+
+.ex-diagnostics {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ex-diagnostics[hidden] { display: none; }
+
+.ex-diag {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid oklch(0.55 0.19 25 / 0.3);
+  border-left-width: 3px;
+  border-radius: 8px;
+  background: var(--ex-fail-soft);
+}
+
+.ex-diag[data-sev="warning"] {
+  border-color: oklch(0.6 0.12 75 / 0.35);
+  background: oklch(0.6 0.12 75 / 0.07);
+}
+
+.ex-diag-human {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.ex-diag-hint {
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.ex-diag-raw {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.ex-diag-notes {
+  margin-top: 0.35rem;
+}
+
+.ex-diag-notes summary {
+  cursor: pointer;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.ex-diag-notes pre {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  overflow-x: auto;
+}
+
+/* 程序输出 */
+
+.ex-output {
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-pre-bg);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.6;
+  max-height: 14rem;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.ex-output[hidden] { display: none; }
+
+/* ── 窄屏 ─────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .ex-head {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .ex-meta {
+    justify-content: flex-start;
+  }
+
   .ex-kbd {
     display: none;
   }
 
-  .ex-editor .cm-scroller {
-    max-height: 17rem;
+  .ex-status {
+    max-width: 9rem;
   }
 
-  .ex-status {
+  .ex-editor .cm-scroller {
+    min-height: 13rem;
+  }
+
+  .ex-progress-text {
     min-width: 0;
+    font-size: 0.62rem;
   }
 }

@@ -684,6 +684,16 @@ function syncAllStatics(cache) {
     }
   }
 
+  // css/fonts/** (web fonts for code blocks and the playground)
+  const fontsDir = path.join(cssDir, 'fonts');
+  if (fs.existsSync(fontsDir)) {
+    changed.push(...syncDir(
+      fontsDir,
+      path.join(DIST, 'css', 'fonts'),
+      'css/fonts', cache
+    ));
+  }
+
   // js/*.js (frontend only, skip build.js)
   const jsDir = path.join(ROOT, 'js');
   if (fs.existsSync(jsDir)) {

@@ -3,6 +3,22 @@
    Adwaita-inspired design with CSS custom properties (oklch color space).
    ========================================================================== */
 
+/* ─── Code webfont: Maple Mono NF CN (subset, OFL-1.1) ───────────────────── */
+@font-face {
+  font-family: 'Maple Mono NF CN';
+  src: url('fonts/maple-mono-nf-cn-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Maple Mono NF CN';
+  src: url('fonts/maple-mono-nf-cn-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── CSS Variables (non-color) ───────────────────────────────────────────── */
 :root {
   /* Sizing */
@@ -22,7 +38,7 @@
      KaTeX fonts are preloaded in <head> */
   --font-sans:   'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif:  'Noto Serif SC', 'Inter', Georgia, serif;
-  --font-mono:   'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Noto Sans SC', monospace;
+  --font-mono:   'Maple Mono NF CN', 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Noto Sans SC', monospace;
 
   /* Transitions */
   --transition-fast: 150ms ease;

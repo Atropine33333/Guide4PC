@@ -20,7 +20,16 @@
     reset: ZH ? '重置' : 'Reset',
     running: ZH ? '运行中…' : 'Running…',
     loading: ZH ? '正在准备编译器…' : 'Preparing the compiler…',
+    downloading: ZH ? '正在下载编译器' : 'Downloading compiler',
+    connecting: ZH ? '正在连接编译器资源…' : 'Connecting to the compiler assets…',
+    unpacking: ZH ? '正在解压并启动编译器…' : 'Unpacking and starting the compiler…',
     compiling: ZH ? '编译中…' : 'Compiling…',
+    runTest: ZH ? '运行测试' : 'Running checks',
+    ready: ZH ? '就绪' : 'Ready',
+    preparing: ZH ? '准备中…' : 'Preparing…',
+    warmError: ZH ? '编译器准备失败' : 'Compiler setup failed',
+    tests: ZH ? '项测试' : 'tests',
+    checks: ZH ? '检查' : 'Checks',
     passed: ZH ? '通过' : 'passed',
     compileFailed: ZH ? '编译失败' : 'Compilation failed',
     timeout: ZH ? '运行超时，已强制停止。检查一下死循环，或换个输入再试。' : 'Timed out — stopped. Check for infinite loops or try another input.',
@@ -42,6 +51,32 @@
   var starters = new Map();
   var diagRules = null;
   var diagLoading = null;
+
+  // 编译器预加载：页面一出现练习卡片就开始下载，进度广播给所有卡片。
+  var warmup = {
+    kicked: false,
+    state: 'idle',
+    value: 0,
+    loaded: 0,
+    total: 0,
+    error: null,
+    listeners: new Set(),
+  };
+
+  function formatMb(bytes) {
+    return (Math.max(0, bytes || 0) / 1000000).toFixed(1);
+  }
+
+  function downloadText(loaded, total) {
+    if (!total) return TEXT.downloading + '…（' + formatMb(loaded) + ' MB）';
+    return TEXT.downloading + ' ' + formatMb(loaded) + ' / ' + formatMb(total) + ' MB';
+  }
+
+  function broadcastWarmup(msg) {
+    warmup.listeners.forEach(function (fn) {
+      try { fn(msg); } catch (e) { /* 单个卡片出错不影响别的 */ }
+    });
+  }
 
   function url(path) {
     return new URL(path, document.baseURI).href;
@@ -186,8 +221,38 @@
     if (worker) return worker;
     worker = new Worker(url('pg/pg-worker.js'));
     worker.onmessage = function (event) {
+      var msg = event.data || {};
+      if (msg.type === 'progress') {
+        warmup.state = 'loading';
+        warmup.value = msg.value || 0;
+        broadcastWarmup(msg);
+      } else if (msg.type === 'download-start') {
+        warmup.state = 'loading';
+        warmup.loaded = 0;
+        warmup.total = msg.total || 0;
+        broadcastWarmup(msg);
+      } else if (msg.type === 'download') {
+        warmup.state = 'loading';
+        warmup.loaded = msg.loaded || 0;
+        warmup.total = msg.total || 0;
+        broadcastWarmup(msg);
+      } else if (msg.type === 'download-error') {
+        warmup.lastDownloadError = msg.message || '';
+        broadcastWarmup(msg);
+      } else if (msg.type === 'phase' && msg.phase === 'install') {
+        warmup.state = 'loading';
+        warmup.value = 1;
+        broadcastWarmup(msg);
+      } else if (msg.type === 'ready') {
+        warmup.state = 'ready';
+        broadcastWarmup(msg);
+      } else if (msg.type === 'warmup-error') {
+        warmup.state = 'error';
+        warmup.error = msg.message || 'compiler setup failed';
+        broadcastWarmup(msg);
+      }
       if (!activeRun || !activeRun.onMessage) return;
-      activeRun.onMessage(event.data);
+      activeRun.onMessage(msg);
     };
     worker.onerror = function (event) {
       if (!activeRun || !activeRun.onError) return;
@@ -201,6 +266,18 @@
       worker.terminate();
       worker = null;
     }
+    if (warmup.state !== 'ready') {
+      warmup.kicked = false;
+      warmup.state = 'idle';
+    }
+  }
+
+  // 页面一出现练习就预先下载编译器；用户点“运行”时通常已经就绪。
+  function kickWarmup() {
+    if (warmup.kicked) return;
+    warmup.kicked = true;
+    warmup.state = 'loading';
+    ensureWorker().postMessage({ type: 'warmup' });
   }
 
   function runInWorker(payload, handlers) {
@@ -255,7 +332,7 @@
     var checks = spec.checks || [];
 
     var editorHost = h('div', { class: 'ex-editor' });
-    var status = h('span', { class: 'ex-status', text: TEXT.badge });
+    var status = h('span', { class: 'ex-status', text: TEXT.preparing, 'data-tone': 'muted' });
     var runBtn = h('button', { class: 'ex-run', type: 'button', text: TEXT.run });
     var resetBtn = h('button', { class: 'ex-reset', type: 'button', text: TEXT.reset });
     var hint = h('span', { class: 'ex-kbd', text: 'Ctrl/⌘ + Enter' });
@@ -263,6 +340,13 @@
     var outputBox = h('pre', { class: 'ex-output', hidden: '' });
     var diagBox = h('div', { class: 'ex-diagnostics' });
     var resultLine = h('div', { class: 'ex-result', hidden: '' });
+    var score = h('span', { class: 'ex-score', text: '—/' + checks.length });
+    var progressFill = h('i', { class: 'ex-progress-fill' });
+    var progressText = h('span', { class: 'ex-progress-text', text: '' });
+    var progress = h('div', { class: 'ex-progress', hidden: '' }, [
+      h('div', { class: 'ex-progress-track' }, [progressFill]),
+      progressText,
+    ]);
 
     var rowByCheck = {};
     checks.forEach(function (check) {
@@ -270,7 +354,8 @@
       var label = h('span', { class: 'ex-check-label', text: pickLabel(check.label) || check.id });
       var detail = h('div', { class: 'ex-check-detail', hidden: '' });
       var row = h('li', { class: 'ex-check', 'data-check': check.id }, [
-        mark, label, detail,
+        mark,
+        h('span', { class: 'ex-check-main' }, [label, detail]),
       ]);
       rowByCheck[check.id] = { row: row, mark: mark, detail: detail };
       checkList.appendChild(row);
@@ -278,13 +363,42 @@
 
     var card = h('section', { class: 'ex-card', 'data-ex': id }, [
       h('header', { class: 'ex-head' }, [
-        h('span', { class: 'ex-badge', text: TEXT.badge }),
-        h('span', { class: 'ex-title', text: title }),
-        h('span', { class: 'ex-lang', text: (spec.lang || 'cpp').toUpperCase() }),
+        h('div', { class: 'ex-head-main' }, [
+          h('span', { class: 'ex-kicker', text: TEXT.badge }),
+          h('h3', { class: 'ex-title', text: title }),
+        ]),
+        h('div', { class: 'ex-meta' }, [
+          h('span', { class: 'ex-chip ex-chip-lang', text: (spec.lang || 'cpp').toUpperCase() }),
+          h('span', { class: 'ex-chip', text: checks.length + ' ' + TEXT.tests }),
+          variantSpec ? h('span', { class: 'ex-chip ex-chip-var', text: variant }) : null,
+        ]),
       ]),
-      h('div', { class: 'ex-toolbar' }, [runBtn, resetBtn, hint, status]),
-      editorHost,
-      h('div', { class: 'ex-panel' }, [checkList, diagBox, resultLine, outputBox]),
+      progress,
+      h('div', { class: 'ex-toolbar' }, [
+        runBtn,
+        resetBtn,
+        h('span', { class: 'ex-spacer' }),
+        hint,
+        status,
+      ]),
+      h('div', { class: 'ex-editor-wrap' }, [
+        h('div', { class: 'ex-file' }, [
+          h('i', { class: 'ex-dot' }),
+          h('span', { class: 'ex-file-name', text: 'main.cpp' }),
+          spec.harness ? h('span', { class: 'ex-file-note', text: '+ ' + spec.harness }) : null,
+        ]),
+        editorHost,
+      ]),
+      h('div', { class: 'ex-panel' }, [
+        h('div', { class: 'ex-panel-head' }, [
+          h('span', { text: TEXT.checks }),
+          score,
+        ]),
+        checkList,
+        diagBox,
+        resultLine,
+        outputBox,
+      ]),
     ]);
 
     mount.innerHTML = '';
@@ -293,6 +407,78 @@
     var view = null;
     var busy = false;
     var timeoutMs = (spec.limits && spec.limits.timeoutMs) || 5000;
+
+    function setStatus(text, tone) {
+      status.textContent = text;
+      status.setAttribute('data-tone', tone || 'muted');
+    }
+
+    function setProgress(opts) {
+      if (!opts) {
+        progress.hidden = true;
+        progress.removeAttribute('data-mode');
+        return;
+      }
+      progress.hidden = false;
+      progress.setAttribute('data-mode', opts.mode || 'determinate');
+      if (opts.mode === 'indeterminate') {
+        progressFill.style.width = '100%';
+        progressText.textContent = opts.text || '';
+        return;
+      }
+      var pct = Math.max(0, Math.min(100, Math.round((opts.value || 0) * 100)));
+      progressFill.style.width = pct + '%';
+      progressText.textContent = (opts.text || '') + (opts.text ? ' ' : '') + pct + '%';
+    }
+
+    function showDownload(loaded, total) {
+      var text = downloadText(loaded, total);
+      if (total > 0) {
+        var pct = Math.round((loaded / total) * 100);
+        setProgress({ value: loaded / total, text: text });
+        setStatus(text + ' ' + pct + '%', 'muted');
+      } else {
+        setProgress({ mode: 'indeterminate', text: text });
+        setStatus(text, 'muted');
+      }
+    }
+
+    function onWarmup(msg) {
+      if (msg.type === 'ready') {
+        setProgress(null);
+        if (!busy) setStatus(TEXT.ready, 'muted');
+      } else if (msg.type === 'download-start') {
+        if (busy) return;
+        if (msg.total > 0) showDownload(0, msg.total);
+        else {
+          setProgress({ mode: 'indeterminate', text: TEXT.connecting });
+          setStatus(TEXT.connecting, 'muted');
+        }
+      } else if (msg.type === 'download') {
+        if (busy) return;
+        showDownload(msg.loaded || 0, msg.total || 0);
+      } else if (msg.type === 'phase' && msg.phase === 'install') {
+        if (busy) return;
+        setProgress({ mode: 'indeterminate', text: TEXT.unpacking });
+        setStatus(TEXT.unpacking, 'muted');
+      } else if (msg.type === 'progress') {
+        if (busy) return;
+        showDownload(Math.round((msg.value || 0) * 28900 * 1024), 28900 * 1024);
+      } else if (msg.type === 'warmup-error') {
+        setProgress(null);
+        if (!busy) setStatus(TEXT.warmError, 'fail');
+      }
+    }
+    warmup.listeners.add(onWarmup);
+    if (warmup.state === 'ready') onWarmup({ type: 'ready' });
+    else if (warmup.state === 'error') onWarmup({ type: 'warmup-error' });
+    else if (warmup.state === 'loading') {
+      if (warmup.total > 0) showDownload(warmup.loaded, warmup.total);
+      else {
+        setProgress({ mode: 'indeterminate', text: TEXT.connecting });
+        setStatus(TEXT.connecting, 'muted');
+      }
+    }
 
     function setBusy(on) {
       busy = on;
@@ -315,6 +501,24 @@
       outputBox.textContent = '';
       resultLine.hidden = true;
       resultLine.textContent = '';
+      score.textContent = '—/' + checks.length;
+      card.removeAttribute('data-result');
+    }
+
+    function detailBlock(detail) {
+      var box = h('div', { class: 'ex-detail' });
+      function kv(key, value) {
+        if (value == null || value === '') return;
+        box.appendChild(h('div', { class: 'ex-detail-row' }, [
+          h('span', { class: 'ex-detail-key', text: key }),
+          h('pre', { class: 'ex-detail-value', text: String(value) }),
+        ]));
+      }
+      if (detail.input) kv(TEXT.stdin, detail.input);
+      if (detail.expected != null) kv(TEXT.expected, detail.expected);
+      if (detail.actual != null) kv(TEXT.actual, detail.actual);
+      if (detail.compileError) box.appendChild(h('div', { class: 'ex-detail-note', text: TEXT.compileFailed }));
+      return box;
     }
 
     function renderChecks(result) {
@@ -326,12 +530,8 @@
         row.mark.textContent = check.ok ? '✓' : '✗';
         if (check.ok) ++passed;
         if (!check.ok && check.detail) {
-          var parts = [];
-          if (check.detail.input) parts.push(TEXT.stdin + '\n' + check.detail.input);
-          if (check.detail.expected != null) parts.push(TEXT.expected + '\n' + check.detail.expected);
-          if (check.detail.actual != null) parts.push(TEXT.actual + '\n' + check.detail.actual);
-          if (check.detail.compileError) parts.push(TEXT.compileFailed);
-          row.detail.textContent = parts.join('\n\n');
+          row.detail.innerHTML = '';
+          row.detail.appendChild(detailBlock(check.detail));
           row.detail.hidden = false;
         }
         if (!check.ok && check.reported === false) {
@@ -340,13 +540,8 @@
         }
       });
       var total = (result.checks || []).length;
-      resultLine.hidden = false;
-      resultLine.textContent = result.ok
-        ? '✓ ' + (ZH ? '全部通过 ' : 'All ') + passed + '/' + total
-        : (ZH ? '通过 ' : 'Passed ') + passed + '/' + total;
-      resultLine.setAttribute('data-ok', result.ok ? 'true' : 'false');
+      score.textContent = passed + '/' + total;
       card.setAttribute('data-result', result.ok ? 'pass' : 'fail');
-
       if (result.diagnostics && result.diagnostics.length) {
         showDiagnostics(result.diagnostics);
       }
@@ -412,12 +607,13 @@
       resetChecks();
       var hit = forbiddenHit(code);
       if (hit) {
-        showError(TEXT.forbidden + ' `' + hit + '`');
+        showError(TEXT.forbidden + ' ' + hit);
         return;
       }
 
       setBusy(true);
-      status.textContent = TEXT.loading;
+      setProgress({ mode: 'indeterminate', text: TEXT.loading });
+      setStatus(TEXT.loading, 'muted');
       try {
         var harnessCode = null;
         if (spec.harness) {
@@ -431,12 +627,37 @@
           timeoutMs: timeoutMs,
         }, {
           onMessage: function (msg) {
+            if (msg.type === 'download-start') {
+              if (msg.total > 0) showDownload(0, msg.total);
+              else {
+                setProgress({ mode: 'indeterminate', text: TEXT.connecting });
+                setStatus(TEXT.connecting, 'muted');
+              }
+              return;
+            }
+            if (msg.type === 'download') {
+              showDownload(msg.loaded || 0, msg.total || 0);
+              return;
+            }
+            if (msg.type === 'download-error') return;
             if (msg.type === 'phase') {
-              if (msg.phase === 'loading') status.textContent = TEXT.loading;
-              else if (msg.phase === 'compile') status.textContent = TEXT.compiling;
-              else if (msg.phase === 'run') status.textContent = TEXT.running;
+              if (msg.phase === 'loading') {
+                setProgress({ mode: 'indeterminate', text: TEXT.loading });
+                setStatus(TEXT.loading, 'muted');
+              } else if (msg.phase === 'install') {
+                setProgress({ mode: 'indeterminate', text: TEXT.unpacking });
+                setStatus(TEXT.unpacking, 'muted');
+              } else if (msg.phase === 'compile') {
+                setProgress({ mode: 'indeterminate', text: TEXT.compiling });
+                setStatus(TEXT.compiling, 'muted');
+              } else if (msg.phase === 'run') {
+                var label = TEXT.runTest + (msg.index ? ' ' + msg.index + '/' + (msg.total || checks.length) : '');
+                setProgress({ mode: 'indeterminate', text: label });
+                setStatus(label, 'muted');
+              }
             } else if (msg.type === 'progress') {
-              status.textContent = TEXT.loading + ' ' + Math.round((msg.value || 0) * 100) + '%';
+              setProgress({ value: msg.value, text: TEXT.downloading });
+              setStatus(TEXT.downloading + ' ' + Math.round((msg.value || 0) * 100) + '%', 'muted');
             } else if (msg.type === 'check') {
               var row = rowByCheck[msg.id];
               if (row) {
@@ -446,15 +667,22 @@
             }
           },
         });
+        setProgress(null);
         renderChecks(result);
-        status.textContent = result.ok ? '✓' : '';
+        var ms = (result.compileMs || 0) + (result.runMs || 0);
+        setStatus(
+          (result.ok ? '✓ ' + (ZH ? '全部通过' : 'all checks passed') : (ZH ? '未全部通过' : 'not all passed')) +
+            (ms ? ' · ' + (ms / 1000).toFixed(1) + 's' : ''),
+          result.ok ? 'ok' : 'fail'
+        );
       } catch (err) {
+        setProgress(null);
         if (String(err && err.message) === 'timeout') {
           showError(TEXT.timeout);
-          status.textContent = '';
+          setStatus(TEXT.timeout, 'fail');
         } else {
           showError(TEXT.workerError, err && err.message ? err.message : String(err));
-          status.textContent = '';
+          setStatus(TEXT.workerError, 'fail');
         }
       } finally {
         setBusy(false);
@@ -465,7 +693,7 @@
       if (!view) return;
       view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: starter } });
       resetChecks();
-      status.textContent = '';
+      setStatus(warmup.state === 'ready' ? TEXT.ready : TEXT.preparing, 'muted');
       card.removeAttribute('data-result');
     }
 
@@ -534,6 +762,7 @@
 
   function mountAll() {
     var mounts = document.querySelectorAll('.ex-mount');
+    if (mounts.length) kickWarmup();
     for (var i = 0; i < mounts.length; ++i) {
       if (!mounts[i]._g4pc && !mounts[i].__g4pcStarted) {
         mounts[i].__g4pcStarted = true;
