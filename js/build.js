@@ -60,6 +60,20 @@ function getBuildVersion() {
   for (const d of ['chs', 'en', 'img', 'dl', 'favicon']) {
     walk(path.join(SRC, d));
   }
+  for (const f of [
+    'playground/pg.js',
+    'playground/pg-worker.js',
+    'playground/pg.css',
+    'playground/vendor/editor.bundle.js',
+    'diagnostics/messages.json',
+  ]) {
+    const full = path.join(ROOT, f);
+    if (fs.existsSync(full)) add(full);
+  }
+  for (const d of ['exercises']) {
+    const full = path.join(ROOT, d);
+    if (fs.existsSync(full)) walk(full);
+  }
 
   _buildVersion = hash.digest('hex').slice(0, 10);
   return _buildVersion;

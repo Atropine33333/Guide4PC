@@ -625,13 +625,13 @@
         const link = document.createElement('link');
         link.id = 'g4pc-pg-css';
         link.rel = 'stylesheet';
-        link.href = 'pg/pg.css';
+        link.href = versioned('pg/pg.css');
         link.onload = link.onerror = resolve;
         document.head.appendChild(link);
       });
       const js = new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = 'pg/pg.js';
+        script.src = versioned('pg/pg.js');
         script.onload = resolve;
         script.onerror = () => reject(new Error('pg/pg.js failed to load'));
         document.head.appendChild(script);

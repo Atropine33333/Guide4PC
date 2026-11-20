@@ -1,6 +1,10 @@
 {
   "$schema": "../schema.json",
   "id": "circular-buffer",
+  "title": {
+    "chs": "环形缓冲区",
+    "en": "Circular Buffer"
+  },
   "lang": "cpp",
   "harness": "harness.cpp",
   "limits": {

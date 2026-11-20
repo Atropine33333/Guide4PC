@@ -81,7 +81,12 @@
   }
 
   function url(path) {
-    return new URL(path, document.baseURI).href;
+    var href = new URL(path, document.baseURI).href;
+    var ver = window.GUIDE4PC_VERSION;
+    if (ver && ver !== 'GUIDE4PC_BUILD_VER') {
+      href += (href.indexOf('?') < 0 ? '?' : '&') + 'v=' + encodeURIComponent(ver);
+    }
+    return href;
   }
 
   function h(tag, attrs, children) {
@@ -438,10 +443,10 @@
       if (total > 0) {
         var pct = Math.round((loaded / total) * 100);
         setProgress({ value: loaded / total, text: text });
-        setStatus(text + ' ' + pct + '%', 'muted');
+        setStatus(TEXT.preparing, 'muted');
       } else {
         setProgress({ mode: 'indeterminate', text: text });
-        setStatus(text, 'muted');
+        setStatus(TEXT.preparing, 'muted');
       }
     }
 

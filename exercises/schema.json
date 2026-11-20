@@ -4,7 +4,11 @@
   "title": "Guide4PC exercise spec",
   "description": "Machine-readable data for one exercise. Authored by hand, validated by the build.",
   "type": "object",
-  "required": ["id", "lang", "checks"],
+  "required": [
+    "id",
+    "lang",
+    "checks"
+  ],
   "additionalProperties": false,
   "properties": {
     "$schema": {
@@ -16,7 +20,11 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
     "lang": {
-      "enum": ["cpp", "c", "python"]
+      "enum": [
+        "cpp",
+        "c",
+        "python"
+      ]
     },
     "harness": {
       "type": "string",
@@ -43,73 +51,117 @@
     "checks": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/definitions/check" }
+      "items": {
+        "$ref": "#/definitions/check"
+      }
     },
     "variants": {
       "type": "array",
-      "items": { "$ref": "#/definitions/variant" }
+      "items": {
+        "$ref": "#/definitions/variant"
+      }
+    },
+    "title": {
+      "$ref": "#/definitions/label"
     }
   },
   "definitions": {
     "label": {
       "type": "object",
-      "required": ["chs", "en"],
+      "required": [
+        "chs",
+        "en"
+      ],
       "additionalProperties": false,
       "properties": {
-        "chs": { "type": "string", "minLength": 1 },
-        "en": { "type": "string", "minLength": 1 }
+        "chs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "stream": {
       "description": "stdin or expected stdout. Either one string, or an array with one element per line.",
       "oneOf": [
-        { "type": "string" },
-        { "type": "array", "items": { "type": "string" } }
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       ]
     },
     "case": {
       "type": "object",
-      "required": ["in", "out"],
+      "required": [
+        "in",
+        "out"
+      ],
       "additionalProperties": false,
       "properties": {
-        "in": { "$ref": "#/definitions/stream" },
-        "out": { "$ref": "#/definitions/stream" }
+        "in": {
+          "$ref": "#/definitions/stream"
+        },
+        "out": {
+          "$ref": "#/definitions/stream"
+        }
       }
     },
     "check": {
       "type": "object",
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false,
       "properties": {
         "id": {
           "type": "string",
           "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
         },
-        "label": { "$ref": "#/definitions/label" },
+        "label": {
+          "$ref": "#/definitions/label"
+        },
         "cases": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/definitions/case" }
+          "items": {
+            "$ref": "#/definitions/case"
+          }
         }
       }
     },
     "variant": {
       "type": "object",
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false,
       "properties": {
         "id": {
           "type": "string",
           "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
         },
-        "label": { "$ref": "#/definitions/label" },
+        "label": {
+          "$ref": "#/definitions/label"
+        },
         "starter": {
           "type": "string",
           "description": "Starter file to use instead of starter.cpp."
         },
         "forbidPatterns": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "Regexes that must not match the submitted source."
         }
       }
