@@ -285,6 +285,13 @@
             "path": "main/Chapter2_Cpp/Section10_杂谈.md",
             "key": "main/Chapter2_Cpp/10",
             "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "学校C++",
+            "path": "main/Chapter2_Cpp/[test]Section1_学校C++.md",
+            "key": "main/Chapter2_Cpp/test/学校C++",
+            "lang": "chs"
           }
         ]
       },
@@ -389,6 +396,27 @@
             "name": "单元测试与集成测试",
             "path": "main/Chapter3_Python/Section8E_单元测试与集成测试.md",
             "key": "main/Chapter3_Python/8E",
+            "lang": "chs"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter4_硬件",
+        "path": "main/Chapter4_硬件",
+        "children": [
+          {
+            "type": "file",
+            "name": "下载和引言",
+            "path": "main/Chapter4_硬件/[dl4]Section0_下载和引言.md",
+            "key": "main/Chapter4_硬件/0",
+            "lang": "chs"
+          },
+          {
+            "type": "file",
+            "name": "环境搭建",
+            "path": "main/Chapter4_硬件/Section1_环境搭建.md",
+            "key": "main/Chapter4_硬件/1",
             "lang": "chs"
           }
         ]
@@ -686,6 +714,13 @@
             "path": "main/Chapter2_Cpp/Section10_Tittle-tattle.md",
             "key": "main/Chapter2_Cpp/10",
             "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "SchoolCpp",
+            "path": "main/Chapter2_Cpp/[test]Section1_SchoolCpp.md",
+            "key": "main/Chapter2_Cpp/test/SchoolCpp",
+            "lang": "en"
           }
         ]
       },
@@ -793,6 +828,27 @@
             "lang": "en"
           }
         ]
+      },
+      {
+        "type": "directory",
+        "name": "Chapter4_Hardware",
+        "path": "main/Chapter4_Hardware",
+        "children": [
+          {
+            "type": "file",
+            "name": "Introduction",
+            "path": "main/Chapter4_Hardware/[dl4]Section0_Introduction.md",
+            "key": "main/Chapter4_Hardware/0",
+            "lang": "en"
+          },
+          {
+            "type": "file",
+            "name": "EnvironmentSetup",
+            "path": "main/Chapter4_Hardware/Section1_EnvironmentSetup.md",
+            "key": "main/Chapter4_Hardware/1",
+            "lang": "en"
+          }
+        ]
       }
     ]
   },
@@ -865,6 +921,10 @@
       "chs": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
       "en": "main/Chapter2_Cpp/[dl1]Section0_Code.md"
     },
+    "main/Chapter2_Cpp/test/学校C++": {
+      "chs": "main/Chapter2_Cpp/[test]Section1_学校C++.md",
+      "en": null
+    },
     "main/Chapter3_Python/1": {
       "chs": "main/Chapter3_Python/Section1_环境.md",
       "en": "main/Chapter3_Python/Section1_Environments.md"
@@ -920,6 +980,14 @@
     "main/Chapter3_Python/8A": {
       "chs": "main/Chapter3_Python/[dl3]Section8A_多文件与导入.md",
       "en": "main/Chapter3_Python/[dl3]Section8A_Multifile.md"
+    },
+    "main/Chapter4_硬件/1": {
+      "chs": "main/Chapter4_硬件/Section1_环境搭建.md",
+      "en": null
+    },
+    "main/Chapter4_硬件/0": {
+      "chs": "main/Chapter4_硬件/[dl4]Section0_下载和引言.md",
+      "en": null
     },
     "appendix/10": {
       "chs": "附录10_Office.md",
@@ -1004,7 +1072,19 @@
     "appendix/0": {
       "chs": null,
       "en": "Appendix0.md"
+    },
+    "main/Chapter2_Cpp/test/SchoolCpp": {
+      "chs": null,
+      "en": "main/Chapter2_Cpp/[test]Section1_SchoolCpp.md"
+    },
+    "main/Chapter4_Hardware/1": {
+      "chs": null,
+      "en": "main/Chapter4_Hardware/Section1_EnvironmentSetup.md"
+    },
+    "main/Chapter4_Hardware/0": {
+      "chs": null,
+      "en": "main/Chapter4_Hardware/[dl4]Section0_Introduction.md"
     }
   },
-  "version": "2decfa4f31"
+  "version": "fb7096b0d2"
 }

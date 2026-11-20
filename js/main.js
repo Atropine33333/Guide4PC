@@ -114,6 +114,38 @@
   md.use(window.markdownitFootnote);
   md.use(window.markdownitDeflist);
 
+  // Exercise mounts: :::exercise{id="..." variant="..."}
+  // For now this only renders a placeholder card; the wasm editor/runner
+  // hydrates .ex-mount nodes with the exercise data from docs/ex/<id>.json.
+  if (window.markdownitContainer) {
+    md.use(window.markdownitContainer, 'exercise', {
+      validate: function (params) {
+        return /^exercise(?=\s|\{|$)/.test(params.trim());
+      },
+      render: function (tokens, idx) {
+        const token = tokens[idx];
+        if (token.nesting !== 1) return '';
+        const attrs = {};
+        const raw = token.info.trim().slice('exercise'.length).trim();
+        raw.replace(/([A-Za-z_][\w-]*)\s*=\s*"([^"]*)"/g, function (_, k, v) {
+          attrs[k] = v;
+        });
+        const id = md.utils.escapeHtml(attrs.id || '');
+        const variant = md.utils.escapeHtml(attrs.variant || '');
+        const isZh = (document.documentElement.lang || '').indexOf('zh') === 0;
+        const head = isZh ? '在线练习' : 'Online exercise';
+        const badge = isZh ? 'C++ · 运行器接入中' : 'C++ · runner coming soon';
+        const body = isZh
+          ? '题目数据：<code>exercises/' + id + '/spec.json</code>'
+          : 'Exercise data: <code>exercises/' + id + '/spec.json</code>';
+        return '<div class="ex-mount" data-ex="' + id + '" data-variant="' + variant + '">' +
+          '<div class="ex-mount-head"><span>' + head + '</span>' +
+          '<span class="ex-mount-badge">' + badge + '</span></div>' +
+          '<div class="ex-mount-body">' + body + '</div></div>';
+      }
+    });
+  }
+
   // Custom HTML filter: allow only safe inline tags
   const defaultHtmlBlock = md.renderer.rules.html_block;
   const defaultHtmlInline = md.renderer.rules.html_inline;

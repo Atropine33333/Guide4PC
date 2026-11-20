@@ -170,6 +170,14 @@ function extractKey(filename, relPath) {
   // Strip [dlX] metadata prefix (e.g. "[dl1]Section0_代码" → "Section0_代码")
   name = name.replace(/^\[dl\d+\]/, '');
 
+  // Draft pages ("[test]…") are scratch content: keep them out of the
+  // cross-language pairing keys so they never shadow a real section.
+  if (/^\[test\]/.test(name)) {
+    const draftDir = path.dirname(relPath);
+    const draftNs = (draftDir === '.' || draftDir === '') ? 'root' : normalizeDir(draftDir);
+    return draftNs + '/test/' + extractTitle(name);
+  }
+
   if (/^0_/.test(name)) return 'home';
 
   // Numeric key: digits (with optional decimal parts) plus optional letters.
