@@ -19,8 +19,8 @@
     '<line class="path path-4" x1="561" y1="181.67" x2="561" y2="181.67"/>' +
     '</svg>';
 
-  var DRAW_MS = 6150;   // 笔迹画完（CodePen 的 7.6s × 0.8）
-  var PAUSE_MS = 260;
+  var DRAW_MS = 5000;   // 笔迹画完（CodePen 的 7.6s 压缩到 5s）
+  var PAUSE_MS = 220;
   var SHRINK_MS = 900;
 
   function h(tag, attrs, children) {
@@ -53,13 +53,119 @@
     return lines;
   }
 
-  function blinkTestCta() {
-    var link = document.getElementById('test-link');
-    if (!link) return;
+  var stuntActive = null;
+
+  function blinkFallback(link) {
     link.classList.add('is-blinking');
     window.setTimeout(function () {
       link.classList.remove('is-blinking');
     }, 3600);
+  }
+
+  // 顶栏「测试」按钮：掉下来、弹到半空停住；鼠标凑近时抖两下再 q 弹回原位。
+  function testCtaStunt() {
+    var link = document.getElementById('test-link');
+    if (!link || stuntActive) return;
+    if (prefersReduced() || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)) {
+      blinkFallback(link);
+      return;
+    }
+
+    var rect = link.getBoundingClientRect();
+    if (!rect.width) return;
+
+    var drop = Math.round(Math.min(300, Math.max(170, window.innerHeight * 0.26)));
+    var hold = Math.round(drop / 2);
+    var wiggleTimer = 0;
+    var escaped = false;
+
+    var holder = h('span', { class: 'cta-stunt' });
+    holder.style.cssText = 'position:fixed;z-index:80;pointer-events:none;margin:0;';
+    holder.style.left = rect.left + 'px';
+    holder.style.top = rect.top + 'px';
+    holder.style.width = rect.width + 'px';
+    holder.style.height = rect.height + 'px';
+
+    var clone = link.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.setAttribute('aria-hidden', 'true');
+    clone.classList.add('cta-stunt-clone');
+    clone.style.width = '100%';
+    clone.style.height = '100%';
+    holder.appendChild(clone);
+    document.body.appendChild(holder);
+
+    link.style.visibility = 'hidden';
+    link.setAttribute('aria-hidden', 'true');
+    stuntActive = { holder: holder, link: link, clone: clone };
+
+    function done() {
+      if (!stuntActive) return;
+      if (holder.parentNode) holder.remove();
+      link.style.visibility = '';
+      link.removeAttribute('aria-hidden');
+      link.classList.add('is-landed');
+      window.setTimeout(function () { link.classList.remove('is-landed'); }, 1000);
+      window.clearTimeout(wiggleTimer);
+      document.removeEventListener('pointermove', onMove, true);
+      stuntActive = null;
+    }
+
+    function onMove(e) {
+      if (!stuntActive || escaped) return;
+      var r = holder.getBoundingClientRect();
+      var dx = e.clientX - (r.left + r.width / 2);
+      var dy = e.clientY - (r.top + r.height / 2);
+      if (dx * dx + dy * dy < 180 * 180) {
+        escaped = true;
+        document.removeEventListener('pointermove', onMove, true);
+        window.clearTimeout(wiggleTimer);
+        wiggle();
+      }
+    }
+
+    function wiggle() {
+      clone.classList.add('is-wiggling');
+      window.setTimeout(function () {
+        clone.classList.remove('is-wiggling');
+        flyBack();
+      }, 430);
+    }
+
+    function flyBack() {
+      var fly = holder.animate([
+        { transform: 'translateY(' + hold + 'px)' },
+        { transform: 'translateY(-10px)', offset: 0.62 },
+        { transform: 'translateY(3px)', offset: 0.8 },
+        { transform: 'translateY(0px)' }
+      ], { duration: 700, easing: 'cubic-bezier(.3,.9,.25,1)', fill: 'forwards' });
+      fly.finished.then(function () {
+        var squash = clone.animate([
+          { transform: 'scale(1.12,.86)' },
+          { transform: 'scale(.97,1.03)' },
+          { transform: 'scale(1,1)' }
+        ], { duration: 260, easing: 'ease-out' });
+        squash.finished.then(done, done);
+      });
+    }
+
+    var fall = holder.animate([
+      { transform: 'translateY(0px)' },
+      { transform: 'translateY(' + drop + 'px)' }
+    ], { duration: 520, easing: 'cubic-bezier(.5,.05,.75,.4)', fill: 'forwards' });
+
+    fall.finished.then(function () {
+      var bounce = holder.animate([
+        { transform: 'translateY(' + drop + 'px)' },
+        { transform: 'translateY(' + hold + 'px)' }
+      ], { duration: 360, easing: 'cubic-bezier(.15,.85,.3,1)', fill: 'forwards' });
+      return bounce.finished;
+    }).then(function () {
+      if (!stuntActive) return;
+      clone.classList.add('is-holding');
+      document.addEventListener('pointermove', onMove, true);
+      wiggleTimer = window.setTimeout(function () { if (!escaped) { escaped = true; wiggle(); } }, 9000);
+    }).catch(function () { done(); });
   }
 
   var activeCleanup = null;
@@ -239,7 +345,7 @@
       document.removeEventListener('pointerdown', onAnywhere, true);
       document.removeEventListener('keydown', onAnywhere, true);
       reveal(finalLine, 120);
-      blinkTestCta();
+      testCtaStunt();
     }
 
     button.addEventListener('click', function (e) { e.preventDefault(); proceed('button'); });

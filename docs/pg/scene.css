@@ -63,25 +63,25 @@
   stroke-width: 0;
 }
 
-/* CodePen 原始节奏的 0.8 倍速：5s → 4s，延时同步缩短。 */
+/* CodePen 原始节奏压缩到 5s 画完。 */
 .scene-draw.is-drawing .path-1 {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 4s linear;
+  transition: stroke-dashoffset 3.29s linear;
 }
 
 .scene-draw.is-drawing .path-2 {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.96s linear 4.16s;
+  transition: stroke-dashoffset 0.79s linear 3.42s;
 }
 
 .scene-draw.is-drawing .path-3 {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.8s linear 5.2s;
+  transition: stroke-dashoffset 0.66s linear 4.28s;
 }
 
 .scene-draw.is-drawing .path-4 {
   stroke-width: 18px;
-  transition: stroke-width 0.08s linear 6s;
+  transition: stroke-width 0.07s linear 4.93s;
 }
 
 /* 收缩结束后左上角的一行 hello。 */
@@ -297,4 +297,52 @@
   margin: 0 0 8px;
   font-size: 13px;
   color: var(--color-text-muted);
+}
+
+
+/* ── 顶栏「测试」按钮的小把戏 ───────────────────────────────────────── */
+.cta-stunt {
+  display: block;
+  box-sizing: border-box;
+}
+
+.cta-stunt-clone {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* 停在半空时用一圈脉冲提示它还在。 */
+.cta-stunt-clone.is-holding {
+  animation: cta-hold 1.7s ease-out infinite;
+}
+
+@keyframes cta-hold {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--color-primary) 45%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+/* 鼠标凑近时先抖两下，再弹回顶栏。 */
+.cta-stunt-clone.is-wiggling {
+  animation: cta-wiggle 0.42s ease-in-out;
+}
+
+@keyframes cta-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-5deg); }
+  35% { transform: rotate(4deg); }
+  55% { transform: rotate(-3deg); }
+  75% { transform: rotate(1.6deg); }
+}
+
+/* 落回原位的余震。 */
+.test-link.is-landed {
+  animation: cta-land 0.9s ease-out;
+}
+
+@keyframes cta-land {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--color-primary) 55%, transparent); }
+  100% { box-shadow: 0 0 0 10px transparent; }
 }
