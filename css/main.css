@@ -759,6 +759,43 @@ body {
   }
 }
 
+/* ─── Test link (topbar) ─────────────────────────────────────────────────── */
+.test-link {
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.6rem;
+  margin-right: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.test-link:hover {
+  color: var(--color-text);
+  background: var(--color-hover-bg);
+  border-color: var(--color-border-strong);
+}
+
+.test-link.is-blinking {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  animation: test-link-blink 1.15s ease-in-out infinite;
+}
+
+@keyframes test-link-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 transparent; }
+  50% { opacity: 0.5; box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 16%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .test-link.is-blinking { animation: none; }
+}
+
 /* ─── Settings Panel ─────────────────────────────────────────────────────── */
 .settings-toggle {
   display: flex;

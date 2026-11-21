@@ -92,7 +92,7 @@
   }
 
   function url(path) {
-    var href = new URL(path, document.baseURI).href;
+    var href = new URL((window.G4PC_BASE || '') + path, document.baseURI).href;
     var ver = window.GUIDE4PC_VERSION;
     if (ver && ver !== 'GUIDE4PC_BUILD_VER') {
       href += (href.indexOf('?') < 0 ? '?' : '&') + 'v=' + encodeURIComponent(ver);

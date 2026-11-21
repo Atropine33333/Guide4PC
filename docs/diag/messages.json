@@ -21,224 +21,224 @@
       "match": "expected ';'",
       "category": "语法",
       "example": "error: expected ';' at end of declaration",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）杂鱼，这行末尾的分号又玩失踪咯！C++ 拿分号给一句话收尾，少一个，编译器就把后头几行全搅和成一锅粥嘛。",
+      "hint": "回头瞅瞅上一行尾巴，尤其 return 和赋值后面咯。"
     },
     {
       "id": "missing-brace",
       "match": "expected '\\}'",
       "category": "语法",
       "example": "error: expected '}'",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）花括号又配不上对咯！有个 { 一直等它的 }，等到文件见底都没等到，本小姐都替它急嘛。",
+      "hint": "从报错处往回找最近的 {，数数嵌套了几层咯。"
     },
     {
       "id": "missing-paren",
       "match": "expected '\\)'",
       "category": "语法",
       "example": "error: expected ')'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）圆括号落了单咯，左边右边找不着伴儿，编译器只好在这儿撂挑子嘛。",
+      "hint": "瞧瞧这行的函数调用和条件，括号成对没得嘛。"
     },
     {
       "id": "expected-expression",
       "match": "expected expression",
       "category": "语法",
       "example": "error: expected expression",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）这儿本该蹲个能算的值，结果空起咯！多半是等号或运算符后头忘了写值，要不就是多敲了个符号嘛。",
+      "hint": "瞅瞅 =、return 或 << 后头是不是漏了值咯。"
     },
     {
       "id": "expected-unqualified-id",
       "match": "expected unqualified-id",
       "category": "语法",
       "example": "error: expected unqualified-id",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）这儿该冒个新名字——变量、函数或类型，编译器偏偏瞅见别的符号，一脸懵嘛。",
+      "hint": "看看这行是不是多写了分号或括号，return 是不是跑到函数外咯。"
     },
     {
       "id": "undeclared-identifier",
       "match": "use of undeclared identifier '([^']+)'",
       "category": "名字与作用域",
       "example": "error: use of undeclared identifier 'x'",
-      "human": "",
-      "hint": ""
+      "human": "（凑近屏幕眯眼）编译器一脸懵：这名字俺不认识嘞！要么拼错咯，要么它到这儿还没声明嘛。",
+      "hint": "核对拼写，再看定义是不是写在使用前头、作用域对不对咯。"
     },
     {
       "id": "unknown-type-name",
       "match": "unknown type name '([^']+)'",
       "category": "名字与作用域",
       "example": "error: unknown type name 'string'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）编译器压根不拿这词当类型嘛！八成拼错咯，要不就是忘了请头文件进门。",
+      "hint": "查查拼写，std:: 的类型带上前缀，头文件也补上咯。"
     },
     {
       "id": "no-member",
       "match": "no member named '([^']+)' in",
       "category": "名字与作用域",
       "example": "error: no member named 'foo' in 'std::vector<int>'",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）恁点的这成员，人家对象里头压根没得嘛！名字拼错咯，还是这类型根本长不出这根筋？",
+      "hint": "先认准对象类型；std::vector 可没得 .length() 哦。"
     },
     {
       "id": "missing-namespace-member",
       "match": "no member named '([^']+)' in namespace '([^']+)'",
       "category": "名字与作用域",
       "example": "error: no member named 'cout' in namespace 'std'",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）这命名空间里没得这个成员撒！最典型就是 std::cout，得先请 <iostream> 进门，名字还要写全咯。",
+      "hint": "补上对应 #include，再核对成员名和 std:: 前缀咯。"
     },
     {
       "id": "redefinition",
       "match": "redefinition of '([^']+)'",
       "category": "名字与作用域",
       "example": "error: redefinition of 'x'",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）这名儿在同一片地盘被定义两回咯！C++ 里头一个名字只准有一份定义嘛。",
+      "hint": "给后头那个换个名，或者把重复的定义删咯。"
     },
     {
       "id": "header-not-found",
       "match": "'([^']+)' file not found",
       "category": "名字与作用域",
       "example": "error: 'vector' file not found",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）哦豁，头文件找不着咯！名字拼错咯，还是这编译器标准库里压根没这号货嘛？",
+      "hint": "标准头文件不带 .h，比如 <vector>，尖括号和拼写都瞅瞅。"
     },
     {
       "id": "bad-init-type",
       "match": "cannot initialize a variable of type '([^']+)' with an? (?:rvalue|lvalue) of type '([^']+)'",
       "category": "类型",
       "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）想拿这种值去初始化这种变量？类型对不上嘛，编译器当场给恁撂脸子咯。",
+      "hint": "先瞅右边字面量：\"abc\" 是字符串，'a' 才是字符；要转就用 std::string 咯。"
     },
     {
       "id": "invalid-operands",
       "match": "invalid operands to binary expression",
       "category": "类型",
       "example": "error: invalid operands to binary expression ('std::string' and 'int')",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）这俩货搁一块儿压根不能这么算嘛！字符串加数字？C++ 才不偷偷帮恁变戏法嘞，本小姐看着都来气。",
+      "hint": "先把数字用 std::to_string 转成字符串再拼，或核对两边类型咯。"
     },
     {
       "id": "no-viable-conversion",
       "match": "no viable conversion from",
       "category": "类型",
       "example": "error: no viable conversion from 'std::string' to 'int'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）编译器把路都翻遍咯，硬是找不着从这类型变到那类型的那条道儿嘛。",
+      "hint": "对一下参数类型，该显式转就 std::stoi 或 static_cast 咯。"
     },
     {
       "id": "assign-incompatible",
       "match": "assigning to '([^']+)' from incompatible type '([^']+)'",
       "category": "类型",
       "example": "error: assigning to 'int' from incompatible type 'const char *'",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）赋值号两边脾气不合嘛，这个值咋都塞不进左边那个变量里头咯。",
+      "hint": "看清变量和右边各是啥类型，字符串字面量拿 std::string 接咯。"
     },
     {
       "id": "no-matching-function",
       "match": "no matching (?:member )?function for call to '([^']+)'",
       "category": "类型",
       "example": "error: no matching member function for call to 'append'",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）函数名倒是对上咯，可参数对不上号，哪个重载都不肯接这单生意嘛。",
+      "hint": "数数参数个数和类型；拼字符串用 std::string 或 const char* 咯。"
     },
     {
       "id": "no-matching-constructor",
       "match": "no matching constructor for initialization of '([^']+)'",
       "category": "类型",
       "example": "error: no matching constructor for initialization of 'Buffer'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）这类型没得哪个构造函数肯收这组参数，人家门槛高着嘞。",
+      "hint": "对着构造函数的参数表改，或者先造出来再赋值咯。"
     },
     {
       "id": "too-few-arguments",
       "match": "too few arguments to function call",
       "category": "类型",
       "example": "error: too few arguments to function call, expected 2, have 1",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）喂，给的参数太少咯！这函数肚子大，要的比恁塞的多嘛。",
+      "hint": "照函数签名把参数补齐，有默认值的除外咯。"
     },
     {
       "id": "too-many-arguments",
       "match": "too many arguments to function call",
       "category": "类型",
       "example": "error: too many arguments to function call, expected 1, have 3",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）参数塞太多咯，这函数胃口小，接不住恁这一大把嘛。",
+      "hint": "删掉多余的参数，或者瞅瞅是不是叫错同名函数咯。"
     },
     {
       "id": "missing-return-value",
       "match": "non-void function (?:'([^']+)' )?(?:does not return a value|should return a value)",
       "category": "类型",
       "example": "warning: non-void function does not return a value in all control paths",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）这函数拍胸脯说返回值，结果有条道走到头都没 return，调用的人只能拿到个说不准的玩意儿嘛。",
+      "hint": "每个分支和函数末尾都补上 return；main 除外咯。"
     },
     {
       "id": "indirection-not-pointer",
       "match": "indirection requires pointer operand",
       "category": "类型",
       "example": "error: indirection requires pointer operand ('int' invalid)",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）恁拿 * 或者 -> 去解引用，可它压根不是个指针嘛，编译器当场懵圈咯。",
+      "hint": "先确认它是不是指针；普通对象用 .，指针才用 -> 咯。"
     },
     {
       "id": "member-of-non-class",
       "match": "member reference base type '[^']+' is not a structure or union",
       "category": "类型",
       "example": "error: member reference base type 'int' is not a structure or union",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）恁在一个不是类、也不是结构体的东西上头点成员，它哪来的成员给恁嘛！",
+      "hint": "瞅瞅点号左边是不是对象，该用 . 还是 -> 咯。"
     },
     {
       "id": "undefined-symbol",
       "match": "undefined symbol: ([^\\s(]+)",
       "category": "链接",
       "example": "wasm-ld: error: main.o: undefined symbol: f()",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）哦豁，链接器找不着这函数的身体咯！只见过声明，实现在哪儿鬼影子都没得嘛。",
+      "hint": "查查函数真写了实现没，名字和参数跟声明对得上不，别只写个分号咯。"
     },
     {
       "id": "undefined-reference",
       "match": "undefined reference to '([^']+)'",
       "category": "链接",
       "example": "error: undefined reference to 'foo()'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）链接这关就卡住咯：函数被喊了名，可全工程愣是没一处定义它嘛。",
+      "hint": "把函数定义补上，顺带核对命名空间和参数表咯。"
     },
     {
       "id": "throw-disabled",
       "match": "cannot use 'throw' with exceptions disabled",
       "category": "运行时限制",
       "example": "error: cannot use 'throw' with exceptions disabled",
-      "human": "",
-      "hint": ""
+      "human": "（叉腰）哦豁，这在线编译器没开 C++ 异常，throw 暂时就是个摆设嘛。",
+      "hint": "先拿返回错误码或 std::optional 顶一顶，练异常回本地跑。"
     },
     {
       "id": "try-disabled",
       "match": "cannot use 'try' with exceptions disabled",
       "category": "运行时限制",
       "example": "error: cannot use 'try' with exceptions disabled",
-      "human": "",
-      "hint": ""
+      "human": "（翻白眼）try / catch 得要异常支持，这在线编译器偏偏没开这扇门嘛。",
+      "hint": "改成查返回值；异常处理留到本地编译器练咯。"
     },
     {
       "id": "no-viable-overload",
       "match": "no matching function for call to '([^']+)'",
       "category": "类型",
       "example": "error: no matching function for call to 'max'",
-      "human": "",
-      "hint": ""
+      "human": "（托腮看戏）这名字挂了重载，可没哪个版本肯收这组参数，个个都摇头，本小姐都懒得骂咯。",
+      "hint": "对一下参数类型；std::max 要俩参数同型哦。"
     },
     {
       "id": "array-subscript-not-integer",
       "match": "array subscript is not an integer",
       "category": "类型",
       "example": "error: array subscript is not an integer",
-      "human": "",
-      "hint": ""
+      "human": "（拍桌）下标得是整数撒！恁塞了个别的类型进去，数组当场不认账咯。",
+      "hint": "用 int 或 size_t 当下标，浮点和字符串都不中咯。"
     }
   ]
 }

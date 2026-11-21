@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试台 · Guide4PC</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../pg/pg.css">
+  <style>
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); }
+    .bench { max-width: 920px; margin: 0 auto; padding: 40px 24px 96px; }
+    .bench-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border); }
+    .bench-head h1 { margin: 0; font-size: 22px; font-weight: 650; }
+    .bench-head a { font-size: 13px; color: var(--color-text-muted); }
+    .bench-note { margin: 12px 0 24px; font-size: 13px; color: var(--color-text-muted); line-height: 1.7; }
+    .bench-list { display: grid; gap: 0; border-top: 1px solid var(--color-border); }
+    .bench-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--color-border); }
+    .bench-title { font-size: 15px; font-weight: 600; }
+    .bench-meta { margin-top: 4px; font-family: var(--font-mono); font-size: 12px; color: var(--color-text-muted); }
+    .bench-row button { height: 30px; padding: 0 12px; font-size: 12.5px; border: 1px solid var(--color-border-strong); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
+    .bench-row button:hover { background: var(--color-hover-bg); }
+    .bench-slot { grid-column: 1 / -1; padding: 16px 0 8px; }
+    .bench-empty { padding: 24px 0; font-size: 13px; color: var(--color-text-muted); }
+  </style>
+</head>
+<body>
+  <main class="bench">
+    <header class="bench-head">
+      <h1>测试台</h1>
+      <a href="../index.html">← 返回主站</a>
+    </header>
+    <p class="bench-note">
+      练习数据的试验页：这里的卡片直接读取 <code>ex/&lt;id&gt;/spec.json</code>，用来检查题面、变体、检查清单与运行器。
+      正式页面仍然由 markdown 里的 <code>:::exercise</code> 生成。
+    </p>
+    <div id="bench-list" class="bench-list">
+      <div class="bench-empty">正在读取题目索引…</div>
+    </div>
+  </main>
+
+  <script>
+    window.G4PC_BASE = '../';
+  </script>
+  <script>
+    (function () {
+      'use strict';
+      var list = document.getElementById('bench-list');
+      var pgLoaded = null;
+
+      function loadPg() {
+        if (window.G4PCPlayground) return Promise.resolve();
+        if (pgLoaded) return pgLoaded;
+        pgLoaded = new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.src = '../pg/pg.js';
+          script.onload = resolve;
+          script.onerror = function () { reject(new Error('pg.js failed')); };
+          document.head.appendChild(script);
+        });
+        return pgLoaded;
+      }
+
+      function label(value) {
+        if (!value) return '';
+        if (typeof value === 'string') return value;
+        return value.chs || value.en || '';
+      }
+
+      function row(item) {
+        var wrap = document.createElement('div');
+        wrap.className = 'bench-row';
+
+        var info = document.createElement('div');
+        var title = document.createElement('div');
+        title.className = 'bench-title';
+        title.textContent = label(item.title) || item.id;
+        var meta = document.createElement('div');
+        meta.className = 'bench-meta';
+        meta.textContent = [
+          item.id,
+          item.lang,
+          item.category ? item.category + (item.rank ? ' · R' + item.rank : '') : '',
+          item.checks + ' checks',
+          item.harness ? 'harness' : 'cases'
+        ].filter(Boolean).join('  ·  ');
+        info.appendChild(title);
+        info.appendChild(meta);
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = '挂载卡片';
+        btn.addEventListener('click', function () {
+          btn.disabled = true;
+          var slot = document.createElement('div');
+          slot.className = 'bench-slot';
+          var mount = document.createElement('div');
+          mount.className = 'ex-mount';
+          mount.setAttribute('data-ex', item.id);
+          slot.appendChild(mount);
+          wrap.appendChild(slot);
+          loadPg().then(function () {
+            if (window.G4PCPlayground) window.G4PCPlayground.mountAll();
+          }).catch(function (err) {
+            slot.textContent = '加载失败：' + err.message;
+          });
+        });
+
+        wrap.appendChild(info);
+        wrap.appendChild(btn);
+        return wrap;
+      }
+
+      fetch('../ex/index.json', { cache: 'no-cache' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (items) {
+          list.textContent = '';
+          if (!items.length) {
+            list.innerHTML = '<div class="bench-empty">还没有题目。</div>';
+            return;
+          }
+          items.sort(function (a, b) {
+            return (a.category || '').localeCompare(b.category || '') || (a.rank || 0) - (b.rank || 0);
+          });
+          items.forEach(function (item) { list.appendChild(row(item)); });
+        })
+        .catch(function (err) {
+          list.innerHTML = '<div class="bench-empty">读取题目索引失败：' + err.message + '</div>';
+        });
+    })();
+  </script>
+</body>
+</html>

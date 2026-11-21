@@ -81,6 +81,7 @@
       'theme-green': '青青',
       'force-refresh': '强制刷新',
       'download': '下载',
+      'test': '测试',
     },
     en: {
       'settings-title': 'Display Settings',
@@ -95,6 +96,7 @@
       'theme-green': 'Mint',
       'force-refresh': 'Hard Refresh',
       'download': 'Download',
+      'test': 'Tests',
     },
   };
 
@@ -140,6 +142,39 @@
         const loading = isZh ? '在线练习 · 正在准备编辑器…' : 'Online exercise · preparing the editor…';
         return '<div class="ex-mount" data-ex="' + id + '" data-variant="' + variant + '">' +
           '<div class="ex-loading">' + loading + '</div></div>';
+      }
+    });
+  }
+
+  // Scene mounts: :::scene{id="welcome-intro"} + :::scene-line{key="hello"}
+  // Copy stays in markdown; the choreography lives in pg/scene.js.
+  if (window.markdownitContainer) {
+    md.use(window.markdownitContainer, 'scene', {
+      validate: function (params) {
+        return /^scene(?=\s|\{|$)/.test(params.trim());
+      },
+      render: function (tokens, idx) {
+        const token = tokens[idx];
+        if (token.nesting !== 1) return '</div>';
+        const attrs = {};
+        token.info.trim().slice('scene'.length).trim().replace(/([A-Za-z_][\w-]*)\s*=\s*"([^"]*)"/g, function (_, k, v) {
+          attrs[k] = v;
+        });
+        return '<div class="scene-mount" data-scene="' + md.utils.escapeHtml(attrs.id || '') + '">';
+      }
+    });
+    md.use(window.markdownitContainer, 'scene-line', {
+      validate: function (params) {
+        return /^scene-line(?=\s|\{|$)/.test(params.trim());
+      },
+      render: function (tokens, idx) {
+        const token = tokens[idx];
+        if (token.nesting !== 1) return '</div>';
+        const attrs = {};
+        token.info.trim().slice('scene-line'.length).trim().replace(/([A-Za-z_][\w-]*)\s*=\s*"([^"]*)"/g, function (_, k, v) {
+          attrs[k] = v;
+        });
+        return '<div class="scene-line" data-line="' + md.utils.escapeHtml(attrs.key || '') + '">';
       }
     });
   }
@@ -655,6 +690,47 @@
     }
   }
 
+  // ─── Scenes (lazy) ──────────────────────────────────────────────────────
+  // Same contract as the playground: only pages with :::scene pay for it.
+  let _sceneLoading = null;
+  function hydrateScenes() {
+    if (!$content.querySelector('.scene-mount')) return;
+    if (window.G4PCScene) {
+      window.G4PCScene.hydrateAll();
+      return;
+    }
+    if (!_sceneLoading) {
+      const css = new Promise((resolve) => {
+        if (document.getElementById('g4pc-scene-css')) return resolve();
+        const link = document.createElement('link');
+        link.id = 'g4pc-scene-css';
+        link.rel = 'stylesheet';
+        link.href = versioned('pg/scene.css');
+        link.onload = link.onerror = resolve;
+        document.head.appendChild(link);
+      });
+      const js = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = versioned('pg/scene.js');
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('pg/scene.js failed to load'));
+        document.head.appendChild(script);
+      });
+      _sceneLoading = Promise.all([css, js])
+        .catch((err) => {
+          console.error(err);
+          _sceneLoading = null;
+        })
+        .then(() => {
+          if (window.G4PCScene) window.G4PCScene.hydrateAll();
+        });
+    } else {
+      _sceneLoading.then(() => {
+        if (window.G4PCScene) window.G4PCScene.hydrateAll();
+      });
+    }
+  }
+
   async function renderDocument(lang, docPath, seq) {
     if (!docPath) return;
 
@@ -698,9 +774,9 @@
         if (src) img.setAttribute('src', versioned(src));
       });
 
-      // Add home-page class for welcome/home documents and Appendix 20 (serif font)
+      // Serif treatment: the welcome letter (now 0.1) and Appendix 20.
       currentKey = getPairKey(lang, docPath);
-      if (currentKey === 'home' || currentKey === 'appendix/20' || currentKey === 'root/20') {
+      if (currentKey === '0.1' || currentKey === 'appendix/20' || currentKey === 'root/20') {
         $content.classList.add('home-page');
       } else {
         $content.classList.remove('home-page');
@@ -732,6 +808,7 @@
 
       // Hydrate online-exercise cards (lazy-loads the playground runtime)
       hydratePlayground();
+      hydrateScenes();
 
       // Restore reading progress
       const saved = loadProgress(lang, docPath);

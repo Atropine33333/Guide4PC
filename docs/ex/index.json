@@ -1,0 +1,26 @@
+[
+  {
+    "id": "circular-buffer",
+    "title": {
+      "chs": "环形缓冲区",
+      "en": "Circular Buffer"
+    },
+    "lang": "cpp",
+    "category": "engineering",
+    "rank": 1,
+    "checks": 7,
+    "harness": true
+  },
+  {
+    "id": "count-digit-occurrences",
+    "title": {
+      "chs": "数字出现计数",
+      "en": "Count Digit Occurrences"
+    },
+    "lang": "cpp",
+    "category": "syntax",
+    "rank": 1,
+    "checks": 2,
+    "harness": false
+  }
+]

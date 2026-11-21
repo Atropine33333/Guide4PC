@@ -3,9 +3,16 @@
     "chs": [
       {
         "type": "file",
-        "name": "欢迎信",
-        "path": "0_欢迎信.md",
+        "name": "开屏",
+        "path": "0_开屏.md",
         "key": "home",
+        "lang": "chs"
+      },
+      {
+        "type": "file",
+        "name": "欢迎信",
+        "path": "0.1_欢迎信.md",
+        "key": "root/0.1",
         "lang": "chs"
       },
       {
@@ -425,8 +432,8 @@
     "en": [
       {
         "type": "file",
-        "name": "Welcome Letter",
-        "path": "0_WelcomeLetter.md",
+        "name": "Start",
+        "path": "0_Start.md",
         "key": "home",
         "lang": "en"
       },
@@ -435,6 +442,13 @@
         "name": "Appendix0",
         "path": "Appendix0.md",
         "key": "appendix/0",
+        "lang": "en"
+      },
+      {
+        "type": "file",
+        "name": "WelcomeLetter",
+        "path": "0.1_WelcomeLetter.md",
+        "key": "root/0.1",
         "lang": "en"
       },
       {
@@ -853,10 +867,6 @@
     ]
   },
   "pairs": {
-    "home": {
-      "chs": "0_欢迎信.md",
-      "en": "0_WelcomeLetter.md"
-    },
     "AfterStory/21": {
       "chs": "AfterStory/附录21_资源.md",
       "en": "AfterStory/Appendix21_Resources.md"
@@ -1084,7 +1094,15 @@
     "main/Chapter4_Hardware/0": {
       "chs": null,
       "en": "main/Chapter4_Hardware/[dl4]Section0_Introduction.md"
+    },
+    "root/0.1": {
+      "chs": "0.1_欢迎信.md",
+      "en": "0.1_WelcomeLetter.md"
+    },
+    "home": {
+      "chs": "0_开屏.md",
+      "en": "0_Start.md"
     }
   },
-  "version": "b004b0ff2c"
+  "version": "40472a811e"
 }

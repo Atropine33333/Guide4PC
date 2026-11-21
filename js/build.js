@@ -64,13 +64,15 @@ function getBuildVersion() {
     'playground/pg.js',
     'playground/pg-worker.js',
     'playground/pg.css',
+    'playground/scene.js',
+    'playground/scene.css',
     'playground/vendor/editor.bundle.js',
     'diagnostics/messages.json',
   ]) {
     const full = path.join(ROOT, f);
     if (fs.existsSync(full)) add(full);
   }
-  for (const d of ['exercises']) {
+  for (const d of ['exercises', 'test']) {
     const full = path.join(ROOT, d);
     if (fs.existsSync(full)) walk(full);
   }
@@ -782,7 +784,7 @@ function syncPlayground() {
   };
 
   const pgSrc = path.join(ROOT, 'playground');
-  for (const f of ['pg.js', 'pg-worker.js', 'pg.css']) {
+  for (const f of ['pg.js', 'pg-worker.js', 'pg.css', 'scene.js', 'scene.css']) {
     const from = path.join(pgSrc, f);
     if (fs.existsSync(from)) copyFile(from, path.join(DIST, 'pg', f));
   }
@@ -810,6 +812,46 @@ function syncPlayground() {
   const diag = path.join(ROOT, 'diagnostics', 'messages.json');
   if (fs.existsSync(diag)) copyFile(diag, path.join(DIST, 'diag', 'messages.json'));
 
+  // 练习索引：测试台与未来的题目总览共用。
+  if (fs.existsSync(exSrc)) {
+    const index = [];
+    for (const id of fs.readdirSync(exSrc)) {
+      const specFile = path.join(exSrc, id, 'spec.json');
+      if (!fs.existsSync(specFile)) continue;
+      try {
+        const spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
+        index.push({
+          id: spec.id || id,
+          title: spec.title || null,
+          lang: spec.lang || 'cpp',
+          category: spec.category || null,
+          rank: typeof spec.rank === 'number' ? spec.rank : null,
+          checks: Array.isArray(spec.checks) ? spec.checks.length : 0,
+          harness: !!spec.harness,
+        });
+      } catch (err) {
+        console.warn(`  ! exercises/${id}/spec.json: ${err.message}`);
+      }
+    }
+    ensureDir(path.join(DIST, 'ex'));
+    fs.writeFileSync(path.join(DIST, 'ex', 'index.json'), JSON.stringify(index, null, 2));
+  }
+
+  // 测试子站：/test/ 独立页面，构建时整体复制。
+  const testSrc = path.join(ROOT, 'test');
+  if (fs.existsSync(testSrc)) {
+    const walkCopy = (from, to) => {
+      ensureDir(to);
+      for (const ent of fs.readdirSync(from, { withFileTypes: true })) {
+        const src = path.join(from, ent.name);
+        const dst = path.join(to, ent.name);
+        if (ent.isDirectory()) walkCopy(src, dst);
+        else if (ent.isFile()) copyFile(src, dst);
+      }
+    };
+    walkCopy(testSrc, path.join(DIST, 'test'));
+  }
+
   return copied;
 }
 
@@ -835,7 +877,7 @@ function fullBuild(cache) {
     const fullPath = path.join(SRC, lang, relPath);
     const basename = path.basename(relPath);
     const key = extractKey(basename, relPath);
-    const title = (key === 'home') ? (lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
+    const title = (key === 'home') ? (lang === 'chs' ? '开屏' : 'Start') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const headings = extractHeadings(md);
     const content = stripMarkdown(md);
@@ -1068,7 +1110,7 @@ function incrementalBuild(cache) {
     const fullPath = path.join(SRC, f.lang, f.relPath);
     const basename = path.basename(f.relPath);
     const key = extractKey(basename, f.relPath);
-    const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
+    const title = (key === 'home') ? (f.lang === 'chs' ? '开屏' : 'Start') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const headings = extractHeadings(md);
     const content = stripMarkdown(md);
@@ -1082,7 +1124,7 @@ function incrementalBuild(cache) {
     const fullPath = path.join(SRC, f.lang, f.relPath);
     const basename = path.basename(f.relPath);
     const key = extractKey(basename, f.relPath);
-    const title = (key === 'home') ? (f.lang === 'chs' ? '欢迎信' : 'Welcome Letter') : extractTitle(basename);
+    const title = (key === 'home') ? (f.lang === 'chs' ? '开屏' : 'Start') : extractTitle(basename);
     const md = fs.readFileSync(fullPath, 'utf-8');
     const headings = extractHeadings(md);
     const content = stripMarkdown(md);
