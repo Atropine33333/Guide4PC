@@ -15,12 +15,14 @@
  * `var G4PCEditor = (...)` 会在最后把 window 上的同名属性覆盖成空 exports。
  */
 import { EditorView, basicSetup } from 'codemirror';
-import { keymap } from '@codemirror/view';
+import { keymap, hoverTooltip } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import { cpp } from '@codemirror/lang-cpp';
 import { HighlightStyle, indentUnit, syntaxHighlighting } from '@codemirror/language';
 import { indentWithTab } from '@codemirror/commands';
 import { tags as t } from '@lezer/highlight';
+import { autocompletion } from '@codemirror/autocomplete';
+import { cppCompletionSource, cppHover } from './cpp-intel.js';
 
 const INDENT = '    ';
 
@@ -76,6 +78,16 @@ export function createEditor({ parent, doc }) {
   const extensions = [
     keymap.of([indentWithTab]),
     basicSetup,
+    // basicSetup 自带的 autocompletion 只按文档里的词补全；这里用 C++ 语义源覆盖它。
+    // 放在 basicSetup 之后，facet 合并时后者的 override 生效。
+    autocompletion({
+      override: [cppCompletionSource],
+      activateOnTyping: true,
+      activateOnTypingDelay: 120,
+      icons: false,
+      maxRenderedOptions: 80,
+    }),
+    hoverTooltip(cppHover, { hoverTime: 220 }),
     cpp(),
     indentUnit.of(INDENT),
     EditorState.tabSize.of(4),
@@ -92,4 +104,4 @@ export function createEditor({ parent, doc }) {
   });
 }
 
-export { EditorView, EditorState, basicSetup, cpp };
+export { EditorView, EditorState, basicSetup, cpp, autocompletion };
