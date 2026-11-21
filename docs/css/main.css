@@ -24,8 +24,8 @@
   /* Sizing */
   --font-size-base: 16px;
   --line-height:    1.7;
-  --radius:         8px;
-  --radius-sm:      4px;
+  --radius:         0px;
+  --radius-sm:      0px;
   --sidebar-width:  280px;
   --topbar-height:  48px;
 
@@ -39,6 +39,12 @@
   --font-sans:   'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif:  'Noto Serif SC', 'Inter', Georgia, serif;
   --font-mono:   'Maple Mono NF CN', 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Noto Sans SC', monospace;
+
+  /* Elevation — Skarn-style layered, very soft shadows */
+  --shadow-soft: 0 8px 24px -4px oklch(0 0 0 / 0.10),
+                 0 4px 8px -2px oklch(0 0 0 / 0.05);
+  --shadow-pop:  0 16px 40px -12px oklch(0 0 0 / 0.18),
+                 0 6px 16px -6px oklch(0 0 0 / 0.08);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -268,7 +274,7 @@ body {
 
 .nav-tree::-webkit-scrollbar-thumb {
   background: var(--color-border);
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 /* Directory node */
@@ -349,7 +355,7 @@ body {
 .nav-file mark {
   background: var(--color-highlight);
   color: inherit;
-  border-radius: 2px;
+  border-radius: 0;
   padding: 0 1px;
 }
 
@@ -480,7 +486,7 @@ body {
   padding: 0.5em 1em;
   border-left: 3px solid var(--color-primary);
   background: var(--color-pre-bg);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: 0;
   color: var(--color-text-muted);
 }
 
@@ -611,7 +617,7 @@ body {
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius);
   font-size: 0.85rem;
-  box-shadow: 0 4px 12px var(--color-shadow);
+  box-shadow: var(--shadow-soft);
   animation: toast-in var(--transition-normal) ease-out,
              toast-out var(--transition-normal) 1.8s ease-in forwards;
   pointer-events: auto;
@@ -632,7 +638,7 @@ body {
 .content mark.search-mark {
   background: var(--color-highlight);
   color: inherit;
-  border-radius: 2px;
+  border-radius: 0;
   padding: 0 1px;
   transition: background 3s ease;
 }
@@ -780,7 +786,7 @@ body {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 24px var(--color-shadow);
+  box-shadow: var(--shadow-pop);
   z-index: 200;
   padding: 1rem;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
@@ -839,8 +845,26 @@ body {
 
 .settings-row input[type="range"] {
   width: 100%;
-  accent-color: var(--color-primary);
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  height: 16px;
+}
+
+.settings-row input[type="range"]::-webkit-slider-runnable-track {
   height: 4px;
+  background: var(--color-border);
+}
+
+.settings-row input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 0;
 }
 
 /* Theme selector */
