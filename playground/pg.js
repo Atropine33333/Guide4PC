@@ -45,6 +45,17 @@
     retry: ZH ? '重试' : 'Retry',
   };
 
+  var CATEGORY_LABELS = {
+    syntax: ZH ? '语法' : 'Syntax',
+    semantics: ZH ? '语义' : 'Semantics',
+    types: ZH ? '类型' : 'Types',
+    stdlib: ZH ? '标准库' : 'Stdlib',
+    memory: ZH ? '内存与资源' : 'Memory',
+    algorithm: ZH ? '算法' : 'Algorithms',
+    engineering: ZH ? '工程综合' : 'Engineering',
+    debugging: ZH ? '调试排错' : 'Debugging',
+  };
+
   var worker = null;
   var activeRun = null;
   var specs = new Map();
@@ -375,6 +386,7 @@
         ]),
         h('div', { class: 'ex-meta' }, [
           h('span', { class: 'ex-chip ex-chip-lang', text: (spec.lang || 'cpp').toUpperCase() }),
+          spec.category ? h('span', { class: 'ex-chip ex-chip-cat', text: (CATEGORY_LABELS[spec.category] || spec.category) + (spec.rank ? ' · R' + spec.rank : '') }) : null,
           h('span', { class: 'ex-chip', text: checks.length + ' ' + TEXT.tests }),
           variantSpec ? h('span', { class: 'ex-chip ex-chip-var', text: variant }) : null,
         ]),

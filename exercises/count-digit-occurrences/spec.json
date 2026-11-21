@@ -6,6 +6,8 @@
     "en": "Count Digit Occurrences"
   },
   "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
   "limits": {
     "timeoutMs": 5000,
     "outputBytes": 65536

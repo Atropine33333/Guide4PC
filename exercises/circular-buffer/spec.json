@@ -6,6 +6,8 @@
     "en": "Circular Buffer"
   },
   "lang": "cpp",
+  "category": "engineering",
+  "rank": 1,
   "harness": "harness.cpp",
   "limits": {
     "timeoutMs": 5000,

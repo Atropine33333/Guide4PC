@@ -26,6 +26,25 @@
         "python"
       ]
     },
+    "category": {
+      "enum": [
+        "syntax",
+        "semantics",
+        "types",
+        "stdlib",
+        "memory",
+        "algorithm",
+        "engineering",
+        "debugging"
+      ],
+      "description": "Exercise family; rank is relative to this category."
+    },
+    "rank": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Difficulty rank inside the category (1 = easiest)."
+    },
     "harness": {
       "type": "string",
       "description": "Optional file compiled after the student's code (single TU), used for class-style exercises."
