@@ -1,75 +1,120 @@
 /*
- * Guide4PC 场景样式（欢迎页 hello 开场）
- * 只负责 :::scene 里的编排与动效；站点排版与配色仍来自 css/main.css。
+ * Guide4PC 场景样式（开屏 hello 笔迹）
+ * 笔迹部分参考 CodePen「SVG Stroke Animation」(gau/ZWZKxO)：paths 用
+ * stroke-dashoffset 画出来；画完后整体缩到左上角的小 hello。
  */
 
 .scene {
-  --scene-hero-h: clamp(210px, 38vh, 380px);
-  margin: 0 0 var(--ex-s5, 24px);
+  --scene-stage-h: clamp(360px, 62vh, 600px);
 }
 
-.scene-hero-wrap {
+.scene-intro {
+  position: relative;
+  min-height: var(--scene-stage-h);
+}
+
+/* 舞台绝对定位：hello 在开场区域里居中，收缩时不参与文档流，页面不跳。 */
+.scene-stage {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  height: var(--scene-hero-h);
-  overflow: hidden;
+  justify-content: center;
+  pointer-events: none;
 }
 
-.scene-hero {
+.scene-draw {
+  width: clamp(320px, 46vw, 560px);
+}
+
+.scene-draw svg,
+.scene-draw-clone svg {
+  display: block;
   width: 100%;
+  height: auto;
   overflow: visible;
 }
 
-.scene-hello-big {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: clamp(84px, 12.5vw, 148px);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.045em;
-  color: var(--color-text);
-  white-space: nowrap;
+.scene-draw .path,
+.scene-draw-clone .path {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 18px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.scene-hello-ch {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.55em);
-  animation: scene-rise 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
-  animation-delay: calc(var(--i) * 62ms);
+.scene-draw .path-1 {
+  stroke-dasharray: 1850 2000;
+  stroke-dashoffset: 1851px;
 }
 
-.scene-hero-clone,
-.scene-hero-clone .scene-hello-ch {
-  animation: none;
-  opacity: 1;
-  transform: none;
+.scene-draw .path-2 {
+  stroke-dasharray: 260 1000;
+  stroke-dashoffset: 261px;
 }
 
-@keyframes scene-rise {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scene-draw .path-3 {
+  stroke-dasharray: 100 1000;
+  stroke-dashoffset: 101px;
 }
 
-.scene-flow {
-  position: relative;
+.scene-draw .path-4 {
+  stroke-width: 0;
 }
 
+/* CodePen 原始节奏的 0.8 倍速：5s → 4s，延时同步缩短。 */
+.scene-draw.is-drawing .path-1 {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 4s linear;
+}
+
+.scene-draw.is-drawing .path-2 {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.96s linear 4.16s;
+}
+
+.scene-draw.is-drawing .path-3 {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.8s linear 5.2s;
+}
+
+.scene-draw.is-drawing .path-4 {
+  stroke-width: 18px;
+  transition: stroke-width 0.08s linear 6s;
+}
+
+/* 收缩结束后左上角的一行 hello。 */
 .scene-hello-small {
+  display: block;
+  height: 22px;
   margin: 0 0 var(--ex-s5, 24px);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
   opacity: 0;
-  transition: opacity 0.35s ease;
+}
+
+.scene-hello-small svg {
+  display: block;
+  height: 22px;
+  width: auto;
+  overflow: visible;
+}
+
+.scene-hello-small .path {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 18px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
 }
 
 .scene-hello-small.is-in {
   opacity: 1;
+}
+
+.scene-flow {
+  position: relative;
 }
 
 .scene-action {
@@ -78,7 +123,8 @@
   margin: 0 0 var(--ex-s4, 16px);
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1), height 0.25s ease, margin 0.25s ease;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1),
+    height 0.25s ease, margin 0.25s ease;
 }
 
 .scene-action.is-in {
@@ -160,7 +206,7 @@
 .scene-arrow path {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.1;
+  stroke-width: 1.1px;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: stroke-width 0.18s ease;
@@ -171,7 +217,7 @@
 }
 
 .scene-arrow:hover path {
-  stroke-width: 2.4;
+  stroke-width: 2.4px;
 }
 
 .scene-arrow:focus-visible {
@@ -216,16 +262,22 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene-hello-ch,
-  .scene-action,
-  .scene-hello-small {
-    animation: none !important;
+  .scene-hello-small,
+  .scene-action {
     transition: none !important;
     opacity: 1;
     transform: none;
   }
   .scene-line {
     transition: none !important;
+  }
+  .scene-draw.is-drawing .path-1,
+  .scene-draw.is-drawing .path-2,
+  .scene-draw.is-drawing .path-3,
+  .scene-draw.is-drawing .path-4 {
+    transition: none !important;
+    stroke-dashoffset: 0;
+    stroke-width: 18px;
   }
 }
 

@@ -29,7 +29,7 @@
       "match": "expected '\\}'",
       "category": "语法",
       "example": "error: expected '}'",
-      "human": "杂鱼，花括号又没配对？有个左括号一直等它的右括号，等到文件结束都没等到，真行啊。",
+      "human": "杂鱼，花括号又没配对？有个左花括号一直等它的右花括号，等到文件结束都没等到，真行啊。",
       "hint": "从报错位置往回找最近的左括号，数数嵌套了几层。"
     },
     {
@@ -197,7 +197,7 @@
       "match": "undefined symbol: ([^\\s(]+)",
       "category": "链接",
       "example": "wasm-ld: error: main.o: undefined symbol: f()",
-      "human": "杂鱼，链接器找不着这函数的实现，只见过声明，实现连影子都没有，糊弄谁呢？",
+      "human": "杂鱼，链接器找不着这函数的实现，只见过声明，实现连影子都没有，糊弄谁呢~",
       "hint": "查查函数是不是真写了实现，名字和参数跟声明对得上不。"
     },
     {
@@ -229,7 +229,7 @@
       "match": "no matching function for call to '([^']+)'",
       "category": "类型",
       "example": "error: no matching function for call to 'max'",
-      "human": "杂鱼，这名字挂着重载，可没哪个版本肯收这组参数，个个都摇头，省省吧。",
+      "human": "杂鱼，这名字挂着重载，可没哪个版本肯收这组参数，个个都摇头，省省吧~",
       "hint": "对一下参数类型；std::max 要求两个参数同型。"
     },
     {
