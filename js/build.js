@@ -1309,7 +1309,32 @@ function incrementalBuild(cache) {
 
 // ─── Entry ──────────────────────────────────────────────────────────────────
 
+function newestMtime(dir) {
+  let newest = 0;
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, ent.name);
+    if (ent.isDirectory()) newest = Math.max(newest, newestMtime(p));
+    else newest = Math.max(newest, fs.statSync(p).mtimeMs);
+  }
+  return newest;
+}
+
+// 规则文件比 catalog 新时先刷新合并产物，避免改了 diagnostics/rules 却发布旧文案。
+function refreshDiagnosticsCatalog() {
+  const rulesDir = path.join(ROOT, 'diagnostics', 'rules');
+  const catalog = path.join(ROOT, 'diagnostics', 'catalog.json');
+  if (!fs.existsSync(rulesDir)) return;
+  const newest = newestMtime(rulesDir);
+  const built = fs.existsSync(catalog) ? fs.statSync(catalog).mtimeMs : 0;
+  if (newest <= built) return;
+  const { spawnSync } = require('child_process');
+  console.log('  · diagnostics rules newer than catalog → rebuilding catalog.json');
+  const res = spawnSync(process.execPath, [path.join(ROOT, 'tools', 'diag.mjs'), 'build'], { cwd: ROOT, stdio: 'inherit' });
+  if (res.status !== 0) console.warn('  ! diagnostics catalog refresh failed; using the existing catalog.json');
+}
+
 function build() {
+  refreshDiagnosticsCatalog();
   const forceFull = process.argv.includes('--force');
   const cache = readCache();
 
