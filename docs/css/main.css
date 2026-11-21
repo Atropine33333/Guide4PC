@@ -53,8 +53,8 @@
 
 /* ─── Theme: 亮白 (Light White) — default ──────────────────────────────────── */
 [data-theme="light"], :root {
-  --color-bg:        oklch(0.985 0 0);
-  --color-surface:   oklch(0.99 0 0);
+  --color-bg:        oklch(0.972 0 0);
+  --color-surface:   oklch(1 0 0);
   --color-text:      oklch(0.2 0 0);
   --color-text-muted: oklch(0.45 0 0);
   --color-primary:   oklch(0.55 0.18 255);
