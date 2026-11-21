@@ -694,6 +694,7 @@
   // Same contract as the playground: only pages with :::scene pay for it.
   let _sceneLoading = null;
   function hydrateScenes() {
+    if (window.G4PCScene && window.G4PCScene.dispose) window.G4PCScene.dispose();
     if (!$content.querySelector('.scene-mount')) return;
     if (window.G4PCScene) {
       window.G4PCScene.hydrateAll();
@@ -720,6 +721,9 @@
         .catch((err) => {
           console.error(err);
           _sceneLoading = null;
+          $content.querySelectorAll('.scene-mount').forEach((el) => {
+            el.classList.add('is-fallback');
+          });
         })
         .then(() => {
           if (window.G4PCScene) window.G4PCScene.hydrateAll();

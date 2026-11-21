@@ -39,19 +39,45 @@
     return lines;
   }
 
+  var activeCleanup = null;
+
   function blinkTestCta() {
     var link = document.getElementById('test-link');
     if (!link) return;
     link.classList.add('is-blinking');
-    link.addEventListener('animationend', function () {
+    window.setTimeout(function () {
       link.classList.remove('is-blinking');
-    }, { once: true });
+    }, 3600);
   }
 
   // ── welcome-intro ──────────────────────────────────────────────────────
   function buildWelcomeIntro(mount, lines) {
+    if (activeCleanup) activeCleanup();
     mount.classList.add('scene-ready');
     mount.textContent = '';
+
+    var timers = [];
+    var docListeners = [];
+    var liveClone = null;
+    function later(fn, ms) {
+      var id = window.setTimeout(fn, ms);
+      timers.push(id);
+      return id;
+    }
+    function listen(target, type, fn, opts) {
+      target.addEventListener(type, fn, opts);
+      docListeners.push(function () { target.removeEventListener(type, fn, opts); });
+    }
+    function cleanup() {
+      timers.forEach(function (id) { window.clearTimeout(id); });
+      timers.length = 0;
+      docListeners.forEach(function (off) { off(); });
+      docListeners.length = 0;
+      if (liveClone && liveClone.parentNode) liveClone.parentNode.removeChild(liveClone);
+      liveClone = null;
+      activeCleanup = null;
+    }
+    activeCleanup = cleanup;
 
     var helloText = lines.hello || 'hello';
     var section = h('section', { class: 'scene scene-intro' });
@@ -96,21 +122,28 @@
     var arrowTimer = 0;
     var armed = false;
 
+    button.disabled = true;
+    arrow.disabled = true;
+
     function showArrow() {
       if (state.proceeded) return;
       state.arrowShown = true;
+      arrow.disabled = false;
       arrowRow.classList.add('is-in');
     }
 
     function afterShrink() {
+      button.disabled = false;
       action.classList.add('is-in');
-      arrowTimer = window.setTimeout(showArrow, 2000);
+      arrowTimer = later(showArrow, 2000);
     }
 
     function proceed(kind) {
       if (state.proceeded) return;
       state.proceeded = true;
       window.clearTimeout(arrowTimer);
+      button.disabled = true;
+      arrow.disabled = true;
       action.classList.add('is-gone');
       arrowRow.classList.add('is-gone');
       reveal(nowLine, 140);
@@ -120,19 +153,21 @@
       } else {
         reveal(afterLine, 420);
       }
-      window.setTimeout(armAnywhere, 1100);
+      later(armAnywhere, 1100);
     }
 
     function armAnywhere() {
       if (armed) return;
       armed = true;
-      document.addEventListener('pointerdown', onAnywhere, true);
+      listen(document, 'pointerdown', onAnywhere, true);
+      listen(document, 'keydown', onAnywhere, true);
     }
 
     function onAnywhere() {
       if (state.finalShown) return;
       state.finalShown = true;
       document.removeEventListener('pointerdown', onAnywhere, true);
+      document.removeEventListener('keydown', onAnywhere, true);
       reveal(finalLine, 120);
       blinkTestCta();
     }
@@ -148,6 +183,7 @@
       }
 
       var clone = hero.cloneNode(true);
+      liveClone = clone;
       clone.className = 'scene-hero scene-hero-clone';
       clone.style.position = 'fixed';
       clone.style.left = heroRect.left + 'px';
@@ -177,6 +213,7 @@
           requestAnimationFrame(frame);
         } else {
           clone.remove();
+          liveClone = null;
           heroWrap.remove();
           small.style.visibility = 'visible';
           small.classList.add('is-in');
@@ -197,7 +234,7 @@
       small.classList.add('is-in');
       afterShrink();
     } else {
-      window.setTimeout(shrink, 1450);
+      later(shrink, 1450);
     }
   }
 
@@ -208,9 +245,16 @@
       var lines = readLines(mount);
       if (mount.getAttribute('data-scene') === 'welcome-intro') {
         buildWelcomeIntro(mount, lines);
+      } else {
+        mount.classList.add('scene-plain');
       }
     });
   }
 
-  window.G4PCScene = { hydrateAll: hydrateAll };
+  window.G4PCScene = {
+    hydrateAll: hydrateAll,
+    dispose: function () {
+      if (activeCleanup) activeCleanup();
+    },
+  };
 })();

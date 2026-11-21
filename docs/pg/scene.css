@@ -73,6 +73,7 @@
 }
 
 .scene-action {
+  pointer-events: none;
   height: 44px;
   margin: 0 0 var(--ex-s4, 16px);
   opacity: 0;
@@ -81,6 +82,7 @@
 }
 
 .scene-action.is-in {
+  pointer-events: auto;
   opacity: 1;
   transform: none;
 }
@@ -118,6 +120,7 @@
 }
 
 .scene-arrow-row {
+  pointer-events: none;
   display: flex;
   justify-content: center;
   height: 34px;
@@ -127,6 +130,7 @@
 }
 
 .scene-arrow-row.is-in {
+  pointer-events: auto;
   opacity: 1;
 }
 
@@ -214,11 +218,31 @@
 @media (prefers-reduced-motion: reduce) {
   .scene-hello-ch,
   .scene-action,
-  .scene-line,
   .scene-hello-small {
     animation: none !important;
     transition: none !important;
     opacity: 1;
     transform: none;
   }
+  .scene-line {
+    transition: none !important;
+  }
+}
+
+/* JS 未加载或场景 id 未知时的降级：把文案按普通段落显示。 */
+.scene-mount.scene-plain .scene-line,
+.scene-mount.is-fallback .scene-line {
+  max-height: none;
+  margin: 8px 0;
+  overflow: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.scene-mount.is-fallback::before {
+  content: '这个交互模块没有加载出来，先把文案留在这里。';
+  display: block;
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }

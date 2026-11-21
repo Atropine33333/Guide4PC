@@ -37,7 +37,7 @@
       "match": "expected '\\)'",
       "category": "语法",
       "example": "error: expected ')'",
-      "human": "杂鱼，圆括号都能落单？一个左括号或右括号找不到伴，编译器只能停在这儿干瞪眼。",
+      "human": "圆括号都能落单？杂鱼，一个左括号或右括号找不到伴，编译器只能停在这儿干瞪眼。",
       "hint": "检查这一行的函数调用和条件，看看括号是不是成对。"
     },
     {
@@ -85,7 +85,7 @@
       "match": "no member named '([^']+)' in namespace '([^']+)'",
       "category": "名字与作用域",
       "example": "error: no member named 'cout' in namespace 'std'",
-      "human": "杂鱼，这命名空间里没这个成员，最典型的就是 std::cout，得先包含 <iostream>，名字还得写全。",
+      "human": "杂鱼，这命名空间里没这个成员，最典型的就是 std::cout，得先包含 <iostream>，名字还得写全，这都能漏？",
       "hint": "补上对应的 #include，再核对成员名和 std:: 前缀。"
     },
     {
@@ -109,7 +109,7 @@
       "match": "cannot initialize a variable of type '([^']+)' with an? (?:rvalue|lvalue) of type '([^']+)'",
       "category": "类型",
       "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
-      "human": "杂鱼，想拿这种值初始化这种变量？类型对不上，编译器当场就给你脸色看。",
+      "human": "想拿这种值初始化这种变量？杂鱼，类型对不上，编译器当场就给你脸色看。",
       "hint": "看右边字面量：\"abc\" 是字符串，'a' 才是字符。"
     },
     {
@@ -125,7 +125,7 @@
       "match": "no viable conversion from",
       "category": "类型",
       "example": "error: no viable conversion from 'std::string' to 'int'",
-      "human": "杂鱼，编译器把路都翻遍了，也找不到从这种类型变到那种类型的道，真够绕的。",
+      "human": "编译器把路都翻遍了，杂鱼，也找不到从这种类型变到那种类型的道，真够绕的。",
       "hint": "对一下参数类型，该显式转就用 std::stoi 或 static_cast。"
     },
     {
@@ -197,7 +197,7 @@
       "match": "undefined symbol: ([^\\s(]+)",
       "category": "链接",
       "example": "wasm-ld: error: main.o: undefined symbol: f()",
-      "human": "杂鱼，链接器找不着这函数的实现，只见过声明，实现连影子都没有，糊弄谁呢？",
+      "human": "杂鱼，链接器找不着这函数的实现，只见过声明，实现连影子都没有，糊弄谁呢~",
       "hint": "查查函数是不是真写了实现，名字和参数跟声明对得上不。"
     },
     {
@@ -213,7 +213,7 @@
       "match": "cannot use 'throw' with exceptions disabled",
       "category": "运行时限制",
       "example": "error: cannot use 'throw' with exceptions disabled",
-      "human": "杂鱼，这在线编译器没开 C++ 异常，throw 暂时就是个摆设，写它有什么用？",
+      "human": "这在线编译器没开 C++ 异常，杂鱼，throw 暂时就是个摆设，写它有什么用？",
       "hint": "先用返回错误码或 std::optional 顶着，练异常回本地跑。"
     },
     {
@@ -221,7 +221,7 @@
       "match": "cannot use 'try' with exceptions disabled",
       "category": "运行时限制",
       "example": "error: cannot use 'try' with exceptions disabled",
-      "human": "杂鱼，try / catch 要异常支持，这在线编译器偏偏没开，白写啦。",
+      "human": "杂鱼，try / catch 要异常支持，这在线编译器偏偏没开，写了也白搭，气不气？",
       "hint": "改成检查返回值；异常处理留到本地编译器练。"
     },
     {
@@ -229,7 +229,7 @@
       "match": "no matching function for call to '([^']+)'",
       "category": "类型",
       "example": "error: no matching function for call to 'max'",
-      "human": "杂鱼，这名字挂着重载，可没哪个版本肯收这组参数，个个都摇头，就这？",
+      "human": "杂鱼，这名字挂着重载，可没哪个版本肯收这组参数，个个都摇头，省省吧~",
       "hint": "对一下参数类型；std::max 要求两个参数同型。"
     },
     {
@@ -237,7 +237,7 @@
       "match": "array subscript is not an integer",
       "category": "类型",
       "example": "error: array subscript is not an integer",
-      "human": "杂鱼，下标得是整数，你塞个别的类型进去，数组当场不认账，这都能错？",
+      "human": "下标得是整数，杂鱼，你塞个别的类型进去，数组当场不认账，这都能错？",
       "hint": "用 int 或 size_t 当下标，浮点和字符串都不行。"
     }
   ]
