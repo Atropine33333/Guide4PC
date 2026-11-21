@@ -96,7 +96,8 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--ex-s4);
-  padding: var(--ex-s5) var(--ex-s5) var(--ex-s3);
+  padding: var(--ex-s5) var(--ex-s5) 14px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .ex-head-main {
@@ -107,11 +108,10 @@
 .ex-kicker {
   display: inline-block;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
-  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
@@ -135,7 +135,7 @@
 
 .ex-chip {
   font-family: inherit;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1;
   padding: 5px 8px;
@@ -163,7 +163,7 @@
   display: flex;
   align-items: center;
   gap: var(--ex-s3);
-  padding: 0 var(--ex-s5) var(--ex-s4);
+  padding: 14px var(--ex-s5) var(--ex-s4);
 }
 
 .ex-progress[hidden] {
@@ -213,7 +213,7 @@
   display: flex;
   align-items: center;
   gap: var(--ex-s2);
-  padding: 0 var(--ex-s5) var(--ex-s4);
+  padding: 14px var(--ex-s5) var(--ex-s4);
   flex-wrap: wrap;
 }
 
@@ -266,7 +266,7 @@
 
 .ex-kbd {
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--color-text-muted);
   padding: 4px 7px;
   border: 1px solid var(--color-border);
@@ -275,7 +275,7 @@
 
 .ex-status {
   font-family: inherit;
-  font-size: 12.5px;
+  font-size: 12px;
   max-width: 16rem;
   overflow: hidden;
   text-overflow: ellipsis;
