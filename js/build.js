@@ -590,7 +590,9 @@ function compareKeys(a, b) {
 // Draft pages ("[test]…") stay reachable by direct hash but are hidden from the
 // sidebar tree, cross-language pairs and search index.
 function isDraftRel(relPath) {
-  return /(^|\/)\[test\][^\/]*\.md$/.test(relPath);
+  // 先剥掉 [dlN] 下载前缀，"[dl1][test]X.md" 也算草稿。
+  const base = path.basename(relPath).replace(/^\[dl\d+\]/, '');
+  return /^\[test\]/.test(base) && /\.md$/.test(base);
 }
 
 function buildTree(nodes, lang) {
