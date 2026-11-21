@@ -780,6 +780,30 @@ function syncAllStatics(cache) {
 
 // ─── Playground runtime ─────────────────────────────────────────────────────
 
+const EX_LANGS = new Set(['cpp', 'c', 'python']);
+const EX_CATEGORIES = new Set(['syntax', 'semantics', 'types', 'stdlib', 'memory', 'algorithm', 'engineering', 'debugging']);
+
+// 题目 spec 的必填字段与文件存在性；返回问题列表，空数组表示通过。
+function validateExerciseSpec(spec, dir, lang, id) {
+  const errs = [];
+  if (!spec || typeof spec !== 'object') return ['spec 不是对象'];
+  if (typeof spec.id !== 'string' || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(spec.id)) errs.push('id 需为小写短横线');
+  else if (spec.id !== id) errs.push(`id 与目录名 ${id} 不一致`);
+  if (spec.lang && !EX_LANGS.has(spec.lang)) errs.push('lang 非法');
+  if (spec.lang && lang && spec.lang !== lang) errs.push(`lang 与目录 ${lang} 不一致`);
+  if (spec.category && !EX_CATEGORIES.has(spec.category)) errs.push('category 非法');
+  if (![1, 2, 3, 4, 5].includes(spec.rank)) errs.push('rank 需为 1-5');
+  if (!Array.isArray(spec.checks) || !spec.checks.length) errs.push('checks 至少 1 条');
+  if (!spec.title || typeof spec.title !== 'object' || !(spec.title.chs || spec.title.en)) errs.push('title 需要 chs 或 en');
+  if (!fs.existsSync(path.join(dir, 'starter.cpp'))) errs.push('缺少 starter.cpp');
+  if (spec.harness && !fs.existsSync(path.join(dir, spec.harness))) errs.push(`缺少 ${spec.harness}`);
+  for (const v of spec.variants || []) {
+    if (!v || typeof v.id !== 'string' || !v.id) { errs.push('variant 缺少 id'); continue; }
+    if (v.starter && !fs.existsSync(path.join(dir, v.starter))) errs.push(`variant ${v.id} 缺少 ${v.starter}`);
+  }
+  return errs;
+}
+
 /**
  * Copy the in-browser playground runtime, exercise data and diagnostics into
  * dist/:
@@ -831,6 +855,18 @@ function syncPlayground() {
         if (!fs.statSync(dir).isDirectory()) continue;
         const specFile = path.join(dir, 'spec.json');
         if (!fs.existsSync(specFile)) continue;
+        let spec;
+        try {
+          spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
+        } catch (err) {
+          console.warn(`  ! exercise/${lang}/${id}/spec.json: ${err.message}`);
+          continue;
+        }
+        const problems = validateExerciseSpec(spec, dir, lang, id);
+        if (problems.length) {
+          console.warn(`  ! exercise/${lang}/${id} 跳过发布：${problems.join('；')}`);
+          continue;
+        }
         for (const f of fs.readdirSync(dir)) {
           const src = path.join(dir, f);
           if (!fs.statSync(src).isFile()) continue;
@@ -839,8 +875,7 @@ function syncPlayground() {
             copyFile(src, path.join(DIST, 'ex', id, f));
           }
         }
-        try {
-          const spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
+        {
           exIndex.push({
             id: spec.id || id,
             dir: lang,
@@ -858,8 +893,6 @@ function syncPlayground() {
               en: fs.existsSync(path.join(dir, 'problem.en.md')),
             },
           });
-        } catch (err) {
-          console.warn(`  ! exercise/${lang}/${id}/spec.json: ${err.message}`);
         }
       }
     }
