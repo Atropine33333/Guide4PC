@@ -876,7 +876,7 @@ function syncPlayground() {
       copyFile(path.join(papersSrc, f), path.join(DIST, 'exercise', 'papers', f));
       try {
         const paper = JSON.parse(fs.readFileSync(path.join(papersSrc, f), 'utf8'));
-        papers.push({ file: f, id: paper.id || f.replace(/\.json$/, ''), title: paper.title || null, count: Array.isArray(paper.items) ? paper.items.length : 0 });
+        papers.push({ file: f, id: paper.id || f.replace(/\.json$/, ''), lang: paper.lang || 'cpp', title: paper.title || null, items: Array.isArray(paper.items) ? paper.items : [], count: Array.isArray(paper.items) ? paper.items.length : 0 });
       } catch (err) {
         console.warn(`  ! exercise/papers/${f}: ${err.message}`);
       }

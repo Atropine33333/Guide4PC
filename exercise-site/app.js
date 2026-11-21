@@ -233,12 +233,54 @@
     if (state.papers.length) {
       var preset = h('section', { class: 'es-paper' }, [h('h3', { text: t('预组卷子', 'Ready-made papers') })]);
       state.papers.forEach(function (p) {
-        preset.appendChild(h('div', { class: 'es-paper-row' }, [
-          h('span', { class: 'es-paper-title', text: (p.title && (p.title[LOCALE] || p.title.chs)) || p.id }),
+        preset.appendChild(h('a', { class: 'es-paper-row', href: '#/paper/' + p.id }, [
+          h('span', { class: 'es-paper-title', text: paperTitle(p) }),
           h('span', { class: 'es-paper-count', text: t(p.count + ' 题', p.count + ' items') }),
         ]));
       });
       app.appendChild(preset);
+    }
+  }
+
+  function paperTitle(paper) {
+    var title = paper.title || {};
+    return title[LOCALE] || title.chs || title.en || paper.id;
+  }
+
+  function renderPaper(paperId) {
+    app.innerHTML = '';
+    app.appendChild(h('a', { class: 'es-back', href: '#/', text: t('← 返回题目列表', '← Back to exercises') }));
+    var paper = state.papers.filter(function (p) { return p.id === paperId; })[0];
+    if (!paper) {
+      app.appendChild(h('div', { class: 'es-empty', text: t('没有找到这份卷子。', 'Paper not found.') }));
+      return;
+    }
+    var ids = paper.items || [];
+    app.appendChild(h('header', { class: 'es-problem-head' }, [
+      h('h1', { class: 'es-problem-title', text: paperTitle(paper) }),
+      h('div', { class: 'es-meta' }, [
+        langBox(paper.lang || 'cpp'),
+        h('span', { class: 'es-chip', text: t(ids.length + ' 题', ids.length + ' items') }),
+      ]),
+    ]));
+    var list = h('ol', { class: 'es-paper-items es-paper-detail' });
+    var missing = [];
+    var first = null;
+    ids.forEach(function (id) {
+      var it = state.items.filter(function (x) { return x.id === id; })[0];
+      if (!it) { missing.push(id); return; }
+      if (!first) first = it;
+      list.appendChild(h('li', {}, [
+        h('a', { href: '#/' + (it.dir || 'cpp') + '/' + it.id, text: titleOf(it) }),
+        h('span', { class: 'es-meta' }, [catBox(it.category), rankBox(it.rank)]),
+      ]));
+    });
+    app.appendChild(list);
+    if (missing.length) {
+      app.appendChild(h('p', { class: 'es-empty', text: t('有 ' + missing.length + ' 道题暂不可用：', missing.length + ' missing: ') + missing.join(', ') }));
+    }
+    if (first) {
+      app.appendChild(h('a', { class: 'es-btn es-btn-primary', href: '#/' + (first.dir || 'cpp') + '/' + first.id, text: t('开始练习', 'Start') }));
     }
   }
 
@@ -351,7 +393,8 @@
   function route() {
     var raw = (location.hash || '').replace(/^#\/?/, '');
     var parts = raw.split('/').filter(Boolean);
-    if (parts.length >= 2) renderDetail(parts[0], parts.slice(1).join('/'));
+    if (parts[0] === 'paper' && parts[1]) renderPaper(parts[1]);
+    else if (parts.length >= 2) renderDetail(parts[0], parts.slice(1).join('/'));
     else { state.lang = 'cpp'; renderList(); }
     window.scrollTo(0, 0);
   }

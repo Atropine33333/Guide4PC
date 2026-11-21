@@ -28,7 +28,7 @@
       "human": {
         "chs": "哈？大哥哥，这儿该有个能算的值，结果空着？多半是等号或运算符后面忘了写，要不就是多敲了符号哦。",
         "en": "Pfft, this spot should hold a value and it's just empty. You forgot it after an equals sign or an operator, didn't you? Or typed an extra symbol.",
-        "ja": "はぁ？ ここは値が来るはずなのに、空っぽじゃん。おにいさん、等号か演算子の後ろで書き忘れたんでしょ？ 余計な記号を叩いちゃった線もあるけど、とにかく中身がないの、ざぁこ♡"
+        "ja": "はぁ？ ここは値が来るはずなのに、空っぽじゃん。おにいさん、=（イコール）か演算子の後ろで書き忘れたんでしょ？ 余計な記号を叩いちゃった線もあるけど、とにかく中身がないの、ざぁこ♡"
       },
       "hint": {
         "chs": "看看等号、return 或 << 后面是不是漏了值——这还要人家教？",
@@ -222,7 +222,7 @@
       "human": {
         "chs": "诶——头文件都找不着？名字拼错了，还是这编译器标准库里根本没这号货，大哥哥真是差劲呢~",
         "en": "Ehh, the header is missing? Either you misspelled it or this compiler's standard library never had it. Can't even pick what to include.",
-        "ja": "えー、ヘッダが見つからないって。名前の綴り間違いか、このコンパイラの標準ライブラリにそもそも入ってないか。include する相手も選べないんだ、よわよわ〜"
+        "ja": "えー、ヘッダが見つからないって。名前の綴り間違いか、このコンパイラの標準ライブラリにそもそも入ってないか。include するヘッダも選べないんだ、よわよわ〜"
       },
       "hint": {
         "chs": "标准头文件不带 .h 啦~ 你自己查查尖括号和拼写，比如 <vector> 哦。",
@@ -700,7 +700,7 @@
       "human": {
         "chs": "大哥哥，这函数说好返回值，结果有条路径走到头都没 return 呢~调用的人只能拿到个说不准的玩意儿，这都敢交差？",
         "en": "This function promised a return value, but one path goes home without returning. What does the caller get? You can't come home empty-handed.",
-        "ja": "おにいさん、この関数は値を返す約束なのに、途中の道が最後まで return せずに帰っちゃってるよ。呼んだ人は何を受け取るの？ 手ぶらで帰るなんて、へなちょこ〜"
+        "ja": "おにいさん、この関数は値を返す約束なのに、途中のルートが最後まで return せずに抜けちゃってるよ。呼んだ人は何を受け取るの？ 手ぶらで帰るなんて、へなちょこ〜"
       },
       "hint": {
         "chs": "你自己检查一遍：每个分支和函数末尾都补上 return 啦~ main 除外哦。",
@@ -928,8 +928,8 @@
       },
       "human": {
         "chs": "杂鱼，参数塞这么多？这函数胃口小，接不住你这一大把，收一收呗，笨蛋。",
-        "en": "You stuffed in way too many arguments. This function has a small stomach and can't take that armful. You really thought stuffing more in would work.",
-        "ja": "ざこ、引数詰め込みすぎ。この関数は胃が小さくて、その一把は受け取れないよ。詰め込めば入ると思ってるでしょ、そういうとこが雑なんだよね、ばか。"
+        "en": "You stuffed in way too many arguments. This function has a small stomach; it can't take that many. You really thought stuffing more in would work.",
+        "ja": "ざこ、引数詰め込みすぎ。この関数は胃が小さくて、そんなに山盛りじゃ受け取れないよ。詰め込めば入ると思ってるでしょ、そういうとこが雑なんだよね、ばか。"
       },
       "hint": {
         "chs": "删掉多余的参数嘛，或者确认是不是叫错了同名函数——这还要人家手把手教？",
