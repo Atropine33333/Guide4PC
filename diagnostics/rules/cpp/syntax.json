@@ -25,7 +25,7 @@
       "human": {
         "chs": "哈？大哥哥，这儿该有个能算的值，结果空着？多半是等号或运算符后面忘了写，要不就是多敲了符号哦。",
         "en": "Pfft, this spot should hold a value and it's just empty. You forgot it after an equals sign or an operator, didn't you? Or typed an extra symbol.",
-        "ja": "はぁ？ ここは値が来るはずなのに、空っぽじゃん。おにいさん、等号か演算子の後ろで書き忘れたんでしょ？ 余計な記号を叩いちゃった線もあるけど、とにかく中身がないの、ざぁこ♡"
+        "ja": "はぁ？ ここは値が来るはずなのに、空っぽじゃん。おにいさん、=（イコール）か演算子の後ろで書き忘れたんでしょ？ 余計な記号を叩いちゃった線もあるけど、とにかく中身がないの、ざぁこ♡"
       },
       "hint": {
         "chs": "看看等号、return 或 << 后面是不是漏了值——这还要人家教？",
@@ -120,7 +120,7 @@
       },
       "human": {
         "chs": "大哥哥真是差劲呢~不知道左右花括号要配对嘛？左花括号一直没等到右花括号，这还要人家指出来，杂鱼~❤",
-        "en": "Seriously? A brace is left hanging open. Your missing } has been waiting all the way to the end of the file. Aww, poor thing.",
+        "en": "Seriously? A brace is left hanging open. That open brace has been waiting all the way to the end of the file. Aww, poor thing.",
         "ja": "はぁ？ 波括弧が開きっぱなしじゃん。おにいさんの閉じ忘れ、ファイルの終わりまでずーっと待ってたんだよ？ かわいそうでしょ、ざこ♡"
       },
       "hint": {
@@ -172,7 +172,7 @@
       "human": {
         "chs": "诶——圆括号也能落单？一个左括号或右括号找不到伴，编译器只能停在这儿干瞪眼，大哥哥真行呢。",
         "en": "Ehh, an unmatched paren just drifting around? One of them never found its partner, so the compiler is stuck right here. Classic.",
-        "ja": "えー、丸括弧まで落ち単でさまよってるの？ 開きか閉じか、どっちかが相手を見つけられなくて、コンパイラがここで立ち往生してるんだよ。ほんと、へなちょこ。"
+        "ja": "えー、丸括弧まで迷子になってさまよってるの？ 開きか閉じか、どっちかが相手を見つけられなくて、コンパイラがここで立ち往生してるんだよ。ほんと、へなちょこ。"
       },
       "hint": {
         "chs": "诶——先别急，土块土块，你先看这一行的函数调用和条件，括号成不成对看不出来嘛？",
@@ -239,6 +239,148 @@
         },
         {
           "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-condition-paren",
+      "category": "语法",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expected '(' after '"
+          }
+        ]
+      },
+      "capture": {
+        "keyword": {
+          "field": "message",
+          "regex": "expected '\\(' after '([A-Za-z]+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{keyword} 后面的条件要用一对圆括号裹起来呀？你直接跳过，编译器只好停在这儿看你，杂鱼~",
+        "en": "Hey, the condition after {keyword} needs a pair of parens around it. You skipped them, so the compiler just stops and stares at you. Very you.",
+        "ja": "おにいさん、{keyword} の後ろの条件は丸括弧で囲むんだよ？ それを飛ばすから、コンパイラがここで立ち止まって見てるじゃん、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把 {keyword} 后面的整段条件包进 ( )——就补这一处，别越改越乱。",
+        "en": "Wrap the whole condition after {keyword} in ( ). Just that one spot — and do not make it worse.",
+        "ja": "「{keyword}」の後ろの条件を、まるごと ( ) で囲んで。そこだけだよ？ 余計に乱さないでよね。"
+      },
+      "example": "error: expected '(' after 'if'",
+      "tests": [
+        {
+          "message": "expected '(' after 'if'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected ')'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "unterminated-literal",
+      "category": "语法",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "missing terminating"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——字符串还没收尾就断了？引号一直开着，后面的代码全被吞进去，大哥哥老这样。",
+        "en": "Ehh, a string got cut off before it closed? The quote stayed open and swallowed everything after it. You do this a lot.",
+        "ja": "えー、文字列が閉じないまま切れてるの？ 引用符が開きっぱなしで、後ろのコードまで飲み込んでるよ。おにいさん、またこれ。"
+      },
+      "hint": {
+        "chs": "从这一行的引号开始数，把没闭合的那个补上；别把下一行当正文写。",
+        "en": "Start at the quote on this line and close the one still open. Do not let the next line become part of the string.",
+        "ja": "この行の引用符から数えて、閉じてないやつを閉じて。次の行を中身にしちゃダメだよ。"
+      },
+      "example": "warning: missing terminating '\"' character [-Winvalid-pp-token]",
+      "tests": [
+        {
+          "message": "missing terminating '\"' character",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "fundef-not-allowed-here",
+      "category": "语法",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "function definition is not allowed here"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，函数不能塞在另一个函数里面啦，C++ 可不玩俄罗斯套娃，杂鱼~",
+        "en": "You can't stick a function inside another function. C++ isn't a set of nesting dolls. Or did you think it was?",
+        "ja": "関数の中に関数を入れるなんて、できないんだよ？ C++ はマトリョーシカじゃないの。…そんなことも知らないの、ざこ。"
+      },
+      "hint": {
+        "chs": "把里面那个函数的声明和定义挪到外面，原来的位置只留调用——快点。",
+        "en": "Move that inner function's declaration and definition outside, and leave only the call behind. Go on.",
+        "ja": "中に入れた関数は、宣言ごと外に出して。元の場所には呼び出しだけ残して。…はやく。"
+      },
+      "example": "error: function definition is not allowed here",
+      "tests": [
+        {
+          "message": "function definition is not allowed here",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected ')'",
           "severity": "error",
           "expect": false
         }

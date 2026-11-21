@@ -145,7 +145,7 @@
       "hint": {
         "chs": "\"abc\" 是字符串、'a' 是字符，接字符串就把变量改成 std::string——还要人家替你改嘛？",
         "en": "\"abc\" is a string, 'a' is a char. If you want the string, make the variable std::string. The rest is obvious.",
-        "ja": "\"abc\" は文字列で、'a' は文字。文字列を入れたいなら変数を std::string にして。…あとは、わかるでしょ？"
+        "ja": "\"abc\" は文字列で、'a' は文字。文字列を入れたいなら変数を std::string にして。…あとは、自分で考えなよ。"
       },
       "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
       "tests": [
@@ -285,7 +285,7 @@
       "hint": {
         "chs": "人家就看着你分清楚点号左边是不是对象，该用 . 还是 ->，看你能错几回~",
         "en": "Aww, that's not a class or a struct. So check whether the thing left of the dot is an object or a pointer, okay?",
-        "ja": "かわいそうに、そこはクラスでも構造体でもないよ。…だから、点の左がオブジェクトかポインタか確かめて？"
+        "ja": "かわいそうに、そこはクラスでも構造体でもないよ。…だから、点の左がオブジェクトかポインタか確かめて、. と -> を選び直して？"
       },
       "example": "error: member reference base type 'int' is not a structure or union",
       "tests": [
@@ -334,7 +334,7 @@
       "human": {
         "chs": "大哥哥，这函数说好返回值，结果有条路径走到头都没 return 呢~调用的人只能拿到个说不准的玩意儿，这都敢交差？",
         "en": "This function promised a return value, but one path goes home without returning. What does the caller get? You can't come home empty-handed.",
-        "ja": "おにいさん、この関数は値を返す約束なのに、途中の道が最後まで return せずに帰っちゃってるよ。呼んだ人は何を受け取るの？ 手ぶらで帰るなんて、へなちょこ〜"
+        "ja": "おにいさん、この関数は値を返す約束なのに、途中のルートが最後まで return せずに抜けちゃってるよ。呼んだ人は何を受け取るの？ 手ぶらで帰るなんて、へなちょこ〜"
       },
       "hint": {
         "chs": "你自己检查一遍：每个分支和函数末尾都补上 return 啦~ main 除外哦。",
@@ -628,13 +628,13 @@
       },
       "human": {
         "chs": "杂鱼，参数塞这么多？这函数胃口小，接不住你这一大把，收一收呗，笨蛋。",
-        "en": "You stuffed in way too many arguments. This function has a small stomach and can't take that armful. Packing more in doesn't work.",
-        "ja": "ざこ、引数詰め込みすぎ。この関数は胃が小さくて、その一把は受け取れないよ。詰め込めば入ると思ってるでしょ、そういうとこが雑なんだよね、ばか。"
+        "en": "You stuffed in way too many arguments. This function has a small stomach; it can't take that many. You really thought stuffing more in would work.",
+        "ja": "ざこ、引数詰め込みすぎ。この関数は胃が小さくて、そんなに山盛りじゃ受け取れないよ。詰め込めば入ると思ってるでしょ、そういうとこが雑なんだよね、ばか。"
       },
       "hint": {
         "chs": "删掉多余的参数嘛，或者确认是不是叫错了同名函数——这还要人家手把手教？",
         "en": "Drop the extra arguments, or check whether you meant a different function with the same name. The compiler's still glaring.",
-        "ja": "余分な引数を消すか、同名の別の関数と間違えてないか確認して。…このままだとコンパイラがずっと睨んでるよ。"
+        "ja": "余分な引数を消すか、同名の別の関数と間違えてないか確認して。…このままだとエラーがどんどん増えてくよ。"
       },
       "example": "error: too many arguments to function call, expected 1, have 3",
       "tests": [
@@ -646,6 +646,641 @@
         {
           "message": "expected expression",
           "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "assign-to-const",
+      "category": "类型",
+      "priority": 30,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot assign to variable"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "const-qualified type"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "cannot assign to variable '([^']+)'"
+        },
+        "type": {
+          "field": "message",
+          "regex": "const-qualified type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{name} 可是 {type}，说好了不动的，你现在又伸手去改，编译器不拦你拦谁，杂鱼~",
+        "en": "{name} is {type} — you agreed not to change it, and now you are writing to it anyway. Of course the compiler blocks you.",
+        "ja": "{name} は {type} なんだよ？ 変えないって決めたのに、今さら書き換えようとするから、コンパイラに止められるんだよ、ざこ。"
+      },
+      "hint": {
+        "chs": "要么把 {name} 改成可写的变量，要么去改真正的数据来源；const 别硬写。",
+        "en": "Either make {name} writable, or change the real source of the data. Do not force a write through const.",
+        "ja": "{name} を書き込める変数にするか、本当のデータの持ち主のほうを変えて。const に無理やり書かないでよね。"
+      },
+      "example": "error: cannot assign to variable 'x' with const-qualified type 'const int'",
+      "tests": [
+        {
+          "message": "cannot assign to variable 'x' with const-qualified type 'const int'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expression is not assignable",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "not-assignable",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expression is not assignable"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，等号左边得是能装值的变量呀，你拿常量或整个表达式来赋值，编译器当然说没地方放，杂鱼~",
+        "en": "The left of = has to be something that can hold a value. You're assigning to a constant or a whole expression. Where should it go?",
+        "ja": "=（イコール）の左側は、値を入れられる変数じゃないとダメなんだよ。定数や式まるごとに代入して、どこに入れるつもり？ ざぁこ。"
+      },
+      "hint": {
+        "chs": "看看左边是不是 1、a+b 或函数返回值；换成真正的变量。",
+        "en": "Check whether the left side is 1, a+b, or a function's return value. Put a real variable there.",
+        "ja": "左側が 1 とか a+b とか、関数の戻り値になってない？ そこは本当の変数にして。"
+      },
+      "example": "error: expression is not assignable",
+      "tests": [
+        {
+          "message": "expression is not assignable",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "cannot assign to variable 'x' with const-qualified type 'const int'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "return-type-mismatch",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot initialize return object of type"
+          }
+        ]
+      },
+      "capture": {
+        "expected": {
+          "field": "message",
+          "regex": "return object of type '([^']+)'"
+        },
+        "actual": {
+          "field": "message",
+          "regex": "with an (?:lvalue|rvalue) of type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，函数说好要交 {expected}，你塞回来的是 {actual}，这俩能对上才怪，杂鱼~",
+        "en": "The function promised to hand back {expected}, and you're giving it {actual}. Those don't even match.",
+        "ja": "この関数は {expected} を返すって約束してるのに、返ってきたのは {actual}。合うわけないじゃん、ざこ。"
+      },
+      "hint": {
+        "chs": "把 return 后面的值转成 {expected}，或者改函数声明的返回类型；别两头都不动。",
+        "en": "Convert the value after return to {expected}, or change the declared return type. Pick one.",
+        "ja": "return の後ろの値を {expected} に合わせるか、関数の戻り値の型を変えて。両方そのままはなしだよ。"
+      },
+      "example": "error: cannot initialize return object of type 'int' with an lvalue of type 'const char[2]'",
+      "tests": [
+        {
+          "message": "cannot initialize return object of type 'int' with an lvalue of type 'const char[2]'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "cannot initialize a variable of type 'int' with an lvalue of type 'const char *'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "subscript-not-supported",
+      "category": "类型",
+      "priority": 15,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "any": [
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "subscripted value is not an array, pointer, or vector"
+              },
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "does not provide a subscript operator"
+              }
+            ]
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——这东西又不是数组也不是指针，你拿方括号去下标它，编译器哪来的元素给你取，杂鱼~",
+        "en": "That thing isn't an array or a pointer, and you're subscripting it anyway. Which element is the compiler supposed to fetch?",
+        "ja": "えー、それは配列でもポインタでもないのに、角括弧で添字を取ろうとするの？ コンパイラが取り出せる要素なんて、どこにもないよ、ざぁこ。"
+      },
+      "hint": {
+        "chs": "先确认被下标的是数组或指针；要取成员就换成 . 或 ->，别拿 [ ] 乱试。",
+        "en": "Make sure what you subscript is an array or pointer. For a member, use . or ->. Stop poking with [ ].",
+        "ja": "添字を取ってる相手が配列かポインタか、まず確認して。メンバーなら . か -> に変えて。角括弧で当てずっぽうはやめてよね。"
+      },
+      "example": "error: subscripted value is not an array, pointer, or vector",
+      "tests": [
+        {
+          "message": "subscripted value is not an array, pointer, or vector",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "type 'int' does not provide a subscript operator",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "array subscript is not an integer",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "void-return-value",
+      "category": "类型",
+      "priority": 25,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "should not return a value"
+          }
+        ]
+      },
+      "capture": {
+        "function": {
+          "field": "message",
+          "regex": "void function '([^']+)' should not return a value"
+        }
+      },
+      "human": {
+        "chs": "喂，{function} 是 void，说好了空手回来，你偏要塞个值过去，编译器当然拒收，杂鱼~",
+        "en": "{function} is void — it agreed to come back empty-handed. You are shoving a value at it anyway, so of course it is rejected.",
+        "ja": "{function} は void なんだから、何も持たずに帰る約束でしょ？ なのに値を押し付けるから、受け取ってもらえないんだよ、ざこ。"
+      },
+      "hint": {
+        "chs": "把 {function} 里的 return 值删掉只留 return;，或者改返回类型——二选一。",
+        "en": "{function} should drop the value and leave just return;, or change the return type. Choose one.",
+        "ja": "{function} の中の return は値を消して return; だけにするか、戻り値の型を変えるか。どっちかにして。"
+      },
+      "example": "error: void function 'f' should not return a value [-Wreturn-mismatch]",
+      "tests": [
+        {
+          "message": "void function 'f' should not return a value",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "non-void function does not return a value",
+          "severity": "warning",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "main-return-int",
+      "category": "类型",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "'main' must return"
+          }
+        ]
+      },
+      "human": {
+        "chs": "大哥哥，main 只能交 int 回来哦，你写 void main 是想让系统收空气吗，杂鱼~",
+        "en": "main has to return int. Writing void main means handing the system nothing. That is not how this works.",
+        "ja": "main は int を返すって決まってるんだよ？ void main なんて書いたら、システムに空っぽの手を差し出すことになるじゃん、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把 void main 改成 int main，末尾补 return 0;。",
+        "en": "Change void main to int main, and finish with return 0;.",
+        "ja": "void main を int main に直して、最後に return 0; を足して。"
+      },
+      "example": "error: 'main' must return 'int'",
+      "tests": [
+        {
+          "message": "'main' must return 'int'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "void function 'f' should not return a value",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "uninitialized-variable",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is uninitialized when used here"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "variable '([^']+)' is uninitialized"
+        }
+      },
+      "human": {
+        "chs": "诶——{name} 还没给过值就用上了？里面是上一手留下的垃圾，编译器都看不下去了，大哥哥。",
+        "en": "Ehh, you're using {name} before it ever got a value? It is holding whatever garbage was there. Even the compiler cannot watch.",
+        "ja": "えー、{name} にまだ値も入れてないのに使っちゃうの？ 中身は前の残りカスだよ？ コンパイラも見てられないって。"
+      },
+      "hint": {
+        "chs": "声明 {name} 的时候顺手给个初值，比如 = 0；别等用的时候才想起来。",
+        "en": "Give {name} a value where you declare it, like = 0. Do not wait until you need it.",
+        "ja": "{name} を宣言するときに、= 0 みたいに最初の値を入れておいて。使うときになってから思い出さないでよね。"
+      },
+      "example": "warning: variable 'x' is uninitialized when used here [-Wuninitialized]",
+      "tests": [
+        {
+          "message": "variable 'x' is uninitialized when used here",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "unused variable 'x'",
+          "severity": "warning",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "unused-variable",
+      "category": "类型",
+      "priority": 5,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "unused variable"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "unused variable '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "杂鱼，{name} 从头到尾都没人碰过，你写它干嘛？占地方吗？",
+        "en": "{name} never gets touched from start to finish. Why did you even write it? Keeping the line warm?",
+        "ja": "{name}、最初から最後まで誰にも触られてないよ？ 何のために書いたの、場所ふさぎ？ ざこ。"
+      },
+      "hint": {
+        "chs": "要么真的用上 {name}，要么删掉；故意留的就加 [[maybe_unused]]。",
+        "en": "Actually use {name}, or delete it. If you are keeping it on purpose, mark it [[maybe_unused]].",
+        "ja": "{name} を本当に使うか、消して。わざと残すなら [[maybe_unused]] を付けて。"
+      },
+      "example": "warning: unused variable 'x' [-Wunused-variable]",
+      "tests": [
+        {
+          "message": "unused variable 'x'",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "unused function 'f'",
+          "severity": "warning",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "stack-address-returned",
+      "category": "类型",
+      "priority": 25,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "address of stack memory associated with local variable"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "local variable '([^']+)' returned"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{name} 是函数里的本地变量，函数一结束它就没了；你还把地址交出去，打算让外面收尸吗，杂鱼~",
+        "en": "{name} is local to the function — once it returns, that storage is gone. You are handing out its address anyway. Planning to let the caller find a corpse?",
+        "ja": "{name} は関数の中のローカル変数でしょ？ 関数が終わったら消えちゃうんだよ。そのアドレスを外に渡すなんて、呼び出し側に抜け殻を渡すつもり？ ざぁこ。"
+      },
+      "hint": {
+        "chs": "要么返回 {name} 的值，要么改用 new、std::vector 或调用方传进来的缓冲区。",
+        "en": "Return the value of {name}, or switch to new, std::vector, or a buffer passed in by the caller.",
+        "ja": "{name} の値を返すか、new か std::vector、呼び出し側から渡されたバッファを使って。"
+      },
+      "example": "warning: address of stack memory associated with local variable 'x' returned [-Wreturn-stack-address]",
+      "tests": [
+        {
+          "message": "address of stack memory associated with local variable 'x' returned",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "unused variable 'x'",
+          "severity": "warning",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "assignment-as-condition",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "using the result of an assignment as a condition without parentheses"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——条件里写了 = 吧？那是赋值不是比较，想问「等不等」就该用 ==，杂鱼~",
+        "en": "Ehh, that condition has a single = in it, doesn't it? That is assignment, not comparison. If you meant equality, that is ==.",
+        "ja": "えー、条件の中に = が入ってるでしょ？ それは代入であって比較じゃないんだよ。等しいかどうか聞きたいなら == だよ、ざこ。"
+      },
+      "hint": {
+        "chs": "想比较就把 = 改成 ==；真想赋值再加一层括号，别让编译器猜。",
+        "en": "Change = to == if you meant to compare. If you really want the assignment, wrap it in another pair of parens so it is clear.",
+        "ja": "比べたいなら = を == に直して。本当に代入したいなら、もう一重丸括弧で囲んで、コンパイラに推測させないで。"
+      },
+      "example": "warning: using the result of an assignment as a condition without parentheses [-Wparentheses]",
+      "tests": [
+        {
+          "message": "using the result of an assignment as a condition without parentheses",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "expression is not assignable",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "array-index-past-end",
+      "category": "类型",
+      "priority": 15,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "array index"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is past the end of the array"
+          }
+        ]
+      },
+      "capture": {
+        "index": {
+          "field": "message",
+          "regex": "array index ([0-9]+) is past the end"
+        },
+        "arrayType": {
+          "field": "message",
+          "regex": "has type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，你拿 {index} 去戳 {arrayType}，越界啦——从 0 数起，最后一个下标是长度减一，这都要人家教？",
+        "en": "You're poking {arrayType} with index {index} — that's past the end. Indexing starts at 0, so the last one is length minus one. Need me to say that too?",
+        "ja": "{arrayType} に {index} って添字を突っ込んでるけど、範囲外だよ？ 0 から数えるんだから、最後は長さ引く一。…そんなことも言われないと分からないの、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把下标收到 0 到 长度-1 之间；遍历就写 i < 长度，别写 <=。",
+        "en": "Keep the index between 0 and length-1. For a loop, write i < length, not <=.",
+        "ja": "添字は 0 から 長さ-1 までに収めて。ループなら i < 長さ で、<= にしないでよね。"
+      },
+      "example": "warning: array index 5 is past the end of the array (that has type 'int[3]') [-Warray-bounds]",
+      "tests": [
+        {
+          "message": "array index 5 is past the end of the array (that has type 'int[3]')",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "array subscript is not an integer",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "format-mismatch",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "format specifies type"
+          }
+        ]
+      },
+      "capture": {
+        "expected": {
+          "field": "message",
+          "regex": "format specifies type '([^']*)'"
+        },
+        "actual": {
+          "field": "message",
+          "regex": "argument has type '([^']*)'"
+        }
+      },
+      "human": {
+        "chs": "喂，printf 说好要 {expected}，你塞给它 {actual}，它当然念不出来，杂鱼~",
+        "en": "printf asked for {expected}, and you fed it {actual}. Of course it cannot read that.",
+        "ja": "printf は {expected} を求めてるのに、渡したのは {actual}。それじゃ読めないでしょ、ざこ。"
+      },
+      "hint": {
+        "chs": "把参数换成 {expected}，或者改格式串里的占位符；%d 配 int，%s 配字符串。",
+        "en": "Pass an argument of type {expected}, or change the placeholder in the format string. %d takes int, %s takes a string.",
+        "ja": "{expected} の引数を渡すか、書式文字列のプレースホルダを変えて。%d は int、%s は文字列だからね。"
+      },
+      "example": "warning: format specifies type 'int' but the argument has type 'const char *' [-Wformat]",
+      "tests": [
+        {
+          "message": "format specifies type 'int' but the argument has type 'const char *'",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "unused variable 'x'",
+          "severity": "warning",
           "expect": false
         }
       ]

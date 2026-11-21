@@ -31,7 +31,7 @@
       "human": {
         "chs": "诶——头文件都找不着？名字拼错了，还是这编译器标准库里根本没这号货，大哥哥真是差劲呢~",
         "en": "Ehh, the header is missing? Either you misspelled it or this compiler's standard library never had it. Can't even pick what to include.",
-        "ja": "えー、ヘッダが見つからないって。名前の綴り間違いか、このコンパイラの標準ライブラリにそもそも入ってないか。include する相手も選べないんだ、よわよわ〜"
+        "ja": "えー、ヘッダが見つからないって。名前の綴り間違いか、このコンパイラの標準ライブラリにそもそも入ってないか。include するヘッダも選べないんだ、よわよわ〜"
       },
       "hint": {
         "chs": "标准头文件不带 .h 啦~ 你自己查查尖括号和拼写，比如 <vector> 哦。",
@@ -81,14 +81,14 @@
         }
       },
       "human": {
-        "chs": "喂，大哥哥，这命名空间里没这个成员呢。std::cout 得先包含 <iostream>，名字还得写全哦。",
-        "en": "Hey, that namespace has no such member. std::cout needs <iostream>, and the name written out with std::. You cut corners there, didn't you?",
-        "ja": "ねぇおにいさん、その名前空間にそんなメンバーいないよ？ std::cout なら <iostream> が要るし、名前も std:: までちゃんと書くの。手抜きしたでしょ、ざこ。"
+        "chs": "喂，{ns} 里根本没有 {member} 这个成员呢。是头文件没包含，还是名字又写错了，杂鱼~",
+        "en": "Hey, {ns} has no member called {member}. Did you forget the include, or misspell the name again?",
+        "ja": "ねぇ、{ns} に {member} なんてメンバー、どこにもないよ？ include を忘れたか、名前をまた間違えたか。ざこ。"
       },
       "hint": {
-        "chs": "行吧，人家难得好心——你补上对应的 #include，再核对成员名和 std:: 前缀哦。",
-        "en": "Add the matching #include, then check the member name and the std:: prefix. Yeah — fix that part.",
-        "ja": "対応する #include を足して、メンバー名と std:: の前置きを確認。…はい、そこ直して。"
+        "chs": "补上对应的 #include（cout 要 <iostream>，vector 要 <vector>），再核对 {ns}:: 前缀。",
+        "en": "Add the matching #include (std::cout needs <iostream>, std::vector needs <vector>), then check the {ns}:: prefix.",
+        "ja": "対応する #include を足して（std::cout なら <iostream>、std::vector なら <vector>）、{ns}:: の前置きも確認して。"
       },
       "example": "error: no member named 'cout' in namespace 'std'",
       "tests": [
@@ -129,12 +129,16 @@
         "member": {
           "field": "message",
           "regex": "no member named '([^']+)'"
+        },
+        "type": {
+          "field": "message",
+          "regex": "in '([^']+)'"
         }
       },
       "human": {
-        "chs": "杂鱼，你点的这个成员对象里根本没有哦~是名字拼错了，还是这类型根本长不出这根筋？",
-        "en": "Huh, that object doesn't grow a member like that. Misspelled, or the type simply doesn't have it. Either way, the imagination is showing.",
-        "ja": "ふーん、そのオブジェクトにそんなメンバー生えてないよ？ 綴り間違いか、その型にそもそも生えない筋か。どっちにしろ、おにいさんの思い込み、ばかみたい。"
+        "chs": "杂鱼，{type} 里面根本没有 {member} 哦~名字拼错了，还是这个类型压根没这个成员？",
+        "en": "Huh, {type} doesn't have {member} at all. Misspelled, or the type simply doesn't grow one?",
+        "ja": "ふーん、{type} に {member} なんて無いよ？ 綴り間違いか、その型にそもそも生えてないのか。どっちにしろ、おにいさんの思い込み、ばかみたい。"
       },
       "hint": {
         "chs": "先确认对象类型嘛，std::vector 可没有 .length()——这都要人家说？",
@@ -303,6 +307,162 @@
         },
         {
           "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "private-member",
+      "category": "名字与作用域",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is a private member of"
+          }
+        ]
+      },
+      "capture": {
+        "member": {
+          "field": "message",
+          "regex": "'([^']+)' is a private member of"
+        },
+        "owner": {
+          "field": "message",
+          "regex": "private member of '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "私有成员也敢直接伸手？{owner} 把 {member} 锁在 private 里，你在外面硬拿，编译器当然拍回来，杂鱼~",
+        "en": "Reaching right into someone's private stuff, huh? {owner} keeps {member} behind private, and you grab from outside. Of course the compiler slaps your hand away.",
+        "ja": "プライベートなものにそのまま手を伸ばすんだ？ {owner} は {member} を private にしまってるのに、外から取ろうとするから、コンパイラに叩かれるんだよ、ざぁこ。"
+      },
+      "hint": {
+        "chs": "要么调用 {owner} 的 public 成员函数，要么把这段访问挪进类里面；别硬撬。",
+        "en": "Call a public member function of {owner}, or move that access inside the class. Stop prying.",
+        "ja": "{owner} の public なメンバー関数を呼ぶか、そのアクセスをクラスの中に移して。…力ずくでこじ開けないでよね。"
+      },
+      "example": "error: 'x' is a private member of 'B'",
+      "tests": [
+        {
+          "message": "'x' is a private member of 'B'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "call to non-static member function without an object argument",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "non-static-member-call",
+      "category": "名字与作用域",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "non-static member function"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "without an object argument"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，非静态成员函数得先有对象才能叫呀，你对着类名直接喊，它凭什么应你，杂鱼~",
+        "en": "A non-static member function needs an object to call it. You're yelling at the class name — why would it answer?",
+        "ja": "非静的メンバー関数は、オブジェクトがないと呼べないんだよ？ クラス名に向かって叫んでるけど、返事するわけないじゃん、ざこ。"
+      },
+      "hint": {
+        "chs": "先建一个这个类的对象，再用 对象.函数() 或 对象->函数() 调用。",
+        "en": "Make an object of that class first, then call it as object.fn() or object->fn().",
+        "ja": "そのクラスのオブジェクトを一個作ってから、オブジェクト.関数() か オブジェクト->関数() で呼んで。"
+      },
+      "example": "error: call to non-static member function without an object argument",
+      "tests": [
+        {
+          "message": "call to non-static member function without an object argument",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "'x' is a private member of 'B'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "undefined-template",
+      "category": "名字与作用域",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "implicit instantiation of undefined template"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "undefined template '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "诶——{name} 只露了个名字就拿来用？它压根没定义，编译器连里面有什么都不知道，杂鱼。",
+        "en": "Ehh, you're using {name} when it's only been named, never defined? The compiler can't even see what's inside.",
+        "ja": "えー、{name} って名前だけ出てきて、中身はどこにもないの？ 定義がないと、コンパイラは中を覗くこともできないよ。ざぁこ。"
+      },
+      "hint": {
+        "chs": "补上 {name} 对应的 #include 或完整定义；只留个声明不够。",
+        "en": "Add the #include or the full definition for {name}. A bare declaration is not enough.",
+        "ja": "{name} の #include か、ちゃんとした定義を足して。宣言だけじゃ足りないんだから。"
+      },
+      "example": "error: implicit instantiation of undefined template 'std::vector<int>'",
+      "tests": [
+        {
+          "message": "implicit instantiation of undefined template 'std::vector<int>'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "unknown type name 'vector'",
           "severity": "error",
           "expect": false
         }
