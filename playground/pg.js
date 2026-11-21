@@ -494,7 +494,7 @@
       Object.keys(rowByCheck).forEach(function (id) {
         var row = rowByCheck[id];
         row.row.setAttribute('data-ok', '');
-        row.mark.textContent = '·';
+        row.mark.textContent = '';
         row.detail.hidden = true;
         row.detail.innerHTML = '';
       });
