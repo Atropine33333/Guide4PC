@@ -10,7 +10,7 @@
   let manifest = null;       // manifest.json data
   let searchIndex = null;    // search_index.json data
   let dlFiles = null;        // dl/files.json data (maps dl folder names → file lists)
-  let currentLang = 'en';    // current language
+  let currentLang = 'chs';   // current language (default: Chinese)
   let currentPath = null;    // current document relative path (within lang dir)
   let currentKey = null;     // current document pairing key
   let isSearching = false;   // whether a search term is active
@@ -348,7 +348,7 @@
   // ─── Hash parsing ───────────────────────────────────────────────────────
   function parseHash() {
     const hash = window.location.hash.slice(1); // remove #
-    if (!hash) return { lang: 'en', path: null };
+    if (!hash) return { lang: 'chs', path: null };
 
     const slashIdx = hash.indexOf('/');
     if (slashIdx === -1) {
@@ -1291,7 +1291,7 @@
   // Hash change (browser back/forward)
   window.addEventListener('hashchange', () => {
     const { lang, path } = parseHash();
-    const targetLang = (lang === 'chs' || lang === 'en') ? lang : 'en';
+    const targetLang = (lang === 'chs' || lang === 'en') ? lang : 'chs';
     let targetPath = path;
 
     // Validate lang
@@ -1436,7 +1436,7 @@
 
       // Parse initial hash
       const { lang, path } = parseHash();
-      currentLang = (lang === 'chs' || lang === 'en') ? lang : 'en';
+      currentLang = (lang === 'chs' || lang === 'en') ? lang : 'chs';
       document.documentElement.lang = (currentLang === 'chs') ? 'zh-Hans' : 'en';
       currentPath = path;
       currentKey = currentPath ? getPairKey(currentLang, currentPath) : null;
@@ -1449,9 +1449,9 @@
 
       // Load initial document or default to home
       if (!currentPath) {
-        // Default to English welcome
-        currentPath = getPairedDoc('home', 'en') || '0_WelcomeLetter.md';
-        currentLang = 'en';
+        // Default to Chinese welcome
+        currentPath = getPairedDoc('home', 'chs') || '0_WelcomeLetter.md';
+        currentLang = 'chs';
         currentKey = 'home';
         setHash(currentLang, currentPath);
         updateLangSwitchButton();
