@@ -1,0 +1,312 @@
+{
+  "lang": "cpp",
+  "rules": [
+    {
+      "id": "header-not-found",
+      "category": "名字与作用域",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "file not found"
+          }
+        ]
+      },
+      "capture": {
+        "header": {
+          "field": "message",
+          "regex": "'([^']+)' file not found"
+        }
+      },
+      "human": {
+        "chs": "诶——头文件都找不着？名字拼错了，还是这编译器标准库里根本没这号货，大哥哥真是差劲呢~",
+        "en": "Ehh, the header is missing? Either you misspelled it or this compiler's standard library never had it. Can't even pick what to include.",
+        "ja": "えー、ヘッダが見つからないって。名前の綴り間違いか、このコンパイラの標準ライブラリにそもそも入ってないか。include する相手も選べないんだ、よわよわ〜"
+      },
+      "hint": {
+        "chs": "标准头文件不带 .h 啦~ 你自己查查尖括号和拼写，比如 <vector> 哦。",
+        "en": "Standard headers don't take a .h. Check the angle brackets and spelling — you can write <vector>, right? Fine, you're welcome.",
+        "ja": "標準ヘッダに .h は付けないんだよ。尖括弧と綴りを見直して、たとえば <vector> って書けてる？ しょうがないから教えてあげた。"
+      },
+      "example": "error: 'vector' file not found",
+      "tests": [
+        {
+          "message": "'vector' file not found",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-namespace-member",
+      "category": "名字与作用域",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "no member named"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "in namespace"
+          }
+        ]
+      },
+      "capture": {
+        "member": {
+          "field": "message",
+          "regex": "no member named '([^']+)'"
+        },
+        "ns": {
+          "field": "message",
+          "regex": "in namespace '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "喂，大哥哥，这命名空间里没这个成员呢。std::cout 得先包含 <iostream>，名字还得写全哦。",
+        "en": "Hey, that namespace has no such member. std::cout needs <iostream>, and the name written out with std::. You cut corners there, didn't you?",
+        "ja": "ねぇおにいさん、その名前空間にそんなメンバーいないよ？ std::cout なら <iostream> が要るし、名前も std:: までちゃんと書くの。手抜きしたでしょ、ざこ。"
+      },
+      "hint": {
+        "chs": "行吧，人家难得好心——你补上对应的 #include，再核对成员名和 std:: 前缀哦。",
+        "en": "Add the matching #include, then check the member name and the std:: prefix. Yeah — fix that part.",
+        "ja": "対応する #include を足して、メンバー名と std:: の前置きを確認。…はい、そこ直して。"
+      },
+      "example": "error: no member named 'cout' in namespace 'std'",
+      "tests": [
+        {
+          "message": "no member named 'cout' in namespace 'std'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "no member named 'foo' in 'std::vector<int>'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "no-member",
+      "category": "名字与作用域",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "no member named"
+          }
+        ]
+      },
+      "capture": {
+        "member": {
+          "field": "message",
+          "regex": "no member named '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "杂鱼，你点的这个成员对象里根本没有哦~是名字拼错了，还是这类型根本长不出这根筋？",
+        "en": "Huh, that object doesn't grow a member like that. Misspelled, or the type simply doesn't have it. Either way, the imagination is showing.",
+        "ja": "ふーん、そのオブジェクトにそんなメンバー生えてないよ？ 綴り間違いか、その型にそもそも生えない筋か。どっちにしろ、おにいさんの思い込み、ばかみたい。"
+      },
+      "hint": {
+        "chs": "先确认对象类型嘛，std::vector 可没有 .length()——这都要人家说？",
+        "en": "Check the type on the left first. std::vector has no .length(), it's size(). The compiler is glaring at you, so hurry up.",
+        "ja": "まず左側の型を見て。std::vector に .length() は無いよ、size() でしょ。…コンパイラがずっと睨んでるから、早くね。"
+      },
+      "example": "error: no member named 'foo' in 'std::vector<int>'",
+      "tests": [
+        {
+          "message": "no member named 'foo' in 'std::vector<int>'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "redefinition",
+      "category": "名字与作用域",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "redefinition of"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "redefinition of '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "哼，同一个名字在同一作用域定义两遍？C++ 里一个名字只准有一份定义，这都不记得，杂鱼~",
+        "en": "Seriously? The same name defined twice in the same scope? In C++ a name gets exactly one definition. You forgot that too?",
+        "ja": "はぁ？ 同じ名前を同じスコープで二回定義してるじゃん。C++ は一つの名前に定義は一つだけなんだよ？ そんなことも覚えてないの、ざぁこ♡"
+      },
+      "hint": {
+        "chs": "人家才不帮你删呢，给后面那个换个名字，或者把重复的定义删掉嘛。",
+        "en": "I'm not deleting it for you. Rename the later one, or drop the duplicate. Gonna cry?",
+        "ja": "あたしは消してあげないから。後ろのほうを別の名前にするか、重複した定義を消しなよ。…泣いちゃう？"
+      },
+      "example": "error: redefinition of 'x'",
+      "tests": [
+        {
+          "message": "redefinition of 'x'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "undeclared-identifier",
+      "category": "名字与作用域",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "use of undeclared identifier"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "undeclared identifier '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，这名字编译器根本不认识呢~是拼错了，还是它到这儿根本没声明？杂鱼就是杂鱼❤",
+        "en": "The compiler doesn't know that name. Misspelled, or never declared before this point. Both sound like you, honestly.",
+        "ja": "おにいさん、その名前、コンパイラが知らないって。綴り間違いか、ここまで来る前に宣言されてないか。どっちもありそうで、ちょっと笑っちゃう、ざこ♡"
+      },
+      "hint": {
+        "chs": "再拿没声明的名字到处用，人家就不理你了哦——先核对拼写，再看定义是不是写在使用之前、作用域对不对。",
+        "en": "Check the spelling first, then whether the declaration sits before this use and in the right scope. I'm done helping.",
+        "ja": "綴りを先に確認。そのあと、宣言が使う位置より前にあって、スコープも合ってるか見てきなよ。もう知らない。"
+      },
+      "example": "error: use of undeclared identifier 'x'",
+      "tests": [
+        {
+          "message": "use of undeclared identifier 'x'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "unknown-type-name",
+      "category": "名字与作用域",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "unknown type name"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "unknown type name '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "编译器不拿这词当类型呢，大哥哥~八成拼错了，要不就是忘了把定义它的头文件请进来，差劲。",
+        "en": "The compiler won't accept that word as a type. Misspelled, or you forgot to include the header that defines it. Sloppy, as always.",
+        "ja": "コンパイラはその単語を型として認めてくれないんだって。綴りか、定義してるヘッダの include 忘れか。そういうとこ雑なんだよね、おにいさん、ざこ。"
+      },
+      "hint": {
+        "chs": "人家就看着你查拼写、补 std:: 前缀和对应头文件，看你能折腾到几点~",
+        "en": "Spelling, the std:: prefix, the right header. In that order. Get it right and I might praise you.",
+        "ja": "綴り、std:: の前置き、必要なヘッダ。この三つを順番に。…できたら、褒めてあげる。"
+      },
+      "example": "error: unknown type name 'string'",
+      "tests": [
+        {
+          "message": "unknown type name 'string'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    }
+  ]
+}

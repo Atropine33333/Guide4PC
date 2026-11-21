@@ -780,7 +780,7 @@
 
       // Serif treatment: the welcome letter (now 0.1) and Appendix 20.
       currentKey = getPairKey(lang, docPath);
-      if (currentKey === '0.1' || currentKey === 'appendix/20' || currentKey === 'root/20') {
+      if (currentKey === '0.1' || currentKey === 'root/0.1' || currentKey === 'appendix/20' || currentKey === 'root/20') {
         $content.classList.add('home-page');
       } else {
         $content.classList.remove('home-page');

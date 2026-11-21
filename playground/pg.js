@@ -8,7 +8,7 @@
  *   pg/vendor/editor.bundle.js
  *   pg/vendor/clang-wasm.global.js
  *   pg/pg-worker.js
- *   exterior: ex/<id>/{spec.json,starter*.cpp,harness.cpp}、diag/messages.json
+ *   exterior: ex/<id>/{spec.json,starter*.cpp,harness.cpp}、diag/{catalog.json,diag-engine.js}
  */
 (function () {
   'use strict';
@@ -159,10 +159,16 @@
   function loadDiagnostics() {
     if (diagRules) return Promise.resolve(diagRules);
     if (diagLoading) return diagLoading;
-    diagLoading = fetch(url('diag/messages.json'), { cache: 'no-cache' })
-      .then(function (res) { return res.ok ? res.json() : null; })
-      .then(function (json) { diagRules = json && json.rules ? json.rules : []; return diagRules; })
-      .catch(function () { diagRules = []; return diagRules; });
+    diagLoading = Promise.all([
+      loadScript(url('diag/diag-engine.js'), 'g4pc-diag-engine'),
+      fetch(url('diag/catalog.json'), { cache: 'no-cache' }).then(function (res) {
+        return res.ok ? res.json() : null;
+      }),
+    ]).then(function (values) {
+      var json = values[1];
+      diagRules = json && json.rules ? json.rules : [];
+      return diagRules;
+    }).catch(function () { diagRules = []; return diagRules; });
     return diagLoading;
   }
 
@@ -197,13 +203,18 @@
     return out;
   }
 
-  function matchRule(message) {
-    for (var i = 0; i < diagRules.length; ++i) {
-      try {
-        if (new RegExp(diagRules[i].match, 'i').test(message)) return diagRules[i];
-      } catch (e) { /* 规则写错时跳过，不影响运行 */ }
-    }
-    return null;
+  // 结构化规则（diagnostics/rules/**）+ 三语文案；匹配与渲染都在 diag-engine.js。
+  function explainDiagnostic(item) {
+    if (!window.G4PCDiag) return null;
+    var diag = {
+      severity: item.severity,
+      message: item.message,
+      file: item.file || '',
+      line: item.line || -1,
+      column: item.col || -1,
+      lang: 'cpp',
+    };
+    return window.G4PCDiag.select(diag, diagRules, ZH ? 'chs' : 'en');
   }
 
   function fetchText(path) {
@@ -623,9 +634,9 @@
       if (!items.length) return;
       diagBox.hidden = false;
       items.forEach(function (item) {
-        var rule = matchRule(item.message);
-        var human = rule && rule.human ? rule.human : '';
-        var hint = rule && rule.hint ? rule.hint : '';
+        var hit = explainDiagnostic(item);
+        var human = hit ? hit.human : '';
+        var hint = hit ? hit.hint : '';
         var box = h('div', { class: 'ex-diag', 'data-sev': item.severity });
         if (human) {
           box.appendChild(h('div', { class: 'ex-diag-human', text: human }));

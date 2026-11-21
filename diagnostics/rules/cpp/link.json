@@ -1,0 +1,91 @@
+{
+  "lang": "cpp",
+  "rules": [
+    {
+      "id": "undefined-reference",
+      "category": "链接",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "undefined reference to"
+          }
+        ]
+      },
+      "capture": {
+        "symbol": {
+          "field": "message",
+          "regex": "undefined reference to '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "诶——链接这关卡住了，函数被调用了，可整个工程没一处定义它，就这还想跑？杂鱼~❤",
+        "en": "Stuck at the link step? The function gets called, but nothing in the whole project defines it. And you thought this would run?",
+        "ja": "えー、リンクで止まってるよ。関数は呼ばれてるのに、プロジェクトのどこにも定義がないの。呼ぶだけ呼んで中身は無し？ それで動くと思ってたの、ざこ〜"
+      },
+      "hint": {
+        "chs": "再让函数只有调用没有定义，人家就不管你了——补上函数定义，顺带核对命名空间和参数表。",
+        "en": "Add the function's definition, then check the namespace and parameter list match. Yeah, that part.",
+        "ja": "関数の定義を足して、名前空間と引数表も合ってるか見て。…はい、そこ直して。"
+      },
+      "example": "error: undefined reference to 'foo()'",
+      "tests": [
+        {
+          "message": "undefined reference to 'foo()'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "undefined-symbol",
+      "category": "链接",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "undefined symbol:"
+          }
+        ]
+      },
+      "capture": {
+        "symbol": {
+          "field": "message",
+          "regex": "undefined symbol: ([^\\s(]+)"
+        }
+      },
+      "human": {
+        "chs": "大哥哥真是差劲呢~链接器找不着这函数的实现，只见过声明，实现连影子都没有，糊弄谁呢？",
+        "en": "The linker can't find an implementation for that function. It only sees a declaration — the body is nowhere. All talk, no code.",
+        "ja": "おにいさん、リンカがその関数の実装を見つけられないって。宣言だけ見えて、中身は影も形もないの。そういうの、口だけって言うんだよ？ ざぁこ♡"
+      },
+      "hint": {
+        "chs": "行吧行吧，最后一次——你查查函数是不是真写了实现，名字和参数跟声明对得上不嘛。",
+        "en": "Check the implementation actually exists, and that its name and parameters match the declaration. Last time I'm helping.",
+        "ja": "実装が本当にあるか、名前と引数が宣言と揃ってるか。…しょうがないなぁ、最後だからね。"
+      },
+      "example": "wasm-ld: error: main.o: undefined symbol: f()",
+      "tests": [
+        {
+          "message": "wasm-ld: error: main.o: undefined symbol: f()",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    }
+  ]
+}

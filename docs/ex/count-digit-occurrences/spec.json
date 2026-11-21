@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "../../schema.json",
   "id": "count-digit-occurrences",
   "title": {
     "chs": "数字出现计数",

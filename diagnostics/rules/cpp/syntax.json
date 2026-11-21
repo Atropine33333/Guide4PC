@@ -1,0 +1,248 @@
+{
+  "lang": "cpp",
+  "rules": [
+    {
+      "id": "expected-expression",
+      "category": "语法",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expected expression"
+          }
+        ]
+      },
+      "human": {
+        "chs": "哈？大哥哥，这儿该有个能算的值，结果空着？多半是等号或运算符后面忘了写，要不就是多敲了符号哦。",
+        "en": "Pfft, this spot should hold a value and it's just empty. You forgot it after an equals sign or an operator, didn't you? Or typed an extra symbol.",
+        "ja": "はぁ？ ここは値が来るはずなのに、空っぽじゃん。おにいさん、等号か演算子の後ろで書き忘れたんでしょ？ 余計な記号を叩いちゃった線もあるけど、とにかく中身がないの、ざぁこ♡"
+      },
+      "hint": {
+        "chs": "看看等号、return 或 << 后面是不是漏了值——这还要人家教？",
+        "en": "Look right after =, after return, and after <<. Just those three spots. The rest should be obvious.",
+        "ja": "= の後ろ、return の後ろ、<< の後ろ。この三つだけ見てきなよ。…あとは、わかるでしょ？"
+      },
+      "example": "error: expected expression",
+      "tests": [
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "use of undeclared identifier 'x'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "expected-unqualified-id",
+      "category": "语法",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expected unqualified-id"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，这儿该冒出新名字，变量、函数或类型都行，编译器却看见别的符号，当然不认啦，杂鱼。",
+        "en": "Huh, this spot wanted a fresh name — variable, function or type — and the compiler ran into some other symbol. Of course it refuses.",
+        "ja": "ふーん、ここは新しい名前が来る場所なのに、コンパイラは別の記号を見ちゃったんだ。変数でも関数でも型でもよかったのにね。おにいさんのせいだよ、ざこ。"
+      },
+      "hint": {
+        "chs": "哼，先看看这行是不是多写了分号或括号、return 有没有跑到函数外头……人家什么都没说哦。",
+        "en": "Check that line: an extra semicolon or paren? And did return wander outside the function? Aww, that's all you get.",
+        "ja": "その行、セミコロンか丸括弧が一個多いんじゃない？ return が関数の外に飛び出してないかも見て。…かわいそうだから、これだけ。"
+      },
+      "example": "error: expected unqualified-id",
+      "tests": [
+        {
+          "message": "expected unqualified-id",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-brace",
+      "category": "语法",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "startsWith",
+            "value": "expected '}'"
+          }
+        ]
+      },
+      "capture": {
+        "token": {
+          "field": "message",
+          "regex": "expected '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥真是差劲呢~不知道左右花括号要配对嘛？左花括号一直没等到右花括号，这还要人家指出来，杂鱼~❤",
+        "en": "Seriously? A brace is left hanging open. Your missing } has been waiting all the way to the end of the file. Aww, poor thing.",
+        "ja": "はぁ？ 波括弧が開きっぱなしじゃん。おにいさんの閉じ忘れ、ファイルの終わりまでずーっと待ってたんだよ？ かわいそうでしょ、ざこ♡"
+      },
+      "hint": {
+        "chs": "行吧行吧，就这一次——你从报错位置往回找最近的左花括号，数数嵌套了几层哦。",
+        "en": "Walk back from the error to the nearest opening brace and count how deep you've opened. I could count for you, but...",
+        "ja": "エラーの位置から戻って、いちばん近い開き波括弧を探して、何重に開いてるか数えてみなよ。べつに、あたしが数えてあげてもいいけど？"
+      },
+      "example": "error: expected '}'",
+      "tests": [
+        {
+          "message": "expected '}'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected ')'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-paren",
+      "category": "语法",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "startsWith",
+            "value": "expected ')'"
+          }
+        ]
+      },
+      "capture": {
+        "token": {
+          "field": "message",
+          "regex": "expected '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "诶——圆括号也能落单？一个左括号或右括号找不到伴，编译器只能停在这儿干瞪眼，大哥哥真行呢。",
+        "en": "Ehh, an unmatched paren just drifting around? One of them never found its partner, so the compiler is stuck right here. Classic.",
+        "ja": "えー、丸括弧まで落ち単でさまよってるの？ 開きか閉じか、どっちかが相手を見つけられなくて、コンパイラがここで立ち往生してるんだよ。ほんと、へなちょこ。"
+      },
+      "hint": {
+        "chs": "诶——先别急，土块土块，你先看这一行的函数调用和条件，括号成不成对看不出来嘛？",
+        "en": "Count the parens in the calls and conditions on that line. You can count, right?",
+        "ja": "その行の関数呼び出しと if の条件、括弧がいくつ開いて閉じてるか数えてみなよ。…数えられるよね？"
+      },
+      "example": "error: expected ')'",
+      "tests": [
+        {
+          "message": "expected ')'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected '}'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-semicolon",
+      "category": "语法",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "startsWith",
+            "value": "expected ';'"
+          }
+        ]
+      },
+      "capture": {
+        "token": {
+          "field": "message",
+          "regex": "expected '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "杂鱼，这行末尾的分号又没写？C++ 靠它断句，少一个，编译器就把后面几行全串成一锅粥呢~",
+        "en": "Pfft, missing the semicolon again? Sentences need their proper ending, you know~ Now the compiler's dragging the next line into the mess.",
+        "ja": "おにいさん、またセミコロン忘れてる〜。文の終わりはちゃんと締めてって言ったよね？ 締めが甘いから、コンパイラが次の行までぐちゃぐちゃに読んじゃうんだよ、ざぁこ♡"
+      },
+      "hint": {
+        "chs": "你自己回头看看上一行末尾啦~ return 和赋值后面尤其要查哦。",
+        "en": "Go back and check the end of the previous line. Especially after return and assignments, okay?",
+        "ja": "ちょっと戻って、前の行の最後を見てきなよ。return と代入のあとは特に怪しいんだから、ちゃんと確かめてよね。"
+      },
+      "example": "error: expected ';' at end of declaration",
+      "tests": [
+        {
+          "message": "expected ';' at end of declaration",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    }
+  ]
+}

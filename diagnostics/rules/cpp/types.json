@@ -1,0 +1,654 @@
+{
+  "lang": "cpp",
+  "rules": [
+    {
+      "id": "array-subscript-not-integer",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "array subscript is not an integer"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——下标得是整数呀，大哥哥塞个别的类型进去，数组当场不认账，这都能错，笨蛋~❤",
+        "en": "Ehh, an index has to be an integer. You shoved another type in, so the array turned its back on you. Serves you right.",
+        "ja": "えー、添字は整数じゃなきゃだめなんだよ？ そこに別の型をねじ込んだから、配列が「知らない」ってそっぽ向いちゃった。そんなんで中身が出せると思ってたの？ ばかだねぇ〜"
+      },
+      "hint": {
+        "chs": "用 int 或 size_t 当下标，浮点和字符串都不行——这你都记不住嘛？",
+        "en": "Indexes are int or size_t. Floats and strings won't work. You can fix that yourself, right?",
+        "ja": "添字は int か size_t。浮動小数も文字列もだめだよ。…自分で直せるよね？"
+      },
+      "example": "error: array subscript is not an integer",
+      "tests": [
+        {
+          "message": "array subscript is not an integer",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "assign-incompatible",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "assigning to"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "incompatible type"
+          }
+        ]
+      },
+      "capture": {
+        "target": {
+          "field": "message",
+          "regex": "assigning to '([^']+)'"
+        },
+        "sourceType": {
+          "field": "message",
+          "regex": "incompatible type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "杂鱼，赋值号两边脾气不合哦，这个值怎么都塞不进左边那个变量~ 欸？为什么忽然盯着人家？",
+        "en": "The two sides of your assignment don't speak the same language. That value will never fit the variable on the left. ...Why are you looking at me?",
+        "ja": "ざこ、代入の左右で気持ちが通じ合ってないよ。その値は左の変数にはどうやっても入らないの。…え、なんでこっち見るの？ 直すのはおにいさんの仕事だよ。"
+      },
+      "hint": {
+        "chs": "哼，可恶，再拿字符串字面量往这个变量里塞，人家可要生气了——看清两边类型，要接字符串就用 std::string。",
+        "en": "Look at the types on both sides. If you want text, make the variable a std::string. Ugh, fine.",
+        "ja": "両側の型をちゃんと見て。文字列を入れたいなら変数を std::string にするの。…もう、しょうがないなぁ。"
+      },
+      "example": "error: assigning to 'int' from incompatible type 'const char *'",
+      "tests": [
+        {
+          "message": "assigning to 'int' from incompatible type 'const char *'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "bad-init-type",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot initialize a variable of type"
+          }
+        ]
+      },
+      "capture": {
+        "type": {
+          "field": "message",
+          "regex": "variable of type '([^']+)'"
+        },
+        "valueType": {
+          "field": "message",
+          "regex": "with an? (?:rvalue|lvalue) of type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "诶——大哥哥想拿这种值初始化这种变量？类型对不上，怪不得连编译器都要给你脸色看呢，杂鱼~❤",
+        "en": "Wait, you want to initialize that type with that value? The types don't match, so even the compiler is making a face. Sloppy again.",
+        "ja": "えー、その値でその型の変数を初期化するつもり？ 型が合ってないから、コンパイラだって嫌な顔するよ。おにいさん、そういう雑さがね、ざぁこ♡"
+      },
+      "hint": {
+        "chs": "\"abc\" 是字符串、'a' 是字符，接字符串就把变量改成 std::string——还要人家替你改嘛？",
+        "en": "\"abc\" is a string, 'a' is a char. If you want the string, make the variable std::string. The rest is obvious.",
+        "ja": "\"abc\" は文字列で、'a' は文字。文字列を入れたいなら変数を std::string にして。…あとは、わかるでしょ？"
+      },
+      "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
+      "tests": [
+        {
+          "message": "cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "indirection-not-pointer",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "indirection requires pointer operand"
+          }
+        ]
+      },
+      "human": {
+        "chs": "哈？差劲。用 * 或 -> 解引用之前，先看清它是不是指针嘛——不是的话编译器当场就懵，亏你想得出来呢。",
+        "en": "Before you dereference with * or ->, check whether the thing is even a pointer. If it isn't, the compiler just freezes. Where do you get these ideas?",
+        "ja": "はぁ？ * や -> で中身を指そうとする前に、それがポインタかどうか確かめなよ。違うならコンパイラは固まるだけ。よくそんな発想できるね、ざこ。"
+      },
+      "hint": {
+        "chs": "人家才不替你改呢，先确认它是不是指针；普通对象用 .，指针才用 -> 嘛。",
+        "en": "Confirm it's a pointer first. Plain objects take . , pointers take ->. Fix it and I'll reconsider you.",
+        "ja": "まずそれがポインタか確認。普通のオブジェクトは . 、ポインタは -> だよ。直せたら、ちょっと見直してあげる。"
+      },
+      "example": "error: indirection requires pointer operand ('int' invalid)",
+      "tests": [
+        {
+          "message": "indirection requires pointer operand ('int' invalid)",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "invalid-operands",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "invalid operands to binary expression"
+          }
+        ]
+      },
+      "human": {
+        "chs": "杂鱼，这俩东西根本不能这么算哦~字符串加数字？连人家都不会帮你这么算，还想要编译器算？想得美。",
+        "en": "You can't just add those two together. String plus number means nothing to the compiler, and nothing to me either. Obviously.",
+        "ja": "ざこ、その二つはそんなふうに計算できないよ？ 文字列に数字を足そうとしても、コンパイラは知らんぷり。あたしだって手伝わないんだから、当然でしょ。"
+      },
+      "hint": {
+        "chs": "人家才不帮你转呢，先用 std::to_string 把数字变成字符串再拼嘛。",
+        "en": "Convert the number with std::to_string first, then join them. There, I told you. Don't waste it.",
+        "ja": "数字を文字列にしたいなら std::to_string で変換してから繋ぐの。…教えてあげたんだから、ちゃんとしなよ。"
+      },
+      "example": "error: invalid operands to binary expression ('std::string' and 'int')",
+      "tests": [
+        {
+          "message": "invalid operands to binary expression ('std::string' and 'int')",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "member-of-non-class",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "member reference base type"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is not a structure or union"
+          }
+        ]
+      },
+      "human": {
+        "chs": "杂鱼，在一个不是类、也不是结构体的东西上点成员？它哪来的成员给你呀，想得倒美呢~",
+        "en": "Hey, that thing isn't a class or a struct. It has no members to reach into. The compiler doesn't buy your imagination.",
+        "ja": "ねぇ、そこクラスでも構造体でもないものだよ？ メンバーなんて生えてるわけないじゃん。おにいさんの妄想は、コンパイラには通じないの、ざこ♡"
+      },
+      "hint": {
+        "chs": "人家就看着你分清楚点号左边是不是对象，该用 . 还是 ->，看你能错几回~",
+        "en": "Aww, that's not a class or a struct. So check whether the thing left of the dot is an object or a pointer, okay?",
+        "ja": "かわいそうに、そこはクラスでも構造体でもないよ。…だから、点の左がオブジェクトかポインタか確かめて？"
+      },
+      "example": "error: member reference base type 'int' is not a structure or union",
+      "tests": [
+        {
+          "message": "member reference base type 'int' is not a structure or union",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "missing-return-value",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error"
+            ]
+          },
+          {
+            "any": [
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "non-void function does not return a value"
+              },
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "should return a value"
+              }
+            ]
+          }
+        ]
+      },
+      "human": {
+        "chs": "大哥哥，这函数说好返回值，结果有条路径走到头都没 return 呢~调用的人只能拿到个说不准的玩意儿，这都敢交差？",
+        "en": "This function promised a return value, but one path goes home without returning. What does the caller get? You can't come home empty-handed.",
+        "ja": "おにいさん、この関数は値を返す約束なのに、途中の道が最後まで return せずに帰っちゃってるよ。呼んだ人は何を受け取るの？ 手ぶらで帰るなんて、へなちょこ〜"
+      },
+      "hint": {
+        "chs": "你自己检查一遍：每个分支和函数末尾都补上 return 啦~ main 除外哦。",
+        "en": "Walk every branch and add a return at the end and in each arm. main is the only exception. Special delivery, just this once.",
+        "ja": "分岐を全部たどって、最後と各枝に return を足して。main だけは例外だよ。…特別に教えてあげた。"
+      },
+      "example": "warning: non-void function does not return a value in all control paths",
+      "tests": [
+        {
+          "message": "non-void function does not return a value in all control paths",
+          "severity": "warning",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "no-matching-constructor",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "no matching constructor for initialization of"
+          }
+        ]
+      },
+      "capture": {
+        "type": {
+          "field": "message",
+          "regex": "initialization of '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "哼，这类型没有哪个构造函数肯收这组参数哦，门槛高着呢，硬塞可不行，杂鱼。",
+        "en": "That type has no constructor willing to take that set of arguments. The bouncer is strict, deal with it. You're the one who tried to force it.",
+        "ja": "ふーん、その型には、その引数の組を受け取るコンストラクタがないんだよ。門番は厳しいの、しょうがないでしょ。押し通ろうとしたおにいさんがざこ。"
+      },
+      "hint": {
+        "chs": "就这一次哦——你对照构造函数的参数表改，或者先构造再赋值嘛。",
+        "en": "Compare against the constructor's parameter list: build it the matching way, or construct first and assign after.",
+        "ja": "コンストラクタの引数表と見比べて、合う形で作るか、先に作ってから代入して。…はい、そこ。"
+      },
+      "example": "error: no matching constructor for initialization of 'Buffer'",
+      "tests": [
+        {
+          "message": "no matching constructor for initialization of 'Buffer'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "no matching member function for call to 'append'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "no-matching-function",
+      "category": "类型",
+      "priority": 30,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "member function for call to"
+          }
+        ]
+      },
+      "capture": {
+        "callee": {
+          "field": "message",
+          "regex": "function for call to '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥真是杂鱼呢~函数名倒是对上了，可参数对不上号，哪个重载都不肯接这单生意，就这？",
+        "en": "The name matches, but the arguments don't, so every overload is shaking its head. Wrong match, no deal. Cute attempt.",
+        "ja": "おにいさんってば雑魚〜。関数名は合ってるのに、引数が噛み合ってなくて、どのオーバーロードも首を振ってるよ。相手を間違えたら通じないって、知ってた？"
+      },
+      "hint": {
+        "chs": "诶——先别哭，数数参数个数和类型嘛；拼字符串用 std::string 或 const char*，这都要人家说？",
+        "en": "Count the arguments and check each type. For text, pass std::string or const char*. You can manage that, right?",
+        "ja": "引数の数と型を数えてみなよ。文字列を渡すなら std::string か const char*。…自分でできるよね？"
+      },
+      "example": "error: no matching member function for call to 'append'",
+      "tests": [
+        {
+          "message": "no matching member function for call to 'append'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "no matching constructor for initialization of 'Buffer'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "no-viable-conversion",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "no viable conversion from"
+          }
+        ]
+      },
+      "human": {
+        "chs": "大哥哥，编译器把路都翻遍了，也找不到从这种类型变到那种类型的道呢，差劲~",
+        "en": "The compiler searched every route and found no path from that type to that one. Some walls just don't move.",
+        "ja": "おにいさん、コンパイラは道を全部探したけど、その型からその型へ行く道が一本もなかったんだって。勝手に変わると思ってたの？ そんなわけないでしょ、ざこ〜"
+      },
+      "hint": {
+        "chs": "哼，对一下参数类型，该显式转就用 std::stoi 或 static_cast……人家先不说你了。",
+        "en": "Match the parameter types and convert explicitly with std::stoi or static_cast. I wasn't going to say that.",
+        "ja": "引数の型を突き合わせて、必要な変換は std::stoi か static_cast で明示して。…言うつもりなかったのに。"
+      },
+      "example": "error: no viable conversion from 'std::string' to 'int'",
+      "tests": [
+        {
+          "message": "no viable conversion from 'std::string' to 'int'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "no-viable-overload",
+      "category": "类型",
+      "priority": 5,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "function for call to"
+          },
+          {
+            "not": {
+              "field": "message",
+              "op": "contains",
+              "value": "member function for call to"
+            }
+          }
+        ]
+      },
+      "capture": {
+        "callee": {
+          "field": "message",
+          "regex": "function for call to '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "哼，这名字挂着重载，可没哪个版本肯收这组参数哦，个个都摇头，省省吧，杂鱼~",
+        "en": "That name has overloads everywhere, and not one accepts these arguments. They're all lined up shaking their heads. Kind of a show.",
+        "ja": "はぁ？ その名前はオーバーロードだらけなのに、どの版もこの引数を受け取らないんだよ。顔を揃えて首振ってるの、ちょっと見ものだね、ざこ♡"
+      },
+      "hint": {
+        "chs": "哼，对一下参数类型嘛，std::max 要求两个参数同型……人家可没说是你写错了哦。",
+        "en": "Make the argument types match. std::max needs both sides to be the same type. I said nothing.",
+        "ja": "引数の型を揃えてみなよ。std::max は二つが同じ型じゃないと通らないんだから。…あたしは何も言ってないよ。"
+      },
+      "example": "error: no matching function for call to 'max'",
+      "tests": [
+        {
+          "message": "no matching function for call to 'max'",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "no matching member function for call to 'append'",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "too-few-arguments",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "too few arguments to function call"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——参数给这么少？这函数胃口大，要的比你塞的多，这都数不清，大哥哥真差劲呢~❤",
+        "en": "Ehh, that's all the arguments you brought? This function eats more. You can't even count the slots.",
+        "ja": "えー、引数こんなに少ないの？ この関数はもっと食べるんだよ、おにいさんが持ってきた分じゃ足りないって。ね、数も数えられないの？ ざぁこ♡"
+      },
+      "hint": {
+        "chs": "人家才不告诉你呢，照函数签名把参数补齐嘛，有默认值的除外。",
+        "en": "Read the declaration and pass the missing arguments. The ones with default values don't count.",
+        "ja": "関数の宣言を見て、足りない引数を足してきなよ。デフォルト値があるやつは別だけどね。"
+      },
+      "example": "error: too few arguments to function call, expected 2, have 1",
+      "tests": [
+        {
+          "message": "too few arguments to function call, expected 2, have 1",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "too-many-arguments",
+      "category": "类型",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "too many arguments to function call"
+          }
+        ]
+      },
+      "human": {
+        "chs": "杂鱼，参数塞这么多？这函数胃口小，接不住你这一大把，收一收呗，笨蛋。",
+        "en": "You stuffed in way too many arguments. This function has a small stomach and can't take that armful. Packing more in doesn't work.",
+        "ja": "ざこ、引数詰め込みすぎ。この関数は胃が小さくて、その一把は受け取れないよ。詰め込めば入ると思ってるでしょ、そういうとこが雑なんだよね、ばか。"
+      },
+      "hint": {
+        "chs": "删掉多余的参数嘛，或者确认是不是叫错了同名函数——这还要人家手把手教？",
+        "en": "Drop the extra arguments, or check whether you meant a different function with the same name. The compiler's still glaring.",
+        "ja": "余分な引数を消すか、同名の別の関数と間違えてないか確認して。…このままだとコンパイラがずっと睨んでるよ。"
+      },
+      "example": "error: too many arguments to function call, expected 1, have 3",
+      "tests": [
+        {
+          "message": "too many arguments to function call, expected 1, have 3",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    }
+  ]
+}

@@ -69,15 +69,17 @@ function getBuildVersion() {
     'playground/scene.css',
     'playground/vendor/editor.bundle.js',
     'playground/vendor/clang-wasm-toolchain.global.js',
-    'diagnostics/messages.json',
+    'playground/diag-engine.js',
+    'diagnostics/catalog.json',
   ]) {
     const full = path.join(ROOT, f);
     if (fs.existsSync(full)) add(full);
   }
-  for (const d of ['exercises', 'test']) {
+  for (const d of ['exercises', 'exercise', 'exercise-site', 'test']) {
     const full = path.join(ROOT, d);
     if (fs.existsSync(full)) walk(full);
   }
+  walk(path.join(ROOT, 'diagnostics', 'rules'));
 
   _buildVersion = hash.digest('hex').slice(0, 10);
   return _buildVersion;
@@ -585,6 +587,12 @@ function compareKeys(a, b) {
   return 0;
 }
 
+// Draft pages ("[test]…") stay reachable by direct hash but are hidden from the
+// sidebar tree, cross-language pairs and search index.
+function isDraftRel(relPath) {
+  return /(^|\/)\[test\][^\/]*\.md$/.test(relPath);
+}
+
 function buildTree(nodes, lang) {
   const rootNodes = [];
   const dirMap = new Map();
@@ -775,7 +783,7 @@ function syncAllStatics(cache) {
  * dist/:
  *   playground/{pg.js,pg-worker.js,pg.css,vendor/*} → docs/pg/
  *   exercises/<id>/{spec.json,*.cpp}               → docs/ex/<id>/
- *   diagnostics/messages.json                      → docs/diag/
+ *   diagnostics/catalog.json + playground/diag-engine.js → docs/diag/
  */
 function syncPlayground() {
   let copied = 0;
@@ -798,45 +806,89 @@ function syncPlayground() {
     }
   }
 
-  const exSrc = path.join(ROOT, 'exercises');
-  if (fs.existsSync(exSrc)) {
-    for (const id of fs.readdirSync(exSrc)) {
-      const dir = path.join(exSrc, id);
-      if (!fs.statSync(dir).isDirectory()) continue;
-      for (const f of fs.readdirSync(dir)) {
-        if (f === 'spec.json' || f.endsWith('.cpp')) {
-          copyFile(path.join(dir, f), path.join(DIST, 'ex', id, f));
+  // 题目源：exercise/<lang>/<id>/{spec.json,*.cpp,problem.*.md}
+  // 同时发布到 docs/ex/<id>/（播放器挂载路径）与 docs/exercise/<lang>/<id>/（练习站）。
+  const exRoot = path.join(ROOT, 'exercise');
+  const exIndex = [];
+  if (fs.existsSync(exRoot)) {
+    for (const lang of fs.readdirSync(exRoot).sort()) {
+      const langDir = path.join(exRoot, lang);
+      if (!fs.statSync(langDir).isDirectory()) continue;
+      if (lang === 'papers') continue;
+      for (const id of fs.readdirSync(langDir).sort()) {
+        const dir = path.join(langDir, id);
+        if (!fs.statSync(dir).isDirectory()) continue;
+        const specFile = path.join(dir, 'spec.json');
+        if (!fs.existsSync(specFile)) continue;
+        for (const f of fs.readdirSync(dir)) {
+          const src = path.join(dir, f);
+          if (!fs.statSync(src).isFile()) continue;
+          copyFile(src, path.join(DIST, 'exercise', lang, id, f));
+          if (f === 'spec.json' || f.endsWith('.cpp')) {
+            copyFile(src, path.join(DIST, 'ex', id, f));
+          }
+        }
+        try {
+          const spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
+          exIndex.push({
+            id: spec.id || id,
+            dir: lang,
+            lang: spec.lang || lang,
+            title: spec.title || null,
+            category: spec.category || null,
+            rank: typeof spec.rank === 'number' ? spec.rank : null,
+            checks: Array.isArray(spec.checks) ? spec.checks.length : 0,
+            harness: !!spec.harness,
+            variants: Array.isArray(spec.variants)
+              ? spec.variants.map((v) => ({ id: v.id, label: v.label || null }))
+              : [],
+            problem: {
+              chs: fs.existsSync(path.join(dir, 'problem.chs.md')),
+              en: fs.existsSync(path.join(dir, 'problem.en.md')),
+            },
+          });
+        } catch (err) {
+          console.warn(`  ! exercise/${lang}/${id}/spec.json: ${err.message}`);
         }
       }
     }
+    ensureDir(path.join(DIST, 'ex'));
+    fs.writeFileSync(path.join(DIST, 'ex', 'index.json'), JSON.stringify(exIndex, null, 2));
+    ensureDir(path.join(DIST, 'exercise'));
+    fs.writeFileSync(path.join(DIST, 'exercise', 'index.json'), JSON.stringify({ version: 1, items: exIndex }, null, 2));
   }
 
-  const diag = path.join(ROOT, 'diagnostics', 'messages.json');
-  if (fs.existsSync(diag)) copyFile(diag, path.join(DIST, 'diag', 'messages.json'));
-
-  // 练习索引：测试台与未来的题目总览共用。
-  if (fs.existsSync(exSrc)) {
-    const index = [];
-    for (const id of fs.readdirSync(exSrc)) {
-      const specFile = path.join(exSrc, id, 'spec.json');
-      if (!fs.existsSync(specFile)) continue;
+  // 卷子：exercise/papers/*.json → docs/exercise/papers/
+  const papersSrc = path.join(exRoot, 'papers');
+  if (fs.existsSync(papersSrc)) {
+    const papers = [];
+    for (const f of fs.readdirSync(papersSrc).sort()) {
+      if (!f.endsWith('.json')) continue;
+      copyFile(path.join(papersSrc, f), path.join(DIST, 'exercise', 'papers', f));
       try {
-        const spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
-        index.push({
-          id: spec.id || id,
-          title: spec.title || null,
-          lang: spec.lang || 'cpp',
-          category: spec.category || null,
-          rank: typeof spec.rank === 'number' ? spec.rank : null,
-          checks: Array.isArray(spec.checks) ? spec.checks.length : 0,
-          harness: !!spec.harness,
-        });
+        const paper = JSON.parse(fs.readFileSync(path.join(papersSrc, f), 'utf8'));
+        papers.push({ file: f, id: paper.id || f.replace(/\.json$/, ''), title: paper.title || null, count: Array.isArray(paper.items) ? paper.items.length : 0 });
       } catch (err) {
-        console.warn(`  ! exercises/${id}/spec.json: ${err.message}`);
+        console.warn(`  ! exercise/papers/${f}: ${err.message}`);
       }
     }
-    ensureDir(path.join(DIST, 'ex'));
-    fs.writeFileSync(path.join(DIST, 'ex', 'index.json'), JSON.stringify(index, null, 2));
+    ensureDir(path.join(DIST, 'exercise', 'papers'));
+    fs.writeFileSync(path.join(DIST, 'exercise', 'papers', 'index.json'), JSON.stringify(papers, null, 2));
+  }
+
+  // 练习站：exercise-site/ 整体复制到 docs/exercise/（与题目数据同目录）。
+  const siteSrc = path.join(ROOT, 'exercise-site');
+  if (fs.existsSync(siteSrc)) {
+    const copyTree = (from, to) => {
+      ensureDir(to);
+      for (const ent of fs.readdirSync(from, { withFileTypes: true })) {
+        const src = path.join(from, ent.name);
+        const dst = path.join(to, ent.name);
+        if (ent.isDirectory()) copyTree(src, dst);
+        else if (ent.isFile()) copyFile(src, dst);
+      }
+    };
+    copyTree(siteSrc, path.join(DIST, 'exercise'));
   }
 
   // 测试子站：/test/ 独立页面，构建时整体复制。
@@ -894,9 +946,11 @@ function fullBuild(cache) {
   for (const f of chsFiles) processFile(f, 'chs');
   for (const f of enFiles) processFile(f, 'en');
 
+  const visibleMeta = allMeta.filter((m) => !isDraftRel(m.relPath));
+
   // 3. Build tree nodes from metadata
   function makeNodes(lang) {
-    return allMeta
+    return visibleMeta
       .filter(m => m.lang === lang)
       .map(m => ({
         type: 'file',
@@ -914,13 +968,13 @@ function fullBuild(cache) {
 
   // 4. Build pairs
   const pairs = {};
-  for (const m of allMeta) {
+  for (const m of visibleMeta) {
     if (!pairs[m.key]) pairs[m.key] = { chs: null, en: null };
     pairs[m.key][m.lang] = m.relPath;
   }
 
   // 5. Build search index (inverted index — compact & fast)
-  const searchIndex = buildInvertedIndex(allMeta);
+  const searchIndex = buildInvertedIndex(visibleMeta);
 
   // 6. Write dist/
   console.log('\n  Writing dist/...');
@@ -1157,9 +1211,11 @@ function incrementalBuild(cache) {
     });
   }
 
+  const visibleMeta = allMeta.filter((m) => !isDraftRel(m.relPath));
+
   // 7. Rebuild tree
   function makeNodes(lang) {
-    return allMeta
+    return visibleMeta
       .filter(m => m.lang === lang)
       .map(m => ({
         type: 'file',
@@ -1177,13 +1233,13 @@ function incrementalBuild(cache) {
 
   // 8. Rebuild pairs
   const pairs = {};
-  for (const m of allMeta) {
+  for (const m of visibleMeta) {
     if (!pairs[m.key]) pairs[m.key] = { chs: null, en: null };
     pairs[m.key][m.lang] = m.relPath;
   }
 
   // 9. Rebuild search index (inverted index)
-  const searchIndex = buildInvertedIndex(allMeta);
+  const searchIndex = buildInvertedIndex(visibleMeta);
 
   // 10. Write manifest & search index (search index is compact to save bandwidth)
   const manifest = { tree, pairs, version: getBuildVersion() };

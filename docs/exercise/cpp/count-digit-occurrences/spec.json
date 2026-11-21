@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schema.json",
+  "id": "count-digit-occurrences",
+  "title": {
+    "chs": "数字出现计数",
+    "en": "Count Digit Occurrences"
+  },
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通正整数",
+        "en": "Ordinary positive integer"
+      },
+      "cases": [
+        {
+          "in": [
+            "676767",
+            "6"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "1020",
+            "0"
+          ],
+          "out": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edge",
+      "label": {
+        "chs": "边界",
+        "en": "Boundary"
+      },
+      "cases": [
+        {
+          "in": [
+            "0",
+            "0"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "12345",
+            "9"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "no-string",
+      "label": {
+        "chs": "测试机没有 <string>",
+        "en": "No <string> on the school machine"
+      },
+      "starter": "starter-no-string.cpp",
+      "forbidPatterns": [
+        "#include\\s*<string>",
+        "\\bstd::string\\b",
+        "\\bstd::basic_string\\b"
+      ]
+    }
+  ]
+}

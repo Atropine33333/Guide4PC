@@ -1,0 +1,95 @@
+{
+  "lang": "cpp",
+  "rules": [
+    {
+      "id": "throw-disabled",
+      "category": "运行时限制",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot use 'throw' with exceptions disabled"
+          }
+        ]
+      },
+      "human": {
+        "chs": "杂鱼，这在线编译器没开 C++ 异常呢，throw 暂时就是个摆设，写它有什么用呀？",
+        "en": "Ehh, this online compiler has exceptions turned off. You can throw all you like — nobody's catching. Weak.",
+        "ja": "えー、このオンラインコンパイラ、例外オフになってるんだよ。throw なんて投げても、誰も受け取ってくれないよ、よわよわ〜"
+      },
+      "hint": {
+        "chs": "诶——先别急着写 throw，这在线编译器没开异常嘛，你先用返回错误码或 std::optional 顶着，异常回本地练。",
+        "en": "Return an error code or std::optional instead. Save the throwing for your local compiler.",
+        "ja": "だから先にエラーコードか std::optional で返しときなって。例外はローカルのコンパイラで存分に投げれば？"
+      },
+      "example": "error: cannot use 'throw' with exceptions disabled",
+      "tests": [
+        {
+          "message": "cannot use 'throw' with exceptions disabled",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "try-disabled",
+      "category": "运行时限制",
+      "priority": 0,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot use 'try' with exceptions disabled"
+          }
+        ]
+      },
+      "human": {
+        "chs": "哼，大哥哥，try / catch 要异常支持，这在线编译器偏偏没开呢，写了也白搭，气不气？",
+        "en": "try / catch needs exception support, and this online compiler has it switched off. You can write it, it just won't do anything. Frustrating?",
+        "ja": "ふーん、try / catch には例外のサポートが要るんだよ。このオンラインコンパイラはそれを切ってあるの。書いても空振り、悔しい？ ざこ♡"
+      },
+      "hint": {
+        "chs": "人家才不陪你耗呢，改成检查返回值嘛；异常处理留到本地编译器练。",
+        "en": "Rewrite it to check return values instead. Practice exceptions on your local compiler. Not that I care.",
+        "ja": "戻り値をチェックする形に書き換えて。例外の練習はローカルでやってね。…べつに、あたしは構わないけど。"
+      },
+      "example": "error: cannot use 'try' with exceptions disabled",
+      "tests": [
+        {
+          "message": "cannot use 'try' with exceptions disabled",
+          "severity": "error",
+          "expect": true
+        },
+        {
+          "message": "expected expression",
+          "severity": "error",
+          "expect": false
+        }
+      ]
+    }
+  ]
+}

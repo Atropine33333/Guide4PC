@@ -292,13 +292,6 @@
             "path": "main/Chapter2_Cpp/Section10_杂谈.md",
             "key": "main/Chapter2_Cpp/10",
             "lang": "chs"
-          },
-          {
-            "type": "file",
-            "name": "学校C++",
-            "path": "main/Chapter2_Cpp/[test]Section1_学校C++.md",
-            "key": "main/Chapter2_Cpp/test/学校C++",
-            "lang": "chs"
           }
         ]
       },
@@ -728,13 +721,6 @@
             "path": "main/Chapter2_Cpp/Section10_Tittle-tattle.md",
             "key": "main/Chapter2_Cpp/10",
             "lang": "en"
-          },
-          {
-            "type": "file",
-            "name": "SchoolCpp",
-            "path": "main/Chapter2_Cpp/[test]Section1_SchoolCpp.md",
-            "key": "main/Chapter2_Cpp/test/SchoolCpp",
-            "lang": "en"
           }
         ]
       },
@@ -939,10 +925,6 @@
       "chs": "main/Chapter2_Cpp/[dl1]Section0_代码.md",
       "en": "main/Chapter2_Cpp/[dl1]Section0_Code.md"
     },
-    "main/Chapter2_Cpp/test/学校C++": {
-      "chs": "main/Chapter2_Cpp/[test]Section1_学校C++.md",
-      "en": null
-    },
     "main/Chapter3_Python/1": {
       "chs": "main/Chapter3_Python/Section1_环境.md",
       "en": "main/Chapter3_Python/Section1_Environments.md"
@@ -1091,10 +1073,6 @@
       "chs": null,
       "en": "Appendix0.md"
     },
-    "main/Chapter2_Cpp/test/SchoolCpp": {
-      "chs": null,
-      "en": "main/Chapter2_Cpp/[test]Section1_SchoolCpp.md"
-    },
     "main/Chapter4_Hardware/1": {
       "chs": null,
       "en": "main/Chapter4_Hardware/Section1_EnvironmentSetup.md"
@@ -1104,5 +1082,5 @@
       "en": "main/Chapter4_Hardware/[dl4]Section0_Introduction.md"
     }
   },
-  "version": "143b503fb3"
+  "version": "2c2b80731b"
 }
