@@ -264,15 +264,6 @@
   flex: 1;
 }
 
-.ex-kbd {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-muted);
-  padding: 4px 7px;
-  border: 1px solid var(--color-border);
-  white-space: nowrap;
-}
-
 .ex-status {
   margin-left: var(--ex-s3);
   font-family: inherit;
@@ -659,10 +650,6 @@
 
   .ex-panel {
     padding: var(--ex-s3) var(--ex-s4) var(--ex-s4);
-  }
-
-  .ex-kbd {
-    display: none;
   }
 
   .ex-status {

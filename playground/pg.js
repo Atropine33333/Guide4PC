@@ -342,7 +342,6 @@
     var status = h('span', { class: 'ex-status', text: TEXT.preparing, 'data-tone': 'muted' });
     var runBtn = h('button', { class: 'ex-run', type: 'button', text: TEXT.run });
     var resetBtn = h('button', { class: 'ex-reset', type: 'button', text: TEXT.reset });
-    var hint = h('span', { class: 'ex-kbd', text: 'Ctrl/⌘ + Enter' });
     var checkList = h('ol', { class: 'ex-checks' });
     var outputBox = h('pre', { class: 'ex-output', hidden: '' });
     var diagBox = h('div', { class: 'ex-diagnostics' });
@@ -385,7 +384,6 @@
         runBtn,
         resetBtn,
         h('span', { class: 'ex-spacer' }),
-        hint,
         status,
       ]),
       h('div', { class: 'ex-editor-wrap' }, [
@@ -701,7 +699,6 @@
       view = window.G4PCEditor.createEditor({
         parent: editorHost,
         doc: starter,
-        onRun: doRun,
       });
       allViews.push(view);
     }).catch(function (err) {

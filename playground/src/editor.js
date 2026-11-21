@@ -6,7 +6,6 @@
  * 缩进规则在这里定死，不依赖 basicSetup 的语言默认值：
  *   · 缩进单位固定为 4 个空格（indentUnit / tabSize）
  *   · Tab / Shift-Tab 走缩进（indentWithTab），不会把焦点移出编辑器
- *   · Ctrl/⌘ + Enter 运行
  *
  * 代码高亮用 Catppuccin（用户自己的配色偏好）：颜色全部写成 CSS 变量，
  * Latte/Mocha 的取值放在 pg.css 的 `[data-theme="dark"]` 覆盖里，
@@ -72,7 +71,7 @@ const catppuccin = HighlightStyle.define([
   { tag: t.strong, fontWeight: 'bold' },
 ]);
 
-export function createEditor({ parent, doc, onRun }) {
+export function createEditor({ parent, doc }) {
   // Tab 必须排在 basicSetup 之前，保证它比其它 keymap 先被看见。
   const extensions = [
     keymap.of([indentWithTab]),
@@ -84,16 +83,6 @@ export function createEditor({ parent, doc, onRun }) {
     EditorView.theme({
       '&': { fontSize: 'var(--pg-code-size, 15px)' },
       '.cm-content': { fontFamily: 'var(--font-mono)' },
-    }),
-    EditorView.domEventHandlers({
-      keydown(event) {
-        if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
-          event.preventDefault();
-          if (onRun) onRun();
-          return true;
-        }
-        return false;
-      },
     }),
   ];
 
