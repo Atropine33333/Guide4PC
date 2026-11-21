@@ -806,6 +806,15 @@ function syncPlayground() {
     }
   }
 
+  // 诊断：规则目录合并后的 catalog 与浏览器端匹配引擎。
+  const diagFiles = [
+    [path.join(ROOT, 'diagnostics', 'catalog.json'), path.join(DIST, 'diag', 'catalog.json')],
+    [path.join(ROOT, 'playground', 'diag-engine.js'), path.join(DIST, 'diag', 'diag-engine.js')],
+  ];
+  for (const [from, to] of diagFiles) {
+    if (fs.existsSync(from)) copyFile(from, to);
+  }
+
   // 题目源：exercise/<lang>/<id>/{spec.json,*.cpp,problem.*.md}
   // 同时发布到 docs/ex/<id>/（播放器挂载路径）与 docs/exercise/<lang>/<id>/（练习站）。
   const exRoot = path.join(ROOT, 'exercise');
