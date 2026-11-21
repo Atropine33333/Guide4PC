@@ -184,12 +184,12 @@
     var out = [];
     (lines || []).forEach(function (rawLine) {
       var line = stripAnsi(rawLine);
-      var m = /^(.*?):(\d+):(\d+): (error|warning|note): (.*)$/.exec(line);
+      var m = /^(.*?):(\d+):(\d+): (fatal error|error|warning|note): (.*)$/.exec(line);
       if (m) {
         out.push({ file: m[1], line: +m[2], col: +m[3], severity: m[4], message: m[5], notes: [] });
         return;
       }
-      var l = /^([\w.-]+): (error|warning): (.*)$/.exec(line);
+      var l = /^([\w.-]+): (fatal error|error|warning): (.*)$/.exec(line);
       if (l) {
         out.push({ file: '', severity: l[2], message: l[3], notes: [] });
         return;
