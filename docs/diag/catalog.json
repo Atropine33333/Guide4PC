@@ -72,6 +72,40 @@
       "example": "error: expected unqualified-id"
     },
     {
+      "id": "fundef-not-allowed-here",
+      "lang": "cpp",
+      "category": "语法",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "function definition is not allowed here"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，函数不能塞在另一个函数里面啦，C++ 可不玩俄罗斯套娃，杂鱼~",
+        "en": "You can't stick a function inside another function. C++ isn't a set of nesting dolls. Or did you think it was?",
+        "ja": "関数の中に関数を入れるなんて、できないんだよ？ C++ はマトリョーシカじゃないの。…そんなことも知らないの、ざこ。"
+      },
+      "hint": {
+        "chs": "把里面那个函数的声明和定义挪到外面，原来的位置只留调用——快点。",
+        "en": "Move that inner function's declaration and definition outside, and leave only the call behind. Go on.",
+        "ja": "中に入れた関数は、宣言ごと外に出して。元の場所には呼び出しだけ残して。…はやく。"
+      },
+      "example": "error: function definition is not allowed here"
+    },
+    {
       "id": "missing-brace",
       "lang": "cpp",
       "category": "语法",
@@ -110,6 +144,46 @@
         "ja": "エラーの位置から戻って、いちばん近い開き波括弧を探して、何重に開いてるか数えてみなよ。べつに、あたしが数えてあげてもいいけど？"
       },
       "example": "error: expected '}'"
+    },
+    {
+      "id": "missing-condition-paren",
+      "lang": "cpp",
+      "category": "语法",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expected '(' after '"
+          }
+        ]
+      },
+      "capture": {
+        "keyword": {
+          "field": "message",
+          "regex": "expected '\\(' after '([A-Za-z]+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{keyword} 后面的条件要用一对圆括号裹起来呀？你直接跳过，编译器只好停在这儿看你，杂鱼~",
+        "en": "Hey, the condition after {keyword} needs a pair of parens around it. You skipped them, so the compiler just stops and stares at you. Very you.",
+        "ja": "おにいさん、{keyword} の後ろの条件は丸括弧で囲むんだよ？ それを飛ばすから、コンパイラがここで立ち止まって見てるじゃん、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把 {keyword} 后面的整段条件包进 ( )——就补这一处，别越改越乱。",
+        "en": "Wrap the whole condition after {keyword} in ( ). Just that one spot — and do not make it worse.",
+        "ja": "「{keyword}」の後ろの条件を、まるごと ( ) で囲んで。そこだけだよ？ 余計に乱さないでよね。"
+      },
+      "example": "error: expected '(' after 'if'"
     },
     {
       "id": "missing-paren",
@@ -192,6 +266,41 @@
       "example": "error: expected ';' at end of declaration"
     },
     {
+      "id": "unterminated-literal",
+      "lang": "cpp",
+      "category": "语法",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "missing terminating"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——字符串还没收尾就断了？引号一直开着，后面的代码全被吞进去，大哥哥老这样。",
+        "en": "Ehh, a string got cut off before it closed? The quote stayed open and swallowed everything after it. You do this a lot.",
+        "ja": "えー、文字列が閉じないまま切れてるの？ 引用符が開きっぱなしで、後ろのコードまで飲み込んでるよ。おにいさん、またこれ。"
+      },
+      "hint": {
+        "chs": "从这一行的引号开始数，把没闭合的那个补上；别把下一行当正文写。",
+        "en": "Start at the quote on this line and close the one still open. Do not let the next line become part of the string.",
+        "ja": "この行の引用符から数えて、閉じてないやつを閉じて。次の行を中身にしちゃダメだよ。"
+      },
+      "example": "warning: missing terminating '\"' character [-Winvalid-pp-token]"
+    },
+    {
       "id": "header-not-found",
       "lang": "cpp",
       "category": "名字与作用域",
@@ -261,14 +370,14 @@
         }
       },
       "human": {
-        "chs": "喂，大哥哥，这命名空间里没这个成员呢。std::cout 得先包含 <iostream>，名字还得写全哦。",
-        "en": "Hey, that namespace has no such member. std::cout needs <iostream>, and the name written out with std::. You cut corners there, didn't you?",
-        "ja": "ねぇおにいさん、その名前空間にそんなメンバーいないよ？ std::cout なら <iostream> が要るし、名前も std:: までちゃんと書くの。手抜きしたでしょ、ざこ。"
+        "chs": "喂，{ns} 里根本没有 {member} 这个成员呢。是头文件没包含，还是名字又写错了，杂鱼~",
+        "en": "Hey, {ns} has no member called {member}. Did you forget the include, or misspell the name again?",
+        "ja": "ねぇ、{ns} に {member} なんてメンバー、どこにもないよ？ include を忘れたか、名前をまた間違えたか。ざこ。"
       },
       "hint": {
-        "chs": "行吧，人家难得好心——你补上对应的 #include，再核对成员名和 std:: 前缀哦。",
-        "en": "Add the matching #include, then check the member name and the std:: prefix. Yeah — fix that part.",
-        "ja": "対応する #include を足して、メンバー名と std:: の前置きを確認。…はい、そこ直して。"
+        "chs": "补上对应的 #include（cout 要 <iostream>，vector 要 <vector>），再核对 {ns}:: 前缀。",
+        "en": "Add the matching #include (std::cout needs <iostream>, std::vector needs <vector>), then check the {ns}:: prefix.",
+        "ja": "対応する #include を足して（std::cout なら <iostream>、std::vector なら <vector>）、{ns}:: の前置きも確認して。"
       },
       "example": "error: no member named 'cout' in namespace 'std'"
     },
@@ -298,12 +407,16 @@
         "member": {
           "field": "message",
           "regex": "no member named '([^']+)'"
+        },
+        "type": {
+          "field": "message",
+          "regex": "in '([^']+)'"
         }
       },
       "human": {
-        "chs": "杂鱼，你点的这个成员对象里根本没有哦~是名字拼错了，还是这类型根本长不出这根筋？",
-        "en": "Huh, that object doesn't grow a member like that. Misspelled, or the type simply doesn't have it. Either way, that's some imagination.",
-        "ja": "ふーん、そのオブジェクトにそんなメンバー生えてないよ？ 綴り間違いか、その型にそもそも無いのか。どっちにしろ、おにいさんの思い込み、ばかみたい。"
+        "chs": "杂鱼，{type} 里面根本没有 {member} 哦~名字拼错了，还是这个类型压根没这个成员？",
+        "en": "Huh, {type} doesn't have {member} at all. Misspelled, or the type simply doesn't grow one?",
+        "ja": "ふーん、{type} に {member} なんて無いよ？ 綴り間違いか、その型にそもそも生えてないのか。どっちにしろ、おにいさんの思い込み、ばかみたい。"
       },
       "hint": {
         "chs": "先确认对象类型嘛，std::vector 可没有 .length()——这都要人家说？",
@@ -311,6 +424,89 @@
         "ja": "まず左側の型を見て。std::vector に .length() は無いよ、size() でしょ。…コンパイラがずっと睨んでるから、早くね。"
       },
       "example": "error: no member named 'foo' in 'std::vector<int>'"
+    },
+    {
+      "id": "non-static-member-call",
+      "lang": "cpp",
+      "category": "名字与作用域",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "non-static member function"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "without an object argument"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，非静态成员函数得先有对象才能叫呀，你对着类名直接喊，它凭什么应你，杂鱼~",
+        "en": "A non-static member function needs an object to call it. You're yelling at the class name — why would it answer?",
+        "ja": "非静的メンバー関数は、オブジェクトがないと呼べないんだよ？ クラス名に向かって叫んでるけど、返事するわけないじゃん、ざこ。"
+      },
+      "hint": {
+        "chs": "先建一个这个类的对象，再用 对象.函数() 或 对象->函数() 调用。",
+        "en": "Make an object of that class first, then call it as object.fn() or object->fn().",
+        "ja": "そのクラスのオブジェクトを一個作ってから、オブジェクト.関数() か オブジェクト->関数() で呼んで。"
+      },
+      "example": "error: call to non-static member function without an object argument"
+    },
+    {
+      "id": "private-member",
+      "lang": "cpp",
+      "category": "名字与作用域",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is a private member of"
+          }
+        ]
+      },
+      "capture": {
+        "member": {
+          "field": "message",
+          "regex": "'([^']+)' is a private member of"
+        },
+        "owner": {
+          "field": "message",
+          "regex": "private member of '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "私有成员也敢直接伸手？{owner} 把 {member} 锁在 private 里，你在外面硬拿，编译器当然拍回来，杂鱼~",
+        "en": "Reaching right into someone's private stuff, huh? {owner} keeps {member} behind private, and you grab from outside. Of course the compiler slaps your hand away.",
+        "ja": "プライベートなものにそのまま手を伸ばすんだ？ {owner} は {member} を private にしまってるのに、外から取ろうとするから、コンパイラに叩かれるんだよ、ざぁこ。"
+      },
+      "hint": {
+        "chs": "要么调用 {owner} 的 public 成员函数，要么把这段访问挪进类里面；别硬撬。",
+        "en": "Call a public member function of {owner}, or move that access inside the class. Stop prying.",
+        "ja": "{owner} の public なメンバー関数を呼ぶか、そのアクセスをクラスの中に移して。…力ずくでこじ開けないでよね。"
+      },
+      "example": "error: 'x' is a private member of 'B'"
     },
     {
       "id": "redefinition",
@@ -393,6 +589,46 @@
       "example": "error: use of undeclared identifier 'x'"
     },
     {
+      "id": "undefined-template",
+      "lang": "cpp",
+      "category": "名字与作用域",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "implicit instantiation of undefined template"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "undefined template '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "诶——{name} 只露了个名字就拿来用？它压根没定义，编译器连里面有什么都不知道，杂鱼。",
+        "en": "Ehh, you're using {name} when it's only been named, never defined? The compiler can't even see what's inside.",
+        "ja": "えー、{name} って名前だけ出てきて、中身はどこにもないの？ 定義がないと、コンパイラは中を覗くこともできないよ。ざぁこ。"
+      },
+      "hint": {
+        "chs": "补上 {name} 对应的 #include 或完整定义；只留个声明不够。",
+        "en": "Add the #include or the full definition for {name}. A bare declaration is not enough.",
+        "ja": "{name} の #include か、ちゃんとした定義を足して。宣言だけじゃ足りないんだから。"
+      },
+      "example": "error: implicit instantiation of undefined template 'std::vector<int>'"
+    },
+    {
       "id": "unknown-type-name",
       "lang": "cpp",
       "category": "名字与作用域",
@@ -431,6 +667,56 @@
         "ja": "綴り、std:: の前置き、必要なヘッダ。この三つを順番に。…できたら、褒めてあげる。"
       },
       "example": "error: unknown type name 'string'"
+    },
+    {
+      "id": "array-index-past-end",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 15,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "array index"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is past the end of the array"
+          }
+        ]
+      },
+      "capture": {
+        "index": {
+          "field": "message",
+          "regex": "array index ([0-9]+) is past the end"
+        },
+        "arrayType": {
+          "field": "message",
+          "regex": "has type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，你拿 {index} 去戳 {arrayType}，越界啦——从 0 数起，最后一个下标是长度减一，这都要人家教？",
+        "en": "You're poking {arrayType} with index {index} — that's past the end. Indexing starts at 0, so the last one is length minus one. Need me to say that too?",
+        "ja": "{arrayType} に {index} って添字を突っ込んでるけど、範囲外だよ？ 0 から数えるんだから、最後は長さ引く一。…そんなことも言われないと分からないの、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把下标收到 0 到 长度-1 之间；遍历就写 i < 长度，别写 <=。",
+        "en": "Keep the index between 0 and length-1. For a loop, write i < length, not <=.",
+        "ja": "添字は 0 から 長さ-1 までに収めて。ループなら i < 長さ で、<= にしないでよね。"
+      },
+      "example": "warning: array index 5 is past the end of the array (that has type 'int[3]') [-Warray-bounds]"
     },
     {
       "id": "array-subscript-not-integer",
@@ -516,6 +802,90 @@
       "example": "error: assigning to 'int' from incompatible type 'const char *'"
     },
     {
+      "id": "assign-to-const",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 30,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot assign to variable"
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "const-qualified type"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "cannot assign to variable '([^']+)'"
+        },
+        "type": {
+          "field": "message",
+          "regex": "const-qualified type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{name} 可是 {type}，说好了不动的，你现在又伸手去改，编译器不拦你拦谁，杂鱼~",
+        "en": "{name} is {type} — you agreed not to change it, and now you are writing to it anyway. Of course the compiler blocks you.",
+        "ja": "{name} は {type} なんだよ？ 変えないって決めたのに、今さら書き換えようとするから、コンパイラに止められるんだよ、ざこ。"
+      },
+      "hint": {
+        "chs": "要么把 {name} 改成可写的变量，要么去改真正的数据来源；const 别硬写。",
+        "en": "Either make {name} writable, or change the real source of the data. Do not force a write through const.",
+        "ja": "{name} を書き込める変数にするか、本当のデータの持ち主のほうを変えて。const に無理やり書かないでよね。"
+      },
+      "example": "error: cannot assign to variable 'x' with const-qualified type 'const int'"
+    },
+    {
+      "id": "assignment-as-condition",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "using the result of an assignment as a condition without parentheses"
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——条件里写了 = 吧？那是赋值不是比较，想问「等不等」就该用 ==，杂鱼~",
+        "en": "Ehh, that condition has a single = in it, doesn't it? That is assignment, not comparison. If you meant equality, that is ==.",
+        "ja": "えー、条件の中に = が入ってるでしょ？ それは代入であって比較じゃないんだよ。等しいかどうか聞きたいなら == だよ、ざこ。"
+      },
+      "hint": {
+        "chs": "想比较就把 = 改成 ==；真想赋值再加一层括号，别让编译器猜。",
+        "en": "Change = to == if you meant to compare. If you really want the assignment, wrap it in another pair of parens so it is clear.",
+        "ja": "比べたいなら = を == に直して。本当に代入したいなら、もう一重丸括弧で囲んで、コンパイラに推測させないで。"
+      },
+      "example": "warning: using the result of an assignment as a condition without parentheses [-Wparentheses]"
+    },
+    {
       "id": "bad-init-type",
       "lang": "cpp",
       "category": "类型",
@@ -558,6 +928,51 @@
         "ja": "\"abc\" は文字列で、'a' は文字。文字列を入れたいなら変数を std::string にして。…あとは、自分で考えなよ。"
       },
       "example": "error: cannot initialize a variable of type 'int' with an lvalue of type 'const char[3]'"
+    },
+    {
+      "id": "format-mismatch",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "format specifies type"
+          }
+        ]
+      },
+      "capture": {
+        "expected": {
+          "field": "message",
+          "regex": "format specifies type '([^']*)'"
+        },
+        "actual": {
+          "field": "message",
+          "regex": "argument has type '([^']*)'"
+        }
+      },
+      "human": {
+        "chs": "喂，printf 说好要 {expected}，你塞给它 {actual}，它当然念不出来，杂鱼~",
+        "en": "printf asked for {expected}, and you fed it {actual}. Of course it cannot read that.",
+        "ja": "printf は {expected} を求めてるのに、渡したのは {actual}。それじゃ読めないでしょ、ざこ。"
+      },
+      "hint": {
+        "chs": "把参数换成 {expected}，或者改格式串里的占位符；%d 配 int，%s 配字符串。",
+        "en": "Pass an argument of type {expected}, or change the placeholder in the format string. %d takes int, %s takes a string.",
+        "ja": "{expected} の引数を渡すか、書式文字列のプレースホルダを変えて。%d は int、%s は文字列だからね。"
+      },
+      "example": "warning: format specifies type 'int' but the argument has type 'const char *' [-Wformat]"
     },
     {
       "id": "indirection-not-pointer",
@@ -626,6 +1041,40 @@
         "ja": "数字を文字列にしたいなら std::to_string で変換してから繋ぐの。…教えてあげたんだから、ちゃんとしなよ。"
       },
       "example": "error: invalid operands to binary expression ('std::string' and 'int')"
+    },
+    {
+      "id": "main-return-int",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 40,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "'main' must return"
+          }
+        ]
+      },
+      "human": {
+        "chs": "大哥哥，main 只能交 int 回来哦，你写 void main 是想让系统收空气吗，杂鱼~",
+        "en": "main has to return int. Writing void main means handing the system nothing. That is not how this works.",
+        "ja": "main は int を返すって決まってるんだよ？ void main なんて書いたら、システムに空っぽの手を差し出すことになるじゃん、ざぁこ。"
+      },
+      "hint": {
+        "chs": "把 void main 改成 int main，末尾补 return 0;。",
+        "en": "Change void main to int main, and finish with return 0;.",
+        "ja": "void main を int main に直して、最後に return 0; を足して。"
+      },
+      "example": "error: 'main' must return 'int'"
     },
     {
       "id": "member-of-non-class",
@@ -871,6 +1320,168 @@
       "example": "error: no matching function for call to 'max'"
     },
     {
+      "id": "not-assignable",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "expression is not assignable"
+          }
+        ]
+      },
+      "human": {
+        "chs": "喂，等号左边得是能装值的变量呀，你拿常量或整个表达式来赋值，编译器当然说没地方放，杂鱼~",
+        "en": "The left of = has to be something that can hold a value. You're assigning to a constant or a whole expression. Where should it go?",
+        "ja": "=（イコール）の左側は、値を入れられる変数じゃないとダメなんだよ。定数や式まるごとに代入して、どこに入れるつもり？ ざぁこ。"
+      },
+      "hint": {
+        "chs": "看看左边是不是 1、a+b 或函数返回值；换成真正的变量。",
+        "en": "Check whether the left side is 1, a+b, or a function's return value. Put a real variable there.",
+        "ja": "左側が 1 とか a+b とか、関数の戻り値になってない？ そこは本当の変数にして。"
+      },
+      "example": "error: expression is not assignable"
+    },
+    {
+      "id": "return-type-mismatch",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 20,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "cannot initialize return object of type"
+          }
+        ]
+      },
+      "capture": {
+        "expected": {
+          "field": "message",
+          "regex": "return object of type '([^']+)'"
+        },
+        "actual": {
+          "field": "message",
+          "regex": "with an (?:lvalue|rvalue) of type '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，函数说好要交 {expected}，你塞回来的是 {actual}，这俩能对上才怪，杂鱼~",
+        "en": "The function promised to hand back {expected}, and you're giving it {actual}. Those don't even match.",
+        "ja": "この関数は {expected} を返すって約束してるのに、返ってきたのは {actual}。合うわけないじゃん、ざこ。"
+      },
+      "hint": {
+        "chs": "把 return 后面的值转成 {expected}，或者改函数声明的返回类型；别两头都不动。",
+        "en": "Convert the value after return to {expected}, or change the declared return type. Pick one.",
+        "ja": "return の後ろの値を {expected} に合わせるか、関数の戻り値の型を変えて。両方そのままはなしだよ。"
+      },
+      "example": "error: cannot initialize return object of type 'int' with an lvalue of type 'const char[2]'"
+    },
+    {
+      "id": "stack-address-returned",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 25,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "address of stack memory associated with local variable"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "local variable '([^']+)' returned"
+        }
+      },
+      "human": {
+        "chs": "大哥哥，{name} 是函数里的本地变量，函数一结束它就没了；你还把地址交出去，打算让外面收尸吗，杂鱼~",
+        "en": "{name} is local to the function — once it returns, that storage is gone. You are handing out its address anyway. Planning to let the caller find a corpse?",
+        "ja": "{name} は関数の中のローカル変数でしょ？ 関数が終わったら消えちゃうんだよ。そのアドレスを外に渡すなんて、呼び出し側に抜け殻を渡すつもり？ ざぁこ。"
+      },
+      "hint": {
+        "chs": "要么返回 {name} 的值，要么改用 new、std::vector 或调用方传进来的缓冲区。",
+        "en": "Return the value of {name}, or switch to new, std::vector, or a buffer passed in by the caller.",
+        "ja": "{name} の値を返すか、new か std::vector、呼び出し側から渡されたバッファを使って。"
+      },
+      "example": "warning: address of stack memory associated with local variable 'x' returned [-Wreturn-stack-address]"
+    },
+    {
+      "id": "subscript-not-supported",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 15,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "any": [
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "subscripted value is not an array, pointer, or vector"
+              },
+              {
+                "field": "message",
+                "op": "contains",
+                "value": "does not provide a subscript operator"
+              }
+            ]
+          }
+        ]
+      },
+      "human": {
+        "chs": "诶——这东西又不是数组也不是指针，你拿方括号去下标它，编译器哪来的元素给你取，杂鱼~",
+        "en": "That thing isn't an array or a pointer, and you're subscripting it anyway. Which element is the compiler supposed to fetch?",
+        "ja": "えー、それは配列でもポインタでもないのに、角括弧で添字を取ろうとするの？ コンパイラが取り出せる要素なんて、どこにもないよ、ざぁこ。"
+      },
+      "hint": {
+        "chs": "先确认被下标的是数组或指针；要取成员就换成 . 或 ->，别拿 [ ] 乱试。",
+        "en": "Make sure what you subscript is an array or pointer. For a member, use . or ->. Stop poking with [ ].",
+        "ja": "添字を取ってる相手が配列かポインタか、まず確認して。メンバーなら . か -> に変えて。角括弧で当てずっぽうはやめてよね。"
+      },
+      "example": "error: subscripted value is not an array, pointer, or vector"
+    },
+    {
       "id": "too-few-arguments",
       "lang": "cpp",
       "category": "类型",
@@ -937,6 +1548,129 @@
         "ja": "余分な引数を消すか、同名の別の関数と間違えてないか確認して。…このままだとエラーがどんどん増えてくよ。"
       },
       "example": "error: too many arguments to function call, expected 1, have 3"
+    },
+    {
+      "id": "uninitialized-variable",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 10,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "is uninitialized when used here"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "variable '([^']+)' is uninitialized"
+        }
+      },
+      "human": {
+        "chs": "诶——{name} 还没给过值就用上了？里面是上一手留下的垃圾，编译器都看不下去了，大哥哥。",
+        "en": "Ehh, you're using {name} before it ever got a value? It is holding whatever garbage was there. Even the compiler cannot watch.",
+        "ja": "えー、{name} にまだ値も入れてないのに使っちゃうの？ 中身は前の残りカスだよ？ コンパイラも見てられないって。"
+      },
+      "hint": {
+        "chs": "声明 {name} 的时候顺手给个初值，比如 = 0；别等用的时候才想起来。",
+        "en": "Give {name} a value where you declare it, like = 0. Do not wait until you need it.",
+        "ja": "{name} を宣言するときに、= 0 みたいに最初の値を入れておいて。使うときになってから思い出さないでよね。"
+      },
+      "example": "warning: variable 'x' is uninitialized when used here [-Wuninitialized]"
+    },
+    {
+      "id": "unused-variable",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 5,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "unused variable"
+          }
+        ]
+      },
+      "capture": {
+        "name": {
+          "field": "message",
+          "regex": "unused variable '([^']+)'"
+        }
+      },
+      "human": {
+        "chs": "杂鱼，{name} 从头到尾都没人碰过，你写它干嘛？占地方吗？",
+        "en": "{name} never gets touched from start to finish. Why did you even write it? Keeping the line warm?",
+        "ja": "{name}、最初から最後まで誰にも触られてないよ？ 何のために書いたの、場所ふさぎ？ ざこ。"
+      },
+      "hint": {
+        "chs": "要么真的用上 {name}，要么删掉；故意留的就加 [[maybe_unused]]。",
+        "en": "Actually use {name}, or delete it. If you are keeping it on purpose, mark it [[maybe_unused]].",
+        "ja": "{name} を本当に使うか、消して。わざと残すなら [[maybe_unused]] を付けて。"
+      },
+      "example": "warning: unused variable 'x' [-Wunused-variable]"
+    },
+    {
+      "id": "void-return-value",
+      "lang": "cpp",
+      "category": "类型",
+      "priority": 25,
+      "when": {
+        "all": [
+          {
+            "field": "severity",
+            "op": "in",
+            "value": [
+              "warning",
+              "error",
+              "fatal error"
+            ]
+          },
+          {
+            "field": "message",
+            "op": "contains",
+            "value": "should not return a value"
+          }
+        ]
+      },
+      "capture": {
+        "function": {
+          "field": "message",
+          "regex": "void function '([^']+)' should not return a value"
+        }
+      },
+      "human": {
+        "chs": "喂，{function} 是 void，说好了空手回来，你偏要塞个值过去，编译器当然拒收，杂鱼~",
+        "en": "{function} is void — it agreed to come back empty-handed. You are shoving a value at it anyway, so of course it is rejected.",
+        "ja": "{function} は void なんだから、何も持たずに帰る約束でしょ？ なのに値を押し付けるから、受け取ってもらえないんだよ、ざこ。"
+      },
+      "hint": {
+        "chs": "把 {function} 里的 return 值删掉只留 return;，或者改返回类型——二选一。",
+        "en": "{function} should drop the value and leave just return;, or change the return type. Choose one.",
+        "ja": "{function} の中の return は値を消して return; だけにするか、戻り値の型を変えるか。どっちかにして。"
+      },
+      "example": "error: void function 'f' should not return a value [-Wreturn-mismatch]"
     },
     {
       "id": "undefined-reference",

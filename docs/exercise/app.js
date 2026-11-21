@@ -52,7 +52,8 @@
       else if (k === 'html') el.innerHTML = attrs[k];
       else if (k === 'text') el.textContent = attrs[k];
       else if (k.slice(0, 2) === 'on') el.addEventListener(k.slice(2), attrs[k]);
-      else el.setAttribute(k, attrs[k]);
+      else if (attrs[k] == null || attrs[k] === false) { /* 跳过空属性 */ }
+      else el.setAttribute(k, attrs[k] === true ? '' : attrs[k]);
     });
     (kids || []).forEach(function (k) { if (k) el.appendChild(k); });
     return el;
@@ -174,7 +175,20 @@
     var search = h('input', {
       class: 'es-search', type: 'search', placeholder: t('搜索题目、分类或 id', 'Search title, category or id'),
       value: state.q,
-      oninput: function (e) { state.q = e.target.value; renderList(); e.target.focus(); e.target.setSelectionRange(e.target.value.length, e.target.value.length); },
+      oninput: function (e) {
+        state.q = e.target.value;
+        if (e.isComposing) return;
+        var pos = e.target.selectionStart;
+        renderList();
+        var el = document.querySelector('.es-search');
+        if (el) { el.focus(); el.setSelectionRange(pos, pos); }
+      },
+      oncompositionend: function (e) {
+        state.q = e.target.value;
+        renderList();
+        var el = document.querySelector('.es-search');
+        if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+      },
     });
     app.appendChild(h('div', { class: 'es-search-row' }, [search]));
 
