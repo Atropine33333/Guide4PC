@@ -63,10 +63,12 @@ function getBuildVersion() {
   for (const f of [
     'playground/pg.js',
     'playground/pg-worker.js',
+    'playground/pg-lint-worker.js',
     'playground/pg.css',
     'playground/scene.js',
     'playground/scene.css',
     'playground/vendor/editor.bundle.js',
+    'playground/vendor/clang-wasm-toolchain.global.js',
     'diagnostics/messages.json',
   ]) {
     const full = path.join(ROOT, f);
@@ -784,7 +786,7 @@ function syncPlayground() {
   };
 
   const pgSrc = path.join(ROOT, 'playground');
-  for (const f of ['pg.js', 'pg-worker.js', 'pg.css', 'scene.js', 'scene.css']) {
+  for (const f of ['pg.js', 'pg-worker.js', 'pg-lint-worker.js', 'pg.css', 'scene.js', 'scene.css']) {
     const from = path.join(pgSrc, f);
     if (fs.existsSync(from)) copyFile(from, path.join(DIST, 'pg', f));
   }

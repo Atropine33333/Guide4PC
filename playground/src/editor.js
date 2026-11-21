@@ -5,7 +5,7 @@
  *
  * 缩进规则在这里定死，不依赖 basicSetup 的语言默认值：
  *   · 缩进单位固定为 4 个空格（indentUnit / tabSize）
- *   · Tab / Shift-Tab 走缩进（indentWithTab），不会把焦点移出编辑器
+ *   · Tab / Shift-Tab 走缩进（补全打开时 Tab 接受补全），不会把焦点移出编辑器
  *
  * 代码高亮用 Catppuccin（用户自己的配色偏好）：颜色全部写成 CSS 变量，
  * Latte/Mocha 的取值放在 pg.css 的 `[data-theme="dark"]` 覆盖里，
@@ -19,9 +19,10 @@ import { keymap, hoverTooltip } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import { cpp } from '@codemirror/lang-cpp';
 import { HighlightStyle, indentUnit, syntaxHighlighting } from '@codemirror/language';
-import { indentWithTab } from '@codemirror/commands';
+import { indentMore, indentLess } from '@codemirror/commands';
 import { tags as t } from '@lezer/highlight';
-import { autocompletion } from '@codemirror/autocomplete';
+import { autocompletion, completionStatus, acceptCompletion } from '@codemirror/autocomplete';
+import { setDiagnostics as applyLintDiagnostics } from '@codemirror/lint';
 import { cppCompletionSource, cppHover } from './cpp-intel.js';
 
 const INDENT = '    ';
@@ -73,10 +74,19 @@ const catppuccin = HighlightStyle.define([
   { tag: t.strong, fontWeight: 'bold' },
 ]);
 
-export function createEditor({ parent, doc }) {
+export function createEditor({ parent, doc, onDocChange }) {
   // Tab 必须排在 basicSetup 之前，保证它比其它 keymap 先被看见。
+  // 补全下拉打开时 Tab 接受当前项，否则才缩进（CM6 默认不把 Tab 绑给补全）。
+  const tabKeymap = keymap.of([
+    {
+      key: 'Tab',
+      run: (view) =>
+        completionStatus(view.state) === 'active' ? acceptCompletion(view) : indentMore(view),
+    },
+    { key: 'Shift-Tab', run: indentLess },
+  ]);
   const extensions = [
-    keymap.of([indentWithTab]),
+    tabKeymap,
     basicSetup,
     // basicSetup 自带的 autocompletion 只按文档里的词补全；这里用 C++ 语义源覆盖它。
     // 放在 basicSetup 之后，facet 合并时后者的 override 生效。
@@ -96,12 +106,20 @@ export function createEditor({ parent, doc }) {
       '&': { fontSize: 'var(--pg-code-size, 15px)' },
       '.cm-content': { fontFamily: 'var(--font-mono)' },
     }),
+    EditorView.updateListener.of((update) => {
+      if (update.docChanged && onDocChange) onDocChange(update.view);
+    }),
   ];
 
   return new EditorView({
     state: EditorState.create({ doc, extensions }),
     parent,
   });
+}
+
+/* pg.js 编译诊断回传后，把行内波浪线写进编辑器。 */
+export function setDiagnostics(view, diagnostics) {
+  view.dispatch(applyLintDiagnostics(view.state, diagnostics));
 }
 
 export { EditorView, EditorState, basicSetup, cpp, autocompletion };

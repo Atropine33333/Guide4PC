@@ -867,6 +867,14 @@
     ]
   },
   "pairs": {
+    "root/0.1": {
+      "chs": "0.1_欢迎信.md",
+      "en": "0.1_WelcomeLetter.md"
+    },
+    "home": {
+      "chs": "0_开屏.md",
+      "en": "0_Start.md"
+    },
     "AfterStory/21": {
       "chs": "AfterStory/附录21_资源.md",
       "en": "AfterStory/Appendix21_Resources.md"
@@ -1094,15 +1102,7 @@
     "main/Chapter4_Hardware/0": {
       "chs": null,
       "en": "main/Chapter4_Hardware/[dl4]Section0_Introduction.md"
-    },
-    "root/0.1": {
-      "chs": "0.1_欢迎信.md",
-      "en": "0.1_WelcomeLetter.md"
-    },
-    "home": {
-      "chs": "0_开屏.md",
-      "en": "0_Start.md"
     }
   },
-  "version": "a3f0071939"
+  "version": "143b503fb3"
 }

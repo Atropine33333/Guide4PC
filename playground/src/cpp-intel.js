@@ -371,6 +371,14 @@ function stdFor(parsed) {
   return list;
 }
 
+/* 按我们自己的顺序排：CodeMirror 默认按 label 字母序，会把 count 排在 cout 前面。 */
+function withRank(options) {
+  for (let i = 0; i < options.length; ++i) {
+    options[i].sortText = String(i).padStart(4, '0') + options[i].label;
+  }
+  return options;
+}
+
 function optionFor(name, kind, detail, info, boost) {
   return { label: name, type: kind, detail: detail || '', info: info || '', boost: boost || 0 };
 }
@@ -391,7 +399,7 @@ function generalOptions(parsed, prefix) {
   for (const t of BUILTIN_TYPES) add(optionFor(t, '类型', t, '内建类型。', 0));
 
   out.sort((a, b) => (KIND_ORDER[a.type] || 9) - (KIND_ORDER[b.type] || 9));
-  return out;
+  return withRank(out);
 }
 
 function memberOptions(parsed, objName, prefix) {
@@ -400,11 +408,11 @@ function memberOptions(parsed, objName, prefix) {
   const base = v.base;
   const list = MEMBERS[base];
   if (list) {
-    return { from: base, options: list.map(([n, sig, d]) => optionFor(n, '成员', sig, d, 0)) };
+    return { from: base, options: withRank(list.map(([n, sig, d]) => optionFor(n, '成员', sig, d, 0))) };
   }
   const cls = parsed && parsed.classes.get(base);
   if (cls) {
-    return { from: base, options: cls.members.map((m) => optionFor(m.n, '成员', m.sig, m.d, 0)) };
+    return { from: base, options: withRank(cls.members.map((m) => optionFor(m.n, '成员', m.sig, m.d, 0))) };
   }
   return { from: base, options: [] };
 }
@@ -442,7 +450,7 @@ export function cppCompletionSource(context) {
       seen.add(s.n);
       options.push(optionFor(s.n, s.k, s.sig, s.d + '\\n（头文件 <' + s.h + '>）', 0));
     }
-    return { from: pos - partial.length, options, validFor: /^[A-Za-z_]\w*$/ };
+    return { from: pos - partial.length, options: withRank(options), validFor: /^[A-Za-z_]\w*$/ };
   }
 
   const word = context.matchBefore(/[A-Za-z_]\w*/);

@@ -58,6 +58,11 @@
 
   var worker = null;
   var activeRun = null;
+
+  // 编译诊断（红波浪线）：单独的 worker，只编译不运行，卡住也不影响练习卡。
+  var lintWorker = null;
+  var lintSeq = 0;
+  var lintPending = Object.create(null);
   var specs = new Map();
   var starters = new Map();
   var diagRules = null;
@@ -343,6 +348,52 @@
 
   // ------------------------------------------------------------------ DOM
 
+  function ensureLintWorker() {
+    if (lintWorker) return lintWorker;
+    lintWorker = new Worker(url('pg/pg-lint-worker.js'));
+    lintWorker.onmessage = function (evt) {
+      var msg = evt.data || {};
+      var done = lintPending[msg.id];
+      if (!done) return;
+      delete lintPending[msg.id];
+      done(msg);
+    };
+    lintWorker.onerror = function () {
+      // 诊断是锦上添花：起不来就放弃这一轮，不打断练习。
+      lintWorker = null;
+      var ids = Object.keys(lintPending);
+      for (var i = 0; i < ids.length; ++i) {
+        var done = lintPending[ids[i]];
+        delete lintPending[ids[i]];
+        done(null);
+      }
+    };
+    return lintWorker;
+  }
+
+  function lintCode(code, timeoutMs) {
+    return new Promise(function (resolve) {
+      var w = ensureLintWorker();
+      var id = ++lintSeq;
+      var timer = setTimeout(function () {
+        if (!lintPending[id]) return;
+        delete lintPending[id];
+        resolve(null);
+      }, timeoutMs || 25000);
+      lintPending[id] = function (msg) {
+        clearTimeout(timer);
+        resolve(msg);
+      };
+      try {
+        w.postMessage({ type: 'lint', id: id, code: code });
+      } catch (err) {
+        clearTimeout(timer);
+        delete lintPending[id];
+        resolve(null);
+      }
+    });
+  }
+
   function mountCard(mount, id, variant, spec, starter) {
     var variantSpec = null;
     (spec.variants || []).forEach(function (v) { if (v.id === variant) variantSpec = v; });
@@ -423,6 +474,8 @@
 
     var view = null;
     var busy = false;
+    var lintTimer = null;
+    var lintToken = 0;
     var timeoutMs = (spec.limits && spec.limits.timeoutMs) || 5000;
 
     function setStatus(text, tone) {
@@ -612,6 +665,54 @@
       return null;
     }
 
+    function clearLint() {
+      if (view && window.G4PCEditor) window.G4PCEditor.setDiagnostics(view, []);
+    }
+
+    // 停止输入 900ms 后编译一次；只取 clang 的 error/warning，画成行内波浪线。
+    function scheduleLint() {
+      if (!view) return;
+      if (lintTimer) clearTimeout(lintTimer);
+      lintTimer = setTimeout(function () {
+        if (!view) return;
+        if (busy) {
+          scheduleLint();
+          return;
+        }
+        var code = view.state.doc.toString();
+        if (!code.trim()) {
+          clearLint();
+          return;
+        }
+        var token = ++lintToken;
+        lintCode(code).then(function (res) {
+          if (!view || token !== lintToken || busy) return;
+          if (!res || !res.diagnostics || !res.diagnostics.length) {
+            clearLint();
+            return;
+          }
+          var doc = view.state.doc;
+          var diags = [];
+          for (var i = 0; i < res.diagnostics.length; ++i) {
+            var d = res.diagnostics[i];
+            var lineNo = Math.min(Math.max(1, d.line | 0), doc.lines);
+            var line = doc.line(lineNo);
+            var from = Math.min(line.from + Math.max(0, (d.col | 0) - 1), line.to);
+            var to = Math.min(from + Math.max(1, d.length | 0), line.to);
+            if (to <= from) to = Math.min(from + 1, line.to);
+            diags.push({
+              from: from,
+              to: to,
+              severity: d.severity === 'warning' ? 'warning' : 'error',
+              message: d.message,
+              source: 'clang',
+            });
+          }
+          window.G4PCEditor.setDiagnostics(view, diags);
+        });
+      }, 900);
+    }
+
     async function doRun() {
       if (busy || !view) return;
       var code = view.state.doc.toString();
@@ -700,6 +801,7 @@
       if (!view) return;
       view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: starter } });
       resetChecks();
+      clearLint();
       setStatus(warmup.state === 'ready' ? TEXT.ready : TEXT.preparing, 'muted');
       card.removeAttribute('data-result');
     }
@@ -711,6 +813,7 @@
       view = window.G4PCEditor.createEditor({
         parent: editorHost,
         doc: starter,
+        onDocChange: scheduleLint,
       });
       allViews.push(view);
     }).catch(function (err) {

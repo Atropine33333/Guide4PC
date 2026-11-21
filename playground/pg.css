@@ -763,3 +763,45 @@
   color: var(--color-text-muted);
   white-space: pre-line;
 }
+
+/* —— 编译诊断（红波浪线）——
+ * 只编译不运行，错误由 clang 回传。波浪线不是瞬间贴上去的，
+ * 而是从透明色渐显 0.34s，避免打断阅读。 */
+.ex-card .cm-lintRange {
+  background-image: none;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 3px;
+}
+.ex-card .cm-lintRange-error {
+  text-decoration: underline wavy var(--ex-fail);
+  text-decoration-thickness: 1.5px;
+  animation: g4pc-lint-error 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.ex-card .cm-lintRange-warning {
+  text-decoration: underline wavy var(--ex-warn);
+  text-decoration-thickness: 1.5px;
+  animation: g4pc-lint-warning 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes g4pc-lint-error {
+  from { text-decoration-color: transparent; }
+  to { text-decoration-color: var(--ex-fail); }
+}
+@keyframes g4pc-lint-warning {
+  from { text-decoration-color: transparent; }
+  to { text-decoration-color: var(--ex-warn); }
+}
+.ex-card .cm-tooltip-lint {
+  max-width: 420px;
+}
+.ex-card .cm-diagnostic {
+  font-family: var(--font-sans);
+  font-size: var(--ex-fs-sm);
+  line-height: 1.6;
+  padding: 6px 10px;
+}
+.ex-card .cm-diagnostic-error {
+  border-left: 2px solid var(--ex-fail);
+}
+.ex-card .cm-diagnostic-warning {
+  border-left: 2px solid var(--ex-warn);
+}
