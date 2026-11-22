@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-tlv-codec",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": {
+    "chs": "TLV 记录编解码",
+    "en": "TLV Record Codec"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "encode-basic",
+      "label": {
+        "chs": "基本编码",
+        "en": "Basic encoding"
+      }
+    },
+    {
+      "id": "round-trip",
+      "label": {
+        "chs": "往返一致",
+        "en": "Round trip"
+      }
+    },
+    {
+      "id": "empty-input",
+      "label": {
+        "chs": "空输入",
+        "en": "Empty input"
+      }
+    },
+    {
+      "id": "empty-payload",
+      "label": {
+        "chs": "空载荷",
+        "en": "An empty payload"
+      }
+    },
+    {
+      "id": "length-255",
+      "label": {
+        "chs": "最大长度",
+        "en": "The maximum length"
+      }
+    },
+    {
+      "id": "truncated-first",
+      "label": {
+        "chs": "截断在第一条",
+        "en": "Truncation in the first record"
+      }
+    },
+    {
+      "id": "bad-offset",
+      "label": {
+        "chs": "错误偏移",
+        "en": "The failure offset"
+      }
+    },
+    {
+      "id": "trailing-garbage",
+      "label": {
+        "chs": "尾部多余字节",
+        "en": "Trailing garbage"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

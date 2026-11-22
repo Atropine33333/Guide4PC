@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-mismatch-scan",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "匹配与查找",
+    "en": "Mismatch and Search"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-input",
+      "label": {
+        "chs": "空串前缀",
+        "en": "Prefix with empty strings"
+      }
+    },
+    {
+      "id": "prefix-basic",
+      "label": {
+        "chs": "普通共同前缀",
+        "en": "Ordinary common prefixes"
+      }
+    },
+    {
+      "id": "prefix-case",
+      "label": {
+        "chs": "大小写与短前缀",
+        "en": "Case differences and short prefixes"
+      }
+    },
+    {
+      "id": "last-index",
+      "label": {
+        "chs": "最后一次出现",
+        "en": "Last occurrences"
+      }
+    },
+    {
+      "id": "rotation-basic",
+      "label": {
+        "chs": "旋转与空串",
+        "en": "Rotations including empty strings"
+      }
+    },
+    {
+      "id": "rotation-lengths",
+      "label": {
+        "chs": "长度不同与重复字符",
+        "en": "Length mismatches and repeated characters"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

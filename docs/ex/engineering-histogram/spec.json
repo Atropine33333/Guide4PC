@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-histogram",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": {
+    "chs": "定宽直方图",
+    "en": "Fixed-Width Histogram"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空直方图",
+        "en": "An empty histogram"
+      }
+    },
+    {
+      "id": "bucket-counts",
+      "label": {
+        "chs": "分桶计数",
+        "en": "Bucket counts"
+      }
+    },
+    {
+      "id": "overflow-and-negative",
+      "label": {
+        "chs": "溢出与负值",
+        "en": "Overflow and negative values"
+      }
+    },
+    {
+      "id": "width-boundaries",
+      "label": {
+        "chs": "桶边界",
+        "en": "Bucket boundaries"
+      }
+    },
+    {
+      "id": "unit-width",
+      "label": {
+        "chs": "宽度为一",
+        "en": "A width of one"
+      }
+    },
+    {
+      "id": "ignored-and-out-of-range",
+      "label": {
+        "chs": "忽略值与非法的桶号",
+        "en": "Ignored values and invalid bucket indices"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-two-stack-queue",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 2,
+  "title": {
+    "chs": "两个栈实现队列",
+    "en": "Queue from Two Stacks"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-behaviour",
+      "label": {
+        "chs": "空队列行为",
+        "en": "Behaviour on an empty queue"
+      }
+    },
+    {
+      "id": "fifo-order",
+      "label": {
+        "chs": "先进先出顺序",
+        "en": "FIFO ordering"
+      }
+    },
+    {
+      "id": "interleaved",
+      "label": {
+        "chs": "交替进出",
+        "en": "Interleaved pushes and pops"
+      }
+    },
+    {
+      "id": "large-fifo",
+      "label": {
+        "chs": "大队列",
+        "en": "A large queue"
+      }
+    },
+    {
+      "id": "alternating",
+      "label": {
+        "chs": "反复清空",
+        "en": "Repeated drain"
+      }
+    },
+    {
+      "id": "copy-independent",
+      "label": {
+        "chs": "拷贝独立",
+        "en": "Copies are independent"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

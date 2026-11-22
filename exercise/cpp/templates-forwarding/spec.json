@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-forwarding",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 5,
+  "title": {
+    "chs": "完美转发",
+    "en": "Perfect Forwarding"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "lvalue-copy",
+      "label": {
+        "chs": "左值拷贝一次",
+        "en": "One copy for an lvalue"
+      }
+    },
+    {
+      "id": "rvalue-move",
+      "label": {
+        "chs": "右值移动一次",
+        "en": "One move for an rvalue"
+      }
+    },
+    {
+      "id": "int-direct",
+      "label": {
+        "chs": "整数直接构造",
+        "en": "Direct construction from an int"
+      }
+    },
+    {
+      "id": "const-lvalue-copy",
+      "label": {
+        "chs": "常量左值拷贝",
+        "en": "A const lvalue is copied"
+      }
+    },
+    {
+      "id": "convertible-direct",
+      "label": {
+        "chs": "可转换类型直接构造",
+        "en": "A convertible type constructs directly"
+      }
+    },
+    {
+      "id": "counters-reset-between",
+      "label": {
+        "chs": "多次调用分别计数",
+        "en": "Counters across two calls"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

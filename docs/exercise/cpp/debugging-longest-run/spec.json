@@ -1,0 +1,153 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-longest-run",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 1,
+  "title": {
+    "chs": "最长连续段",
+    "en": "Longest Run"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个字符",
+        "en": "A single character"
+      },
+      "cases": [
+        {
+          "in": [
+            "a"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all-same",
+      "label": {
+        "chs": "全部相同",
+        "en": "All identical"
+      },
+      "cases": [
+        {
+          "in": [
+            "aaaa"
+          ],
+          "out": [
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final-run",
+      "label": {
+        "chs": "行尾的连续段",
+        "en": "A run at the end"
+      },
+      "cases": [
+        {
+          "in": [
+            "aabbbb"
+          ],
+          "out": [
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alternating",
+      "label": {
+        "chs": "交替字符",
+        "en": "Alternating characters"
+      },
+      "cases": [
+        {
+          "in": [
+            "abab"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合连续段",
+        "en": "Mixed runs"
+      },
+      "cases": [
+        {
+          "in": [
+            "aaabbc"
+          ],
+          "out": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spaces",
+      "label": {
+        "chs": "空格也是字符",
+        "en": "Spaces are characters"
+      },
+      "cases": [
+        {
+          "in": [
+            "a   b"
+          ],
+          "out": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空行",
+        "en": "An empty line"
+      },
+      "cases": [
+        {
+          "in": [
+            ""
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "最大长度",
+        "en": "The maximum length"
+      },
+      "cases": [
+        {
+          "in": [
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "out": [
+            "1000"
+          ]
+        }
+      ]
+    }
+  ]
+}

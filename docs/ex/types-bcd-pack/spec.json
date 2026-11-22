@@ -1,0 +1,188 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-bcd-pack",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "BCD 打包",
+    "en": "Packed BCD"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "encode-even",
+      "label": {
+        "chs": "偶数长度编码",
+        "en": "Encoding an even-length string"
+      },
+      "cases": [
+        {
+          "in": [
+            "E",
+            "1234"
+          ],
+          "out": [
+            "12 34"
+          ]
+        },
+        {
+          "in": [
+            "E",
+            "00"
+          ],
+          "out": [
+            "00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encode-odd",
+      "label": {
+        "chs": "奇数长度补零",
+        "en": "Padding an odd-length string"
+      },
+      "cases": [
+        {
+          "in": [
+            "E",
+            "123"
+          ],
+          "out": [
+            "01 23"
+          ]
+        },
+        {
+          "in": [
+            "E",
+            "7"
+          ],
+          "out": [
+            "07"
+          ]
+        },
+        {
+          "in": [
+            "E",
+            "0"
+          ],
+          "out": [
+            "00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encode-max",
+      "label": {
+        "chs": "最长与最大值",
+        "en": "Longest input and largest value"
+      },
+      "cases": [
+        {
+          "in": [
+            "E",
+            "18446744073709551615"
+          ],
+          "out": [
+            "18 44 67 44 07 37 09 55 16 15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decode-basic",
+      "label": {
+        "chs": "基本解码与前导零",
+        "en": "Basic decoding and leading zeros"
+      },
+      "cases": [
+        {
+          "in": [
+            "D",
+            "01 23"
+          ],
+          "out": [
+            "123"
+          ]
+        },
+        {
+          "in": [
+            "D",
+            "00 01"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "D",
+            "10 00"
+          ],
+          "out": [
+            "1000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decode-zero",
+      "label": {
+        "chs": "全零解码",
+        "en": "Decoding all-zero bytes"
+      },
+      "cases": [
+        {
+          "in": [
+            "D",
+            "00"
+          ],
+          "out": [
+            "0"
+          ]
+        },
+        {
+          "in": [
+            "D",
+            "00 00 00"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decode-max",
+      "label": {
+        "chs": "解码上界与往返",
+        "en": "Upper bound and round trip"
+      },
+      "cases": [
+        {
+          "in": [
+            "D",
+            "18 44 67 44 07 37 09 55 16 15"
+          ],
+          "out": [
+            "18446744073709551615"
+          ]
+        },
+        {
+          "in": [
+            "D",
+            "99 99 99 99 99 99 99 99 99 99"
+          ],
+          "out": [
+            "99999999999999999999"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-majority-vote",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 2,
+  "title": {
+    "chs": "多数元素",
+    "en": "Majority Vote"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个元素",
+        "en": "A single element"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "7"
+          ],
+          "out": [
+            "7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-majority-two",
+      "label": {
+        "chs": "两个不同元素",
+        "en": "Two different elements"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "1 2"
+          ],
+          "out": [
+            "none"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exact-half",
+      "label": {
+        "chs": "正好一半不算多数",
+        "en": "Exactly half is not a majority"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1 1 2 2"
+          ],
+          "out": [
+            "none"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "label": {
+        "chs": "经典多数元素",
+        "en": "A classic majority case"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "2 2 1 2 3"
+          ],
+          "out": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all-same-negatives",
+      "label": {
+        "chs": "全相同与负数",
+        "en": "All equal and negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "-5 -5 -5 -5"
+          ],
+          "out": [
+            "-5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "较长序列",
+        "en": "A longer sequence"
+      },
+      "cases": [
+        {
+          "in": [
+            "9",
+            "4 4 4 8 8 4 1 4 4"
+          ],
+          "out": [
+            "4"
+          ]
+        }
+      ]
+    }
+  ]
+}

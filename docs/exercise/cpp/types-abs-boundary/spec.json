@@ -1,0 +1,130 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-abs-boundary",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": {
+    "chs": "绝对值边界",
+    "en": "Absolute-Value Boundary"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零的绝对值",
+        "en": "The absolute value of zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "0"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "positive",
+      "label": {
+        "chs": "正数保持不变",
+        "en": "Positive values are unchanged"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "42"
+          ],
+          "out": [
+            "42"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数取反",
+        "en": "Negative values are negated"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "-42"
+          ],
+          "out": [
+            "42"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int64-min",
+      "label": {
+        "chs": "最小负数",
+        "en": "The minimum signed value"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "-9223372036854775808"
+          ],
+          "out": [
+            "9223372036854775808"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int64-max",
+      "label": {
+        "chs": "最大正数",
+        "en": "The maximum signed value"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "9223372036854775807"
+          ],
+          "out": [
+            "9223372036854775807"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合边界值",
+        "en": "Mixed boundary values"
+      },
+      "cases": [
+        {
+          "in": [
+            "6",
+            "0 -1 1 -9223372036854775807 9223372036854775807 -9223372036854775808"
+          ],
+          "out": [
+            "0",
+            "1",
+            "1",
+            "9223372036854775807",
+            "9223372036854775807",
+            "9223372036854775808"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// Guide4PC harness：拼在学生代码之后，同一个翻译单元。
+// Guide4PC harness appended to the student's code in the same translation unit.
 #include <algorithm>
 #include <climits>
 #include <cstddef>

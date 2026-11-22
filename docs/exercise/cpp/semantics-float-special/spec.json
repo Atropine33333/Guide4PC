@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-float-special",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 4,
+  "title": {
+    "chs": "浮点特殊值",
+    "en": "Floating-Point Special Values"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "nan-detection",
+      "label": {
+        "chs": "识别 NaN",
+        "en": "Detecting NaN"
+      }
+    },
+    {
+      "id": "finite-detection",
+      "label": {
+        "chs": "识别有限值",
+        "en": "Detecting finite values"
+      }
+    },
+    {
+      "id": "negative-zero",
+      "label": {
+        "chs": "有符号零",
+        "en": "Signed zero"
+      }
+    },
+    {
+      "id": "same-value",
+      "label": {
+        "chs": "IEEE 相等比较",
+        "en": "IEEE equality comparison"
+      }
+    },
+    {
+      "id": "total-order",
+      "label": {
+        "chs": "普通数值的排序",
+        "en": "Ordering ordinary values"
+      }
+    },
+    {
+      "id": "unordered",
+      "label": {
+        "chs": "NaN 参与时无序",
+        "en": "Unordered when NaN is involved"
+      }
+    },
+    {
+      "id": "safe-div",
+      "label": {
+        "chs": "零作为除数时回退",
+        "en": "Falling back on a zero divisor"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

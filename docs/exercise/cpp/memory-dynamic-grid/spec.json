@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-dynamic-grid",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 4,
+  "title": {
+    "chs": "运行时尺寸网格",
+    "en": "Run-Time Sized Grid"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "dimensions",
+      "label": {
+        "chs": "维度与初始值",
+        "en": "Dimensions and initial values"
+      }
+    },
+    {
+      "id": "write-elements",
+      "label": {
+        "chs": "按下标写元素",
+        "en": "Writing elements by index"
+      }
+    },
+    {
+      "id": "fill",
+      "label": {
+        "chs": "整体填充",
+        "en": "Filling the grid"
+      }
+    },
+    {
+      "id": "deep-copy",
+      "label": {
+        "chs": "深拷贝",
+        "en": "Deep copy"
+      }
+    },
+    {
+      "id": "row-major-order",
+      "label": {
+        "chs": "行优先顺序",
+        "en": "Row-major order"
+      }
+    },
+    {
+      "id": "const-access",
+      "label": {
+        "chs": "常量访问",
+        "en": "Const access"
+      }
+    },
+    {
+      "id": "large-grid",
+      "label": {
+        "chs": "大网格",
+        "en": "A large grid"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

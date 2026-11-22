@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-fixed-columns",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "定宽列解析",
+    "en": "Fixed-Column Parsing"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "full-row",
+      "label": {
+        "chs": "完整的一行",
+        "en": "A complete row"
+      }
+    },
+    {
+      "id": "short-row",
+      "label": {
+        "chs": "短行按空白补齐",
+        "en": "A short row with blank padding"
+      }
+    },
+    {
+      "id": "blank-fields",
+      "label": {
+        "chs": "全空白与空行",
+        "en": "All-blank and empty lines"
+      }
+    },
+    {
+      "id": "slice-basic",
+      "label": {
+        "chs": "切片边界",
+        "en": "Slice boundaries"
+      }
+    },
+    {
+      "id": "slice-spaces",
+      "label": {
+        "chs": "空格裁剪与非法参数",
+        "en": "Space trimming and invalid arguments"
+      }
+    },
+    {
+      "id": "name-with-space",
+      "label": {
+        "chs": "名字内部空格",
+        "en": "Interior spaces in a name"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

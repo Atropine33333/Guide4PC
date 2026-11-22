@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-intrusive-list",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "title": {
+    "chs": "侵入式双向链表",
+    "en": "Intrusive Doubly Linked List"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-list",
+      "label": {
+        "chs": "空链表",
+        "en": "An empty list"
+      }
+    },
+    {
+      "id": "push-back",
+      "label": {
+        "chs": "尾插与链接",
+        "en": "Appending and linking"
+      }
+    },
+    {
+      "id": "unlink-middle",
+      "label": {
+        "chs": "摘除中间结点",
+        "en": "Unlinking a middle node"
+      }
+    },
+    {
+      "id": "unlink-ends",
+      "label": {
+        "chs": "摘除首尾结点",
+        "en": "Unlinking the ends"
+      }
+    },
+    {
+      "id": "unlink-foreign",
+      "label": {
+        "chs": "非法摘除",
+        "en": "Invalid unlink attempts"
+      }
+    },
+    {
+      "id": "reinsert",
+      "label": {
+        "chs": "重新插入",
+        "en": "Reinsertion"
+      }
+    },
+    {
+      "id": "no-ownership",
+      "label": {
+        "chs": "不拥有结点",
+        "en": "No ownership of nodes"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

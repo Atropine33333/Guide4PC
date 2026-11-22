@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-bipartite-check",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "title": {
+    "chs": "二分图判定",
+    "en": "Bipartite Check"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-and-single",
+      "label": {
+        "chs": "空图与孤立点",
+        "en": "Empty graph and isolated vertex"
+      }
+    },
+    {
+      "id": "even-cycle",
+      "label": {
+        "chs": "偶环",
+        "en": "An even cycle"
+      }
+    },
+    {
+      "id": "odd-cycle",
+      "label": {
+        "chs": "奇环",
+        "en": "An odd cycle"
+      }
+    },
+    {
+      "id": "path",
+      "label": {
+        "chs": "路径图",
+        "en": "A path graph"
+      }
+    },
+    {
+      "id": "self-loop-and-parallel",
+      "label": {
+        "chs": "自环与重边",
+        "en": "Self-loops and parallel edges"
+      }
+    },
+    {
+      "id": "large-disconnected",
+      "label": {
+        "chs": "大图与不连通分量",
+        "en": "A large graph with components"
+      }
+    },
+    {
+      "id": "star",
+      "label": {
+        "chs": "星形图与同色叶子",
+        "en": "A star and equally coloured leaves"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

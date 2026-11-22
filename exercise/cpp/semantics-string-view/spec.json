@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-string-view",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 3,
+  "title": {
+    "chs": "字符串视图",
+    "en": "String Views"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "trim-both-ends",
+      "label": {
+        "chs": "首尾空格与别名",
+        "en": "Trimming both ends keeps the alias"
+      }
+    },
+    {
+      "id": "trim-edges",
+      "label": {
+        "chs": "全空格、无空格、空串",
+        "en": "All-space, no-space, and empty input"
+      }
+    },
+    {
+      "id": "first-word",
+      "label": {
+        "chs": "取第一个单词",
+        "en": "Extracting the first word"
+      }
+    },
+    {
+      "id": "between",
+      "label": {
+        "chs": "分隔符区间与缺失",
+        "en": "Delimited span and missing delimiters"
+      }
+    },
+    {
+      "id": "starts-with",
+      "label": {
+        "chs": "前缀判断",
+        "en": "Prefix checks"
+      }
+    },
+    {
+      "id": "view-aliases-source",
+      "label": {
+        "chs": "视图不拷贝缓冲区",
+        "en": "The view does not copy the buffer"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

@@ -1,0 +1,159 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-camel-split",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "驼峰拆分",
+    "en": "Split Camel Case"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "lower-camel",
+      "label": {
+        "chs": "普通小驼峰",
+        "en": "Ordinary lower camel case"
+      },
+      "cases": [
+        {
+          "in": [
+            "camelCase"
+          ],
+          "out": [
+            "camel case"
+          ]
+        },
+        {
+          "in": [
+            "aB"
+          ],
+          "out": [
+            "a b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acronym-tail",
+      "label": {
+        "chs": "缩写后接单词",
+        "en": "Acronym followed by a word"
+      },
+      "cases": [
+        {
+          "in": [
+            "HTTPServer"
+          ],
+          "out": [
+            "http server"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acronym-middle",
+      "label": {
+        "chs": "单词中间的缩写",
+        "en": "An acronym inside a word"
+      },
+      "cases": [
+        {
+          "in": [
+            "getHTTPResponseCode"
+          ],
+          "out": [
+            "get http response code"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "digits",
+      "label": {
+        "chs": "数字边界",
+        "en": "Digit boundaries"
+      },
+      "cases": [
+        {
+          "in": [
+            "parse2Json"
+          ],
+          "out": [
+            "parse2 json"
+          ]
+        },
+        {
+          "in": [
+            "JSON2XML"
+          ],
+          "out": [
+            "json2 xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single-and-caps",
+      "label": {
+        "chs": "单字母与全大写",
+        "en": "Single letters and all caps"
+      },
+      "cases": [
+        {
+          "in": [
+            "A"
+          ],
+          "out": [
+            "a"
+          ]
+        },
+        {
+          "in": [
+            "a"
+          ],
+          "out": [
+            "a"
+          ]
+        },
+        {
+          "in": [
+            "JSON"
+          ],
+          "out": [
+            "json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-acronym",
+      "label": {
+        "chs": "混合缩写",
+        "en": "A mixed acronym case"
+      },
+      "cases": [
+        {
+          "in": [
+            "XMLHttpRequest"
+          ],
+          "out": [
+            "xml http request"
+          ]
+        },
+        {
+          "in": [
+            "iOS9"
+          ],
+          "out": [
+            "i os9"
+          ]
+        }
+      ]
+    }
+  ]
+}

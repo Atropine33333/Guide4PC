@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-magic-square",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 4,
+  "title": {
+    "chs": "奇数阶幻方",
+    "en": "Odd-Order Magic Square"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "one-by-one",
+      "label": {
+        "chs": "一阶幻方",
+        "en": "The one-by-one square"
+      }
+    },
+    {
+      "id": "three-by-three",
+      "label": {
+        "chs": "三阶幻方",
+        "en": "A three-by-three square"
+      }
+    },
+    {
+      "id": "five-by-five",
+      "label": {
+        "chs": "五阶幻方",
+        "en": "A five-by-five square"
+      }
+    },
+    {
+      "id": "nine-by-nine",
+      "label": {
+        "chs": "九阶幻方",
+        "en": "A nine-by-nine square"
+      }
+    },
+    {
+      "id": "fifteen-by-fifteen",
+      "label": {
+        "chs": "十五阶幻方",
+        "en": "A fifteen-by-fifteen square"
+      }
+    },
+    {
+      "id": "rejects-even-and-nonpositive",
+      "label": {
+        "chs": "偶数与非正数返回空",
+        "en": "Even and non-positive orders are rejected"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

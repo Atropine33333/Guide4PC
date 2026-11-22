@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-open-hash",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "开放寻址哈希表",
+    "en": "Open-Addressing Hash Map"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-map",
+      "label": {
+        "chs": "空表行为",
+        "en": "An empty map"
+      }
+    },
+    {
+      "id": "put-get-update",
+      "label": {
+        "chs": "插入、查询与更新",
+        "en": "Insert, lookup, and update"
+      }
+    },
+    {
+      "id": "tombstone-order",
+      "label": {
+        "chs": "墓碑不截断探测",
+        "en": "Tombstones do not stop probing"
+      }
+    },
+    {
+      "id": "negative-keys",
+      "label": {
+        "chs": "负键",
+        "en": "Negative keys"
+      }
+    },
+    {
+      "id": "missing-keeps-out",
+      "label": {
+        "chs": "失败时不改写输出参数",
+        "en": "A miss leaves the out parameter alone"
+      }
+    },
+    {
+      "id": "grow-and-erase",
+      "label": {
+        "chs": "扩容与大量删除",
+        "en": "Growth and bulk erasure"
+      }
+    },
+    {
+      "id": "reinsert",
+      "label": {
+        "chs": "删除后重新插入",
+        "en": "Reinsertion after erasure"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

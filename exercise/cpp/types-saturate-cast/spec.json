@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-saturate-cast",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 4,
+  "title": {
+    "chs": "饱和类型转换",
+    "en": "Saturating Conversions"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "int-in-range",
+      "label": {
+        "chs": "范围内的整数",
+        "en": "Values inside the int range"
+      }
+    },
+    {
+      "id": "int-boundaries",
+      "label": {
+        "chs": "int 边界及越界一格",
+        "en": "int boundaries and one step beyond"
+      }
+    },
+    {
+      "id": "long-long-extremes",
+      "label": {
+        "chs": "long long 两端",
+        "en": "Both long long extremes"
+      }
+    },
+    {
+      "id": "short-boundaries",
+      "label": {
+        "chs": "short 边界",
+        "en": "short boundaries"
+      }
+    },
+    {
+      "id": "double-truncation",
+      "label": {
+        "chs": "double 向零截断",
+        "en": "double truncation toward zero"
+      }
+    },
+    {
+      "id": "double-nan",
+      "label": {
+        "chs": "NaN 转为零",
+        "en": "NaN becomes zero"
+      }
+    },
+    {
+      "id": "double-infinity-and-range",
+      "label": {
+        "chs": "无穷与超范围",
+        "en": "Infinity and out-of-range values"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

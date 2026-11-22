@@ -1,0 +1,127 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-happy-chain",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "快乐数链",
+    "en": "Happy Number Chain"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "one-is-zero",
+      "label": {
+        "chs": "1 的替换次数为零",
+        "en": "One needs zero replacements"
+      },
+      "cases": [
+        {
+          "in": [
+            "1"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic-19",
+      "label": {
+        "chs": "经典链 19",
+        "en": "The classic chain from 19"
+      },
+      "cases": [
+        {
+          "in": [
+            "19"
+          ],
+          "out": [
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seven",
+      "label": {
+        "chs": "一位数 7 的链",
+        "en": "The chain starting at 7"
+      },
+      "cases": [
+        {
+          "in": [
+            "7"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unhappy-cycle",
+      "label": {
+        "chs": "进入循环的数",
+        "en": "Numbers that enter a cycle"
+      },
+      "cases": [
+        {
+          "in": [
+            "2"
+          ],
+          "out": [
+            "-1"
+          ]
+        },
+        {
+          "in": [
+            "4"
+          ],
+          "out": [
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twelve-digits",
+      "label": {
+        "chs": "十二位数上限",
+        "en": "The twelve-digit upper bound"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000000"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nine-digits-cycle",
+      "label": {
+        "chs": "九位数进入循环",
+        "en": "A nine-digit number that cycles"
+      },
+      "cases": [
+        {
+          "in": [
+            "999999999"
+          ],
+          "out": [
+            "-1"
+          ]
+        }
+      ]
+    }
+  ]
+}

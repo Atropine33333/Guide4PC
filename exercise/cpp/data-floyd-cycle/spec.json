@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-floyd-cycle",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": {
+    "chs": "路径上的环",
+    "en": "Cycle on a Functional Graph"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "no-cycle",
+      "label": {
+        "chs": "没有环的链",
+        "en": "A chain without a cycle"
+      }
+    },
+    {
+      "id": "self-loop",
+      "label": {
+        "chs": "自环",
+        "en": "A self-loop"
+      }
+    },
+    {
+      "id": "two-cycle",
+      "label": {
+        "chs": "二元环",
+        "en": "A two-node cycle"
+      }
+    },
+    {
+      "id": "tail-into-cycle",
+      "label": {
+        "chs": "带尾巴的环",
+        "en": "A cycle reached through a tail"
+      }
+    },
+    {
+      "id": "branch-and-bounds",
+      "label": {
+        "chs": "分支与越界起点",
+        "en": "A branching node and out-of-range starts"
+      }
+    },
+    {
+      "id": "empty-graph",
+      "label": {
+        "chs": "空图",
+        "en": "An empty graph"
+      }
+    },
+    {
+      "id": "large-tail",
+      "label": {
+        "chs": "长尾链",
+        "en": "A long tail"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

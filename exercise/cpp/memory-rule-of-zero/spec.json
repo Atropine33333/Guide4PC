@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-rule-of-zero",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 2,
+  "title": {
+    "chs": "零规则笔记本",
+    "en": "Rule-of-Zero Notebook"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-notebook",
+      "label": {
+        "chs": "空对象",
+        "en": "An empty object"
+      }
+    },
+    {
+      "id": "add-and-at",
+      "label": {
+        "chs": "追加与越界访问",
+        "en": "Appending and out-of-range access"
+      }
+    },
+    {
+      "id": "join",
+      "label": {
+        "chs": "连接文本",
+        "en": "Joining text"
+      }
+    },
+    {
+      "id": "copy-independent",
+      "label": {
+        "chs": "拷贝独立",
+        "en": "Copy independence"
+      }
+    },
+    {
+      "id": "assign-independent",
+      "label": {
+        "chs": "赋值独立",
+        "en": "Assignment independence"
+      }
+    },
+    {
+      "id": "move-target",
+      "label": {
+        "chs": "移动后的目标对象",
+        "en": "The move target"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-multiset-kth",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 3,
+  "title": {
+    "chs": "多重集合第 k 小",
+    "en": "K-th Smallest in a Multiset"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "add-and-query",
+      "label": {
+        "chs": "插入后查询",
+        "en": "Query after insertion"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "add 5",
+            "add 1",
+            "add 3",
+            "kth 2"
+          ],
+          "out": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复元素的第 k 小",
+        "en": "K-th smallest with duplicates"
+      },
+      "cases": [
+        {
+          "in": [
+            "6",
+            "add 2",
+            "add 2",
+            "add 2",
+            "add 1",
+            "kth 3",
+            "kth 4"
+          ],
+          "out": [
+            "2",
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erase-one-copy",
+      "label": {
+        "chs": "删除一个副本",
+        "en": "Erasing one copy"
+      },
+      "cases": [
+        {
+          "in": [
+            "6",
+            "add 5",
+            "add 5",
+            "erase 5",
+            "kth 2",
+            "kth 1",
+            "kth 0"
+          ],
+          "out": [
+            "none",
+            "5",
+            "none"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erase-missing",
+      "label": {
+        "chs": "删除不存在的值",
+        "en": "Erasing a missing value"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "erase 7",
+            "add 4",
+            "kth 1",
+            "kth 2"
+          ],
+          "out": [
+            "4",
+            "none"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-set",
+      "label": {
+        "chs": "空集合查询",
+        "en": "Queries on an empty multiset"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "kth 1",
+            "kth 0"
+          ],
+          "out": [
+            "none",
+            "none"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-values",
+      "label": {
+        "chs": "负数值与顺序",
+        "en": "Negative values and ordering"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "add -3",
+            "add -1",
+            "add -2",
+            "kth 1",
+            "kth 3"
+          ],
+          "out": [
+            "-3",
+            "-1"
+          ]
+        }
+      ]
+    }
+  ]
+}

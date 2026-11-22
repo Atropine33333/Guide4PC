@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-span-stats",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 4,
+  "title": {
+    "chs": "span 统计视图",
+    "en": "Span Statistics View"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-stats",
+      "label": {
+        "chs": "空输入的统计",
+        "en": "Statistics of empty input"
+      }
+    },
+    {
+      "id": "single-stats",
+      "label": {
+        "chs": "单元素统计",
+        "en": "Statistics of one element"
+      }
+    },
+    {
+      "id": "mixed-stats",
+      "label": {
+        "chs": "正负混合统计",
+        "en": "Mixed positive and negative values"
+      }
+    },
+    {
+      "id": "large-sum",
+      "label": {
+        "chs": "大总和不溢出",
+        "en": "A large sum without overflow"
+      }
+    },
+    {
+      "id": "trim-both-ends",
+      "label": {
+        "chs": "首尾零裁剪与别名",
+        "en": "Trimming both ends keeps the alias"
+      }
+    },
+    {
+      "id": "trim-edges",
+      "label": {
+        "chs": "全零、空与无零",
+        "en": "All zeros, empty, and no zeros"
+      }
+    },
+    {
+      "id": "trim-inner-zero",
+      "label": {
+        "chs": "内部零保留",
+        "en": "Inner zeros are preserved"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

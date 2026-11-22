@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-hash-specialization",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "title": {
+    "chs": "哈希特化",
+    "en": "Hash Specialisation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "equality",
+      "label": {
+        "chs": "相等比较",
+        "en": "Equality"
+      }
+    },
+    {
+      "id": "equal-hash",
+      "label": {
+        "chs": "相等对象同哈希",
+        "en": "Equal objects hash equally"
+      }
+    },
+    {
+      "id": "hash-both-coordinates",
+      "label": {
+        "chs": "哈希依赖两个坐标",
+        "en": "The hash uses both coordinates"
+      }
+    },
+    {
+      "id": "set-dedupe",
+      "label": {
+        "chs": "unordered_set 去重",
+        "en": "Deduplication in unordered_set"
+      }
+    },
+    {
+      "id": "set-find",
+      "label": {
+        "chs": "查找正负坐标",
+        "en": "Finding positive and negative coordinates"
+      }
+    },
+    {
+      "id": "negative-coordinates",
+      "label": {
+        "chs": "负坐标集合",
+        "en": "A set of negative coordinates"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

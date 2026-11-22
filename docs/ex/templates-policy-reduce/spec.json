@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-policy-reduce",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": {
+    "chs": "策略归约",
+    "en": "Policy-Based Reduce"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "sum-basic",
+      "label": {
+        "chs": "求和策略",
+        "en": "The sum policy"
+      }
+    },
+    {
+      "id": "sum-empty-and-single",
+      "label": {
+        "chs": "空序列与单元素",
+        "en": "Empty and single-element sequences"
+      }
+    },
+    {
+      "id": "max-basic",
+      "label": {
+        "chs": "最大值策略",
+        "en": "The maximum policy"
+      }
+    },
+    {
+      "id": "max-negative-and-empty",
+      "label": {
+        "chs": "负数与空序列",
+        "en": "Negative values and an empty sequence"
+      }
+    },
+    {
+      "id": "custom-policy",
+      "label": {
+        "chs": "自定义乘法策略",
+        "en": "A custom product policy"
+      }
+    },
+    {
+      "id": "custom-min",
+      "label": {
+        "chs": "自定义最小值策略",
+        "en": "A custom minimum policy"
+      }
+    },
+    {
+      "id": "large-sum",
+      "label": {
+        "chs": "较长的序列",
+        "en": "A longer sequence"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

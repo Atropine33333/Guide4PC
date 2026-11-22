@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-function-table",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "函数指针表",
+    "en": "Function Pointer Table"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "lookup-known",
+      "label": {
+        "chs": "已知名字查到可调用函数",
+        "en": "Known names resolve to callable functions"
+      }
+    },
+    {
+      "id": "lookup-unknown",
+      "label": {
+        "chs": "未知名字返回空指针",
+        "en": "Unknown names return null"
+      }
+    },
+    {
+      "id": "apply-with-fallback",
+      "label": {
+        "chs": "查不到时使用回退值",
+        "en": "Fallback is used for unknown names"
+      }
+    },
+    {
+      "id": "apply-all-order",
+      "label": {
+        "chs": "按顺序跳过空指针",
+        "en": "Null entries are skipped in order"
+      }
+    },
+    {
+      "id": "apply-all-empty",
+      "label": {
+        "chs": "空表和全空表",
+        "en": "Empty and all-null input"
+      }
+    },
+    {
+      "id": "range-edges",
+      "label": {
+        "chs": "参数边界",
+        "en": "Argument boundaries"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

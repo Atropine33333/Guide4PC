@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-journal-replay",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "title": {
+    "chs": "事务日志重放",
+    "en": "Journal Replay"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "direct-puts",
+      "label": {
+        "chs": "无事务写入",
+        "en": "Direct writes"
+      }
+    },
+    {
+      "id": "commit",
+      "label": {
+        "chs": "提交事务",
+        "en": "Committing a transaction"
+      }
+    },
+    {
+      "id": "rollback",
+      "label": {
+        "chs": "回滚事务",
+        "en": "Rolling back a transaction"
+      }
+    },
+    {
+      "id": "nested-begin-ignored",
+      "label": {
+        "chs": "嵌套 begin 被忽略",
+        "en": "A nested begin is ignored"
+      }
+    },
+    {
+      "id": "orphan-controls",
+      "label": {
+        "chs": "孤立的 commit/rollback",
+        "en": "Orphaned commit/rollback"
+      }
+    },
+    {
+      "id": "overwrite-in-transaction",
+      "label": {
+        "chs": "事务内覆盖",
+        "en": "Overwriting inside a transaction"
+      }
+    },
+    {
+      "id": "key-order",
+      "label": {
+        "chs": "按键排序",
+        "en": "Key ordering"
+      }
+    },
+    {
+      "id": "rollback-then-commit",
+      "label": {
+        "chs": "回滚后提交",
+        "en": "Commit after rollback"
+      }
+    },
+    {
+      "id": "unfinished-transaction",
+      "label": {
+        "chs": "未结束事务",
+        "en": "An unfinished transaction"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

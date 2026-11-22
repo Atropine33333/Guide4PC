@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-virtual-destructor",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": {
+    "chs": "虚析构与形状层次",
+    "en": "Virtual Destructors and Shapes"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "rect-basic",
+      "label": {
+        "chs": "矩形",
+        "en": "Rectangle"
+      }
+    },
+    {
+      "id": "circle-basic",
+      "label": {
+        "chs": "圆",
+        "en": "Circle"
+      }
+    },
+    {
+      "id": "polymorphic",
+      "label": {
+        "chs": "基类指针多态调用",
+        "en": "Polymorphic calls through base pointers"
+      }
+    },
+    {
+      "id": "virtual-destructor",
+      "label": {
+        "chs": "经基类删除派生对象",
+        "en": "Deleting a derived object through its base"
+      }
+    },
+    {
+      "id": "zero-size",
+      "label": {
+        "chs": "零尺寸",
+        "en": "Zero-sized shapes"
+      }
+    },
+    {
+      "id": "many-objects",
+      "label": {
+        "chs": "批量多态销毁",
+        "en": "Bulk polymorphic destruction"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

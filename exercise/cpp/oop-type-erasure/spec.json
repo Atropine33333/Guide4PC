@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-type-erasure",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 5,
+  "title": {
+    "chs": "类型擦除值",
+    "en": "Type-Erased Value"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty-state",
+      "label": {
+        "chs": "空状态",
+        "en": "The empty state"
+      }
+    },
+    {
+      "id": "int-state",
+      "label": {
+        "chs": "整数状态",
+        "en": "The integer state"
+      }
+    },
+    {
+      "id": "int-edges",
+      "label": {
+        "chs": "零与负数",
+        "en": "Zero and negative integers"
+      }
+    },
+    {
+      "id": "string-state",
+      "label": {
+        "chs": "字符串状态与空串",
+        "en": "The string state and an empty string"
+      }
+    },
+    {
+      "id": "copy-deep",
+      "label": {
+        "chs": "深拷贝",
+        "en": "Deep copy"
+      }
+    },
+    {
+      "id": "assign-and-self-assign",
+      "label": {
+        "chs": "赋值与自赋值",
+        "en": "Assignment and self-assignment"
+      }
+    },
+    {
+      "id": "independent-copies",
+      "label": {
+        "chs": "副本互不影响",
+        "en": "Copies are independent"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

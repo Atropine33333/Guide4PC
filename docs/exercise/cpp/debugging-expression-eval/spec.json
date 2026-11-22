@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-expression-eval",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 4,
+  "title": {
+    "chs": "表达式求值修复",
+    "en": "Fix Expression Evaluation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "precedence",
+      "label": {
+        "chs": "优先级与括号",
+        "en": "Precedence and parentheses"
+      }
+    },
+    {
+      "id": "left-associative",
+      "label": {
+        "chs": "左结合",
+        "en": "Left associativity"
+      }
+    },
+    {
+      "id": "unary-minus",
+      "label": {
+        "chs": "一元负号",
+        "en": "Unary minus"
+      }
+    },
+    {
+      "id": "unary-with-spaces",
+      "label": {
+        "chs": "一元负号与空格",
+        "en": "Unary minus with spaces"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套表达式",
+        "en": "Nested expressions"
+      }
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零值",
+        "en": "Zero values"
+      }
+    },
+    {
+      "id": "larger",
+      "label": {
+        "chs": "较大数值",
+        "en": "Larger values"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}

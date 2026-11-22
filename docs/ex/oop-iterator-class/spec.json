@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-iterator-class",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "title": {
+    "chs": "区间迭代器",
+    "en": "Range Iterator"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "positive-step",
+      "label": {
+        "chs": "正向步长一",
+        "en": "A positive step of one"
+      }
+    },
+    {
+      "id": "step-three",
+      "label": {
+        "chs": "不能整除的步长",
+        "en": "A step that does not divide the span"
+      }
+    },
+    {
+      "id": "negative-step",
+      "label": {
+        "chs": "负步长",
+        "en": "A negative step"
+      }
+    },
+    {
+      "id": "empty-and-divisible",
+      "label": {
+        "chs": "空区间与整除步长",
+        "en": "Empty ranges and an even step"
+      }
+    },
+    {
+      "id": "single-and-negative",
+      "label": {
+        "chs": "单元素与负值",
+        "en": "Single elements and negative values"
+      }
+    },
+    {
+      "id": "iterator-copy",
+      "label": {
+        "chs": "迭代器拷贝",
+        "en": "Iterator copies"
+      }
+    },
+    {
+      "id": "large-range",
+      "label": {
+        "chs": "大区间",
+        "en": "A large range"
+      }
+    }
+  ],
+  "harness": "harness.cpp"
+}
