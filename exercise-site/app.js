@@ -18,8 +18,12 @@
     semantics: ['语义', 'Semantics'],
     types: ['类型', 'Types'],
     stdlib: ['标准库', 'Standard library'],
-    memory: ['内存与资源', 'Memory & resources'],
+    io: ['输入输出', 'I/O'],
     algorithm: ['算法', 'Algorithms'],
+    data: ['数据结构', 'Data structures'],
+    memory: ['内存与资源', 'Memory & resources'],
+    oop: ['面向对象', 'OOP'],
+    templates: ['模板与泛型', 'Templates'],
     engineering: ['工程综合', 'Engineering'],
     debugging: ['调试排错', 'Debugging'],
   };

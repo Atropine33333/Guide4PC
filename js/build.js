@@ -781,7 +781,7 @@ function syncAllStatics(cache) {
 // ─── Playground runtime ─────────────────────────────────────────────────────
 
 const EX_LANGS = new Set(['cpp', 'c', 'python']);
-const EX_CATEGORIES = new Set(['syntax', 'semantics', 'types', 'stdlib', 'memory', 'algorithm', 'engineering', 'debugging']);
+const EX_CATEGORIES = new Set(['syntax', 'semantics', 'types', 'stdlib', 'io', 'algorithm', 'data', 'memory', 'oop', 'templates', 'engineering', 'debugging']);
 
 // 题目 spec 的必填字段与文件存在性；返回问题列表，空数组表示通过。
 function validateExerciseSpec(spec, dir, lang, id) {

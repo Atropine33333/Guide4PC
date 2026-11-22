@@ -50,8 +50,12 @@
     semantics: ZH ? '语义' : 'Semantics',
     types: ZH ? '类型' : 'Types',
     stdlib: ZH ? '标准库' : 'Stdlib',
-    memory: ZH ? '内存与资源' : 'Memory',
+    io: ZH ? '输入输出' : 'I/O',
     algorithm: ZH ? '算法' : 'Algorithms',
+    data: ZH ? '数据结构' : 'Data structures',
+    memory: ZH ? '内存与资源' : 'Memory',
+    oop: ZH ? '面向对象' : 'OOP',
+    templates: ZH ? '模板与泛型' : 'Templates',
     engineering: ZH ? '工程综合' : 'Engineering',
     debugging: ZH ? '调试排错' : 'Debugging',
   };
@@ -448,7 +452,8 @@
         ]),
         h('div', { class: 'ex-meta' }, [
           h('span', { class: 'ex-chip ex-chip-lang', text: (spec.lang || 'cpp').toUpperCase() }),
-          spec.category ? h('span', { class: 'ex-chip ex-chip-cat', text: (CATEGORY_LABELS[spec.category] || spec.category) + (spec.rank ? ' · R' + spec.rank : '') }) : null,
+          spec.category ? h('span', { class: 'ex-chip ex-chip-cat', text: CATEGORY_LABELS[spec.category] || spec.category }) : null,
+          spec.rank ? h('span', { class: 'ex-chip ex-chip-rank', text: 'Rank ' + spec.rank }) : null,
           h('span', { class: 'ex-chip', text: checks.length + ' ' + TEXT.tests }),
           variantSpec ? h('span', { class: 'ex-chip ex-chip-var', text: variant }) : null,
         ]),
