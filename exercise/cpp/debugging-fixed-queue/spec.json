@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-fixed-queue",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 3,
+  "title": {
+    "chs": "固定容量队列（找错）",
+    "en": "Fixed-Capacity Queue (Debug)"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空队列",
+        "en": "An empty queue"
+      }
+    },
+    {
+      "id": "empty-clear",
+      "label": {
+        "chs": "空队列清空",
+        "en": "Clearing an empty queue"
+      }
+    },
+    {
+      "id": "singleton",
+      "label": {
+        "chs": "单个元素",
+        "en": "A single element"
+      }
+    },
+    {
+      "id": "fifo",
+      "label": {
+        "chs": "先进先出",
+        "en": "First in, first out"
+      }
+    },
+    {
+      "id": "wrap",
+      "label": {
+        "chs": "环形回绕",
+        "en": "Ring wraparound"
+      }
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "队列已满",
+        "en": "A full queue"
+      }
+    },
+    {
+      "id": "zero-capacity",
+      "label": {
+        "chs": "零容量",
+        "en": "Zero capacity"
+      }
+    },
+    {
+      "id": "clear",
+      "label": {
+        "chs": "清空后复用",
+        "en": "Reuse after clear"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-inversions",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "title": {
+    "chs": "统计逆序对",
+    "en": "Counting Inversions"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "trivial",
+      "label": {
+        "chs": "空、单个与已排序",
+        "en": "Empty, single, sorted"
+      }
+    },
+    {
+      "id": "sorted-reversed",
+      "label": {
+        "chs": "升序与降序",
+        "en": "Ascending and descending"
+      }
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复值",
+        "en": "Duplicates"
+      }
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "十万个元素",
+        "en": "One hundred thousand elements"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机对比暴力",
+        "en": "Random compared with brute force"
+      }
+    }
+  ]
+}

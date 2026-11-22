@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-lambda-state",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 3,
+  "title": {
+    "chs": "闭包里的状态",
+    "en": "State Inside a Closure"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "counter-basic",
+      "label": {
+        "chs": "计数器",
+        "en": "A counter"
+      }
+    },
+    {
+      "id": "counter-negative",
+      "label": {
+        "chs": "负数起点",
+        "en": "A negative start"
+      }
+    },
+    {
+      "id": "counter-independent",
+      "label": {
+        "chs": "两个独立计数器",
+        "en": "Two independent counters"
+      }
+    },
+    {
+      "id": "accumulator-basic",
+      "label": {
+        "chs": "累加器",
+        "en": "An accumulator"
+      }
+    },
+    {
+      "id": "accumulator-zero",
+      "label": {
+        "chs": "从零开始",
+        "en": "Starting at zero"
+      }
+    },
+    {
+      "id": "copy-independent",
+      "label": {
+        "chs": "拷贝后的状态",
+        "en": "State after copying"
+      }
+    }
+  ]
+}

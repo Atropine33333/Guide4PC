@@ -1,0 +1,183 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-roman-encode",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "罗马数字编码",
+    "en": "Roman Numeral Encoder"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "一、四、九",
+        "en": "One, four, nine"
+      },
+      "cases": [
+        {
+          "in": [
+            "1"
+          ],
+          "out": [
+            "I"
+          ]
+        },
+        {
+          "in": [
+            "4"
+          ],
+          "out": [
+            "IV"
+          ]
+        },
+        {
+          "in": [
+            "9"
+          ],
+          "out": [
+            "IX"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tens",
+      "label": {
+        "chs": "整十与减法记法",
+        "en": "Tens and subtractive forms"
+      },
+      "cases": [
+        {
+          "in": [
+            "14"
+          ],
+          "out": [
+            "XIV"
+          ]
+        },
+        {
+          "in": [
+            "40"
+          ],
+          "out": [
+            "XL"
+          ]
+        },
+        {
+          "in": [
+            "90"
+          ],
+          "out": [
+            "XC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hundreds",
+      "label": {
+        "chs": "整百与减法记法",
+        "en": "Hundreds and subtractive forms"
+      },
+      "cases": [
+        {
+          "in": [
+            "400"
+          ],
+          "out": [
+            "CD"
+          ]
+        },
+        {
+          "in": [
+            "900"
+          ],
+          "out": [
+            "CM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "label": {
+        "chs": "常见年份",
+        "en": "Well-known years"
+      },
+      "cases": [
+        {
+          "in": [
+            "1994"
+          ],
+          "out": [
+            "MCMXCIV"
+          ]
+        },
+        {
+          "in": [
+            "2024"
+          ],
+          "out": [
+            "MMXXIV"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": {
+        "chs": "上界",
+        "en": "The upper bound"
+      },
+      "cases": [
+        {
+          "in": [
+            "3999"
+          ],
+          "out": [
+            "MMMCMXCIX"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "repeats",
+      "label": {
+        "chs": "连续重复的符号",
+        "en": "Repeated symbols"
+      },
+      "cases": [
+        {
+          "in": [
+            "3888"
+          ],
+          "out": [
+            "MMMDCCCLXXXVIII"
+          ]
+        },
+        {
+          "in": [
+            "58"
+          ],
+          "out": [
+            "LVIII"
+          ]
+        },
+        {
+          "in": [
+            "444"
+          ],
+          "out": [
+            "CDXLIV"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -20,6 +20,42 @@
       }
     },
     {
+      "id": "algorithm-gcd-lcm",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最大公约数与最小公倍数",
+        "en": "GCD and LCM"
+      },
+      "category": "algorithm",
+      "rank": 1,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-inversions",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "统计逆序对",
+        "en": "Counting Inversions"
+      },
+      "category": "algorithm",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "algorithm-max-subarray",
       "dir": "cpp",
       "lang": "cpp",
@@ -49,6 +85,24 @@
       "rank": 4,
       "checks": 7,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-prime-factorize",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "质因数分解",
+        "en": "Prime Factorization"
+      },
+      "category": "algorithm",
+      "rank": 2,
+      "checks": 6,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,
@@ -190,6 +244,60 @@
       }
     },
     {
+      "id": "data-linked-reverse",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "链表反转",
+        "en": "Reversing a Linked List"
+      },
+      "category": "data",
+      "rank": 3,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-rpn-eval",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "逆波兰表达式求值",
+        "en": "Evaluate Reverse Polish Notation"
+      },
+      "category": "data",
+      "rank": 1,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-top-k",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最大的 k 个数",
+        "en": "The k Largest Values"
+      },
+      "category": "data",
+      "rank": 4,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "data-union-find",
       "dir": "cpp",
       "lang": "cpp",
@@ -262,6 +370,42 @@
       }
     },
     {
+      "id": "debugging-digit-sum",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "数字各位之和（找错）",
+        "en": "Digit Sum (Debug)"
+      },
+      "category": "debugging",
+      "rank": 1,
+      "checks": 8,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-fixed-queue",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "固定容量队列（找错）",
+        "en": "Fixed-Capacity Queue (Debug)"
+      },
+      "category": "debugging",
+      "rank": 3,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "debugging-negative-max",
       "dir": "cpp",
       "lang": "cpp",
@@ -272,6 +416,24 @@
       "category": "debugging",
       "rank": 2,
       "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-run-length",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "游程编码（找错）",
+        "en": "Run-Length Encoding (Debug)"
+      },
+      "category": "debugging",
+      "rank": 2,
+      "checks": 7,
       "harness": false,
       "variants": [],
       "problem": {
@@ -352,6 +514,60 @@
       }
     },
     {
+      "id": "engineering-fixed-pool",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "固定容量对象池",
+        "en": "Fixed-Capacity Object Pool"
+      },
+      "category": "engineering",
+      "rank": 5,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-token-bucket",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "令牌桶限流",
+        "en": "Token Bucket Rate Limiter"
+      },
+      "category": "engineering",
+      "rank": 4,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-version-order",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "版本号排序",
+        "en": "Sorting Version Strings"
+      },
+      "category": "engineering",
+      "rank": 3,
+      "checks": 7,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "first-at-least",
       "dir": "cpp",
       "lang": "cpp",
@@ -406,6 +622,24 @@
       }
     },
     {
+      "id": "io-column-report",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "名字与分数两列",
+        "en": "Two-Column Report"
+      },
+      "category": "io",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "io-duration-format",
       "dir": "cpp",
       "lang": "cpp",
@@ -417,6 +651,42 @@
       "rank": 1,
       "checks": 6,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "io-escape-expand",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "展开转义序列",
+        "en": "Expanding Escape Sequences"
+      },
+      "category": "io",
+      "rank": 3,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "io-float-table",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "对齐的小数表",
+        "en": "Aligned Decimal Table"
+      },
+      "category": "io",
+      "rank": 1,
+      "checks": 5,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,
@@ -514,6 +784,24 @@
       }
     },
     {
+      "id": "memory-array-view",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "不拥有数据的数组视图",
+        "en": "Non-Owning Array View"
+      },
+      "category": "memory",
+      "rank": 2,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "memory-destruction-order",
       "dir": "cpp",
       "lang": "cpp",
@@ -523,6 +811,42 @@
       },
       "category": "memory",
       "rank": 2,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-growing-array",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "会增长的整数数组",
+        "en": "A Growing Integer Array"
+      },
+      "category": "memory",
+      "rank": 4,
+      "checks": 10,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-heap-array",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "动态数组的基本操作",
+        "en": "Basic Dynamic Array"
+      },
+      "category": "memory",
+      "rank": 1,
       "checks": 7,
       "harness": true,
       "variants": [],
@@ -604,6 +928,42 @@
       }
     },
     {
+      "id": "oop-counter",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "计数器类",
+        "en": "A Counter Class"
+      },
+      "category": "oop",
+      "rank": 2,
+      "checks": 8,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-date",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "日期类",
+        "en": "A Date Class"
+      },
+      "category": "oop",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "oop-pixel-class",
       "dir": "cpp",
       "lang": "cpp",
@@ -632,6 +992,24 @@
       "category": "oop",
       "rank": 4,
       "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-text-builder",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "文本构建器",
+        "en": "A Text Builder"
+      },
+      "category": "oop",
+      "rank": 4,
+      "checks": 8,
       "harness": true,
       "variants": [],
       "problem": {
@@ -694,6 +1072,42 @@
       }
     },
     {
+      "id": "semantics-default-args",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "默认参数",
+        "en": "Default Arguments"
+      },
+      "category": "semantics",
+      "rank": 1,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-lambda-state",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "闭包里的状态",
+        "en": "State Inside a Closure"
+      },
+      "category": "semantics",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "semantics-overload-pick",
       "dir": "cpp",
       "lang": "cpp",
@@ -741,6 +1155,24 @@
       "rank": 2,
       "checks": 5,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-unsigned-compare",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "有符号与无符号比较",
+        "en": "Signed vs Unsigned Comparison"
+      },
+      "category": "semantics",
+      "rank": 2,
+      "checks": 6,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,
@@ -820,6 +1252,42 @@
       }
     },
     {
+      "id": "stdlib-next-permutation",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "下一个排列",
+        "en": "Next Permutation"
+      },
+      "category": "stdlib",
+      "rank": 3,
+      "checks": 7,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "stdlib-running-median",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "逐个插入的中位数",
+        "en": "Running Median"
+      },
+      "category": "stdlib",
+      "rank": 4,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "stdlib-sort-records",
       "dir": "cpp",
       "lang": "cpp",
@@ -831,6 +1299,24 @@
       "rank": 2,
       "checks": 4,
       "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "stdlib-split-fields",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "拆分与拼接字段",
+        "en": "Split and Join Fields"
+      },
+      "category": "stdlib",
+      "rank": 2,
+      "checks": 7,
+      "harness": true,
       "variants": [],
       "problem": {
         "chs": true,
@@ -910,6 +1396,60 @@
       }
     },
     {
+      "id": "syntax-collatz-steps",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "考拉兹步数",
+        "en": "Collatz Steps"
+      },
+      "category": "syntax",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-palindrome-line",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "忽略标点的回文",
+        "en": "Palindrome, Ignoring Punctuation"
+      },
+      "category": "syntax",
+      "rank": 2,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-roman-encode",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "罗马数字编码",
+        "en": "Roman Numeral Encoder"
+      },
+      "category": "syntax",
+      "rank": 3,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "template-bounded-stack",
       "dir": "cpp",
       "lang": "cpp",
@@ -938,6 +1478,24 @@
       "category": "templates",
       "rank": 3,
       "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "templates-array-stats",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "数组的平均值与最大值",
+        "en": "Array Average and Maximum"
+      },
+      "category": "templates",
+      "rank": 2,
+      "checks": 7,
       "harness": true,
       "variants": [],
       "problem": {
@@ -982,6 +1540,24 @@
       }
     },
     {
+      "id": "templates-swap-values",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "泛型交换与最小值",
+        "en": "Generic Swap and Minimum"
+      },
+      "category": "templates",
+      "rank": 1,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "templates-type-label",
       "dir": "cpp",
       "lang": "cpp",
@@ -992,6 +1568,24 @@
       "category": "templates",
       "rank": 4,
       "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "templates-variadic-sum",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "可变参数求和",
+        "en": "Variadic Sum"
+      },
+      "category": "templates",
+      "rank": 4,
+      "checks": 7,
       "harness": true,
       "variants": [],
       "problem": {
@@ -1054,6 +1648,24 @@
       }
     },
     {
+      "id": "types-exact-int",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "精确转换到 int",
+        "en": "Exact Conversion to int"
+      },
+      "category": "types",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "types-narrow-bounds",
       "dir": "cpp",
       "lang": "cpp",
@@ -1082,6 +1694,42 @@
       "category": "types",
       "rank": 2,
       "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-safe-add",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "带溢出检查的整数运算",
+        "en": "Integer Arithmetic with Overflow Checks"
+      },
+      "category": "types",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-unsigned-wrap",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "无符号减法回绕",
+        "en": "Unsigned Subtraction Wraps"
+      },
+      "category": "types",
+      "rank": 1,
+      "checks": 5,
       "harness": false,
       "variants": [],
       "problem": {

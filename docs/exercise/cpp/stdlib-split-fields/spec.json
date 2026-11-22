@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-split-fields",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "拆分与拼接字段",
+    "en": "Split and Join Fields"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空输入",
+        "en": "Empty input"
+      }
+    },
+    {
+      "id": "fields",
+      "label": {
+        "chs": "普通拆分",
+        "en": "Ordinary splitting"
+      }
+    },
+    {
+      "id": "empty-fields",
+      "label": {
+        "chs": "空字段",
+        "en": "Empty fields"
+      }
+    },
+    {
+      "id": "preserve",
+      "label": {
+        "chs": "保留空白",
+        "en": "Whitespace preserved"
+      }
+    },
+    {
+      "id": "join",
+      "label": {
+        "chs": "拼接",
+        "en": "Joining"
+      }
+    },
+    {
+      "id": "roundtrip",
+      "label": {
+        "chs": "拆分再拼接",
+        "en": "Split then join"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "很多字段",
+        "en": "Many fields"
+      }
+    }
+  ]
+}

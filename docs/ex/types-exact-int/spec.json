@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-exact-int",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "精确转换到 int",
+    "en": "Exact Conversion to int"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "integral",
+      "label": {
+        "chs": "整数值",
+        "en": "Integral values"
+      }
+    },
+    {
+      "id": "fractional",
+      "label": {
+        "chs": "带小数",
+        "en": "Fractional values"
+      }
+    },
+    {
+      "id": "positive-bound",
+      "label": {
+        "chs": "上界",
+        "en": "Positive bound"
+      }
+    },
+    {
+      "id": "negative-bound",
+      "label": {
+        "chs": "下界",
+        "en": "Negative bound"
+      }
+    },
+    {
+      "id": "special",
+      "label": {
+        "chs": "NaN 与无穷",
+        "en": "NaN and infinity"
+      }
+    },
+    {
+      "id": "unchanged",
+      "label": {
+        "chs": "失败时输出不变",
+        "en": "Output untouched on failure"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机值",
+        "en": "Random values"
+      }
+    }
+  ]
+}

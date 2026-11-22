@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-growing-array",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 4,
+  "title": {
+    "chs": "会增长的整数数组",
+    "en": "A Growing Integer Array"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "default",
+      "label": {
+        "chs": "默认构造",
+        "en": "Default construction"
+      }
+    },
+    {
+      "id": "push-preserve",
+      "label": {
+        "chs": "连续添加并保留顺序",
+        "en": "Pushing preserves order"
+      }
+    },
+    {
+      "id": "growth",
+      "label": {
+        "chs": "自动扩容",
+        "en": "Automatic growth"
+      }
+    },
+    {
+      "id": "clear",
+      "label": {
+        "chs": "清空后复用",
+        "en": "Reuse after clear"
+      }
+    },
+    {
+      "id": "copy",
+      "label": {
+        "chs": "拷贝构造",
+        "en": "Copy construction"
+      }
+    },
+    {
+      "id": "assign",
+      "label": {
+        "chs": "拷贝赋值",
+        "en": "Copy assignment"
+      }
+    },
+    {
+      "id": "self-assign",
+      "label": {
+        "chs": "自赋值",
+        "en": "Self-assignment"
+      }
+    },
+    {
+      "id": "move-ctor",
+      "label": {
+        "chs": "移动构造",
+        "en": "Move construction"
+      }
+    },
+    {
+      "id": "move-assign",
+      "label": {
+        "chs": "移动赋值",
+        "en": "Move assignment"
+      }
+    },
+    {
+      "id": "index",
+      "label": {
+        "chs": "下标访问",
+        "en": "Indexing"
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-top-k",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "最大的 k 个数",
+    "en": "The k Largest Values"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通情况",
+        "en": "An ordinary case"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 2",
+            "1 5 3 4 2"
+          ],
+          "out": [
+            "5 4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all",
+      "label": {
+        "chs": "全部输出",
+        "en": "All values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 3",
+            "-1 -2 -3"
+          ],
+          "out": [
+            "-1 -2 -3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "one",
+      "label": {
+        "chs": "只要一个",
+        "en": "Only one"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 1",
+            "5 9 2 9"
+          ],
+          "out": [
+            "9"
+          ]
+        },
+        {
+          "in": [
+            "3 1",
+            "-5 -1 -3"
+          ],
+          "out": [
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复值",
+        "en": "Duplicates"
+      },
+      "cases": [
+        {
+          "in": [
+            "6 3",
+            "2 2 2 3 3 3"
+          ],
+          "out": [
+            "3 3 3"
+          ]
+        },
+        {
+          "in": [
+            "5 4",
+            "7 7 7 1 7"
+          ],
+          "out": [
+            "7 7 7 7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 3",
+            "-5 -1 -3 -2 -4"
+          ],
+          "out": [
+            "-1 -2 -3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "k-equals-n",
+      "label": {
+        "chs": "k 等于 n",
+        "en": "k equals n"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 4",
+            "0 0 -1 -1"
+          ],
+          "out": [
+            "0 0 -1 -1"
+          ]
+        }
+      ]
+    }
+  ]
+}

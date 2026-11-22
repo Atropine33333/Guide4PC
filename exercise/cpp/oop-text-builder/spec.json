@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-text-builder",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "title": {
+    "chs": "文本构建器",
+    "en": "A Text Builder"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空对象",
+        "en": "An empty object"
+      }
+    },
+    {
+      "id": "append",
+      "label": {
+        "chs": "追加",
+        "en": "Appending"
+      }
+    },
+    {
+      "id": "plus-equals",
+      "label": {
+        "chs": "复合追加",
+        "en": "Compound append"
+      }
+    },
+    {
+      "id": "plus",
+      "label": {
+        "chs": "加号生成新对象",
+        "en": "Plus creates a new object"
+      }
+    },
+    {
+      "id": "index",
+      "label": {
+        "chs": "下标读写",
+        "en": "Indexing"
+      }
+    },
+    {
+      "id": "compare",
+      "label": {
+        "chs": "比较",
+        "en": "Comparison"
+      }
+    },
+    {
+      "id": "stream",
+      "label": {
+        "chs": "输出到流",
+        "en": "Stream output"
+      }
+    },
+    {
+      "id": "clear",
+      "label": {
+        "chs": "清空",
+        "en": "Clearing"
+      }
+    }
+  ]
+}

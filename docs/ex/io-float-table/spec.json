@@ -1,0 +1,119 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-float-table",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 1,
+  "title": {
+    "chs": "对齐的小数表",
+    "en": "Aligned Decimal Table"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "plain",
+      "label": {
+        "chs": "普通小数",
+        "en": "Ordinary decimals"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1.5",
+            "-2.25",
+            "3.14159"
+          ],
+          "out": [
+            "      1.50",
+            "     -2.25",
+            "      3.14"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零",
+        "en": "Zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "0",
+            "0.0"
+          ],
+          "out": [
+            "      0.00",
+            "      0.00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "width",
+      "label": {
+        "chs": "内容超过宽度",
+        "en": "Wider than the field"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "123456.789",
+            "-999.999"
+          ],
+          "out": [
+            " 123456.79",
+            "  -1000.00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rounding",
+      "label": {
+        "chs": "四舍五入",
+        "en": "Rounding"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "2.346",
+            "1.234"
+          ],
+          "out": [
+            "      2.35",
+            "      1.23"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-small",
+      "label": {
+        "chs": "接近零的负数",
+        "en": "Small negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "-0.5",
+            "-0.004"
+          ],
+          "out": [
+            "     -0.50",
+            "     -0.00"
+          ]
+        }
+      ]
+    }
+  ]
+}

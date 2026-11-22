@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-heap-array",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 1,
+  "title": {
+    "chs": "动态数组的基本操作",
+    "en": "Basic Dynamic Array"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "non-positive",
+      "label": {
+        "chs": "非正长度",
+        "en": "Non-positive length"
+      }
+    },
+    {
+      "id": "zeroed",
+      "label": {
+        "chs": "分配并清零",
+        "en": "Allocate and zero"
+      }
+    },
+    {
+      "id": "fill",
+      "label": {
+        "chs": "填充序列",
+        "en": "Fill a sequence"
+      }
+    },
+    {
+      "id": "sum",
+      "label": {
+        "chs": "求和",
+        "en": "Sum"
+      }
+    },
+    {
+      "id": "independent",
+      "label": {
+        "chs": "两次分配互不影响",
+        "en": "Independent allocations"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "一千个元素",
+        "en": "One thousand elements"
+      }
+    },
+    {
+      "id": "free",
+      "label": {
+        "chs": "释放",
+        "en": "Freeing"
+      }
+    }
+  ]
+}

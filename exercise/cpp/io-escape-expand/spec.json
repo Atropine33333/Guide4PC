@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-escape-expand",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "展开转义序列",
+    "en": "Expanding Escape Sequences"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "none",
+      "label": {
+        "chs": "没有转义",
+        "en": "No escapes"
+      }
+    },
+    {
+      "id": "newline-tab",
+      "label": {
+        "chs": "换行与制表符",
+        "en": "Newline and tab"
+      }
+    },
+    {
+      "id": "backslash",
+      "label": {
+        "chs": "反斜杠",
+        "en": "Backslash"
+      }
+    },
+    {
+      "id": "unknown",
+      "label": {
+        "chs": "未知转义",
+        "en": "Unknown escapes"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空串",
+        "en": "Empty string"
+      }
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合内容",
+        "en": "Mixed content"
+      }
+    },
+    {
+      "id": "cr",
+      "label": {
+        "chs": "回车",
+        "en": "Carriage return"
+      }
+    },
+    {
+      "id": "trailing",
+      "label": {
+        "chs": "结尾反斜杠",
+        "en": "Trailing backslash"
+      }
+    }
+  ]
+}

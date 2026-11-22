@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-array-view",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 2,
+  "title": {
+    "chs": "不拥有数据的数组视图",
+    "en": "Non-Owning Array View"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "default",
+      "label": {
+        "chs": "默认构造",
+        "en": "Default construction"
+      }
+    },
+    {
+      "id": "construct",
+      "label": {
+        "chs": "绑定数组",
+        "en": "Binding an array"
+      }
+    },
+    {
+      "id": "mutate",
+      "label": {
+        "chs": "通过视图修改",
+        "en": "Mutating through the view"
+      }
+    },
+    {
+      "id": "slice",
+      "label": {
+        "chs": "切片",
+        "en": "Slicing"
+      }
+    },
+    {
+      "id": "invalid-slices",
+      "label": {
+        "chs": "非法切片",
+        "en": "Invalid slices"
+      }
+    },
+    {
+      "id": "empty-views",
+      "label": {
+        "chs": "空视图",
+        "en": "Empty views"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套切片",
+        "en": "Nested slices"
+      }
+    },
+    {
+      "id": "const",
+      "label": {
+        "chs": "const 视图",
+        "en": "A const view"
+      }
+    }
+  ]
+}

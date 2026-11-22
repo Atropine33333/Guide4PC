@@ -1,0 +1,179 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-unsigned-compare",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "有符号与无符号比较",
+    "en": "Signed vs Unsigned Comparison"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数与无符号数",
+        "en": "Negative against unsigned"
+      },
+      "cases": [
+        {
+          "in": [
+            "-1",
+            "0"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "-1",
+            "18446744073709551615"
+          ],
+          "out": [
+            "1 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "相等",
+        "en": "Equality"
+      },
+      "cases": [
+        {
+          "in": [
+            "42",
+            "42"
+          ],
+          "out": [
+            "0 1"
+          ]
+        },
+        {
+          "in": [
+            "0",
+            "0"
+          ],
+          "out": [
+            "0 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "positive",
+      "label": {
+        "chs": "两个正数",
+        "en": "Two positive values"
+      },
+      "cases": [
+        {
+          "in": [
+            "7",
+            "10"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "10",
+            "7"
+          ],
+          "out": [
+            "0 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "signed-limits",
+      "label": {
+        "chs": "有符号边界",
+        "en": "Signed limits"
+      },
+      "cases": [
+        {
+          "in": [
+            "-9223372036854775808",
+            "9223372036854775808"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "9223372036854775807",
+            "9223372036854775807"
+          ],
+          "out": [
+            "0 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unsigned-max",
+      "label": {
+        "chs": "无符号上界",
+        "en": "Unsigned maximum"
+      },
+      "cases": [
+        {
+          "in": [
+            "9223372036854775807",
+            "18446744073709551615"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "0",
+            "18446744073709551615"
+          ],
+          "out": [
+            "1 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "与零比较",
+        "en": "Against zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "0",
+            "1"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "0"
+          ],
+          "out": [
+            "0 0"
+          ]
+        }
+      ]
+    }
+  ]
+}

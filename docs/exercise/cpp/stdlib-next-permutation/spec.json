@@ -1,0 +1,197 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-next-permutation",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 3,
+  "title": {
+    "chs": "下一个排列",
+    "en": "Next Permutation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "ascending",
+      "label": {
+        "chs": "升序开头",
+        "en": "Starting ascending"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 2 3"
+          ],
+          "out": [
+            "1 3 2"
+          ]
+        },
+        {
+          "in": [
+            "4",
+            "1 2 3 4"
+          ],
+          "out": [
+            "1 2 4 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "last",
+      "label": {
+        "chs": "最后一个排列",
+        "en": "The last permutation"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "3 2 1"
+          ],
+          "out": [
+            "1 2 3"
+          ]
+        },
+        {
+          "in": [
+            "2",
+            "1 1"
+          ],
+          "out": [
+            "1 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "middle",
+      "label": {
+        "chs": "中间排列",
+        "en": "A middle permutation"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 3 2"
+          ],
+          "out": [
+            "2 1 3"
+          ]
+        },
+        {
+          "in": [
+            "5",
+            "1 5 4 3 2"
+          ],
+          "out": [
+            "2 1 3 4 5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "有重复值",
+        "en": "Duplicates"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1 1 2 1"
+          ],
+          "out": [
+            "1 2 1 1"
+          ]
+        },
+        {
+          "in": [
+            "4",
+            "1 2 1 1"
+          ],
+          "out": [
+            "2 1 1 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "-2 1 -1"
+          ],
+          "out": [
+            "-1 -2 1"
+          ]
+        },
+        {
+          "in": [
+            "4",
+            "-3 -2 -1 0"
+          ],
+          "out": [
+            "-3 -2 0 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个元素",
+        "en": "A single element"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "5"
+          ],
+          "out": [
+            "5"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "-7"
+          ],
+          "out": [
+            "-7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "全部相等",
+        "en": "All equal"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "4 4 4 4 4"
+          ],
+          "out": [
+            "4 4 4 4 4"
+          ]
+        }
+      ]
+    }
+  ]
+}

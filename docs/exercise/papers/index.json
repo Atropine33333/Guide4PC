@@ -1,5 +1,56 @@
 [
   {
+    "file": "cpp-data-core.json",
+    "id": "cpp-data-core",
+    "lang": "cpp",
+    "title": {
+      "chs": "数据结构核心卷",
+      "en": "Data Structures Core"
+    },
+    "items": [
+      "data-min-stack",
+      "data-deque-ops",
+      "data-union-find",
+      "data-bst-height",
+      "algorithm-prime-sieve"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-debug-hunt.json",
+    "id": "cpp-debug-hunt",
+    "lang": "cpp",
+    "title": {
+      "chs": "排错实战卷",
+      "en": "Debugging Hunt"
+    },
+    "items": [
+      "debugging-vowel-tally",
+      "debugging-negative-max",
+      "debugging-binary-search",
+      "semantics-overload-pick",
+      "types-narrow-bounds"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-engineering-core.json",
+    "id": "cpp-engineering-core",
+    "lang": "cpp",
+    "title": {
+      "chs": "工程能力卷",
+      "en": "Engineering Core"
+    },
+    "items": [
+      "engineering-config-merge",
+      "engineering-arena-allocator",
+      "engineering-event-bus",
+      "memory-move-owner",
+      "templates-fixed-array"
+    ],
+    "count": 5
+  },
+  {
     "file": "cpp-starter.json",
     "id": "cpp-starter",
     "lang": "cpp",
@@ -12,5 +63,22 @@
       "circular-buffer"
     ],
     "count": 2
+  },
+  {
+    "file": "cpp-syntax-drill.json",
+    "id": "cpp-syntax-drill",
+    "lang": "cpp",
+    "title": {
+      "chs": "语法热身卷",
+      "en": "Syntax Warm-up"
+    },
+    "items": [
+      "syntax-bar-chart",
+      "syntax-caesar-shift",
+      "io-thousands-separator",
+      "semantics-remainder-sign",
+      "types-byte-to-hex"
+    ],
+    "count": 5
   }
 ]

@@ -1,0 +1,121 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-digit-sum",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 1,
+  "title": {
+    "chs": "数字各位之和（找错）",
+    "en": "Digit Sum (Debug)"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零",
+        "en": "Zero"
+      },
+      "cases": [
+        {
+          "in": "0",
+          "out": "0"
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "一位数",
+        "en": "A single digit"
+      },
+      "cases": [
+        {
+          "in": "5",
+          "out": "5"
+        }
+      ]
+    },
+    {
+      "id": "basic",
+      "label": {
+        "chs": "四位数",
+        "en": "Four digits"
+      },
+      "cases": [
+        {
+          "in": "1234",
+          "out": "10"
+        }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": {
+        "chs": "含零",
+        "en": "Digits including zero"
+      },
+      "cases": [
+        {
+          "in": "1002",
+          "out": "3"
+        }
+      ]
+    },
+    {
+      "id": "ten",
+      "label": {
+        "chs": "十进制进位",
+        "en": "A power of ten"
+      },
+      "cases": [
+        {
+          "in": "10",
+          "out": "1"
+        }
+      ]
+    },
+    {
+      "id": "nine",
+      "label": {
+        "chs": "含九",
+        "en": "Digits including nine"
+      },
+      "cases": [
+        {
+          "in": "909",
+          "out": "18"
+        }
+      ]
+    },
+    {
+      "id": "max",
+      "label": {
+        "chs": "十八位全九",
+        "en": "Eighteen nines"
+      },
+      "cases": [
+        {
+          "in": "999999999999999999",
+          "out": "162"
+        }
+      ]
+    },
+    {
+      "id": "boundary",
+      "label": {
+        "chs": "上界",
+        "en": "Upper bound"
+      },
+      "cases": [
+        {
+          "in": "1000000000000000000",
+          "out": "1"
+        }
+      ]
+    }
+  ]
+}

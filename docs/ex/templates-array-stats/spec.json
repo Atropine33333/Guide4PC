@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-array-stats",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 2,
+  "title": {
+    "chs": "数组的平均值与最大值",
+    "en": "Array Average and Maximum"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "ints",
+      "label": {
+        "chs": "整数数组",
+        "en": "An integer array"
+      }
+    },
+    {
+      "id": "doubles",
+      "label": {
+        "chs": "浮点数组",
+        "en": "A double array"
+      }
+    },
+    {
+      "id": "longlong",
+      "label": {
+        "chs": "64 位整数",
+        "en": "64-bit integers"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个元素",
+        "en": "A single element"
+      }
+    },
+    {
+      "id": "chars",
+      "label": {
+        "chs": "字符数组",
+        "en": "A char array"
+      }
+    },
+    {
+      "id": "strings",
+      "label": {
+        "chs": "字符串数组",
+        "en": "A string array"
+      }
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      }
+    }
+  ]
+}

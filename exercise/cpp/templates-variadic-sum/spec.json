@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-variadic-sum",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "title": {
+    "chs": "可变参数求和",
+    "en": "Variadic Sum"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "没有参数",
+        "en": "No arguments"
+      }
+    },
+    {
+      "id": "ints",
+      "label": {
+        "chs": "整数",
+        "en": "Integers"
+      }
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合整型",
+        "en": "Mixed integer types"
+      }
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      }
+    },
+    {
+      "id": "longlong",
+      "label": {
+        "chs": "64 位整数",
+        "en": "64-bit integers"
+      }
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "很多参数",
+        "en": "Many arguments"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机参数",
+        "en": "Random arguments"
+      }
+    }
+  ]
+}

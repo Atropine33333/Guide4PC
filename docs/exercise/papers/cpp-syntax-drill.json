@@ -1,0 +1,15 @@
+{
+  "id": "cpp-syntax-drill",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法热身卷",
+    "en": "Syntax Warm-up"
+  },
+  "items": [
+    "syntax-bar-chart",
+    "syntax-caesar-shift",
+    "io-thousands-separator",
+    "semantics-remainder-sign",
+    "types-byte-to-hex"
+  ]
+}

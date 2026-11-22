@@ -1,0 +1,15 @@
+{
+  "id": "cpp-debug-hunt",
+  "lang": "cpp",
+  "title": {
+    "chs": "排错实战卷",
+    "en": "Debugging Hunt"
+  },
+  "items": [
+    "debugging-vowel-tally",
+    "debugging-negative-max",
+    "debugging-binary-search",
+    "semantics-overload-pick",
+    "types-narrow-bounds"
+  ]
+}

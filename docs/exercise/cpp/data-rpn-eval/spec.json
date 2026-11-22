@@ -1,0 +1,191 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-rpn-eval",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 1,
+  "title": {
+    "chs": "逆波兰表达式求值",
+    "en": "Evaluate Reverse Polish Notation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个数",
+        "en": "A single number"
+      },
+      "cases": [
+        {
+          "in": [
+            "5"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add-sub",
+      "label": {
+        "chs": "加减法",
+        "en": "Addition and subtraction"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 4 +"
+          ],
+          "out": [
+            "7"
+          ]
+        },
+        {
+          "in": [
+            "1 2 - 3 *"
+          ],
+          "out": [
+            "-3"
+          ]
+        },
+        {
+          "in": [
+            "3 10 -"
+          ],
+          "out": [
+            "-7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mul-div",
+      "label": {
+        "chs": "乘法与除法",
+        "en": "Multiplication and division"
+      },
+      "cases": [
+        {
+          "in": [
+            "7 2 3 * -"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "10 3 /"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "100 5 / 3 *"
+          ],
+          "out": [
+            "60"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-div",
+      "label": {
+        "chs": "负数的除法",
+        "en": "Division with negatives"
+      },
+      "cases": [
+        {
+          "in": [
+            "-10 3 /"
+          ],
+          "out": [
+            "-3"
+          ]
+        },
+        {
+          "in": [
+            "-7 2 /"
+          ],
+          "out": [
+            "-3"
+          ]
+        },
+        {
+          "in": [
+            "7 -2 /"
+          ],
+          "out": [
+            "-3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套表达式",
+        "en": "Nested expressions"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 3 4 * +"
+          ],
+          "out": [
+            "14"
+          ]
+        },
+        {
+          "in": [
+            "6 2 / 3 4 * +"
+          ],
+          "out": [
+            "15"
+          ]
+        },
+        {
+          "in": [
+            "1 2 3 4 + * +"
+          ],
+          "out": [
+            "15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大结果",
+        "en": "A large result"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000 1000000000 *"
+          ],
+          "out": [
+            "1000000000000000000"
+          ]
+        },
+        {
+          "in": [
+            "0 123456789 *"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ]
+}

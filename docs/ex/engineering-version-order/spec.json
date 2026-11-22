@@ -1,0 +1,171 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-version-order",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": {
+    "chs": "版本号排序",
+    "en": "Sorting Version Strings"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "不同段数",
+        "en": "Different component counts"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1.2.3",
+            "1.10.0",
+            "1.2.10"
+          ],
+          "out": [
+            "1.2.3",
+            "1.2.10",
+            "1.10.0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "相等时保持输入顺序",
+        "en": "Equal versions keep input order"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1.02",
+            "1.2.0",
+            "1.2"
+          ],
+          "out": [
+            "1.02",
+            "1.2.0",
+            "1.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "label": {
+        "chs": "缺失的段按零处理",
+        "en": "Missing components are zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1.0.1",
+            "1.1",
+            "1.0.0.1"
+          ],
+          "out": [
+            "1.0.0.1",
+            "1.0.1",
+            "1.1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "numeric",
+      "label": {
+        "chs": "按数值而不是字典序",
+        "en": "Numeric, not lexicographic"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "2",
+            "10",
+            "1"
+          ],
+          "out": [
+            "1",
+            "2",
+            "10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wide-component",
+      "label": {
+        "chs": "宽数值段",
+        "en": "A wide component"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "1.1000000000.0",
+            "1.999999999"
+          ],
+          "out": [
+            "1.999999999",
+            "1.1000000000.0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "four-parts",
+      "label": {
+        "chs": "四段与三段相等",
+        "en": "Four parts equal to three"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1.2.3.4",
+            "1.2.3",
+            "1.2.3.0",
+            "1.2.2.9"
+          ],
+          "out": [
+            "1.2.2.9",
+            "1.2.3",
+            "1.2.3.0",
+            "1.2.3.4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": {
+        "chs": "全零与零前缀",
+        "en": "Zeros and leading zeros"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "0.0.0",
+            "0",
+            "00.00"
+          ],
+          "out": [
+            "0.0.0",
+            "0",
+            "00.00"
+          ]
+        }
+      ]
+    }
+  ]
+}

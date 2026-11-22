@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-counter",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 2,
+  "title": {
+    "chs": "计数器类",
+    "en": "A Counter Class"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "default",
+      "label": {
+        "chs": "默认构造",
+        "en": "Default construction"
+      }
+    },
+    {
+      "id": "start",
+      "label": {
+        "chs": "带初值构造",
+        "en": "Construction from a start value"
+      }
+    },
+    {
+      "id": "inc-dec",
+      "label": {
+        "chs": "增加与减少",
+        "en": "Increment and decrement"
+      }
+    },
+    {
+      "id": "prefix",
+      "label": {
+        "chs": "前置自增",
+        "en": "Prefix increment"
+      }
+    },
+    {
+      "id": "postfix",
+      "label": {
+        "chs": "后置自增",
+        "en": "Postfix increment"
+      }
+    },
+    {
+      "id": "plus-equals",
+      "label": {
+        "chs": "复合赋值",
+        "en": "Compound assignment"
+      }
+    },
+    {
+      "id": "reset",
+      "label": {
+        "chs": "重置",
+        "en": "Reset"
+      }
+    },
+    {
+      "id": "copy",
+      "label": {
+        "chs": "拷贝独立",
+        "en": "Copies are independent"
+      }
+    }
+  ]
+}

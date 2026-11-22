@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-swap-values",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 1,
+  "title": {
+    "chs": "泛型交换与最小值",
+    "en": "Generic Swap and Minimum"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "ints",
+      "label": {
+        "chs": "整数",
+        "en": "Integers"
+      }
+    },
+    {
+      "id": "doubles",
+      "label": {
+        "chs": "浮点数",
+        "en": "Doubles"
+      }
+    },
+    {
+      "id": "strings",
+      "label": {
+        "chs": "字符串",
+        "en": "Strings"
+      }
+    },
+    {
+      "id": "self-swap",
+      "label": {
+        "chs": "与自己交换",
+        "en": "Swapping with itself"
+      }
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "相等值",
+        "en": "Equal values"
+      }
+    },
+    {
+      "id": "chars",
+      "label": {
+        "chs": "字符",
+        "en": "Characters"
+      }
+    }
+  ]
+}

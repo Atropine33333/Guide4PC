@@ -1,0 +1,126 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-gcd-lcm",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 1,
+  "title": {
+    "chs": "最大公约数与最小公倍数",
+    "en": "GCD and LCM"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通的一对",
+        "en": "An ordinary pair"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "12 18",
+            "7 5"
+          ],
+          "out": [
+            "6 36",
+            "1 35"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "divisible",
+      "label": {
+        "chs": "整除与相等",
+        "en": "Divisible and equal"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "100 25",
+            "9 9",
+            "48 180"
+          ],
+          "out": [
+            "25 100",
+            "9 9",
+            "12 720"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "含零",
+        "en": "Including zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "0 5",
+            "0 0"
+          ],
+          "out": [
+            "5 0",
+            "0 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "one",
+      "label": {
+        "chs": "含一",
+        "en": "Including one"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "1 7",
+            "1 1"
+          ],
+          "out": [
+            "1 7",
+            "1 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大数值",
+        "en": "Large values"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "1000000000 999999937"
+          ],
+          "out": [
+            "1 999999937000000000"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "999999937 999999937"
+          ],
+          "out": [
+            "999999937 999999937"
+          ]
+        }
+      ]
+    }
+  ]
+}

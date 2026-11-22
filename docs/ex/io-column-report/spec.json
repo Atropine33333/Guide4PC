@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-column-report",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": {
+    "chs": "名字与分数两列",
+    "en": "Two-Column Report"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通一行",
+        "en": "An ordinary row"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "alice 120"
+          ],
+          "out": [
+            "alice       |     120"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负分",
+        "en": "Negative score"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "bob -42"
+          ],
+          "out": [
+            "bob         |     -42"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "long-name",
+      "label": {
+        "chs": "名字达到最大长度",
+        "en": "A maximum-length name"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "longname10 0",
+            "abcdefghij 1000000"
+          ],
+          "out": [
+            "longname10  |       0",
+            "abcdefghij  | 1000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short-name",
+      "label": {
+        "chs": "单字符名字",
+        "en": "A one-character name"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "x 999999",
+            "z -99999"
+          ],
+          "out": [
+            "x           |  999999",
+            "z           |  -99999"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order",
+      "label": {
+        "chs": "保持输入顺序",
+        "en": "Input order preserved"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "z 1",
+            "a 2",
+            "m 3"
+          ],
+          "out": [
+            "z           |       1",
+            "a           |       2",
+            "m           |       3"
+          ]
+        }
+      ]
+    }
+  ]
+}

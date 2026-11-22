@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-default-args",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 1,
+  "title": {
+    "chs": "默认参数",
+    "en": "Default Arguments"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "default-clamp",
+      "label": {
+        "chs": "使用全部默认值",
+        "en": "All defaults"
+      }
+    },
+    {
+      "id": "one-override",
+      "label": {
+        "chs": "只覆盖一个参数",
+        "en": "One override"
+      }
+    },
+    {
+      "id": "two-overrides",
+      "label": {
+        "chs": "覆盖两个参数",
+        "en": "Two overrides"
+      }
+    },
+    {
+      "id": "inverted-bounds",
+      "label": {
+        "chs": "反向边界",
+        "en": "Inverted bounds"
+      }
+    },
+    {
+      "id": "join-default",
+      "label": {
+        "chs": "默认分隔符",
+        "en": "Default separator"
+      }
+    },
+    {
+      "id": "join-custom",
+      "label": {
+        "chs": "自定义分隔符",
+        "en": "Custom separator"
+      }
+    }
+  ]
+}

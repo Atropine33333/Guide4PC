@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-token-bucket",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": {
+    "chs": "令牌桶限流",
+    "en": "Token Bucket Rate Limiter"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "initial",
+      "label": {
+        "chs": "初始为满",
+        "en": "Starts full"
+      }
+    },
+    {
+      "id": "take",
+      "label": {
+        "chs": "消耗令牌",
+        "en": "Consuming tokens"
+      }
+    },
+    {
+      "id": "refill",
+      "label": {
+        "chs": "按时间补充",
+        "en": "Refill over time"
+      }
+    },
+    {
+      "id": "cap",
+      "label": {
+        "chs": "补充不超过容量",
+        "en": "Refill is capped"
+      }
+    },
+    {
+      "id": "advance",
+      "label": {
+        "chs": "只推进时间",
+        "en": "Advancing time only"
+      }
+    },
+    {
+      "id": "zero-capacity",
+      "label": {
+        "chs": "零容量",
+        "en": "Zero capacity"
+      }
+    },
+    {
+      "id": "zero-refill",
+      "label": {
+        "chs": "零补充速率",
+        "en": "Zero refill rate"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大数值",
+        "en": "Large values"
+      }
+    }
+  ]
+}

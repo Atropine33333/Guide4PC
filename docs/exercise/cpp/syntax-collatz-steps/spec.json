@@ -1,0 +1,117 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-collatz-steps",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "title": {
+    "chs": "考拉兹步数",
+    "en": "Collatz Steps"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "小数字",
+        "en": "Small numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "6"
+          ],
+          "out": [
+            "8 16"
+          ]
+        },
+        {
+          "in": [
+            "1"
+          ],
+          "out": [
+            "0 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powers-of-two",
+      "label": {
+        "chs": "2 的幂",
+        "en": "Powers of two"
+      },
+      "cases": [
+        {
+          "in": [
+            "2"
+          ],
+          "out": [
+            "1 2"
+          ]
+        },
+        {
+          "in": [
+            "4"
+          ],
+          "out": [
+            "2 4"
+          ]
+        },
+        {
+          "in": [
+            "8"
+          ],
+          "out": [
+            "3 8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "label": {
+        "chs": "经典长序列",
+        "en": "A long classic sequence"
+      },
+      "cases": [
+        {
+          "in": [
+            "27"
+          ],
+          "out": [
+            "111 9232"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper-range",
+      "label": {
+        "chs": "接近上界",
+        "en": "Near the upper bound"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000"
+          ],
+          "out": [
+            "152 1000000"
+          ]
+        },
+        {
+          "in": [
+            "999999"
+          ],
+          "out": [
+            "258 22781248"
+          ]
+        }
+      ]
+    }
+  ]
+}

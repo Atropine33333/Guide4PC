@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-linked-reverse",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": {
+    "chs": "链表反转",
+    "en": "Reversing a Linked List"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空链表",
+        "en": "An empty list"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个结点",
+        "en": "A single node"
+      }
+    },
+    {
+      "id": "push-front",
+      "label": {
+        "chs": "头插",
+        "en": "Push front"
+      }
+    },
+    {
+      "id": "reverse",
+      "label": {
+        "chs": "反转",
+        "en": "Reverse"
+      }
+    },
+    {
+      "id": "double-reverse",
+      "label": {
+        "chs": "反转两次",
+        "en": "Reverse twice"
+      }
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复值",
+        "en": "Duplicate values"
+      }
+    },
+    {
+      "id": "push-after-reverse",
+      "label": {
+        "chs": "反转后再插入",
+        "en": "Push after reversing"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "一千个结点",
+        "en": "One thousand nodes"
+      }
+    }
+  ]
+}

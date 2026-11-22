@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-fixed-pool",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "title": {
+    "chs": "固定容量对象池",
+    "en": "Fixed-Capacity Object Pool"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "zero-capacity",
+      "label": {
+        "chs": "零容量",
+        "en": "Zero capacity"
+      }
+    },
+    {
+      "id": "acquire",
+      "label": {
+        "chs": "分配不同槽位",
+        "en": "Acquiring distinct slots"
+      }
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "池满",
+        "en": "A full pool"
+      }
+    },
+    {
+      "id": "reuse",
+      "label": {
+        "chs": "释放后复用",
+        "en": "Reuse after release"
+      }
+    },
+    {
+      "id": "foreign",
+      "label": {
+        "chs": "外部指针",
+        "en": "A foreign pointer"
+      }
+    },
+    {
+      "id": "double-release",
+      "label": {
+        "chs": "重复释放",
+        "en": "Double release"
+      }
+    },
+    {
+      "id": "release-middle",
+      "label": {
+        "chs": "释放中间槽位",
+        "en": "Releasing a middle slot"
+      }
+    }
+  ]
+}

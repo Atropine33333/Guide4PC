@@ -1,0 +1,151 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-prime-factorize",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 2,
+  "title": {
+    "chs": "质因数分解",
+    "en": "Prime Factorization"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "prime",
+      "label": {
+        "chs": "质数",
+        "en": "Primes"
+      },
+      "cases": [
+        {
+          "in": [
+            "2"
+          ],
+          "out": [
+            "2^1"
+          ]
+        },
+        {
+          "in": [
+            "97"
+          ],
+          "out": [
+            "97^1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "composite",
+      "label": {
+        "chs": "合数",
+        "en": "Composite numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "12"
+          ],
+          "out": [
+            "2^2 3^1"
+          ]
+        },
+        {
+          "in": [
+            "60"
+          ],
+          "out": [
+            "2^2 3^1 5^1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powers",
+      "label": {
+        "chs": "单一质数的幂",
+        "en": "Powers of one prime"
+      },
+      "cases": [
+        {
+          "in": [
+            "1024"
+          ],
+          "out": [
+            "2^10"
+          ]
+        },
+        {
+          "in": [
+            "549755813888"
+          ],
+          "out": [
+            "2^39"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huge",
+      "label": {
+        "chs": "上界附近",
+        "en": "Near the upper bound"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000000"
+          ],
+          "out": [
+            "2^12 5^12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large-prime",
+      "label": {
+        "chs": "大质数",
+        "en": "A large prime"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000003"
+          ],
+          "out": [
+            "1000003^1"
+          ]
+        },
+        {
+          "in": [
+            "999999999989"
+          ],
+          "out": [
+            "999999999989^1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "square",
+      "label": {
+        "chs": "大质数的平方",
+        "en": "A square of a large prime"
+      },
+      "cases": [
+        {
+          "in": [
+            "999966000289"
+          ],
+          "out": [
+            "999983^2"
+          ]
+        }
+      ]
+    }
+  ]
+}

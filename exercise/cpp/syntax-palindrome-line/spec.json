@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-palindrome-line",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "忽略标点的回文",
+    "en": "Palindrome, Ignoring Punctuation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空串",
+        "en": "Empty string"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个字符",
+        "en": "Single characters"
+      }
+    },
+    {
+      "id": "phrase",
+      "label": {
+        "chs": "带标点的短语",
+        "en": "Phrases with punctuation"
+      }
+    },
+    {
+      "id": "not-palindrome",
+      "label": {
+        "chs": "不是回文",
+        "en": "Not palindromes"
+      }
+    },
+    {
+      "id": "punctuation",
+      "label": {
+        "chs": "只有标点",
+        "en": "Punctuation only"
+      }
+    },
+    {
+      "id": "digits",
+      "label": {
+        "chs": "数字与分隔符",
+        "en": "Digits and separators"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长字符串",
+        "en": "A long string"
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-date",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": {
+    "chs": "日期类",
+    "en": "A Date Class"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "leap",
+      "label": {
+        "chs": "闰年判断",
+        "en": "Leap years"
+      }
+    },
+    {
+      "id": "days",
+      "label": {
+        "chs": "每月天数",
+        "en": "Days per month"
+      }
+    },
+    {
+      "id": "valid",
+      "label": {
+        "chs": "合法性",
+        "en": "Validity"
+      }
+    },
+    {
+      "id": "next",
+      "label": {
+        "chs": "下一天",
+        "en": "Next day"
+      }
+    },
+    {
+      "id": "invalid-next",
+      "label": {
+        "chs": "非法日期不变",
+        "en": "Invalid dates do not advance"
+      }
+    },
+    {
+      "id": "compare",
+      "label": {
+        "chs": "比较",
+        "en": "Comparison"
+      }
+    },
+    {
+      "id": "accessors",
+      "label": {
+        "chs": "读取年月日",
+        "en": "Accessors"
+      }
+    }
+  ]
+}

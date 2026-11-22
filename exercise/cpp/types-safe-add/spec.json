@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-safe-add",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 4,
+  "title": {
+    "chs": "带溢出检查的整数运算",
+    "en": "Integer Arithmetic with Overflow Checks"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "add-simple",
+      "label": {
+        "chs": "普通加法",
+        "en": "Ordinary addition"
+      }
+    },
+    {
+      "id": "add-bounds",
+      "label": {
+        "chs": "加法边界",
+        "en": "Addition at the bounds"
+      }
+    },
+    {
+      "id": "sub-bounds",
+      "label": {
+        "chs": "减法边界",
+        "en": "Subtraction at the bounds"
+      }
+    },
+    {
+      "id": "mul-simple",
+      "label": {
+        "chs": "普通乘法",
+        "en": "Ordinary multiplication"
+      }
+    },
+    {
+      "id": "mul-bounds",
+      "label": {
+        "chs": "乘法边界",
+        "en": "Multiplication at the bounds"
+      }
+    },
+    {
+      "id": "unchanged",
+      "label": {
+        "chs": "失败时输出不变",
+        "en": "Output untouched on failure"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机值",
+        "en": "Random values"
+      }
+    }
+  ]
+}

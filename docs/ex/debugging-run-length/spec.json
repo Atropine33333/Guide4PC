@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-run-length",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 2,
+  "title": {
+    "chs": "游程编码（找错）",
+    "en": "Run-Length Encoding (Debug)"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个字符",
+        "en": "A single character"
+      },
+      "cases": [
+        {
+          "in": "a",
+          "out": "a1"
+        }
+      ]
+    },
+    {
+      "id": "all-single",
+      "label": {
+        "chs": "没有相邻重复",
+        "en": "No adjacent repeats"
+      },
+      "cases": [
+        {
+          "in": "abc",
+          "out": "a1b1c1"
+        }
+      ]
+    },
+    {
+      "id": "runs",
+      "label": {
+        "chs": "三段游程",
+        "en": "Three runs"
+      },
+      "cases": [
+        {
+          "in": "aaabbc",
+          "out": "a3b2c1"
+        }
+      ]
+    },
+    {
+      "id": "alternating-runs",
+      "label": {
+        "chs": "交替游程",
+        "en": "Alternating runs"
+      },
+      "cases": [
+        {
+          "in": "aabbaa",
+          "out": "a2b2a2"
+        }
+      ]
+    },
+    {
+      "id": "one-run",
+      "label": {
+        "chs": "整行相同",
+        "en": "One run for the whole line"
+      },
+      "cases": [
+        {
+          "in": "zzzz",
+          "out": "z4"
+        }
+      ]
+    },
+    {
+      "id": "tail-run",
+      "label": {
+        "chs": "最后一组较长",
+        "en": "A longer final run"
+      },
+      "cases": [
+        {
+          "in": "abbbcc",
+          "out": "a1b3c2"
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "最长行",
+        "en": "Maximum length line"
+      },
+      "cases": [
+        {
+          "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "out": "a200"
+        }
+      ]
+    }
+  ]
+}
