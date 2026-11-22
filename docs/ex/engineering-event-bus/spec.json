@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-event-bus",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "title": {
+    "chs": "事件总线",
+    "en": "Event Bus"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "subscribe",
+      "label": {
+        "chs": "订阅",
+        "en": "Subscribing"
+      }
+    },
+    {
+      "id": "publish-order",
+      "label": {
+        "chs": "按订阅顺序分发",
+        "en": "Dispatch order"
+      }
+    },
+    {
+      "id": "filtering",
+      "label": {
+        "chs": "按事件过滤",
+        "en": "Filtering by event"
+      }
+    },
+    {
+      "id": "unsubscribe",
+      "label": {
+        "chs": "取消订阅",
+        "en": "Unsubscribing"
+      }
+    },
+    {
+      "id": "limit",
+      "label": {
+        "chs": "订阅上限",
+        "en": "Subscription limit"
+      }
+    },
+    {
+      "id": "clear",
+      "label": {
+        "chs": "清空",
+        "en": "Clearing"
+      }
+    },
+    {
+      "id": "resubscribe",
+      "label": {
+        "chs": "重新订阅排到末尾",
+        "en": "Re-subscription at the end"
+      }
+    }
+  ]
+}

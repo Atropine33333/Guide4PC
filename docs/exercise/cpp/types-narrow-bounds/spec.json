@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-narrow-bounds",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "安全窄化",
+    "en": "Safe Narrowing"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "i8-bounds",
+      "label": {
+        "chs": "int8 边界",
+        "en": "int8 boundaries"
+      }
+    },
+    {
+      "id": "i16-bounds",
+      "label": {
+        "chs": "int16 边界",
+        "en": "int16 boundaries"
+      }
+    },
+    {
+      "id": "u8-bounds",
+      "label": {
+        "chs": "uint8 边界",
+        "en": "uint8 boundaries"
+      }
+    },
+    {
+      "id": "i32-bounds",
+      "label": {
+        "chs": "int32 边界",
+        "en": "int32 boundaries"
+      }
+    },
+    {
+      "id": "unchanged-on-failure",
+      "label": {
+        "chs": "失败时不改写输出",
+        "en": "Leave the output unchanged on failure"
+      }
+    },
+    {
+      "id": "random-values",
+      "label": {
+        "chs": "固定种子的随机值",
+        "en": "Random values with a fixed seed"
+      }
+    }
+  ]
+}

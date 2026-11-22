@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-clock-wrap",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "跨午夜的时钟",
+    "en": "Clock That Wraps"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "construct-read",
+      "label": {
+        "chs": "构造与读取",
+        "en": "Construct and read"
+      }
+    },
+    {
+      "id": "normalize-overflow",
+      "label": {
+        "chs": "构造时进位归一化",
+        "en": "Normalize overflowing fields"
+      }
+    },
+    {
+      "id": "negative-total",
+      "label": {
+        "chs": "负的起始时刻",
+        "en": "A negative starting time"
+      }
+    },
+    {
+      "id": "advance-forward",
+      "label": {
+        "chs": "前进跨越午夜",
+        "en": "Advance across midnight"
+      }
+    },
+    {
+      "id": "advance-backward",
+      "label": {
+        "chs": "后退跨越午夜",
+        "en": "Advance backward across midnight"
+      }
+    },
+    {
+      "id": "full-cycle",
+      "label": {
+        "chs": "整天的倍数",
+        "en": "Whole-day advances"
+      }
+    },
+    {
+      "id": "equality",
+      "label": {
+        "chs": "表示同一时刻",
+        "en": "Different fields, same instant"
+      }
+    }
+  ]
+}

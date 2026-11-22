@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-shared-ref",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 5,
+  "title": {
+    "chs": "共享引用计数",
+    "en": "Shared Reference Count"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "create",
+      "label": {
+        "chs": "创建与初值",
+        "en": "Creation and value"
+      }
+    },
+    {
+      "id": "copy",
+      "label": {
+        "chs": "拷贝共享数据",
+        "en": "Copies share the value"
+      }
+    },
+    {
+      "id": "assign",
+      "label": {
+        "chs": "赋值共享数据",
+        "en": "Assignment shares the value"
+      }
+    },
+    {
+      "id": "scope",
+      "label": {
+        "chs": "作用域结束后计数",
+        "en": "Count after a scope ends"
+      }
+    },
+    {
+      "id": "self",
+      "label": {
+        "chs": "自赋值",
+        "en": "Self-assignment"
+      }
+    },
+    {
+      "id": "independent",
+      "label": {
+        "chs": "独立对象",
+        "en": "Independent objects"
+      }
+    },
+    {
+      "id": "chain",
+      "label": {
+        "chs": "连续拷贝",
+        "en": "A chain of copies"
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-thousands-separator",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": {
+    "chs": "千位分隔符",
+    "en": "Thousands Separator"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通正负数",
+        "en": "Ordinary positive and negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1234567",
+            "-9876543",
+            "0"
+          ],
+          "out": [
+            "1,234,567",
+            "-9,876,543",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boundaries",
+      "label": {
+        "chs": "三位与四位之间",
+        "en": "Between three and four digits"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "999",
+            "1000",
+            "1000000"
+          ],
+          "out": [
+            "999",
+            "1,000",
+            "1,000,000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数的分组",
+        "en": "Grouping negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "-1",
+            "-999",
+            "-1000"
+          ],
+          "out": [
+            "-1",
+            "-999",
+            "-1,000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "很大的数",
+        "en": "Very large values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1000000000000000",
+            "-1000000000000000",
+            "123456789012345"
+          ],
+          "out": [
+            "1,000,000,000,000,000",
+            "-1,000,000,000,000,000",
+            "123,456,789,012,345"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个数",
+        "en": "A single value"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "42"
+          ],
+          "out": [
+            "42"
+          ]
+        }
+      ]
+    }
+  ]
+}

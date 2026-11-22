@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-type-label",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "title": {
+    "chs": "类型标签特化",
+    "en": "Type Label Specialization"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "int",
+      "label": {
+        "chs": "int",
+        "en": "int"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "double",
+        "en": "double"
+      }
+    },
+    {
+      "id": "bool",
+      "label": {
+        "chs": "bool",
+        "en": "bool"
+      }
+    },
+    {
+      "id": "pointer",
+      "label": {
+        "chs": "指针类型",
+        "en": "Pointer types"
+      }
+    },
+    {
+      "id": "const-pointer",
+      "label": {
+        "chs": "带 const 的指针",
+        "en": "Pointers with const"
+      }
+    },
+    {
+      "id": "fallback",
+      "label": {
+        "chs": "其他类型",
+        "en": "Other types"
+      }
+    }
+  ]
+}

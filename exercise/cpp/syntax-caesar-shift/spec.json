@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-caesar-shift",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "凯撒位移",
+    "en": "Caesar Shift"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "大小写与标点",
+        "en": "Mixed case and punctuation"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "Attack at dawn!"
+          ],
+          "out": [
+            "Dwwdfn dw gdzq!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "label": {
+        "chs": "回绕与负位移",
+        "en": "Wrapping and negative shifts"
+      },
+      "cases": [
+        {
+          "in": [
+            "25",
+            "Zebra z a"
+          ],
+          "out": [
+            "Ydaqz y z"
+          ]
+        },
+        {
+          "in": [
+            "-2",
+            "abc XYZ"
+          ],
+          "out": [
+            "yza VWX"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "label": {
+        "chs": "整周期位移",
+        "en": "A full-cycle shift"
+      },
+      "cases": [
+        {
+          "in": [
+            "52",
+            "Hello, World!"
+          ],
+          "out": [
+            "Hello, World!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large-shift",
+      "label": {
+        "chs": "很大的位移量",
+        "en": "A very large shift"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000",
+            "Pack my box with 5 dozen liquor jugs."
+          ],
+          "out": [
+            "Bmow yk naj iuft 5 palqz xucgad vgse."
+          ]
+        }
+      ]
+    }
+  ]
+}

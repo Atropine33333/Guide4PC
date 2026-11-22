@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-destruction-order",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 2,
+  "title": {
+    "chs": "析构顺序记录",
+    "en": "Destruction Order"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "离开作用域",
+        "en": "Leaving a scope"
+      }
+    },
+    {
+      "id": "reverse",
+      "label": {
+        "chs": "同一作用域的逆序",
+        "en": "Reverse order in one scope"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套作用域",
+        "en": "Nested scopes"
+      }
+    },
+    {
+      "id": "heap",
+      "label": {
+        "chs": "堆上的对象",
+        "en": "Heap objects"
+      }
+    },
+    {
+      "id": "separate",
+      "label": {
+        "chs": "两个独立作用域",
+        "en": "Two separate scopes"
+      }
+    },
+    {
+      "id": "clear",
+      "label": {
+        "chs": "清空日志",
+        "en": "Clearing the log"
+      }
+    },
+    {
+      "id": "id",
+      "label": {
+        "chs": "读取编号",
+        "en": "Reading the id"
+      }
+    }
+  ]
+}

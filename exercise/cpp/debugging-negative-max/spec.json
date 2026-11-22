@@ -1,0 +1,107 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-negative-max",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 2,
+  "title": {
+    "chs": "最大值（找错）",
+    "en": "Maximum Value (Debug)"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "all-negative",
+      "label": {
+        "chs": "全是负数",
+        "en": "All negative"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "-5 -2 -9"
+          ],
+          "out": [
+            "-2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single-negative",
+      "label": {
+        "chs": "只有一个负数",
+        "en": "A single negative"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "-7"
+          ],
+          "out": [
+            "-7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "正负混合",
+        "en": "Mixed signs"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "3 -1 4"
+          ],
+          "out": [
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": {
+        "chs": "含零",
+        "en": "Including zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "0 0 -3"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "接近 int 边界",
+        "en": "Near the int limits"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "2000000000 -2000000000"
+          ],
+          "out": [
+            "2000000000"
+          ]
+        }
+      ]
+    }
+  ]
+}

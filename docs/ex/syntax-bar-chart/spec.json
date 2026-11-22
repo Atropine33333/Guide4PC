@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-bar-chart",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "title": {
+    "chs": "字符条形图",
+    "en": "Character Bar Chart"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通条形",
+        "en": "Ordinary bars"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "3 0 5"
+          ],
+          "out": [
+            "1: ###",
+            "2: -",
+            "3: #####"
+          ]
+        },
+        {
+          "in": [
+            "4",
+            "0 0 0 0"
+          ],
+          "out": [
+            "1: -",
+            "2: -",
+            "3: -",
+            "4: -"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero-and-max",
+      "label": {
+        "chs": "零与最长条形",
+        "en": "Zero and the longest bar"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "40 1"
+          ],
+          "out": [
+            "1: ########################################",
+            "2: #"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "7"
+          ],
+          "out": [
+            "1: #######"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个数",
+        "en": "A single value"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "7"
+          ],
+          "out": [
+            "1: #######"
+          ]
+        }
+      ]
+    }
+  ]
+}

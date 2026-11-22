@@ -1,0 +1,148 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-config-merge",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": {
+    "chs": "合并配置项",
+    "en": "Merge Configuration"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通配置",
+        "en": "Ordinary configuration"
+      },
+      "cases": [
+        {
+          "in": [
+            "alpha=1",
+            "beta=2",
+            "gamma=3"
+          ],
+          "out": [
+            "alpha=1",
+            "beta=2",
+            "gamma=3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "override",
+      "label": {
+        "chs": "后出现的值覆盖",
+        "en": "Later values win"
+      },
+      "cases": [
+        {
+          "in": [
+            "beta=2",
+            "alpha=1",
+            "beta=3"
+          ],
+          "out": [
+            "alpha=1",
+            "beta=3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "label": {
+        "chs": "空行与注释",
+        "en": "Blank lines and comments"
+      },
+      "cases": [
+        {
+          "in": [
+            "# header",
+            "",
+            "  # indented comment",
+            "b=2",
+            "",
+            "a=1"
+          ],
+          "out": [
+            "a=1",
+            "b=2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spaces",
+      "label": {
+        "chs": "键值两侧的空白",
+        "en": "Whitespace around keys and values"
+      },
+      "cases": [
+        {
+          "in": [
+            "  a = 1  ",
+            "b= 2",
+            "  c =3"
+          ],
+          "out": [
+            "a=1",
+            "b=2",
+            "c=3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equals",
+      "label": {
+        "chs": "值里包含等号",
+        "en": "Equals signs inside values"
+      },
+      "cases": [
+        {
+          "in": [
+            "path=a=b",
+            "token=x=y=z"
+          ],
+          "out": [
+            "path=a=b",
+            "token=x=y=z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sorting",
+      "label": {
+        "chs": "按字典序输出",
+        "en": "Lexicographic output"
+      },
+      "cases": [
+        {
+          "in": [
+            "z=26",
+            "a=1",
+            "m=13",
+            "aa=11",
+            "ab=12",
+            "empty="
+          ],
+          "out": [
+            "a=1",
+            "aa=11",
+            "ab=12",
+            "empty=",
+            "m=13",
+            "z=26"
+          ]
+        }
+      ]
+    }
+  ]
+}

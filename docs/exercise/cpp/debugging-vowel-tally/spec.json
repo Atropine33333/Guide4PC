@@ -1,0 +1,134 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-vowel-tally",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 1,
+  "title": {
+    "chs": "元音统计（找错）",
+    "en": "Vowel Tally (Debug)"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "lower",
+      "label": {
+        "chs": "小写元音",
+        "en": "Lowercase vowels"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "a",
+            "e",
+            "i",
+            "o",
+            "u"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": {
+        "chs": "大写元音",
+        "en": "Uppercase vowels"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "A",
+            "E",
+            "I",
+            "O",
+            "U"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "大小写混合",
+        "en": "Mixed case"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "H",
+            "e",
+            "l",
+            "l",
+            "o"
+          ],
+          "out": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "none",
+      "label": {
+        "chs": "没有元音",
+        "en": "No vowels"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "b",
+            "c",
+            "d",
+            "f"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "last",
+      "label": {
+        "chs": "最后一个字母是元音",
+        "en": "The last character is a vowel"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "b",
+            "c",
+            "d",
+            "a"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "a"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-bst-height",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "二叉搜索树",
+    "en": "Binary Search Tree"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空树",
+        "en": "An empty tree"
+      }
+    },
+    {
+      "id": "single-duplicate",
+      "label": {
+        "chs": "单个结点与重复插入",
+        "en": "One node and duplicate insertion"
+      }
+    },
+    {
+      "id": "skewed",
+      "label": {
+        "chs": "退化成链",
+        "en": "A skewed tree"
+      }
+    },
+    {
+      "id": "balanced",
+      "label": {
+        "chs": "较平衡的树",
+        "en": "A more balanced tree"
+      }
+    },
+    {
+      "id": "inorder",
+      "label": {
+        "chs": "中序遍历",
+        "en": "In-order traversal"
+      }
+    },
+    {
+      "id": "height-inorder",
+      "label": {
+        "chs": "重复值下的高度",
+        "en": "Height with duplicates"
+      }
+    },
+    {
+      "id": "contains",
+      "label": {
+        "chs": "查找",
+        "en": "Lookup"
+      }
+    }
+  ]
+}

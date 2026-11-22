@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-clamp-value",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 2,
+  "title": {
+    "chs": "通用截断函数",
+    "en": "Generic Clamp"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "middle",
+      "label": {
+        "chs": "区间内",
+        "en": "Inside the range"
+      }
+    },
+    {
+      "id": "below",
+      "label": {
+        "chs": "低于下界",
+        "en": "Below the lower bound"
+      }
+    },
+    {
+      "id": "above",
+      "label": {
+        "chs": "高于上界",
+        "en": "Above the upper bound"
+      }
+    },
+    {
+      "id": "ends",
+      "label": {
+        "chs": "恰好等于边界",
+        "en": "Exactly on the bounds"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "浮点类型",
+        "en": "Floating-point types"
+      }
+    },
+    {
+      "id": "char",
+      "label": {
+        "chs": "字符类型",
+        "en": "Character types"
+      }
+    },
+    {
+      "id": "degenerate",
+      "label": {
+        "chs": "上下界相等",
+        "en": "Equal bounds"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-overload-pick",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 3,
+  "title": {
+    "chs": "重载决议",
+    "en": "Overload Resolution"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "int-exact",
+      "label": {
+        "chs": "int 精确匹配",
+        "en": "Exact int"
+      }
+    },
+    {
+      "id": "long-exact",
+      "label": {
+        "chs": "long 精确匹配",
+        "en": "Exact long"
+      }
+    },
+    {
+      "id": "double-exact",
+      "label": {
+        "chs": "double 精确匹配",
+        "en": "Exact double"
+      }
+    },
+    {
+      "id": "integral-promotions",
+      "label": {
+        "chs": "整型提升",
+        "en": "Integral promotions"
+      }
+    },
+    {
+      "id": "float-promotion",
+      "label": {
+        "chs": "浮点提升",
+        "en": "Floating-point promotion"
+      }
+    },
+    {
+      "id": "literals",
+      "label": {
+        "chs": "字面量的类型",
+        "en": "Types of literals"
+      }
+    }
+  ]
+}

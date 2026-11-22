@@ -1,0 +1,109 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-byte-to-hex",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 1,
+  "title": {
+    "chs": "字节转十六进制",
+    "en": "Byte to Hex"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通字节",
+        "en": "Ordinary bytes"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "0 15 16 127 255"
+          ],
+          "out": [
+            "00",
+            "0F",
+            "10",
+            "7F",
+            "FF"
+          ]
+        },
+        {
+          "in": [
+            "2",
+            "0 255"
+          ],
+          "out": [
+            "00",
+            "FF"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "letters",
+      "label": {
+        "chs": "含 A–F 的值",
+        "en": "Values with A–F"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "10 11 171 254"
+          ],
+          "out": [
+            "0A",
+            "0B",
+            "AB",
+            "FE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "padding",
+      "label": {
+        "chs": "补零",
+        "en": "Zero padding"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1 16 17 160"
+          ],
+          "out": [
+            "01",
+            "10",
+            "11",
+            "A0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单字节",
+        "en": "A single byte"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "128"
+          ],
+          "out": [
+            "80"
+          ]
+        }
+      ]
+    }
+  ]
+}

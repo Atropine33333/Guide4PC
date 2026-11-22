@@ -1,0 +1,116 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-sort-records",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "成绩榜排序",
+    "en": "Sort the Scoreboard"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "按分数降序",
+        "en": "Descending score"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "alice 10",
+            "bob 30",
+            "cara 20"
+          ],
+          "out": [
+            "bob 30",
+            "cara 20",
+            "alice 10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ties",
+      "label": {
+        "chs": "同分按名字升序",
+        "en": "Ties by ascending name"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "dave 5",
+            "amy 5",
+            "zoe 5"
+          ],
+          "out": [
+            "amy 5",
+            "dave 5",
+            "zoe 5"
+          ]
+        },
+        {
+          "in": [
+            "4",
+            "k 4",
+            "j 4",
+            "i 4",
+            "h 4"
+          ],
+          "out": [
+            "h 4",
+            "i 4",
+            "j 4",
+            "k 4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负分",
+        "en": "Negative scores"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "x -5",
+            "y -10",
+            "z 0"
+          ],
+          "out": [
+            "z 0",
+            "x -5",
+            "y -10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一条记录",
+        "en": "A single record"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "solo 7"
+          ],
+          "out": [
+            "solo 7"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-union-find",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": {
+    "chs": "并查集",
+    "en": "Disjoint Set Union"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "singleton",
+      "label": {
+        "chs": "每个元素各自成组",
+        "en": "Every element alone"
+      }
+    },
+    {
+      "id": "chain",
+      "label": {
+        "chs": "链式合并",
+        "en": "Union along a chain"
+      }
+    },
+    {
+      "id": "duplicate",
+      "label": {
+        "chs": "重复合并",
+        "en": "A duplicate union"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "零个元素",
+        "en": "Zero elements"
+      }
+    },
+    {
+      "id": "all-connected",
+      "label": {
+        "chs": "合并成一组",
+        "en": "One component"
+      }
+    },
+    {
+      "id": "separate",
+      "label": {
+        "chs": "互不相交的组",
+        "en": "Separate components"
+      }
+    },
+    {
+      "id": "find-roots",
+      "label": {
+        "chs": "合并后的代表元",
+        "en": "Roots after unions"
+      }
+    }
+  ]
+}

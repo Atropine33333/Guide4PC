@@ -28,3 +28,5 @@ ref/
 
 # Local dev helpers
 .dev.mjs
+.smoke.mjs
+.shot-*.png

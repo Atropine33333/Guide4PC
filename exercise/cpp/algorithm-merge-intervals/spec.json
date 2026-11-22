@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-merge-intervals",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "title": {
+    "chs": "合并区间",
+    "en": "Merge Intervals"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空区间列表",
+        "en": "An empty interval list"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个区间",
+        "en": "A single interval"
+      }
+    },
+    {
+      "id": "disjoint",
+      "label": {
+        "chs": "互不相交",
+        "en": "Disjoint intervals"
+      }
+    },
+    {
+      "id": "overlapping-unsorted",
+      "label": {
+        "chs": "乱序且重叠",
+        "en": "Unsorted and overlapping"
+      }
+    },
+    {
+      "id": "contained",
+      "label": {
+        "chs": "被包含的区间",
+        "en": "A contained interval"
+      }
+    },
+    {
+      "id": "duplicates-touching",
+      "label": {
+        "chs": "重复与端点相接",
+        "en": "Duplicates and touching endpoints"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负坐标",
+        "en": "Negative coordinates"
+      }
+    }
+  ]
+}

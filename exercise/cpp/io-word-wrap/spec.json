@@ -1,0 +1,113 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-word-wrap",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "按宽度折行",
+    "en": "Word Wrap"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通折行",
+        "en": "Ordinary wrapping"
+      },
+      "cases": [
+        {
+          "in": [
+            "10",
+            "the quick brown fox jumps"
+          ],
+          "out": [
+            "the quick",
+            "brown fox",
+            "jumps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exact-fit",
+      "label": {
+        "chs": "刚好放满",
+        "en": "An exact fit"
+      },
+      "cases": [
+        {
+          "in": [
+            "9",
+            "abc defgh"
+          ],
+          "out": [
+            "abc defgh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "long-word",
+      "label": {
+        "chs": "超长单词独占一行",
+        "en": "An overlong word on its own line"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "abcdefgh ij klmno"
+          ],
+          "out": [
+            "abcdefgh",
+            "ij",
+            "klmno"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "width-one",
+      "label": {
+        "chs": "宽度为 1",
+        "en": "Width one"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "a bc d"
+          ],
+          "out": [
+            "a",
+            "bc",
+            "d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single-word",
+      "label": {
+        "chs": "只有一个单词",
+        "en": "A single word"
+      },
+      "cases": [
+        {
+          "in": [
+            "20",
+            "hello"
+          ],
+          "out": [
+            "hello"
+          ]
+        }
+      ]
+    }
+  ]
+}

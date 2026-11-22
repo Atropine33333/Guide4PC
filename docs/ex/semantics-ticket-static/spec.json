@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-ticket-static",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "发号器",
+    "en": "Ticket Dispenser"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "first-ticket",
+      "label": {
+        "chs": "第一张票",
+        "en": "The first ticket"
+      }
+    },
+    {
+      "id": "sequence",
+      "label": {
+        "chs": "连续调用",
+        "en": "Consecutive calls"
+      }
+    },
+    {
+      "id": "reset-restarts",
+      "label": {
+        "chs": "重置后重新开始",
+        "en": "Reset restarts numbering"
+      }
+    },
+    {
+      "id": "count-stable",
+      "label": {
+        "chs": "查询不影响计数",
+        "en": "Queries do not change the count"
+      }
+    },
+    {
+      "id": "many-tickets",
+      "label": {
+        "chs": "连续发很多票",
+        "en": "Many tickets in a row"
+      }
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-remainder-sign",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 1,
+  "title": {
+    "chs": "余数的符号",
+    "en": "Sign of the Remainder"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "positive",
+      "label": {
+        "chs": "两个正数",
+        "en": "Both operands positive"
+      },
+      "cases": [
+        {
+          "in": [
+            "7 3"
+          ],
+          "out": [
+            "1 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-dividend",
+      "label": {
+        "chs": "负的被除数",
+        "en": "Negative dividend"
+      },
+      "cases": [
+        {
+          "in": [
+            "-7 3"
+          ],
+          "out": [
+            "-1 2"
+          ]
+        },
+        {
+          "in": [
+            "-2 5"
+          ],
+          "out": [
+            "-2 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-divisor",
+      "label": {
+        "chs": "负的除数",
+        "en": "Negative divisor"
+      },
+      "cases": [
+        {
+          "in": [
+            "7 -3"
+          ],
+          "out": [
+            "1 1"
+          ]
+        },
+        {
+          "in": [
+            "2 -5"
+          ],
+          "out": [
+            "2 2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-negative",
+      "label": {
+        "chs": "两个负数",
+        "en": "Both operands negative"
+      },
+      "cases": [
+        {
+          "in": [
+            "-7 -3"
+          ],
+          "out": [
+            "-1 2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exact",
+      "label": {
+        "chs": "能整除",
+        "en": "Exact division"
+      },
+      "cases": [
+        {
+          "in": [
+            "10 5"
+          ],
+          "out": [
+            "0 0"
+          ]
+        },
+        {
+          "in": [
+            "0 7"
+          ],
+          "out": [
+            "0 0"
+          ]
+        }
+      ]
+    }
+  ]
+}

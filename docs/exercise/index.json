@@ -20,6 +20,60 @@
       }
     },
     {
+      "id": "algorithm-max-subarray",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最大子段和",
+        "en": "Maximum Subarray Sum"
+      },
+      "category": "algorithm",
+      "rank": 3,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-merge-intervals",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "合并区间",
+        "en": "Merge Intervals"
+      },
+      "category": "algorithm",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-prime-sieve",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "素数筛",
+        "en": "Prime Sieve"
+      },
+      "category": "algorithm",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "bit-pattern-report",
       "dir": "cpp",
       "lang": "cpp",
@@ -100,6 +154,60 @@
       }
     },
     {
+      "id": "data-bst-height",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "二叉搜索树",
+        "en": "Binary Search Tree"
+      },
+      "category": "data",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-deque-ops",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "双端队列指令",
+        "en": "Deque Commands"
+      },
+      "category": "data",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-union-find",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "并查集",
+        "en": "Disjoint Set Union"
+      },
+      "category": "data",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "debug-overflow-sum",
       "dir": "cpp",
       "lang": "cpp",
@@ -128,6 +236,114 @@
       "category": "debugging",
       "rank": 3,
       "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-binary-search",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "下界查找（找错）",
+        "en": "Lower Bound (Debug)"
+      },
+      "category": "debugging",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-negative-max",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最大值（找错）",
+        "en": "Maximum Value (Debug)"
+      },
+      "category": "debugging",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-vowel-tally",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "元音统计（找错）",
+        "en": "Vowel Tally (Debug)"
+      },
+      "category": "debugging",
+      "rank": 1,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-arena-allocator",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "线性分配器",
+        "en": "Arena Allocator"
+      },
+      "category": "engineering",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-config-merge",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "合并配置项",
+        "en": "Merge Configuration"
+      },
+      "category": "engineering",
+      "rank": 3,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-event-bus",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "事件总线",
+        "en": "Event Bus"
+      },
+      "category": "engineering",
+      "rank": 5,
+      "checks": 7,
       "harness": true,
       "variants": [],
       "problem": {
@@ -190,6 +406,60 @@
       }
     },
     {
+      "id": "io-duration-format",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "时长格式化",
+        "en": "Format a Duration"
+      },
+      "category": "io",
+      "rank": 1,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "io-thousands-separator",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "千位分隔符",
+        "en": "Thousands Separator"
+      },
+      "category": "io",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "io-word-wrap",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "按宽度折行",
+        "en": "Word Wrap"
+      },
+      "category": "io",
+      "rank": 3,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "letter-class-tally",
       "dir": "cpp",
       "lang": "cpp",
@@ -244,6 +514,60 @@
       }
     },
     {
+      "id": "memory-destruction-order",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "析构顺序记录",
+        "en": "Destruction Order"
+      },
+      "category": "memory",
+      "rank": 2,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-move-owner",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "唯一所有权数组",
+        "en": "Move-Only Array"
+      },
+      "category": "memory",
+      "rank": 4,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-shared-ref",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "共享引用计数",
+        "en": "Shared Reference Count"
+      },
+      "category": "memory",
+      "rank": 5,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "min-max-total",
       "dir": "cpp",
       "lang": "cpp",
@@ -272,6 +596,60 @@
       "category": "data",
       "rank": 2,
       "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-pixel-class",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "像素类",
+        "en": "Pixel Class"
+      },
+      "category": "oop",
+      "rank": 1,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-rational-number",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "有理数类",
+        "en": "Rational Number"
+      },
+      "category": "oop",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-vector-operators",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "二维向量运算符",
+        "en": "2D Vector Operators"
+      },
+      "category": "oop",
+      "rank": 3,
+      "checks": 8,
       "harness": true,
       "variants": [],
       "problem": {
@@ -316,6 +694,60 @@
       }
     },
     {
+      "id": "semantics-overload-pick",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "重载决议",
+        "en": "Overload Resolution"
+      },
+      "category": "semantics",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-remainder-sign",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "余数的符号",
+        "en": "Sign of the Remainder"
+      },
+      "category": "semantics",
+      "rank": 1,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-ticket-static",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "发号器",
+        "en": "Ticket Dispenser"
+      },
+      "category": "semantics",
+      "rank": 2,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "shape-polymorphism",
       "dir": "cpp",
       "lang": "cpp",
@@ -352,6 +784,60 @@
       }
     },
     {
+      "id": "stdlib-bit-count",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "二进制中 1 的个数",
+        "en": "Count Set Bits"
+      },
+      "category": "stdlib",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "stdlib-bracket-balance",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "括号是否配对",
+        "en": "Balanced Brackets"
+      },
+      "category": "stdlib",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "stdlib-sort-records",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "成绩榜排序",
+        "en": "Sort the Scoreboard"
+      },
+      "category": "stdlib",
+      "rank": 2,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "swap-sequence",
       "dir": "cpp",
       "lang": "cpp",
@@ -363,6 +849,60 @@
       "rank": 2,
       "checks": 5,
       "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-bar-chart",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "字符条形图",
+        "en": "Character Bar Chart"
+      },
+      "category": "syntax",
+      "rank": 1,
+      "checks": 3,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-caesar-shift",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "凯撒位移",
+        "en": "Caesar Shift"
+      },
+      "category": "syntax",
+      "rank": 2,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-clock-wrap",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "跨午夜的时钟",
+        "en": "Clock That Wraps"
+      },
+      "category": "syntax",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
       "variants": [],
       "problem": {
         "chs": true,
@@ -406,6 +946,60 @@
       }
     },
     {
+      "id": "templates-clamp-value",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "通用截断函数",
+        "en": "Generic Clamp"
+      },
+      "category": "templates",
+      "rank": 2,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "templates-fixed-array",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "定长数组模板",
+        "en": "Fixed-Size Array Template"
+      },
+      "category": "templates",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "templates-type-label",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "类型标签特化",
+        "en": "Type Label Specialization"
+      },
+      "category": "templates",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "text-line-stats",
       "dir": "cpp",
       "lang": "cpp",
@@ -435,6 +1029,60 @@
       "rank": 2,
       "checks": 5,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-byte-to-hex",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "字节转十六进制",
+        "en": "Byte to Hex"
+      },
+      "category": "types",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-narrow-bounds",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "安全窄化",
+        "en": "Safe Narrowing"
+      },
+      "category": "types",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-promote-product",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "三个整数的乘积",
+        "en": "Product of Three"
+      },
+      "category": "types",
+      "rank": 2,
+      "checks": 4,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,

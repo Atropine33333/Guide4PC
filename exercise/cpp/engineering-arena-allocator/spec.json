@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-arena-allocator",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": {
+    "chs": "线性分配器",
+    "en": "Arena Allocator"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "初始状态",
+        "en": "Initial state"
+      }
+    },
+    {
+      "id": "basic",
+      "label": {
+        "chs": "连续分配",
+        "en": "Sequential allocations"
+      }
+    },
+    {
+      "id": "padding",
+      "label": {
+        "chs": "对齐填充",
+        "en": "Alignment padding"
+      }
+    },
+    {
+      "id": "exhaustion",
+      "label": {
+        "chs": "空间不足",
+        "en": "Running out of space"
+      }
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零与负长度",
+        "en": "Zero and negative sizes"
+      }
+    },
+    {
+      "id": "alignments",
+      "label": {
+        "chs": "多种对齐值",
+        "en": "Multiple alignments"
+      }
+    },
+    {
+      "id": "exact",
+      "label": {
+        "chs": "刚好用满",
+        "en": "Exactly filling the arena"
+      }
+    }
+  ]
+}

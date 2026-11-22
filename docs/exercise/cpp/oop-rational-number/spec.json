@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-rational-number",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "title": {
+    "chs": "有理数类",
+    "en": "Rational Number"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "normalize",
+      "label": {
+        "chs": "约分与符号",
+        "en": "Reduction and sign"
+      }
+    },
+    {
+      "id": "add",
+      "label": {
+        "chs": "加法",
+        "en": "Addition"
+      }
+    },
+    {
+      "id": "sub",
+      "label": {
+        "chs": "减法",
+        "en": "Subtraction"
+      }
+    },
+    {
+      "id": "mul",
+      "label": {
+        "chs": "乘法",
+        "en": "Multiplication"
+      }
+    },
+    {
+      "id": "div",
+      "label": {
+        "chs": "除法",
+        "en": "Division"
+      }
+    },
+    {
+      "id": "compare",
+      "label": {
+        "chs": "相等与大小",
+        "en": "Equality and ordering"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数运算",
+        "en": "Operations with negatives"
+      }
+    }
+  ]
+}

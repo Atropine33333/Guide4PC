@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-bracket-balance",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 3,
+  "title": {
+    "chs": "括号是否配对",
+    "en": "Balanced Brackets"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空串",
+        "en": "The empty string"
+      }
+    },
+    {
+      "id": "simple-pairs",
+      "label": {
+        "chs": "简单配对",
+        "en": "Simple pairs"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套与并列",
+        "en": "Nested and sequential groups"
+      }
+    },
+    {
+      "id": "mismatch",
+      "label": {
+        "chs": "类型不匹配",
+        "en": "Mismatched types"
+      }
+    },
+    {
+      "id": "extra-close",
+      "label": {
+        "chs": "多余的右括号",
+        "en": "Extra closing brackets"
+      }
+    },
+    {
+      "id": "unclosed",
+      "label": {
+        "chs": "没有闭合",
+        "en": "Left unclosed"
+      }
+    }
+  ]
+}

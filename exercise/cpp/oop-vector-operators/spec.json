@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-vector-operators",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": {
+    "chs": "二维向量运算符",
+    "en": "2D Vector Operators"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "construction",
+      "label": {
+        "chs": "构造与默认值",
+        "en": "Construction and defaults"
+      }
+    },
+    {
+      "id": "add",
+      "label": {
+        "chs": "向量加法",
+        "en": "Vector addition"
+      }
+    },
+    {
+      "id": "sub",
+      "label": {
+        "chs": "向量减法",
+        "en": "Vector subtraction"
+      }
+    },
+    {
+      "id": "scalar",
+      "label": {
+        "chs": "标量乘法",
+        "en": "Scalar multiplication"
+      }
+    },
+    {
+      "id": "negate",
+      "label": {
+        "chs": "一元负号",
+        "en": "Unary negation"
+      }
+    },
+    {
+      "id": "equality",
+      "label": {
+        "chs": "相等比较",
+        "en": "Equality"
+      }
+    },
+    {
+      "id": "dot-length",
+      "label": {
+        "chs": "点积与长度平方",
+        "en": "Dot product and squared length"
+      }
+    },
+    {
+      "id": "plus-assign",
+      "label": {
+        "chs": "复合赋值",
+        "en": "Compound assignment"
+      }
+    }
+  ]
+}

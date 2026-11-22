@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-fixed-array",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": {
+    "chs": "定长数组模板",
+    "en": "Fixed-Size Array Template"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "int-default",
+      "label": {
+        "chs": "默认值初始化",
+        "en": "Value initialization"
+      }
+    },
+    {
+      "id": "fill",
+      "label": {
+        "chs": "填充",
+        "en": "Fill"
+      }
+    },
+    {
+      "id": "write",
+      "label": {
+        "chs": "下标写入",
+        "en": "Writing through the index"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "浮点元素",
+        "en": "Floating-point elements"
+      }
+    },
+    {
+      "id": "bounds",
+      "label": {
+        "chs": "越界访问",
+        "en": "Out-of-range access"
+      }
+    },
+    {
+      "id": "pointer",
+      "label": {
+        "chs": "数据指针",
+        "en": "Data pointer"
+      }
+    },
+    {
+      "id": "char",
+      "label": {
+        "chs": "字符元素",
+        "en": "Character elements"
+      }
+    }
+  ]
+}

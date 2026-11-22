@@ -1,0 +1,101 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-promote-product",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": {
+    "chs": "三个整数的乘积",
+    "en": "Product of Three"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "small",
+      "label": {
+        "chs": "小数据",
+        "en": "Small values"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 3 4"
+          ],
+          "out": [
+            "24"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "positive-overflow",
+      "label": {
+        "chs": "超过 32 位",
+        "en": "Beyond 32 bits"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000 1000000000 1"
+          ],
+          "out": [
+            "1000000000000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-large",
+      "label": {
+        "chs": "负的大乘积",
+        "en": "A large negative product"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000 -1000000000 9"
+          ],
+          "out": [
+            "-9000000000000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero-and-cancel",
+      "label": {
+        "chs": "零与符号抵消",
+        "en": "Zero and sign cancellation"
+      },
+      "cases": [
+        {
+          "in": [
+            "0 1000000000 -1000000000"
+          ],
+          "out": [
+            "0"
+          ]
+        },
+        {
+          "in": [
+            "46341 46341 -1"
+          ],
+          "out": [
+            "-2147488281"
+          ]
+        },
+        {
+          "in": [
+            "-1 -1 -1"
+          ],
+          "out": [
+            "-1"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-duration-format",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 1,
+  "title": {
+    "chs": "时长格式化",
+    "en": "Format a Duration"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零秒",
+        "en": "Zero seconds"
+      }
+    },
+    {
+      "id": "under-minute",
+      "label": {
+        "chs": "不足一分钟",
+        "en": "Less than a minute"
+      }
+    },
+    {
+      "id": "minute-carry",
+      "label": {
+        "chs": "分钟进位",
+        "en": "Minute carry"
+      }
+    },
+    {
+      "id": "hour-carry",
+      "label": {
+        "chs": "小时进位",
+        "en": "Hour carry"
+      }
+    },
+    {
+      "id": "day-length",
+      "label": {
+        "chs": "接近一天",
+        "en": "Almost a day"
+      }
+    },
+    {
+      "id": "large-hours",
+      "label": {
+        "chs": "很大的小时数",
+        "en": "A large hour count"
+      }
+    }
+  ]
+}

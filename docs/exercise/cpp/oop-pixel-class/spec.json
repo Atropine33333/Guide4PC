@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-pixel-class",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 1,
+  "title": {
+    "chs": "像素类",
+    "en": "Pixel Class"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "construction",
+      "label": {
+        "chs": "构造与读取",
+        "en": "Construction and access"
+      }
+    },
+    {
+      "id": "clamp-high",
+      "label": {
+        "chs": "上限截断",
+        "en": "Clamping above 255"
+      }
+    },
+    {
+      "id": "clamp-low",
+      "label": {
+        "chs": "下限截断",
+        "en": "Clamping below 0"
+      }
+    },
+    {
+      "id": "setters",
+      "label": {
+        "chs": "修改分量",
+        "en": "Changing components"
+      }
+    },
+    {
+      "id": "brightness",
+      "label": {
+        "chs": "亮度取整",
+        "en": "Integer brightness"
+      }
+    },
+    {
+      "id": "black",
+      "label": {
+        "chs": "黑色判定",
+        "en": "Black detection"
+      }
+    }
+  ]
+}
