@@ -1,5 +1,22 @@
 [
   {
+    "file": "cpp-algorithm-adv.json",
+    "id": "cpp-algorithm-adv",
+    "lang": "cpp",
+    "title": {
+      "chs": "算法进阶卷",
+      "en": "Algorithms Advanced"
+    },
+    "items": [
+      "algorithm-edit-distance",
+      "algorithm-knapsack",
+      "algorithm-dijkstra",
+      "algorithm-bipartite-check",
+      "algorithm-merge-cost"
+    ],
+    "count": 5
+  },
+  {
     "file": "cpp-data-core.json",
     "id": "cpp-data-core",
     "lang": "cpp",
@@ -51,6 +68,23 @@
     "count": 5
   },
   {
+    "file": "cpp-memory-oop.json",
+    "id": "cpp-memory-oop",
+    "lang": "cpp",
+    "title": {
+      "chs": "内存与对象卷",
+      "en": "Memory & Objects"
+    },
+    "items": [
+      "memory-rule-of-five",
+      "memory-intrusive-list",
+      "oop-virtual-destructor",
+      "oop-type-erasure",
+      "memory-generational-handle"
+    ],
+    "count": 5
+  },
+  {
     "file": "cpp-starter.json",
     "id": "cpp-starter",
     "lang": "cpp",
@@ -78,6 +112,23 @@
       "io-thousands-separator",
       "semantics-remainder-sign",
       "types-byte-to-hex"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-templates-gp.json",
+    "id": "cpp-templates-gp",
+    "lang": "cpp",
+    "title": {
+      "chs": "模板与泛型卷",
+      "en": "Templates & Generic Programming"
+    },
+    "items": [
+      "templates-forwarding",
+      "templates-hash-specialization",
+      "templates-policy-reduce",
+      "templates-type-list",
+      "templates-tuple-map"
     ],
     "count": 5
   }
