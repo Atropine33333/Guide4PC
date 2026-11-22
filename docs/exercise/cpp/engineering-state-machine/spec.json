@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-state-machine",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "订单状态机",
+    "en": "Order State Machine"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "initial",
+      "label": {
+        "chs": "初始状态",
+        "en": "Initial state"
+      }
+    },
+    {
+      "id": "happy-path",
+      "label": {
+        "chs": "正常流转",
+        "en": "Happy path"
+      }
+    },
+    {
+      "id": "cancel-paid",
+      "label": {
+        "chs": "已支付后取消",
+        "en": "Cancel after payment"
+      }
+    },
+    {
+      "id": "reject-unchanged",
+      "label": {
+        "chs": "非法事件不改变状态",
+        "en": "Rejected event keeps state"
+      }
+    },
+    {
+      "id": "terminal",
+      "label": {
+        "chs": "终态拒绝事件",
+        "en": "Terminal states reject events"
+      }
+    },
+    {
+      "id": "return",
+      "label": {
+        "chs": "退货流转",
+        "en": "Return flow"
+      }
+    },
+    {
+      "id": "names",
+      "label": {
+        "chs": "状态名",
+        "en": "State names"
+      }
+    }
+  ]
+}

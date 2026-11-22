@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-edit-distance",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "编辑距离与最长公共子序列",
+    "en": "Edit Distance and LCS"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空串边界",
+        "en": "Empty strings"
+      }
+    },
+    {
+      "id": "identical",
+      "label": {
+        "chs": "完全相同",
+        "en": "Identical strings"
+      }
+    },
+    {
+      "id": "classic",
+      "label": {
+        "chs": "经典样例",
+        "en": "Classic pair"
+      }
+    },
+    {
+      "id": "edits",
+      "label": {
+        "chs": "插入、删除与替换",
+        "en": "Insert, delete, replace"
+      }
+    },
+    {
+      "id": "symmetry",
+      "label": {
+        "chs": "随机对称性",
+        "en": "Random symmetry"
+      }
+    },
+    {
+      "id": "triangle",
+      "label": {
+        "chs": "随机三角不等式",
+        "en": "Random triangle inequality"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长串",
+        "en": "Long strings"
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-base-convert",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "任意进制转换",
+    "en": "Conversion Between Bases"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零",
+        "en": "Zero"
+      }
+    },
+    {
+      "id": "bases",
+      "label": {
+        "chs": "常见进制",
+        "en": "Common bases"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      }
+    },
+    {
+      "id": "limits",
+      "label": {
+        "chs": "long long 两端",
+        "en": "Both ends of long long"
+      }
+    },
+    {
+      "id": "invalid-base",
+      "label": {
+        "chs": "非法进制",
+        "en": "Invalid bases"
+      }
+    },
+    {
+      "id": "parse-basic",
+      "label": {
+        "chs": "解析正常输入",
+        "en": "Parsing ordinary input"
+      }
+    },
+    {
+      "id": "parse-invalid",
+      "label": {
+        "chs": "解析非法输入",
+        "en": "Parsing invalid input"
+      }
+    },
+    {
+      "id": "parse-limits",
+      "label": {
+        "chs": "解析溢出边界",
+        "en": "Parsing at the overflow boundary"
+      }
+    },
+    {
+      "id": "round-trip",
+      "label": {
+        "chs": "写出再读回",
+        "en": "Write then read back"
+      }
+    }
+  ]
+}

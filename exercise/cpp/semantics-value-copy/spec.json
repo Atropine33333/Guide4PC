@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-value-copy",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "值、引用与拷贝",
+    "en": "Values, References and Copies"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "total-basic",
+      "label": {
+        "chs": "求和",
+        "en": "Sum"
+      }
+    },
+    {
+      "id": "const-ref-call",
+      "label": {
+        "chs": "const 引用不修改实参",
+        "en": "Const reference leaves its argument alone"
+      }
+    },
+    {
+      "id": "append-copy",
+      "label": {
+        "chs": "按值传参不改调用方",
+        "en": "Pass by value does not touch the caller"
+      }
+    },
+    {
+      "id": "append-ref",
+      "label": {
+        "chs": "按引用传参修改调用方",
+        "en": "Pass by reference modifies the caller"
+      }
+    },
+    {
+      "id": "copy-independent",
+      "label": {
+        "chs": "拷贝与原对象互不影响",
+        "en": "A copy is independent"
+      }
+    },
+    {
+      "id": "return-copy",
+      "label": {
+        "chs": "返回值是一份独立数据",
+        "en": "The returned value is independent"
+      }
+    },
+    {
+      "id": "ref-alias",
+      "label": {
+        "chs": "返回引用必须指向原元素",
+        "en": "A returned reference aliases the original element"
+      }
+    }
+  ]
+}

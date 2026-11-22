@@ -1,0 +1,148 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-float-decode",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "拆解单精度浮点数的位",
+    "en": "Decoding binary32 Bits"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "normal",
+      "label": {
+        "chs": "规格化数",
+        "en": "Normal numbers"
+      },
+      "cases": [
+        {
+          "in": "3F800000",
+          "out": "normal 0 127 0"
+        },
+        {
+          "in": "C0000000",
+          "out": "normal 1 128 0"
+        },
+        {
+          "in": "00800000",
+          "out": "normal 0 1 0"
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "正零与负零",
+        "en": "Positive and negative zero"
+      },
+      "cases": [
+        {
+          "in": "00000000",
+          "out": "zero 0 0 0"
+        },
+        {
+          "in": "80000000",
+          "out": "zero 1 0 0"
+        }
+      ]
+    },
+    {
+      "id": "subnormal",
+      "label": {
+        "chs": "非规格化数",
+        "en": "Subnormal numbers"
+      },
+      "cases": [
+        {
+          "in": "00000001",
+          "out": "subnormal 0 0 1"
+        },
+        {
+          "in": "007FFFFF",
+          "out": "subnormal 0 0 8388607"
+        },
+        {
+          "in": "80000001",
+          "out": "subnormal 1 0 1"
+        }
+      ]
+    },
+    {
+      "id": "infinity",
+      "label": {
+        "chs": "无穷",
+        "en": "Infinity"
+      },
+      "cases": [
+        {
+          "in": "7F800000",
+          "out": "inf 0 255 0"
+        },
+        {
+          "in": "FF800000",
+          "out": "inf 1 255 0"
+        }
+      ]
+    },
+    {
+      "id": "nan",
+      "label": {
+        "chs": "NaN",
+        "en": "NaN"
+      },
+      "cases": [
+        {
+          "in": "7FC00000",
+          "out": "nan 0 255 4194304"
+        },
+        {
+          "in": "FFFFFFFF",
+          "out": "nan 1 255 8388607"
+        }
+      ]
+    },
+    {
+      "id": "max-normal",
+      "label": {
+        "chs": "最大与最小规格化数",
+        "en": "Largest and smallest normal numbers"
+      },
+      "cases": [
+        {
+          "in": "7F7FFFFF",
+          "out": "normal 0 254 8388607"
+        },
+        {
+          "in": "C0000001",
+          "out": "normal 1 128 1"
+        }
+      ]
+    },
+    {
+      "id": "short-input",
+      "label": {
+        "chs": "不足八位的输入",
+        "en": "Inputs shorter than eight digits"
+      },
+      "cases": [
+        {
+          "in": "0",
+          "out": "zero 0 0 0"
+        },
+        {
+          "in": "7F8",
+          "out": "subnormal 0 0 2040"
+        },
+        {
+          "in": "0F",
+          "out": "subnormal 0 0 15"
+        }
+      ]
+    }
+  ]
+}

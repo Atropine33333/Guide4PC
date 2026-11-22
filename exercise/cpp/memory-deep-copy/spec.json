@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-deep-copy",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "动态数组的深拷贝",
+    "en": "Deep Copy of a Dynamic Array"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "size-zero",
+      "label": {
+        "chs": "长度为 0",
+        "en": "Zero length"
+      }
+    },
+    {
+      "id": "zero-init",
+      "label": {
+        "chs": "默认填 0",
+        "en": "Zero initialised"
+      }
+    },
+    {
+      "id": "write-read",
+      "label": {
+        "chs": "写入后读出",
+        "en": "Write then read"
+      }
+    },
+    {
+      "id": "copy-independent",
+      "label": {
+        "chs": "拷贝后互不影响",
+        "en": "Copies are independent"
+      }
+    },
+    {
+      "id": "assign",
+      "label": {
+        "chs": "赋值也是深拷贝",
+        "en": "Assignment is deep"
+      }
+    },
+    {
+      "id": "self-assign",
+      "label": {
+        "chs": "自赋值",
+        "en": "Self-assignment"
+      }
+    },
+    {
+      "id": "const-access",
+      "label": {
+        "chs": "常量访问",
+        "en": "Const access"
+      }
+    }
+  ]
+}

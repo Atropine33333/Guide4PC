@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-mutable-cache",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "常量方法里的延迟缓存",
+    "en": "Lazy Cache in a Const Method"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "words",
+      "label": {
+        "chs": "单词数",
+        "en": "Word count"
+      }
+    },
+    {
+      "id": "cached",
+      "label": {
+        "chs": "第二次调用不再计算",
+        "en": "Second call is cached"
+      }
+    },
+    {
+      "id": "letters",
+      "label": {
+        "chs": "字母数",
+        "en": "Letter count"
+      }
+    },
+    {
+      "id": "append-words",
+      "label": {
+        "chs": "追加后单词数失效",
+        "en": "Append invalidates words"
+      }
+    },
+    {
+      "id": "append-letters",
+      "label": {
+        "chs": "追加后字母数失效",
+        "en": "Append invalidates letters"
+      }
+    },
+    {
+      "id": "const-alias",
+      "label": {
+        "chs": "通过常量引用访问",
+        "en": "Access through const reference"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空文本",
+        "en": "Empty text"
+      }
+    }
+  ]
+}

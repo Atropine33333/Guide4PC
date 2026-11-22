@@ -1,0 +1,164 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-set-algebra",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "有序序列的集合运算",
+    "en": "Set Operations on Sorted Ranges"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通相交",
+        "en": "Ordinary overlap"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 3",
+            "1 3 5",
+            "2 3 4"
+          ],
+          "out": [
+            "1 2 3 4 5",
+            "3",
+            "1 5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-b",
+      "label": {
+        "chs": "第二个集合为空",
+        "en": "Empty second set"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 0",
+            "1 2 3",
+            ""
+          ],
+          "out": [
+            "1 2 3",
+            "empty",
+            "1 2 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-a",
+      "label": {
+        "chs": "第一个集合为空",
+        "en": "Empty first set"
+      },
+      "cases": [
+        {
+          "in": [
+            "0 2",
+            "",
+            "4 5"
+          ],
+          "out": [
+            "4 5",
+            "empty",
+            "empty"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复元素",
+        "en": "Duplicates"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 4",
+            "1 1 2 2 3",
+            "2 3 3 4"
+          ],
+          "out": [
+            "1 2 3 4",
+            "2 3",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disjoint",
+      "label": {
+        "chs": "不相交",
+        "en": "Disjoint"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 2",
+            "1 2",
+            "3 4"
+          ],
+          "out": [
+            "1 2 3 4",
+            "empty",
+            "1 2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subset",
+      "label": {
+        "chs": "子集关系",
+        "en": "Subset"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 5",
+            "2 4",
+            "1 2 3 4 5"
+          ],
+          "out": [
+            "1 2 3 4 5",
+            "2 4",
+            "empty"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 3",
+            "-5 -1",
+            "-3 -1 0"
+          ],
+          "out": [
+            "-5 -3 -1 0",
+            "-1",
+            "-5"
+          ]
+        }
+      ]
+    }
+  ]
+}

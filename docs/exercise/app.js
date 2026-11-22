@@ -400,7 +400,7 @@
   }
   function playerVer() {
     var v = window.GUIDE4PC_VERSION;
-    return v && v !== 'acfa589484' ? '?v=' + encodeURIComponent(v) : '';
+    return v && v !== '69becb1d5b' ? '?v=' + encodeURIComponent(v) : '';
   }
   function ensurePlayground() {
     window.G4PC_BASE = ROOT;

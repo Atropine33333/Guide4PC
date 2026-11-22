@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-hex-dump",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 4,
+  "title": {
+    "chs": "十六进制转储",
+    "en": "Hex Dump"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 131072
+  },
+  "checks": [
+    {
+      "id": "short",
+      "label": {
+        "chs": "不足一行",
+        "en": "Shorter than one line"
+      },
+      "cases": [
+        {
+          "in": "Hello",
+          "out": ["00000000  48 65 6c 6c 6f 0a                               |Hello.|"]
+        }
+      ]
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "恰好一行",
+        "en": "Exactly one line"
+      },
+      "cases": [
+        {
+          "in": "0123456789abcde",
+          "out": ["00000000  30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 0a |0123456789abcde.|"]
+        }
+      ]
+    },
+    {
+      "id": "overflow",
+      "label": {
+        "chs": "跨行",
+        "en": "Across lines"
+      },
+      "cases": [
+        {
+          "in": "0123456789abcdef",
+          "out": ["00000000  30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 |0123456789abcdef|","00000010  0a                                              |.|"]
+        }
+      ]
+    },
+    {
+      "id": "nonprintable",
+      "label": {
+        "chs": "不可打印字节",
+        "en": "Non-printable bytes"
+      },
+      "cases": [
+        {
+          "in": "a\tb",
+          "out": ["00000000  61 09 62 0a                                     |a.b.|"]
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "只有一个换行",
+        "en": "Only a newline"
+      },
+      "cases": [
+        {
+          "in": "",
+          "out": ["00000000  0a                                              |.|"]
+        }
+      ]
+    },
+    {
+      "id": "multiline",
+      "label": {
+        "chs": "两行输入",
+        "en": "Two input lines"
+      },
+      "cases": [
+        {
+          "in": [
+            "AB",
+            "CD"
+          ],
+          "out": ["00000000  41 42 0a 43 44 0a                               |AB.CD.|"]
+        }
+      ]
+    }
+  ]
+}

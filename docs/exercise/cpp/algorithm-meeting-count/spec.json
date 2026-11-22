@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-meeting-count",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 3,
+  "title": {
+    "chs": "会议室最多场次",
+    "en": "Most Meetings in One Room"
+  },
+  "limits": {
+    "timeoutMs": 3000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一场",
+        "en": "Single meeting"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "5 9"
+          ],
+          "out": "1"
+        }
+      ]
+    },
+    {
+      "id": "touching",
+      "label": {
+        "chs": "首尾相接",
+        "en": "Touching endpoints"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 2",
+            "2 3",
+            "3 4"
+          ],
+          "out": "3"
+        }
+      ]
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "区间包含",
+        "en": "Nested intervals"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 10",
+            "2 3",
+            "4 5"
+          ],
+          "out": "2"
+        }
+      ]
+    },
+    {
+      "id": "overlap",
+      "label": {
+        "chs": "互相重叠",
+        "en": "Overlapping"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1 5",
+            "2 6",
+            "3 7",
+            "8 9"
+          ],
+          "out": "2"
+        }
+      ]
+    },
+    {
+      "id": "zero-length",
+      "label": {
+        "chs": "零长度会议",
+        "en": "Zero-length meeting"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 2",
+            "2 2",
+            "2 3"
+          ],
+          "out": "3"
+        }
+      ]
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "混合数据",
+        "en": "Mixed data"
+      },
+      "cases": [
+        {
+          "in": [
+            "8",
+            "3 6",
+            "1 4",
+            "5 7",
+            "8 9",
+            "2 5",
+            "9 10",
+            "4 4",
+            "6 8"
+          ],
+          "out": "5"
+        }
+      ]
+    }
+  ]
+}

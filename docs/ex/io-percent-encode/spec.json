@@ -1,0 +1,111 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-percent-encode",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": {
+    "chs": "百分号编码",
+    "en": "Percent Encoding"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "plain",
+      "label": {
+        "chs": "无需转义",
+        "en": "Nothing to escape"
+      },
+      "cases": [
+        {
+          "in": "Hello",
+          "out": "Hello"
+        }
+      ]
+    },
+    {
+      "id": "space",
+      "label": {
+        "chs": "空格",
+        "en": "Spaces"
+      },
+      "cases": [
+        {
+          "in": "a b",
+          "out": "a%20b"
+        },
+        {
+          "in": "   ",
+          "out": "%20%20%20"
+        }
+      ]
+    },
+    {
+      "id": "reserved",
+      "label": {
+        "chs": "保留字符",
+        "en": "Reserved characters"
+      },
+      "cases": [
+        {
+          "in": "a+b=c",
+          "out": "a%2Bb%3Dc"
+        },
+        {
+          "in": "100%",
+          "out": "100%25"
+        },
+        {
+          "in": "a/b?c",
+          "out": "a%2Fb%3Fc"
+        }
+      ]
+    },
+    {
+      "id": "safe-set",
+      "label": {
+        "chs": "不转义的字符",
+        "en": "Characters left alone"
+      },
+      "cases": [
+        {
+          "in": "AZaz09-_.~",
+          "out": "AZaz09-_.~"
+        },
+        {
+          "in": "!$&'()*,:;@[]",
+          "out": "%21%24%26%27%28%29%2A%2C%3A%3B%40%5B%5D"
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空行",
+        "en": "Empty line"
+      },
+      "cases": [
+        {
+          "in": "",
+          "out": ""
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合内容",
+        "en": "Mixed content"
+      },
+      "cases": [
+        {
+          "in": "user={id}[0]",
+          "out": "user%3D%7Bid%7D%5B0%5D"
+        }
+      ]
+    }
+  ]
+}

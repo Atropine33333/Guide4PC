@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-byte-classify",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 4,
+  "title": {
+    "chs": "字节分类与 char 的有符号性",
+    "en": "Byte Classification and Signed char"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "classify-digits",
+      "label": {
+        "chs": "数字",
+        "en": "Digits"
+      }
+    },
+    {
+      "id": "classify-space",
+      "label": {
+        "chs": "空白字符",
+        "en": "Whitespace"
+      }
+    },
+    {
+      "id": "classify-control",
+      "label": {
+        "chs": "控制字符包含 DEL",
+        "en": "Control bytes including DEL"
+      }
+    },
+    {
+      "id": "classify-printable",
+      "label": {
+        "chs": "可见标点与字母",
+        "en": "Printable punctuation and letters"
+      }
+    },
+    {
+      "id": "classify-high",
+      "label": {
+        "chs": "高位字节",
+        "en": "High bytes"
+      }
+    },
+    {
+      "id": "lower-basic",
+      "label": {
+        "chs": "转小写",
+        "en": "Lowercasing"
+      }
+    },
+    {
+      "id": "hex-basic",
+      "label": {
+        "chs": "两位十六进制",
+        "en": "Two-digit hex"
+      }
+    },
+    {
+      "id": "all-bytes",
+      "label": {
+        "chs": "0 到 255 全覆盖",
+        "en": "Every byte from 0 to 255"
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-rule-of-five",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 4,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "五法则资源类",
+    "en": "Rule of Five Resource"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "construction",
+      "label": {
+        "chs": "构造与析构计数",
+        "en": "Construction and destruction"
+      }
+    },
+    {
+      "id": "copy-construct",
+      "label": {
+        "chs": "拷贝构造",
+        "en": "Copy construction"
+      }
+    },
+    {
+      "id": "move-construct",
+      "label": {
+        "chs": "移动构造",
+        "en": "Move construction"
+      }
+    },
+    {
+      "id": "copy-assign",
+      "label": {
+        "chs": "拷贝赋值",
+        "en": "Copy assignment"
+      }
+    },
+    {
+      "id": "move-assign",
+      "label": {
+        "chs": "移动赋值",
+        "en": "Move assignment"
+      }
+    },
+    {
+      "id": "self-assign",
+      "label": {
+        "chs": "自赋值",
+        "en": "Self-assignment"
+      }
+    },
+    {
+      "id": "vector-move",
+      "label": {
+        "chs": "容器中的移动",
+        "en": "Moves inside a vector"
+      }
+    }
+  ]
+}

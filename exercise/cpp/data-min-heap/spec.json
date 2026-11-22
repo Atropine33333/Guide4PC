@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-min-heap",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "手写最小堆",
+    "en": "Hand-written Min-Heap"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空堆",
+        "en": "Empty heap"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "Single element"
+      }
+    },
+    {
+      "id": "ordering",
+      "label": {
+        "chs": "出堆顺序",
+        "en": "Pop order"
+      }
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复值",
+        "en": "Duplicate values"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机压入后全部弹出",
+        "en": "Random pushes then pops"
+      }
+    },
+    {
+      "id": "interleaved",
+      "label": {
+        "chs": "随机混合操作",
+        "en": "Random mixed operations"
+      }
+    }
+  ]
+}

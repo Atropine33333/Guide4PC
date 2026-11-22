@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-bit-rotate",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 4,
+  "title": {
+    "chs": "循环移位与位反转",
+    "en": "Rotations and Bit Reversal"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "left-basic",
+      "label": {
+        "chs": "左循环移位",
+        "en": "Rotate left"
+      }
+    },
+    {
+      "id": "right-basic",
+      "label": {
+        "chs": "右循环移位",
+        "en": "Rotate right"
+      }
+    },
+    {
+      "id": "counts",
+      "label": {
+        "chs": "位移量取模",
+        "en": "Count normalisation"
+      }
+    },
+    {
+      "id": "inverse",
+      "label": {
+        "chs": "反向旋转复原",
+        "en": "Opposite rotations cancel"
+      }
+    },
+    {
+      "id": "reverse-known",
+      "label": {
+        "chs": "位反转的已知值",
+        "en": "Known bit reversals"
+      }
+    },
+    {
+      "id": "reverse-involution",
+      "label": {
+        "chs": "位反转两次复原",
+        "en": "Reversing twice restores the value"
+      }
+    },
+    {
+      "id": "rotate-random",
+      "label": {
+        "chs": "固定种子的随机旋转",
+        "en": "Randomised rotations with a fixed seed"
+      }
+    }
+  ]
+}

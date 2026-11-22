@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-word-count",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 2,
+  "title": {
+    "chs": "修好多空格与空行的统计",
+    "en": "Fix the Word Counting"
+  },
+  "limits": {
+    "timeoutMs": 3000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single-line",
+      "label": {
+        "chs": "单行",
+        "en": "Single line"
+      },
+      "cases": [
+        {
+          "in": "hello world",
+          "out": "1 2"
+        }
+      ]
+    },
+    {
+      "id": "spaces",
+      "label": {
+        "chs": "连续空格",
+        "en": "Multiple spaces"
+      },
+      "cases": [
+        {
+          "in": "alpha    beta  gamma",
+          "out": "1 3"
+        }
+      ]
+    },
+    {
+      "id": "tabs",
+      "label": {
+        "chs": "制表符",
+        "en": "Tabs"
+      },
+      "cases": [
+        {
+          "in": "one\ttwo\t\tthree four",
+          "out": "1 4"
+        }
+      ]
+    },
+    {
+      "id": "blank-lines",
+      "label": {
+        "chs": "空行不计入行数",
+        "en": "Blank lines are not counted"
+      },
+      "cases": [
+        {
+          "in": ["first line", "", "   ", "second"],
+          "out": "2 3"
+        }
+      ]
+    },
+    {
+      "id": "edges",
+      "label": {
+        "chs": "首尾空白",
+        "en": "Leading and trailing whitespace"
+      },
+      "cases": [
+        {
+          "in": "   padded   text   ",
+          "out": "1 2"
+        },
+        {
+          "in": "   ",
+          "out": "0 0"
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合多行",
+        "en": "Mixed multi-line input"
+      },
+      "cases": [
+        {
+          "in": ["  a b ", "c", "", "d  e", "\t\t"],
+          "out": "3 5"
+        }
+      ]
+    }
+  ]
+}

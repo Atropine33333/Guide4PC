@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-if-constexpr",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 2,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "用 if constexpr 分派",
+    "en": "Dispatch with if constexpr"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "classify-integral",
+      "label": {
+        "chs": "整数类型分类",
+        "en": "Classify integral types"
+      }
+    },
+    {
+      "id": "classify-floating",
+      "label": {
+        "chs": "浮点类型分类",
+        "en": "Classify floating types"
+      }
+    },
+    {
+      "id": "classify-string",
+      "label": {
+        "chs": "字符串分类",
+        "en": "Classify strings"
+      }
+    },
+    {
+      "id": "classify-other",
+      "label": {
+        "chs": "其他类型分类",
+        "en": "Classify other types"
+      }
+    },
+    {
+      "id": "classify-decay",
+      "label": {
+        "chs": "引用与 const 退化",
+        "en": "References and const decay"
+      }
+    },
+    {
+      "id": "render-integral",
+      "label": {
+        "chs": "整数值渲染",
+        "en": "Render integral values"
+      }
+    },
+    {
+      "id": "render-floating",
+      "label": {
+        "chs": "浮点值渲染",
+        "en": "Render floating values"
+      }
+    },
+    {
+      "id": "render-other",
+      "label": {
+        "chs": "字符串与其他类型渲染",
+        "en": "Render strings and others"
+      }
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-fenwick",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "树状数组区间查询",
+    "en": "Fenwick Tree Queries"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "单点加与前缀和",
+        "en": "Point add and prefix sum"
+      },
+      "cases": [
+        {
+          "in": [
+            "8 5",
+            "add 3 5",
+            "sum 3",
+            "add 1 2",
+            "sum 4",
+            "sum 8"
+          ],
+          "out": [
+            "5",
+            "7",
+            "7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "range",
+      "label": {
+        "chs": "区间和",
+        "en": "Range sums"
+      },
+      "cases": [
+        {
+          "in": [
+            "6 6",
+            "add 2 4",
+            "add 4 6",
+            "add 6 8",
+            "range 2 4",
+            "range 3 5",
+            "range 1 1"
+          ],
+          "out": [
+            "10",
+            "6",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负值",
+        "en": "Negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 5",
+            "add 1 -5",
+            "add 5 -7",
+            "add 3 -1",
+            "sum 5",
+            "range 2 4"
+          ],
+          "out": [
+            "-13",
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个位置",
+        "en": "One position"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 4",
+            "add 1 1000000000",
+            "sum 1",
+            "add 1 1000000000",
+            "range 1 1"
+          ],
+          "out": [
+            "1000000000",
+            "2000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "整段查询",
+        "en": "Whole prefix"
+      },
+      "cases": [
+        {
+          "in": [
+            "10 12",
+            "add 1 1",
+            "add 2 2",
+            "add 3 3",
+            "add 4 4",
+            "add 5 5",
+            "add 6 6",
+            "add 7 7",
+            "add 8 8",
+            "add 9 9",
+            "add 10 10",
+            "sum 10",
+            "range 1 10"
+          ],
+          "out": [
+            "55",
+            "55"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合操作",
+        "en": "Mixed operations"
+      },
+      "cases": [
+        {
+          "in": [
+            "16 22",
+            "add 16 20",
+            "sum 6",
+            "add 6 -9",
+            "range 2 11",
+            "add 5 90",
+            "sum 14",
+            "range 2 5",
+            "add 8 69",
+            "add 15 38",
+            "add 7 -56",
+            "add 10 73",
+            "add 3 -18",
+            "add 9 -6",
+            "range 8 11",
+            "sum 4",
+            "sum 4",
+            "range 8 14",
+            "sum 16",
+            "add 2 -70",
+            "range 1 6",
+            "sum 15",
+            "add 10 69"
+          ],
+          "out": [
+            "0",
+            "-9",
+            "81",
+            "90",
+            "136",
+            "-18",
+            "-18",
+            "136",
+            "201",
+            "-7",
+            "111"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-merge-cost",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 5,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "相邻合并的最小代价",
+    "en": "Minimum Adjacent Merge Cost"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "零堆与一堆",
+        "en": "Zero or one pile"
+      }
+    },
+    {
+      "id": "two",
+      "label": {
+        "chs": "两堆",
+        "en": "Two piles"
+      }
+    },
+    {
+      "id": "three",
+      "label": {
+        "chs": "三堆的两种顺序",
+        "en": "Two orders for three piles"
+      }
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "等大石堆",
+        "en": "Equal piles"
+      }
+    },
+    {
+      "id": "increasing",
+      "label": {
+        "chs": "递增石堆",
+        "en": "Increasing piles"
+      }
+    },
+    {
+      "id": "brute-force",
+      "label": {
+        "chs": "与穷举结果对比",
+        "en": "Compared with brute force"
+      }
+    }
+  ]
+}

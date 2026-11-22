@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-stream-money",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "金额的流输入输出",
+    "en": "Stream I/O for Money"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "print-basic",
+      "label": {
+        "chs": "基本输出格式",
+        "en": "Basic output format"
+      }
+    },
+    {
+      "id": "print-negative",
+      "label": {
+        "chs": "负数输出",
+        "en": "Negative output"
+      }
+    },
+    {
+      "id": "parse-basic",
+      "label": {
+        "chs": "基本解析",
+        "en": "Basic parsing"
+      }
+    },
+    {
+      "id": "parse-sign-dollar",
+      "label": {
+        "chs": "负号与美元符号",
+        "en": "Sign and dollar sign"
+      }
+    },
+    {
+      "id": "roundtrip",
+      "label": {
+        "chs": "输出后读回",
+        "en": "Write then read back"
+      }
+    },
+    {
+      "id": "fail",
+      "label": {
+        "chs": "非法输入",
+        "en": "Invalid input"
+      }
+    },
+    {
+      "id": "arithmetic",
+      "label": {
+        "chs": "加减乘与比较",
+        "en": "Arithmetic and comparison"
+      }
+    }
+  ]
+}

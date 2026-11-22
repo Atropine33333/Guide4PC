@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-deduce-guide",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "类模板实参推导与推导指引",
+    "en": "CTAD and Deduction Guides"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "init-int",
+      "label": {
+        "chs": "整数初始化列表",
+        "en": "Integer initializer list"
+      }
+    },
+    {
+      "id": "init-double",
+      "label": {
+        "chs": "浮点初始化列表",
+        "en": "Floating initializer list"
+      }
+    },
+    {
+      "id": "init-string",
+      "label": {
+        "chs": "字符串序列",
+        "en": "String sequence"
+      }
+    },
+    {
+      "id": "iterator-range",
+      "label": {
+        "chs": "迭代器区间推导",
+        "en": "Deduce from iterator range"
+      }
+    },
+    {
+      "id": "pointer-range",
+      "label": {
+        "chs": "指针区间推导",
+        "en": "Deduce from pointer range"
+      }
+    },
+    {
+      "id": "c-array",
+      "label": {
+        "chs": "C 数组推导",
+        "en": "Deduce from C array"
+      }
+    },
+    {
+      "id": "explicit-empty",
+      "label": {
+        "chs": "显式模板参数与空序列",
+        "en": "Explicit parameter and empty sequence"
+      }
+    }
+  ]
+}

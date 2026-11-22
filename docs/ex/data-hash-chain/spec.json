@@ -1,0 +1,171 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-hash-chain",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 2,
+  "title": {
+    "chs": "链地址法哈希表",
+    "en": "Chained Hash Table"
+  },
+  "limits": {
+    "timeoutMs": 3000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "put-get",
+      "label": {
+        "chs": "插入与查询",
+        "en": "Put and get"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put ab 1",
+            "get ab",
+            "get ac",
+            "dump"
+          ],
+          "out": [
+            "1",
+            "none",
+            "0:",
+            "1:",
+            "2:",
+            "3: ab"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "update",
+      "label": {
+        "chs": "更新已有键",
+        "en": "Update existing key"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put ab 1",
+            "put ab 2",
+            "get ab",
+            "dump"
+          ],
+          "out": [
+            "2",
+            "0:",
+            "1:",
+            "2:",
+            "3: ab"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erase",
+      "label": {
+        "chs": "删除与不存在",
+        "en": "Erase and missing keys"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put ab 1",
+            "put ba 2",
+            "erase ab",
+            "get ab",
+            "get ba",
+            "erase zz",
+            "dump"
+          ],
+          "out": [
+            "none",
+            "2",
+            "0:",
+            "1:",
+            "2:",
+            "3: ba"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "head-order",
+      "label": {
+        "chs": "头插顺序",
+        "en": "Head insertion order"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put ab 1",
+            "put ba 2",
+            "dump"
+          ],
+          "out": [
+            "0:",
+            "1:",
+            "2:",
+            "3: ba ab"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collision",
+      "label": {
+        "chs": "冲突链",
+        "en": "Collision chain"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put a 5",
+            "put e 6",
+            "put i 7",
+            "put b 9",
+            "dump"
+          ],
+          "out": [
+            "0:",
+            "1: i e a",
+            "2: b",
+            "3:"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erase-middle",
+      "label": {
+        "chs": "删除链中间的键",
+        "en": "Erase from the middle"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "put a 5",
+            "put e 6",
+            "put i 7",
+            "put b 9",
+            "erase e",
+            "dump"
+          ],
+          "out": [
+            "0:",
+            "1: i a",
+            "2: b",
+            "3:"
+          ]
+        }
+      ]
+    }
+  ]
+}

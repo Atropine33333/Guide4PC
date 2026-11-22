@@ -1,0 +1,101 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-diamond-grid",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "星号菱形",
+    "en": "Star Diamond"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一行",
+        "en": "A single row"
+      },
+      "cases": [
+        {
+          "in": [
+            "1"
+          ],
+          "out": [
+            "*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small",
+      "label": {
+        "chs": "三行菱形",
+        "en": "A three-row diamond"
+      },
+      "cases": [
+        {
+          "in": [
+            "3"
+          ],
+          "out": [
+            " *",
+            "***",
+            " *"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "middle",
+      "label": {
+        "chs": "七行菱形",
+        "en": "A seven-row diamond"
+      },
+      "cases": [
+        {
+          "in": [
+            "7"
+          ],
+          "out": [
+            "   *",
+            "  ***",
+            " *****",
+            "*******",
+            " *****",
+            "  ***",
+            "   *"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wide",
+      "label": {
+        "chs": "九行菱形",
+        "en": "A nine-row diamond"
+      },
+      "cases": [
+        {
+          "in": [
+            "9"
+          ],
+          "out": [
+            "    *",
+            "   ***",
+            "  *****",
+            " *******",
+            "*********",
+            " *******",
+            "  *****",
+            "   ***",
+            "    *"
+          ]
+        }
+      ]
+    }
+  ]
+}

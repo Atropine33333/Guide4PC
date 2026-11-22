@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-pagination",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "分页器的不变量",
+    "en": "Pagination Invariants"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本分页信息",
+        "en": "Basic pagination info"
+      }
+    },
+    {
+      "id": "clamp",
+      "label": {
+        "chs": "页码钳制",
+        "en": "Clamp the page number"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空集合",
+        "en": "Empty collection"
+      }
+    },
+    {
+      "id": "exact-multiple",
+      "label": {
+        "chs": "整除边界",
+        "en": "Exact multiple boundary"
+      }
+    },
+    {
+      "id": "single-page",
+      "label": {
+        "chs": "单页",
+        "en": "Single page"
+      }
+    },
+    {
+      "id": "window",
+      "label": {
+        "chs": "页码窗口与端点",
+        "en": "Page window and edges"
+      }
+    },
+    {
+      "id": "page-size-one",
+      "label": {
+        "chs": "每页一条",
+        "en": "One item per page"
+      }
+    }
+  ]
+}

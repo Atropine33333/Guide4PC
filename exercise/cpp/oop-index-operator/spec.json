@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-index-operator",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 2,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "二维下标与代理行",
+    "en": "Two-dimensional Indexing with Row Proxies"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "shape",
+      "label": {
+        "chs": "行列数",
+        "en": "Shape"
+      }
+    },
+    {
+      "id": "default-zero",
+      "label": {
+        "chs": "默认全 0",
+        "en": "All zero by default"
+      }
+    },
+    {
+      "id": "write-read",
+      "label": {
+        "chs": "写入后读出",
+        "en": "Write then read"
+      }
+    },
+    {
+      "id": "reference",
+      "label": {
+        "chs": "返回真正的引用",
+        "en": "Returns a real reference"
+      }
+    },
+    {
+      "id": "row-copy",
+      "label": {
+        "chs": "代理行可以复制",
+        "en": "Row proxy can be copied"
+      }
+    },
+    {
+      "id": "const-access",
+      "label": {
+        "chs": "常量矩阵只读",
+        "en": "Const matrix access"
+      }
+    }
+  ]
+}

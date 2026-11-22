@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-csv-quote",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "CSV 字段的引号规则",
+    "en": "CSV Field Quoting"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "quote-plain",
+      "label": {
+        "chs": "普通字段不加引号",
+        "en": "Plain fields are not quoted"
+      }
+    },
+    {
+      "id": "quote-comma",
+      "label": {
+        "chs": "含逗号的字段",
+        "en": "Fields containing a comma"
+      }
+    },
+    {
+      "id": "quote-double",
+      "label": {
+        "chs": "引号要成对转义",
+        "en": "Quotes are doubled"
+      }
+    },
+    {
+      "id": "quote-newline",
+      "label": {
+        "chs": "含换行的字段",
+        "en": "Fields containing a newline"
+      }
+    },
+    {
+      "id": "split-simple",
+      "label": {
+        "chs": "普通拆分与空字段",
+        "en": "Plain splitting and empty fields"
+      }
+    },
+    {
+      "id": "split-quoted",
+      "label": {
+        "chs": "引号内的逗号",
+        "en": "Commas inside quotes"
+      }
+    },
+    {
+      "id": "split-escaped",
+      "label": {
+        "chs": "引号内的双写引号",
+        "en": "Doubled quotes inside quotes"
+      }
+    },
+    {
+      "id": "round-trip",
+      "label": {
+        "chs": "写出再读回",
+        "en": "Quote then split"
+      }
+    }
+  ]
+}

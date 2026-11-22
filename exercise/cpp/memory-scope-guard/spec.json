@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-scope-guard",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 2,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "作用域守卫",
+    "en": "Scope Guard"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "destructor",
+      "label": {
+        "chs": "析构时执行",
+        "en": "Runs on destruction"
+      }
+    },
+    {
+      "id": "dismiss",
+      "label": {
+        "chs": "取消执行",
+        "en": "Dismiss cancels"
+      }
+    },
+    {
+      "id": "reverse-order",
+      "label": {
+        "chs": "逆序执行",
+        "en": "Reverse order"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套作用域",
+        "en": "Nested scopes"
+      }
+    },
+    {
+      "id": "copy-deleted",
+      "label": {
+        "chs": "禁止拷贝",
+        "en": "Copy is deleted"
+      }
+    },
+    {
+      "id": "dismiss-twice",
+      "label": {
+        "chs": "重复取消只执行一次",
+        "en": "Dismissing twice runs once"
+      }
+    }
+  ]
+}

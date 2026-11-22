@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-rotate-left",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 3,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "左旋数组的负数位移",
+    "en": "Rotate Left with Negative Shifts"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本左旋",
+        "en": "Basic left rotation"
+      }
+    },
+    {
+      "id": "zero-and-size",
+      "label": {
+        "chs": "位移为零或等于长度",
+        "en": "Shift zero or equal to size"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大位移",
+        "en": "Large shift"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负位移即右旋",
+        "en": "Negative shift rotates right"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空数组",
+        "en": "Empty vector"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单元素",
+        "en": "Single element"
+      }
+    },
+    {
+      "id": "negative-multiple",
+      "label": {
+        "chs": "负的整数倍",
+        "en": "Negative multiple of size"
+      }
+    }
+  ]
+}

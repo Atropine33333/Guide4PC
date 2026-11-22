@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-unsigned-loop",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 3,
+  "title": {
+    "chs": "无符号数的陷阱",
+    "en": "Unsigned Traps"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "less-safe",
+      "label": {
+        "chs": "普通比较",
+        "en": "Ordinary comparisons"
+      }
+    },
+    {
+      "id": "less-huge",
+      "label": {
+        "chs": "负数与超过 INT_MAX 的值",
+        "en": "Negatives and values above INT_MAX"
+      }
+    },
+    {
+      "id": "wrap-simple",
+      "label": {
+        "chs": "不会回绕的减法",
+        "en": "Subtractions without wrap"
+      }
+    },
+    {
+      "id": "wrap-underflow",
+      "label": {
+        "chs": "下溢回绕",
+        "en": "Underflow wrap"
+      }
+    },
+    {
+      "id": "wrap-chain",
+      "label": {
+        "chs": "连续回绕",
+        "en": "Chained wraps"
+      }
+    },
+    {
+      "id": "countdown-small",
+      "label": {
+        "chs": "小范围倒计时",
+        "en": "Small countdowns"
+      }
+    },
+    {
+      "id": "countdown-max",
+      "label": {
+        "chs": "大范围倒计时",
+        "en": "Countdown at the limit"
+      }
+    }
+  ]
+}

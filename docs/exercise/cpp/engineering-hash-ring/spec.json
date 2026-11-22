@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-hash-ring",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "一致性哈希环",
+    "en": "Consistent Hash Ring"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空环",
+        "en": "Empty ring"
+      }
+    },
+    {
+      "id": "single-node",
+      "label": {
+        "chs": "单节点覆盖所有键",
+        "en": "Single node covers all keys"
+      }
+    },
+    {
+      "id": "duplicate-add",
+      "label": {
+        "chs": "重复添加同一节点",
+        "en": "Adding a node twice"
+      }
+    },
+    {
+      "id": "remove-all",
+      "label": {
+        "chs": "移除节点后全部改派",
+        "en": "Removing a node reassigns keys"
+      }
+    },
+    {
+      "id": "balance",
+      "label": {
+        "chs": "虚拟节点负载均衡",
+        "en": "Virtual-node balance"
+      }
+    },
+    {
+      "id": "add-stability",
+      "label": {
+        "chs": "加节点只迁移应有部分",
+        "en": "Adding a node moves few keys"
+      }
+    },
+    {
+      "id": "remove-stability",
+      "label": {
+        "chs": "删节点只迁移应有部分",
+        "en": "Removing a node moves few keys"
+      }
+    }
+  ]
+}

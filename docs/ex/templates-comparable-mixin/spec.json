@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-comparable-mixin",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "harness": "harness.cpp",
+  "title": {
+    "chs": "CRTP 比较运算符混合类",
+    "en": "CRTP Comparable Mixin"
+  },
+  "limits": {
+    "timeoutMs": 4000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "uses-mixin",
+      "label": {
+        "chs": "使用混合类",
+        "en": "Uses the mixin"
+      }
+    },
+    {
+      "id": "neq",
+      "label": {
+        "chs": "不等号",
+        "en": "Not equal"
+      }
+    },
+    {
+      "id": "gt",
+      "label": {
+        "chs": "大于号",
+        "en": "Greater than"
+      }
+    },
+    {
+      "id": "le-ge",
+      "label": {
+        "chs": "小于等于与大于等于",
+        "en": "Less-or-equal and greater-or-equal"
+      }
+    },
+    {
+      "id": "sort",
+      "label": {
+        "chs": "std::sort 排序",
+        "en": "Sorting with std::sort"
+      }
+    },
+    {
+      "id": "max-element",
+      "label": {
+        "chs": "std::max_element",
+        "en": "std::max_element"
+      }
+    },
+    {
+      "id": "equal-prefix",
+      "label": {
+        "chs": "前缀相同但不同 id",
+        "en": "Same prefix, different id"
+      }
+    },
+    {
+      "id": "consistent",
+      "label": {
+        "chs": "六个运算符互相一致",
+        "en": "All six operators agree"
+      }
+    }
+  ]
+}

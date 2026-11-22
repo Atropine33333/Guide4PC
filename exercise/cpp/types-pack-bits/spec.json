@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-pack-bits",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": {
+    "chs": "通道打包",
+    "en": "Channel Packing"
+  },
+  "harness": "harness.cpp",
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "pack-basic",
+      "label": {
+        "chs": "基础打包",
+        "en": "Basic packing"
+      }
+    },
+    {
+      "id": "pack-clamp",
+      "label": {
+        "chs": "越界钳制",
+        "en": "Clamping out-of-range channels"
+      }
+    },
+    {
+      "id": "pack-zero",
+      "label": {
+        "chs": "全零",
+        "en": "All zero"
+      }
+    },
+    {
+      "id": "unpack-basic",
+      "label": {
+        "chs": "基础拆包",
+        "en": "Basic unpacking"
+      }
+    },
+    {
+      "id": "unpack-masks",
+      "label": {
+        "chs": "掩码正确",
+        "en": "Correct masks"
+      }
+    },
+    {
+      "id": "round-trip",
+      "label": {
+        "chs": "打包再拆包",
+        "en": "Pack then unpack"
+      }
+    },
+    {
+      "id": "swap-basic",
+      "label": {
+        "chs": "交换红蓝",
+        "en": "Swapping red and blue"
+      }
+    },
+    {
+      "id": "swap-involution",
+      "label": {
+        "chs": "交换两次复原",
+        "en": "Swapping twice restores the value"
+      }
+    }
+  ]
+}
