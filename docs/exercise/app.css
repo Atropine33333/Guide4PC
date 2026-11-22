@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  height: 52px;
+  height: 56px;
   padding: 0 24px;
   border-bottom: 1px solid var(--color-border);
   background: var(--color-surface);
@@ -49,8 +49,11 @@
 }
 
 .es-foot {
-  padding: 20px 24px 28px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 24px;
   font-size: 12px;
   color: var(--color-text-muted);
   border-top: 1px solid var(--color-border);
@@ -161,6 +164,9 @@
 }
 .es-count { font-size: 12.5px; color: var(--color-text-muted); }
 .es-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 32px;
   padding: 0 12px;
   border: 1px solid var(--color-border);
@@ -169,12 +175,17 @@
   color: var(--color-text);
   font: inherit;
   font-size: 13px;
+  text-decoration: none;
   cursor: pointer;
 }
+.es-btn.is-disabled { opacity: .35; pointer-events: none; }
+.es-btn-lg { height: 44px; padding: 0 22px; margin-top: 18px; font-size: 14.5px; font-weight: 600; }
+.es-btn-next { background: var(--color-text); border-color: var(--color-text); color: var(--color-bg); }
+.es-btn-next:hover { border-color: var(--color-text); opacity: .88; }
 .es-btn:hover { border-color: var(--color-text-muted); }
 .es-btn.is-on { border-color: var(--color-primary); color: var(--color-primary); }
-.es-btn-primary { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
-.es-btn-primary:hover { filter: brightness(1.06); }
+.es-btn-primary { background: var(--color-text); border-color: var(--color-text); color: var(--color-bg); }
+.es-btn-primary:hover { filter: none; opacity: .88; }
 
 /* papers */
 .es-paper { margin-top: 28px; }
@@ -198,6 +209,9 @@
 .es-prose code { font-family: var(--font-mono); font-size: .92em; background: var(--color-pre-bg); padding: 1px 4px; }
 .es-prose pre { background: var(--color-pre-bg); border: 1px solid var(--color-border); padding: 12px 14px; overflow: auto; }
 .es-prose pre code { background: none; padding: 0; font-size: 13px; }
+.es-prose ul, .es-prose ol { margin: 4px 0 12px; padding-left: 1.35em; }
+.es-prose li { margin: 3px 0; }
+.es-prose li::marker { color: var(--color-text-muted); }
 .es-variants { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
 .es-mount-holder .ex-mount { margin: 0; }
 .es-empty { color: var(--color-text-muted); font-size: 14px; }
@@ -224,3 +238,22 @@
   gap: 14px;
   margin: 22px 0 48px;
 }
+
+/* 列表行的标签列对齐：分类名长短不影响 Rank / 测试数的位置 */
+.es-item .es-meta {
+  display: grid;
+  grid-template-columns: 46px 88px 64px 100px;
+  gap: 6px;
+  justify-content: start;
+  align-items: center;
+}
+.es-item .es-meta .es-chip { width: 100%; justify-content: center; }
+@media (max-width: 720px) {
+  .es-item .es-meta { display: flex; flex-wrap: wrap; }
+  .es-item .es-meta .es-chip { width: auto; }
+}
+
+/* 题目页：卷内/分类内上一题、下一题 */
+.es-item-nav { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; }
+.es-item-pos { flex: 1; text-align: center; font-size: 12.5px; color: var(--color-text-muted); }
+.es-paper-ctx { border-color: var(--color-text-muted); color: var(--color-text-muted); }

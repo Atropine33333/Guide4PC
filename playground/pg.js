@@ -39,7 +39,7 @@
     stdin: ZH ? '输入' : 'Input',
     expected: ZH ? '期望输出' : 'Expected',
     actual: ZH ? '实际输出' : 'Actual',
-    output: ZH ? '程序输出' : 'Program output',
+    output: ZH ? '运行结果' : 'Result',
     hint: ZH ? '小提示' : 'Hint',
     loadFail: ZH ? '题目数据加载失败' : 'Failed to load exercise data',
     retry: ZH ? '重试' : 'Retry',
@@ -422,7 +422,14 @@
     var runBtn = h('button', { class: 'ex-run', type: 'button', text: TEXT.run });
     var resetBtn = h('button', { class: 'ex-reset', type: 'button', text: TEXT.reset });
     var checkList = h('ol', { class: 'ex-checks' });
-    var outputBox = h('pre', { class: 'ex-output', hidden: '' });
+    var outputBody = h('pre', { class: 'ex-output-body' });
+    var outputErr = h('pre', { class: 'ex-output-body ex-output-err' });
+    var outputMeta = h('span', { class: 'ex-output-meta', text: '' });
+    var outputBox = h('div', { class: 'ex-output-wrap', hidden: '' }, [
+      h('div', { class: 'ex-output-head' }, [h('span', { text: TEXT.output }), outputMeta]),
+      outputBody,
+      outputErr,
+    ]);
     var diagBox = h('div', { class: 'ex-diagnostics' });
     var resultLine = h('div', { class: 'ex-result', hidden: '' });
     var score = h('span', { class: 'ex-score', text: '—/' + checks.length });
@@ -582,7 +589,10 @@
       diagBox.innerHTML = '';
       diagBox.hidden = true;
       outputBox.hidden = true;
-      outputBox.textContent = '';
+      outputBody.textContent = '';
+      outputErr.textContent = '';
+      outputErr.hidden = true;
+      outputMeta.textContent = '';
       resultLine.hidden = true;
       resultLine.textContent = '';
       score.textContent = '—/' + checks.length;
@@ -629,9 +639,15 @@
       if (result.diagnostics && result.diagnostics.length) {
         showDiagnostics(result.diagnostics);
       }
-      if (result.stdout) {
+      if (result && (result.exitCode != null || result.stdout || result.stderr)) {
         outputBox.hidden = false;
-        outputBox.textContent = result.stdout;
+        outputBody.textContent = result.stdout || (ZH ? '（没有标准输出）' : '(no stdout)');
+        outputErr.textContent = result.stderr || '';
+        outputErr.hidden = !result.stderr;
+        var bits = [];
+        if (result.exitCode != null) bits.push('exit ' + result.exitCode);
+        if (typeof result.runMs === 'number') bits.push(Math.round(result.runMs) + ' ms');
+        outputMeta.textContent = bits.join(' · ');
       }
     }
 

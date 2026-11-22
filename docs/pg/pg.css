@@ -621,22 +621,37 @@
   overflow-x: auto;
 }
 
-/* 程序输出 */
+/* 程序输出（成功后也始终显示） */
 
-.ex-output {
-  margin: 0;
-  padding: 12px 14px;
+.ex-output-wrap {
+  margin-top: var(--ex-s3);
   border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.ex-output-wrap[hidden] { display: none; }
+.ex-output-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  font-size: var(--ex-fs-xs);
+  color: var(--color-text-muted);
+}
+.ex-output-meta { font-family: var(--font-mono); }
+.ex-output-body {
+  margin: 0;
+  padding: 10px 12px;
   background: var(--color-pre-bg);
   font-family: var(--font-mono);
   font-size: var(--ex-fs-sm);
-  line-height: 1.65;
+  line-height: 1.6;
   max-height: 14rem;
   overflow: auto;
   white-space: pre-wrap;
 }
-
-.ex-output[hidden] { display: none; }
+.ex-output-err { color: var(--ex-fail); border-top: 1px solid var(--color-border); }
+.ex-output-err[hidden] { display: none; }
 
 /* ── 窄屏 ────────────────────────────────────────────────────────────────── */
 

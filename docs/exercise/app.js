@@ -317,7 +317,7 @@
       if (!it) { missing.push(id); return; }
       if (!first) first = it;
       list.appendChild(h('li', {}, [
-        h('a', { href: '#/' + (it.dir || 'cpp') + '/' + it.id, text: titleOf(it) }),
+        h('a', { href: itemHref(it.dir || 'cpp', it.id, paperId), text: titleOf(it) }),
         h('span', { class: 'es-meta' }, [catBox(it.category), rankBox(it.rank)]),
       ]));
     });
@@ -326,7 +326,7 @@
       app.appendChild(h('p', { class: 'es-empty', text: t('有 ' + missing.length + ' 道题暂不可用：', missing.length + ' missing: ') + missing.join(', ') }));
     }
     if (first) {
-      app.appendChild(h('a', { class: 'es-btn es-btn-primary', href: '#/' + (first.dir || 'cpp') + '/' + first.id, text: t('开始练习', 'Start') }));
+      app.appendChild(h('a', { class: 'es-btn es-btn-primary es-btn-lg', href: itemHref(first.dir || 'cpp', first.id, paperId), text: t('开始练习', 'Start') }));
     }
   }
 
@@ -339,17 +339,40 @@
   }
 
   // ── 页面：题目 ─────────────────────────────────────────────────────────────
-  function renderDetail(lang, id) {
+  function renderDetail(lang, id, paperId) {
     app.innerHTML = '';
     var item = state.items.filter(function (it) { return it.id === id && (it.dir || it.lang) === lang; })[0];
     if (!item) {
       app.appendChild(h('div', { class: 'es-empty', text: t('没有找到这道题。', 'Exercise not found.') }));
       return;
     }
-    app.appendChild(h('a', { class: 'es-back', href: '#/', text: t('← 返回题目列表', '← Back to exercises') }));
+    var paper = paperId ? state.papers.filter(function (p) { return p.id === paperId; })[0] : null;
+    var paperIds = paper ? (paper.items || []).filter(function (pid) {
+      return state.items.some(function (x) { return x.id === pid; });
+    }) : null;
+    var paperPos = paperIds ? paperIds.indexOf(id) : -1;
+    app.appendChild(h('a', { class: 'es-back', href: paper ? '#/paper/' + paper.id : '#/', text: paper ? t('← 返回卷子', '← Back to paper') : t('← 返回题目列表', '← Back to exercises') }));
     app.appendChild(h('header', { class: 'es-problem-head' }, [
       h('h1', { class: 'es-problem-title', text: titleOf(item) }),
-      h('div', { class: 'es-meta' }, [langBox(item.lang), catBox(item.category), rankBox(item.rank)]),
+      h('div', { class: 'es-meta' }, [
+        paper ? h('span', { class: 'es-chip es-paper-ctx', text: paperTitle(paper) + ' \u00b7 ' + (paperPos + 1) + '/' + paperIds.length }) : null,
+        langBox(item.lang), catBox(item.category), rankBox(item.rank),
+      ].filter(Boolean)),
+    ]));
+
+    // 上一题 / 下一题：卷内按卷子顺序，否则按同分类的 rank 顺序
+    var navIds = paperIds || state.items.filter(function (x) {
+      return (x.dir || x.lang) === lang && x.category === item.category;
+    }).sort(function (a, b) {
+      return (a.rank || 0) - (b.rank || 0) || (a.id < b.id ? -1 : 1);
+    }).map(function (x) { return x.id; });
+    var navPos = navIds.indexOf(id);
+    var prevId = navPos > 0 ? navIds[navPos - 1] : null;
+    var nextId = navPos >= 0 && navPos < navIds.length - 1 ? navIds[navPos + 1] : null;
+    app.appendChild(h('div', { class: 'es-item-nav' }, [
+      prevId ? h('a', { class: 'es-btn', href: itemHref(lang, prevId, paper ? paper.id : null), text: t('← 上一题', '← Prev') }) : h('span', { class: 'es-btn is-disabled', text: t('← 上一题', '← Prev') }),
+      h('span', { class: 'es-item-pos', text: navIds.length > 1 ? t('第 ' + (navPos + 1) + ' / ' + navIds.length + ' 题', 'Problem ' + (navPos + 1) + ' of ' + navIds.length) : '' }),
+      nextId ? h('a', { class: 'es-btn es-btn-next', href: itemHref(lang, nextId, paper ? paper.id : null), text: t('下一题 →', 'Next →') }) : h('span', { class: 'es-btn is-disabled', text: t('下一题 →', 'Next →') }),
     ]));
 
     var prose = h('div', { class: 'es-prose' }, [h('p', { class: 'es-empty', text: t('正在载入题面…', 'Loading problem…') })]);
@@ -428,7 +451,7 @@
   }
   function playerVer() {
     var v = window.GUIDE4PC_VERSION;
-    return v && v !== '99963a8bb6' ? '?v=' + encodeURIComponent(v) : '';
+    return v && v !== 'a3c55c9e88' ? '?v=' + encodeURIComponent(v) : '';
   }
   function ensurePlayground() {
     window.G4PC_BASE = ROOT;
@@ -440,11 +463,19 @@
   }
 
   // ── 路由 ───────────────────────────────────────────────────────────────────
+  function itemHref(lang, id, paperId) {
+    return '#/' + lang + '/' + id + (paperId ? '?paper=' + encodeURIComponent(paperId) : '');
+  }
+
   function route() {
     var raw = (location.hash || '').replace(/^#\/?/, '');
+    var qi = raw.indexOf('?');
+    var query = '';
+    if (qi >= 0) { query = raw.slice(qi + 1); raw = raw.slice(0, qi); }
     var parts = raw.split('/').filter(Boolean);
+    var paperId = new URLSearchParams(query).get('paper');
     if (parts[0] === 'paper' && parts[1]) renderPaper(parts[1]);
-    else if (parts.length >= 2) renderDetail(parts[0], parts.slice(1).join('/'));
+    else if (parts.length >= 2) renderDetail(parts[0], parts.slice(1).join('/'), paperId);
     else { state.lang = 'cpp'; renderList(); }
     window.scrollTo(0, 0);
   }

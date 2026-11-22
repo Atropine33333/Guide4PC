@@ -241,6 +241,8 @@ async function runCases(compiler, spec, code, limits) {
   let runMs = 0;
   let firstDiagnostics = null;
   let firstFail = null;
+  let lastStdout = '';
+  let lastStderr = '';
 
   const allChecks = spec.checks || [];
   for (let checkIndex = 0; checkIndex < allChecks.length; ++checkIndex) {
@@ -261,6 +263,8 @@ async function runCases(compiler, spec, code, limits) {
       const r = await compiler.run(code, input, { compileArgs: ['-O1', '-Wall'] });
       compileMs += r.compileMs || 0;
       runMs += r.runMs || 0;
+      lastStdout = r.stdout || '';
+      lastStderr = r.stderr || '';
       if (r.errors && r.errors.length) {
         ok = false;
         detail = { caseIndex: i, input, expected: null, actual: null, compileError: true };
@@ -304,9 +308,9 @@ async function runCases(compiler, spec, code, limits) {
     compileMs,
     runMs,
     exitCode: firstFail ? firstFail.exitCode : 0,
-    stdout: '',
-    stderr: '',
-    truncated: false,
+    stdout: limitText(lastStdout, maxBytes).text,
+    stderr: limitText(lastStderr, maxBytes).text,
+    truncated: limitText(lastStdout, maxBytes).truncated || limitText(lastStderr, maxBytes).truncated,
   };
 }
 
