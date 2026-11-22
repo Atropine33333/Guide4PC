@@ -8,7 +8,7 @@
       "en": "Data Structures Core"
     },
     "items": [
-      "data-min-stack",
+      "min-stack",
       "data-deque-ops",
       "data-union-find",
       "data-bst-height",
