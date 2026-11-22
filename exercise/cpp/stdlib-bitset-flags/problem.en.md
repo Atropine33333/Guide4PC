@@ -1,18 +1,20 @@
-Maintain a 64-bit flag register whose bits all start at 0. Read and execute a sequence of commands.
+Gather round, honored guests, and hear of the sixty-four-bit tablet. On the storyteller's table it lies, its marks numbered 0 to 63, with 0 at the right hand, the least significant. At first the tablet is blank: all sixty-four cells hold 0.
 
-The commands are:
+Now `n` slips of paper come up from the audience, each bearing one order. The storyteller takes them in turn, and for each slip he acts:
 
-- `set i`: set bit `i` to 1.
-- `reset i`: clear bit `i` to 0.
-- `flip i`: toggle bit `i`.
-- `test i`: print the value of bit `i` (`0` or `1`).
-- `count`: print the number of bits currently set to 1.
-- `first`: print the lowest index whose bit is 1, or `-1` if no bit is set.
-- `last`: print the highest index whose bit is 1, or `-1` if no bit is set.
-- `any`: print `1` if at least one bit is set, otherwise `0`.
-- `fill`: set every bit to 1.
+- `set i`: turn cell `i` to 1.
+- `reset i`: wipe cell `i` to 0.
+- `flip i`: turn cell `i` over, 0 to 1 and 1 to 0.
+- `test i`: call out whether cell `i` is now 0 or 1.
+- `count`: count how many 1s the tablet bears.
+- `first`: call the lowest lit index; if all are dark, call `-1`.
+- `last`: call the highest lit index; if all are dark, call `-1`.
+- `any`: call `1` if at least one cell is lit, otherwise `0`.
+- `fill`: light all sixty-four cells.
 
-The index `i` satisfies `0 <= i < 64`, and bit 0 is the least significant bit.
+But mark this: only `test`, `count`, `first`, `last`, and `any` speak aloud. The other four merely do their work and keep silent. Exactly one space separates a command from its index.
+
+**In plain words**: Maintain a 64-bit flag register that starts at all zeros and execute `n` commands in order. `set`, `reset`, `flip`, and `test` take an index `i` (`0 <= i < 64`, with bit 0 the least significant); `test` prints that bit, `count` prints the number of 1s, `first` prints the lowest set index, `last` the highest, `any` prints whether a 1 exists, and `fill` sets every bit. When no bit is set, `first` and `last` both print `-1`. Print only results, never echo the commands. You may use `std::bitset<64>` or maintain a 64-bit unsigned integer yourself.
 
 ### Input
 

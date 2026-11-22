@@ -6,8 +6,8 @@
   "rank": 4,
   "harness": "harness.cpp",
   "title": {
-    "chs": "金额的流输入输出",
-    "en": "Stream I/O for Money"
+    "chs": "账房先生的金额账",
+    "en": "The Bookkeeper's Money Format"
   },
   "limits": {
     "timeoutMs": 4000,

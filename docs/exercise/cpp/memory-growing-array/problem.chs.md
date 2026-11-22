@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现一个自己管理内存、可以增长的整数数组，测试在隐藏的 harness 里。
+实现一个自己管理内存、可以增长的整数数组。
 
 ```cpp
 class IntVector {

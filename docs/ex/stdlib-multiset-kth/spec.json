@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 3,
   "title": {
-    "chs": "多重集合第 k 小",
-    "en": "K-th Smallest in a Multiset"
+    "chs": "第 k 张牌",
+    "en": "The K-th Card"
   },
   "limits": {
     "timeoutMs": 5000,

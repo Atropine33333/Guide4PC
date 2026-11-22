@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement an integer buffer that owns a dynamic array; a hidden harness runs the tests.
+Implement an integer buffer that owns a dynamic array.
 
 Implement `IntBuffer`:
 
@@ -11,4 +11,4 @@ Implement `IntBuffer`:
 - `bool get(int index, int& out) const`: read and return `true` when the index is valid; return `false` when out of range.
 - `void fill(int value)`: set every element to `value`.
 
-Do not use `std::vector` as the internal storage; this exercise is about managing `new[]` / `delete[]` yourself. The harness constructs, copies, and assigns repeatedly, so there must be no double free or dangling pointer.
+Do not use `std::vector` as the internal storage; this exercise is about managing `new[]` / `delete[]` yourself. Repeated construction, copying, and assignment must leave no double free or dangling pointer.

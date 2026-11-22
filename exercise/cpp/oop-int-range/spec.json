@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 5,
   "title": {
-    "chs": "自定义整数区间",
-    "en": "Custom Integer Range"
+    "chs": "数点会众的区间",
+    "en": "The Range of the Counted Tribes"
   },
   "limits": {
     "timeoutMs": 5000,

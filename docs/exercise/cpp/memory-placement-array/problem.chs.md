@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现一个只能通过定位 `new` 构造元素的定长数组。
+实现一个只能通过定位 `new` 构造元素的定长数组。
 
 ```cpp
 #include <cstddef>

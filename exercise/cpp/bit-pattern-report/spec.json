@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "types",
   "rank": 2,
-  "title": { "chs": "32 位图案报告", "en": "32-bit Pattern Report" },
+  "title": { "chs": "32 位图案情况报告", "en": "Report on a 32-Bit Pattern" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

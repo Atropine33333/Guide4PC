@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现四个操作动态数组的函数，测试在隐藏的 harness 里。
+实现四个操作动态数组的函数。
 
 ```cpp
 int* make_zero_array(int count);

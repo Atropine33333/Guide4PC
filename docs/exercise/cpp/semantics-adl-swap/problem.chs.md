@@ -6,7 +6,7 @@
 
 于是摩西在 `gadget` 中设立了 `swap`，并数点其中人数，正如耶和华所吩咐的。
 
-**人话**：这题不读 stdin，也不写 stdout。在 `gadget` 命名空间里实现定制的 `swap(Widget&, Widget&)`：交换两个成员的 `id` 与 `value`，每调用一次就让 `swap_calls()` 加一；再实现 `swap_calls()` 与 `reset_swap_calls()`，计数器初始为 0。harness 用三种调用方式检验：非限定调用应当选中定制版本，`std::swap` 应当绕过它，两个 `int` 之间仍由 `std::swap` 处理。
+**人话**：在 `gadget` 命名空间里实现定制的 `swap(Widget&, Widget&)`：交换两个成员的 `id` 与 `value`，每调用一次就让 `swap_calls()` 加一；再实现 `swap_calls()` 与 `reset_swap_calls()`，计数器初始为 0。三种调用方式要分别成立：非限定调用应当选中定制版本，`std::swap` 应当绕过它，两个 `int` 之间仍由 `std::swap` 处理。
 
 ```cpp
 namespace gadget {
@@ -30,7 +30,8 @@ void swap(Widget& a, Widget& b);
 - `gadget::swap(Widget&, Widget&)` 交换两个成员的 `id` 与 `value`，每调用一次，`swap_calls()` 就加 1。
 - `reset_swap_calls()` 把计数清零。
 - 计数是 `gadget` 命名空间内部的全局状态，初始为 0。
-- 不要写 `main`。harness 会分别用以下方式调用：
+- 不要写 `main`。
+- 三种调用方式要分别成立：
   - 在函数内写 `using std::swap; swap(x, y);`，其中 `x`、`y` 是 `gadget::Widget`。实参类型让 ADL 找到 `gadget::swap`，定制版本应当被选中。
   - 写 `std::swap(x, y)`。这是限定调用，不会触发 ADL，因此不会调用 `gadget::swap`，计数器不应改变；两个 Widget 仍然会通过移动被交换。
   - 对两个 `int` 写 `using std::swap; swap(a, b);`。`std::swap` 应当被选中，`gadget` 的计数器保持不变。

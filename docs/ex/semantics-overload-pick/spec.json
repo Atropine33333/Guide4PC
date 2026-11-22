@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 3,
   "title": {
-    "chs": "重载决议",
-    "en": "Overload Resolution"
+    "chs": "重载决议法典",
+    "en": "The Code of Overload Resolution"
   },
   "harness": "harness.cpp",
   "limits": {

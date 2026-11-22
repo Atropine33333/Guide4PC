@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement two range-query functions over a `std::set<int>`.
+Implement two range-query functions over a `std::set<int>`.
 
 ```cpp
 #include <cstddef>

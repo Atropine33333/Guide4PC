@@ -1,4 +1,8 @@
-This task reads no stdin and writes no stdout. Implement the Luhn algorithm; a hidden harness will call your functions.
+**The Code of the Check Digit**
+
+Be it enacted by these presents, and in force from the day of publication: every holder of a number may use this Code to try its truth and to supply its final place.
+
+**In plain words**: implement `luhn_valid` and `luhn_check_digit` — the first decides whether a string of digits passes the Luhn test, the second yields the check digit to append.
 
 ```cpp
 #include <string>
@@ -7,15 +11,28 @@ bool luhn_valid(const std::string& digits);
 char luhn_check_digit(const std::string& payload);
 ```
 
-Rules:
+### The Articles
 
-- Only ASCII digit characters are processed. Spaces and hyphens `-` are skipped, and any other character is also ignored.
-- `luhn_valid` scans from the rightmost digit. Every second digit counted from the right (the rightmost digit is position 1, then 3, 5, ...) has already been doubled when it was part of the full number; equivalently, double the digits at positions 2, 4, 6, ... from the right. If the doubled value exceeds 9, subtract 9. The number is valid when the total is divisible by 10.
-- If there is no digit at all, `luhn_valid` returns `false`.
-- `luhn_check_digit(payload)` returns one ASCII digit such that appending it to `payload` makes `luhn_valid` return `true`. While computing it, double the rightmost payload digit, then every second digit moving left, because the future check digit occupies the rightmost position.
-- If `payload` contains no digits, `luhn_check_digit` returns `'0'`.
-- Do not write `main`.
+Article 1. Only ASCII digit characters are handled; spaces and hyphens `-` are skipped outright, and every other character is likewise ignored.
+
+Article 2. `luhn_valid` begins at the rightmost digit and doubles the 2nd, 4th, 6th... positions counted from the right, the rightmost being position 1; if a doubled value exceeds 9, subtract 9. Summing all positions, it returns `true` when the sum is divisible by 10.
+
+Article 3. When no digit character is present at all, `luhn_valid` returns `false`.
+
+Article 4. `luhn_check_digit(payload)` returns one ASCII digit character which, appended to `payload`, makes `luhn_valid` return `true`. In this reckoning it starts at the rightmost digit of `payload` and doubles the 1st, 3rd, 5th... positions from the right, since the check digit appended later will occupy the rightmost place.
+
+Article 5. When `payload` holds no digit at all, `luhn_check_digit` returns `'0'`.
+
+Article 6. This Code grants functions only; `main` is not provided.
+
+### Example
+
+| Call | Result |
+| --- | --- |
+| `luhn_valid("79927398713")` | `true` |
+| `luhn_valid("79927398710")` | `false` |
+| `luhn_check_digit("7992739871")` | `'3'` |
 
 ### Hint
 
-Write one helper that sums the digits using the required position rule; both public functions can use it. Remember that the string may contain spaces and `-`.
+Write one helper that sums by the positional rule, and let both public functions call it. Remember that spaces and `-` may occur inside the `std::string`.

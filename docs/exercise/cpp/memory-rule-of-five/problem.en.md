@@ -58,7 +58,7 @@ None.
 
 ### Output
 
-None. The judge checks return values and the static counters.
+None.
 
 ### Example
 

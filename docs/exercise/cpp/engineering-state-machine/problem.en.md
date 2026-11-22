@@ -15,7 +15,7 @@ Any road not in that table is barred: `apply` returns `false`, the state stays p
 
 `name(State)` announces the lower-case name: `"created"`, `"paid"`, `"shipped"`, `"delivered"`, `"cancelled"`, `"returned"`.
 
-**In plain words**: Complete `Order`. Implement `apply` with one transition table or one `switch`: a legal event changes state and returns `true`; anything else returns `false` and increments `rejected()`. `name` turns a state into its lower-case string. The judge includes your implementation; do not write `main`.
+**In plain words**: Complete `Order`. Implement `apply` with one transition table or one `switch`: a legal event changes state and returns `true`; anything else returns `false` and increments `rejected()`. `name` turns a state into its lower-case string. Do not write `main`.
 
 ```cpp
 enum class State { Created, Paid, Shipped, Delivered, Cancelled, Returned };

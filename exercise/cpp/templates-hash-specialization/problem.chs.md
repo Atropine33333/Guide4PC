@@ -1,4 +1,4 @@
-这一题不读 stdin。为自定义的二维点类型提供相等比较和 `std::hash` 特化，使它能在 `std::unordered_set` 中使用。
+为自定义的二维点类型提供相等比较和 `std::hash` 特化，使它能在 `std::unordered_set` 中使用。
 
 ```cpp
 #include <cstddef>

@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现两个对 `std::set<int>` 的区间查询函数。
+实现两个对 `std::set<int>` 的区间查询函数。
 
 ```cpp
 #include <cstddef>

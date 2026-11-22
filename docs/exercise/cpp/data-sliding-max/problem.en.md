@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement a function that returns the maximum of every contiguous window of length `window`.
+Implement a function that returns the maximum of every contiguous window of length `window`.
 
 ```cpp
 #include <cstddef>

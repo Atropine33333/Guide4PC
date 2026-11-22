@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 3,
   "title": {
-    "chs": "虚析构与形状层次",
-    "en": "Virtual Destructors and Shapes"
+    "chs": "形状仓库值夜规则",
+    "en": "Night-Shift Rules for the Shape Warehouse"
   },
   "limits": {
     "timeoutMs": 5000,

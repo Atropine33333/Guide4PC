@@ -1,4 +1,4 @@
-这一题不读 stdin。用策略类实现一个可复用的区间归约函数。
+用策略类实现一个可复用的区间归约函数。
 
 ```cpp
 #include <vector>
@@ -25,7 +25,7 @@ int reduce(const std::vector<int>& values);
 - 空序列返回 `Policy::identity()`。
 - 不要写 `main`。
 
-harness 还会定义自己的策略类（例如乘法策略）并调用 `reduce<该策略>`，所以不要把逻辑写死成求和或求最大值。
+`reduce` 还要能和自定义策略类（例如乘法策略）一起使用，所以不要把逻辑写死成求和或求最大值。
 
 ### 提示
 

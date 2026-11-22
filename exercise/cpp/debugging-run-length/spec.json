@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 2,
   "title": {
-    "chs": "游程编码（找错）",
-    "en": "Run-Length Encoding (Debug)"
+    "chs": "游程编码一段书",
+    "en": "A Tale of Run-Length Encoding"
   },
   "limits": {
     "timeoutMs": 5000,

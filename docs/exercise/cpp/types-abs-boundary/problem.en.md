@@ -1,6 +1,14 @@
-Read several 64-bit signed integers and print the absolute value of each on its own line.
+Notes on the Use of Absolute Values
 
-Values are printed in decimal; for example, the absolute value of `-42` is `42`. Note that the absolute value of `long long`'s minimum, `-9223372036854775808`, is `9223372036854775808`, which is outside the positive range of `long long`.
+1. These notes apply to every 64-bit signed integer.
+2. For any `x`, its absolute value is written `|x|` and printed in decimal, with no leading zeros and no plus sign. For example, the absolute value of `-42` is `42`.
+3. The minimum of `long long` is `-9223372036854775808`, and its absolute value is `9223372036854775808`.
+4. Rule 3 is true at all times. That number is one larger than the greatest positive value `long long` can represent.
+5. Consequently, writing `-x` for the minimum triggers signed integer overflow and is undefined behaviour; rule 2 still applies there.
+6. If you assume the result always fits back into `long long`, rule 2 is void for you: what you hand back will be a negative number, or worse.
+7. These notes exist only to state that all of the above hold at once. Choosing a container is not their business.
+
+**In plain words**: read `n` 64-bit signed integers and print each one's absolute value on its own line. The result may exceed the positive range of `long long`, so use either an unsigned 64-bit integer or treat the decimal digits as a string.
 
 **Input**:
 

@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 3,
   "title": {
-    "chs": "可选值解析",
-    "en": "Optional Integer Parsing"
+    "chs": "整数解析法典",
+    "en": "The Integer Parsing Code"
   },
   "limits": {
     "timeoutMs": 5000,

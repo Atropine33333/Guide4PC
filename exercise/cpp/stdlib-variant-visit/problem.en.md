@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement three functions that handle a `std::variant`.
+Implement three functions that handle a `std::variant`.
 
 ```cpp
 #include <string>

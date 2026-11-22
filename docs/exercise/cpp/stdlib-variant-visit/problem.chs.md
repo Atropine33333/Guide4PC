@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现三个处理 `std::variant` 的函数。
+实现三个处理 `std::variant` 的函数。
 
 ```cpp
 #include <string>

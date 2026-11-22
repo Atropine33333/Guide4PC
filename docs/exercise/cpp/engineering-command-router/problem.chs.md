@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现一个小型命令路由表，测试在隐藏的 harness 里。
+实现一个小型命令路由表。
 
 ```cpp
 #include <functional>

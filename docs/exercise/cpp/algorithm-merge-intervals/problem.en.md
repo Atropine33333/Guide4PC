@@ -6,7 +6,7 @@ And the LORD spake unto Moses, saying: "Number the camps of the tribes. Every ca
 
 And Moses did as the LORD commanded.
 
-**In plain words**: implement `merge_intervals`, which merges a collection of closed intervals into a list of disjoint intervals sorted by left endpoint. Nothing is read from stdin and nothing is written to stdout; a hidden harness runs the tests, so do not write `main`.
+**In plain words**: implement `merge_intervals`, which merges a collection of closed intervals into a list of disjoint intervals sorted by left endpoint. Do not write `main`.
 
 First define the struct:
 

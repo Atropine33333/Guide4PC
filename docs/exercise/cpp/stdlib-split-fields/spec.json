@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 2,
   "title": {
-    "chs": "拆分与拼接字段",
-    "en": "Split and Join Fields"
+    "chs": "拆分与拼接",
+    "en": "Splitting Fields"
   },
   "limits": {
     "timeoutMs": 5000,

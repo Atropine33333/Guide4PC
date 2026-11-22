@@ -1022,3 +1022,64 @@ body {
 /* ─── Exercise mounts (:::exercise) ───────────────────────────────────── */
 /* Exercise mounts are styled by pg/pg.css, which is loaded on demand. */
 
+
+.footer-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in oklch, currentColor 35%, transparent);
+}
+.footer-link:hover { color: var(--color-primary); }
+
+.licenses-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  width: min(640px, calc(100vw - 32px));
+  max-height: min(76vh, 720px);
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-pop);
+  overflow: auto;
+}
+.licenses-dialog::backdrop { background: oklch(0 0 0 / 0.32); }
+.licenses-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.licenses-head h2 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.licenses-body { padding: 14px 16px 18px; font-size: 13.5px; line-height: 1.75; text-align: left; }
+.licenses-body p { margin: 0 0 10px; }
+.licenses-list { margin: 10px 0 14px; padding: 0; list-style: none; }
+.licenses-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.licenses-list li:last-child { border-bottom: 0; }
+.licenses-list a { font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
+.licenses-note { color: var(--color-text-muted); font-size: 12.5px; }

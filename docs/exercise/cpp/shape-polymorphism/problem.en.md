@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a family of shape classes; a hidden harness runs the tests.
+Implement a family of shape classes.
 
 Define an abstract base class `Shape`, then implement `Rectangle` and `Circle`:
 
@@ -7,4 +7,4 @@ Define an abstract base class `Shape`, then implement `Rectangle` and `Circle`:
 - `Circle(double radius)`: area is `π * radius * radius`; `name()` returns `"circle"`. Use `3.14159265358979323846` for `π`.
 - Both derived classes inherit `Shape` publicly and override those two virtual functions.
 
-The harness calls through `Shape*`. Areas are compared with relative tolerance `1e-9`; names must match exactly, character by character.
+The functions must work when called through `Shape*`. Areas are compared with relative tolerance `1e-9`; names must match exactly, character by character.

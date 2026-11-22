@@ -1,4 +1,22 @@
-这一题不读 stdin，也不写 stdout。实现一个指数退避的重试策略，测试在隐藏的 harness 里。
+惠子谓庄子曰：“今有重试之法，一试不成，再试，其待也倍之。一尺之棰，日取其半，万世不竭；此则日增其倍，亦有穷乎？”
+
+庄子曰：“有穷。有 `max_delay` 在其上，如天之覆，倍而不能过。第 `k` 次试，待时 `base_delay * 2^k`，与上限相较，取小者。”
+
+惠子曰：“`max_attempts` 尽，则如何？”
+
+庄子曰：“`has_next()` 不复为真；`next_delay()` 答以 `-1`，而 `attempts()` 不动。此谓知止。”
+
+惠子曰：“`reset()` 何如？”
+
+庄子曰：“尽弃前尘，自零而始。”
+
+惠子曰：“若 `base_delay` 已近 `int` 之极，倍增不已，岂不溢出？”
+
+庄子曰：“故藏于 `long long`，先倍而后比；已及上限，则不复倍增。器有小大，用各有宜。”
+
+惠子曰：“善。”
+
+**人话**：补完 `RetryPolicy`。第 `k` 次（从 0 起）的等待是 `min(base_delay * 2^k, max_delay)`；`has_next()` 在 `attempts() < max_attempts` 时为真；`next_delay()` 返回等待并让 `attempts()` 加一，次数用尽返回 `-1` 且不改变 `attempts()`；`reset()` 清零。计算不得溢出。
 
 ```cpp
 class RetryPolicy {
@@ -11,7 +29,7 @@ public:
 };
 ```
 
-规则：
+### 规则或约定
 
 - `base_delay >= 0`，`max_delay >= base_delay`，`max_attempts >= 0`。
 - 第 `k` 次尝试（`k` 从 0 开始）的等待时间是 `min(base_delay * 2^k, max_delay)`。

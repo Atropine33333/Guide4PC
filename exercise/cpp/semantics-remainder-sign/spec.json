@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 1,
   "title": {
-    "chs": "余数的符号",
-    "en": "Sign of the Remainder"
+    "chs": "余数",
+    "en": "Remainders in the Nine Chapters"
   },
   "limits": {
     "timeoutMs": 5000,

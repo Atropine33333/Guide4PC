@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement an integer stack that can report its current minimum at any time; a hidden harness runs the tests.
+Implement an integer stack that can report its current minimum at any time.
 
 Implement `MinStack` with the following members:
 

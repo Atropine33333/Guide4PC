@@ -1,4 +1,12 @@
-This exercise reads no stdin and writes no stdout. Implement a function that merges closed intervals; a hidden harness runs the tests.
+**Chapter Seven**
+
+The children of Israel went out of Egypt and pitched in the wilderness, tribe by tribe. Each tribe pitched from `left` to `right`; where two camps touched, their tents became one camp.
+
+And the LORD spake unto Moses, saying: "Number the camps of the tribes. Every camp that touches another shall be joined into one; those that merely stand side by side, not touching, shall each keep its own ground. When the joining is done, write them down from the smallest starting place to the greatest. Leave out no tribe, and join no camp twice."
+
+And Moses did as the LORD commanded.
+
+**In plain words**: implement `merge_intervals`, which merges a collection of closed intervals into a list of disjoint intervals sorted by left endpoint. Do not write `main`.
 
 First define the struct:
 

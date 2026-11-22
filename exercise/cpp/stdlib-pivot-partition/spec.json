@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 3,
   "title": {
-    "chs": "稳定的三路划分",
-    "en": "Stable Three-Way Partition"
+    "chs": "三路分班",
+    "en": "Three-Way Sorting, Live"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -18,7 +18,7 @@ Rule Seven: A man who steps past the end of `std::size_t` is not wrapped around.
 
 Rule Eight: The camp has no front door. Do not write `main`.
 
-**In plain words**: implement three functions. `align_up` returns the smallest aligned value not less than `value`; `padding_for` returns the bytes needed to pad up to the boundary; `is_aligned` reports whether a pointer address is a multiple of `alignment`. With `alignment == 0` they return `value`, `0`, and `false`. `is_aligned(nullptr, positive power of two)` returns `true`. With a non-power-of-two `alignment`, `is_aligned` returns `false` and the other two only need to avoid crashing. A result beyond the range of `std::size_t` returns `SIZE_MAX`. This exercise reads no stdin and writes no stdout.
+**In plain words**: implement three functions. `align_up` returns the smallest aligned value not less than `value`; `padding_for` returns the bytes needed to pad up to the boundary; `is_aligned` reports whether a pointer address is a multiple of `alignment`. With `alignment == 0` they return `value`, `0`, and `false`. `is_aligned(nullptr, positive power of two)` returns `true`. With a non-power-of-two `alignment`, `is_aligned` returns `false` and the other two only need to avoid crashing. A result beyond the range of `std::size_t` returns `SIZE_MAX`.
 
 ```cpp
 #include <cstddef>

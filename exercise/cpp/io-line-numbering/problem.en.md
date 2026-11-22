@@ -1,4 +1,17 @@
-Read every line from standard input until EOF, then print each line with a line number.
+> Lines of writing, unnumbered still,
+> count them first, and know the fill;
+> width once fixed by digit count,
+> then number each without a fault.
+
+The *Nine Chapters* has a rule: to number the lines, count the lines first; once the width is fixed, numbering may begin.
+
+A bundle of writing lies before you, its number of lines unknown until the scroll ends. How shall it be numbered?
+
+Answer: let `n` be the total number of lines, empty lines included, and let `w` be the number of decimal digits in `n`. Line `k`, counted from 1, is written as the number right-aligned in width `w` with spaces on the left, then one bar `|` with no space after it, then the original line copied exactly, spaces at either end untouched. An empty line prints its number and `|`, then ends. If the scroll holds not one line, write nothing.
+
+Rule: read to the end before writing. The text may or may not end with a newline; a final segment without one still counts as a line. No line exceeds 200 characters, and there are at most 1000. You cannot write first and mend the numbers later: without the total, the width cannot be known.
+
+**In plain words**: read to EOF collecting every line, find the total `n` and its digit count `w`, then print each line as "number right-aligned in `w`, one `|`, the original line"; empty input prints nothing.
 
 ### Output format
 

@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 4,
   "title": {
-    "chs": "多关键字排序",
-    "en": "Multi-Key Sorting"
+    "chs": "记录排序法典",
+    "en": "The Record Ordering Code"
   },
   "harness": "harness.cpp",
   "limits": {

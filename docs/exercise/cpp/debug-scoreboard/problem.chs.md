@@ -10,8 +10,6 @@
 
 **人话**：实现 `ScoreBoard` 的成员函数：`add` 对同一玩家累加分数；`score` 取出总分，玩家不存在时返回 `false`；`players` 返回不同玩家数；`leader` 返回总分最高者的名字，并列取字典序最小，记分板为空时返回 `false`。starter 有几处行为不符约定，逐一修好；不改成员函数签名，不写 `main`。
 
-这一题不读 stdin，也不写 stdout。测试在隐藏的 harness 里。
-
 约定的行为：
 
 - `void add(const std::string& player, int points)`：给玩家加分。同一个玩家多次加分应当**累加**。`points` 为正数。

@@ -12,7 +12,7 @@ Order now and we'll throw in a guard clause, free: `if (data == nullptr || count
 
 Operators are standing by. Do not write `main`. Void where prohibited.
 
-**In plain words**: implement three pointer-plus-length functions. When `data == nullptr` or `count <= 0` they return `0`, `fallback`, and `0`, and must not touch `data`. `sum_or_zero` sums into a `long long`; `max_or` returns the largest element; `count_even` counts even values, negatives included. This exercise reads no stdin and writes no stdout.
+**In plain words**: implement three pointer-plus-length functions. When `data == nullptr` or `count <= 0` they return `0`, `fallback`, and `0`, and must not touch `data`. `sum_or_zero` sums into a `long long`; `max_or` returns the largest element; `count_even` counts even values, negatives included.
 
 ```cpp
 long long sum_or_zero(const int* data, int count);

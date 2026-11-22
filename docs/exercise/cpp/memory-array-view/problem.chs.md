@@ -22,7 +22,7 @@
 
 乙：得嘞，齐活。
 
-**人话**：实现 `IntView`：默认构造为空视图；构造函数在 `data == nullptr` 或 `count <= 0` 时也构造空视图。视图只保存指针与长度，不拷贝数据，通过视图改元素会改原数组。`slice(begin, count)` 返回与原视图共享内存的新视图，不修改原视图；越界或 `count == 0` 时返回空视图。`operator[]` 的下标保证合法，无需检查。本题不读 stdin，不写 stdout；不写 `main`。
+**人话**：实现 `IntView`：默认构造为空视图；构造函数在 `data == nullptr` 或 `count <= 0` 时也构造空视图。视图只保存指针与长度，不拷贝数据，通过视图改元素会改原数组。`slice(begin, count)` 返回与原视图共享内存的新视图，不修改原视图；越界或 `count == 0` 时返回空视图。`operator[]` 的下标保证合法，无需检查。不写 `main`。
 
 ```cpp
 class IntView {

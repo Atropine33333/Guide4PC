@@ -1,4 +1,18 @@
-This exercise reads no stdin and writes no stdout. Constrain a template parameter with a C++20 concept and implement an average function, tested by a hidden harness.
+CODE OF NUMERIC TYPES
+
+Article 1. "Numeric type" in this Code means an arithmetic type other than `bool`. `int`, `double` and `unsigned` fall within it; `bool` and `std::string` fall outside.
+
+Article 2. Every template that accepts a numeric type shall constrain its parameter with `Numeric`, and shall not substitute a run-time check.
+
+Article 3. An average shall be computed in its own type `T` from first to last. The sum of the elements is kept in `T`, and the count is converted to `T`.
+
+Article 4. For an empty sequence, return the `fallback` supplied by the caller.
+
+Article 5. Otherwise return the average of all elements. Integer division truncates toward zero: the average of `{1, 2}` is `1`, and of `{-1, -2}` is `-1`.
+
+Article 6. This Code takes effect when the template is instantiated.
+
+**In plain words**: define the concept `Numeric` (arithmetic types, excluding `bool`), then implement `average_of`: return `fallback` for an empty sequence, and compute the whole average in `T` otherwise, with integer division truncating toward zero.
 
 ```cpp
 #include <concepts>

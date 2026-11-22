@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 2,
   "title": {
-    "chs": "库存账本",
-    "en": "Inventory Ledger"
+    "chs": "家主与仓房账目",
+    "en": "The Master's Storehouse Ledger"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a singly linked integer list; a hidden harness runs the tests.
+Implement a singly linked integer list.
 
 Implement `IntList` with the following members:
 
@@ -10,4 +10,4 @@ Implement `IntList` with the following members:
 - `bool get(int index, int& out) const`: `index` is 0-based; if valid, write the value to `out` and return `true`, otherwise return `false`.
 - `int size() const`: return the number of elements.
 
-Do not use `std::list` or `std::vector` as the internal storage; this exercise is about managing node pointers yourself. The harness creates and destroys several `IntList` objects, so the destructor must release the memory correctly.
+Do not use `std::list` or `std::vector` as the internal storage; this exercise is about managing node pointers yourself, and the destructor must release the memory correctly.

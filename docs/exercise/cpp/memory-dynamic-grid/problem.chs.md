@@ -13,7 +13,7 @@
 
 勿作 `main`。
 
-**人话**：实现 `Grid(rows, cols)`：所有元素放在一块连续的 `std::vector<int>` 里，按行优先排列，下标为 `row * cols + col`；`rows()` / `cols()` 返回构造时的维度；`at(row, col)` 返回引用，harness 只传合法下标；`fill(value)` 把所有元素设为该值；`row_major()` 返回按行优先顺序排列的元素副本，长度 `rows * cols`；拷贝出来的网格必须与原网格互相独立。本题不读 stdin；不写 `main`。
+**人话**：实现 `Grid(rows, cols)`：所有元素放在一块连续的 `std::vector<int>` 里，按行优先排列，下标为 `row * cols + col`；`rows()` / `cols()` 返回构造时的维度；`at(row, col)` 返回引用，下标保证合法；`fill(value)` 把所有元素设为该值；`row_major()` 返回按行优先顺序排列的元素副本，长度 `rows * cols`；拷贝出来的网格必须与原网格互相独立。不写 `main`。
 
 ```cpp
 #include <vector>

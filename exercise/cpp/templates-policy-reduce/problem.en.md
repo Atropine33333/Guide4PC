@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement a reusable range reduction driven by policy classes.
+Implement a reusable range reduction driven by policy classes.
 
 ```cpp
 #include <vector>
@@ -25,7 +25,7 @@ Rules:
 - An empty sequence returns `Policy::identity()`.
 - Do not write `main`.
 
-The harness also defines its own policy class (for example a product policy) and calls `reduce<that policy>`, so do not hard-code summation or maximisation.
+`reduce` must also work with a custom policy class (for example a product policy), so do not hard-code summation or maximisation.
 
 ### Hint
 

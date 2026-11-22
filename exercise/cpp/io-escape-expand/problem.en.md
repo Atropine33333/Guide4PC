@@ -1,4 +1,12 @@
-This exercise reads no stdin and writes no stdout. Implement a function that expands escape sequences in text; a hidden harness runs the tests.
+Oh, my dear, at last someone who knows the trade. Do sit down—consider this your own cutting room.
+
+You see, on the scripts this old machine receives, the backslash is a meddlesome fellow. The moment it appears, the letter after it must change its voice: `n` is read as a newline, `t` as a tab, `r` as a carriage return; and a backslash standing shoulder to shoulder with another becomes one lonely backslash. Good heavens, what a trade for rules.
+
+And when some other character follows it? Leave both exactly as they are, and let no one touch either. If it stands at the very end of the script with nobody behind it, so be it—leave the one backslash where it is. Spaces, digits, punctuation: copy them all.
+
+And please, my dear, do not write your own `main`.
+
+**In plain words**: implement `expand_escapes(const std::string& input)`; scan left to right, expanding `\n`, `\t`, `\r` and `\\` into the characters they stand for, and keeping unknown escapes and a lone trailing backslash as they are.
 
 ```cpp
 std::string expand_escapes(const std::string& input);

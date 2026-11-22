@@ -1,4 +1,20 @@
-This exercise reads no stdin and writes no stdout. Build a doubly linked chain with `shared_ptr` and `weak_ptr` that never forms an ownership cycle, tested by a hidden harness.
+**EXODUS: THE CHAIN**
+
+And the Lord spoke to Moses, saying:
+
+"Make a chain for the people. Let every link face forward, and let it look back only once. The one that looks back is counted as seeing, and not as owning."
+
+And Moses said, "What if a man looks back and puts out his hand to hold?"
+
+And the Lord said, "He shall not. The chain that reaches back becomes a ring, and no link in the ring will let go, and the last link shall not go out. Make the backward cord a weak cord: it sees, and it does not take."
+
+"The length of the chain is given by `length`, and the links are numbered from `0` upward. The first link looks back at nothing; the last link looks forward at nothing."
+
+"Whoever counts the links walks the forward cord, one link, one count, and stops at the empty place. Whoever examines the chain shall see that every link looks back upon the one before it, and that the first link's backward look has already failed."
+
+"And when the people leave the camp, they shall not make a `main` for themselves."
+
+**In plain words**: implement three functions. `build_chain(length)` builds a doubly linked chain of exactly `length` nodes with `value`s from `0` to `length - 1`; `next` is a `shared_ptr`, and `previous` must be a `weak_ptr` that adds no ownership; `length <= 0` returns a null pointer. `chain_length(head)` counts nodes along `next`, returning 0 for a null pointer. `links_consistent(head)` checks that for every non-empty `next`, the successor's `previous.lock()` points back to that node, and that the head's `previous` has already expired; a null pointer is consistent. Do not write `main`.
 
 ```cpp
 #include <memory>
@@ -13,16 +29,6 @@ std::shared_ptr<Node> build_chain(int length);
 std::size_t chain_length(const std::shared_ptr<Node>& head);
 bool links_consistent(const std::shared_ptr<Node>& head);
 ```
-
-Rules:
-
-- `build_chain(length)` creates a chain of exactly `length` nodes whose `value`s are `0, 1, ..., length - 1`.
-- Each node's `next` points to the following node; the last node's `next` is empty.
-- Each node's `previous` points to the preceding node, and the first node's `previous` is empty; `previous` must be a weak reference and must not add ownership.
-- `length <= 0` returns a null pointer.
-- `chain_length(head)` counts nodes following `next`; a null pointer returns 0.
-- `links_consistent(head)` checks the links: for every node with a non-empty `next`, the successor's `previous.lock()` must point back to that node, and the head's `previous` must already be expired. A null pointer is consistent.
-- Do not write `main`.
 
 ### Example
 

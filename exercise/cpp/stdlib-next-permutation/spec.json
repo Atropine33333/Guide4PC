@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 3,
   "title": {
-    "chs": "下一个排列",
-    "en": "Next Permutation"
+    "chs": "列数之次第",
+    "en": "The Next Arrangement"
   },
   "limits": {
     "timeoutMs": 5000,

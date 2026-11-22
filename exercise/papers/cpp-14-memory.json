@@ -1,0 +1,15 @@
+{
+  "id": "cpp-14-memory",
+  "lang": "cpp",
+  "title": {
+    "chs": "内存与资源卷",
+    "en": "Memory & Resources"
+  },
+  "items": [
+    "memory-heap-array",
+    "memory-rule-of-zero",
+    "memory-scope-guard",
+    "memory-deep-copy",
+    "owned-buffer"
+  ]
+}

@@ -13,7 +13,7 @@ And again the art says: a copy must have its own field, so that changes to the n
 
 Do not make a `main`.
 
-**In plain words**: implement `Grid(rows, cols)`. All elements live in one contiguous `std::vector<int>` in row-major order, with index `row * cols + col`. `rows()` and `cols()` return the dimensions given at construction. `at(row, col)` returns a reference; the harness passes only valid indices. `fill(value)` sets every element to that value. `row_major()` returns a copy of the elements in row-major order, of length `rows * cols`. A copied grid must be independent of the original. This exercise reads no stdin; do not write `main`.
+**In plain words**: implement `Grid(rows, cols)`. All elements live in one contiguous `std::vector<int>` in row-major order, with index `row * cols + col`. `rows()` and `cols()` return the dimensions given at construction. `at(row, col)` returns a reference; the indices are guaranteed valid. `fill(value)` sets every element to that value. `row_major()` returns a copy of the elements in row-major order, of length `rows * cols`. A copied grid must be independent of the original. Do not write `main`.
 
 ```cpp
 #include <vector>

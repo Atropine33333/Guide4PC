@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 2,
   "title": {
-    "chs": "近似相等",
-    "en": "Nearly Equal"
+    "chs": "一尺之棰与容差",
+    "en": "The Rod Halved Each Day"
   },
   "limits": {
     "timeoutMs": 5000,

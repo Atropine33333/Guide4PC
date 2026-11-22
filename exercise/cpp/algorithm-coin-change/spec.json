@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 3,
   "title": {
-    "chs": "最少硬币数",
-    "en": "Minimum Coin Change"
+    "chs": "王与仆人的账",
+    "en": "The King and the Servant's Debt"
   },
   "limits": {
     "timeoutMs": 5000,

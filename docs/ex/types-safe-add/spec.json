@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 4,
   "title": {
-    "chs": "带溢出检查的整数运算",
-    "en": "Integer Arithmetic with Overflow Checks"
+    "chs": "有符号整数运算法",
+    "en": "The Code of Signed Integers"
   },
   "limits": {
     "timeoutMs": 5000,

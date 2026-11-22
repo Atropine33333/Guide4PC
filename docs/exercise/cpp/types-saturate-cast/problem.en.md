@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement saturating conversions that never trigger undefined behaviour.
+Implement saturating conversions that never trigger undefined behaviour.
 
 ```cpp
 #include <cmath>

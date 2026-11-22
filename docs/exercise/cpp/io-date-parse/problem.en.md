@@ -1,6 +1,6 @@
 *Standing Orders for the Night Shift of the Date Bureau*
 
-You are the new night clerk. Every order below is true. Follow each one; this task reads no stdin and writes no stdout.
+You are the new night clerk. Every order below is true. Follow each one.
 
 ```cpp
 #include <string>

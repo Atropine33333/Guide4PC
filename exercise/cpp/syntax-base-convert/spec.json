@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 3,
   "title": {
-    "chs": "任意进制转换",
-    "en": "Conversion Between Bases"
+    "chs": "进制互化之术",
+    "en": "The Art of Converting Bases"
   },
   "harness": "harness.cpp",
   "limits": {

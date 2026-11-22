@@ -1,6 +1,6 @@
 *Code of CSV Field Writing and Parsing*
 
-Article 1 (Scope) This Code governs the writing of a single field and the parsing of one CSV line. This exercise reads no stdin; the required interface follows.
+Article 1 (Scope) This Code governs the writing of a single field and the parsing of one CSV line. The required interface follows.
 
 ```cpp
 #include <string>

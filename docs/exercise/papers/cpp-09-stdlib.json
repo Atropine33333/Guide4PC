@@ -1,0 +1,15 @@
+{
+  "id": "cpp-09-stdlib",
+  "lang": "cpp",
+  "title": {
+    "chs": "标准库卷",
+    "en": "Standard Library"
+  },
+  "items": [
+    "stdlib-bit-count",
+    "stdlib-erase-remove",
+    "stdlib-mismatch-scan",
+    "stdlib-set-algebra",
+    "stdlib-sort-records"
+  ]
+}

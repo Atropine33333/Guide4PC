@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement a fixed-capacity array whose elements exist only after placement `new`.
+Implement a fixed-capacity array whose elements exist only after placement `new`.
 
 ```cpp
 #include <cstddef>

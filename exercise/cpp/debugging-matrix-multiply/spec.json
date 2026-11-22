@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 3,
   "title": {
-    "chs": "矩阵乘法修复",
-    "en": "Fix Matrix Multiplication"
+    "chs": "方阵相乘之术",
+    "en": "The Art of Multiplying Two Arrays"
   },
   "limits": {
     "timeoutMs": 5000,

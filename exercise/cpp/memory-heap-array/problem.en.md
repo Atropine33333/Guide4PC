@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement four functions for a dynamic array; a hidden harness runs the tests.
+Implement four functions for a dynamic array.
 
 ```cpp
 int* make_zero_array(int count);

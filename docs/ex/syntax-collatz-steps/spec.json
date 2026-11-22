@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 1,
   "title": {
-    "chs": "考拉兹步数",
-    "en": "Collatz Steps"
+    "chs": "话说考拉兹那串数",
+    "en": "The Collatz Tale"
   },
   "limits": {
     "timeoutMs": 5000,

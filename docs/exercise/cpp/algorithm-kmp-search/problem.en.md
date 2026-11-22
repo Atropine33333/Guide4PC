@@ -6,7 +6,7 @@
 
 "Oh, how marvellous," said the girl.
 
-**In plain words**: implement `find_all`, which uses KMP (the prefix function) to return the starting indices of every occurrence of the pattern in the text in ascending order, overlaps included; return an empty `vector` for an empty pattern or a pattern longer than the text. Nothing is read from stdin and nothing is written to stdout; a hidden harness runs the tests, so do not write `main` and do not change the signature.
+**In plain words**: implement `find_all`, which uses KMP (the prefix function) to return the starting indices of every occurrence of the pattern in the text in ascending order, overlaps included; return an empty `vector` for an empty pattern or a pattern longer than the text. Do not write `main` and do not change the signature.
 
 ```cpp
 #include <cstddef>

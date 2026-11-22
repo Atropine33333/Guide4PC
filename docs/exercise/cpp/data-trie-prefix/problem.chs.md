@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现一棵支持前缀计数的小写字母前缀树，测试在隐藏的 harness 里。
+实现一棵支持前缀计数的小写字母前缀树。
 
 ```cpp
 #include <string>

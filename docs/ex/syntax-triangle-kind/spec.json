@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 2,
   "title": {
-    "chs": "三角形分类",
-    "en": "Triangle Classification"
+    "chs": "三角形陈列馆须知",
+    "en": "Rules of the Triangle Gallery"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 2,
   "title": {
-    "chs": "发号器",
-    "en": "Ticket Dispenser"
+    "chs": "发号的比喻",
+    "en": "Matthew: The Parable of the Numberer"
   },
   "harness": "harness.cpp",
   "limits": {

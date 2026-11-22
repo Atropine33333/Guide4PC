@@ -6,8 +6,8 @@
   "rank": 5,
   "harness": "harness.cpp",
   "title": {
-    "chs": "一致性哈希环",
-    "en": "Consistent Hash Ring"
+    "chs": "环上问卜",
+    "en": "Divination on the Ring"
   },
   "limits": {
     "timeoutMs": 4000,

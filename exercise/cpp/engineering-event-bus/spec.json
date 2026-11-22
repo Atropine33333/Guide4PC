@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 5,
   "title": {
-    "chs": "事件总线",
-    "en": "Event Bus"
+    "chs": "会幕里的号角",
+    "en": "The Event Bus in the Wilderness"
   },
   "harness": "harness.cpp",
   "limits": {

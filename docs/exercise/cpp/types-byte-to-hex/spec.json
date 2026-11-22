@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 1,
   "title": {
-    "chs": "字节转十六进制",
-    "en": "Byte to Hex"
+    "chs": "两位大写，前导零常在",
+    "en": "Two Digits, Uppercase, Always"
   },
   "limits": {
     "timeoutMs": 5000,

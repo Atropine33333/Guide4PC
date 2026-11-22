@@ -1,4 +1,20 @@
-This exercise reads no stdin and writes no stdout. Implement a function that decides whether two `double` values are close enough, tested by a hidden harness.
+Huizi said to Zhuangzi: "A rod one foot long, halved each day, will never be exhausted in ten thousand ages. So then — two numbers drawn close together: how close must they be before we call them equal?"
+
+Zhuangzi said: "Measure them by tolerance. `tolerance` is the difference you are willing to allow. A difference within it is called equal; a difference beyond it is called unequal. And tolerance may not be negative, for a negative allowance is nonsense."
+
+Huizi said: "And if the two are already equal, where is the difference to come from?"
+
+Zhuangzi said: "Test equality first, and the finite cases and the same-signed infinities are settled at once, with no subtraction performed."
+
+Huizi said: "And if one is infinite and the other finite?"
+
+Zhuangzi said: "Between the infinite and the finite the difference has no meaning; nor between positive and negative infinity. Both kinds are called unequal."
+
+Huizi said: "And if both are `NaN`?"
+
+Zhuangzi said: "`NaN` is unequal to all things, and unequal even to itself. This rule cannot be broken."
+
+**In plain words**: implement the function below. `tolerance ≥ 0`; test `a == b` first, which also covers same-signed infinities; otherwise, when both are finite, test `|a - b| ≤ tolerance`; if either side is `NaN` return `false`, and that includes two `NaN`s.
 
 ```cpp
 bool nearly_equal(double a, double b, double tolerance);

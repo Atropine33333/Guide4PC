@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 3,
   "title": {
-    "chs": "定长数组模板",
-    "en": "Fixed-Size Array Template"
+    "chs": "按支派取份",
+    "en": "A Portion for Each Tribe"
   },
   "harness": "harness.cpp",
   "limits": {

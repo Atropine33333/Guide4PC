@@ -1,134 +1,290 @@
 [
   {
-    "file": "cpp-algorithm-adv.json",
-    "id": "cpp-algorithm-adv",
+    "file": "cpp-01-syntax-first.json",
+    "id": "cpp-01-syntax-first",
     "lang": "cpp",
     "title": {
-      "chs": "算法进阶卷",
-      "en": "Algorithms Advanced"
+      "chs": "语法起步卷",
+      "en": "Syntax: First Steps"
     },
     "items": [
-      "algorithm-edit-distance",
-      "algorithm-knapsack",
-      "algorithm-dijkstra",
-      "algorithm-bipartite-check",
-      "algorithm-merge-cost"
+      "letter-class-tally",
+      "min-max-total",
+      "syntax-bar-chart",
+      "syntax-collatz-steps",
+      "syntax-dna-hamming"
     ],
     "count": 5
   },
   {
-    "file": "cpp-data-core.json",
-    "id": "cpp-data-core",
+    "file": "cpp-02-syntax-solid.json",
+    "id": "cpp-02-syntax-solid",
     "lang": "cpp",
     "title": {
-      "chs": "数据结构核心卷",
-      "en": "Data Structures Core"
+      "chs": "语法巩固卷",
+      "en": "Syntax: Getting Solid"
     },
     "items": [
-      "min-stack",
-      "data-deque-ops",
-      "data-union-find",
-      "data-bst-height",
-      "algorithm-prime-sieve"
+      "syntax-grade-band",
+      "syntax-caesar-shift",
+      "syntax-diamond-grid",
+      "syntax-happy-chain",
+      "syntax-palindrome-line"
     ],
     "count": 5
   },
   {
-    "file": "cpp-debug-hunt.json",
-    "id": "cpp-debug-hunt",
+    "file": "cpp-03-syntax-speed.json",
+    "id": "cpp-03-syntax-speed",
     "lang": "cpp",
     "title": {
-      "chs": "排错实战卷",
-      "en": "Debugging Hunt"
+      "chs": "语法提速卷",
+      "en": "Syntax: Speedrun"
     },
     "items": [
-      "debugging-vowel-tally",
-      "debugging-negative-max",
-      "debugging-binary-search",
-      "semantics-overload-pick",
+      "syntax-luhn-check",
+      "syntax-triangle-kind",
+      "syntax-base-convert",
+      "syntax-camel-split",
+      "syntax-clock-wrap"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-04-syntax-types.json",
+    "id": "cpp-04-syntax-types",
+    "lang": "cpp",
+    "title": {
+      "chs": "语法与类型入门卷",
+      "en": "Syntax & First Types"
+    },
+    "items": [
+      "syntax-coin-greedy",
+      "syntax-number-words",
+      "count-digit-occurrences",
+      "types-byte-to-hex",
+      "types-size-diff"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-05-syntax-final.json",
+    "id": "cpp-05-syntax-final",
+    "lang": "cpp",
+    "title": {
+      "chs": "语法收官卷",
+      "en": "Syntax: Final Stretch"
+    },
+    "items": [
+      "syntax-roman-encode",
+      "syntax-magic-square",
+      "syntax-spiral-fill",
+      "semantics-default-args",
+      "io-duration-format"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-06-types.json",
+    "id": "cpp-06-types",
+    "lang": "cpp",
+    "title": {
+      "chs": "类型与数值卷",
+      "en": "Types & Numbers"
+    },
+    "items": [
+      "types-unsigned-wrap",
+      "types-pack-bits",
+      "types-endian-swap",
+      "types-fixed-point",
       "types-narrow-bounds"
     ],
     "count": 5
   },
   {
-    "file": "cpp-engineering-core.json",
-    "id": "cpp-engineering-core",
+    "file": "cpp-07-semantics.json",
+    "id": "cpp-07-semantics",
     "lang": "cpp",
     "title": {
-      "chs": "工程能力卷",
-      "en": "Engineering Core"
+      "chs": "语义与控制流卷",
+      "en": "Semantics & Control Flow"
     },
     "items": [
-      "engineering-config-merge",
-      "engineering-arena-allocator",
-      "engineering-event-bus",
-      "memory-move-owner",
-      "templates-fixed-array"
+      "semantics-short-circuit",
+      "semantics-precedence-traps",
+      "semantics-unsigned-compare",
+      "semantics-array-decay",
+      "semantics-value-copy"
     ],
     "count": 5
   },
   {
-    "file": "cpp-memory-oop.json",
-    "id": "cpp-memory-oop",
+    "file": "cpp-08-io.json",
+    "id": "cpp-08-io",
     "lang": "cpp",
     "title": {
-      "chs": "内存与对象卷",
-      "en": "Memory & Objects"
+      "chs": "输入输出卷",
+      "en": "Input & Output"
     },
     "items": [
-      "memory-rule-of-five",
-      "memory-intrusive-list",
-      "oop-virtual-destructor",
-      "oop-type-erasure",
-      "memory-generational-handle"
+      "io-eof-tally",
+      "io-line-numbering",
+      "io-progress-bar",
+      "io-box-draw",
+      "io-column-report"
     ],
     "count": 5
   },
   {
-    "file": "cpp-starter.json",
-    "id": "cpp-starter",
+    "file": "cpp-09-stdlib.json",
+    "id": "cpp-09-stdlib",
     "lang": "cpp",
     "title": {
-      "chs": "C++ 起步卷（基础语法）",
-      "en": "C++ Starter (syntax)"
+      "chs": "标准库卷",
+      "en": "Standard Library"
     },
     "items": [
-      "count-digit-occurrences",
-      "circular-buffer"
-    ],
-    "count": 2
-  },
-  {
-    "file": "cpp-syntax-drill.json",
-    "id": "cpp-syntax-drill",
-    "lang": "cpp",
-    "title": {
-      "chs": "语法热身卷",
-      "en": "Syntax Warm-up"
-    },
-    "items": [
-      "syntax-bar-chart",
-      "syntax-caesar-shift",
-      "io-thousands-separator",
-      "semantics-remainder-sign",
-      "types-byte-to-hex"
+      "stdlib-bit-count",
+      "stdlib-erase-remove",
+      "stdlib-mismatch-scan",
+      "stdlib-set-algebra",
+      "stdlib-sort-records"
     ],
     "count": 5
   },
   {
-    "file": "cpp-templates-gp.json",
-    "id": "cpp-templates-gp",
+    "file": "cpp-10-debugging.json",
+    "id": "cpp-10-debugging",
+    "lang": "cpp",
+    "title": {
+      "chs": "调试排错卷",
+      "en": "Debugging"
+    },
+    "items": [
+      "debugging-digit-sum",
+      "debugging-leap-year",
+      "debugging-longest-run",
+      "debugging-vowel-tally",
+      "debugging-negative-max"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-11-algorithm-basic.json",
+    "id": "cpp-11-algorithm-basic",
+    "lang": "cpp",
+    "title": {
+      "chs": "算法基础卷",
+      "en": "Algorithms: Basics"
+    },
+    "items": [
+      "algorithm-gcd-lcm",
+      "algorithm-fast-pow",
+      "algorithm-majority-vote",
+      "algorithm-prime-factorize",
+      "algorithm-prime-sieve"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-12-data-structures.json",
+    "id": "cpp-12-data-structures",
+    "lang": "cpp",
+    "title": {
+      "chs": "数据结构卷",
+      "en": "Data Structures"
+    },
+    "items": [
+      "data-rpn-eval",
+      "data-deque-ops",
+      "data-next-greater",
+      "min-stack",
+      "data-hash-chain"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-13-algorithm-advanced.json",
+    "id": "cpp-13-algorithm-advanced",
+    "lang": "cpp",
+    "title": {
+      "chs": "算法进阶卷",
+      "en": "Algorithms: Advanced"
+    },
+    "items": [
+      "algorithm-knapsack",
+      "algorithm-meeting-count",
+      "first-at-least",
+      "algorithm-max-subarray",
+      "algorithm-lis"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-14-memory.json",
+    "id": "cpp-14-memory",
+    "lang": "cpp",
+    "title": {
+      "chs": "内存与资源卷",
+      "en": "Memory & Resources"
+    },
+    "items": [
+      "memory-heap-array",
+      "memory-rule-of-zero",
+      "memory-scope-guard",
+      "memory-deep-copy",
+      "owned-buffer"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-15-oop.json",
+    "id": "cpp-15-oop",
+    "lang": "cpp",
+    "title": {
+      "chs": "面向对象卷",
+      "en": "Object-Oriented C++"
+    },
+    "items": [
+      "oop-pixel-class",
+      "oop-traffic-light",
+      "oop-counter",
+      "oop-date",
+      "oop-interval"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-16-templates.json",
+    "id": "cpp-16-templates",
     "lang": "cpp",
     "title": {
       "chs": "模板与泛型卷",
-      "en": "Templates & Generic Programming"
+      "en": "Templates & Generics"
     },
     "items": [
-      "templates-forwarding",
-      "templates-hash-specialization",
-      "templates-policy-reduce",
-      "templates-type-list",
-      "templates-tuple-map"
+      "templates-swap-values",
+      "templates-clamp-value",
+      "templates-array-stats",
+      "templates-if-constexpr",
+      "template-pair"
+    ],
+    "count": 5
+  },
+  {
+    "file": "cpp-17-engineering.json",
+    "id": "cpp-17-engineering",
+    "lang": "cpp",
+    "title": {
+      "chs": "工程综合卷",
+      "en": "Engineering"
+    },
+    "items": [
+      "circular-buffer",
+      "engineering-config-merge",
+      "engineering-command-router",
+      "engineering-histogram",
+      "engineering-pagination"
     ],
     "count": 5
   }

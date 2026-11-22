@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 2,
   "title": {
-    "chs": "值、引用与拷贝",
-    "en": "Values, References and Copies"
+    "chs": "传值与传引用",
+    "en": "Crosstalk: Pass by Value and by Reference"
   },
   "harness": "harness.cpp",
   "limits": {

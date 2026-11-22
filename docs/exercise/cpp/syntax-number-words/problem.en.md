@@ -1,14 +1,14 @@
-Read an integer and write it in English words. Use lowercase words separated by single spaces.
+"Oh, my dear," said the old dubbing actor, pressing the script to his chest, "the audience wants a voice. Type a row of Arabic figures on the screen and you have subtitles, not dialogue."
 
-For example, `42` is `forty two`, `100` is `one hundred`, and `1001` is `one thousand one`. Do not use `and` and do not use hyphens.
+He cleared his throat. "Forty-two, you say `forty two`. One hundred, `one hundred`. One thousand and one, `one thousand one`. No `and` in between, no hyphens — good heavens, that rule was laid down the year I entered this trade."
 
-### Input
+"Tens and teens each have their own name, and not one may be mispronounced. Zero is `zero`. All lowercase, one space between words, no more and no less."
 
-One line with an integer `n` such that `0 <= n <= 999999`.
+**In plain words**: read an integer `n` and print its English wording on one line: all lowercase, single spaces between words, no `and`, no hyphens.
 
-### Output
+**Input**: one integer `n` on a line, with `0 <= n <= 999999`.
 
-One line containing the English name of `n`.
+**Output**: one line holding the English wording of `n`.
 
 ### Example
 
@@ -26,9 +26,9 @@ one hundred twenty three thousand four hundred fifty six
 
 ### Constraints
 
-- `0` is written as `zero`.
-- `10` through `19` use `ten`, `eleven`, `twelve`, `thirteen`, `fourteen`, `fifteen`, `sixteen`, `seventeen`, `eighteen`, and `nineteen`.
-- Multiples of ten use `twenty`, `thirty`, `forty`, `fifty`, `sixty`, `seventy`, `eighty`, and `ninety`.
-- Use exactly one space between the thousands part and the hundreds part, and one space between the hundreds part and the last two digits.
-- `100000` is `one hundred thousand`.
-- Use only the standard library.
+- `0` prints as `zero`.
+- `10` to `19` use `ten`, `eleven`, `twelve`, `thirteen`, `fourteen`, `fifteen`, `sixteen`, `seventeen`, `eighteen`, `nineteen`.
+- Whole tens use `twenty`, `thirty`, `forty`, `fifty`, `sixty`, `seventy`, `eighty`, `ninety`.
+- Exactly one space stands between the hundreds and the thousands, and between the hundreds and the units.
+- The literal `100000` is `one hundred thousand`.
+- Use the standard library only.

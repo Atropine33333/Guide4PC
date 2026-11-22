@@ -1,4 +1,20 @@
-这一题不读 stdin，也不写 stdout。实现一个判断两个 `double` 是否足够接近的函数，测试在隐藏的 harness 里。
+惠子谓庄子曰：「一尺之棰，日取其半，万世不竭。然则两数相近，近至何处方可谓之等？」
+
+庄子曰：「以容差量之。`tolerance` 者，汝所许之差也。差在其内，谓之等；差在其外，谓之不等。容差不可为负，负则无理。」
+
+惠子曰：「若二者本自相等，差从何来？」
+
+庄子曰：「先察其相等，则有限者与同号之无穷，一时俱了，不必作减。」
+
+惠子曰：「若一无穷、一有限乎？」
+
+庄子曰：「一无穷一有限，其差无义；正无穷与负无穷，亦然。此二类皆谓之不等。」
+
+惠子曰：「若二者皆 `NaN` 乎？」
+
+庄子曰：「`NaN` 与万物皆不等，虽与自身亦不等。此条不可破。」
+
+**人话**：实现下面的函数。`tolerance ≥ 0`；先判 `a == b`，相等即返回 `true`，这一步顺带覆盖同号无穷；否则在两者皆有限时判 `|a - b| ≤ tolerance`；任一方为 `NaN` 时返回 `false`，两个都是 `NaN` 也返回 `false`。
 
 ```cpp
 bool nearly_equal(double a, double b, double tolerance);
@@ -14,4 +30,4 @@ bool nearly_equal(double a, double b, double tolerance);
 
 ### 提示
 
-先判断 `a == b`，它能同时处理“有限数相等”和“同号无穷相等”。再判断 `std::isfinite`。如果直接写 `std::fabs(a - b) <= tolerance`，`inf - inf` 会得到 NaN，结果就变成 `false`。
+先判断 `a == b`，它能同时处理「有限数相等」和「同号无穷相等」。再判断 `std::isfinite`。如果直接写 `std::fabs(a - b) <= tolerance`，`inf - inf` 会得到 NaN，结果就变成 `false`。

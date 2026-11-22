@@ -20,7 +20,7 @@ private:
 
 After copying or assigning, the two objects must own independent memory; the destructor frees memory exactly once; `size == 0` is allowed and allocates nothing.
 
-The judge includes your implementation and calls these members. **Do not write `main`.**
+**Do not write `main`.**
 
 ### Input
 

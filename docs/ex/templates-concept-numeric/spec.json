@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 5,
   "title": {
-    "chs": "数值概念约束",
-    "en": "Numeric Concept Constraint"
+    "chs": "数值类型管理法典",
+    "en": "Code of Numeric Types"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -4,7 +4,7 @@ You see, on the scripts this old machine receives, the backslash is a meddlesome
 
 And when some other character follows it? Leave both exactly as they are, and let no one touch either. If it stands at the very end of the script with nobody behind it, so be it—leave the one backslash where it is. Spaces, digits, punctuation: copy them all.
 
-And please, my dear, do not write your own `main`. The tests live in a harness behind the curtain, like the prompter backstage—you cannot see him, but he is watching you.
+And please, my dear, do not write your own `main`.
 
 **In plain words**: implement `expand_escapes(const std::string& input)`; scan left to right, expanding `\n`, `\t`, `\r` and `\\` into the characters they stand for, and keeping unknown escapes and a lone trailing backslash as they are.
 

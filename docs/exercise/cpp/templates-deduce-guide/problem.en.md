@@ -35,7 +35,7 @@ Requirements:
 - explicitly writing `Seq<int> empty;` must also work;
 - `sum()` returns `T{}` for an empty sequence.
 
-The judge checks the deduced types (via `std::is_same_v`) and the member results. **Do not write `main`.**
+The deduced types (via `std::is_same_v`) and the member results must be correct. **Do not write `main`.**
 
 ### Input
 

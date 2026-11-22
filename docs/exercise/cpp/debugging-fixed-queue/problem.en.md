@@ -43,7 +43,7 @@ private:
 
 6. When the queue is full, no old element that has not yet been dequeued may be overwritten. This is the focus of the present rectification.
 
-7. Do not write `main`. All behaviour is verified from outside by a hidden harness.
+7. Do not write `main`.
 
 This notice takes effect from the day of issue.
 

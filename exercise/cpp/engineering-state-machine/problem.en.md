@@ -1,4 +1,21 @@
-Implement an order state machine:
+(An order lands on the counter, and the crowd gathers to watch it live out its life.)
+
+Hear this, honoured listeners: the order has six resting places — `Created`, `Paid`, `Shipped`, `Delivered`, `Cancelled`, `Returned` — and it walks on five events only: `Pay`, `Ship`, `Deliver`, `Cancel`, `Return`. Which road is open and which is barred is written in the table below.
+
+| Current state | Event | New state |
+| --- | --- | --- |
+| Created | Pay | Paid |
+| Created | Cancel | Cancelled |
+| Paid | Ship | Shipped |
+| Paid | Cancel | Cancelled |
+| Shipped | Deliver | Delivered |
+| Delivered | Return | Returned |
+
+Any road not in that table is barred: `apply` returns `false`, the state stays put, and `rejected()` takes down a mark. `Cancelled` and `Returned` are dead ends; once there, no event passes.
+
+`name(State)` announces the lower-case name: `"created"`, `"paid"`, `"shipped"`, `"delivered"`, `"cancelled"`, `"returned"`.
+
+**In plain words**: Complete `Order`. Implement `apply` with one transition table or one `switch`: a legal event changes state and returns `true`; anything else returns `false` and increments `rejected()`. `name` turns a state into its lower-case string. Do not write `main`.
 
 ```cpp
 enum class State { Created, Paid, Shipped, Delivered, Cancelled, Returned };
@@ -16,30 +33,12 @@ public:
 };
 ```
 
-The only legal transitions are:
+### Rules
 
-| Current state | Event | New state |
-| --- | --- | --- |
-| Created | Pay | Paid |
-| Created | Cancel | Cancelled |
-| Paid | Ship | Shipped |
-| Paid | Cancel | Cancelled |
-| Shipped | Deliver | Delivered |
-| Delivered | Return | Returned |
-
-Every other event is rejected: return `false`, keep the state, and increment `rejected()`. `Cancelled` and `Returned` are terminal, so any event is rejected there.
-
-`name(State)` returns the lowercase state name: `"created"`, `"paid"`, `"shipped"`, `"delivered"`, `"cancelled"`, `"returned"`.
-
-The judge includes your implementation. **Do not write `main`.**
-
-### Input
-
-None.
-
-### Output
-
-None.
+- The initial state is `Created` and `rejected()` is 0.
+- Only the six transitions in the table are legal; everything else returns `false`, keeps the state, and increments `rejected()`.
+- `Cancelled` and `Returned` are terminal, so any event is rejected there.
+- Do not write `main`.
 
 ### Example
 

@@ -1,4 +1,20 @@
-Read several "name score" lines and print them as two aligned columns.
+A: Tell me, how does one set out this ledger of names and scores?
+
+B: Simple enough. The name goes on the left, twelve characters wide, padded with spaces on the right; right after it a bar `|`, with not one space on either side.
+
+A: And the score?
+
+B: On the right, eight characters wide, padded on the left. A name that fills all twelve and a score that fills all eight get nothing added. And no trailing spaces at the end of any line.
+
+A: What if a name runs past twelve?
+
+B: Names here are ten at most, so spare yourself the worry. Scores can reach `-999999`, seven characters, still inside eight.
+
+A: The bar itself tolerates no spaces?
+
+B: None. The padding is the whole separation; add one by hand and the line ends with a stray space.
+
+**In plain words**: read `n` lines of "name score" and print each as: the name left-aligned in 12 characters, one `|`, the score right-aligned in 8 characters, with no trailing spaces.
 
 **Input**:
 

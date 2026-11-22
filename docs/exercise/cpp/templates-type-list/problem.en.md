@@ -1,4 +1,34 @@
-This task reads no stdin and writes no stdout. Implement a compile-time-only type list.
+(The diviner brings out a deck whose faces are all type names, and not one card touches the table.)
+
+Querent: This deck is never dealt into a hand, only laid out below?
+
+Diviner: Exactly. `TypeList<Ts...>` exists only at compile time; the cards take not one inch of the world.
+
+Querent: How is the count read?
+
+Diviner: `size`, which is `sizeof...(Ts)`. An empty deck is 0.
+
+Querent: And the first card?
+
+Diviner: `front`. For an empty deck `front` is written as `void`, and no one turns that card.
+
+Querent: And a new card pressed on top?
+
+Diviner: `push_front<T>`, giving `TypeList<T, Ts...>`.
+
+Querent: If I ask whether a card is in the deck?
+
+Diviner: `contains<T>`: `true` if present, `false` if absent. A card that appears twice still counts once.
+
+Querent: How is the card at `Index` taken?
+
+Diviner: `at<Index>`, counted from 0; only positions the deck truly has.
+
+Querent: Are these cards visible at run time?
+
+Diviner: They are not. The faces are the types themselves, and the answer is settled at compile time.
+
+**In plain words**: implement `TypeList<Ts...>`, which exists only at compile time, with `size`, `front`, `push_front`, `contains`, and `at`; every result must be available at compile time.
 
 ```cpp
 #include <cstddef>

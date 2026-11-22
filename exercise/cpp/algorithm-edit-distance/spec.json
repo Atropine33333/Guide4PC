@@ -6,8 +6,8 @@
   "rank": 4,
   "harness": "harness.cpp",
   "title": {
-    "chs": "编辑距离与最长公共子序列",
-    "en": "Edit Distance and LCS"
+    "chs": "两个词的账，如何勾销",
+    "en": "How Two Words Settle a Debt"
   },
   "limits": {
     "timeoutMs": 5000,

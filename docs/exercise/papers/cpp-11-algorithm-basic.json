@@ -1,0 +1,15 @@
+{
+  "id": "cpp-11-algorithm-basic",
+  "lang": "cpp",
+  "title": {
+    "chs": "算法基础卷",
+    "en": "Algorithms: Basics"
+  },
+  "items": [
+    "algorithm-gcd-lcm",
+    "algorithm-fast-pow",
+    "algorithm-majority-vote",
+    "algorithm-prime-factorize",
+    "algorithm-prime-sieve"
+  ]
+}

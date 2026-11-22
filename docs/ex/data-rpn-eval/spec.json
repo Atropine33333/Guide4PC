@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 1,
   "title": {
-    "chs": "亲爱的后缀式",
-    "en": "My Dear Postfix Expression"
+    "chs": "后缀式",
+    "en": "Postfix Expression"
   },
   "limits": {
     "timeoutMs": 5000,

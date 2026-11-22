@@ -6,8 +6,8 @@
   "rank": 4,
   "harness": "harness.cpp",
   "title": {
-    "chs": "订单状态机",
-    "en": "Order State Machine"
+    "chs": "订单状态机演义",
+    "en": "The Tale of the Order State Machine"
   },
   "limits": {
     "timeoutMs": 4000,

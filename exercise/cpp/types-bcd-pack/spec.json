@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 3,
   "title": {
-    "chs": "BCD 打包",
-    "en": "Packed BCD"
+    "chs": "半字节的两次点名",
+    "en": "Two Musters of the Nibbles"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 4,
   "title": {
-    "chs": "有理数类",
-    "en": "Rational Number"
+    "chs": "方田约分与四则",
+    "en": "Reducing Fractions in the Square Field"
   },
   "harness": "harness.cpp",
   "limits": {

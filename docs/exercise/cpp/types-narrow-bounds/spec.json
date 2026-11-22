@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 3,
   "title": {
-    "chs": "安全窄化",
-    "en": "Safe Narrowing"
+    "chs": "窄化转换审批办法",
+    "en": "Measures for Approving Narrowing Conversions"
   },
   "harness": "harness.cpp",
   "limits": {

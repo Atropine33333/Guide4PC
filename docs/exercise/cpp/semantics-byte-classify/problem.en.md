@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement three functions that work on a single byte; a hidden harness calls them.
+Implement three functions that work on a single byte.
 
 ```cpp
 #include <string>

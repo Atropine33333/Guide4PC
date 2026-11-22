@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 1,
   "title": {
-    "chs": "亲爱的，把秒数说体面些",
-    "en": "Make the Seconds Presentable, My Dear"
+    "chs": "把秒数说体面些",
+    "en": "Make the Seconds Presentable"
   },
   "harness": "harness.cpp",
   "limits": {

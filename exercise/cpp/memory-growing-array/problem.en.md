@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a growing integer array that manages its own memory; a hidden harness runs the tests.
+Implement a growing integer array that manages its own memory.
 
 ```cpp
 class IntVector {

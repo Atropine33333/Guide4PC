@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement an integer-range iterator usable with `range-for`.
+Implement an integer-range iterator usable with `range-for`.
 
 ```cpp
 #include <iterator>

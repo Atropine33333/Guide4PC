@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。求一个整数序列的最长严格上升子序列长度，测试在隐藏的 harness 里。
+求一个整数序列的最长严格上升子序列长度。
 
 ```cpp
 #include <vector>

@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a small command routing table, tested by a hidden harness.
+Implement a small command routing table.
 
 ```cpp
 #include <functional>

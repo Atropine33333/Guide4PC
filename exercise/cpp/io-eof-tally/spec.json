@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 1,
   "title": {
-    "chs": "读到文件末尾",
-    "en": "Read Until End of Input"
+    "chs": "数到没有牌为止",
+    "en": "Count Until the Cards Run Out"
   },
   "limits": {
     "timeoutMs": 5000,

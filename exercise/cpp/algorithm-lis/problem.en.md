@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Find the length of the longest strictly increasing subsequence of an integer sequence, tested by a hidden harness.
+Find the length of the longest strictly increasing subsequence of an integer sequence.
 
 ```cpp
 #include <vector>

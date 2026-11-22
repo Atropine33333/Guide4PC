@@ -6,8 +6,8 @@
   "rank": 3,
   "harness": "harness.cpp",
   "title": {
-    "chs": "左旋数组的负数位移",
-    "en": "Rotate Left with Negative Shifts"
+    "chs": "左旋走廊",
+    "en": "The Left-Rotation Corridor"
   },
   "limits": {
     "timeoutMs": 4000,

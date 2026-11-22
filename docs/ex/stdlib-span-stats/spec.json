@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 4,
   "title": {
-    "chs": "span 统计视图",
-    "en": "Span Statistics View"
+    "chs": "连续内存段统计与裁剪通知",
+    "en": "Notice on Read-Only Span Statistics"
   },
   "limits": {
     "timeoutMs": 5000,

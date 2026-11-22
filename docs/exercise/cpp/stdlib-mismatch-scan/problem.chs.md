@@ -1,4 +1,4 @@
-这一题不读 stdin。实现三个查找与比较函数，隐藏的 harness 会检查返回值与边界。
+实现三个查找与比较函数。
 
 ```cpp
 #include <cstddef>

@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "stdlib",
   "rank": 2,
-  "title": { "chs": "有序合并去重", "en": "Sorted Merge, Unique" },
+  "title": { "chs": "两支队伍的点名册", "en": "The Muster of Two Camps" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

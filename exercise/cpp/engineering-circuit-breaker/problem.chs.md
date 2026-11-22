@@ -1,4 +1,20 @@
-这一题不读 stdin，也不写 stdout。实现一个带冷却时间的熔断器，测试在隐藏的 harness 里。
+欢迎来到熔断走廊。
+
+这里的每一条规则都是真的，走廊不骗人。门卫只认三块牌子：`Closed`、`Open`、`HalfOpen`。
+
+规则一：刚进门时门是通的，牌子写 `Closed`，失败计数为零，`allow()` 返回 `true`。
+
+规则二：门开着的时候，一次平安无事让计数归零，一次出事让计数加一；加满阈值，门就合上。
+
+规则三：合上的门分两种。冷却为零没有等候区，直接挂 `HalfOpen`；冷却大于零挂 `Open`，`allow()` 返回 `false`。
+
+规则四：`Open` 的门只认 `tick()`，敲一次剩余冷却少一，归零换成 `HalfOpen`。`record` 在这扇门后面喊什么都不作数。
+
+规则五：`HalfOpen` 是试用期，`allow()` 重新返回 `true`；平安无事回到 `Closed` 并清零，再出一次事门重新合上。
+
+规则六：在 `Closed` 与 `HalfOpen` 里敲 `tick()` 没有回声。不要写 `main`。
+
+**人话**：补完 `CircuitBreaker`。构造参数为失败阈值与冷却次数；`record` 推动失败计数，`tick()` 只在 `Open` 时递减冷却。
 
 ```cpp
 class CircuitBreaker {
@@ -14,16 +30,14 @@ public:
 };
 ```
 
-规则：
+### 规则或约定
 
-- 初始为 `Closed`，失败计数为 0，`allow()` 返回 `true`。
 - `failure_threshold >= 1`，`cooldown_ticks >= 0`。
-- 在 `Closed` 状态下，`record(true)` 把失败计数清零并保持 `Closed`；`record(false)` 增加失败计数，达到阈值时熔断。
-- 熔断后进入 `Open`（冷却时间为 0 时直接进入 `HalfOpen`），`allow()` 返回 `false`。
-- 每次 `tick()` 在 `Open` 状态下把冷却计数减 1；减到 0 时进入 `HalfOpen`。
-- `HalfOpen` 下 `allow()` 返回 `true`：`record(true)` 恢复正常，回到 `Closed` 且失败计数清零；`record(false)` 重新熔断。
-- `Open` 状态下的 `record` 不做任何事。
-- `tick()` 在 `Closed` 和 `HalfOpen` 状态下没有效果。
+- `Closed` 下 `record(true)` 清零失败计数并保持 `Closed`；`record(false)` 增加计数，达到阈值时熔断。
+- 熔断进入 `Open`；`cooldown_ticks == 0` 时直接进入 `HalfOpen`。
+- `tick()` 只在 `Open` 时递减剩余冷却，减到 0 后进入 `HalfOpen`；在 `Closed` 与 `HalfOpen` 下没有效果。
+- `HalfOpen` 下 `record(true)` 恢复 `Closed` 并清零失败计数；`record(false)` 重新熔断。
+- `Open` 状态下的 `record` 不改变任何状态。
 - 不要写 `main`。
 
 ### 示例

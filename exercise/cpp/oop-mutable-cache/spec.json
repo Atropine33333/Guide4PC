@@ -6,8 +6,8 @@
   "rank": 3,
   "harness": "harness.cpp",
   "title": {
-    "chs": "常量方法里的延迟缓存",
-    "en": "Lazy Cache in a Const Method"
+    "chs": "文本统计缓存管理办法",
+    "en": "Notice on Caching Text Statistics"
   },
   "limits": {
     "timeoutMs": 4000,

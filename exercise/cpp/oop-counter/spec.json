@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 2,
   "title": {
-    "chs": "计数器类",
-    "en": "A Counter Class"
+    "chs": "不肯下零的计数器",
+    "en": "The Counter That Refuses Zero"
   },
   "limits": {
     "timeoutMs": 5000,

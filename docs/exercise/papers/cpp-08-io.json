@@ -1,0 +1,15 @@
+{
+  "id": "cpp-08-io",
+  "lang": "cpp",
+  "title": {
+    "chs": "输入输出卷",
+    "en": "Input & Output"
+  },
+  "items": [
+    "io-eof-tally",
+    "io-line-numbering",
+    "io-progress-bar",
+    "io-box-draw",
+    "io-column-report"
+  ]
+}

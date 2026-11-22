@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement:
+Implement:
 
 ```cpp
 #include <cstddef>

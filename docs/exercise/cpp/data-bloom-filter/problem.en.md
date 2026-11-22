@@ -8,9 +8,9 @@ Clause 3. `maybe_contains` may say only two things: "possibly present" and "cert
 Clause 4. False positives are allowed — a value never inserted may still be answered "possibly present". That is this filter's nature; it cannot be repaired, so do not try.
 Clause 5. `set_bits()` reports how many bits are currently 1, and `bit_count()` reports the total. Both must agree with the bitmap.
 Clause 6. This filter offers no removal, and the bitmap is not opened to the outside.
-Clause 7. No stdin, no stdout, no change to the public interface, and no `main`. The instructions end here and will not be explained again.
+Clause 7. No change to the public interface, and no `main`. The instructions end here and will not be explained again.
 
-**In plain words**: implement a fixed-size Bloom filter `BloomFilter`; it reads no stdin and writes no stdout, and a hidden harness runs the tests. `bits` is the bitmap length and `hash_count` is the number of hashes per element, both treated as 1 when below 1; `add` sets the positions given by `hash_count` deterministic hashes to 1, and inserting the same value again only lights the same bits without clearing any; `maybe_contains` may produce false positives but must never miss, so any inserted value returns `true`; `set_bits` returns how many bits are 1 and `bit_count` returns the total. Removal is not required, and the public interface must not change — **do not write `main`**.
+**In plain words**: implement a fixed-size Bloom filter `BloomFilter`. `bits` is the bitmap length and `hash_count` is the number of hashes per element, both treated as 1 when below 1; `add` sets the positions given by `hash_count` deterministic hashes to 1, and inserting the same value again only lights the same bits without clearing any; `maybe_contains` may produce false positives but must never miss, so any inserted value returns `true`; `set_bits` returns how many bits are 1 and `bit_count` returns the total. Removal is not required, and the public interface must not change — **do not write `main`**.
 
 ```cpp
 #include <cstddef>

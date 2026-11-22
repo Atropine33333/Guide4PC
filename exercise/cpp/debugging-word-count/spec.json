@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 2,
   "title": {
-    "chs": "修好多空格与空行的统计",
-    "en": "Fix the Word Counting"
+    "chs": "那些空格",
+    "en": "Those Spaces"
   },
   "limits": {
     "timeoutMs": 3000,

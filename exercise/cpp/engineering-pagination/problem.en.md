@@ -23,7 +23,7 @@ Invariants:
 - `current_page` may be any value, but internally it must be clamped to `[1, page_count]`; with no data, `page_count() == 0` and `current() == 1`.
 - `window(r)` returns every page number from `current() - r` through `current() + r` in ascending order, clipped to the valid range; a negative `r` is treated as 0.
 
-The judge includes your implementation and checks these boundaries. **Do not write `main`.**
+**Do not write `main`.**
 
 ### Input
 

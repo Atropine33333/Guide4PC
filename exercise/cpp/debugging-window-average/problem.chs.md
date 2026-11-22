@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现下面的函数：
+实现下面的函数：
 
 ```cpp
 #include <cstddef>

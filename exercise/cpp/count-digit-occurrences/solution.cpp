@@ -2,19 +2,40 @@
 #include <iostream>
 
 int main() {
-    long long n = 0;
+    unsigned long long n = 0;
     int digit = 0;
     if (!(std::cin >> n >> digit)) return 0;
 
-    int count = 0;
-    if (n == 0) {
-        count = (digit == 0) ? 1 : 0;
-    } else {
-        while (n > 0) {
-            if (n % 10 == digit) ++count;
-            n /= 10;
+    const unsigned long long d = static_cast<unsigned long long>(digit);
+    unsigned long long count = 0;
+
+    for (unsigned long long factor = 1; factor <= n; factor *= 10) {
+        const unsigned long long higher = n / (factor * 10);
+        const unsigned long long current = (n / factor) % 10;
+        const unsigned long long lower = n % factor;
+
+        if (d == 0) {
+            if (higher == 0) {
+                break;
+            }
+            if (current > 0) {
+                count += higher * factor;
+            } else {
+                count += (higher - 1) * factor + lower + 1;
+            }
+        } else {
+            if (current > d) {
+                count += (higher + 1) * factor;
+            } else if (current == d) {
+                count += higher * factor + lower + 1;
+            } else {
+                count += higher * factor;
+            }
         }
+
+        if (factor > n / 10) break;
     }
+
     std::cout << count << '\n';
     return 0;
 }

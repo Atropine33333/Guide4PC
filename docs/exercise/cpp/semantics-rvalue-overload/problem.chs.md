@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。为同一个函数名写三个重载，让调用者能区分左值、`const` 左值和右值，测试在隐藏的 harness 里。
+为同一个函数名写三个重载，让调用者能区分左值、`const` 左值和右值。
 
 ```cpp
 #include <string>

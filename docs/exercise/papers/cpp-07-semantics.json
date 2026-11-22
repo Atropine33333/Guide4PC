@@ -1,0 +1,15 @@
+{
+  "id": "cpp-07-semantics",
+  "lang": "cpp",
+  "title": {
+    "chs": "语义与控制流卷",
+    "en": "Semantics & Control Flow"
+  },
+  "items": [
+    "semantics-short-circuit",
+    "semantics-precedence-traps",
+    "semantics-unsigned-compare",
+    "semantics-array-decay",
+    "semantics-value-copy"
+  ]
+}

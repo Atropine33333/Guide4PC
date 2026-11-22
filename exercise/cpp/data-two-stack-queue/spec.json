@@ -3,10 +3,10 @@
   "id": "data-two-stack-queue",
   "lang": "cpp",
   "category": "data",
-  "rank": 2,
+  "rank": 3,
   "title": {
-    "chs": "两个栈实现队列",
-    "en": "Queue from Two Stacks"
+    "chs": "双栈队列若干规定",
+    "en": "Provisions on a Two-Stack Queue"
   },
   "limits": {
     "timeoutMs": 5000,
@@ -28,10 +28,24 @@
       }
     },
     {
-      "id": "interleaved",
+      "id": "min-tracks",
       "label": {
-        "chs": "交替进出",
-        "en": "Interleaved pushes and pops"
+        "chs": "最小值随插入更新",
+        "en": "The minimum follows pushes"
+      }
+    },
+    {
+      "id": "min-after-pop",
+      "label": {
+        "chs": "删除后的最小值",
+        "en": "The minimum after pops"
+      }
+    },
+    {
+      "id": "min-after-refill",
+      "label": {
+        "chs": "倒栈后的最小值",
+        "en": "The minimum after a refill"
       }
     },
     {
@@ -39,13 +53,6 @@
       "label": {
         "chs": "大队列",
         "en": "A large queue"
-      }
-    },
-    {
-      "id": "alternating",
-      "label": {
-        "chs": "反复清空",
-        "en": "Repeated drain"
       }
     },
     {

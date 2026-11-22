@@ -1,0 +1,15 @@
+{
+  "id": "cpp-05-syntax-final",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法收官卷",
+    "en": "Syntax: Final Stretch"
+  },
+  "items": [
+    "syntax-roman-encode",
+    "syntax-magic-square",
+    "syntax-spiral-fill",
+    "semantics-default-args",
+    "io-duration-format"
+  ]
+}

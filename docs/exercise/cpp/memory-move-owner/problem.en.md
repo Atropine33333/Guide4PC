@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a dynamically allocated integer array that is movable but not copyable; a hidden harness runs the tests.
+Implement a dynamically allocated integer array that is movable but not copyable.
 
 Implement:
 

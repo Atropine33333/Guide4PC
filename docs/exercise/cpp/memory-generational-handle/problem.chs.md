@@ -16,7 +16,7 @@
 
 “牌面就是这些数：`size()` 报占了几席，`capacity()` 报 `kCapacity`。别自己开牌局，也别擅改这副牌。记着，别写 `main`。”
 
-**人话**：实现 `HandleStore`：八席，每席代际从 `1` 起。`create` 找空席存值，返回当前代际的句柄，没有空席返回 `{kInvalidIndex, 0}`；`destroy` 对有效句柄释放席位、代际加一、返回 `true`，对无效或过期句柄返回 `false` 且不改状态；`valid` 要求下标在范围内、代际匹配、席位被占用；`get` 对无效句柄返回 `nullptr`，对有效句柄返回席中值的指针；旧句柄在同下标复用时必须失效；`size()` 报占用数，`capacity()` 报 `kCapacity`。本题不读 stdin，不写 stdout。
+**人话**：实现 `HandleStore`：八席，每席代际从 `1` 起。`create` 找空席存值，返回当前代际的句柄，没有空席返回 `{kInvalidIndex, 0}`；`destroy` 对有效句柄释放席位、代际加一、返回 `true`，对无效或过期句柄返回 `false` 且不改状态；`valid` 要求下标在范围内、代际匹配、席位被占用；`get` 对无效句柄返回 `nullptr`，对有效句柄返回席中值的指针；旧句柄在同下标复用时必须失效；`size()` 报占用数，`capacity()` 报 `kCapacity`。
 
 ```cpp
 #include <cstddef>

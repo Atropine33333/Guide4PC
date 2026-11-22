@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现三个处理整数序列的函数，测试在隐藏的 harness 里。
+实现三个处理整数序列的函数。
 
 ```cpp
 #include <vector>

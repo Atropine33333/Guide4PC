@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement a template that applies a function to every element of a tuple.
+Implement a template that applies a function to every element of a tuple.
 
 ```cpp
 #include <tuple>

@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement a histogram that buckets values by a fixed width.
+Implement a histogram that buckets values by a fixed width.
 
 ```cpp
 class Histogram {

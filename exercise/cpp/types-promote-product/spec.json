@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 2,
   "title": {
-    "chs": "三个整数的乘积",
-    "en": "Product of Three"
+    "chs": "三数相乘问积几何",
+    "en": "The Product of Three Numbers"
   },
   "limits": {
     "timeoutMs": 5000,

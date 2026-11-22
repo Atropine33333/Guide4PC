@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement an accumulator that collects integers in fixed-size batches.
+Implement an accumulator that collects integers in fixed-size batches.
 
 ```cpp
 #include <cstddef>

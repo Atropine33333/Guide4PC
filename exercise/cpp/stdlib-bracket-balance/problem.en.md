@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a bracket-matching function; a hidden harness runs the tests.
+Implement a bracket-matching function.
 
 Implement:
 

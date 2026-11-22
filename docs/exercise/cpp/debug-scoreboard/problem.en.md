@@ -10,8 +10,6 @@ As for how many are in the book, count the names: the same name, however often i
 
 **In plain words**: implement the members of `ScoreBoard`: `add` accumulates points per player; `score` reports the total and returns `false` for an unknown player; `players` returns the number of distinct players; `leader` returns the highest scorer's name, breaking ties by the lexicographically smallest name, and returns `false` when the board is empty. Several behaviours in the starter break the contract; fix them one by one, keep the signatures, and do not write `main`.
 
-This exercise reads no stdin and writes no stdout. A hidden harness runs the tests.
-
 The contract:
 
 - `void add(const std::string& player, int points)`: add points to a player. Repeated additions for the same player must **accumulate**. `points` is positive.

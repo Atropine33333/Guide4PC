@@ -1,4 +1,10 @@
-This task reads no stdin and writes no stdout. Implement LEB128 encoding and decoding for unsigned 32-bit integers.
+And the Lord spoke unto Moses, saying:
+
+"Number the children of Israel in companies of seven, beginning from the least, and let them go out company by company. If a company still has companies after it, set the mark `0x80` at its head, to show that more remain; the last company shall bear no mark. And if there be not one man in the whole camp, leave a single empty company, `0x00`."
+
+And Moses numbered them so. And when the roll was to be taken back, the Lord said further: "When you read, you shall examine: the companies shall be no more than five; the fifth company may hold only the lower four bits, and no more; and no empty or surplus company shall be left. Every form that is not the shortest shall be returned and not entered in the roll."
+
+**In plain words**: implement LEB128 variable-length encoding and decoding for unsigned 32-bit integers. Encoding splits the value into 7-bit groups from least to most significant and sets the high bit on every byte but the last. Decoding reads one value from the start of the byte sequence, writes back the result and the number of bytes consumed, leaves the outputs untouched on failure, and rejects over-long, overflowing, or non-shortest encodings.
 
 ```cpp
 #include <cstddef>

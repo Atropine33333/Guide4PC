@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 1,
   "title": {
-    "chs": "无符号减法回绕",
-    "en": "Unsigned Subtraction Wraps"
+    "chs": "无符号减法须知",
+    "en": "Notes on Unsigned Subtraction"
   },
   "limits": {
     "timeoutMs": 5000,

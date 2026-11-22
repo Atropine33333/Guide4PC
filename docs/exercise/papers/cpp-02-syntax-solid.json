@@ -1,0 +1,15 @@
+{
+  "id": "cpp-02-syntax-solid",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法巩固卷",
+    "en": "Syntax: Getting Solid"
+  },
+  "items": [
+    "syntax-grade-band",
+    "syntax-caesar-shift",
+    "syntax-diamond-grid",
+    "syntax-happy-chain",
+    "syntax-palindrome-line"
+  ]
+}

@@ -1,4 +1,22 @@
-You are given two non-decreasing integer sequences, possibly containing duplicates. Treat each sequence as a set and output the union, the intersection, and the difference (the first sequence minus the second), each sorted ascending with duplicates removed.
+(Two in the morning, channel seven. The lights are glaring.)
+
+"Friends, look at these two stacks of sorted cards: stack A has `n`, stack B has `m`, both ordered from small to large. What would you like?"
+
+"The union? We have it! Two lists become one, each value kept once, from small to large."
+
+"The intersection? Of course! Only values on both lists remain."
+
+"A minus B? Hand it over! Everything in A that B lacks is yours."
+
+"Buy the whole set: three lines of output, each ascending, no repeated values. If a line is empty, write `empty`."
+
+"Two hundred thousand cards between the stacks? Don't compare them pair by pair! Walk two pointers once, or use the standard set algorithms — so fast the neighbours will think you cheated."
+
+"Not sold in stores. Call now for just $19.99 — but wait, there's more! Order today and we'll throw in a duplicate-free output!"
+
+"Operators are standing by! Call 676 - 6767 - 6767 today!"
+
+**In plain words**: Given two non-decreasing integer sequences A and B, each possibly containing duplicates. Treat each sequence as a set and output the union, the intersection, and A minus B; each result is sorted ascending with duplicates removed. Print three lines in that order, integers separated by single spaces within a line; print `empty` for a result that is the empty set. The combined length may reach 200000, so do not compare every pair of elements.
 
 ### Input
 

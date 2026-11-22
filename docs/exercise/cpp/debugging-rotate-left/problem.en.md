@@ -37,7 +37,7 @@ void rotate_left(std::vector<int>& values, int k) {
 - the shift must be reduced modulo the vector length;
 - an empty vector never changes, and a one-element vector never changes.
 
-The judge includes your implementation and checks these boundaries. **Do not write `main`.**
+**Do not write `main`.**
 
 ### Input
 

@@ -1,0 +1,15 @@
+{
+  "id": "cpp-13-algorithm-advanced",
+  "lang": "cpp",
+  "title": {
+    "chs": "算法进阶卷",
+    "en": "Algorithms: Advanced"
+  },
+  "items": [
+    "algorithm-knapsack",
+    "algorithm-meeting-count",
+    "first-at-least",
+    "algorithm-max-subarray",
+    "algorithm-lis"
+  ]
+}

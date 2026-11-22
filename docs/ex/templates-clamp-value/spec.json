@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 2,
   "title": {
-    "chs": "通用截断函数",
-    "en": "Generic Clamp"
+    "chs": "截断区间守则",
+    "en": "Rules of the Clamping Interval"
   },
   "harness": "harness.cpp",
   "limits": {

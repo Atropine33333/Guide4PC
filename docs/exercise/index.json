@@ -6,8 +6,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "账户继承层次",
-        "en": "Account Hierarchy"
+        "chs": "账户管理条例",
+        "en": "An Ordinance on Accounts"
       },
       "category": "oop",
       "rank": 3,
@@ -150,8 +150,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "哦，亲爱的，它藏在哪儿",
-        "en": "Oh, Darling, Where Is It Hiding?"
+        "chs": "它藏在哪儿",
+        "en": "Where Is It Hiding?"
       },
       "category": "algorithm",
       "rank": 4,
@@ -348,8 +348,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "32 位图案报告",
-        "en": "32-bit Pattern Report"
+        "chs": "32 位图案情况报告",
+        "en": "Report on a 32-Bit Pattern"
       },
       "category": "types",
       "rank": 2,
@@ -618,8 +618,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "亲爱的后缀式",
-        "en": "My Dear Postfix Expression"
+        "chs": "后缀式",
+        "en": "Postfix Expression"
       },
       "category": "data",
       "rank": 1,
@@ -1086,8 +1086,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "亲爱的，那些空格",
-        "en": "Oh, My Dear, Those Spaces"
+        "chs": "那些空格",
+        "en": "Those Spaces"
       },
       "category": "debugging",
       "rank": 2,
@@ -1446,8 +1446,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "向下取整的平均数",
-        "en": "Floor Average"
+        "chs": "截断与向下：一段对口",
+        "en": "Truncate and Floor: A Double Act"
       },
       "category": "types",
       "rank": 2,
@@ -1554,8 +1554,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "亲爱的，把秒数说体面些",
-        "en": "Make the Seconds Presentable, My Dear"
+        "chs": "把秒数说体面些",
+        "en": "Make the Seconds Presentable"
       },
       "category": "io",
       "rank": 1,
@@ -1590,8 +1590,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "亲爱的，把反斜杠念对",
-        "en": "Read That Backslash Properly, My Dear"
+        "chs": "把反斜杠念对",
+        "en": "Read That Backslash Properly"
       },
       "category": "io",
       "rank": 3,
@@ -1806,8 +1806,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "字符分类统计",
-        "en": "Letter Class Tally"
+        "chs": "数点三营",
+        "en": "Numbering the Three Camps"
       },
       "category": "syntax",
       "rank": 1,
@@ -2184,8 +2184,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最小、最大与总和",
-        "en": "Minimum, Maximum and Total"
+        "chs": "牌面的最小、最大与总和",
+        "en": "The Cards: Least, Greatest, Sum"
       },
       "category": "syntax",
       "rank": 1,
@@ -2220,8 +2220,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "计数器类",
-        "en": "A Counter Class"
+        "chs": "不肯下零的计数器",
+        "en": "The Counter That Refuses Zero"
       },
       "category": "oop",
       "rank": 2,
@@ -2274,8 +2274,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "自定义整数区间",
-        "en": "Custom Integer Range"
+        "chs": "数点会众的区间",
+        "en": "The Range of the Counted Tribes"
       },
       "category": "oop",
       "rank": 5,
@@ -2310,8 +2310,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "库存账本",
-        "en": "Inventory Ledger"
+        "chs": "家主与仓房账目",
+        "en": "The Master's Storehouse Ledger"
       },
       "category": "oop",
       "rank": 2,
@@ -2346,8 +2346,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "常量方法里的延迟缓存",
-        "en": "Lazy Cache in a Const Method"
+        "chs": "文本统计缓存管理办法",
+        "en": "Notice on Caching Text Statistics"
       },
       "category": "oop",
       "rank": 3,
@@ -2364,8 +2364,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "像素类",
-        "en": "Pixel Class"
+        "chs": "三路分量的像素",
+        "en": "The Three-Channel Pixel"
       },
       "category": "oop",
       "rank": 1,
@@ -2382,8 +2382,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "稠密多项式",
-        "en": "Dense Polynomial"
+        "chs": "天元一术与多项式",
+        "en": "The Heavenly Element and Polynomials"
       },
       "category": "oop",
       "rank": 4,
@@ -2400,8 +2400,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "有理数类",
-        "en": "Rational Number"
+        "chs": "方田约分与四则",
+        "en": "Reducing Fractions in the Square Field"
       },
       "category": "oop",
       "rank": 4,
@@ -2418,8 +2418,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "静态工厂与校验",
-        "en": "Static Factory with Validation"
+        "chs": "用户名登记管理办法",
+        "en": "Measures for Registering Usernames"
       },
       "category": "oop",
       "rank": 4,
@@ -2436,8 +2436,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "金额的流输入输出",
-        "en": "Stream I/O for Money"
+        "chs": "账房先生的金额账",
+        "en": "The Bookkeeper's Money Format"
       },
       "category": "oop",
       "rank": 4,
@@ -2472,8 +2472,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "交通灯",
-        "en": "Traffic Light"
+        "chs": "十字路口的三色灯",
+        "en": "Three Colours at the Crossing"
       },
       "category": "oop",
       "rank": 1,
@@ -2490,8 +2490,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "类型擦除值",
-        "en": "Type-Erased Value"
+        "chs": "可容值对象法典",
+        "en": "A Code for Three-State Values"
       },
       "category": "oop",
       "rank": 5,
@@ -2526,8 +2526,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "虚析构与形状层次",
-        "en": "Virtual Destructors and Shapes"
+        "chs": "形状仓库值夜规则",
+        "en": "Night-Shift Rules for the Shape Warehouse"
       },
       "category": "oop",
       "rank": 3,
@@ -2580,7 +2580,7 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "出埃及记·ADL 与定制 swap",
+        "chs": "ADL 与定制 swap",
         "en": "Exodus: ADL and the Custom swap"
       },
       "category": "semantics",
@@ -2598,8 +2598,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "数组退化与引用绑定",
-        "en": "Array Decay and Reference Binding"
+        "chs": "数组观测站守则",
+        "en": "Rules of the Array Observation Post"
       },
       "category": "semantics",
       "rank": 2,
@@ -2652,8 +2652,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "浮点特殊值",
-        "en": "Floating-Point Special Values"
+        "chs": "浮点三器",
+        "en": "Zhuangzi on the Three Vessels of Floating Point"
       },
       "category": "semantics",
       "rank": 4,
@@ -2671,7 +2671,7 @@
       "lang": "cpp",
       "title": {
         "chs": "函数指针表",
-        "en": "Function Pointer Table"
+        "en": "The Storyteller's Table of Function Pointers"
       },
       "category": "semantics",
       "rank": 2,
@@ -2706,8 +2706,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "重载决议",
-        "en": "Overload Resolution"
+        "chs": "重载决议法典",
+        "en": "The Code of Overload Resolution"
       },
       "category": "semantics",
       "rank": 3,
@@ -2760,7 +2760,7 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "九章算术·余数",
+        "chs": "余数",
         "en": "Remainders in the Nine Chapters"
       },
       "category": "semantics",
@@ -2814,8 +2814,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "字符串视图",
-        "en": "String Views"
+        "chs": "不誊写的电报",
+        "en": "A Dubbed Film: The Telegram Not Copied"
       },
       "category": "semantics",
       "rank": 3,
@@ -2832,8 +2832,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "发号器",
-        "en": "Ticket Dispenser"
+        "chs": "发号的比喻",
+        "en": "Matthew: The Parable of the Numberer"
       },
       "category": "semantics",
       "rank": 2,
@@ -2886,8 +2886,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "值、引用与拷贝",
-        "en": "Values, References and Copies"
+        "chs": "传值与传引用",
+        "en": "Crosstalk: Pass by Value and by Reference"
       },
       "category": "semantics",
       "rank": 2,
@@ -2922,8 +2922,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "有序合并去重",
-        "en": "Sorted Merge, Unique"
+        "chs": "两支队伍的点名册",
+        "en": "The Muster of Two Camps"
       },
       "category": "stdlib",
       "rank": 2,
@@ -2940,8 +2940,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "二进制中 1 的个数",
-        "en": "Count Set Bits"
+        "chs": "无符号走廊 32 号房",
+        "en": "Room 32 of the Unsigned Corridor"
       },
       "category": "stdlib",
       "rank": 1,
@@ -2958,8 +2958,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "64 位标志寄存器",
-        "en": "64-bit Flag Register"
+        "chs": "六十四位铜牌",
+        "en": "The Sixty-Four-Bit Tablet"
       },
       "category": "stdlib",
       "rank": 2,
@@ -3030,8 +3030,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "多重集合第 k 小",
-        "en": "K-th Smallest in a Multiset"
+        "chs": "第 k 张牌",
+        "en": "The K-th Card"
       },
       "category": "stdlib",
       "rank": 3,
@@ -3048,8 +3048,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "下一个排列",
-        "en": "Next Permutation"
+        "chs": "列数之次第",
+        "en": "The Next Arrangement"
       },
       "category": "stdlib",
       "rank": 3,
@@ -3066,8 +3066,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "可选值解析",
-        "en": "Optional Integer Parsing"
+        "chs": "整数解析法典",
+        "en": "The Integer Parsing Code"
       },
       "category": "stdlib",
       "rank": 3,
@@ -3084,8 +3084,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "稳定的三路划分",
-        "en": "Stable Three-Way Partition"
+        "chs": "三路分班",
+        "en": "Three-Way Sorting, Live"
       },
       "category": "stdlib",
       "rank": 3,
@@ -3102,8 +3102,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "替换全部",
-        "en": "Replace All Occurrences"
+        "chs": "要你命三千之全文替换",
+        "en": "The Miracle Replace-All 3000"
       },
       "category": "stdlib",
       "rank": 2,
@@ -3120,8 +3120,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "逐个插入的中位数",
-        "en": "Running Median"
+        "chs": "日取其半而问中",
+        "en": "Halving the Pile, Finding the Middle"
       },
       "category": "stdlib",
       "rank": 4,
@@ -3138,8 +3138,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "有序序列的集合运算",
-        "en": "Set Operations on Sorted Ranges"
+        "chs": "集合三件套",
+        "en": "The Set Trilogy, Only $19.99"
       },
       "category": "stdlib",
       "rank": 2,
@@ -3192,8 +3192,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "span 统计视图",
-        "en": "Span Statistics View"
+        "chs": "连续内存段统计与裁剪通知",
+        "en": "Notice on Read-Only Span Statistics"
       },
       "category": "stdlib",
       "rank": 4,
@@ -3210,8 +3210,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "拆分与拼接字段",
-        "en": "Split and Join Fields"
+        "chs": "拆分与拼接",
+        "en": "Splitting Fields"
       },
       "category": "stdlib",
       "rank": 2,
@@ -3228,8 +3228,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "多关键字排序",
-        "en": "Multi-Key Sorting"
+        "chs": "记录排序法典",
+        "en": "The Record Ordering Code"
       },
       "category": "stdlib",
       "rank": 4,
@@ -3264,8 +3264,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "交换序列",
-        "en": "Swap Sequence"
+        "chs": "洗牌",
+        "en": "Tarot: The Shuffle"
       },
       "category": "semantics",
       "rank": 2,
@@ -3282,8 +3282,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "字符条形图",
-        "en": "Character Bar Chart"
+        "chs": "把条形画出来",
+        "en": "Draw the Bars"
       },
       "category": "syntax",
       "rank": 1,
@@ -3300,8 +3300,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "任意进制转换",
-        "en": "Conversion Between Bases"
+        "chs": "进制互化之术",
+        "en": "The Art of Converting Bases"
       },
       "category": "syntax",
       "rank": 3,
@@ -3318,8 +3318,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "凯撒位移",
-        "en": "Caesar Shift"
+        "chs": "凯撒加密盘，仅售 19.99",
+        "en": "The Caesar Wheel, Only $19.99"
       },
       "category": "syntax",
       "rank": 2,
@@ -3354,8 +3354,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "跨午夜的时钟",
-        "en": "Clock That Wraps"
+        "chs": "话说那座不惧午夜的钟",
+        "en": "The Clock That Fears No Midnight"
       },
       "category": "syntax",
       "rank": 3,
@@ -3372,8 +3372,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "贪心找零",
-        "en": "Greedy Coin Counting"
+        "chs": "天国里的银钱",
+        "en": "The Silver in the Kingdom"
       },
       "category": "syntax",
       "rank": 3,
@@ -3390,8 +3390,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "考拉兹步数",
-        "en": "Collatz Steps"
+        "chs": "话说考拉兹那串数",
+        "en": "The Collatz Tale"
       },
       "category": "syntax",
       "rank": 1,
@@ -3444,8 +3444,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "成绩等级",
-        "en": "Letter Grade Band"
+        "chs": "成绩分档条例",
+        "en": "The Ordinance of Grade Bands"
       },
       "category": "syntax",
       "rank": 1,
@@ -3480,8 +3480,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "Luhn 校验与校验位",
-        "en": "Luhn Validation and Check Digit"
+        "chs": "校验位条例",
+        "en": "The Code of the Check Digit"
       },
       "category": "syntax",
       "rank": 2,
@@ -3498,8 +3498,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "奇数阶幻方",
-        "en": "Odd-Order Magic Square"
+        "chs": "洛书九宫之术",
+        "en": "The Luo Shu Magic Square"
       },
       "category": "syntax",
       "rank": 4,
@@ -3516,8 +3516,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "整数转英文单词",
-        "en": "Integer to English Words"
+        "chs": "请念出这个数",
+        "en": "Say the Number"
       },
       "category": "syntax",
       "rank": 3,
@@ -3534,8 +3534,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "忽略标点的回文",
-        "en": "Palindrome, Ignoring Punctuation"
+        "chs": "甲说回文，乙说标点",
+        "en": "A Palindrome, Punctuation Aside"
       },
       "category": "syntax",
       "rank": 2,
@@ -3588,8 +3588,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "三角形分类",
-        "en": "Triangle Classification"
+        "chs": "三角形陈列馆须知",
+        "en": "Rules of the Triangle Gallery"
       },
       "category": "syntax",
       "rank": 2,
@@ -3606,8 +3606,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "定容泛型栈",
-        "en": "Bounded Generic Stack"
+        "chs": "定容栈管理办法",
+        "en": "Measures for Bounded Stacks"
       },
       "category": "templates",
       "rank": 3,
@@ -3624,8 +3624,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "泛型数对",
-        "en": "Generic Pair"
+        "chs": "绒盒里的两位客人",
+        "en": "Two Guests in a Velvet Box"
       },
       "category": "templates",
       "rank": 3,
@@ -3642,8 +3642,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "数组的平均值与最大值",
-        "en": "Array Average and Maximum"
+        "chs": "牌阵的平均与最重",
+        "en": "Average and Heaviest in the Spread"
       },
       "category": "templates",
       "rank": 2,
@@ -3660,8 +3660,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "通用截断函数",
-        "en": "Generic Clamp"
+        "chs": "截断区间守则",
+        "en": "Rules of the Clamping Interval"
       },
       "category": "templates",
       "rank": 2,
@@ -3678,8 +3678,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "CRTP 比较运算符混合类",
-        "en": "CRTP Comparable Mixin"
+        "chs": "师傅只教四样",
+        "en": "The Master Teaches Four"
       },
       "category": "templates",
       "rank": 4,
@@ -3696,8 +3696,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "函数组合",
-        "en": "Function Composition"
+        "chs": "二器相因",
+        "en": "Two Vessels in Sequence"
       },
       "category": "templates",
       "rank": 3,
@@ -3714,8 +3714,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "数值概念约束",
-        "en": "Numeric Concept Constraint"
+        "chs": "数值类型管理法典",
+        "en": "Code of Numeric Types"
       },
       "category": "templates",
       "rank": 5,
@@ -3750,8 +3750,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "定长数组模板",
-        "en": "Fixed-Size Array Template"
+        "chs": "按支派取份",
+        "en": "A Portion for Each Tribe"
       },
       "category": "templates",
       "rank": 3,
@@ -3768,8 +3768,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "完美转发",
-        "en": "Perfect Forwarding"
+        "chs": "门房的三位客人",
+        "en": "Three Guests at the Gate"
       },
       "category": "templates",
       "rank": 5,
@@ -3786,8 +3786,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "泛型拼接",
-        "en": "Generic Join"
+        "chs": "收拾零碎",
+        "en": "Gathering the Fragments"
       },
       "category": "templates",
       "rank": 3,
@@ -3840,8 +3840,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "定长矩阵",
-        "en": "Fixed-Size Matrix"
+        "chs": "棋局矩阵",
+        "en": "The Chessboard Matrix"
       },
       "category": "templates",
       "rank": 4,
@@ -3930,8 +3930,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "编译期类型列表",
-        "en": "Compile-Time Type List"
+        "chs": "不落地的牌堆",
+        "en": "A Deck That Never Lands"
       },
       "category": "templates",
       "rank": 5,
@@ -3948,8 +3948,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "可变参数求和",
-        "en": "Variadic Sum"
+        "chs": "还有更多参数",
+        "en": "But Wait, There's More!"
       },
       "category": "templates",
       "rank": 4,
@@ -3985,7 +3985,7 @@
       "lang": "cpp",
       "title": {
         "chs": "取号机",
-        "en": "Ticket Machine"
+        "en": "Midnight Shopping: The Ticket Machine"
       },
       "category": "semantics",
       "rank": 2,
@@ -4002,8 +4002,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "绝对值边界",
-        "en": "Absolute-Value Boundary"
+        "chs": "绝对值使用须知",
+        "en": "Notes on Taking Absolute Values"
       },
       "category": "types",
       "rank": 2,
@@ -4020,8 +4020,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "BCD 打包",
-        "en": "Packed BCD"
+        "chs": "半字节的两次点名",
+        "en": "Two Musters of the Nibbles"
       },
       "category": "types",
       "rank": 3,
@@ -4056,8 +4056,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "字节转十六进制",
-        "en": "Byte to Hex"
+        "chs": "两位大写，前导零常在",
+        "en": "Two Digits, Uppercase, Always"
       },
       "category": "types",
       "rank": 1,
@@ -4092,8 +4092,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "精确转换到 int",
-        "en": "Exact Conversion to int"
+        "chs": "浮点转整数条例",
+        "en": "Ordinance on Float-to-Int Conversion"
       },
       "category": "types",
       "rank": 3,
@@ -4110,8 +4110,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "定点金额",
-        "en": "Fixed-Point Money"
+        "chs": "家主算账，分毫必较",
+        "en": "The Householder's Ledger"
       },
       "category": "types",
       "rank": 3,
@@ -4146,8 +4146,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "安全窄化",
-        "en": "Safe Narrowing"
+        "chs": "窄化转换审批办法",
+        "en": "Measures for Approving Narrowing Conversions"
       },
       "category": "types",
       "rank": 3,
@@ -4164,8 +4164,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "近似相等",
-        "en": "Nearly Equal"
+        "chs": "一尺之棰与容差",
+        "en": "The Rod Halved Each Day"
       },
       "category": "types",
       "rank": 2,
@@ -4200,8 +4200,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "三个整数的乘积",
-        "en": "Product of Three"
+        "chs": "三数相乘问积几何",
+        "en": "The Product of Three Numbers"
       },
       "category": "types",
       "rank": 2,
@@ -4236,8 +4236,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "带溢出检查的整数运算",
-        "en": "Integer Arithmetic with Overflow Checks"
+        "chs": "有符号整数运算法",
+        "en": "The Code of Signed Integers"
       },
       "category": "types",
       "rank": 4,
@@ -4290,8 +4290,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "无符号减法回绕",
-        "en": "Unsigned Subtraction Wraps"
+        "chs": "无符号减法须知",
+        "en": "Notes on Unsigned Subtraction"
       },
       "category": "types",
       "rank": 1,
@@ -4308,8 +4308,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "LEB128 变长整数",
-        "en": "LEB128 Variable-Length Integers"
+        "chs": "七人一组，依次出列",
+        "en": "In Companies of Seven They Depart"
       },
       "category": "types",
       "rank": 4,

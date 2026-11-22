@@ -37,7 +37,7 @@ public:
 - `publish` calls handlers in subscription order, earliest first.
 - A null `handler` must not be subscribed.
 - The same handler may subscribe to the same event more than once, and each subscription counts separately.
-- Do not modify the bus during `publish` (the tests do not do so).
+- Do not modify the bus during `publish` (no need to support that).
 - Do not write `main`.
 
 ### Hint

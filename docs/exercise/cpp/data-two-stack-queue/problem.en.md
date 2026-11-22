@@ -14,7 +14,7 @@ Article 7. Completing this class is enough; no unit shall write its own `main`.
 
 Please proceed accordingly.
 
-**In plain words**: implement a queue on top of two stacks and let it report its minimum in O(1). Internal storage may use only `std::vector`, and only as a stack (`push_back` / `back` / `pop_back`); `push` enqueues at the rear, `pop` dequeues from the front, `front` and `min` both return -1 when the queue is empty, and `empty` and `size` describe the element count. All operations are amortized O(1), and `min` must not rescan the queue each time. No stdin, no stdout — **do not write `main`**.
+**In plain words**: implement a queue on top of two stacks and let it report its minimum in O(1). Internal storage may use only `std::vector`, and only as a stack (`push_back` / `back` / `pop_back`); `push` enqueues at the rear, `pop` dequeues from the front, `front` and `min` both return -1 when the queue is empty, and `empty` and `size` describe the element count. All operations are amortized O(1), and `min` must not rescan the queue each time. **Do not write `main`**.
 
 ```cpp
 #include <vector>

@@ -1,0 +1,15 @@
+{
+  "id": "cpp-01-syntax-first",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法起步卷",
+    "en": "Syntax: First Steps"
+  },
+  "items": [
+    "letter-class-tally",
+    "min-max-total",
+    "syntax-bar-chart",
+    "syntax-collatz-steps",
+    "syntax-dna-hamming"
+  ]
+}

@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现两个函数模板，测试在隐藏的 harness 里。
+实现两个函数模板。
 
 ```cpp
 template <typename T>

@@ -20,7 +20,7 @@
 
 乙：得嘞，题面我给您念念。
 
-**人话**：实现 `lower_bound_index(values, target)`：在非降序数组中返回第一个满足 `values[i] >= target` 的下标；所有元素都小于 `target` 时返回 `values.size()`。不读 stdin、不写 stdout，隐藏 harness 直接调用。starter 在相等时把 `low` 推到 `mid + 1`，改用收窄右边界、保留 `mid` 的写法即可，函数签名保持原样。
+**人话**：实现 `lower_bound_index(values, target)`：在非降序数组中返回第一个满足 `values[i] >= target` 的下标；所有元素都小于 `target` 时返回 `values.size()`。starter 在相等时把 `low` 推到 `mid + 1`，改用收窄右边界、保留 `mid` 的写法即可，函数签名保持原样。
 
 函数：
 

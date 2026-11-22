@@ -24,7 +24,7 @@ std::string render(const T& value);
 
 Use `if constexpr` for compile-time dispatch (do not write a runtime `if` over type traits), and make sure the code still compiles when the passed type cannot participate in arithmetic.
 
-The judge includes your implementation and instantiates these templates with many types. **Do not write `main`.**
+These templates will be instantiated with many types. **Do not write `main`.**
 
 ### Input
 

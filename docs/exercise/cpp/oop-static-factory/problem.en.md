@@ -1,4 +1,28 @@
-This exercise reads no stdin and writes no stdout. Implement a username class that can only be built through a static factory, tested by a hidden harness.
+Guide4PC Exercise Bureau
+
+Document No. 9 of 2026
+
+NOTICE ON ISSUING THE MEASURES FOR REGISTERING USERNAMES
+
+To all implementing units:
+
+　　To regulate the registration of usernames, the Measures for Registering Usernames are hereby issued. Please comply.
+
+　　Article 1. A username is between 3 and 16 characters long, both ends included.
+
+　　Article 2. The first character is an ASCII letter, `a`–`z` or `A`–`Z`.
+
+　　Article 3. Every remaining character is an ASCII letter, a digit, or an underscore.
+
+　　Article 4. For a name that fails these measures, `create` reports `std::nullopt`; for one that passes, it reports a `std::optional` holding the name.
+
+　　Article 5. The constructor is private. No outside party may build an object directly; registration through `create` is the only way.
+
+　　Article 6. `value()` reports the stored name, `length()` its character count, and `operator==` compares contents.
+
+　　Article 7. These measures take effect on the day of issue.
+
+**In plain words**: Implement the username class `Username`, creatable only through its static factory: `create` checks the length (3 to 16), then that the first character is an ASCII letter, then every remaining character; a valid name yields a `std::optional` holding it, an invalid one yields `std::nullopt`. The constructor is private; `value()` and `length()` read the contents and `operator==` compares the strings.
 
 ```cpp
 #include <optional>
@@ -16,17 +40,6 @@ private:
     std::string text_;
 };
 ```
-
-Rules:
-
-- A valid username has length between 3 and 16 inclusive.
-- The first character must be an ASCII letter (`a`–`z` or `A`–`Z`).
-- Every other character must be an ASCII letter, a digit, or an underscore.
-- `create` returns `std::nullopt` when invalid and an optional holding the username when valid.
-- `value()` returns the stored username and `length()` returns its length.
-- `operator==` compares the two username strings.
-- The constructor is private, so objects can only be created through `create`.
-- Do not write `main`.
 
 ### Example
 

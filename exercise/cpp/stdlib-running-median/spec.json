@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 4,
   "title": {
-    "chs": "逐个插入的中位数",
-    "en": "Running Median"
+    "chs": "日取其半而问中",
+    "en": "Halving the Pile, Finding the Middle"
   },
   "limits": {
     "timeoutMs": 5000,

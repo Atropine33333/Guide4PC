@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 1,
   "title": {
-    "chs": "像素类",
-    "en": "Pixel Class"
+    "chs": "三路分量的像素",
+    "en": "The Three-Channel Pixel"
   },
   "harness": "harness.cpp",
   "limits": {

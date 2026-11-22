@@ -10,7 +10,7 @@ Jesus said, "Each time a man receives the estate, the ledger adds one. Whoever g
 
 "When the time comes, every man shall give account. When the count falls to zero, the storehouse is torn down, and dust returns to dust."
 
-**In plain words**: implement `SharedInt`. Each object stores only a pointer to a control block; the block holds one `int` value and a reference count. Copy construction and copy assignment increment the count and share the value. Assignment releases the left operand's old reference before sharing the right operand's data, and self-assignment must be safe. The destructor decrements the count and frees the control block only at zero. Calling `set_value` through any copy is visible to all the others. This exercise reads no stdin and writes no stdout; do not write `main`.
+**In plain words**: implement `SharedInt`. Each object stores only a pointer to a control block; the block holds one `int` value and a reference count. Copy construction and copy assignment increment the count and share the value. Assignment releases the left operand's old reference before sharing the right operand's data, and self-assignment must be safe. The destructor decrements the count and frees the control block only at zero. Calling `set_value` through any copy is visible to all the others. Do not write `main`.
 
 ```cpp
 class SharedInt {

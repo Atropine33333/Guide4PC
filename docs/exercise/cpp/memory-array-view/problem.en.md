@@ -22,7 +22,7 @@ A: Indexes passed to `operator[]` are guaranteed valid, so take them without a g
 
 B: Neatly done.
 
-**In plain words**: implement `IntView`. The default constructor makes an empty view, and so does passing `data == nullptr` or `count <= 0` to the other constructor. A view stores only a pointer and a length; it copies no data, so writing through a view writes the original array. `slice(begin, count)` returns a new view over the same memory and leaves the original view untouched; an out-of-range slice or `count == 0` yields an empty view. Indexes passed to `operator[]` are guaranteed valid, so no bounds check is needed. This exercise reads no stdin and writes no stdout; do not write `main`.
+**In plain words**: implement `IntView`. The default constructor makes an empty view, and so does passing `data == nullptr` or `count <= 0` to the other constructor. A view stores only a pointer and a length; it copies no data, so writing through a view writes the original array. `slice(begin, count)` returns a new view over the same memory and leaves the original view untouched; an out-of-range slice or `count == 0` yields an empty view. Indexes passed to `operator[]` are guaranteed valid, so no bounds check is needed. Do not write `main`.
 
 ```cpp
 class IntView {

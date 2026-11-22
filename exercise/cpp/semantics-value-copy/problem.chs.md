@@ -1,4 +1,28 @@
-这一题不读 stdin。隐藏的 harness 会调用下面几个函数，检查你是否分清了值、引用和拷贝。
+《相声·传值与传引用》
+
+甲：您给瞧瞧，这 `Data` 递进函数，递的到底是什么？
+
+乙：递的是它自己——不过得看形参怎么写。
+
+甲：形参写 `Data data`，递过去的是什么？
+
+乙：一份拷贝。人家在副本上添一笔，您手里这份一个数都不多。
+
+甲：形参写 `Data& data` 呢？
+
+乙：那递的是本人。人家在本人身上添一笔，您这份也就多了一笔，躲都躲不开。
+
+甲：那 `const Data&` 呢？
+
+乙：递的还是本人，可人家只准看不准动，您这份原封不动。
+
+甲：返回 `Data` 与返回 `const int&`，又有何不同？
+
+乙：返回 `Data`，您接到的是一份新数据，改了也不牵连原主；返回 `const int&`，您接到的是原元素的别名，指错了地方，台下观众可要喊倒好。
+
+甲：得，您这一说，值、引用、拷贝，全明白了。
+
+**人话**：实现 `total`、`append_copy`、`append_ref`、`make_data`、`first_value` 五个函数：按值传参的只能改副本，按引用传参的才改原对象，`first_value` 必须返回 `values[0]` 的引用。
 
 ```cpp
 #include <vector>
@@ -15,7 +39,7 @@ Data make_data(int id, int count);
 const int& first_value(const Data& data);
 ```
 
-要求：
+### 要求
 
 - `total` 返回 `values` 中所有元素的和；空向量返回 `0`。
 - `append_copy` 按值接收 `Data`，在它自己的副本末尾追加 `value`，调用方的对象必须保持原样。
@@ -27,4 +51,4 @@ const int& first_value(const Data& data);
 
 ### 提示
 
-`std::vector` 的拷贝构造会深拷贝元素，所以 `Data` 的默认拷贝就是独立的；注意 `append_copy` 的形参不是引用，`first_value` 的返回类型不是 `int`。
+`std::vector` 的拷贝构造会深拷贝元素，所以 `Data` 的默认拷贝就是独立的；注意 `append_copy` 的形参没有 `&`，`first_value` 的返回类型是 `const int&`。

@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "memory",
   "rank": 3,
-  "title": { "chs": "对象生命周期账本", "en": "Lifetime Ledger" },
+  "title": { "chs": "关于存活对象登记的通知", "en": "Notice on Live Object Registration" },
   "harness": "harness.cpp",
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [

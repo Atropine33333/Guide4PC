@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a type label through template specialization; a hidden harness runs the tests.
+Implement a type label through template specialization.
 
 Implement a primary template and a family of specializations:
 

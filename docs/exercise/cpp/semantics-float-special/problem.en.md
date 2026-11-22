@@ -1,4 +1,14 @@
-This exercise reads no stdin. Implement functions over IEEE-754 special values; a hidden harness covers NaN, infinities, and signed zero.
+ZHUANGZI, BOOK XVII, CONTINUED
+
+Huizi said to Zhuangzi: "A rod one foot long, halved each day, will never be exhausted in ten thousand ages. Can a finite vessel then measure an infinite number?"
+
+Zhuangzi said: "It can. The vessel has fixed names: the infinite, the not-a-number, and the negative zero. The infinite exceeds every finite thing, and adding one leaves it infinite. The not-a-number equals nothing; it does not even equal itself. The negative zero has value zero and a negative sign: it equals positive zero, yet its sign can be told."
+
+Huizi said: "If it does not equal itself, how is one to treat it?"
+
+Zhuangzi said: "First ask whether it is ordered. What is ordered is compared by magnitude; what is unordered falls into one class, and precedence is no longer discussed. If you would know numbers, know their vessels first."
+
+**In plain words**: Implement six functions over IEEE-754 special values: detect NaN, detect finite values, detect negative zero, compare with `==`, give a three-way order (returning 2 when unordered), and divide safely with a fallback when the divisor is zero.
 
 ```cpp
 #include <cmath>
@@ -11,7 +21,7 @@ int total_order(double a, double b);
 double safe_div(double a, double b, double fallback);
 ```
 
-Rules:
+### Rules
 
 - `is_nan_value`: true when `x` is NaN.
 - `is_finite_value`: true when `x` is neither infinite nor NaN.

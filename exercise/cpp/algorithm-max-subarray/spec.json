@@ -3,16 +3,34 @@
   "id": "algorithm-max-subarray",
   "lang": "cpp",
   "category": "algorithm",
-  "rank": 3,
+  "rank": 4,
   "title": {
-    "chs": "最大子段和",
-    "en": "Maximum Subarray Sum"
+    "chs": "删一个数的最大子段和",
+    "en": "Maximum Subarray Sum with One Deletion"
   },
   "limits": {
     "timeoutMs": 5000,
     "outputBytes": 65536
   },
   "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "A single element"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "-7"
+          ],
+          "out": [
+            "-7"
+          ]
+        }
+      ]
+    },
     {
       "id": "all-negative",
       "label": {
@@ -32,19 +50,37 @@
       ]
     },
     {
-      "id": "single",
+      "id": "deletes-inside",
       "label": {
-        "chs": "单个元素",
-        "en": "A single element"
+        "chs": "删掉区间里的负数",
+        "en": "Deleting a negative inside the window"
       },
       "cases": [
         {
           "in": [
-            "1",
-            "7"
+            "3",
+            "10 -100 10"
           ],
           "out": [
-            "7"
+            "20"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-delete-better",
+      "label": {
+        "chs": "不删更好",
+        "en": "Keeping every element is better"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "1 2 3"
+          ],
+          "out": [
+            "6"
           ]
         }
       ]
@@ -62,25 +98,7 @@
             "1 -2 3 4 -1 2 -5"
           ],
           "out": [
-            "8"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "all-positive",
-      "label": {
-        "chs": "全是正数",
-        "en": "All positive"
-      },
-      "cases": [
-        {
-          "in": [
-            "3",
-            "1 2 3"
-          ],
-          "out": [
-            "6"
+            "9"
           ]
         }
       ]
@@ -116,7 +134,7 @@
             "1000000000 -1 1000000000"
           ],
           "out": [
-            "1999999999"
+            "2000000000"
           ]
         }
       ]

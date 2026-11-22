@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 2,
   "title": {
-    "chs": "忽略标点的回文",
-    "en": "Palindrome, Ignoring Punctuation"
+    "chs": "甲说回文，乙说标点",
+    "en": "A Palindrome, Punctuation Aside"
   },
   "limits": {
     "timeoutMs": 5000,

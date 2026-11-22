@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 1,
   "title": {
-    "chs": "最大公约数与最小公倍数",
-    "en": "GCD and LCM"
+    "chs": "方田铺砖与二鼓同鸣",
+    "en": "Paving the Field, Beating the Drums"
   },
   "limits": {
     "timeoutMs": 5000,

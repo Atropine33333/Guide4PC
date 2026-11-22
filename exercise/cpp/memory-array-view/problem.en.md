@@ -1,4 +1,28 @@
-This exercise reads no stdin and writes no stdout. Implement a non-owning array view; a hidden harness runs the tests.
+A: Tonight a class called `IntView`. This gentleman raises no children; he only keeps an eye on yours.
+
+B: And how does he watch them?
+
+A: Hand him an `int* data` and a `count`. If `data` is null, or `count <= 0`, he shrugs and reports an empty view: `data()` gives `nullptr`, `size()` gives 0.
+
+B: Frugal. Saves on rice.
+
+A: A view copies no data; it pockets the pointer and the length. So a write through `operator[]` lands in the original array — same household, after all.
+
+B: Borrows your pot to cook his own dinner.
+
+A: `slice(begin, count)` is even simpler: cut a stretch from `begin`, still the same memory, sharing one pair of trousers with the original view, while the original does not stir by a hair.
+
+B: And if the cut runs past the wall?
+
+A: On `begin < 0`, `count < 0`, `begin >= size()`, `begin + count > size()`, or `count == 0`, he hands back an empty view without a word.
+
+B: A wasted trip, then.
+
+A: Indexes passed to `operator[]` are guaranteed valid, so take them without a gate; `empty()` reports `true` as soon as `size() == 0`.
+
+B: Neatly done.
+
+**In plain words**: implement `IntView`. The default constructor makes an empty view, and so does passing `data == nullptr` or `count <= 0` to the other constructor. A view stores only a pointer and a length; it copies no data, so writing through a view writes the original array. `slice(begin, count)` returns a new view over the same memory and leaves the original view untouched; an out-of-range slice or `count == 0` yields an empty view. Indexes passed to `operator[]` are guaranteed valid, so no bounds check is needed. Do not write `main`.
 
 ```cpp
 class IntView {
@@ -16,17 +40,3 @@ public:
     IntView slice(int begin, int count) const;
 };
 ```
-
-Rules:
-
-- A default-constructed view is empty: `data()` is `nullptr` and `size()` is 0.
-- The constructor also produces an empty view when `data == nullptr` or `count <= 0`.
-- A view never copies data; it stores only a pointer and a length. Mutating an element through the view mutates the original array.
-- `slice(begin, count)` returns a view of `count` elements starting at `begin`, sharing memory with the original view; `slice` must not modify the original view.
-- Return an empty view for an out-of-range slice (`begin < 0`, `count < 0`, `begin >= size()`, `begin + count > size()`) or `count == 0`.
-- `operator[]` is only called with a valid index; no bounds checking is required.
-- Do not write `main`.
-
-### Hint
-
-The view returned by `slice` only needs `data_ + begin` and `count`. Be careful not to overflow the type used for the `begin + count` check.

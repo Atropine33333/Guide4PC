@@ -1,4 +1,14 @@
-Read `n` rows of comma-separated non-negative integers and print the sum of the fields in each row.
+The LORD spoke to Moses, saying:
+
+"Number the children of Israel by the houses of their fathers. Let each tribe stand as one row, with the numbers of its houses parted by the small mark `,`; and count the rows yourself before you begin.
+
+"Within a row, where a place stands empty, reckon it as nothing, and pass it not by; and where the whole row is empty, that row's total is nothing also. Set not the number-taker upon the empty place, for it will surely rage.
+
+"When the counting is done, report row by row: one number for each row, the sum of all its people. Take not away, neither add."
+
+And Moses numbered them, row by row, as the LORD commanded.
+
+**In plain words**: read `n` rows of comma-separated non-negative integers and print the sum of each row's fields; an empty field counts as `0`, a blank row sums to `0`, and parsing must not hand empty fields to `std::stoi`.
 
 **Input**:
 

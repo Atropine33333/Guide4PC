@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement rotations and bit reversal for 32-bit unsigned integers; a hidden harness checks them.
+Implement rotations and bit reversal for 32-bit unsigned integers.
 
 ```cpp
 #include <cstdint>

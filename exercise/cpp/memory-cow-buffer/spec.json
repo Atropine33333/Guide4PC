@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 4,
   "title": {
-    "chs": "写时复制缓冲区",
-    "en": "Copy-on-Write Buffer"
+    "chs": "写时复制的一叠纸",
+    "en": "The Sheet We Share Until We Write"
   },
   "limits": {
     "timeoutMs": 5000,

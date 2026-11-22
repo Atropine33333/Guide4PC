@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 5,
   "title": {
-    "chs": "编译期类型列表",
-    "en": "Compile-Time Type List"
+    "chs": "不落地的牌堆",
+    "en": "A Deck That Never Lands"
   },
   "limits": {
     "timeoutMs": 5000,

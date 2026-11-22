@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 4,
   "title": {
-    "chs": "令牌桶限流",
-    "en": "Token Bucket Rate Limiter"
+    "chs": "令牌桶，限量发售",
+    "en": "Token Bucket, As Seen on TV"
   },
   "limits": {
     "timeoutMs": 5000,

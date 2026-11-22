@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 4,
   "title": {
-    "chs": "合并区间",
-    "en": "Merge Intervals"
+    "chs": "各支派的营地连成一片",
+    "en": "When the Camps of the Tribes Join"
   },
   "harness": "harness.cpp",
   "limits": {

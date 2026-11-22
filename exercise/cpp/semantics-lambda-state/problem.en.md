@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Use lambdas to implement two closure factories; a hidden harness runs the tests.
+Use lambdas to implement two closure factories.
 
 ```cpp
 std::function<int()> make_counter(int start);

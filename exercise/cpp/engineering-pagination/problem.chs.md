@@ -23,7 +23,7 @@ public:
 - `current_page` 可任意传入，但内部必须钳制到 `[1, page_count]`；没有数据时 `page_count() == 0`、`current() == 1`。
 - `window(r)` 返回从 `current() - r` 到 `current() + r` 的所有页码（升序），并裁剪到合法范围；`r < 0` 按 0 处理。
 
-评测代码会直接包含你的实现并检查这些边界。**不要写 `main`。**
+**不要写 `main`。**
 
 ### 输入
 

@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 2,
   "title": {
-    "chs": "亲爱的，那些空格",
-    "en": "Oh, My Dear, Those Spaces"
+    "chs": "那些空格",
+    "en": "Those Spaces"
   },
   "limits": {
     "timeoutMs": 3000,

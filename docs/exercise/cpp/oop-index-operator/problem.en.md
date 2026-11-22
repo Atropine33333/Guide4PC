@@ -37,7 +37,7 @@ private:
 
 Requirements: `matrix[1][2] = 7` must modify the matrix element itself; `Row` and `ConstRow` store only a pointer and a column count, never a copy of the data; a const matrix only yields `const int&`. Indices are always in range.
 
-The judge includes your implementation and calls these members. **Do not write `main`.**
+**Do not write `main`.**
 
 ### Input
 

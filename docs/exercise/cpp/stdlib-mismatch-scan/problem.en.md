@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement three lookup and comparison functions; a hidden harness checks results and boundaries.
+Implement three lookup and comparison functions.
 
 ```cpp
 #include <cstddef>

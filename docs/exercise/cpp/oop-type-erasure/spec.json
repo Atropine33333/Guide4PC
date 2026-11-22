@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 5,
   "title": {
-    "chs": "类型擦除值",
-    "en": "Type-Erased Value"
+    "chs": "可容值对象法典",
+    "en": "A Code for Three-State Values"
   },
   "limits": {
     "timeoutMs": 5000,

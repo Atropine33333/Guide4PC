@@ -6,9 +6,9 @@ First the roll call: `push_back` ties a newcomer to the tail. He must be alive, 
 
 `head` and `tail` report the front and rear, or `nullptr` when the company is empty; `empty` and `size` report the count. At disbanding the company disperses and draws no blade.
 
-Someone asks: where do these nodes sit, and will they move? Rest easy. The harness has already led the nodes into a `std::vector<Node>` with its capacity reserved up front, so their addresses stand like mountains while you tie the straps.
+Someone asks: where do these nodes sit, and will they move? Rest easy. The nodes sit in a `std::vector<Node>` with its capacity reserved up front, so their addresses stand like mountains while you tie the straps.
 
-**In plain words**: implement `IntrusiveList`, which maintains only the `prev` / `next` links: it never allocates or frees a node, and its destructor must not `delete` anything. `push_back` appends a node; the caller guarantees the node is non-null and belongs to no list. `unlink` removes a node and sets its `prev` and `next` to `nullptr`, and does nothing when the node is `nullptr` or not in this list. `head` / `tail` return `nullptr` for an empty list, and `size` / `empty` describe the count. This exercise reads no stdin; do not write `main`.
+**In plain words**: implement `IntrusiveList`, which maintains only the `prev` / `next` links: it never allocates or frees a node, and its destructor must not `delete` anything. `push_back` appends a node; the caller guarantees the node is non-null and belongs to no list. `unlink` removes a node and sets its `prev` and `next` to `nullptr`, and does nothing when the node is `nullptr` or not in this list. `head` / `tail` return `nullptr` for an empty list, and `size` / `empty` describe the count. Do not write `main`.
 
 ```cpp
 #include <cstddef>

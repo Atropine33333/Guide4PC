@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a closed interval class, tested by a hidden harness.
+Implement a closed interval class.
 
 ```cpp
 class Interval {

@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 4,
   "title": {
-    "chs": "最大的 k 个数",
-    "en": "The k Largest Values"
+    "chs": "塔罗牌阵",
+    "en": "The Tarot Spread"
   },
   "limits": {
     "timeoutMs": 5000,

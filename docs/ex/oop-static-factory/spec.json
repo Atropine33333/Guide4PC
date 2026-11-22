@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 4,
   "title": {
-    "chs": "静态工厂与校验",
-    "en": "Static Factory with Validation"
+    "chs": "用户名登记管理办法",
+    "en": "Measures for Registering Usernames"
   },
   "limits": {
     "timeoutMs": 5000,

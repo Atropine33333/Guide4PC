@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 4,
   "title": {
-    "chs": "十六进制转储",
-    "en": "Hex Dump"
+    "chs": "誊一份十六格的账",
+    "en": "Copying the Ledger, Sixteen Bytes a Line"
   },
   "limits": {
     "timeoutMs": 5000,

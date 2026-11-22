@@ -1,4 +1,16 @@
-Read `n` integers one at a time. After each insertion, print the **lower median** of all values seen so far: after sorting them ascending, the value at index `(m - 1) / 2`, where `m` is the current count (indices start at 0).
+Huizi said to Zhuangzi: "Numbers arrive, one after another, again and again, and there is no end to them. With each new number, I wish to know the lower median. How shall it be found?"
+
+Zhuangzi said: "Do you not see the numbers? A rod one foot long, halved each day, will not be exhausted in ten thousand ages. So it is with numbers: divide them in two, the smaller on the left and the larger on the right. The top of the left heap is the lower median."
+
+Huizi said: "Then how shall the left and right be kept in balance?"
+
+Zhuangzi said: "The left heap shall hold no fewer than the right, and at most one more. Each new number goes first to the left; if the left top is greater than the right top, exchange them. If the left grows too large, move one to the right; if the right grows too large, move one to the left. Thus the middle is ever at the left top, ready to be taken."
+
+Huizi said: "What of repeated numbers?"
+
+Zhuangzi said: "Each copy counts as one card; do not merge them. Sorting and then picking also works, but that sorts anew for every number, an immense waste of time, and no good plan."
+
+**In plain words**: Read `n` integers one at a time. After each insertion, print the lower median of all values seen so far: after sorting them ascending, the value at index `(m - 1) / 2`, where `m` is the current count and indices start at 0. Print one line of `n` integers separated by single spaces. With an even count take the lower middle value, without averaging; duplicates count separately. Sorting from scratch each time is too slow, so maintain the median with two heaps or a balanced structure.
 
 **Input**:
 

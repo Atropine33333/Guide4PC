@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement two functions with default arguments; a hidden harness runs the tests.
+Implement two functions with default arguments.
 
 ```cpp
 int clamp_value(int value, int low = 0, int high = 100);
@@ -10,7 +10,7 @@ Rules:
 
 - `clamp_value` limits `value` to the closed interval `[low, high]`; if `low > high`, swap the bounds first; all three arguments may be negative.
 - `join_text` concatenates the strings in `parts` with `separator` between neighbours; return an empty string for an empty `parts`; keep empty elements; `separator` may be empty.
-- Write the default arguments only once, in the function definition; the harness calls `clamp_value` with one, two, and three arguments, and `join_text` with one and two arguments.
+- Write the default arguments only once, in the function definition; `clamp_value` must be callable with one, two, and three arguments, and `join_text` with one and two.
 - Do not write `main`.
 
 ### Hint

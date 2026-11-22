@@ -1,4 +1,4 @@
-This exercise reads no stdin. Four colour channels are packed into one 32-bit unsigned integer; a hidden harness checks packing and unpacking.
+Four colour channels are packed into one 32-bit unsigned integer; implement packing and unpacking.
 
 ```cpp
 #include <cstdint>

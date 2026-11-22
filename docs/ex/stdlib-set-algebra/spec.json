@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 2,
   "title": {
-    "chs": "有序序列的集合运算",
-    "en": "Set Operations on Sorted Ranges"
+    "chs": "集合三件套",
+    "en": "The Set Trilogy, Only $19.99"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -8,7 +8,7 @@ long long min_merge_cost(const std::vector<int>& piles);
 
 ### Input
 
-None. The judge calls the function directly.
+None.
 
 ### Output
 
@@ -27,4 +27,4 @@ Merge `1` and `2` for 3, leaving `{3, 3}`; merge those for 6; total 9. Merging `
 - `0 <= piles.size() <= 100`
 - `0 <= piles[i] <= 1000000`
 - An empty array returns 0.
-- The judge generates fixed-seed small inputs and compares against brute force over all merge orders.
+- Fixed-seed small inputs are compared against brute force over all merge orders.

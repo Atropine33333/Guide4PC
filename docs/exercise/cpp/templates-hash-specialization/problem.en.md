@@ -1,4 +1,4 @@
-This exercise reads no stdin. Give a custom 2-D point type equality and a `std::hash` specialisation so it can be used in `std::unordered_set`.
+Give a custom 2-D point type equality and a `std::hash` specialisation so it can be used in `std::unordered_set`.
 
 ```cpp
 #include <cstddef>

@@ -1,17 +1,42 @@
-This exercise reads no stdin and writes no stdout. Implement an account hierarchy; a hidden harness runs the tests.
+*An Ordinance on Bank Accounts*
 
-Base class `Account`:
+Article 1 (Purpose). To fix the bounds of deposit and withdrawal for current and savings accounts, this ordinance is enacted.
 
-- `explicit Account(int balance)`: the initial balance, non-negative.
-- A virtual destructor.
-- `bool deposit(int amount)`: `amount` must be greater than 0; on success add it and return `true`, otherwise return `false` with the balance unchanged.
-- Pure virtual `bool withdraw(int amount)`.
-- `int balance() const`.
-- Pure virtual `const char* kind() const`.
+Article 2 (The Account). Let `Account` be the base class: `explicit Account(int balance)` records a non-negative opening balance; its destructor is virtual; `int balance() const` reports the balance.
 
-Derived classes:
+Article 3 (Deposits). `bool deposit(int amount)`: an amount greater than zero is credited and answered with `true`; every other amount is refused with `false`, the ledger untouched.
 
-- `Checking`: withdrawals succeed whenever the balance is sufficient. `kind()` returns `"checking"`.
-- `Savings`: the balance must remain at least `1000` after the withdrawal, otherwise it is rejected. `kind()` returns `"savings"`.
+Article 4 (Withdrawals). Every withdrawal requires an amount greater than zero, and a failed one leaves the balance unchanged. A current account pays out whenever the balance suffices; a savings account must still hold at least `1000` afterwards, or the request is refused. Withdrawal is the pure virtual `bool withdraw(int amount)`.
 
-Every withdrawal requires `amount > 0` and leaves the balance unchanged on failure. The harness calls `withdraw` through `Account*`, so it must be virtual.
+Article 5 (Names). `const char* kind() const` is pure virtual: `"checking"` for current, `"savings"` for savings.
+
+Article 6 (Execution). `withdraw` and `kind` are called through `Account*`, so both must dispatch virtually.
+
+```cpp
+class Account {
+public:
+    explicit Account(int balance);
+    virtual ~Account();
+
+    bool deposit(int amount);
+    virtual bool withdraw(int amount) = 0;
+    int balance() const;
+    virtual const char* kind() const = 0;
+};
+
+class Checking : public Account {
+public:
+    explicit Checking(int balance);
+    bool withdraw(int amount) override;
+    const char* kind() const override;
+};
+
+class Savings : public Account {
+public:
+    explicit Savings(int balance);
+    bool withdraw(int amount) override;
+    const char* kind() const override;
+};
+```
+
+**In plain words**: Implement the base class `Account` and the derived classes `Checking` and `Savings`: deposits accept positive amounts only, withdrawals follow each account's own rule and leave the balance unchanged when refused, and `kind()` reports the account name.

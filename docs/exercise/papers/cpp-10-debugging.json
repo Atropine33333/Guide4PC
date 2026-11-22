@@ -1,0 +1,15 @@
+{
+  "id": "cpp-10-debugging",
+  "lang": "cpp",
+  "title": {
+    "chs": "调试排错卷",
+    "en": "Debugging"
+  },
+  "items": [
+    "debugging-digit-sum",
+    "debugging-leap-year",
+    "debugging-longest-run",
+    "debugging-vowel-tally",
+    "debugging-negative-max"
+  ]
+}

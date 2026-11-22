@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 5,
   "title": {
-    "chs": "熔断器",
-    "en": "Circuit Breaker"
+    "chs": "熔断走廊守则",
+    "en": "Rules of the Circuit Breaker Corridor"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -12,7 +12,7 @@ B: Names here are ten at most, so spare yourself the worry. Scores can reach `-9
 
 A: The bar itself tolerates no spaces?
 
-B: None. The padding is the whole separation; add one by hand and the line ends with a stray space, and the judge will come looking for you.
+B: None. The padding is the whole separation; add one by hand and the line ends with a stray space.
 
 **In plain words**: read `n` lines of "name score" and print each as: the name left-aligned in 12 characters, one `|`, the score right-aligned in 8 characters, with no trailing spaces.
 

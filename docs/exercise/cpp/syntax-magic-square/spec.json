@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 4,
   "title": {
-    "chs": "奇数阶幻方",
-    "en": "Odd-Order Magic Square"
+    "chs": "洛书九宫之术",
+    "en": "The Luo Shu Magic Square"
   },
   "limits": {
     "timeoutMs": 5000,

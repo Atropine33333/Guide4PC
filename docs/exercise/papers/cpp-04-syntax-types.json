@@ -1,0 +1,15 @@
+{
+  "id": "cpp-04-syntax-types",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法与类型入门卷",
+    "en": "Syntax & First Types"
+  },
+  "items": [
+    "syntax-coin-greedy",
+    "syntax-number-words",
+    "count-digit-occurrences",
+    "types-byte-to-hex",
+    "types-size-diff"
+  ]
+}

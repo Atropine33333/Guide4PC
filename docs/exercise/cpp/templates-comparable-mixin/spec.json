@@ -6,8 +6,8 @@
   "rank": 4,
   "harness": "harness.cpp",
   "title": {
-    "chs": "CRTP 比较运算符混合类",
-    "en": "CRTP Comparable Mixin"
+    "chs": "师傅只教四样",
+    "en": "The Master Teaches Four"
   },
   "limits": {
     "timeoutMs": 4000,

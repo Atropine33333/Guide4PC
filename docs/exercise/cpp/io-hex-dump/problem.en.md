@@ -12,7 +12,7 @@ Someone in the hall asks: what of empty input? Empty input still arrives with a 
 
 ### Input
 
-Any number of text lines. The judge always appends one trailing newline, and that byte is part of the dump.
+Any number of text lines. The input always ends with one trailing newline, and that byte is part of the dump.
 
 ### Output
 

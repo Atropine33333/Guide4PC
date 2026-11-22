@@ -1,4 +1,4 @@
-This exercise reads no stdin. Decide whether an undirected graph is bipartite and produce a two-colouring.
+Decide whether an undirected graph is bipartite and produce a two-colouring.
 
 ```cpp
 #include <vector>

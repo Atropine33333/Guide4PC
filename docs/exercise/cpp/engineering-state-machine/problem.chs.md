@@ -15,7 +15,7 @@
 
 `name(State)` 报出小写名号：`"created"`、`"paid"`、`"shipped"`、`"delivered"`、`"cancelled"`、`"returned"`。
 
-**人话**：补完 `Order`。用一张迁移表或一个 `switch` 实现 `apply`：合法事件迁移并返回 `true`，其余返回 `false` 且让 `rejected()` 加一。`name` 把状态转成小写字符串。评测代码直接包含你的实现，不要写 `main`。
+**人话**：补完 `Order`。用一张迁移表或一个 `switch` 实现 `apply`：合法事件迁移并返回 `true`，其余返回 `false` 且让 `rejected()` 加一。`name` 把状态转成小写字符串。不要写 `main`。
 
 ```cpp
 enum class State { Created, Paid, Shipped, Delivered, Cancelled, Returned };

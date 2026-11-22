@@ -1,4 +1,4 @@
-This exercise reads no stdin. Given a directed graph where every node has at most one outgoing edge, find the cycle reachable from a start node.
+Given a directed graph where every node has at most one outgoing edge, find the cycle reachable from a start node.
 
 ```cpp
 #include <vector>

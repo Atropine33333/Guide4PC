@@ -1,4 +1,4 @@
-这一题不读 stdin。实现一个支持 `range-for` 的整数区间迭代器。
+实现一个支持 `range-for` 的整数区间迭代器。
 
 ```cpp
 #include <iterator>

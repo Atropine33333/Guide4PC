@@ -18,7 +18,7 @@ private:
 
 After construction, if `dismiss()` was never called, the destructor must call `action(context)` exactly once. Once dismissed, the destructor performs no action. The guard is not copyable.
 
-The judge includes your implementation and calls these members. **Do not write `main`.**
+**Do not write `main`.**
 
 ### Input
 
@@ -26,7 +26,7 @@ None.
 
 ### Output
 
-None. The judge uses counters to check how many times and in what order actions run.
+None.
 
 ### Example
 

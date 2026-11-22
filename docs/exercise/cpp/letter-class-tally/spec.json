@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "syntax",
   "rank": 1,
-  "title": { "chs": "字符分类统计", "en": "Letter Class Tally" },
+  "title": { "chs": "数点三营", "en": "Numbering the Three Camps" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

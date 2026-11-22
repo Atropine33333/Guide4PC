@@ -1,4 +1,28 @@
-This exercise reads no stdin and writes no stdout. Implement a matrix class whose row and column counts are template parameters, tested by a hidden harness.
+Suppose there is a matrix, `Rows` ranks across and `Cols` files deep, crossing one another like a chessboard.
+
+The rule says: let the rank be the warp and the file the woof. Begin at the upper left, go rank by rank to the right, and store the substance in one place. The substance at rank `r`, file `c` lies at `r * Cols + c`.
+
+Ask: how many ranks and files?
+
+Answer: `rows()` reports `Rows`, `cols()` reports `Cols`. The numbers are born with the matrix and do not change when it is filled.
+
+Ask: what is in the board before anything is placed?
+
+Answer: `T{}` everywhere. Whole numbers are zero, floating numbers are zero point zero.
+
+Ask: what is the sum of the whole board?
+
+Answer: walk the stored substances, add them one by one, and keep the element's own type.
+
+Ask: how is the whole board filled alike?
+
+Answer: `fill(value)`, one call and it is done.
+
+Ask: how is a reference to one cell taken?
+
+Answer: `at(row, col)`. A constant board must also be readable, so provide both a `const` and a non-`const` form.
+
+**In plain words**: implement the class template `Matrix<T, Rows, Cols>`: rows and columns come from the template parameters, elements are stored row by row, default construction gives `T{}` everywhere, and `at` returns an assignable reference.
 
 ```cpp
 template <typename T, int Rows, int Cols>

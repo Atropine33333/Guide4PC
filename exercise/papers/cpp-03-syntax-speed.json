@@ -1,0 +1,15 @@
+{
+  "id": "cpp-03-syntax-speed",
+  "lang": "cpp",
+  "title": {
+    "chs": "语法提速卷",
+    "en": "Syntax: Speedrun"
+  },
+  "items": [
+    "syntax-luhn-check",
+    "syntax-triangle-kind",
+    "syntax-base-convert",
+    "syntax-camel-split",
+    "syntax-clock-wrap"
+  ]
+}

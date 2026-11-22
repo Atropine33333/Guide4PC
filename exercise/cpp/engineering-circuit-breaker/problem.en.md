@@ -1,4 +1,20 @@
-This exercise reads no stdin and writes no stdout. Implement a circuit breaker with a cooldown, tested by a hidden harness.
+Welcome to the Breaker Corridor.
+
+Every rule here is true; the corridor does not lie. The doorman recognises three signs only: `Closed`, `Open`, `HalfOpen`.
+
+Rule one: on arrival the door is open. The sign reads `Closed`, the failure count is zero, and `allow()` returns `true`.
+
+Rule two: while the door is open, one clean pass clears the count, and one failure raises it by one. When it reaches the threshold, the door shuts.
+
+Rule three: a shut door takes two forms. With a cooldown of zero there is no waiting room, so the sign goes straight to `HalfOpen`; with a cooldown above zero the sign reads `Open` and `allow()` returns `false`.
+
+Rule four: an `Open` door listens only to `tick()`. Each knock lowers the remaining cooldown by one, and at zero the sign becomes `HalfOpen`. Whatever `record` shouts behind that door does not count.
+
+Rule five: `HalfOpen` is a trial. `allow()` says `true` again; a clean pass returns to `Closed` with the count cleared, and one more failure shuts the door.
+
+Rule six: `tick()` in `Closed` or `HalfOpen` has no echo. Do not write `main`.
+
+**In plain words**: Complete `CircuitBreaker`. The constructor takes the failure threshold and the cooldown length; `record` drives the failure count, and `tick()` lowers the cooldown only while `Open`.
 
 ```cpp
 class CircuitBreaker {
@@ -14,16 +30,14 @@ public:
 };
 ```
 
-Rules:
+### Rules
 
-- It starts `Closed` with zero failures, and `allow()` returns `true`.
 - `failure_threshold >= 1` and `cooldown_ticks >= 0`.
-- In `Closed`, `record(true)` clears the failure count and stays `Closed`; `record(false)` increments it and trips the breaker when the threshold is reached.
-- Tripping enters `Open` (or `HalfOpen` directly when the cooldown is 0), and `allow()` returns `false`.
-- Each `tick()` decrements the cooldown while `Open`; when it reaches 0 the state becomes `HalfOpen`.
-- In `HalfOpen`, `allow()` returns `true`: `record(true)` recovers to `Closed` with zero failures, and `record(false)` trips again.
+- In `Closed`, `record(true)` clears the failure count and stays `Closed`; `record(false)` increments it and trips the breaker at the threshold.
+- Tripping enters `Open`; when `cooldown_ticks == 0` it enters `HalfOpen` directly.
+- `tick()` decrements the remaining cooldown only while `Open`, entering `HalfOpen` at 0; it has no effect in `Closed` or `HalfOpen`.
+- In `HalfOpen`, `record(true)` recovers to `Closed` with zero failures, and `record(false)` trips again.
 - `record` does nothing while `Open`.
-- `tick()` has no effect in `Closed` or `HalfOpen`.
 - Do not write `main`.
 
 ### Example

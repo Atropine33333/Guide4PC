@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 2,
   "title": {
-    "chs": "数组的平均值与最大值",
-    "en": "Array Average and Maximum"
+    "chs": "牌阵的平均与最重",
+    "en": "Average and Heaviest in the Spread"
   },
   "limits": {
     "timeoutMs": 5000,

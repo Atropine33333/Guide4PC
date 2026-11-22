@@ -14,7 +14,7 @@
 
 规则六：在 `Closed` 与 `HalfOpen` 里敲 `tick()` 没有回声。不要写 `main`。
 
-**人话**：补完 `CircuitBreaker`。构造参数为失败阈值与冷却次数；`record` 推动失败计数，`tick()` 只在 `Open` 时递减冷却。隐藏的 harness 逐条核对 `state()`、`failures()` 与 `allow()`。
+**人话**：补完 `CircuitBreaker`。构造参数为失败阈值与冷却次数；`record` 推动失败计数，`tick()` 只在 `Open` 时递减冷却。
 
 ```cpp
 class CircuitBreaker {

@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 3,
   "title": {
-    "chs": "定点金额",
-    "en": "Fixed-Point Money"
+    "chs": "家主算账，分毫必较",
+    "en": "The Householder's Ledger"
   },
   "limits": {
     "timeoutMs": 5000,

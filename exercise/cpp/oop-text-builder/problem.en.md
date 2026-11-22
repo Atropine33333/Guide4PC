@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a class that builds text incrementally; a hidden harness runs the tests.
+Implement a class that builds text incrementally.
 
 ```cpp
 class TextBuilder {

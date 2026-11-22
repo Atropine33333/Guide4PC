@@ -1,0 +1,15 @@
+{
+  "id": "cpp-16-templates",
+  "lang": "cpp",
+  "title": {
+    "chs": "模板与泛型卷",
+    "en": "Templates & Generics"
+  },
+  "items": [
+    "templates-swap-values",
+    "templates-clamp-value",
+    "templates-array-stats",
+    "templates-if-constexpr",
+    "template-pair"
+  ]
+}

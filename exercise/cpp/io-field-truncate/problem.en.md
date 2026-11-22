@@ -1,4 +1,4 @@
-This task reads no stdin and writes no stdout. Implement two functions that place text into a fixed-width field.
+Implement two functions that place text into a fixed-width field.
 
 ```cpp
 #include <cstddef>

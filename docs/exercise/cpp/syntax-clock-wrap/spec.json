@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 3,
   "title": {
-    "chs": "跨午夜的时钟",
-    "en": "Clock That Wraps"
+    "chs": "话说那座不惧午夜的钟",
+    "en": "The Clock That Fears No Midnight"
   },
   "harness": "harness.cpp",
   "limits": {

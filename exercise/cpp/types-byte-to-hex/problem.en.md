@@ -1,4 +1,10 @@
-Read `n` byte values and print each one as a two-digit uppercase hexadecimal number.
+Two in the morning. One voice left on television, over a gradient blue that is far too blue.
+
+"Folks, are you still lying awake because `printf("%X", 7)` gives you a bare `7`? Look at this — two uppercase hexadecimal digits! `00`, `0F`, `FF`, not one missing, the leading zero always on duty! Whether your byte is `0` or `255`, it fills both characters, every single time!"
+
+"But wait, there's more! Order now and we throw in the uppercase alphabet, `A` through `F`, never lowercase! One value per line, clean as a whistle! Just 19.99!"
+
+**In plain words**: read `n` byte values `v` and print each as exactly two uppercase hexadecimal digits, one per line; pad values below `16` with a leading `0`.
 
 **Input**:
 

@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 1,
   "title": {
-    "chs": "字符条形图",
-    "en": "Character Bar Chart"
+    "chs": "把条形画出来",
+    "en": "Draw the Bars"
   },
   "limits": {
     "timeoutMs": 5000,

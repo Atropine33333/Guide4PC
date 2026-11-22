@@ -1,4 +1,4 @@
-这一题不读 stdin。实现三个处理单个字节的函数，隐藏的 harness 会调用它们。
+实现三个处理单个字节的函数。
 
 ```cpp
 #include <string>

@@ -9,13 +9,13 @@ Article 2. The five members `push`, `pop`, `top`, `size`, and `empty` shall be i
 Article 3. `pop` removes and returns the current minimum; `top` reads it without removal. Both are called only on a non-empty heap.
 Article 4. The number of elements shall not exceed 100000; any value within the `int` range, negatives included, shall be accepted.
 Article 5. The heap-order invariant shall hold after every `push` and `pop`: no node is greater than either of its children.
-Article 6. The judge includes the implementation and calls its members directly; it reads no stdin and writes no stdout, and the unit shall not supply its own `main`.
-Article 7. The judge generates random operations from fixed seeds and compares the results against a multiset.
+Article 6. The unit shall not supply its own `main`.
+Article 7. Random operations are generated from fixed seeds and their results compared against a multiset.
 Article 8. The usage example in the attachment may serve for self-testing.
 
 Please comply.
 
-**In plain words**: write your own min-heap without `std::priority_queue` and complete the `MinHeap` members `push`, `pop`, `top`, `size`, and `empty`; the judge includes your implementation and calls them directly. At most 100000 elements, any `int` value including negatives; `pop` and `top` are called only on a non-empty heap; the heap-order invariant must hold after every `push` and `pop`, and the judge generates fixed-seed random operations and compares against a multiset. It reads no stdin and writes no stdout — **do not write `main`**.
+**In plain words**: write your own min-heap without `std::priority_queue` and complete the `MinHeap` members `push`, `pop`, `top`, `size`, and `empty`. At most 100000 elements, any `int` value including negatives; `pop` and `top` are called only on a non-empty heap; the heap-order invariant must hold after every `push` and `pop`. **Do not write `main`**.
 
 ```cpp
 class MinHeap {
@@ -34,7 +34,7 @@ None.
 
 ### Output
 
-None. The judge inspects return values.
+None.
 
 ### Example
 
@@ -52,4 +52,4 @@ heap.top();   // returns 3
 - At most 100000 elements.
 - Any `int` value, including negatives.
 - `pop` and `top` are only called on non-empty heaps.
-- The judge uses fixed-seed random operations and compares against a multiset.
+- Fixed-seed random operations are compared against a multiset.

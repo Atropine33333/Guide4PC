@@ -1,10 +1,18 @@
-Read an integer score and print the matching uppercase letter grade.
+**The Ordinance of Grade Bands**
 
-**Input**:
+Article 1. Every candidate's paper is marked with an integer, one hundred being full marks.
 
-- One integer `score` on a single line (`0 ≤ score ≤ 100`).
+Article 2. A boundary value falls into the higher band: ninety, eighty, seventy and sixty each take the band above, and are never pushed down.
 
-**Output**: one uppercase letter.
+Article 3. Values beyond the stated range fall outside this Ordinance and need not be considered.
+
+Article 4. The input is one score; the output is one capital letter, and nothing else.
+
+**In plain words**: read an integer `score`, look up its capital-letter grade in the table, and print that single character.
+
+**Input**: one integer `score` on a line (`0 ≤ score ≤ 100`).
+
+**Output**: one capital letter.
 
 | Score | Grade |
 | --- | --- |
@@ -30,5 +38,5 @@ B
 
 ### Constraints
 
-- Scores outside `0`–`100` will not appear.
-- The boundary values `90`, `80`, `70`, and `60` belong to the higher band.
+- Scores outside `0`–`100` need no handling.
+- The boundary values `90`, `80`, `70` and `60` belong to the higher band.

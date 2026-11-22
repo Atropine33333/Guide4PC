@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。用 lambda 实现两个返回闭包的工厂函数，测试在隐藏的 harness 里。
+用 lambda 实现两个返回闭包的工厂函数。
 
 ```cpp
 std::function<int()> make_counter(int start);

@@ -1,4 +1,4 @@
-这一题不读 stdin。实现一种简单的 TLV（tag-length-value）记录编码与解码。
+实现一种简单的 TLV（tag-length-value）记录编码与解码。
 
 ```cpp
 #include <cstddef>

@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement fixed-column slicing and parsing.
+Implement fixed-column slicing and parsing.
 
 ```cpp
 #include <string>

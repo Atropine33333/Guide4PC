@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 2,
   "title": {
-    "chs": "析构顺序记录",
-    "en": "Destruction Order"
+    "chs": "析构次序法典",
+    "en": "Code of Destruction Order"
   },
   "harness": "harness.cpp",
   "limits": {

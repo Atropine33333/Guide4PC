@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 4,
   "title": {
-    "chs": "哦，亲爱的，它藏在哪儿",
-    "en": "Oh, Darling, Where Is It Hiding?"
+    "chs": "它藏在哪儿",
+    "en": "Where Is It Hiding?"
   },
   "limits": {
     "timeoutMs": 5000,

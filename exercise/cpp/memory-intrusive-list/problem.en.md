@@ -1,4 +1,14 @@
-This exercise reads no stdin. Implement a doubly linked list that does **not** own its nodes; the caller allocates them.
+Now then. On this day a company of men drew up on the parade ground, and their banner read `IntrusiveList`. Honoured listeners, this company has a strange temper: it knows every man and feeds none of them.
+
+How so? The nodes `Node` are brought by the caller; the list merely ties the two straps `prev` and `next` so that each man knows the one before and behind. Lodging and wages are nobody's business, and when the company disbands it may not `delete` a single man.
+
+First the roll call: `push_back` ties a newcomer to the tail. He must be alive, and must not already be tied into another company. `unlink` pulls a man out and wipes his `prev` and `next` to `nullptr`. If he never belonged to this company, or never came at all, nothing happens.
+
+`head` and `tail` report the front and rear, or `nullptr` when the company is empty; `empty` and `size` report the count. At disbanding the company disperses and draws no blade.
+
+Someone asks: where do these nodes sit, and will they move? Rest easy. The nodes sit in a `std::vector<Node>` with its capacity reserved up front, so their addresses stand like mountains while you tie the straps.
+
+**In plain words**: implement `IntrusiveList`, which maintains only the `prev` / `next` links: it never allocates or frees a node, and its destructor must not `delete` anything. `push_back` appends a node; the caller guarantees the node is non-null and belongs to no list. `unlink` removes a node and sets its `prev` and `next` to `nullptr`, and does nothing when the node is `nullptr` or not in this list. `head` / `tail` return `nullptr` for an empty list, and `size` / `empty` describe the count. Do not write `main`.
 
 ```cpp
 #include <cstddef>
@@ -21,14 +31,3 @@ public:
     bool empty() const;
 };
 ```
-
-Rules:
-
-- The list only maintains `prev` / `next` links between nodes; it neither allocates nor frees nodes, and its destructor must not `delete` anything.
-- `push_back` appends a node; the caller guarantees that `node` is non-null and not currently in any list.
-- `unlink` removes a node and sets its `prev` and `next` to `nullptr`; if the node is not in this list (or is `nullptr`), do nothing.
-- `head` / `tail` return the first/last node, or `nullptr` for an empty list.
-- `empty` and `size` describe the current node count.
-- Do not write `main`.
-
-The harness stores its nodes in a `std::vector<Node>` whose capacity is reserved up front, so node addresses stay stable during the test.

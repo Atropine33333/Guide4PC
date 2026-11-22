@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 3,
   "title": {
-    "chs": "CSV 字段的引号规则",
-    "en": "CSV Field Quoting"
+    "chs": "CSV 字段引号法典",
+    "en": "Code of CSV Field Quoting"
   },
   "harness": "harness.cpp",
   "limits": {

@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 2,
   "title": {
-    "chs": "数组退化与引用绑定",
-    "en": "Array Decay and Reference Binding"
+    "chs": "数组观测站守则",
+    "en": "Rules of the Array Observation Post"
   },
   "limits": {
     "timeoutMs": 5000,

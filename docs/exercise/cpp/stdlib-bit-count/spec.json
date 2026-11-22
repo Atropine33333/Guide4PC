@@ -5,8 +5,8 @@
   "category": "stdlib",
   "rank": 1,
   "title": {
-    "chs": "二进制中 1 的个数",
-    "en": "Count Set Bits"
+    "chs": "无符号走廊 32 号房",
+    "en": "Room 32 of the Unsigned Corridor"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -1,4 +1,21 @@
-实现订单状态机：
+话说这一日，一张订单落在柜上，众人围着看它如何走完这一生。
+
+列位看官，这订单只有六个去处：`Created`、`Paid`、`Shipped`、`Delivered`、`Cancelled`、`Returned`；走路只认五种事件：`Pay`、`Ship`、`Deliver`、`Cancel`、`Return`。哪条路通、哪条路堵，全在下头这张表里。
+
+| 当前状态 | 事件 | 新状态 |
+| --- | --- | --- |
+| Created | Pay | Paid |
+| Created | Cancel | Cancelled |
+| Paid | Ship | Shipped |
+| Paid | Cancel | Cancelled |
+| Shipped | Deliver | Delivered |
+| Delivered | Return | Returned |
+
+表上没有的路，一律走不通：`apply` 返回 `false`，状态原地不动，`rejected()` 记上一笔。`Cancelled` 与 `Returned` 是两条断头路，到了那儿，什么事件都过不去。
+
+`name(State)` 报出小写名号：`"created"`、`"paid"`、`"shipped"`、`"delivered"`、`"cancelled"`、`"returned"`。
+
+**人话**：补完 `Order`。用一张迁移表或一个 `switch` 实现 `apply`：合法事件迁移并返回 `true`，其余返回 `false` 且让 `rejected()` 加一。`name` 把状态转成小写字符串。不要写 `main`。
 
 ```cpp
 enum class State { Created, Paid, Shipped, Delivered, Cancelled, Returned };
@@ -16,30 +33,12 @@ public:
 };
 ```
 
-合法迁移只有这些：
+### 规则或约定
 
-| 当前状态 | 事件 | 新状态 |
-| --- | --- | --- |
-| Created | Pay | Paid |
-| Created | Cancel | Cancelled |
-| Paid | Ship | Shipped |
-| Paid | Cancel | Cancelled |
-| Shipped | Deliver | Delivered |
-| Delivered | Return | Returned |
-
-其余事件一律拒绝：返回 `false`，状态不变，`rejected()` 加一。`Cancelled`、`Returned` 是终态，任何事件都被拒绝。
-
-`name(State)` 返回小写状态名：`"created"`、`"paid"`、`"shipped"`、`"delivered"`、`"cancelled"`、`"returned"`。
-
-评测代码会直接包含你的实现。**不要写 `main`。**
-
-### 输入
-
-无。
-
-### 输出
-
-无。
+- 初始状态为 `Created`，`rejected()` 为 0。
+- 只有上表六条迁移合法；其余事件返回 `false`，状态不变，`rejected()` 加一。
+- `Cancelled`、`Returned` 是终态，任何事件都被拒绝。
+- 不要写 `main`。
 
 ### 示例
 

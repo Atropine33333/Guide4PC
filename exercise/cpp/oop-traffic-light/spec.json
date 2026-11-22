@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 1,
   "title": {
-    "chs": "交通灯",
-    "en": "Traffic Light"
+    "chs": "十字路口的三色灯",
+    "en": "Three Colours at the Crossing"
   },
   "limits": {
     "timeoutMs": 5000,

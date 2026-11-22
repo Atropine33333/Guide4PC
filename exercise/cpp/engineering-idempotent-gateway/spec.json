@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 4,
   "title": {
-    "chs": "幂等提交网关",
-    "en": "Idempotent Submission Gateway"
+    "chs": "幂等提交条例",
+    "en": "Ordinance on Idempotent Submission"
   },
   "limits": {
     "timeoutMs": 5000,

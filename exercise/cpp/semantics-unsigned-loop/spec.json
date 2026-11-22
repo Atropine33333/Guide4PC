@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 3,
   "title": {
-    "chs": "无符号数的陷阱",
-    "en": "Unsigned Traps"
+    "chs": "无符号走廊",
+    "en": "The Unsigned Corridor"
   },
   "harness": "harness.cpp",
   "limits": {

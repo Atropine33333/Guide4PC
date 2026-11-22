@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout (except through a stream you are given). Implement functions that lay out a "name + amount" row as a fixed-width table line, tested by a hidden harness.
+Implement functions that lay out a "name + amount" row as a fixed-width table line.
 
 ```cpp
 #include <ostream>

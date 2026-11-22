@@ -1,4 +1,26 @@
-Implement a text-statistics class whose const member functions cache their results. Complete this interface:
+Guide4PC Exercise Bureau
+
+Document No. 7 of 2026
+
+NOTICE ON STRENGTHENING THE MANAGEMENT OF TEXT-STATISTICS CACHES
+
+To all implementing units:
+
+　　To reduce duplicated labour and raise statistical efficiency, the following provisions govern caching in the `TextStats` class.
+
+　　I. `word_count()` and `letter_count()` are const member functions. Their first call must store its result in a cache, so every cache member is declared `mutable`.
+
+　　II. While the text is unchanged, repeated calls read the cache only and `computations()` must not increase; each cache fill raises `computations()` by one.
+
+　　III. After `append()` alters the text, both caches are void at once and the next query recomputes.
+
+　　IV. Only English letters are counted; digits, spaces and punctuation are all excluded.
+
+　　V. The text is at most 100000 characters long; thread safety is not required.
+
+　　Please comply.
+
+**In plain words**: Complete the `TextStats` class: `word_count()` and `letter_count()` are `const`, and the first call writes its result into a `mutable` cache; while the text is unchanged later calls return that cache and leave `computations()` alone, and every cache fill raises `computations()` by one. `append()` invalidates both caches, so the next query recomputes. A word is a maximal run of English letters.
 
 ```cpp
 class TextStats {
@@ -17,23 +39,6 @@ private:
     // add cache members (they must be mutable) and a counter
 };
 ```
-
-Requirements:
-
-- `word_count()` and `letter_count()` are `const` members, yet the first call stores its result in a cache, so the cache members must be `mutable`.
-- As long as the text is unchanged, repeated calls return the cached value without increasing `computations()`; every cache fill increments `computations()` by one.
-- `append()` changes the text, so both caches become invalid and the next query recomputes.
-- Only English letters count; digits, spaces, and punctuation are not letters.
-
-The judge includes your implementation and calls these members. **Do not write `main`.**
-
-### Input
-
-None.
-
-### Output
-
-None.
 
 ### Example
 

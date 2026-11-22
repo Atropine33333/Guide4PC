@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement two function templates; a hidden harness runs the tests.
+Implement two function templates.
 
 ```cpp
 template <typename T>

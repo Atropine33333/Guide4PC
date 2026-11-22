@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement three functions over integer sequences, tested by a hidden harness.
+Implement three functions over integer sequences.
 
 ```cpp
 #include <vector>

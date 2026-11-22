@@ -1,4 +1,4 @@
-This exercise reads no stdin. Implement a simple TLV (tag-length-value) record codec.
+Implement a simple TLV (tag-length-value) record codec.
 
 ```cpp
 #include <cstddef>

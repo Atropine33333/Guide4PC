@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "semantics",
   "rank": 2,
-  "title": { "chs": "交换序列", "en": "Swap Sequence" },
+  "title": { "chs": "洗牌", "en": "Tarot: The Shuffle" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

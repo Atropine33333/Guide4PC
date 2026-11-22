@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "oop",
   "rank": 3,
-  "title": { "chs": "账户继承层次", "en": "Account Hierarchy" },
+  "title": { "chs": "账户管理条例", "en": "An Ordinance on Accounts" },
   "harness": "harness.cpp",
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [

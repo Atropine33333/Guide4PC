@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "semantics",
   "rank": 2,
-  "title": { "chs": "取号机", "en": "Ticket Machine" },
+  "title": { "chs": "取号机", "en": "Midnight Shopping: The Ticket Machine" },
   "harness": "harness.cpp",
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [

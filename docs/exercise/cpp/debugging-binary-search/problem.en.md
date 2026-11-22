@@ -20,7 +20,7 @@ A: Then it stops at `values.size()` and nothing is left. The same with an empty 
 
 B: Very well; read the statement for the audience.
 
-**In plain words**: implement `lower_bound_index(values, target)`: return the first index `i` with `values[i] >= target` in a non-decreasing array, or `values.size()` when every element is smaller. No stdin and no stdout; the hidden harness calls it directly. The starter pushes `low` to `mid + 1` on equality; narrow the right boundary and keep `mid` instead, leaving the signature alone.
+**In plain words**: implement `lower_bound_index(values, target)`: return the first index `i` with `values[i] >= target` in a non-decreasing array, or `values.size()` when every element is smaller. The starter pushes `low` to `mid + 1` on equality; narrow the right boundary and keep `mid` instead, leaving the signature alone.
 
 Function:
 

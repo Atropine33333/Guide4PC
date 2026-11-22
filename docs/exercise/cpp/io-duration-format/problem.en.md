@@ -2,7 +2,7 @@ Oh, my dear friend, there you are at last. Do sit down—make yourself at home, 
 
 The thing is this: our old timer spits out but one number—the seconds since midnight. But the audience, they want a respectable `H:MM:SS`, you understand? No leading zero on the hours, even when they get frighteningly big; the minutes and the seconds must be exactly two digits—not one less, by God, not one.
 
-And please, do not write your own `main`. The tests live in a harness behind the curtain, like the prompter backstage—you cannot see him, but he is watching you.
+And please, do not write your own `main`.
 
 **In plain words**: implement `std::string format_duration(long long total_seconds)` returning `H:MM:SS`; no padding for hours, exactly two digits for minutes and seconds; `total_seconds` is non-negative.
 

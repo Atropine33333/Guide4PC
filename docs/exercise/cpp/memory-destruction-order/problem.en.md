@@ -10,7 +10,7 @@ Article 4 (Clearing) `clear_log()` empties the log; `destroyed_log()` hands back
 
 Article 5 (Order) Automatic objects in the same scope are destroyed in reverse construction order; `delete` removes only the object deleted, and bystanders are not implicated.
 
-Article 6 (Prohibitions) Copy construction and copy assignment shall not be declared. Do not write `main`. This exercise reads no stdin and writes no stdout; a hidden harness gathers the evidence.
+Article 6 (Prohibitions) Copy construction and copy assignment shall not be declared. Do not write `main`.
 
 Article 7 (Supplementary) Matters not provided for herein follow the C++ standard.
 
@@ -29,4 +29,4 @@ public:
 };
 ```
 
-**In plain words**: implement `ScopeTracer`. Remember `id` at construction and append it to the class's static log in the destructor. `clear_log()` empties the log; `destroyed_log()` returns a copy of it. The harness sets up several scopes and checks the order in which the ids appear.
+**In plain words**: implement `ScopeTracer`. Remember `id` at construction and append it to the class's static log in the destructor. `clear_log()` empties the log; `destroyed_log()` returns a copy of it.

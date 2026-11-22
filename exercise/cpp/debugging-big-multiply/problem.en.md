@@ -1,4 +1,10 @@
-The program below multiplies two non-negative integers, but it produces wrong results whenever a carry is needed. Fix it.
+Two numbers stand written on paper in base ten, each at most two hundred digits long. How great is their product?
+
+The rule: multiply from right to left, digit by digit. Take the last digit of the second number and multiply it through every digit of the first, laying the result below; then take the next-to-last digit and repeat, shifted one column to the left; and so on to the head of the second number, row upon row. Sum each column, and when it reaches ten carry one into the column ahead; if that column reaches ten, carry again. Continue to the far left. Strike out any leading zeros. If either number is `0`, write `0` and spare the counting rods.
+
+A certain reckoner multiplied but never carried: he kept only the last digit of each column and threw the carry away. The product has the right number of columns and the wrong value in every one. Correct the carrying.
+
+**In plain words**: read two non-negative integers of at most 200 digits each (decimal strings, no leading zeros) and print their product as a decimal string with no leading zeros; if either operand is `0`, print `0`. Multiply digit by digit as in long multiplication and add each carry back into the next column. The starter keeps only the units digit of each column and drops the carry; restore it.
 
 ```cpp
 std::string multiply(const std::string& a, const std::string& b) {

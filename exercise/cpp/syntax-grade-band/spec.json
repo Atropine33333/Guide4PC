@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 1,
   "title": {
-    "chs": "成绩等级",
-    "en": "Letter Grade Band"
+    "chs": "成绩分档条例",
+    "en": "The Ordinance of Grade Bands"
   },
   "limits": {
     "timeoutMs": 5000,

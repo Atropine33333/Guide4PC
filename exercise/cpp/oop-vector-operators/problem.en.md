@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a 2D vector type with operators; a hidden harness runs the tests.
+Implement a 2D vector type with operators.
 
 Implement:
 

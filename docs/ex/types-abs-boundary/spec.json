@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 2,
   "title": {
-    "chs": "绝对值边界",
-    "en": "Absolute-Value Boundary"
+    "chs": "绝对值使用须知",
+    "en": "Notes on Taking Absolute Values"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 1,
   "title": {
-    "chs": "逆波兰表达式求值",
-    "en": "Evaluate Reverse Polish Notation"
+    "chs": "后缀式",
+    "en": "Postfix Expression"
   },
   "limits": {
     "timeoutMs": 5000,

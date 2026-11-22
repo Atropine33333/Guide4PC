@@ -18,7 +18,7 @@ Diviner: adding a god already present leaves the table still; removing one who i
 
 Querent: will the faces shift?
 
-Diviner: after a change, only the names that must change hands do so. That is the craft, and the judge examines exactly that.
+Diviner: after a change, only the names that must change hands do so. That is the craft.
 
 **In plain words**: Complete `HashRing`: the FNV-1a hash and 32-bit mix, `add_node`/`remove_node`, and `locate` with its clockwise search and wrap-around; return `""` when the ring is empty. Do not write `main`.
 
@@ -43,7 +43,7 @@ public:
 - `locate(key)` hashes `key % 360` and finds the first replica position at least that large, wrapping to the smallest replica past the end. It returns the owning node name.
 - Adding an existing node changes nothing; removing an unknown node is a no-op. Adding a node twice must not create duplicate replicas.
 - `virtual_nodes < 1` is treated as 1.
-- The judge checks these invariants, including that adding or removing a node only remaps the keys that must move. Do not write `main`.
+- These invariants must hold, including that adding or removing a node only remaps the keys that must move. Do not write `main`.
 
 ### Example
 
@@ -58,4 +58,4 @@ ring.locate("user:1");   // may still be "a"
 ### Constraints
 
 - Node names are lowercase letters, at most 20 characters.
-- Tests use at most 8 nodes and at most 200 replicas.
+- At most 8 nodes and at most 200 replicas.

@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 3,
   "title": {
-    "chs": "解析并格式化日期",
-    "en": "Parsing and Formatting Dates"
+    "chs": "日期校勘处值夜守则",
+    "en": "Night-Shift Orders of the Date Bureau"
   },
   "limits": {
     "timeoutMs": 5000,

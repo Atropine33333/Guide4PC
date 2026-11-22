@@ -20,6 +20,10 @@ B: None. Write `30` and print `30`. Don't get clever with `030`. And no trailing
 
 **In plain words**: read `percent` and `width`, compute `filled = percent * width / 100` rounded down, and print `[`, `filled` copies of `#`, the rest as `-`, `] `, then `percent%`, with no trailing spaces.
 
+```text
+filled = percent * width / 100      (rounded down)
+```
+
 **Input**:
 
 - One line with two integers `percent` and `width`, separated by one space.

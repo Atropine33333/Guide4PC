@@ -1,4 +1,4 @@
-This one reads no stdin and writes no stdout. You implement a class; the test logic lives in a hidden harness that is compiled after your code and calls `push`, `pop` and `size` directly.
+You implement a class; `push`, `pop` and `size` are called directly.
 
 Implement `CircularBuffer` with a fixed capacity set in the constructor:
 
@@ -6,4 +6,4 @@ Implement `CircularBuffer` with a fixed capacity set in the constructor:
 - `pop(out)`: move the oldest value into `out` and return `true` if not empty; return `false` if empty;
 - `size()` / `capacity()`: current element count / total capacity.
 
-Do not write a `main`; the harness provides the entry point. The starter is a compilable placeholder: every check fails until you add the members and fill in the methods.
+Do not write a `main`. The starter is a compilable placeholder; add the members and fill in the methods.

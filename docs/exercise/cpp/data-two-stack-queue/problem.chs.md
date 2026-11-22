@@ -14,7 +14,7 @@
 
 请各实现单元照此办理。
 
-**人话**：用两个栈实现一个队列，并让队列能在 O(1) 时间内报出最小值。内部存储只准用 `std::vector`，且只按栈的方式使用（`push_back` / `back` / `pop_back`）；`push` 入队尾，`pop` 出队首，`front` 与 `min` 在队列为空时都返回 -1，`empty` 与 `size` 描述元素个数。所有操作均摊 O(1)，`min` 不能每次重扫全队列。不读 stdin，不写 stdout，**不要写 `main`**。
+**人话**：用两个栈实现一个队列，并让队列能在 O(1) 时间内报出最小值。内部存储只准用 `std::vector`，且只按栈的方式使用（`push_back` / `back` / `pop_back`）；`push` 入队尾，`pop` 出队首，`front` 与 `min` 在队列为空时都返回 -1，`empty` 与 `size` 描述元素个数。所有操作均摊 O(1)，`min` 不能每次重扫全队列。**不要写 `main`**。
 
 ```cpp
 #include <vector>

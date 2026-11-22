@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 3,
   "title": {
-    "chs": "展开转义序列",
-    "en": "Expanding Escape Sequences"
+    "chs": "把反斜杠念对",
+    "en": "Read That Backslash Properly"
   },
   "limits": {
     "timeoutMs": 5000,

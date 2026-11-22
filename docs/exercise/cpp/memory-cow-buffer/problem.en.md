@@ -20,7 +20,7 @@
 
 "An empty manuscript must still own a sheet. `live_blocks()` records it like any other."
 
-**In plain words**: implement `CowBuffer`. Copy construction and copy assignment share the underlying storage: they copy no string and do not increase `live_blocks()`. `shares()` returns how many `CowBuffer` objects share that storage, itself included, at least 1. `append` first ensures unique storage: when `shares() > 1`, clone the storage before appending, and the other sharing object's string must not change. `live_blocks()` returns the number of distinct storage blocks alive right now. Copy assignment handles self-assignment, and a replaced block with no users is released promptly. An empty buffer must still own a valid block. This exercise reads no stdin and writes no stdout; do not write `main`, and do not change the public interface.
+**In plain words**: implement `CowBuffer`. Copy construction and copy assignment share the underlying storage: they copy no string and do not increase `live_blocks()`. `shares()` returns how many `CowBuffer` objects share that storage, itself included, at least 1. `append` first ensures unique storage: when `shares() > 1`, clone the storage before appending, and the other sharing object's string must not change. `live_blocks()` returns the number of distinct storage blocks alive right now. Copy assignment handles self-assignment, and a replaced block with no users is released promptly. An empty buffer must still own a valid block. Do not write `main`, and do not change the public interface.
 
 ```cpp
 #include <cstddef>

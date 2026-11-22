@@ -14,7 +14,7 @@ Hui Shi said: "One thing remains: may I write `main`?"
 
 Zhuangzi said: "Heaven will punish it. How could it be escaped!"
 
-**In plain words**: implement `Notebook` holding exactly one `std::vector<std::string>`. Declare none of the destructor, copy constructor, copy assignment, move constructor, or move assignment; let the compiler generate them. `add` appends a line; `at` returns line `index`, or `"?"` when out of range; `join` connects all lines with `separator`, returning an empty string when there are none. This exercise reads no stdin, and you must not write `main`. The harness checks that a copy is independent and that a moved-from notebook leaves the target with the original content.
+**In plain words**: implement `Notebook` holding exactly one `std::vector<std::string>`. Declare none of the destructor, copy constructor, copy assignment, move constructor, or move assignment; let the compiler generate them. `add` appends a line; `at` returns line `index`, or `"?"` when out of range; `join` connects all lines with `separator`, returning an empty string when there are none. Do not write `main`. A copy must be independent, and a moved-from notebook must leave the target with the original content.
 
 ```cpp
 #include <string>

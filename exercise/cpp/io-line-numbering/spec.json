@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 1,
   "title": {
-    "chs": "按总行数对齐的行号",
-    "en": "Line Numbers Aligned to the Total"
+    "chs": "先数行，后编号",
+    "en": "Count the Lines Before Numbering"
   },
   "limits": {
     "timeoutMs": 5000,

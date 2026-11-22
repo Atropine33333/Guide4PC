@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 4,
   "title": {
-    "chs": "可变参数求和",
-    "en": "Variadic Sum"
+    "chs": "还有更多参数",
+    "en": "But Wait, There's More!"
   },
   "limits": {
     "timeoutMs": 5000,

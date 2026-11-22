@@ -1,4 +1,12 @@
-Given two integer arrays sorted in non-decreasing order, merge them into one sorted array and remove duplicate values.
+**Chapter One**
+
+And the LORD spake unto Moses, saying:
+
+"Number two companies. The first company hath `n` men, the second `m`; let each stand in its own order, from few to many, and let none break rank. Thou shalt join the two companies into one, still from few to many; where the number is the same, keep one man only, and write no name twice. If both companies be empty, write `empty` in the roll."
+
+And Moses did as the LORD commanded.
+
+**In plain words**: Read two non-decreasing integer arrays, merge them into one non-decreasing array, and remove duplicate values; print one line with single spaces between neighbours. If both arrays are empty, print only `empty`. You may concatenate them, sort, and call `std::unique`, or advance two indices as in merge sort; do not print a stray blank line for empty arrays.
 
 **Input**:
 

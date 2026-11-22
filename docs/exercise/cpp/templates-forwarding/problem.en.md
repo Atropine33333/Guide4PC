@@ -1,4 +1,16 @@
-This exercise reads no stdin. Implement a forwarding function and observe that lvalues are copied while rvalues are moved.
+Now hear this. On a certain day three guests came to the gate of `forward_to_tracked`.
+
+The first was an lvalue, surname `Tracked`, carrying a chest of goods. The gatekeeper took the card, and by the rule copied the goods out fair and whole, leaving the chest with its owner — that trick is called a copy, and `copies` goes up by one.
+
+The second was an rvalue, also surnamed `Tracked`. His goods need no copying; chest and all were carried into the back room — that trick is called a move, and `moves` goes up by one. When the carrying was done, the `value` in the old chest was set to `0`, and the chest stood empty.
+
+The third was an `int`, with light baggage. He walked in and a `Tracked` was built on the spot, with no copying and no carrying, and both counters stood stock still.
+
+Ladies and gentlemen, the whole secret lies in `T&&` and `std::forward<T>`. Every parameter is received as an rvalue reference, yet at the moment of forwarding its true rank must be restored: an lvalue remains an lvalue, an rvalue remains an rvalue. Fail that, and an lvalue is carried off as an rvalue, and the accounts are ruined.
+
+One more thing: `return Tracked(std::forward<T>(value));` must be done in one breath. Do not build a local first and fetch it afterwards; the compiler hesitates, counts one extra copy, and the books take another entry.
+
+**In plain words**: implement the function template `forward_to_tracked` so that it perfectly forwards its argument to `Tracked`'s constructor: an lvalue copies once, an rvalue moves once, and an `int` (or similar) constructs directly without touching either counter. The definition of `Tracked` is given.
 
 ```cpp
 #include <utility>

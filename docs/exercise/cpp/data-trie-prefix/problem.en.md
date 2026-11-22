@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a lowercase-letter trie that counts prefixes, tested by a hidden harness.
+Implement a lowercase-letter trie that counts prefixes.
 
 ```cpp
 #include <string>

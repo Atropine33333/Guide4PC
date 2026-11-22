@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 3,
   "title": {
-    "chs": "整数转英文单词",
-    "en": "Integer to English Words"
+    "chs": "请念出这个数",
+    "en": "Say the Number"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 4,
   "title": {
-    "chs": "运行时尺寸网格",
-    "en": "Run-Time Sized Grid"
+    "chs": "行优先的方田",
+    "en": "A Field Laid Out Row by Row"
   },
   "limits": {
     "timeoutMs": 5000,

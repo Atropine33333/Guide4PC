@@ -5,8 +5,8 @@
   "category": "syntax",
   "rank": 2,
   "title": {
-    "chs": "Luhn 校验与校验位",
-    "en": "Luhn Validation and Check Digit"
+    "chs": "校验位条例",
+    "en": "The Code of the Check Digit"
   },
   "limits": {
     "timeoutMs": 5000,

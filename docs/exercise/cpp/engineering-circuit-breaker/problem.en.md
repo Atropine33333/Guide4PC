@@ -14,7 +14,7 @@ Rule five: `HalfOpen` is a trial. `allow()` says `true` again; a clean pass retu
 
 Rule six: `tick()` in `Closed` or `HalfOpen` has no echo. Do not write `main`.
 
-**In plain words**: Complete `CircuitBreaker`. The constructor takes the failure threshold and the cooldown length; `record` drives the failure count, and `tick()` lowers the cooldown only while `Open`. A hidden harness checks `state()`, `failures()`, and `allow()`.
+**In plain words**: Complete `CircuitBreaker`. The constructor takes the failure threshold and the cooldown length; `record` drives the failure count, and `tick()` lowers the cooldown only while `Open`.
 
 ```cpp
 class CircuitBreaker {

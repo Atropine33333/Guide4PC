@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Implement a key-value store that can undo its most recent write; a hidden harness runs the tests.
+Implement a key-value store that can undo its most recent write.
 
 Implement `VersionedStore`:
 
@@ -9,4 +9,4 @@ Implement `VersionedStore`:
 - `int size() const`: return the number of keys.
 - `void clear()`: remove every key **and discard the entire undo history**. Afterwards `undo()` returns `false`.
 
-The harness checks the result of every undo in chronological order and runs a fixed-seed random operation sequence.
+Operations may arrive in any interleaving: each `undo()` reverses exactly the most recent `put`.

@@ -5,8 +5,8 @@
   "category": "types",
   "rank": 3,
   "title": {
-    "chs": "精确转换到 int",
-    "en": "Exact Conversion to int"
+    "chs": "浮点转整数条例",
+    "en": "Ordinance on Float-to-Int Conversion"
   },
   "limits": {
     "timeoutMs": 5000,

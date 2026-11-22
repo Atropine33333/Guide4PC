@@ -1,4 +1,4 @@
-This exercise reads no stdin and writes no stdout. Write three overloads of one function name so that callers can distinguish lvalues, `const` lvalues, and rvalues, tested by a hidden harness.
+Write three overloads of one function name so that callers can distinguish lvalues, `const` lvalues, and rvalues.
 
 ```cpp
 #include <string>

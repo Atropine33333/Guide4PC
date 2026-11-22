@@ -5,8 +5,8 @@
   "category": "oop",
   "rank": 4,
   "title": {
-    "chs": "稠密多项式",
-    "en": "Dense Polynomial"
+    "chs": "天元一术与多项式",
+    "en": "The Heavenly Element and Polynomials"
   },
   "limits": {
     "timeoutMs": 5000,

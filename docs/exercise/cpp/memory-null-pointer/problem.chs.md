@@ -12,7 +12,7 @@
 
 接线员已就位。请勿编写 `main`。本广告在禁止地区无效。
 
-**人话**：实现三个“指针 + 长度”函数；`data == nullptr` 或 `count <= 0` 时分别返回 `0`、`fallback`、`0`，且不访问 `data`。`sum_or_zero` 用 `long long` 求和；`max_or` 取最大；`count_even` 数偶数，负偶数也算。本题不读 stdin，不写 stdout。
+**人话**：实现三个“指针 + 长度”函数；`data == nullptr` 或 `count <= 0` 时分别返回 `0`、`fallback`、`0`，且不访问 `data`。`sum_or_zero` 用 `long long` 求和；`max_or` 取最大；`count_even` 数偶数，负偶数也算。
 
 ```cpp
 long long sum_or_zero(const int* data, int count);

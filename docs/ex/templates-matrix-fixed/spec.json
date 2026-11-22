@@ -5,8 +5,8 @@
   "category": "templates",
   "rank": 4,
   "title": {
-    "chs": "定长矩阵",
-    "en": "Fixed-Size Matrix"
+    "chs": "棋局矩阵",
+    "en": "The Chessboard Matrix"
   },
   "limits": {
     "timeoutMs": 5000,

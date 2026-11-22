@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "types",
   "rank": 2,
-  "title": { "chs": "向下取整的平均数", "en": "Floor Average" },
+  "title": { "chs": "截断与向下：一段对口", "en": "Truncate and Floor: A Double Act" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

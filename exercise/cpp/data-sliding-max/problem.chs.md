@@ -1,4 +1,4 @@
-这一题不读 stdin，也不写 stdout。实现一个函数，返回每个长度为 `window` 的连续窗口中的最大值。
+实现一个函数，返回每个长度为 `window` 的连续窗口中的最大值。
 
 ```cpp
 #include <cstddef>

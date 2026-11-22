@@ -1,0 +1,15 @@
+{
+  "id": "cpp-17-engineering",
+  "lang": "cpp",
+  "title": {
+    "chs": "工程综合卷",
+    "en": "Engineering"
+  },
+  "items": [
+    "circular-buffer",
+    "engineering-config-merge",
+    "engineering-command-router",
+    "engineering-histogram",
+    "engineering-pagination"
+  ]
+}
