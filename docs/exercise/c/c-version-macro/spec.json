@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-version-macro",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 2,
+  "title": { "chs": "版本号的拼法", "en": "Assembling a Version" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "single-digit",
+      "label": { "chs": "三段都是一位数", "en": "All three parts are single digits" },
+      "cases": [
+        { "in": ["1 2 3"], "out": ["1.2.3"] }
+      ]
+    },
+    {
+      "id": "all-zero",
+      "label": { "chs": "全是零", "en": "All zeros" },
+      "cases": [
+        { "in": ["0 0 0"], "out": ["0.0.0"] }
+      ]
+    },
+    {
+      "id": "two-digits",
+      "label": { "chs": "两位数", "en": "Two-digit parts" },
+      "cases": [
+        { "in": ["10 20 30"], "out": ["10.20.30"] },
+        { "in": ["12 34 56"], "out": ["12.34.56"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "每段都取上界", "en": "Every part at its upper bound" },
+      "cases": [
+        { "in": ["99 99 99"], "out": ["99.99.99"] }
+      ]
+    },
+    {
+      "id": "zero-middle",
+      "label": { "chs": "中间一段为零", "en": "A zero in the middle" },
+      "cases": [
+        { "in": ["2 0 1"], "out": ["2.0.1"] }
+      ]
+    }
+  ]
+}

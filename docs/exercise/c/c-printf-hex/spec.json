@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-printf-hex",
+  "lang": "c",
+  "category": "io",
+  "rank": 2,
+  "title": { "chs": "三种进制", "en": "Three Bases" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero-and-one",
+      "label": { "chs": "零与一", "en": "Zero and one" },
+      "cases": [
+        { "in": ["0"], "out": ["0", "0", "0"] },
+        { "in": ["1"], "out": ["1", "1", "1"] }
+      ]
+    },
+    {
+      "id": "small-values",
+      "label": { "chs": "小整数", "en": "Small values" },
+      "cases": [
+        { "in": ["8"], "out": ["8", "10", "1000"] },
+        { "in": ["45"], "out": ["2d", "55", "101101"] }
+      ]
+    },
+    {
+      "id": "byte-range",
+      "label": { "chs": "一个字节上下", "en": "Around one byte" },
+      "cases": [
+        { "in": ["255"], "out": ["ff", "377", "11111111"] },
+        { "in": ["1000"], "out": ["3e8", "1750", "1111101000"] }
+      ]
+    },
+    {
+      "id": "large-values",
+      "label": { "chs": "接近上限的数", "en": "Values near the limit" },
+      "cases": [
+        { "in": ["999999999"], "out": ["3b9ac9ff", "7346544777", "111011100110101100100111111111"] },
+        { "in": ["1000000000"], "out": ["3b9aca00", "7346545000", "111011100110101100101000000000"] }
+      ]
+    }
+  ]
+}

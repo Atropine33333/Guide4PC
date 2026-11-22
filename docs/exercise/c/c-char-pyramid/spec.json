@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-char-pyramid",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 1,
+  "title": { "chs": "给字母垒一座金字塔", "en": "Raise the Letter Pyramid" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "one",
+      "label": { "chs": "只有塔尖", "en": "Just the tip" },
+      "cases": [
+        { "in": ["1"], "out": ["A"] }
+      ]
+    },
+    {
+      "id": "three",
+      "label": { "chs": "三层", "en": "Three layers" },
+      "cases": [
+        { "in": ["3"], "out": ["  A", " ABA", "ABCBA"] }
+      ]
+    },
+    {
+      "id": "five",
+      "label": { "chs": "五层", "en": "Five layers" },
+      "cases": [
+        { "in": ["5"], "out": ["    A", "   ABA", "  ABCBA", " ABCDCBA", "ABCDEDCBA"] }
+      ]
+    },
+    {
+      "id": "nine",
+      "label": { "chs": "九层", "en": "Nine layers" },
+      "cases": [
+        {
+          "in": ["9"],
+          "out": [
+            "        A",
+            "       ABA",
+            "      ABCBA",
+            "     ABCDCBA",
+            "    ABCDEDCBA",
+            "   ABCDEFEDCBA",
+            "  ABCDEFGFEDCBA",
+            " ABCDEFGHGFEDCBA",
+            "ABCDEFGHIHGFEDCBA"
+          ]
+        }
+      ]
+    }
+  ]
+}

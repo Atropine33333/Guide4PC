@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-eof-loop",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "读到收摊", "en": "Read Until Closing" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "single-value",
+      "label": { "chs": "只来一位", "en": "A single value" },
+      "cases": [
+        { "in": ["7"], "out": ["1 7"] }
+      ]
+    },
+    {
+      "id": "several-lines",
+      "label": { "chs": "跨行读入", "en": "Values across lines" },
+      "cases": [
+        { "in": ["1 2 3", "4 5"], "out": ["5 15"] },
+        { "in": ["10", "20", "30"], "out": ["3 60"] }
+      ]
+    },
+    {
+      "id": "negatives",
+      "label": { "chs": "正负相抵", "en": "Mixed signs" },
+      "cases": [
+        { "in": ["-5 7 -12"], "out": ["3 -10"] },
+        { "in": ["-1"], "out": ["1 -1"] }
+      ]
+    },
+    {
+      "id": "empty-input",
+      "label": { "chs": "一位客人都没有", "en": "No values at all" },
+      "cases": [
+        { "in": [], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "wide-sum",
+      "label": { "chs": "总和超出 int", "en": "Total beyond int range" },
+      "cases": [
+        { "in": ["1000000000 1000000000 1000000000 1000000000 1000000000"], "out": ["5 5000000000"] },
+        { "in": ["1000000000 -1000000000 1000000000"], "out": ["3 1000000000"] }
+      ]
+    }
+  ]
+}

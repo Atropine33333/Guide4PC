@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-scanf",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 2,
+  "title": { "chs": "读错了地方", "en": "Read the Wrong Place" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "both-positive",
+      "label": { "chs": "两个正数", "en": "Two positive numbers" },
+      "cases": [
+        { "in": ["12 30"], "out": ["42"] }
+      ]
+    },
+    {
+      "id": "mixed-signs",
+      "label": { "chs": "一负一正", "en": "One negative, one positive" },
+      "cases": [
+        { "in": ["-15 40"], "out": ["25"] }
+      ]
+    },
+    {
+      "id": "both-zero",
+      "label": { "chs": "两个零", "en": "Two zeros" },
+      "cases": [
+        { "in": ["0 0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "上界附近", "en": "Near the upper bound" },
+      "cases": [
+        { "in": ["1000000000 1000000000"], "out": ["2000000000"] }
+      ]
+    },
+    {
+      "id": "cancel-out",
+      "label": { "chs": "正负相消", "en": "Summing to zero" },
+      "cases": [
+        { "in": ["-1000000000 1000000000"], "out": ["0"] }
+      ]
+    }
+  ]
+}

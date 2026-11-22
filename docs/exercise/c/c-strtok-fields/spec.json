@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strtok-fields",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "字段拆分器说明书", "en": "Field Splitter Manual" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "normal", "label": { "chs": "普通字段与首尾空格", "en": "Ordinary fields with surrounding spaces" } },
+    { "id": "consecutive-commas", "label": { "chs": "连续逗号产生的空段", "en": "Empty pieces from consecutive commas" } },
+    { "id": "all-empty", "label": { "chs": "整行没有有效字段", "en": "A line with no usable fields" } },
+    { "id": "overlong-line", "label": { "chs": "超长行与 max 上限", "en": "An overlong line and the max limit" } }
+  ]
+}

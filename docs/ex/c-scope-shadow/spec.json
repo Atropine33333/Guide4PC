@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-scope-shadow",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "影子的名字", "en": "The Shadow's Name" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通整数", "en": "An ordinary integer" },
+      "cases": [
+        { "in": ["5"], "out": ["6 5"] },
+        { "in": ["41"], "out": ["42 41"] }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "负数与零", "en": "Negative values and zero" },
+      "cases": [
+        { "in": ["-3"], "out": ["-2 -3"] },
+        { "in": ["-1"], "out": ["0 -1"] },
+        { "in": ["0"], "out": ["1 0"] }
+      ]
+    },
+    {
+      "id": "extremes",
+      "label": { "chs": "取值范围两端", "en": "Both ends of the range" },
+      "cases": [
+        { "in": ["1000000"], "out": ["1000001 1000000"] },
+        { "in": ["-1000000"], "out": ["-999999 -1000000"] }
+      ]
+    }
+  ]
+}

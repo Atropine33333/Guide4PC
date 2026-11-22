@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-union-punning",
+  "lang": "c",
+  "category": "types",
+  "rank": 4,
+  "title": { "chs": "同一块地", "en": "The Same Plot" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "unit",
+      "label": { "chs": "门牌 3f800000", "en": "The plot numbered 3f800000" },
+      "cases": [
+        { "in": ["3f800000"], "out": ["1"] },
+        { "in": ["00000000"], "out": ["0"] },
+        { "in": ["3F800000"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "famous-values",
+      "label": { "chs": "几个眼熟的数", "en": "A few familiar numbers" },
+      "cases": [
+        { "in": ["40490fdb"], "out": ["3.14159"] },
+        { "in": ["3dcccccd"], "out": ["0.1"] }
+      ]
+    },
+    {
+      "id": "sign-bit",
+      "label": { "chs": "最高位为 1", "en": "The top bit is set" },
+      "cases": [
+        { "in": ["c0000000"], "out": ["-2"] },
+        { "in": ["bf000000"], "out": ["-0.5"] }
+      ]
+    },
+    {
+      "id": "large-and-fractional",
+      "label": { "chs": "大数与小数", "en": "A large value and a fraction" },
+      "cases": [
+        { "in": ["42f6e979"], "out": ["123.456"] },
+        { "in": ["4b189680"], "out": ["1e+07"] }
+      ]
+    }
+  ]
+}

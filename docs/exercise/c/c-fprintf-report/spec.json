@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-fprintf-report",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "写一张报表", "en": "Write a Report" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "basic-line", "label": { "chs": "一行基本报表", "en": "One basic line" } },
+    { "id": "zero-values", "label": { "chs": "两个零", "en": "Both values zero" } },
+    { "id": "negative-values", "label": { "chs": "负数", "en": "Negative values" } },
+    { "id": "extreme-int", "label": { "chs": "int 的两端", "en": "Both ends of int" } },
+    { "id": "two-lines", "label": { "chs": "两次调用各占一行", "en": "Two calls, two lines" } }
+  ]
+}

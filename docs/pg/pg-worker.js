@@ -35,7 +35,7 @@ const ASSET_FILES = ['bin/memfs.wasm.gz', 'bin/clang.wasm.gz', 'bin/lld.wasm.gz'
 const ASSET_TIMEOUT_MS = 240000;
 const originalFetch = typeof self.fetch === 'function' ? self.fetch.bind(self) : null;
 
-let compilerPromise = null;
+const compilerPromises = new Map();
 let assetBytes = null;
 let fetchPatched = false;
 
@@ -118,9 +118,10 @@ async function prefetchAssets() {
   }
 }
 
-function ensureCompiler() {
-  if (!compilerPromise) {
-    compilerPromise = (async () => {
+function ensureCompiler(lang) {
+  const key = lang === 'c' ? 'c' : 'cpp';
+  if (!compilerPromises.has(key)) {
+    compilerPromises.set(key, (async () => {
       send('phase', { phase: 'loading' });
       try {
         await prefetchAssets();
@@ -128,18 +129,18 @@ function ensureCompiler() {
         send('download-error', { message: String((err && err.message) || err) });
       }
       send('phase', { phase: 'install' });
-      const compiler = await self.clangWasm.createCompiler('cpp', {
+      const compiler = await self.clangWasm.createCompiler(key, {
         baseUrl: ASSET_BASE,
         std: null,
-        compileArgs: ['-O1', '-Wall'],
+        compileArgs: key === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'],
       });
       // 编译器已经把资产解包进自己的内存；放掉压缩字节，闭包里只留空 Map。
       if (assetBytes) assetBytes.clear();
       assetBytes = null;
       return compiler;
-    })();
+    })());
   }
-  return compilerPromise;
+  return compilerPromises.get(key);
 }
 
 /** 把 spec 里的行数组/字符串统一成 stdin 文本。 */
@@ -231,7 +232,7 @@ async function runHarness(compiler, spec, code, harnessCode, limits) {
   send('phase', { phase: 'compile', total: totalChecks });
   let r;
   try {
-    r = await compiler.run(source, '', { compileArgs: ['-O1', '-Wall'] });
+    r = await compiler.run(source, '', { compileArgs: spec.lang === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'] });
   } catch (e) {
     return trapResult('harness', classifyTrap(e), spec, 0, 0);
   }
@@ -305,7 +306,7 @@ async function runCases(compiler, spec, code, limits) {
       });
       let r;
       try {
-        r = await compiler.run(code, input, { compileArgs: ['-O1', '-Wall'] });
+        r = await compiler.run(code, input, { compileArgs: spec.lang === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'] });
       } catch (e) {
         firstTrap = classifyTrap(e);
         ok = false;
@@ -376,7 +377,7 @@ self.onmessage = async (event) => {
   const msg = event.data || {};
   if (msg.type === 'warmup') {
     try {
-      await ensureCompiler();
+      await ensureCompiler('cpp');
       send('ready');
     } catch (err) {
       send('warmup-error', { message: String((err && err.message) || err) });
@@ -388,7 +389,7 @@ self.onmessage = async (event) => {
     const payload = msg.payload || {};
     const spec = payload.spec || {};
     const limits = spec.limits || {};
-    const compiler = await ensureCompiler();
+    const compiler = await ensureCompiler(spec.lang === 'c' ? 'c' : 'cpp');
     const result = spec.harness
       ? await runHarness(compiler, spec, payload.code || '', payload.harnessCode, limits)
       : await runCases(compiler, spec, payload.code || '', limits);

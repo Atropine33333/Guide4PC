@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-double-compare",
+  "lang": "c",
+  "category": "types",
+  "rank": 3,
+  "title": { "chs": "浮点的相等", "en": "Equality of Floats" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "identical",
+      "label": { "chs": "两个数完全一样", "en": "The two numbers are identical" },
+      "cases": [
+        { "in": ["3.5 3.5"], "out": ["1", "0"] },
+        { "in": ["0 0"], "out": ["1", "0"] }
+      ]
+    },
+    {
+      "id": "within-tolerance",
+      "label": { "chs": "差落在容差内", "en": "The gap stays inside the tolerance" },
+      "cases": [
+        { "in": ["1.0 1.0000000005"], "out": ["1", "0"] },
+        { "in": ["0.1 0.1000000001"], "out": ["1", "0"] }
+      ]
+    },
+    {
+      "id": "beyond-tolerance",
+      "label": { "chs": "差超出容差", "en": "The gap exceeds the tolerance" },
+      "cases": [
+        { "in": ["1.0 1.000001"], "out": ["0", "0"] },
+        { "in": ["0 0.00001"], "out": ["0", "0"] }
+      ]
+    },
+    {
+      "id": "just-past",
+      "label": { "chs": "刚好越过容差", "en": "Just past the tolerance" },
+      "cases": [
+        { "in": ["1.000000001 1.0"], "out": ["0", "0"] }
+      ]
+    }
+  ]
+}

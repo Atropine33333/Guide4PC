@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-overflow",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "装爆了", "en": "Overflowed" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "small-total",
+      "label": { "chs": "小额流水", "en": "A small total" },
+      "cases": [
+        { "in": ["3", "10 20 30"], "out": ["60"] }
+      ]
+    },
+    {
+      "id": "ten-billion",
+      "label": { "chs": "十笔过亿", "en": "Ten entries past a billion" },
+      "cases": [
+        { "in": ["10", "1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000"], "out": ["10000000000"] }
+      ]
+    },
+    {
+      "id": "all-zeros",
+      "label": { "chs": "全是零", "en": "All zeros" },
+      "cases": [
+        { "in": ["4", "0 0 0 0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "mixed-sized",
+      "label": { "chs": "大小不一", "en": "Entries of different sizes" },
+      "cases": [
+        { "in": ["5", "1000000000 1000000000 1000000000 500000000 250000000"], "out": ["3750000000"] }
+      ]
+    },
+    {
+      "id": "twelve-entries",
+      "label": { "chs": "十二笔大额", "en": "Twelve large entries" },
+      "cases": [
+        { "in": ["12", "999999999 999999999 999999999 999999999 999999999 999999999 999999999 999999999 999999999 999999999 999999999 999999999"], "out": ["11999999988"] }
+      ]
+    }
+  ]
+}

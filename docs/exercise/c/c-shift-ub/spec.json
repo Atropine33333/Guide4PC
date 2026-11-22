@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-shift-ub",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 3,
+  "title": { "chs": "移位的边界", "en": "The Edge of Shifts" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero-shift",
+      "label": { "chs": "不移位", "en": "No shift at all" },
+      "cases": [
+        { "in": ["0"], "out": ["1 0", "2147483648"] }
+      ]
+    },
+    {
+      "id": "low-bits",
+      "label": { "chs": "低位区间", "en": "Low bits" },
+      "cases": [
+        { "in": ["1"], "out": ["2 1", "2147483648"] },
+        { "in": ["5"], "out": ["32 31", "2147483648"] }
+      ]
+    },
+    {
+      "id": "near-top",
+      "label": { "chs": "逼近最高位", "en": "Approaching the top bit" },
+      "cases": [
+        { "in": ["15"], "out": ["32768 32767", "2147483648"] },
+        { "in": ["30"], "out": ["1073741824 1073741823", "2147483648"] }
+      ]
+    },
+    {
+      "id": "top-bit",
+      "label": { "chs": "正好最高位", "en": "Exactly the top bit" },
+      "cases": [
+        { "in": ["31"], "out": ["2147483648 2147483647", "2147483648"] }
+      ]
+    }
+  ]
+}

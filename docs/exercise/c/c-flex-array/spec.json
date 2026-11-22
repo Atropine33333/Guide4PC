@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-flex-array",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "最后一块空地", "en": "The Last Open Plot" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "new-zeros", "label": { "chs": "新地块全部为零", "en": "A new plot is all zeros" } },
+    { "id": "from-values", "label": { "chs": "从旧数据搬入", "en": "Moving values in" } },
+    { "id": "set-and-get", "label": { "chs": "下标读写与越界", "en": "Indexed reads, writes and bounds" } },
+    { "id": "empty-plot", "label": { "chs": "零个格子的地块", "en": "A plot with no cells" } },
+    { "id": "free-safe", "label": { "chs": "归还与再次申请", "en": "Returning and asking again" } }
+  ]
+}

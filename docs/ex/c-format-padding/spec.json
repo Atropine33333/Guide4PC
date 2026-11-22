@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-format-padding",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "会变的宽度", "en": "The Changing Width" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "right-align",
+      "label": { "chs": "宽度为正靠右", "en": "Positive width, right aligned" },
+      "cases": [
+        { "in": ["6 -42"], "out": ["[   -42]"] },
+        { "in": ["8 42"], "out": ["[      42]"] }
+      ]
+    },
+    {
+      "id": "left-align",
+      "label": { "chs": "宽度为负靠左", "en": "Negative width, left aligned" },
+      "cases": [
+        { "in": ["-8 42"], "out": ["[42      ]"] },
+        { "in": ["-2 7"], "out": ["[7 ]"] }
+      ]
+    },
+    {
+      "id": "too-narrow",
+      "label": { "chs": "宽度装不下数字", "en": "Width narrower than the number" },
+      "cases": [
+        { "in": ["3 12345"], "out": ["[12345]"] },
+        { "in": ["2 7"], "out": ["[ 7]"] }
+      ]
+    },
+    {
+      "id": "zero-width",
+      "label": { "chs": "宽度为零与正好放下", "en": "Zero width and an exact fit" },
+      "cases": [
+        { "in": ["0 -5"], "out": ["[-5]"] },
+        { "in": ["4 1234"], "out": ["[1234]"] }
+      ]
+    },
+    {
+      "id": "wide-field",
+      "label": { "chs": "较宽的栏位与负数", "en": "Wide field with negative values" },
+      "cases": [
+        { "in": ["10 -100000"], "out": ["[   -100000]"] },
+        { "in": ["-10 100000"], "out": ["[100000    ]"] }
+      ]
+    }
+  ]
+}

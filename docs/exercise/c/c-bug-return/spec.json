@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-return",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 2,
+  "title": { "chs": "忘了回去", "en": "Forgot to Return" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero-and-one",
+      "label": { "chs": "零与一", "en": "Zero and one" },
+      "cases": [
+        { "in": ["0"], "out": ["1"] },
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "small",
+      "label": { "chs": "小数字", "en": "Small numbers" },
+      "cases": [
+        { "in": ["3"], "out": ["6"] },
+        { "in": ["5"], "out": ["120"] }
+      ]
+    },
+    {
+      "id": "nine",
+      "label": { "chs": "惠子的九", "en": "Huizi's nine" },
+      "cases": [
+        { "in": ["9"], "out": ["362880"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "上限 12", "en": "The upper bound of 12" },
+      "cases": [
+        { "in": ["12"], "out": ["479001600"] }
+      ]
+    }
+  ]
+}

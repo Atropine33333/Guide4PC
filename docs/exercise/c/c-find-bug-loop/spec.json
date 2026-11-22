@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-find-bug-loop",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 1,
+  "title": { "chs": "少加了一个数", "en": "One Term Short" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "single-term",
+      "label": { "chs": "只有一项", "en": "A single term" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "ten-terms",
+      "label": { "chs": "十项", "en": "Ten terms" },
+      "cases": [
+        { "in": ["10"], "out": ["55"] }
+      ]
+    },
+    {
+      "id": "hundred-terms",
+      "label": { "chs": "一百项", "en": "A hundred terms" },
+      "cases": [
+        { "in": ["100"], "out": ["5050"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "上界", "en": "The upper bound" },
+      "cases": [
+        { "in": ["1000000"], "out": ["500000500000"] }
+      ]
+    },
+    {
+      "id": "odd-count",
+      "label": { "chs": "奇数个加数", "en": "An odd number of terms" },
+      "cases": [
+        { "in": ["999999"], "out": ["499999500000"] }
+      ]
+    }
+  ]
+}

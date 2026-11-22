@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-switch-fallthrough",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 3,
+  "title": { "chs": "掉落的天梯", "en": "The Falling Ladder" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "only-bottom",
+      "label": { "chs": "只落到最底一级", "en": "Down to the bottom rung only" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "lower-rungs",
+      "label": { "chs": "下面几级", "en": "The lower rungs" },
+      "cases": [
+        { "in": ["2"], "out": ["3"] },
+        { "in": ["3"], "out": ["6"] }
+      ]
+    },
+    {
+      "id": "middle-rungs",
+      "label": { "chs": "梯子中段", "en": "The middle of the ladder" },
+      "cases": [
+        { "in": ["5"], "out": ["15"] },
+        { "in": ["6"], "out": ["21"] }
+      ]
+    },
+    {
+      "id": "top-rungs",
+      "label": { "chs": "接近顶端", "en": "Near the top" },
+      "cases": [
+        { "in": ["8"], "out": ["36"] },
+        { "in": ["9"], "out": ["45"] }
+      ]
+    }
+  ]
+}

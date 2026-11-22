@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-loop",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 2,
+  "title": { "chs": "多走一步", "en": "One Step Too Far" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "single",
+      "label": { "chs": "只有一个数", "en": "A single number" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "pair",
+      "label": { "chs": "两个数", "en": "Two numbers" },
+      "cases": [
+        { "in": ["2"], "out": ["1 2"] }
+      ]
+    },
+    {
+      "id": "short-run",
+      "label": { "chs": "一小段", "en": "A short run" },
+      "cases": [
+        { "in": ["5"], "out": ["1 2 3 4 5"] },
+        { "in": ["7"], "out": ["1 2 3 4 5 6 7"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "上限 30", "en": "The upper bound of 30" },
+      "cases": [
+        { "in": ["30"], "out": ["1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30"] }
+      ]
+    }
+  ]
+}

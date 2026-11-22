@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-comma-operator",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 3,
+  "title": { "chs": "逗号折叠", "en": "Folded by Comma" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "nothing-to-add",
+      "label": { "chs": "一项也不加", "en": "Nothing to add" },
+      "cases": [
+        { "in": ["0"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "first-steps",
+      "label": { "chs": "开头几项", "en": "The first few terms" },
+      "cases": [
+        { "in": ["1"], "out": ["1 1"] },
+        { "in": ["2"], "out": ["3 2"] }
+      ]
+    },
+    {
+      "id": "round-numbers",
+      "label": { "chs": "整十整百", "en": "Tens and hundreds" },
+      "cases": [
+        { "in": ["10"], "out": ["55 10"] },
+        { "in": ["100"], "out": ["5050 100"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "取到上限", "en": "At the upper limit" },
+      "cases": [
+        { "in": ["1000000"], "out": ["500000500000 1000000"] }
+      ]
+    }
+  ]
+}

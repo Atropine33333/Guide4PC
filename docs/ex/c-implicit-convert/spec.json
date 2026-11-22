@@ -1,0 +1,109 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-implicit-convert",
+  "lang": "c",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "混着算",
+    "en": "Mixed Arithmetic"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "negative-side",
+      "label": {
+        "chs": "负数那一侧",
+        "en": "The negative side"
+      },
+      "cases": [
+        {
+          "in": [
+            "-1 1"
+          ],
+          "out": [
+            "0 4294967295"
+          ]
+        },
+        {
+          "in": [
+            "-2 4000000000"
+          ],
+          "out": [
+            "0 4294967294"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-positive",
+      "label": {
+        "chs": "两边都是正数",
+        "en": "Both sides positive"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 5"
+          ],
+          "out": [
+            "1 3"
+          ]
+        },
+        {
+          "in": [
+            "5 3"
+          ],
+          "out": [
+            "0 5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "两边相等",
+        "en": "Both sides equal"
+      },
+      "cases": [
+        {
+          "in": [
+            "7 7"
+          ],
+          "out": [
+            "0 7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extremes",
+      "label": {
+        "chs": "范围的两头",
+        "en": "The two ends of the range"
+      },
+      "cases": [
+        {
+          "in": [
+            "0 4000000000"
+          ],
+          "out": [
+            "1 0"
+          ]
+        },
+        {
+          "in": [
+            "-2147483648 0"
+          ],
+          "out": [
+            "0 2147483648"
+          ]
+        }
+      ]
+    }
+  ]
+}

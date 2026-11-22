@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-blank-lines",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "不留空行", "en": "No Blank Lines Left" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "no-blank",
+      "label": { "chs": "本来就没有空行", "en": "No blank lines to begin with" },
+      "cases": [
+        { "in": ["alpha", "beta"], "out": ["alpha", "beta"] }
+      ]
+    },
+    {
+      "id": "single-blank-kept",
+      "label": { "chs": "一条空行照留", "en": "A single blank line stays" },
+      "cases": [
+        { "in": ["a", "", "b"], "out": ["a", "", "b"] }
+      ]
+    },
+    {
+      "id": "collapse-run",
+      "label": { "chs": "连续空行压成一条", "en": "A run of blank lines becomes one" },
+      "cases": [
+        { "in": ["a", "", "", "", "b"], "out": ["a", "", "b"] },
+        { "in": ["a", "   ", "\t", "b"], "out": ["a", "", "b"] }
+      ]
+    },
+    {
+      "id": "edges-removed",
+      "label": { "chs": "首尾空行不留", "en": "Blank lines at either end go" },
+      "cases": [
+        { "in": ["", "", "x", "", ""], "out": ["x"] },
+        { "in": ["", "", ""], "out": [] }
+      ]
+    }
+  ]
+}

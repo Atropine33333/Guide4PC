@@ -12,7 +12,13 @@
   'use strict';
 
   var ROOT = '../';
-  var LOCALE = (document.documentElement.lang || 'zh').toLowerCase().indexOf('zh') === 0 ? 'chs' : 'en';
+  var savedLang = '';
+  try { savedLang = localStorage.getItem('guide4pc_lang') || ''; } catch (e) { savedLang = ''; }
+  var qsLang = '';
+  try { qsLang = new URLSearchParams(location.search).get('lang') || ''; } catch (e) { qsLang = ''; }
+  var initialLang = (qsLang || savedLang || document.documentElement.lang || 'zh').toLowerCase();
+  var LOCALE = initialLang.indexOf('en') === 0 ? 'en' : 'chs';
+  try { document.documentElement.lang = LOCALE === 'chs' ? 'zh-CN' : 'en'; } catch (e) { /* ignore */ }
   var CATEGORY = {
     syntax: ['语法', 'Syntax'],
     semantics: ['语义', 'Semantics'],
@@ -314,9 +320,16 @@
       mine.appendChild(paperList(ordered));
       app.appendChild(mine);
     }
-    if (state.papers.length) {
+    var langPapers = state.papers.filter(function (p) { return paperLang(p) === state.lang; });
+    if (state.papers.length && !langPapers.length) {
+      app.appendChild(h('section', { class: 'es-paper' }, [
+        h('h3', { text: t('预组卷子', 'Ready-made papers') }),
+        h('p', { class: 'es-empty', text: t('这个语言还没有预组卷子。', 'No ready-made papers for this language yet.') }),
+      ]));
+    }
+    if (langPapers.length) {
       var preset = h('section', { class: 'es-paper' }, [h('h3', { text: t('预组卷子', 'Ready-made papers') })]);
-      state.papers.forEach(function (p) {
+      langPapers.forEach(function (p) {
         preset.appendChild(h('a', { class: 'es-paper-row', href: '#/paper/' + p.id }, [
           h('span', { class: 'es-paper-title', text: paperTitle(p) }),
           h('span', { class: 'es-paper-count', text: t(p.count + ' 题', p.count + ' items') }),
@@ -324,6 +337,17 @@
       });
       app.appendChild(preset);
     }
+  }
+
+  function paperLang(paper) {
+    if (paper && paper.lang) return paper.lang;
+    var ids = (paper && paper.items) || [];
+    for (var i = 0; i < ids.length; i++) {
+      for (var j = 0; j < state.items.length; j++) {
+        if (state.items[j].id === ids[i]) return state.items[j].lang || 'cpp';
+      }
+    }
+    return 'cpp';
   }
 
   function paperTitle(paper) {
@@ -339,11 +363,12 @@
       app.appendChild(h('div', { class: 'es-empty', text: t('没有找到这份卷子。', 'Paper not found.') }));
       return;
     }
+    state.lang = paperLang(paper);
     var ids = paper.items || [];
     app.appendChild(h('header', { class: 'es-problem-head' }, [
       h('h1', { class: 'es-problem-title', text: paperTitle(paper) }),
       h('div', { class: 'es-meta' }, [
-        langBox(paper.lang || 'cpp'),
+        langBox(paperLang(paper)),
         h('span', { class: 'es-chip', text: t(ids.length + ' 题', ids.length + ' items') }),
       ]),
     ]));
@@ -489,7 +514,7 @@
   }
   function playerVer() {
     var v = window.GUIDE4PC_VERSION;
-    return v && v !== 'ef2377dd83' ? '?v=' + encodeURIComponent(v) : '';
+    return v && v !== '1370990e2b' ? '?v=' + encodeURIComponent(v) : '';
   }
   function ensurePlayground() {
     window.G4PC_BASE = ROOT;
@@ -514,11 +539,29 @@
     var paperId = new URLSearchParams(query).get('paper');
     if (parts[0] === 'paper' && parts[1]) renderPaper(parts[1]);
     else if (parts.length >= 2) renderDetail(parts[0], parts.slice(1).join('/'), paperId);
-    else { state.lang = 'cpp'; renderList(); }
+    else { if (!state.lang) state.lang = 'cpp'; renderList(); }
     window.scrollTo(0, 0);
   }
 
   // ── 启动 ───────────────────────────────────────────────────────────────────
+  function applyChrome() {
+    document.title = LOCALE === 'chs' ? '练习站 · Guide4PC' : 'Exercises · Guide4PC';
+    var title = document.getElementById('es-title');
+    if (title) title.textContent = t('练习站', 'Exercises');
+    var home = document.getElementById('es-home');
+    if (home) home.textContent = t('返回主站', 'Back to site');
+    var btn = document.getElementById('es-lang');
+    if (btn) {
+      btn.textContent = LOCALE === 'chs' ? 'EN' : '中文';
+      btn.setAttribute('aria-label', LOCALE === 'chs' ? 'Switch to English' : '切换到中文');
+      btn.addEventListener('click', function () {
+        var next = LOCALE === 'chs' ? 'en' : 'chs';
+        try { localStorage.setItem('guide4pc_lang', next); } catch (e) { /* ignore */ }
+        location.reload();
+      });
+    }
+  }
+  applyChrome();
   applyTheme();
   loadData().then(function () {
     if (!window.markdownit) {

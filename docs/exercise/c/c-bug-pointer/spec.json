@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-pointer",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "指错了人", "en": "Pointing at the Wrong One" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "swap-basic", "label": { "chs": "交换两个数", "en": "Swapping two numbers" } },
+    { "id": "swap-array", "label": { "chs": "交换数组元素", "en": "Swapping array elements" } },
+    { "id": "max-pointer", "label": { "chs": "指向最大值", "en": "Pointing at the maximum" } },
+    { "id": "max-first", "label": { "chs": "最大值在开头", "en": "Maximum at the front" } },
+    { "id": "max-single", "label": { "chs": "只有一个元素", "en": "A single element" } }
+  ]
+}

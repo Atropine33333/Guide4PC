@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-static-assert",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "编译时的守则", "en": "Rules at Compile Time" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "positive",
+      "label": { "chs": "正整数", "en": "Positive integers" },
+      "cases": [
+        { "in": ["42"], "out": ["n=42 int=4 check=ok"] },
+        { "in": ["7"], "out": ["n=7 int=4 check=ok"] }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": { "chs": "零", "en": "Zero" },
+      "cases": [
+        { "in": ["0"], "out": ["n=0 int=4 check=ok"] }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "负整数", "en": "Negative integers" },
+      "cases": [
+        { "in": ["-7"], "out": ["n=-7 int=4 check=ok"] },
+        { "in": ["-1"], "out": ["n=-1 int=4 check=ok"] }
+      ]
+    },
+    {
+      "id": "int-limits",
+      "label": { "chs": "int 的两端", "en": "Both ends of int" },
+      "cases": [
+        { "in": ["2147483647"], "out": ["n=2147483647 int=4 check=ok"] },
+        { "in": ["-2147483648"], "out": ["n=-2147483648 int=4 check=ok"] }
+      ]
+    }
+  ]
+}

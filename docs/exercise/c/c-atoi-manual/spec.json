@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-atoi-manual",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "手搓 atoi", "en": "Hand-Rolled atoi" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "sign-and-space",
+      "label": { "chs": "前导空格与正负号", "en": "Leading spaces and a sign" },
+      "cases": [
+        { "in": ["   -42abc"], "out": ["-42"] },
+        { "in": ["  +17"], "out": ["17"] }
+      ]
+    },
+    {
+      "id": "plain-digits",
+      "label": { "chs": "纯数字与多余前导零", "en": "Plain digits and leading zeros" },
+      "cases": [
+        { "in": ["123"], "out": ["123"] },
+        { "in": ["007"], "out": ["7"] }
+      ]
+    },
+    {
+      "id": "no-digits",
+      "label": { "chs": "一个数字都没有", "en": "No digits at all" },
+      "cases": [
+        { "in": ["abc"], "out": ["0"] },
+        { "in": ["   "], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "int-limits",
+      "label": { "chs": "int 两端的值", "en": "Values at the int edges" },
+      "cases": [
+        { "in": ["2147483647"], "out": ["2147483647"] },
+        { "in": ["-2147483648"], "out": ["-2147483648"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-scanf-pairs",
+  "lang": "c",
+  "category": "io",
+  "rank": 1,
+  "title": { "chs": "成对相加", "en": "Add the Pairs" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "positive",
+      "label": { "chs": "两个正数", "en": "Two positive numbers" },
+      "cases": [
+        {
+          "in": ["3", "2 3", "10 20", "1000000000 1000000000"],
+          "out": ["5", "30", "2000000000"]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "负数与正负相加", "en": "Negatives and mixed signs" },
+      "cases": [
+        {
+          "in": ["3", "-5 -7", "-100 40", "-1000000000 -1000000000"],
+          "out": ["-12", "-60", "-2000000000"]
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": { "chs": "含零的加法", "en": "Sums involving zero" },
+      "cases": [
+        {
+          "in": ["3", "0 0", "0 5", "3 -3"],
+          "out": ["0", "5", "0"]
+        }
+      ]
+    },
+    {
+      "id": "single-pair",
+      "label": { "chs": "只有一对", "en": "A single pair" },
+      "cases": [
+        {
+          "in": ["1", "7 -2"],
+          "out": ["5"]
+        }
+      ]
+    }
+  ]
+}

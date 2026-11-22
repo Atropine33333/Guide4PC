@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-arena-reset",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "营地清空", "en": "Clearing the Camp" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "fresh-camp", "label": { "chs": "新营地按序排开", "en": "A fresh camp laid out in order" } },
+    { "id": "reset-reuse", "label": { "chs": "清空后原地重排", "en": "The same ground after a reset" } },
+    { "id": "reject-too-big", "label": { "chs": "装不下就回绝", "en": "Refusing what does not fit" } },
+    { "id": "reject-keeps-data", "label": { "chs": "回绝不动旧东西", "en": "A refusal leaves old items alone" } },
+    { "id": "zero-and-reuse", "label": { "chs": "零件的请求与再次复用", "en": "A request for zero and reuse again" } }
+  ]
+}

@@ -1,5 +1,2705 @@
 [
   {
+    "id": "c-2d-array",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "两维的席子",
+      "en": "The Two-Dimensional Mat"
+    },
+    "category": "memory",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-aligned-alloc",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "对齐的格子",
+      "en": "Aligned Cells"
+    },
+    "category": "memory",
+    "rank": 5,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-alloc-counter",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "记账的分配器",
+      "en": "The Accounting Allocator"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-arena-reset",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "营地清空",
+      "en": "Clearing the Camp"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-array-decay",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "退化的数组",
+      "en": "The Decayed Array"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-assert-macro",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "喊一声停",
+      "en": "Shout Stop"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-atoi-manual",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "手搓 atoi",
+      "en": "Hand-Rolled atoi"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-big-add",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "大数相加",
+      "en": "Adding Big Numbers"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-binary-search",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "二分",
+      "en": "Halving"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bit-reverse",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "三十二位守则",
+      "en": "The Thirty-Two Bit Rules"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bitfield-config",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "配置的位",
+      "en": "Bits of Configuration"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bitfield-pack",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "位域胶囊",
+      "en": "The Bitfield Capsule"
+    },
+    "category": "types",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bitmask-flags",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "位旗",
+      "en": "Bit Flags"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bitset",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "一位一位记",
+      "en": "One Bit at a Time"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-blank-lines",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "不留空行",
+      "en": "No Blank Lines Left"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bsearch-index",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "排好队再找",
+      "en": "Find It in Line"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bst-insert",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "左小右大的树",
+      "en": "The Ordered Tree"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bubble-sort",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "冒泡",
+      "en": "Bubbling Up"
+    },
+    "category": "algorithm",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-array",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "越过了界",
+      "en": "Past the Boundary"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-dangling",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "用过的影子",
+      "en": "The Used Shadow"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-format",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "打错了样子",
+      "en": "Printed Wrong"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-loop",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "多走一步",
+      "en": "One Step Too Far"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-malloc",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "忘了还",
+      "en": "Forgot to Return It"
+    },
+    "category": "debugging",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-off-by-one",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "差了一位",
+      "en": "Off by One"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-overflow",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "装爆了",
+      "en": "Overflowed"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-pointer",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "指错了人",
+      "en": "Pointing at the Wrong One"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-printf",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "格式对不上",
+      "en": "Format Mismatch"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-return",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "忘了回去",
+      "en": "Forgot to Return"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-scanf",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "读错了地方",
+      "en": "Read the Wrong Place"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-strcpy",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "抄过头了",
+      "en": "Copied Too Far"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-bug-unsigned",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "倒着走的坑",
+      "en": "The Backwards Pit"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-byte-order",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "字节的次序",
+      "en": "Order of Bytes"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-calloc-zero",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "干净的席子",
+      "en": "A Clean Mat"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-char-literals",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "字面量的数",
+      "en": "Numbers of Literals"
+    },
+    "category": "syntax",
+    "rank": 2,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-char-pyramid",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "给字母垒一座金字塔",
+      "en": "Raise the Letter Pyramid"
+    },
+    "category": "syntax",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-char-signedness",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "char 的符号读法",
+      "en": "Reading a Char as Signed"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-comma-operator",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "逗号折叠",
+      "en": "Folded by Comma"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-config-lines",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "终端里的配置回声",
+      "en": "Configuration Echo in the Terminal"
+    },
+    "category": "engineering",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-const-correct",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "只读的承诺",
+      "en": "The Promise to Read Only"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-copy-ownership",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "谁的字符串",
+      "en": "Whose String"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-counting-sort",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "点名的顺序",
+      "en": "Order by Naming"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-crc16",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "校验的印章",
+      "en": "The Checksum Seal"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-ctype-classify",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "各归各",
+      "en": "Each to Its Kind"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-deque",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "两头都能排",
+      "en": "Both Ends"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-division-rules",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "商余法条",
+      "en": "Articles of Quotient and Remainder"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 7,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-do-while-read",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "先做一次",
+      "en": "Do It Once"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-double-compare",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "浮点的相等",
+      "en": "Equality of Floats"
+    },
+    "category": "types",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-dyn-array",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "永远装不满的盒子",
+      "en": "The Box That Never Fills Up"
+    },
+    "category": "memory",
+    "rank": 2,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-dyn-buffer",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "越用越长的布",
+      "en": "The Ever-Growing Cloth"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-endian-pack",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "打包成字节",
+      "en": "Packing into Bytes"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-enum-ordinal",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "枚举的号",
+      "en": "Ordinals of an Enum"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-enum-state",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "状态的号",
+      "en": "The Numbers of States"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-eof-loop",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "读到收摊",
+      "en": "Read Until Closing"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-error-code",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "错误码的秩序",
+      "en": "The Order of Error Codes"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-extended-gcd",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "两帮合阵的调度令",
+      "en": "The Marshal's Dispatch"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-fast-pow",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "两仪掌上分内力",
+      "en": "Splitting the Inner Force"
+    },
+    "category": "algorithm",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-fgets-lines",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "按行取",
+      "en": "Taking Lines"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-find-bug-loop",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "少加了一个数",
+      "en": "One Term Short"
+    },
+    "category": "debugging",
+    "rank": 1,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-find-bug-swap",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "交换两个数（找错）",
+      "en": "Swap Two Numbers (Debug)"
+    },
+    "category": "debugging",
+    "rank": 1,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-flex-array",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "最后一块空地",
+      "en": "The Last Open Plot"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-float-rounding",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "小数点的四舍五入",
+      "en": "Rounding the Point"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-format-padding",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "会变的宽度",
+      "en": "The Changing Width"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-fprintf-report",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "写一张报表",
+      "en": "Write a Report"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-free-order",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "倒着收摊",
+      "en": "Closing in Reverse"
+    },
+    "category": "memory",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-function-pointer",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "四张牌",
+      "en": "Four Cards"
+    },
+    "category": "semantics",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-gcd-stones",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "方田铺石与双渠同开",
+      "en": "Stones for the Field, Sluices for the Channels"
+    },
+    "category": "algorithm",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-getchar-count",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "数一数",
+      "en": "Count Them"
+    },
+    "category": "io",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-goto-cleanup",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "收兵回营",
+      "en": "Retreat and Clean Up"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-hanoi-moves",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "汉诺塔的步数",
+      "en": "Steps of Hanoi"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-hash-linear",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "线性探测的柜子",
+      "en": "The Linear-Probing Cabinet"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-header-guard",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "只进来一次",
+      "en": "Enter Only Once"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-heap-sift",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "下沉的堆",
+      "en": "The Sinking Heap"
+    },
+    "category": "data",
+    "rank": 5,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-implicit-convert",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "混着算",
+      "en": "Mixed Arithmetic"
+    },
+    "category": "types",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-increment-side-effects",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "自增的账本",
+      "en": "The Ledger of Increments"
+    },
+    "category": "syntax",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-ini-reader",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "键值行",
+      "en": "Key-Value Lines"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-int-promotion",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "整数提升",
+      "en": "Integer Promotion"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-int-stack",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "会记账的栈",
+      "en": "A Stack That Keeps Count"
+    },
+    "category": "data",
+    "rank": 2,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-lcs-length",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "共同的老底",
+      "en": "Common Ground"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-letter-camp",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "三营点兵",
+      "en": "Mustering the Three Camps"
+    },
+    "category": "syntax",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-linked-list",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "链起来的节点",
+      "en": "Linked Nodes"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-list-reverse",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "倒着点名",
+      "en": "Calling Backwards"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-logging-macro",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "会记账的宏",
+      "en": "The Logging Macro"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-long-long",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "装不下",
+      "en": "Does Not Fit"
+    },
+    "category": "types",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-loop-break-continue",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "跳过的数",
+      "en": "The Skipped Numbers"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-macro-max",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "宏的最大值",
+      "en": "The Maximum Macro"
+    },
+    "category": "engineering",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-macro-side-effect",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "宏的脾气",
+      "en": "The Temper of Macros"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-malloc-string",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "借来的字符串",
+      "en": "A Borrowed String"
+    },
+    "category": "memory",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-matrix-multiply",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "矩阵相乘",
+      "en": "Multiplying Matrices"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-matrix-transpose",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "翻个面",
+      "en": "Turn It Over"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-memcpy-bounds",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "只搬这么多",
+      "en": "Only This Much"
+    },
+    "category": "memory",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-memmove-overlap",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "自己搬自己",
+      "en": "Moving Itself"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-merge-sorted",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "合流",
+      "en": "Merging the Streams"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-next-permutation",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "下一个排列",
+      "en": "The Next Arrangement"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-nqueens-count",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "皇后们",
+      "en": "The Queens"
+    },
+    "category": "algorithm",
+    "rank": 5,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-null-free",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "空着也能收",
+      "en": "Freeing Nothing"
+    },
+    "category": "memory",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-pool-alloc",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "固定大小的格子",
+      "en": "Fixed Cells"
+    },
+    "category": "memory",
+    "rank": 5,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-printf-escapes",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "转义字符点名",
+      "en": "Naming the Escapes"
+    },
+    "category": "syntax",
+    "rank": 1,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-printf-hex",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "三种进制",
+      "en": "Three Bases"
+    },
+    "category": "io",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-printf-table",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "对齐的成绩表",
+      "en": "An Aligned Score Table"
+    },
+    "category": "io",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-printf-width",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "对齐的表",
+      "en": "The Aligned Table"
+    },
+    "category": "io",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-ptrdiff",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "指针的距离",
+      "en": "Distance Between Pointers"
+    },
+    "category": "types",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-puts-lines",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "逐行念白",
+      "en": "Line by Line"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-qsort-struct",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "按分排座",
+      "en": "Seating by Score"
+    },
+    "category": "stdlib",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-qsort-words",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "鹏程有序",
+      "en": "Order on the Long Flight"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-queue",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "排队的窗口",
+      "en": "The Queueing Window"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-realloc-grow",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "越装越大",
+      "en": "Growing to Fit"
+    },
+    "category": "stdlib",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-realloc-shrink",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "收小盒子",
+      "en": "Shrinking the Box"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-recursion-mutual",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "奇偶相生",
+      "en": "Even and Odd Beget Each Other"
+    },
+    "category": "semantics",
+    "rank": 4,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-recursion-trace",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "递归的脚印",
+      "en": "Footprints of Recursion"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-ring-buffer",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "八仙桌围成圈",
+      "en": "The Table That Goes Round"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-roman-encode",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "罗马数字",
+      "en": "Roman Numerals"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-scanf-pairs",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "成对相加",
+      "en": "Add the Pairs"
+    },
+    "category": "io",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-scanf-return",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "收成几件",
+      "en": "How Many Caught"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-scanf-skip",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "跳过噪音",
+      "en": "Skipping the Noise"
+    },
+    "category": "io",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-scope-shadow",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "影子的名字",
+      "en": "The Shadow's Name"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-shift-ub",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "移位的边界",
+      "en": "The Edge of Shifts"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-short-circuit",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "短路的门",
+      "en": "The Short-Circuit Gate"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-sieve",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "筛子",
+      "en": "The Sieve"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-size-t",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "长度的类型",
+      "en": "The Type of Length"
+    },
+    "category": "types",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-sizeof-array",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "数组的尺子",
+      "en": "The Ruler of Arrays"
+    },
+    "category": "syntax",
+    "rank": 2,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-snprintf-format",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "拼一句话",
+      "en": "Assembling a Sentence"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-sorted-insert",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "插进队伍",
+      "en": "Into the Line"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-sparse-matrix",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "稀疏的格子",
+      "en": "Sparse Grid"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-sscanf-parse",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "从串里抠数",
+      "en": "Picking Numbers from a String"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-static-assert",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "编译时的守则",
+      "en": "Rules at Compile Time"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-static-counter",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "账房先生",
+      "en": "The Bookkeeper"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-static-local",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "会记住的计数器",
+      "en": "The Counter That Remembers"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strcat-append",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "接尾巴",
+      "en": "Attaching the Tail"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strchr-count",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "字符的点名",
+      "en": "Calling the Character"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-string-arena",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "字符串的营地",
+      "en": "The String Camp"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-string-dup",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "把字符串复印一份",
+      "en": "A String, Duplicated"
+    },
+    "category": "memory",
+    "rank": 1,
+    "checks": 4,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strncpy-safe",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "截断的复印",
+      "en": "Copy with a Limit"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strspn-prefix",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "集合的前缀",
+      "en": "Prefix of a Set"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strtok-fields",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "字段拆分器说明书",
+      "en": "Field Splitter Manual"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 4,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-strtol-base",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "进制的钥匙",
+      "en": "The Key of Bases"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-struct-padding",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "结构体的空隙",
+      "en": "The Gaps in a Struct"
+    },
+    "category": "syntax",
+    "rank": 4,
+    "checks": 3,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-switch-fallthrough",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "掉落的天梯",
+      "en": "The Falling Ladder"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-ternary-grade",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "三目评级",
+      "en": "Rating by Ternary"
+    },
+    "category": "syntax",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-two-column",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "两栏对照",
+      "en": "Two Columns"
+    },
+    "category": "io",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-typedef-chain",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "别名套别名",
+      "en": "Aliases upon Aliases"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-u8-wrap",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "八位累加器的回绕",
+      "en": "The Eight-Bit Accumulator Wraps"
+    },
+    "category": "types",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-union-find",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "同乡会",
+      "en": "The Hometown Society"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-union-punning",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "同一块地",
+      "en": "The Same Plot"
+    },
+    "category": "types",
+    "rank": 4,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-unsigned-compare",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "无符号的倒着走",
+      "en": "Walking Backwards Unsigned"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-unsigned-underflow",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "借位的坑",
+      "en": "The Borrow Pit"
+    },
+    "category": "types",
+    "rank": 2,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-varargs-sum",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "变参合数",
+      "en": "Summing the Varied"
+    },
+    "category": "syntax",
+    "rank": 4,
+    "checks": 4,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-version-compare",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "版本号逐段对账",
+      "en": "Version Numbers Compared Segment by Segment"
+    },
+    "category": "engineering",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-version-macro",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "版本号的拼法",
+      "en": "Assembling a Version"
+    },
+    "category": "engineering",
+    "rank": 2,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-volatile-flag",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "会被改的灯",
+      "en": "The Lamp That Can Change"
+    },
+    "category": "semantics",
+    "rank": 4,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "c-wide-char",
+    "dir": "c",
+    "lang": "c",
+    "title": {
+      "chs": "宽字符的点名",
+      "en": "Calling the Wide Chars"
+    },
+    "category": "types",
+    "rank": 4,
+    "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "account-hierarchy",
     "dir": "cpp",
     "lang": "cpp",

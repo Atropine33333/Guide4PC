@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-free-order",
+  "lang": "c",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "倒着收摊", "en": "Closing in Reverse" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "build-order", "label": { "chs": "头插后顺序反过来", "en": "Head insertion reverses the order" } },
+    { "id": "null-and-cap", "label": { "chs": "空表与截断读取", "en": "Empty list and a short buffer" } },
+    { "id": "free-all", "label": { "chs": "每节恰好归还一次", "en": "Each node returned exactly once" } },
+    { "id": "free-order", "label": { "chs": "从最新的那节收摊", "en": "Closing from the newest node" } },
+    { "id": "alloc-failure", "label": { "chs": "借不到节点时原样返回", "en": "Keeping the list when no node is available" } }
+  ]
+}

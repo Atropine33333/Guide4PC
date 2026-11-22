@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-realloc-grow",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 4,
+  "title": { "chs": "越装越大", "en": "Growing to Fit" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "first-append", "label": { "chs": "第一次追加", "en": "The first append" } },
+    { "id": "keeps-old-values", "label": { "chs": "旧货原样保留", "en": "Old values survive" } },
+    { "id": "grows-capacity", "label": { "chs": "容量按倍增长", "en": "Capacity doubles" } },
+    { "id": "existing-buffer", "label": { "chs": "接在已有的数组后面", "en": "Appending to an existing buffer" } },
+    { "id": "long-run", "label": { "chs": "一口气装一千件", "en": "A thousand appends in a row" } }
+  ]
+}

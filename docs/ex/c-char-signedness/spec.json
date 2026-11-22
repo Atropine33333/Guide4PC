@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-char-signedness",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "char 的符号读法", "en": "Reading a Char as Signed" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero-and-positive",
+      "label": { "chs": "零与正向区间", "en": "Zero and the positive range" },
+      "cases": [
+        { "in": ["0"], "out": ["0"] },
+        { "in": ["42"], "out": ["42"] },
+        { "in": ["127"], "out": ["127"] }
+      ]
+    },
+    {
+      "id": "smallest-negative",
+      "label": { "chs": "跨过 127 的第一组值", "en": "The first values past 127" },
+      "cases": [
+        { "in": ["128"], "out": ["-128"] },
+        { "in": ["129"], "out": ["-127"] }
+      ]
+    },
+    {
+      "id": "mid-range",
+      "label": { "chs": "中间一段", "en": "The middle stretch" },
+      "cases": [
+        { "in": ["200"], "out": ["-56"] },
+        { "in": ["156"], "out": ["-100"] }
+      ]
+    },
+    {
+      "id": "top-of-range",
+      "label": { "chs": "上界附近", "en": "Near the top of the range" },
+      "cases": [
+        { "in": ["255"], "out": ["-1"] },
+        { "in": ["254"], "out": ["-2"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bit-reverse",
+  "lang": "c",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "三十二位守则", "en": "The Thirty-Two Bit Rules" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero",
+      "label": { "chs": "全零", "en": "All bits clear" },
+      "cases": [
+        { "in": ["0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "lowest-bit",
+      "label": { "chs": "最低位出发", "en": "From the lowest bit" },
+      "cases": [
+        { "in": ["1"], "out": ["2147483648"] },
+        { "in": ["2"], "out": ["1073741824"] }
+      ]
+    },
+    {
+      "id": "highest-bit",
+      "label": { "chs": "最高位出发", "en": "From the highest bit" },
+      "cases": [
+        { "in": ["2147483648"], "out": ["1"] },
+        { "in": ["1073741824"], "out": ["2"] }
+      ]
+    },
+    {
+      "id": "all-ones",
+      "label": { "chs": "上界与近上界", "en": "The top and near the top" },
+      "cases": [
+        { "in": ["4294967295"], "out": ["4294967295"] },
+        { "in": ["4294967294"], "out": ["2147483647"] }
+      ]
+    },
+    {
+      "id": "alternating",
+      "label": { "chs": "交替的位", "en": "Alternating bits" },
+      "cases": [
+        { "in": ["2863311530"], "out": ["1431655765"] },
+        { "in": ["1431655765"], "out": ["2863311530"] }
+      ]
+    },
+    {
+      "id": "ordinary-values",
+      "label": { "chs": "普通数值", "en": "Ordinary values" },
+      "cases": [
+        { "in": ["6"], "out": ["1610612736"] },
+        { "in": ["13"], "out": ["2952790016"] },
+        { "in": ["123456789"], "out": ["2830359264"] },
+        { "in": ["255"], "out": ["4278190080"] },
+        { "in": ["256"], "out": ["8388608"] }
+      ]
+    }
+  ]
+}

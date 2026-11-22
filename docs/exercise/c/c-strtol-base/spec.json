@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strtol-base",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "进制的钥匙", "en": "The Key of Bases" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "hex-prefix",
+      "label": { "chs": "十六进制前缀", "en": "Hexadecimal prefix" },
+      "cases": [
+        { "in": ["0x1F"], "out": ["31"] },
+        { "in": ["0xAbCd"], "out": ["43981"] }
+      ]
+    },
+    {
+      "id": "signed-hex",
+      "label": { "chs": "带符号的十六进制", "en": "Signed hexadecimal" },
+      "cases": [
+        { "in": ["-0X2a"], "out": ["-42"] }
+      ]
+    },
+    {
+      "id": "plain-decimal",
+      "label": { "chs": "十进制记号", "en": "Decimal tokens" },
+      "cases": [
+        { "in": ["1234"], "out": ["1234"] },
+        { "in": ["+987"], "out": ["987"] }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": { "chs": "零的几种写法", "en": "Several ways to write zero" },
+      "cases": [
+        { "in": ["0"], "out": ["0"] },
+        { "in": ["0x0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "large-hex",
+      "label": { "chs": "接近上界的十六进制", "en": "Hexadecimal near the top" },
+      "cases": [
+        { "in": ["0x7FFFFFFF"], "out": ["2147483647"] }
+      ]
+    }
+  ]
+}

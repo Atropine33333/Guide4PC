@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-increment-side-effects",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 2,
+  "title": { "chs": "自增的账本", "en": "The Ledger of Increments" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "positive-start",
+      "label": { "chs": "从正数起账", "en": "Starting from a positive number" },
+      "cases": [
+        { "in": ["5"], "out": ["5 7 7 6"] },
+        { "in": ["1"], "out": ["1 3 3 2"] }
+      ]
+    },
+    {
+      "id": "zero-start",
+      "label": { "chs": "从零起账", "en": "Starting from zero" },
+      "cases": [
+        { "in": ["0"], "out": ["0 2 2 1"] }
+      ]
+    },
+    {
+      "id": "negative-start",
+      "label": { "chs": "从负数起账", "en": "Starting from a negative number" },
+      "cases": [
+        { "in": ["-3"], "out": ["-3 -1 -1 -2"] },
+        { "in": ["-1"], "out": ["-1 1 1 0"] }
+      ]
+    },
+    {
+      "id": "large-start",
+      "label": { "chs": "走到取值上端", "en": "Near the upper end" },
+      "cases": [
+        { "in": ["1000"], "out": ["1000 1002 1002 1001"] }
+      ]
+    }
+  ]
+}

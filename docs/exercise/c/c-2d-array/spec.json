@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-2d-array",
+  "lang": "c",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "两维的席子", "en": "The Two-Dimensional Mat" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "shape-and-zeros", "label": { "chs": "行列齐全且全为零", "en": "Right shape, all zeros" } },
+    { "id": "fill-and-sum", "label": { "chs": "写入后求和", "en": "Sum after filling" } },
+    { "id": "rows-independent", "label": { "chs": "各行互不串味", "en": "Rows stay independent" } },
+    { "id": "bad-size", "label": { "chs": "行列非正时返回空", "en": "Non-positive sizes give null" } },
+    { "id": "free-then-reuse", "label": { "chs": "释放后可再申请", "en": "Free and allocate again" } }
+  ]
+}

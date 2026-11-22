@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-qsort-struct",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 4,
+  "title": { "chs": "按分排座", "en": "Seating by Score" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "unique-scores",
+      "label": { "chs": "分数各不相同", "en": "All scores differ" },
+      "cases": [
+        {
+          "in": ["4", "dan 80", "alice 90", "cara 80", "bob 70"],
+          "out": ["alice 90", "cara 80", "dan 80", "bob 70"]
+        }
+      ]
+    },
+    {
+      "id": "all-tied",
+      "label": { "chs": "分数全部相同", "en": "Every score is tied" },
+      "cases": [
+        {
+          "in": ["4", "dan 80", "alice 80", "cara 80", "bob 80"],
+          "out": ["alice 80", "bob 80", "cara 80", "dan 80"]
+        }
+      ]
+    },
+    {
+      "id": "ties-in-groups",
+      "label": { "chs": "两组同分", "en": "Ties in two groups" },
+      "cases": [
+        {
+          "in": ["4", "eve 95", "amy 70", "zoe 95", "bob 70"],
+          "out": ["eve 95", "zoe 95", "amy 70", "bob 70"]
+        }
+      ]
+    },
+    {
+      "id": "single-student",
+      "label": { "chs": "只有一个人", "en": "A single student" },
+      "cases": [
+        { "in": ["1", "solo 50"], "out": ["solo 50"] }
+      ]
+    },
+    {
+      "id": "score-limits",
+      "label": { "chs": "分数两端", "en": "Scores at both ends" },
+      "cases": [
+        {
+          "in": ["3", "low 0", "high 1000", "mid 500"],
+          "out": ["high 1000", "mid 500", "low 0"]
+        }
+      ]
+    }
+  ]
+}

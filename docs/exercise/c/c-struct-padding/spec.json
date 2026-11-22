@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-struct-padding",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 4,
+  "title": { "chs": "结构体的空隙", "en": "The Gaps in a Struct" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "struct-a",
+      "label": { "chs": "结构体 A 的整体大小", "en": "The whole size of struct A" },
+      "cases": [
+        { "in": [], "out": ["8 12 4 8"] }
+      ]
+    },
+    {
+      "id": "struct-b",
+      "label": { "chs": "结构体 B 的整体大小", "en": "The whole size of struct B" },
+      "cases": [
+        { "in": [], "out": ["8 12 4 8"] }
+      ]
+    },
+    {
+      "id": "member-offsets",
+      "label": { "chs": "两个成员的偏移", "en": "Offsets of the two members" },
+      "cases": [
+        { "in": [], "out": ["8 12 4 8"] }
+      ]
+    }
+  ]
+}

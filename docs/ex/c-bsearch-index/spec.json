@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bsearch-index",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "排好队再找", "en": "Find It in Line" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "found-inside",
+      "label": { "chs": "在中间找到", "en": "Found in the middle" },
+      "cases": [
+        { "in": ["5", "1 3 5 7 9", "5"], "out": ["2"] }
+      ]
+    },
+    {
+      "id": "found-ends",
+      "label": { "chs": "两端的元素", "en": "The two ends" },
+      "cases": [
+        { "in": ["4", "2 4 6 8", "2"], "out": ["0"] },
+        { "in": ["4", "2 4 6 8", "8"], "out": ["3"] }
+      ]
+    },
+    {
+      "id": "missing-key",
+      "label": { "chs": "找不到的 key", "en": "A key that is absent" },
+      "cases": [
+        { "in": ["3", "1 3 5", "4"], "out": ["-1"] },
+        { "in": ["3", "1 3 5", "0"], "out": ["-1"] }
+      ]
+    },
+    {
+      "id": "single-element",
+      "label": { "chs": "只有一个元素", "en": "A single element" },
+      "cases": [
+        { "in": ["1", "42", "42"], "out": ["0"] },
+        { "in": ["1", "42", "7"], "out": ["-1"] }
+      ]
+    },
+    {
+      "id": "negative-values",
+      "label": { "chs": "含负数的数组", "en": "An array with negatives" },
+      "cases": [
+        { "in": ["4", "-9 -3 0 6", "-3"], "out": ["1"] }
+      ]
+    }
+  ]
+}

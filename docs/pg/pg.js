@@ -551,7 +551,7 @@
       h('div', { class: 'ex-editor-wrap' }, [
         h('div', { class: 'ex-file' }, [
           h('i', { class: 'ex-dot' }),
-          h('span', { class: 'ex-file-name', text: 'main.cpp' }),
+          h('span', { class: 'ex-file-name', text: 'main.' + (spec.lang === 'c' ? 'c' : 'cpp') }),
           spec.harness ? h('span', { class: 'ex-file-note', text: '+ ' + spec.harness }) : null,
         ]),
         editorHost,
@@ -985,6 +985,7 @@
     });
 
     return {
+      lang: lang,
       run: doRun,
       reset: resetEditor,
       setCode: function (code) {
@@ -1002,7 +1003,7 @@
 
     Promise.all([loadSpec(id), loadDiagnostics()]).then(function (values) {
       var spec = values[0];
-      var starterName = 'starter.cpp';
+      var starterName = spec.lang === 'c' ? 'starter.c' : 'starter.cpp';
       (spec.variants || []).forEach(function (v) {
         if (v.id === variant && v.starter) starterName = v.starter;
       });
@@ -1076,7 +1077,7 @@
       handle.reset();
       if (useSolution) {
         try {
-          var solution = await fetchText('ex/' + id + '/solution.cpp');
+          var solution = await fetchText('ex/' + id + '/solution.' + (handle.lang === 'c' ? 'c' : 'cpp'));
           handle.setCode(solution);
         } catch (e) { /* 没有参考实现就按 starter 跑 */ }
       }

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-aligned-alloc",
+  "lang": "c",
+  "category": "memory",
+  "rank": 5,
+  "title": { "chs": "对齐的格子", "en": "Aligned Cells" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "basic-alignment", "label": { "chs": "首地址压在格线上", "en": "The start address sits on a grid line" } },
+    { "id": "size-range", "label": { "chs": "大小各样的请求", "en": "Requests of many sizes" } },
+    { "id": "zero-and-null", "label": { "chs": "零字节与空指针", "en": "Zero bytes and the null pointer" } },
+    { "id": "distinct-blocks", "label": { "chs": "两块地互不重叠", "en": "Two blocks that do not overlap" } },
+    { "id": "repeat-cycle", "label": { "chs": "反复取用与归还", "en": "Taking and returning again and again" } }
+  ]
+}

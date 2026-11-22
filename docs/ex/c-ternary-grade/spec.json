@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-ternary-grade",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 2,
+  "title": { "chs": "三目评级", "en": "Rating by Ternary" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "grade-a",
+      "label": { "chs": "A 档", "en": "Grade A" },
+      "cases": [
+        { "in": ["100"], "out": ["A"] },
+        { "in": ["90"], "out": ["A"] }
+      ]
+    },
+    {
+      "id": "grade-b",
+      "label": { "chs": "B 档", "en": "Grade B" },
+      "cases": [
+        { "in": ["89"], "out": ["B"] },
+        { "in": ["80"], "out": ["B"] }
+      ]
+    },
+    {
+      "id": "grade-c",
+      "label": { "chs": "C 档", "en": "Grade C" },
+      "cases": [
+        { "in": ["79"], "out": ["C"] },
+        { "in": ["70"], "out": ["C"] }
+      ]
+    },
+    {
+      "id": "grade-d",
+      "label": { "chs": "D 档", "en": "Grade D" },
+      "cases": [
+        { "in": ["69"], "out": ["D"] },
+        { "in": ["60"], "out": ["D"] }
+      ]
+    },
+    {
+      "id": "grade-f",
+      "label": { "chs": "F 档", "en": "Grade F" },
+      "cases": [
+        { "in": ["59"], "out": ["F"] },
+        { "in": ["0"], "out": ["F"] }
+      ]
+    }
+  ]
+}

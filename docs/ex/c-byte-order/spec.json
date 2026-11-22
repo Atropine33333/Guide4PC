@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-byte-order",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "字节的次序", "en": "Order of Bytes" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "typical",
+      "label": { "chs": "一个常见的数", "en": "A familiar value" },
+      "cases": [
+        { "in": ["0x12345678"], "out": ["little=1", "bytes=120 86 52 18"] }
+      ]
+    },
+    {
+      "id": "low-byte",
+      "label": { "chs": "最低字节与全零", "en": "Lowest byte and all zeros" },
+      "cases": [
+        { "in": ["0x00000001"], "out": ["little=1", "bytes=1 0 0 0"] },
+        { "in": ["0x00000000"], "out": ["little=1", "bytes=0 0 0 0"] }
+      ]
+    },
+    {
+      "id": "high-byte",
+      "label": { "chs": "最高字节", "en": "Highest byte" },
+      "cases": [
+        { "in": ["0xFF000000"], "out": ["little=1", "bytes=0 0 0 255"] },
+        { "in": ["0x80000000"], "out": ["little=1", "bytes=0 0 0 128"] }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": { "chs": "四个字节各不相同", "en": "Four distinct bytes" },
+      "cases": [
+        { "in": ["0xDEADBEEF"], "out": ["little=1", "bytes=239 190 173 222"] }
+      ]
+    }
+  ]
+}

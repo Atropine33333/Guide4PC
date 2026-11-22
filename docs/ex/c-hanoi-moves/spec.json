@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-hanoi-moves",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 4,
+  "title": { "chs": "汉诺塔的步数", "en": "Steps of Hanoi" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "single-disk",
+      "label": { "chs": "一个盘子", "en": "A single disk" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "two-disks",
+      "label": { "chs": "两个盘子", "en": "Two disks" },
+      "cases": [
+        { "in": ["2"], "out": ["3"] }
+      ]
+    },
+    {
+      "id": "ten-disks",
+      "label": { "chs": "十个盘子", "en": "Ten disks" },
+      "cases": [
+        { "in": ["10"], "out": ["1023"] }
+      ]
+    },
+    {
+      "id": "twenty-disks",
+      "label": { "chs": "二十个盘子", "en": "Twenty disks" },
+      "cases": [
+        { "in": ["20"], "out": ["1048575"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "上限", "en": "The upper bound" },
+      "cases": [
+        { "in": ["30"], "out": ["1073741823"] }
+      ]
+    }
+  ]
+}

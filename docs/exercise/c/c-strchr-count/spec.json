@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strchr-count",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "字符的点名", "en": "Calling the Character" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "repeated-letter",
+      "label": { "chs": "字母多次出现", "en": "A letter that repeats" },
+      "cases": [
+        { "in": ["hello world", "l"], "out": ["3"] },
+        { "in": ["mississippi", "s"], "out": ["4"] }
+      ]
+    },
+    {
+      "id": "absent",
+      "label": { "chs": "一次也没出现", "en": "Not present at all" },
+      "cases": [
+        { "in": ["abc", "z"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "all-same",
+      "label": { "chs": "整行都是同一个字符", "en": "The whole line is one character" },
+      "cases": [
+        { "in": ["aaaa", "a"], "out": ["4"] }
+      ]
+    },
+    {
+      "id": "spaces-in-line",
+      "label": { "chs": "行内有空格", "en": "Spaces inside the line" },
+      "cases": [
+        { "in": ["a b c d", "b"], "out": ["1"] },
+        { "in": ["one two two", "t"], "out": ["2"] }
+      ]
+    },
+    {
+      "id": "single-char",
+      "label": { "chs": "只有一个字符的行", "en": "A one-character line" },
+      "cases": [
+        { "in": ["x", "x"], "out": ["1"] },
+        { "in": ["x", "y"], "out": ["0"] }
+      ]
+    }
+  ]
+}

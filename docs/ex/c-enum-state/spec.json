@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-enum-state",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 3,
+  "title": { "chs": "状态的号", "en": "The Numbers of States" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "idle",
+      "label": { "chs": "空闲", "en": "Idle" },
+      "cases": [
+        { "in": ["0"], "out": ["IDLE"] }
+      ]
+    },
+    {
+      "id": "running",
+      "label": { "chs": "运行", "en": "Running" },
+      "cases": [
+        { "in": ["2"], "out": ["RUN"] }
+      ]
+    },
+    {
+      "id": "finished",
+      "label": { "chs": "完成", "en": "Finished" },
+      "cases": [
+        { "in": ["5"], "out": ["DONE"] }
+      ]
+    },
+    {
+      "id": "between",
+      "label": { "chs": "号码之间的空档", "en": "The gaps between numbers" },
+      "cases": [
+        { "in": ["1"], "out": ["UNKNOWN"] },
+        { "in": ["3"], "out": ["UNKNOWN"] },
+        { "in": ["4"], "out": ["UNKNOWN"] }
+      ]
+    },
+    {
+      "id": "outside",
+      "label": { "chs": "号码表之外", "en": "Outside the table" },
+      "cases": [
+        { "in": ["-1"], "out": ["UNKNOWN"] },
+        { "in": ["7"], "out": ["UNKNOWN"] },
+        { "in": ["100"], "out": ["UNKNOWN"] }
+      ]
+    }
+  ]
+}

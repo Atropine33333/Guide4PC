@@ -261,3 +261,25 @@
 .es-progress { font-weight: 600; }
 .es-progress-solved { color: var(--ex-ok, oklch(0.52 0.11 152)); border-color: color-mix(in oklch, var(--ex-ok, oklch(0.52 0.11 152)) 45%, transparent); }
 .es-progress-open { color: var(--color-text-muted); }
+
+.es-lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  min-width: 34px;
+  margin-left: 8px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+.es-lang:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}

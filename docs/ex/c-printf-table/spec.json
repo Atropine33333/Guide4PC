@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-printf-table",
+  "lang": "c",
+  "category": "io",
+  "rank": 1,
+  "title": { "chs": "对齐的成绩表", "en": "An Aligned Score Table" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "plain",
+      "label": { "chs": "普通姓名与分数", "en": "Ordinary names and scores" },
+      "cases": [
+        {
+          "in": ["3", "alice 120", "bob -42", "cara 7"],
+          "out": ["name      score", "alice       120", "bob         -42", "cara          7"]
+        }
+      ]
+    },
+    {
+      "id": "full-width-name",
+      "label": { "chs": "姓名正好占满八列", "en": "Names exactly eight columns wide" },
+      "cases": [
+        {
+          "in": ["2", "abcdefgh 9999", "zxcvbnm -42"],
+          "out": ["name      score", "abcdefgh   9999", "zxcvbnm     -42"]
+        }
+      ]
+    },
+    {
+      "id": "single-row",
+      "label": { "chs": "只有一行", "en": "A single row" },
+      "cases": [
+        {
+          "in": ["1", "a 0"],
+          "out": ["name      score", "a             0"]
+        }
+      ]
+    },
+    {
+      "id": "edge-scores",
+      "label": { "chs": "零分与边界分数", "en": "Zero and boundary scores" },
+      "cases": [
+        {
+          "in": ["3", "ann 0", "ben -9999", "cat 9999"],
+          "out": ["name      score", "ann           0", "ben       -9999", "cat        9999"]
+        }
+      ]
+    }
+  ]
+}

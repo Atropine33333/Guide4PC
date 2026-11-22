@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-gcd-stones",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 1,
+  "title": { "chs": "方田铺石与双渠同开", "en": "Stones for the Field, Sluices for the Channels" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "coprime",
+      "label": { "chs": "互质的一对", "en": "A coprime pair" },
+      "cases": [
+        { "in": ["7 5"], "out": ["1 35"] },
+        { "in": ["999999999 1000000000"], "out": ["1 999999999000000000"] }
+      ]
+    },
+    {
+      "id": "multiple",
+      "label": { "chs": "倍数关系", "en": "One divides the other" },
+      "cases": [
+        { "in": ["100 25"], "out": ["25 100"] },
+        { "in": ["1000000000 500000000"], "out": ["500000000 1000000000"] }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": { "chs": "两数相等", "en": "Equal numbers" },
+      "cases": [
+        { "in": ["9 9"], "out": ["9 9"] },
+        { "in": ["1000000000 1000000000"], "out": ["1000000000 1000000000"] }
+      ]
+    },
+    {
+      "id": "large",
+      "label": { "chs": "大数互质", "en": "Large coprime numbers" },
+      "cases": [
+        { "in": ["1000000000 999999937"], "out": ["1 999999937000000000"] }
+      ]
+    }
+  ]
+}

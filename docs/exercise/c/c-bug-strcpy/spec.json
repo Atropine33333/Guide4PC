@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-strcpy",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "抄过头了", "en": "Copied Too Far" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "exact-fit", "label": { "chs": "刚好放得下", "en": "Exactly fits" } },
+    { "id": "long-cut", "label": { "chs": "过长的标签被截断", "en": "A long label is cut" } },
+    { "id": "quote-brackets", "label": { "chs": "方括号与空串", "en": "Brackets and the empty string" } },
+    { "id": "quote-long", "label": { "chs": "引文过长", "en": "An over-long quotation" } },
+    { "id": "guard-intact", "label": { "chs": "不越过容量", "en": "Nothing written past capacity" } }
+  ]
+}

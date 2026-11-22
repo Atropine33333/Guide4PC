@@ -1,0 +1,110 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-long-long",
+  "lang": "c",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "装不下",
+    "en": "Does Not Fit"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "both-max",
+      "label": {
+        "chs": "两个十亿",
+        "en": "Two billions"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000 1000000000"
+          ],
+          "out": [
+            "1000000000000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-sign",
+      "label": {
+        "chs": "一负一正",
+        "en": "One negative, one positive"
+      },
+      "cases": [
+        {
+          "in": [
+            "-1000000000 999999999"
+          ],
+          "out": [
+            "-999999999000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-negative",
+      "label": {
+        "chs": "两个都是负数",
+        "en": "Both negative"
+      },
+      "cases": [
+        {
+          "in": [
+            "-1000000 -1000000"
+          ],
+          "out": [
+            "1000000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "over-int",
+      "label": {
+        "chs": "刚好越过 int",
+        "en": "Just past int range"
+      },
+      "cases": [
+        {
+          "in": [
+            "100000 100000"
+          ],
+          "out": [
+            "10000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small-and-zero",
+      "label": {
+        "chs": "小数与零",
+        "en": "Small numbers and zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "12 12"
+          ],
+          "out": [
+            "144"
+          ]
+        },
+        {
+          "in": [
+            "0 -1000000000"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ]
+}

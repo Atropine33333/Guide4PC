@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-linked-list",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "链起来的节点", "en": "Linked Nodes" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-behaviour", "label": { "chs": "空链表上的操作", "en": "Operations on an empty list" } },
+    { "id": "push-front-order", "label": { "chs": "从头部插入与弹出顺序", "en": "Push and pop from the front" } },
+    { "id": "size-tracking", "label": { "chs": "长度与节点链一致", "en": "Length matches the chain" } },
+    { "id": "pop-to-empty", "label": { "chs": "弹到空为止", "en": "Popping until empty" } },
+    { "id": "reuse-after-free", "label": { "chs": "释放之后还能再用", "en": "Usable again after freeing" } }
+  ]
+}

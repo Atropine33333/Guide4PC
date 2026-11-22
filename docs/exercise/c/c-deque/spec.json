@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-deque",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "两头都能排", "en": "Both Ends" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-behaviour", "label": { "chs": "空队列的两端", "en": "Both ends of an empty deque" } },
+    { "id": "front-order", "label": { "chs": "前端进、前端出", "en": "Pushing and popping at the front" } },
+    { "id": "back-order", "label": { "chs": "后端进、后端出", "en": "Pushing and popping at the back" } },
+    { "id": "wrap-around", "label": { "chs": "绕圈后顺序不乱", "en": "Order survives the wrap-around" } },
+    { "id": "full-rejection", "label": { "chs": "满了不再收", "en": "A full deque turns pushes away" } }
+  ]
+}

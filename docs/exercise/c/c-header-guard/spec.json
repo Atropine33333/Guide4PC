@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-header-guard",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "只进来一次", "en": "Enter Only Once" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "interface-guard", "label": { "chs": "接口声明块被守卫包住", "en": "The declaration block is guarded" } },
+    { "id": "impl-guard", "label": { "chs": "实现块被守卫包住", "en": "The implementation block is guarded" } },
+    { "id": "open-close", "label": { "chs": "打开与关闭", "en": "Opening and closing" } },
+    { "id": "gain-limits", "label": { "chs": "增益的上下界", "en": "Bounds of the gain" } },
+    { "id": "id-and-null", "label": { "chs": "通道号越界与空指针", "en": "Out-of-range ids and a null pointer" } }
+  ]
+}

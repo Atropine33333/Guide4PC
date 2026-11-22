@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-fgets-lines",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "按行取", "en": "Taking Lines" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "two-lines",
+      "label": { "chs": "两行", "en": "Two lines" },
+      "cases": [
+        { "in": ["alpha", "beta"], "out": ["[1] alpha", "[2] beta"] }
+      ]
+    },
+    {
+      "id": "blank-line",
+      "label": { "chs": "中间夹着空行", "en": "A blank line in the middle" },
+      "cases": [
+        {
+          "in": ["first", "", "third"],
+          "out": ["[1] first", "[2]", "[3] third"]
+        }
+      ]
+    },
+    {
+      "id": "single-line",
+      "label": { "chs": "只有一行", "en": "A single line" },
+      "cases": [
+        { "in": ["only"], "out": ["[1] only"] }
+      ]
+    },
+    {
+      "id": "leading-spaces",
+      "label": { "chs": "行首空格保留", "en": "Leading spaces kept" },
+      "cases": [
+        {
+          "in": ["  indented", "flat"],
+          "out": ["[1]   indented", "[2] flat"]
+        }
+      ]
+    }
+  ]
+}

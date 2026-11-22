@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-ring-buffer",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "八仙桌围成圈", "en": "The Table That Goes Round" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty", "label": { "chs": "空缓冲区的行为", "en": "Behaviour when empty" } },
+    { "id": "fifo", "label": { "chs": "先进先出", "en": "First in, first out" } },
+    { "id": "wrap-around", "label": { "chs": "写满后绕回开头", "en": "Wrapping back to the start" } },
+    { "id": "full", "label": { "chs": "满时拒绝写入", "en": "Rejecting writes when full" } },
+    { "id": "wrap-after-pop", "label": { "chs": "弹出后继续绕", "en": "Wrapping on after pops" } }
+  ]
+}

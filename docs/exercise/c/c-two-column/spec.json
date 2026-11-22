@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-two-column",
+  "lang": "c",
+  "category": "io",
+  "rank": 4,
+  "title": { "chs": "两栏对照", "en": "Two Columns" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通账目与负数", "en": "Ordinary rows and negatives" },
+      "cases": [
+        { "in": ["1 2", "-3 4"], "out": ["1 2 3", "-3 4 1", "total 2 sum 4 skipped 0"] },
+        { "in": ["-5 -7"], "out": ["-5 -7 -12", "total 1 sum -12 skipped 0"] }
+      ]
+    },
+    {
+      "id": "skip-bad-lines",
+      "label": { "chs": "作废行与空行", "en": "Void rows and empty lines" },
+      "cases": [
+        {
+          "in": ["5 6", "only words here", "7", "", "8 9"],
+          "out": ["5 6 11", "8 9 17", "total 2 sum 28 skipped 2"]
+        }
+      ]
+    },
+    {
+      "id": "extra-tokens",
+      "label": { "chs": "行内多出来的数", "en": "Extra numbers on a line" },
+      "cases": [
+        { "in": ["1 2 3 4"], "out": ["1 2 3", "total 1 sum 3 skipped 0"] }
+      ]
+    },
+    {
+      "id": "empty-input",
+      "label": { "chs": "空输入", "en": "Empty input" },
+      "cases": [
+        { "in": [], "out": ["total 0 sum 0 skipped 0"] }
+      ]
+    },
+    {
+      "id": "wide-sum",
+      "label": { "chs": "总和超出 int", "en": "Total beyond int range" },
+      "cases": [
+        {
+          "in": ["1000000000 1000000000", "1000000000 1000000000"],
+          "out": [
+            "1000000000 1000000000 2000000000",
+            "1000000000 1000000000 2000000000",
+            "total 2 sum 4000000000 skipped 0"
+          ]
+        }
+      ]
+    }
+  ]
+}

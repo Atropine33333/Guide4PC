@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-pool-alloc",
+  "lang": "c",
+  "category": "memory",
+  "rank": 5,
+  "title": { "chs": "固定大小的格子", "en": "Fixed Cells" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "fresh-pool", "label": { "chs": "刚初始化的池子", "en": "A freshly initialised pool" } },
+    { "id": "alloc-until-full", "label": { "chs": "发到满为止", "en": "Handing out every cell" } },
+    { "id": "cell-isolation", "label": { "chs": "格子互不重叠", "en": "Cells do not overlap" } },
+    { "id": "reuse-and-validate", "label": { "chs": "复用最小空格并拒收野指针", "en": "Reusing the first free cell, rejecting bad returns" } },
+    { "id": "reset-refills", "label": { "chs": "重置后重新可用", "en": "Reset makes every cell available again" } }
+  ]
+}

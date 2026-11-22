@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strncpy-safe",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "截断的复印", "en": "Copy with a Limit" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "exact-fit", "label": { "chs": "刚好放得下整串", "en": "The whole string just fits" } },
+    { "id": "truncated", "label": { "chs": "容量不够时截断", "en": "Truncation when the capacity is short" } },
+    { "id": "zero-cap", "label": { "chs": "容量为零", "en": "Zero capacity" } },
+    { "id": "empty-source", "label": { "chs": "空源串", "en": "An empty source" } },
+    { "id": "cap-one", "label": { "chs": "只放得下结尾符", "en": "Room for the terminator only" } }
+  ]
+}

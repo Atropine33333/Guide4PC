@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-snprintf-format",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "拼一句话", "en": "Assembling a Sentence" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "ordinary",
+      "label": { "chs": "普通姓名与年龄", "en": "An ordinary name and age" },
+      "cases": [
+        { "in": ["Alice 30"], "out": ["name=Alice; age=30"] },
+        { "in": ["Bob 7"], "out": ["name=Bob; age=7"] }
+      ]
+    },
+    {
+      "id": "zero-age",
+      "label": { "chs": "年龄为零", "en": "Age zero" },
+      "cases": [
+        { "in": ["Zed 0"], "out": ["name=Zed; age=0"] }
+      ]
+    },
+    {
+      "id": "long-name",
+      "label": { "chs": "姓名取到长度上限", "en": "A name at the length limit" },
+      "cases": [
+        { "in": ["abcdefghijklmnopqrstuvwxyzABCDEF 150"], "out": ["name=abcdefghijklmnopqrstuvwxyzABCDEF; age=150"] }
+      ]
+    },
+    {
+      "id": "short-name",
+      "label": { "chs": "单字符姓名", "en": "A one-character name" },
+      "cases": [
+        { "in": ["Q 9"], "out": ["name=Q; age=9"] }
+      ]
+    },
+    {
+      "id": "digit-name",
+      "label": { "chs": "姓名里带数字与符号", "en": "A name with digits and symbols" },
+      "cases": [
+        { "in": ["R2-D2 12"], "out": ["name=R2-D2; age=12"] },
+        { "in": ["x_y.z 45"], "out": ["name=x_y.z; age=45"] }
+      ]
+    }
+  ]
+}

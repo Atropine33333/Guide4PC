@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-hash-linear",
+  "lang": "c",
+  "category": "data",
+  "rank": 4,
+  "title": { "chs": "线性探测的柜子", "en": "The Linear-Probing Cabinet" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-table", "label": { "chs": "空表上的操作", "en": "Operations on an empty table" } },
+    { "id": "collision-chain", "label": { "chs": "同槽位的连续冲突", "en": "Repeated collisions on one bucket" } },
+    { "id": "remove-middle", "label": { "chs": "删掉探测链中间的元素", "en": "Removing from the middle of a chain" } },
+    { "id": "reuse-dead-slot", "label": { "chs": "删掉的位置可以再用", "en": "A removed slot is reusable" } },
+    { "id": "fill-and-full", "label": { "chs": "填满与拒绝插入", "en": "Filling up and refusing inserts" } }
+  ]
+}

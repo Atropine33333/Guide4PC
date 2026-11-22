@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bitset",
+  "lang": "c",
+  "category": "data",
+  "rank": 4,
+  "title": { "chs": "一位一位记", "en": "One Bit at a Time" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "init-empty", "label": { "chs": "初始化后全是零", "en": "All zero after initialisation" } },
+    { "id": "set-count", "label": { "chs": "置位、重复置位与计数", "en": "Setting, setting again, counting" } },
+    { "id": "clear", "label": { "chs": "清位与越界清位", "en": "Clearing, including out of range" } },
+    { "id": "byte-boundary", "label": { "chs": "跨字节的相邻位", "en": "Neighbours across a byte boundary" } },
+    { "id": "limits", "label": { "chs": "首尾位与零长度", "en": "First and last bits, and length zero" } }
+  ]
+}

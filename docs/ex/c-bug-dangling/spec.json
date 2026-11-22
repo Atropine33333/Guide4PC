@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-dangling",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "用过的影子", "en": "The Used Shadow" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "keeps-copy", "label": { "chs": "登记后仍可读", "en": "Still readable after a later registration" } },
+    { "id": "two-shadows", "label": { "chs": "两条影子互不覆盖", "en": "Two shadows do not overwrite each other" } },
+    { "id": "release-reuse", "label": { "chs": "交还后舱位可再用", "en": "A released slot can be reused" } },
+    { "id": "pool-full", "label": { "chs": "舱位用尽返回空", "en": "A full pool returns null" } },
+    { "id": "truncate", "label": { "chs": "过长的名字被截断", "en": "Long names are cut to fit" } }
+  ]
+}

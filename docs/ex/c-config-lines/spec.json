@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-config-lines",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 2,
+  "title": { "chs": "终端里的配置回声", "en": "Configuration Echo in the Terminal" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "comments",
+      "label": { "chs": "注释行整行跳过", "en": "Comment lines are skipped whole" },
+      "cases": [
+        { "in": ["3", "# 舰船编号", "port=8080", "   # 备用频道"], "out": ["port: 8080"] }
+      ]
+    },
+    {
+      "id": "blank-lines",
+      "label": { "chs": "空行与纯空白行", "en": "Empty and whitespace-only lines" },
+      "cases": [
+        { "in": ["5", "", "   ", "mode=巡航", "\t", ""], "out": ["mode: 巡航"] }
+      ]
+    },
+    {
+      "id": "trim-space",
+      "label": { "chs": "键与值两端的空白", "en": "Whitespace around keys and values" },
+      "cases": [
+        { "in": ["2", "  crew = 12 ", "\tmax_speed\t=\t9\t"], "out": ["crew: 12", "max_speed: 9"] }
+      ]
+    },
+    {
+      "id": "duplicate-key",
+      "label": { "chs": "重复的键照常输出", "en": "Duplicate keys are printed as they come" },
+      "cases": [
+        { "in": ["3", "retry=3", "retry=5", "retry=3"], "out": ["retry: 3", "retry: 5", "retry: 3"] }
+      ]
+    },
+    {
+      "id": "equals-in-value",
+      "label": { "chs": "值里还能有等号", "en": "Equals signs inside the value" },
+      "cases": [
+        { "in": ["2", "query=a=b=c", "  filter = x=1 "], "out": ["query: a=b=c", "filter: x=1"] }
+      ]
+    }
+  ]
+}

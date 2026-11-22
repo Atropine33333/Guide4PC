@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-macro-max",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 2,
+  "title": { "chs": "宏的最大值", "en": "The Maximum Macro" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "positive-pair",
+      "label": { "chs": "两个正数", "en": "Two positive numbers" },
+      "cases": [
+        { "in": ["3 5 4"], "out": ["5 5"] },
+        { "in": ["9 2 7"], "out": ["9 9"] }
+      ]
+    },
+    {
+      "id": "negative-pair",
+      "label": { "chs": "两个负数", "en": "Two negative numbers" },
+      "cases": [
+        { "in": ["-7 -2 -9"], "out": ["-2 -2"] },
+        { "in": ["-5 -9 -3"], "out": ["-5 -3"] }
+      ]
+    },
+    {
+      "id": "all-equal",
+      "label": { "chs": "三个数相等", "en": "All three equal" },
+      "cases": [
+        { "in": ["4 4 4"], "out": ["4 4"] },
+        { "in": ["0 0 0"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "third-wins",
+      "label": { "chs": "第三个数最大", "en": "The third one is the largest" },
+      "cases": [
+        { "in": ["1 2 30"], "out": ["2 30"] },
+        { "in": ["-10 -20 -5"], "out": ["-10 -5"] }
+      ]
+    },
+    {
+      "id": "near-limits",
+      "label": { "chs": "接近 int 两端", "en": "Near the ends of int" },
+      "cases": [
+        { "in": ["-1000000000 1000000000 0"], "out": ["1000000000 1000000000"] },
+        { "in": ["2147483647 -2147483648 0"], "out": ["2147483647 2147483647"] }
+      ]
+    }
+  ]
+}

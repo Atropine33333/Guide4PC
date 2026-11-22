@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-scanf-return",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "收成几件", "en": "How Many Caught" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "both-values", "label": { "chs": "两个数都读到", "en": "Both values read" } },
+    { "id": "one-value", "label": { "chs": "只读到一个", "en": "Only one value read" } },
+    { "id": "no-values", "label": { "chs": "一个也没读到", "en": "Nothing read" } },
+    { "id": "extra-tokens", "label": { "chs": "后面还有多余内容", "en": "Trailing tokens left over" } },
+    { "id": "empty-input", "label": { "chs": "空串与空指针", "en": "Empty string and null pointer" } }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-malloc",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 4,
+  "title": { "chs": "忘了还", "en": "Forgot to Return It" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "values", "label": { "chs": "领地并写数", "en": "Take a plot and fill it" } },
+    { "id": "null-release", "label": { "chs": "还空指针", "en": "Returning a null pointer" } },
+    { "id": "two-blocks", "label": { "chs": "两块地各还各的", "en": "Two plots, returned separately" } },
+    { "id": "invalid-size", "label": { "chs": "越界的请求", "en": "Out-of-range requests" } },
+    { "id": "reuse-loop", "label": { "chs": "反复借还", "en": "Borrowing and returning in a loop" } }
+  ]
+}

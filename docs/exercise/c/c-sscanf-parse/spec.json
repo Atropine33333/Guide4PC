@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-sscanf-parse",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "从串里抠数", "en": "Picking Numbers from a String" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "最基本的形状", "en": "The basic shape" },
+      "cases": [
+        { "in": ["x=10,y=20"], "out": ["30"] },
+        { "in": ["x=7,y=8"], "out": ["15"] }
+      ]
+    },
+    {
+      "id": "spaces",
+      "label": { "chs": "等号与逗号旁的空格", "en": "Spaces around the signs" },
+      "cases": [
+        { "in": ["x = -4 , y = 9"], "out": ["5"] },
+        { "in": ["x  =  100  ,  y  =  -1"], "out": ["99"] }
+      ]
+    },
+    {
+      "id": "wide",
+      "label": { "chs": "一正一负相抵", "en": "One positive, one negative" },
+      "cases": [
+        { "in": ["x=-1000000,y=1000000"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": { "chs": "两个零", "en": "Both zero" },
+      "cases": [
+        { "in": ["x=0,y=0"], "out": ["0"] }
+      ]
+    }
+  ]
+}

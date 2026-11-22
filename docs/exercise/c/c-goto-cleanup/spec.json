@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-goto-cleanup",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 3,
+  "title": { "chs": "收兵回营", "en": "Retreat and Clean Up" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "null-source", "label": { "chs": "源字符串为空指针", "en": "A null source" } },
+    { "id": "negative-count", "label": { "chs": "负的字符个数", "en": "A negative count" } },
+    { "id": "exact-copy", "label": { "chs": "整串照抄", "en": "Copying a whole string" } },
+    { "id": "truncates", "label": { "chs": "只取前 n 个字符", "en": "Keeping only the first n characters" } },
+    { "id": "short-source", "label": { "chs": "源串比 n 短", "en": "A source shorter than n" } }
+  ]
+}

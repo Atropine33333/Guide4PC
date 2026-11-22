@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-array-decay",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 3,
+  "title": { "chs": "退化的数组", "en": "The Decayed Array" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "small-array",
+      "label": { "chs": "小数组", "en": "A small array" },
+      "cases": [
+        { "in": ["5", "3 -1 7 7 2"], "out": ["18 7"] },
+        { "in": ["3", "1 2 3"], "out": ["6 3"] }
+      ]
+    },
+    {
+      "id": "single-element",
+      "label": { "chs": "只有一个元素", "en": "A single element" },
+      "cases": [
+        { "in": ["1", "-42"], "out": ["-42 -42"] },
+        { "in": ["1", "0"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "all-negative",
+      "label": { "chs": "全是负数", "en": "All negative" },
+      "cases": [
+        { "in": ["4", "-5 -2 -9 -1"], "out": ["-17 -1"] }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": { "chs": "重复的最大值", "en": "Repeated maximum" },
+      "cases": [
+        { "in": ["6", "4 4 4 4 4 4"], "out": ["24 4"] }
+      ]
+    },
+    {
+      "id": "large-values",
+      "label": { "chs": "接近上限的数", "en": "Values near the limit" },
+      "cases": [
+        { "in": ["5", "1000000 -1000000 999999 -999999 0"], "out": ["0 1000000"] }
+      ]
+    }
+  ]
+}

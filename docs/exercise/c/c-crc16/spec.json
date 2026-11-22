@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-crc16",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 4,
+  "title": { "chs": "校验的印章", "en": "The Checksum Seal" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "empty",
+      "label": { "chs": "空行", "en": "An empty line" },
+      "cases": [
+        { "in": [""], "out": ["CRC16=0xFFFF"] }
+      ]
+    },
+    {
+      "id": "single",
+      "label": { "chs": "单个字符", "en": "A single character" },
+      "cases": [
+        { "in": ["A"], "out": ["CRC16=0xB915"] }
+      ]
+    },
+    {
+      "id": "short-words",
+      "label": { "chs": "两三个字符", "en": "Two or three characters" },
+      "cases": [
+        { "in": ["AB"], "out": ["CRC16=0x4B74"] },
+        { "in": ["ABC"], "out": ["CRC16=0xF508"] }
+      ]
+    },
+    {
+      "id": "reference",
+      "label": { "chs": "常用参考串", "en": "Reference strings" },
+      "cases": [
+        { "in": ["123456789"], "out": ["CRC16=0x29B1"] },
+        { "in": ["Hello"], "out": ["CRC16=0xDADA"] }
+      ]
+    }
+  ]
+}

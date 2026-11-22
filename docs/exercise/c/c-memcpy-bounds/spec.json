@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-memcpy-bounds",
+  "lang": "c",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "只搬这么多", "en": "Only This Much" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "fits-whole", "label": { "chs": "地方够就全搬", "en": "Everything when there is room" } },
+    { "id": "cap-truncates", "label": { "chs": "按容量截断", "en": "Truncated by the capacity" } },
+    { "id": "n-smaller", "label": { "chs": "货少就少搬", "en": "Less cargo, fewer bytes" } },
+    { "id": "no-overrun", "label": { "chs": "封条之后不再动", "en": "Nothing past the seal" } },
+    { "id": "cap-one-and-zero", "label": { "chs": "只剩一格与一格不剩", "en": "One cell left and none at all" } }
+  ]
+}

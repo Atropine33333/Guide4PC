@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-unsigned",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "倒着走的坑", "en": "The Backwards Pit" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "five-steps",
+      "label": { "chs": "五级", "en": "Five steps" },
+      "cases": [
+        { "in": ["5"], "out": ["5 4 3 2 1"] }
+      ]
+    },
+    {
+      "id": "single-step",
+      "label": { "chs": "只有一级", "en": "One step only" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "ten-steps",
+      "label": { "chs": "十级", "en": "Ten steps" },
+      "cases": [
+        { "in": ["10"], "out": ["10 9 8 7 6 5 4 3 2 1"] }
+      ]
+    },
+    {
+      "id": "twenty-steps",
+      "label": { "chs": "二十级", "en": "Twenty steps" },
+      "cases": [
+        { "in": ["20"], "out": ["20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1"] }
+      ]
+    }
+  ]
+}

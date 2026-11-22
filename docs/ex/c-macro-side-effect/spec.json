@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-macro-side-effect",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 3,
+  "title": { "chs": "宏的脾气", "en": "The Temper of Macros" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero",
+      "label": { "chs": "参数为零", "en": "Argument at zero" },
+      "cases": [
+        { "in": ["0"], "out": ["1 1 1"] }
+      ]
+    },
+    {
+      "id": "positive",
+      "label": { "chs": "正数", "en": "Positive values" },
+      "cases": [
+        { "in": ["2"], "out": ["9 9 9"] },
+        { "in": ["7"], "out": ["64 64 64"] }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "负数", "en": "Negative values" },
+      "cases": [
+        { "in": ["-4"], "out": ["9 9 9"] },
+        { "in": ["-20"], "out": ["361 361 361"] }
+      ]
+    },
+    {
+      "id": "cross-zero",
+      "label": { "chs": "跨过零点", "en": "Across zero" },
+      "cases": [
+        { "in": ["-1"], "out": ["0 0 0"] }
+      ]
+    }
+  ]
+}

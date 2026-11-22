@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-function-pointer",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 4,
+  "title": { "chs": "四张牌", "en": "Four Cards" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "sun-card",
+      "label": { "chs": "加号牌", "en": "The plus card" },
+      "cases": [
+        { "in": ["+ 3 4"], "out": ["7"] },
+        { "in": ["+ -5 5"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "moon-card",
+      "label": { "chs": "减号牌", "en": "The minus card" },
+      "cases": [
+        { "in": ["- 10 3"], "out": ["7"] },
+        { "in": ["- 3 10"], "out": ["-7"] }
+      ]
+    },
+    {
+      "id": "star-card",
+      "label": { "chs": "乘号牌", "en": "The star card" },
+      "cases": [
+        { "in": ["* 6 7"], "out": ["42"] },
+        { "in": ["* -4 5"], "out": ["-20"] }
+      ]
+    },
+    {
+      "id": "crown-card",
+      "label": { "chs": "较大值牌", "en": "The greater card" },
+      "cases": [
+        { "in": ["max 8 2"], "out": ["8"] },
+        { "in": ["max -9 -2"], "out": ["-2"] }
+      ]
+    },
+    {
+      "id": "blank-card",
+      "label": { "chs": "桌上没有的牌", "en": "A card that is not on the table" },
+      "cases": [
+        { "in": ["mod 5 2"], "out": ["?"] },
+        { "in": ["x 1 1"], "out": ["?"] }
+      ]
+    }
+  ]
+}

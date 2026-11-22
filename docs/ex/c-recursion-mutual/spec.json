@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-recursion-mutual",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 4,
+  "title": { "chs": "奇偶相生", "en": "Even and Odd Beget Each Other" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero",
+      "label": { "chs": "零", "en": "Zero" },
+      "cases": [
+        { "in": ["0"], "out": ["even"] }
+      ]
+    },
+    {
+      "id": "small",
+      "label": { "chs": "小数", "en": "Small numbers" },
+      "cases": [
+        { "in": ["1"], "out": ["odd"] },
+        { "in": ["2"], "out": ["even"] },
+        { "in": ["3"], "out": ["odd"] }
+      ]
+    },
+    {
+      "id": "middle",
+      "label": { "chs": "中段", "en": "Middle of the range" },
+      "cases": [
+        { "in": ["100"], "out": ["even"] },
+        { "in": ["101"], "out": ["odd"] },
+        { "in": ["500"], "out": ["even"] }
+      ]
+    },
+    {
+      "id": "upper-limit",
+      "label": { "chs": "上限附近", "en": "Near the upper limit" },
+      "cases": [
+        { "in": ["999"], "out": ["odd"] },
+        { "in": ["1000"], "out": ["even"] }
+      ]
+    }
+  ]
+}

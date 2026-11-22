@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-nqueens-count",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 5,
+  "title": { "chs": "皇后们", "en": "The Queens" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "tiny",
+      "label": { "chs": "最小棋盘", "en": "The smallest boards" },
+      "cases": [
+        { "in": ["1"], "out": ["1"] },
+        { "in": ["2"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "classic",
+      "label": { "chs": "八皇后", "en": "Eight queens" },
+      "cases": [
+        { "in": ["8"], "out": ["92"] }
+      ]
+    },
+    {
+      "id": "medium",
+      "label": { "chs": "六皇后与七皇后", "en": "Six and seven queens" },
+      "cases": [
+        { "in": ["6"], "out": ["4"] },
+        { "in": ["7"], "out": ["40"] }
+      ]
+    },
+    {
+      "id": "largest",
+      "label": { "chs": "最大棋盘", "en": "The largest boards" },
+      "cases": [
+        { "in": ["9"], "out": ["352"] },
+        { "in": ["10"], "out": ["724"] }
+      ]
+    }
+  ]
+}

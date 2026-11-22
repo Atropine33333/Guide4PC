@@ -1,0 +1,107 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-off-by-one",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 2,
+  "title": {
+    "chs": "差了一位",
+    "en": "Off by One"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single-number",
+      "label": {
+        "chs": "只有一个数",
+        "en": "A single number"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "5"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-signs",
+      "label": {
+        "chs": "正负相间",
+        "en": "Mixed signs"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "3 -4 0 10 -2"
+          ],
+          "out": [
+            "7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-terms",
+      "label": {
+        "chs": "两个数",
+        "en": "Two numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "-7 7"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "big-values",
+      "label": {
+        "chs": "大数相加",
+        "en": "Large values"
+      },
+      "cases": [
+        {
+          "in": [
+            "6",
+            "1000000000 1000000000 1000000000 -1000000000 1000000000 1000000000"
+          ],
+          "out": [
+            "4000000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all-equal",
+      "label": {
+        "chs": "全都一样",
+        "en": "All the same"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "8 8 8 8"
+          ],
+          "out": [
+            "32"
+          ]
+        }
+      ]
+    }
+  ]
+}

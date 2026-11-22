@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strspn-prefix",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "集合的前缀", "en": "Prefix of a Set" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic-prefix",
+      "label": { "chs": "普通前缀", "en": "An ordinary prefix" },
+      "cases": [
+        { "in": ["hello world", "helo"], "out": ["5"] },
+        { "in": ["program", "pro"], "out": ["3"] }
+      ]
+    },
+    {
+      "id": "stops-at-outsider",
+      "label": { "chs": "遇到集外字符即停", "en": "Stops at the first outsider" },
+      "cases": [
+        { "in": ["abc123", "abc"], "out": ["3"] },
+        { "in": ["xyz", "xy"], "out": ["2"] }
+      ]
+    },
+    {
+      "id": "empty-input",
+      "label": { "chs": "空正文或空集合", "en": "Empty text or empty set" },
+      "cases": [
+        { "in": ["", "abc"], "out": ["0"] },
+        { "in": ["abc", ""], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "whole-line",
+      "label": { "chs": "整行都属于集合", "en": "The whole line belongs to the set" },
+      "cases": [
+        { "in": ["aaaa", "a"], "out": ["4"] },
+        { "in": ["12345", "0123456789"], "out": ["5"] }
+      ]
+    },
+    {
+      "id": "space-in-set",
+      "label": { "chs": "集合里有空格", "en": "A space inside the set" },
+      "cases": [
+        { "in": ["ab cd", "ab "], "out": ["3"] },
+        { "in": ["  x", " "], "out": ["2"] }
+      ]
+    }
+  ]
+}

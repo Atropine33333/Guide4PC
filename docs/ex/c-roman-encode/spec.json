@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-roman-encode",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 3,
+  "title": { "chs": "罗马数字", "en": "Roman Numerals" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "units",
+      "label": { "chs": "个位", "en": "Units" },
+      "cases": [
+        { "in": ["1"], "out": ["I"] },
+        { "in": ["4"], "out": ["IV"] },
+        { "in": ["9"], "out": ["IX"] }
+      ]
+    },
+    {
+      "id": "tens",
+      "label": { "chs": "十位", "en": "Tens" },
+      "cases": [
+        { "in": ["40"], "out": ["XL"] },
+        { "in": ["90"], "out": ["XC"] }
+      ]
+    },
+    {
+      "id": "hundreds",
+      "label": { "chs": "百位", "en": "Hundreds" },
+      "cases": [
+        { "in": ["400"], "out": ["CD"] },
+        { "in": ["900"], "out": ["CM"] }
+      ]
+    },
+    {
+      "id": "combined",
+      "label": { "chs": "各位拼在一起", "en": "All places together" },
+      "cases": [
+        { "in": ["1987"], "out": ["MCMLXXXVII"] },
+        { "in": ["2024"], "out": ["MMXXIV"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "接近上限", "en": "Near the upper bound" },
+      "cases": [
+        { "in": ["3999"], "out": ["MMMCMXCIX"] },
+        { "in": ["3888"], "out": ["MMMDCCCLXXXVIII"] }
+      ]
+    }
+  ]
+}

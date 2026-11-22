@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-size-t",
+  "lang": "c",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "长度的类型",
+    "en": "The Type of Length"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "simple-word",
+      "label": {
+        "chs": "一个普通的词",
+        "en": "An ordinary word"
+      },
+      "cases": [
+        {
+          "in": [
+            "hello"
+          ],
+          "out": [
+            "5 5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "with-spaces",
+      "label": {
+        "chs": "中间夹着空格",
+        "en": "Spaces in the middle"
+      },
+      "cases": [
+        {
+          "in": [
+            "a b  c"
+          ],
+          "out": [
+            "6 6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-line",
+      "label": {
+        "chs": "空行",
+        "en": "An empty line"
+      },
+      "cases": [
+        {
+          "in": [
+            ""
+          ],
+          "out": [
+            "0 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trailing-spaces",
+      "label": {
+        "chs": "行末有空格",
+        "en": "Trailing spaces"
+      },
+      "cases": [
+        {
+          "in": [
+            "abc   "
+          ],
+          "out": [
+            "6 6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "long-line",
+      "label": {
+        "chs": "一千个字符",
+        "en": "A thousand characters"
+      },
+      "cases": [
+        {
+          "in": [
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "out": [
+            "1000 1000"
+          ]
+        }
+      ]
+    }
+  ]
+}

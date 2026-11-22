@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-qsort-words",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "鹏程有序", "en": "Order on the Long Flight" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "already-sorted",
+      "label": { "chs": "本来就有序", "en": "Already in order" },
+      "cases": [
+        { "in": ["3", "ant", "bee", "cow"], "out": ["ant", "bee", "cow"] }
+      ]
+    },
+    {
+      "id": "reverse-order",
+      "label": { "chs": "完全逆序", "en": "Fully reversed" },
+      "cases": [
+        { "in": ["4", "zebra", "yak", "mouse", "ant"], "out": ["ant", "mouse", "yak", "zebra"] }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": { "chs": "重复的单词", "en": "Repeated words" },
+      "cases": [
+        { "in": ["5", "pear", "apple", "fig", "apple", "pear"], "out": ["apple", "apple", "fig", "pear", "pear"] }
+      ]
+    },
+    {
+      "id": "single-letter",
+      "label": { "chs": "单字母单词", "en": "One-letter words" },
+      "cases": [
+        { "in": ["4", "d", "a", "c", "b"], "out": ["a", "b", "c", "d"] }
+      ]
+    }
+  ]
+}

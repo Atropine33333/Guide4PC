@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-printf-escapes",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 1,
+  "title": { "chs": "转义字符点名", "en": "Naming the Escapes" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "plain-letters",
+      "label": { "chs": "普通字母", "en": "Ordinary letters" },
+      "cases": [
+        { "in": ["abc"], "out": ["a b c"] },
+        { "in": ["Hi"], "out": ["H i"] }
+      ]
+    },
+    {
+      "id": "spaces-stay",
+      "label": { "chs": "空格原样保留", "en": "Spaces keep their place" },
+      "cases": [
+        { "in": ["hi there"], "out": ["h i   t h e r e"] },
+        { "in": ["a b"], "out": ["a   b"] }
+      ]
+    },
+    {
+      "id": "named-controls",
+      "label": { "chs": "制表与回车", "en": "Tab and carriage return" },
+      "cases": [
+        { "in": ["a\tb"], "out": ["a \\t b"] },
+        { "in": ["x\ry"], "out": ["x \\r y"] }
+      ]
+    },
+    {
+      "id": "named-symbols",
+      "label": { "chs": "反斜杠与双引号", "en": "Backslash and double quote" },
+      "cases": [
+        { "in": ["a\\b"], "out": ["a \\\\ b"] },
+        { "in": ["q\"w"], "out": ["q \\\" w"] }
+      ]
+    },
+    {
+      "id": "empty-line",
+      "label": { "chs": "空行", "en": "An empty line" },
+      "cases": [
+        { "in": [""], "out": [""] }
+      ]
+    }
+  ]
+}

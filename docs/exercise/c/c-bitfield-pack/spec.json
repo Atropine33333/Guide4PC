@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bitfield-pack",
+  "lang": "c",
+  "category": "types",
+  "rank": 4,
+  "title": { "chs": "位域胶囊", "en": "The Bitfield Capsule" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "init-clears", "label": { "chs": "清空全部字段", "en": "Clearing every field" } },
+    { "id": "single-field", "label": { "chs": "只写一格", "en": "Writing one field" } },
+    { "id": "field-limits", "label": { "chs": "写满字段的上界", "en": "Filling the fields to their limits" } },
+    { "id": "range-rejected", "label": { "chs": "越界值被退回", "en": "Out-of-range values are refused" } },
+    { "id": "unpack-roundtrip", "label": { "chs": "打包与拆包来回一趟", "en": "A round trip through pack and unpack" } }
+  ]
+}

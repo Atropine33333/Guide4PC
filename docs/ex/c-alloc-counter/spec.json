@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-alloc-counter",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "记账的分配器", "en": "The Accounting Allocator" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "fresh-zero", "label": { "chs": "新账本从零开始", "en": "A fresh ledger starts at zero" } },
+    { "id": "counts", "label": { "chs": "借还各记一笔", "en": "Every borrow and return is recorded" } },
+    { "id": "null-free-ignored", "label": { "chs": "归还空指针不记账", "en": "Returning null changes nothing" } },
+    { "id": "memory-usable", "label": { "chs": "借到的内存能用", "en": "Borrowed memory is usable" } },
+    { "id": "failure-not-counted", "label": { "chs": "借不到时不记账", "en": "A failed request is not counted" } }
+  ]
+}

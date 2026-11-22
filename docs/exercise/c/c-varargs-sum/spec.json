@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-varargs-sum",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 4,
+  "title": { "chs": "变参合数", "en": "Summing the Varied" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty", "label": { "chs": "一个数也没有", "en": "No numbers at all" } },
+    { "id": "three", "label": { "chs": "三个数", "en": "Three numbers" } },
+    { "id": "five", "label": { "chs": "五个数", "en": "Five numbers" } },
+    { "id": "negatives", "label": { "chs": "带负数的合", "en": "Sums with negatives" } }
+  ]
+}

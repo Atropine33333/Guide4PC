@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-const-correct",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "只读的承诺", "en": "The Promise to Read Only" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "literal", "label": { "chs": "字面量", "en": "A string literal" } },
+    { "id": "empty", "label": { "chs": "空串", "en": "The empty string" } },
+    { "id": "null", "label": { "chs": "空指针", "en": "A null pointer" } },
+    { "id": "array", "label": { "chs": "可写数组且内容不变", "en": "A writable array, left untouched" } },
+    { "id": "long-string", "label": { "chs": "较长的串", "en": "A longer string" } }
+  ]
+}

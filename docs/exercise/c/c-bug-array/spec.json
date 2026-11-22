@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bug-array",
+  "lang": "c",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "越过了界", "en": "Past the Boundary" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "sum-regular", "label": { "chs": "一般求和", "en": "An ordinary sum" } },
+    { "id": "sum-empty", "label": { "chs": "空数组", "en": "An empty array" } },
+    { "id": "sum-negative", "label": { "chs": "含负数求和", "en": "A sum with negatives" } },
+    { "id": "last-element", "label": { "chs": "取最后一个元素", "en": "Reading the last element" } },
+    { "id": "long-run", "label": { "chs": "一百个数", "en": "One hundred numbers" } }
+  ]
+}

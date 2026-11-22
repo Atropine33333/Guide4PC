@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-assert-macro",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "喊一声停", "en": "Shout Stop" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "less",
+      "label": { "chs": "第一个数更小", "en": "The first number is smaller" },
+      "cases": [
+        { "in": ["3 5"], "out": ["OK", "FAIL:41"] },
+        { "in": ["-1000 1000"], "out": ["OK", "FAIL:41"] }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": { "chs": "两个数相等", "en": "The two numbers are equal" },
+      "cases": [
+        { "in": ["4 4"], "out": ["FAIL:40", "OK"] },
+        { "in": ["-7 -7"], "out": ["FAIL:40", "OK"] }
+      ]
+    },
+    {
+      "id": "greater",
+      "label": { "chs": "第一个数更大", "en": "The first number is greater" },
+      "cases": [
+        { "in": ["9 2"], "out": ["FAIL:40", "FAIL:41"] },
+        { "in": ["-5 -8"], "out": ["FAIL:40", "FAIL:41"] }
+      ]
+    }
+  ]
+}

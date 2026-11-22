@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-string-dup",
+  "lang": "c",
+  "category": "memory",
+  "rank": 1,
+  "title": { "chs": "把字符串复印一份", "en": "A String, Duplicated" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "basic-copy", "label": { "chs": "普通字符串", "en": "An ordinary string" } },
+    { "id": "empty-string", "label": { "chs": "空串", "en": "The empty string" } },
+    { "id": "long-string", "label": { "chs": "长串", "en": "A long string" } },
+    { "id": "independent-copy", "label": { "chs": "副本独立", "en": "The copy is independent" } }
+  ]
+}

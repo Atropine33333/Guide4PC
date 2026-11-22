@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-queue",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "排队的窗口", "en": "The Queueing Window" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-state", "label": { "chs": "空队列的状态", "en": "State of an empty queue" } },
+    { "id": "fifo-order", "label": { "chs": "先进先出", "en": "First in, first out" } },
+    { "id": "wrap-around", "label": { "chs": "下标绕回", "en": "Indices wrapping around" } },
+    { "id": "full-rejects", "label": { "chs": "满队列拒绝入队", "en": "Rejecting pushes when full" } },
+    { "id": "drain-and-reuse", "label": { "chs": "排空后继续使用", "en": "Drain, then keep using" } }
+  ]
+}

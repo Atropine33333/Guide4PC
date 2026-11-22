@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-error-code",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "错误码的秩序", "en": "The Order of Error Codes" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "ok-writes", "label": { "chs": "合格读数的登记", "en": "Registering an acceptable reading" } },
+    { "id": "null-out", "label": { "chs": "输出指针为空", "en": "A null output pointer" } },
+    { "id": "sensor-range", "label": { "chs": "传感器编号越界", "en": "A sensor number out of range" } },
+    { "id": "value-range", "label": { "chs": "读数越界", "en": "A reading out of range" } },
+    { "id": "unchanged-on-failure", "label": { "chs": "被拒时输出保持原值", "en": "The output keeps its value when refused" } }
+  ]
+}

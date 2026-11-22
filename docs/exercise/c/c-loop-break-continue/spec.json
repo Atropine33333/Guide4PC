@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-loop-break-continue",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "跳过的数", "en": "The Skipped Numbers" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "small",
+      "label": { "chs": "小数", "en": "Small numbers" },
+      "cases": [
+        { "in": ["0"], "out": ["0"] },
+        { "in": ["1"], "out": ["1"] },
+        { "in": ["2"], "out": ["3"] },
+        { "in": ["3"], "out": ["3"] }
+      ]
+    },
+    {
+      "id": "skip-multiples",
+      "label": { "chs": "跳过三的倍数", "en": "Skipping multiples of three" },
+      "cases": [
+        { "in": ["6"], "out": ["12"] },
+        { "in": ["9"], "out": ["27"] },
+        { "in": ["15"], "out": ["75"] }
+      ]
+    },
+    {
+      "id": "just-below",
+      "label": { "chs": "刚好不到一百", "en": "Just under a hundred" },
+      "cases": [
+        { "in": ["16"], "out": ["91"] }
+      ]
+    },
+    {
+      "id": "stops",
+      "label": { "chs": "超过一百即停", "en": "Stopping once past a hundred" },
+      "cases": [
+        { "in": ["17"], "out": ["108"] },
+        { "in": ["18"], "out": ["108"] },
+        { "in": ["1000"], "out": ["108"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-int-stack",
+  "lang": "c",
+  "category": "data",
+  "rank": 2,
+  "title": { "chs": "会记账的栈", "en": "A Stack That Keeps Count" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-behaviour", "label": { "chs": "空栈行为", "en": "Behaviour on an empty stack" } },
+    { "id": "push-peek", "label": { "chs": "压栈与看栈顶", "en": "Push and peek" } },
+    { "id": "lifo-order", "label": { "chs": "后进先出", "en": "Last in, first out" } },
+    { "id": "full-stack", "label": { "chs": "满栈拒绝压入", "en": "Rejecting pushes when full" } },
+    { "id": "struct-copy", "label": { "chs": "结构体复制互不影响", "en": "Copies are independent" } }
+  ]
+}

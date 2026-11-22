@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-short-circuit",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 3,
+  "title": { "chs": "短路的门", "en": "The Short-Circuit Gate" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero-divisor",
+      "label": { "chs": "除数为零", "en": "A zero divisor" },
+      "cases": [
+        { "in": ["10 0"], "out": ["0 1"] },
+        { "in": ["0 0"], "out": ["0 1"] },
+        { "in": ["-7 0"], "out": ["0 1"] }
+      ]
+    },
+    {
+      "id": "quotient-over",
+      "label": { "chs": "商大于二", "en": "Quotient above two" },
+      "cases": [
+        { "in": ["10 2"], "out": ["1 1"] },
+        { "in": ["9 3"], "out": ["1 1"] },
+        { "in": ["7 1"], "out": ["1 1"] }
+      ]
+    },
+    {
+      "id": "quotient-equal",
+      "label": { "chs": "商正好是二", "en": "Quotient exactly two" },
+      "cases": [
+        { "in": ["2 1"], "out": ["0 0"] },
+        { "in": ["6 3"], "out": ["0 0"] },
+        { "in": ["-2 1"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "quotient-under",
+      "label": { "chs": "商小于二", "en": "Quotient below two" },
+      "cases": [
+        { "in": ["1 2"], "out": ["0 0"] },
+        { "in": ["5 3"], "out": ["0 0"] },
+        { "in": ["-10 5"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "negative-divisor",
+      "label": { "chs": "负除数", "en": "Negative divisors" },
+      "cases": [
+        { "in": ["9 -3"], "out": ["0 0"] },
+        { "in": ["-9 -3"], "out": ["1 1"] },
+        { "in": ["-9 3"], "out": ["0 0"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-dyn-array",
+  "lang": "c",
+  "category": "memory",
+  "rank": 2,
+  "title": { "chs": "永远装不满的盒子", "en": "The Box That Never Fills Up" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-vector", "label": { "chs": "初始为空", "en": "Starts empty" } },
+    { "id": "push-basic", "label": { "chs": "逐次追加", "en": "Pushing a few values" } },
+    { "id": "growth-values", "label": { "chs": "扩容后值不丢", "en": "Values survive growth" } },
+    { "id": "capacity-doubling", "label": { "chs": "容量成倍增长", "en": "Capacity doubles" } },
+    { "id": "free-resets", "label": { "chs": "释放后归零", "en": "Free resets the size" } }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-malloc-string",
+  "lang": "c",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "借来的字符串", "en": "A Borrowed String" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "null-and-empty", "label": { "chs": "空指针与空串", "en": "Null pointer and empty string" } },
+    { "id": "content-copy", "label": { "chs": "副本内容一致", "en": "The copy holds the same text" } },
+    { "id": "independent-copy", "label": { "chs": "改副本不动原文", "en": "Editing the copy leaves the source alone" } },
+    { "id": "long-copy", "label": { "chs": "长串不截断", "en": "A long string is copied whole" } },
+    { "id": "free-safe", "label": { "chs": "释放空指针与副本", "en": "Freeing null and a copy" } }
+  ]
+}

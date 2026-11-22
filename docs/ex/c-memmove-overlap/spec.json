@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-memmove-overlap",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "自己搬自己", "en": "Moving Itself" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "overlap-shift", "label": { "chs": "重叠区域左移两位", "en": "Shift by two across an overlap" } },
+    { "id": "shift-one", "label": { "chs": "左移一位", "en": "Shift by one" } },
+    { "id": "no-shift", "label": { "chs": "不移位", "en": "No shift at all" } },
+    { "id": "shift-everything", "label": { "chs": "全部移出后补零", "en": "Shift everything out and zero the rest" } },
+    { "id": "single-element", "label": { "chs": "只有一个元素", "en": "A single element" } }
+  ]
+}
