@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debug-overflow-sum",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 2,
+  "title": { "chs": "修好这个求和", "en": "Fix This Sum" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "small",
+      "label": { "chs": "小数据", "en": "Small values" },
+      "cases": [
+        { "in": ["3", "1 2 3"], "out": ["6"] }
+      ]
+    },
+    {
+      "id": "positive-overflow",
+      "label": { "chs": "正值累加溢出", "en": "Positive overflow" },
+      "cases": [
+        { "in": ["3", "1000000000 1000000000 1000000000"], "out": ["3000000000"] }
+      ]
+    },
+    {
+      "id": "negative-overflow",
+      "label": { "chs": "负值累加溢出", "en": "Negative overflow" },
+      "cases": [
+        { "in": ["4", "-1000000000 -1000000000 -1000000000 -1000000000"], "out": ["-4000000000"] }
+      ]
+    },
+    {
+      "id": "mixed-sign",
+      "label": { "chs": "正负混合", "en": "Mixed signs" },
+      "cases": [
+        { "in": ["5", "1000000000 -1000000000 1000000000 -1000000000 1000000000"], "out": ["1000000000"] }
+      ]
+    },
+    {
+      "id": "just-over-int",
+      "label": { "chs": "刚超过 int 上限", "en": "Just past the int limit" },
+      "cases": [
+        { "in": ["3", "1000000000 1000000000 147483648"], "out": ["2147483648"] }
+      ]
+    }
+  ]
+}

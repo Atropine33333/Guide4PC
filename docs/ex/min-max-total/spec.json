@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "min-max-total",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "title": { "chs": "最小、最大与总和", "en": "Minimum, Maximum and Total" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通的正负混合", "en": "Ordinary mix of signs" },
+      "cases": [
+        { "in": ["5", "3 -1 4 1 5"], "out": ["-1 5 12"] },
+        { "in": ["4", "-5 -2 -9 -1"], "out": ["-9 -1 -17"] }
+      ]
+    },
+    {
+      "id": "single-element",
+      "label": { "chs": "只有一个数", "en": "A single element" },
+      "cases": [
+        { "in": ["1", "42"], "out": ["42 42 42"] },
+        { "in": ["2", "0 0"], "out": ["0 0 0"] }
+      ]
+    },
+    {
+      "id": "all-equal",
+      "label": { "chs": "全部相同", "en": "All values equal" },
+      "cases": [
+        { "in": ["3", "7 7 7"], "out": ["7 7 21"] }
+      ]
+    },
+    {
+      "id": "extreme-values",
+      "label": { "chs": "接近取值边界", "en": "Values near the limits" },
+      "cases": [
+        { "in": ["5", "-1000000 0 1000000 500000 -500000"], "out": ["-1000000 1000000 0"] }
+      ]
+    }
+  ]
+}

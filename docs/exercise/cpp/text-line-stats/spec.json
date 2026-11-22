@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "text-line-stats",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": { "chs": "文本行统计", "en": "Text Line Statistics" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通两行", "en": "Two ordinary lines" },
+      "cases": [
+        { "in": ["2", "hello world", "foo"], "out": ["2 3 14"] }
+      ]
+    },
+    {
+      "id": "blank-lines",
+      "label": { "chs": "包含空行", "en": "Blank lines included" },
+      "cases": [
+        { "in": ["3", "alpha", "", "beta gamma"], "out": ["3 3 15"] }
+      ]
+    },
+    {
+      "id": "leading-trailing",
+      "label": { "chs": "行首行尾空格", "en": "Spaces at both ends" },
+      "cases": [
+        { "in": ["1", "  code  "], "out": ["1 1 8"] }
+      ]
+    },
+    {
+      "id": "single-word",
+      "label": { "chs": "只有一个字符", "en": "One single character" },
+      "cases": [
+        { "in": ["1", "x"], "out": ["1 1 1"] }
+      ]
+    },
+    {
+      "id": "digits",
+      "label": { "chs": "数字也算单词", "en": "Digits are words too" },
+      "cases": [
+        { "in": ["2", "123 456", "789"], "out": ["2 3 10"] }
+      ]
+    }
+  ]
+}

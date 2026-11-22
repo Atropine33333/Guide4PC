@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "account-hierarchy",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": { "chs": "账户继承层次", "en": "Account Hierarchy" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "checking-basic", "label": { "chs": "活期账户存取", "en": "Checking deposit and withdraw" } },
+    { "id": "savings-minimum", "label": { "chs": "储蓄账户保留最低余额", "en": "Savings keeps its minimum" } },
+    { "id": "checking-insufficient", "label": { "chs": "活期余额不足", "en": "Checking has insufficient funds" } },
+    { "id": "non-positive", "label": { "chs": "非正数金额被拒绝", "en": "Non-positive amounts are rejected" } },
+    { "id": "base-dispatch", "label": { "chs": "通过基类指针取款", "en": "Withdrawals through base pointers" } }
+  ]
+}

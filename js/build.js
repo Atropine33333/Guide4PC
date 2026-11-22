@@ -929,7 +929,12 @@ function syncPlayground() {
         const src = path.join(from, ent.name);
         const dst = path.join(to, ent.name);
         if (ent.isDirectory()) copyTree(src, dst);
-        else if (ent.isFile()) copyFile(src, dst);
+        else if (ent.isFile()) {
+          if (/\.(html|js|css)$/.test(ent.name)) {
+            const text = fs.readFileSync(src, 'utf8').replace(/GUIDE4PC_BUILD_VER/g, getBuildVersion());
+            fs.writeFileSync(dst, text);
+          } else copyFile(src, dst);
+        }
       }
     };
     copyTree(siteSrc, path.join(DIST, 'exercise'));

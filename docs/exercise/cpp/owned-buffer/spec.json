@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "id": "owned-buffer",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "拥有内存的缓冲区", "en": "Owning Buffer" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "set-get", "label": { "chs": "写入与读取", "en": "Writes and reads" } },
+    { "id": "bounds", "label": { "chs": "下标越界", "en": "Out-of-range indices" } },
+    { "id": "copy-independent", "label": { "chs": "拷贝后互不影响", "en": "A copy is independent" } },
+    { "id": "assignment-independent", "label": { "chs": "赋值后互不影响", "en": "Assignment is independent" } },
+    { "id": "self-assignment", "label": { "chs": "自赋值安全", "en": "Self-assignment is safe" } },
+    { "id": "empty-buffer", "label": { "chs": "零长度缓冲区", "en": "A zero-length buffer" } }
+  ]
+}

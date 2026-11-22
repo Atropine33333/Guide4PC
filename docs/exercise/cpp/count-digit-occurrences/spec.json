@@ -66,6 +66,33 @@
           ]
         }
       ]
+    },
+    {
+      "id": "repeated-digit",
+      "label": {
+        "chs": "重复数字与 0",
+        "en": "Repeated digits and zeros"
+      },
+      "cases": [
+        {
+          "in": [
+            "11111",
+            "1"
+          ],
+          "out": [
+            "5"
+          ]
+        },
+        {
+          "in": [
+            "1000",
+            "0"
+          ],
+          "out": [
+            "3"
+          ]
+        }
+      ]
     }
   ],
   "variants": [

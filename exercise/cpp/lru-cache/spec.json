@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema.json",
+  "id": "lru-cache",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": { "chs": "最近最少使用缓存", "en": "LRU Cache" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "basic", "label": { "chs": "基本存取", "en": "Basic get and put" } },
+    { "id": "update", "label": { "chs": "覆盖已有键", "en": "Updating an existing key" } },
+    { "id": "eviction", "label": { "chs": "满容量后的淘汰", "en": "Eviction when full" } },
+    { "id": "get-refreshes", "label": { "chs": "读取会刷新最近使用顺序", "en": "get refreshes recency" } },
+    { "id": "zero-capacity", "label": { "chs": "容量为 0", "en": "Capacity zero" } },
+    { "id": "capacity-one", "label": { "chs": "容量为 1", "en": "Capacity one" } },
+    { "id": "random-trace", "label": { "chs": "固定种子的随机操作", "en": "Random operations with a fixed seed" } }
+  ]
+}

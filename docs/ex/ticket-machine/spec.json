@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "ticket-machine",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "取号机", "en": "Ticket Machine" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "first-ticket", "label": { "chs": "第一张号码是 1", "en": "The first ticket is 1" } },
+    { "id": "sequence", "label": { "chs": "号码连续递增", "en": "Numbers increase by one" } },
+    { "id": "independent-machines", "label": { "chs": "两台机器互不影响", "en": "Two machines are independent" } },
+    { "id": "issued-count", "label": { "chs": "issued() 反映已发号码数", "en": "issued() reports the number of tickets" } },
+    { "id": "reset-restarts", "label": { "chs": "reset() 之后从 1 重新开始", "en": "reset() restarts numbering at 1" } }
+  ]
+}

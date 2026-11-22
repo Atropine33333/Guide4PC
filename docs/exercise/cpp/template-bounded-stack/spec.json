@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "id": "template-bounded-stack",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": { "chs": "定容泛型栈", "en": "Bounded Generic Stack" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "int-basics", "label": { "chs": "整数栈基本操作", "en": "Basic int stack operations" } },
+    { "id": "overflow", "label": { "chs": "满栈拒绝入栈", "en": "A full stack rejects pushes" } },
+    { "id": "capacity-one", "label": { "chs": "容量为 1", "en": "Capacity one" } },
+    { "id": "string-stack", "label": { "chs": "字符串栈", "en": "A string stack" } },
+    { "id": "double-stack", "label": { "chs": "浮点栈", "en": "A double stack" } },
+    { "id": "independent-stacks", "label": { "chs": "两个实例互不影响", "en": "Two instances are independent" } }
+  ]
+}

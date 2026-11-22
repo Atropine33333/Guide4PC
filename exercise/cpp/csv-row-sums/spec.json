@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "csv-row-sums",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": { "chs": "逗号分隔行的和", "en": "Sums of CSV Rows" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通行", "en": "Ordinary rows" },
+      "cases": [
+        { "in": ["3", "1,2,3", "4,5", "6"], "out": ["6", "9", "6"] }
+      ]
+    },
+    {
+      "id": "empty-fields",
+      "label": { "chs": "空字段按 0 计", "en": "Empty fields count as zero" },
+      "cases": [
+        { "in": ["3", "3,,5", ",,", "7,"], "out": ["8", "0", "7"] }
+      ]
+    },
+    {
+      "id": "blank-line",
+      "label": { "chs": "整行为空", "en": "A completely blank row" },
+      "cases": [
+        { "in": ["2", "", "42"], "out": ["0", "42"] }
+      ]
+    },
+    {
+      "id": "large-values",
+      "label": { "chs": "较大的和", "en": "Larger sums" },
+      "cases": [
+        { "in": ["2", "999999,999999", "0,0,0"], "out": ["1999998", "0"] }
+      ]
+    },
+    {
+      "id": "single-field",
+      "label": { "chs": "只有一个字段", "en": "A single field" },
+      "cases": [
+        { "in": ["1", "999"], "out": ["999"] }
+      ]
+    }
+  ]
+}

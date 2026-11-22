@@ -2,6 +2,42 @@
   "version": 1,
   "items": [
     {
+      "id": "account-hierarchy",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "账户继承层次",
+        "en": "Account Hierarchy"
+      },
+      "category": "oop",
+      "rank": 3,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "bit-pattern-report",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "32 位图案报告",
+        "en": "32-bit Pattern Report"
+      },
+      "category": "types",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "circular-buffer",
       "dir": "cpp",
       "lang": "cpp",
@@ -29,7 +65,7 @@
       },
       "category": "syntax",
       "rank": 1,
-      "checks": 2,
+      "checks": 3,
       "harness": false,
       "variants": [
         {
@@ -40,6 +76,402 @@
           }
         }
       ],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "csv-row-sums",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "逗号分隔行的和",
+        "en": "Sums of CSV Rows"
+      },
+      "category": "io",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debug-overflow-sum",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "修好这个求和",
+        "en": "Fix This Sum"
+      },
+      "category": "debugging",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debug-scoreboard",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "修好记分板",
+        "en": "Fix the Scoreboard"
+      },
+      "category": "debugging",
+      "rank": 3,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "first-at-least",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "第一个不小于它的位置",
+        "en": "First Position At Least"
+      },
+      "category": "algorithm",
+      "rank": 3,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "floor-average",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "向下取整的平均数",
+        "en": "Floor Average"
+      },
+      "category": "types",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "int-list-ops",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "整数链表操作",
+        "en": "Integer List Operations"
+      },
+      "category": "data",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "letter-class-tally",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "字符分类统计",
+        "en": "Letter Class Tally"
+      },
+      "category": "syntax",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "lifetime-ledger",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "对象生命周期账本",
+        "en": "Lifetime Ledger"
+      },
+      "category": "memory",
+      "rank": 3,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "lru-cache",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最近最少使用缓存",
+        "en": "LRU Cache"
+      },
+      "category": "engineering",
+      "rank": 4,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "min-max-total",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "最小、最大与总和",
+        "en": "Minimum, Maximum and Total"
+      },
+      "category": "syntax",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "min-stack",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "支持最小值的栈",
+        "en": "Stack with Minimum"
+      },
+      "category": "data",
+      "rank": 2,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "owned-buffer",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "拥有内存的缓冲区",
+        "en": "Owning Buffer"
+      },
+      "category": "memory",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "range-sum-queries",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "区间和查询",
+        "en": "Range Sum Queries"
+      },
+      "category": "algorithm",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "shape-polymorphism",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "多态图形",
+        "en": "Polymorphic Shapes"
+      },
+      "category": "oop",
+      "rank": 3,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "sorted-merge-unique",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "有序合并去重",
+        "en": "Sorted Merge, Unique"
+      },
+      "category": "stdlib",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "swap-sequence",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "交换序列",
+        "en": "Swap Sequence"
+      },
+      "category": "semantics",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "template-bounded-stack",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "定容泛型栈",
+        "en": "Bounded Generic Stack"
+      },
+      "category": "templates",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "template-pair",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "泛型数对",
+        "en": "Generic Pair"
+      },
+      "category": "templates",
+      "rank": 3,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "text-line-stats",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "文本行统计",
+        "en": "Text Line Statistics"
+      },
+      "category": "io",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "ticket-machine",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "取号机",
+        "en": "Ticket Machine"
+      },
+      "category": "semantics",
+      "rank": 2,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "versioned-store",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "可撤销的键值存储",
+        "en": "Versioned Key-Value Store"
+      },
+      "category": "engineering",
+      "rank": 3,
+      "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "word-frequency-winner",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "出现最多的单词",
+        "en": "Most Frequent Word"
+      },
+      "category": "stdlib",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
       "problem": {
         "chs": true,
         "en": true

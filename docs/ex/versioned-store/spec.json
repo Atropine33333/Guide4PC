@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema.json",
+  "id": "versioned-store",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": { "chs": "可撤销的键值存储", "en": "Versioned Key-Value Store" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "put-get", "label": { "chs": "写入、覆盖与读取", "en": "Insert, overwrite, and read" } },
+    { "id": "undo-update", "label": { "chs": "撤销一次覆盖", "en": "Undo an overwrite" } },
+    { "id": "undo-insert", "label": { "chs": "撤销一次插入", "en": "Undo an insertion" } },
+    { "id": "undo-order", "label": { "chs": "按相反顺序撤销多次写入", "en": "Undo several writes in reverse order" } },
+    { "id": "clear-resets-history", "label": { "chs": "clear 清空键并丢弃历史", "en": "clear drops keys and history" } },
+    { "id": "undo-empty", "label": { "chs": "没有可撤销的操作", "en": "Nothing left to undo" } },
+    { "id": "random-trace", "label": { "chs": "固定种子的随机操作", "en": "Random operations with a fixed seed" } }
+  ]
+}

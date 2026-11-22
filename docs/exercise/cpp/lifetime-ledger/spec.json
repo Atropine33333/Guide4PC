@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "lifetime-ledger",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "对象生命周期账本", "en": "Lifetime Ledger" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "construct-destruct", "label": { "chs": "构造与析构计数", "en": "Construction and destruction counts" } },
+    { "id": "copy-constructor", "label": { "chs": "拷贝构造也创建一个对象", "en": "A copy construction creates an object" } },
+    { "id": "assignment-count", "label": { "chs": "赋值不改变存活数", "en": "Assignment keeps the alive count" } },
+    { "id": "self-assignment", "label": { "chs": "自赋值", "en": "Self-assignment" } },
+    { "id": "array-lifetime", "label": { "chs": "数组的构造与析构", "en": "Array construction and destruction" } }
+  ]
+}

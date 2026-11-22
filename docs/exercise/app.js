@@ -398,11 +398,15 @@
     if (window.markdownit) return Promise.resolve();
     return loadScript('https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js').catch(function () { /* 离线时退回 <pre> */ });
   }
+  function playerVer() {
+    var v = window.GUIDE4PC_VERSION;
+    return v && v !== 'b901ecda88' ? '?v=' + encodeURIComponent(v) : '';
+  }
   function ensurePlayground() {
     window.G4PC_BASE = ROOT;
-    loadCSS(ROOT + 'pg/pg.css');
+    loadCSS(ROOT + 'pg/pg.css' + playerVer());
     if (window.G4PCPlayground) return Promise.resolve();
-    return loadScript(ROOT + 'pg/pg.js').then(function () {
+    return loadScript(ROOT + 'pg/pg.js' + playerVer()).then(function () {
       if (!window.G4PCPlayground) throw new Error('G4PCPlayground missing');
     });
   }

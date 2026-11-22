@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema.json",
+  "id": "floor-average",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "向下取整的平均数", "en": "Floor Average" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "exact",
+      "label": { "chs": "能整除的情况", "en": "Division with no remainder" },
+      "cases": [
+        { "in": ["4", "7 8 8 9"], "out": ["8 8"] }
+      ]
+    },
+    {
+      "id": "negative-remainder",
+      "label": { "chs": "负数且不能整除", "en": "Negative with a remainder" },
+      "cases": [
+        { "in": ["2", "-7 -8"], "out": ["-7 -8"] },
+        { "in": ["3", "-1 0 0"], "out": ["0 -1"] }
+      ]
+    },
+    {
+      "id": "single",
+      "label": { "chs": "只有一个数", "en": "A single value" },
+      "cases": [
+        { "in": ["1", "-5"], "out": ["-5 -5"] }
+      ]
+    },
+    {
+      "id": "exact-negative",
+      "label": { "chs": "负数且能整除", "en": "Negative but exact" },
+      "cases": [
+        { "in": ["3", "-3 -3 -3"], "out": ["-3 -3"] }
+      ]
+    },
+    {
+      "id": "positive-remainder",
+      "label": { "chs": "正数且不能整除", "en": "Positive with a remainder" },
+      "cases": [
+        { "in": ["3", "1 2 2"], "out": ["1 1"] }
+      ]
+    }
+  ]
+}

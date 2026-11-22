@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "swap-sequence",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "交换序列", "en": "Swap Sequence" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "两端与中间交换", "en": "Swaps at both ends and in the middle" },
+      "cases": [
+        { "in": ["5", "1 2 3 4 5", "2", "1 5", "2 4"], "out": ["5 4 3 2 1"] }
+      ]
+    },
+    {
+      "id": "no-swaps",
+      "label": { "chs": "没有任何交换", "en": "No swaps at all" },
+      "cases": [
+        { "in": ["3", "7 8 9", "0"], "out": ["7 8 9"] }
+      ]
+    },
+    {
+      "id": "self-swap",
+      "label": { "chs": "自己和自己交换", "en": "Swapping an element with itself" },
+      "cases": [
+        { "in": ["2", "4 9", "3", "1 1", "2 2", "1 2"], "out": ["9 4"] }
+      ]
+    },
+    {
+      "id": "adjacent",
+      "label": { "chs": "相邻元素交换", "en": "Adjacent swaps" },
+      "cases": [
+        { "in": ["4", "10 20 30 40", "2", "1 2", "3 4"], "out": ["20 10 40 30"] }
+      ]
+    },
+    {
+      "id": "repeated",
+      "label": { "chs": "同一对位置反复交换", "en": "The same pair swapped repeatedly" },
+      "cases": [
+        { "in": ["3", "1 2 3", "4", "1 3", "1 3", "2 2", "1 1"], "out": ["1 2 3"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debug-scoreboard",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 3,
+  "title": { "chs": "修好记分板", "en": "Fix the Scoreboard" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "accumulates", "label": { "chs": "多次加分应累加", "en": "Scores accumulate" } },
+    { "id": "players-count", "label": { "chs": "玩家人数与未知玩家", "en": "Player count and unknown players" } },
+    { "id": "leader-highest", "label": { "chs": "最高分领先者", "en": "The highest scorer leads" } },
+    { "id": "leader-tie", "label": { "chs": "并列时取字典序最小", "en": "Ties go to the smallest name" } },
+    { "id": "empty-leader", "label": { "chs": "空记分板没有领先者", "en": "An empty board has no leader" } }
+  ]
+}

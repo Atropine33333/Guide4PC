@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "template-pair",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": { "chs": "泛型数对", "en": "Generic Pair" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "int-pair", "label": { "chs": "整数数对与修改", "en": "An int pair and mutation" } },
+    { "id": "string-pair", "label": { "chs": "字符串数对与交换", "en": "A string pair and its swap" } },
+    { "id": "equality", "label": { "chs": "数对比较", "en": "Pair comparison" } },
+    { "id": "nested-pair", "label": { "chs": "嵌套数对", "en": "A nested pair" } },
+    { "id": "const-access", "label": { "chs": "const 数对的只读访问", "en": "Read-only access on a const pair" } }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "id": "int-list-ops",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "整数链表操作", "en": "Integer List Operations" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "push-front-order", "label": { "chs": "头插后的顺序", "en": "Order after push-front" } },
+    { "id": "pop-front", "label": { "chs": "从头部删除", "en": "Removing from the front" } },
+    { "id": "reverse-basic", "label": { "chs": "反转非空链表", "en": "Reversing a non-empty list" } },
+    { "id": "reverse-edge", "label": { "chs": "反转空表与单节点", "en": "Reversing empty and one-node lists" } },
+    { "id": "get-bounds", "label": { "chs": "越界下标", "en": "Out-of-range indices" } },
+    { "id": "random-trace", "label": { "chs": "固定种子的随机操作", "en": "Random operations with a fixed seed" } }
+  ]
+}

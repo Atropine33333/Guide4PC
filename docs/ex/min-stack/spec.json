@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "id": "min-stack",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 2,
+  "title": { "chs": "支持最小值的栈", "en": "Stack with Minimum" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "push-top", "label": { "chs": "入栈与取栈顶", "en": "Push and read the top" } },
+    { "id": "pop-order", "label": { "chs": "后进先出", "en": "Last in, first out" } },
+    { "id": "minimum-tracking", "label": { "chs": "最小值随出栈恢复", "en": "The minimum restores after pops" } },
+    { "id": "duplicate-minimum", "label": { "chs": "重复的最小值", "en": "Duplicate minima" } },
+    { "id": "empty-operations", "label": { "chs": "空栈上的操作", "en": "Operations on an empty stack" } },
+    { "id": "random-trace", "label": { "chs": "固定种子的随机操作", "en": "Random operations with a fixed seed" } }
+  ]
+}

@@ -333,7 +333,7 @@
       }
 
       function armTimeout(ms) {
-        if (timer) return;
+        if (timer) clearTimeout(timer);
         timer = setTimeout(function () {
           killWorker();
           finish(reject, new Error('timeout'));
@@ -345,8 +345,9 @@
           if (msg.type === 'done') finish(resolve, msg.result);
           else if (msg.type === 'error') finish(reject, new Error(msg.message || 'worker error'));
           else if (handlers && handlers.onMessage) {
-            if (msg.type === 'phase' && (msg.phase === 'compile' || msg.phase === 'run')) {
-              armTimeout(payload.timeoutMs || 5000);
+            if (msg.type === 'phase') {
+              if (msg.phase === 'compile') armTimeout(20000);
+              else if (msg.phase === 'run') armTimeout(payload.timeoutMs || 5000);
             }
             handlers.onMessage(msg);
           }
@@ -358,6 +359,7 @@
       };
 
       w.postMessage({ type: 'run', payload: payload });
+      armTimeout(20000);
     });
   }
 
@@ -899,7 +901,6 @@
   // 自测钩子：?g4pc-autorun=1 时依次运行页面上所有练习，结果写到 body[data-g4pc-autorun]。
   // 加 &g4pc-solution=1 时先从 exercises/<id>/solution.cpp 载入参考实现再运行。
   function autorun() {
-    var mounts = Array.prototype.slice.call(document.querySelectorAll('.ex-mount'));
     var useSolution = /[?&]g4pc-solution=1/.test(location.search);
     var report = [];
 
@@ -915,6 +916,7 @@
     }
 
     async function step(index) {
+      var mounts = Array.prototype.slice.call(document.querySelectorAll('.ex-mount'));
       if (index >= mounts.length) {
         document.body.setAttribute('data-g4pc-autorun', JSON.stringify(report));
         return;

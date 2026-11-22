@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "shape-polymorphism",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": { "chs": "多态图形", "en": "Polymorphic Shapes" },
+  "harness": "harness.cpp",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "interface", "label": { "chs": "抽象基类与虚析构", "en": "Abstract base and virtual destructor" } },
+    { "id": "rectangle-area", "label": { "chs": "矩形面积与名字", "en": "Rectangle area and name" } },
+    { "id": "circle-area", "label": { "chs": "圆面积与名字", "en": "Circle area and name" } },
+    { "id": "base-dispatch", "label": { "chs": "通过基类指针调用", "en": "Calls through base pointers" } },
+    { "id": "zero-dimensions", "label": { "chs": "退化图形", "en": "Degenerate shapes" } }
+  ]
+}

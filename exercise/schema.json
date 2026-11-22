@@ -32,8 +32,12 @@
         "semantics",
         "types",
         "stdlib",
-        "memory",
+        "io",
         "algorithm",
+        "data",
+        "memory",
+        "oop",
+        "templates",
         "engineering",
         "debugging"
       ],

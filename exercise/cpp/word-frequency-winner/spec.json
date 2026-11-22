@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "word-frequency-winner",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "出现最多的单词", "en": "Most Frequent Word" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "普通频次比较", "en": "Ordinary frequency comparison" },
+      "cases": [
+        { "in": ["5", "apple banana apple cherry banana"], "out": ["apple"] }
+      ]
+    },
+    {
+      "id": "single",
+      "label": { "chs": "只有一个单词", "en": "Only one word" },
+      "cases": [
+        { "in": ["1", "zebra"], "out": ["zebra"] }
+      ]
+    },
+    {
+      "id": "tie-lexicographic",
+      "label": { "chs": "并列时取字典序最小", "en": "Ties go to the smallest word" },
+      "cases": [
+        { "in": ["4", "dog cat cat dog"], "out": ["cat"] }
+      ]
+    },
+    {
+      "id": "all-unique",
+      "label": { "chs": "每个单词只出现一次", "en": "Every word appears once" },
+      "cases": [
+        { "in": ["3", "ant bee cow"], "out": ["ant"] }
+      ]
+    },
+    {
+      "id": "clear-winner",
+      "label": { "chs": "频次差距明显", "en": "A clear frequency gap" },
+      "cases": [
+        { "in": ["6", "a a a b b c"], "out": ["a"] }
+      ]
+    }
+  ]
+}

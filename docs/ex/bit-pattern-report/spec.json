@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema.json",
+  "id": "bit-pattern-report",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "32 位图案报告", "en": "32-bit Pattern Report" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "zero",
+      "label": { "chs": "全零", "en": "All bits zero" },
+      "cases": [
+        { "in": ["0"], "out": ["0 0 0"] }
+      ]
+    },
+    {
+      "id": "powers-of-two",
+      "label": { "chs": "单个 1 位", "en": "A single set bit" },
+      "cases": [
+        { "in": ["1"], "out": ["1 1 1"] },
+        { "in": ["1073741824"], "out": ["1 1073741824 1073741824"] }
+      ]
+    },
+    {
+      "id": "sign-boundary",
+      "label": { "chs": "有符号边界", "en": "The signed boundary" },
+      "cases": [
+        { "in": ["2147483647"], "out": ["31 1073741824 2147483647"] },
+        { "in": ["2147483648"], "out": ["1 2147483648 -2147483648"] }
+      ]
+    },
+    {
+      "id": "all-ones",
+      "label": { "chs": "32 位全为 1", "en": "All 32 bits set" },
+      "cases": [
+        { "in": ["4294967295"], "out": ["32 2147483648 -1"] }
+      ]
+    },
+    {
+      "id": "negative-pattern",
+      "label": { "chs": "负数的补码图案", "en": "A negative two's-complement pattern" },
+      "cases": [
+        { "in": ["4294967294"], "out": ["31 2147483648 -2"] }
+      ]
+    }
+  ]
+}
