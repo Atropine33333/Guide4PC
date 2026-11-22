@@ -219,7 +219,7 @@
 
     var arrowRow = h('div', { class: 'scene-arrow-row' });
     var arrow = h('button', { class: 'scene-arrow', type: 'button', 'aria-label': ZH ? '继续' : 'Continue' });
-    arrow.innerHTML = '<svg viewBox="0 0 44 18" aria-hidden="true"><path d="M1 9h36M31 2.5 38.5 9 31 15.5"/></svg>';
+    arrow.innerHTML = '<svg viewBox="0 0 18 30" aria-hidden="true"><path d="M9 2v23M3 18.5 9 25.5l6-7"/></svg>';
     arrowRow.appendChild(arrow);
 
     var nowLine = h('p', { class: 'scene-line scene-line-now', text: lines.now || '' });
@@ -227,14 +227,14 @@
     var afterLine = h('p', { class: 'scene-line scene-line-after', text: lines['after-early'] || '' });
     var finalLine = h('p', { class: 'scene-line scene-line-final', text: lines.final || '' });
 
-    flow.append(small, action, arrowRow, nowLine, trickLine, afterLine, finalLine);
+    flow.append(small, action, nowLine, trickLine, afterLine, arrowRow, finalLine);
     section.append(stage, flow);
     mount.appendChild(section);
 
     button.disabled = true;
     arrow.disabled = true;
 
-    var state = { arrowShown: false, proceeded: false, finalShown: false };
+    var state = { arrowShown: false, arrowHidden: false, proceeded: false, finalShown: false };
     var arrowTimer = 0;
 
     function reveal(node, delay) {
@@ -243,10 +243,12 @@
     }
 
     function showArrow() {
-      if (state.proceeded) return;
+      // 只在“后续会逐渐……”这行出现之后浮出，且只出现一次。
+      if (!state.proceeded || state.arrowHidden || state.finalShown) return;
       state.arrowShown = true;
       arrow.disabled = false;
       arrowRow.classList.add('is-in');
+      later(armAnywhere, 320);
     }
 
     function afterShrink() {
@@ -255,7 +257,6 @@
       stage.remove();
       button.disabled = false;
       action.classList.add('is-in');
-      arrowTimer = later(showArrow, 2000);
     }
 
     function freezeStrokes(el) {
@@ -313,22 +314,27 @@
       }, SHRINK_MS + 80);
     }
 
-    function proceed(kind) {
+    function proceed() {
       if (state.proceeded) return;
       state.proceeded = true;
       window.clearTimeout(arrowTimer);
       button.disabled = true;
-      arrow.disabled = true;
       action.classList.add('is-gone');
-      arrowRow.classList.add('is-gone');
       reveal(nowLine, 140);
-      if (kind === 'arrow') {
-        reveal(trickLine, 420);
-        reveal(afterLine, 840);
-      } else {
-        reveal(afterLine, 420);
-      }
-      later(armAnywhere, 1100);
+      reveal(afterLine, 420);
+      // 「后续会逐渐……」出现后等 2s，箭头才在这行下面浮出。
+      arrowTimer = later(showArrow, 420 + 2000);
+    }
+
+    function onArrow(e) {
+      e.preventDefault();
+      if (!state.arrowShown || state.finalShown) return;
+      state.arrowHidden = true;
+      arrow.disabled = true;
+      arrowRow.classList.add('is-gone');
+      // 点箭头才揭穿：这句话插在「后续……」这一行之前。
+      reveal(trickLine, 140);
+      later(armAnywhere, 900);
     }
 
     var armed = false;
@@ -339,17 +345,19 @@
       listen(document, 'keydown', onAnywhere, true);
     }
 
-    function onAnywhere() {
+    function onAnywhere(e) {
       if (state.finalShown) return;
+      if (e && e.target && arrow.contains(e.target)) return;
       state.finalShown = true;
       document.removeEventListener('pointerdown', onAnywhere, true);
       document.removeEventListener('keydown', onAnywhere, true);
+      arrowRow.classList.add('is-gone');
       reveal(finalLine, 120);
       testCtaStunt();
     }
 
-    button.addEventListener('click', function (e) { e.preventDefault(); proceed('button'); });
-    arrow.addEventListener('click', function (e) { e.preventDefault(); proceed('arrow'); });
+    button.addEventListener('click', function (e) { e.preventDefault(); proceed(); });
+    arrow.addEventListener('click', onArrow);
 
     if (prefersReduced()) {
       afterShrink();

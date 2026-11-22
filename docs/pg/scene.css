@@ -88,7 +88,7 @@
 .scene-hello-small {
   display: block;
   height: 22px;
-  margin: 0 0 var(--ex-s5, 24px);
+  margin: 0;
   opacity: 0;
 }
 
@@ -166,30 +166,23 @@
 }
 
 .scene-arrow-row {
+  display: none;
   pointer-events: none;
-  display: flex;
   justify-content: center;
-  height: 34px;
-  margin: 0 0 var(--ex-s3, 8px);
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 .scene-arrow-row.is-in {
+  display: flex;
   pointer-events: auto;
-  opacity: 1;
+  margin-top: 8px;
 }
 
 .scene-arrow-row.is-gone {
-  height: 0;
-  margin: 0;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
+  display: none;
 }
 
 .scene-arrow {
-  padding: 6px 10px;
+  padding: 2px 8px;
   border: 0;
   background: none;
   color: var(--color-text-muted);
@@ -199,14 +192,14 @@
 
 .scene-arrow svg {
   display: block;
-  width: 44px;
-  height: 18px;
+  width: 14px;
+  height: 24px;
 }
 
 .scene-arrow path {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.1px;
+  stroke-width: 1.2px;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: stroke-width 0.18s ease;
@@ -225,39 +218,40 @@
   outline-offset: 2px;
 }
 
-.scene-line {
-  /* 未出现的行不占位：否则开场收缩后，大块空白会把正文推得很远。 */
-  max-height: 0;
-  margin: 0;
-  overflow: hidden;
+.scene-flow .scene-line {
+  display: none;
+  margin: 20px 0 0;
   font-size: 16px;
   line-height: 1.75;
   color: var(--color-text);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: max-height 0.5s ease, margin 0.3s ease, opacity 0.55s ease,
-    transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
-.scene-line.is-in {
-  max-height: 16em;
-  margin: var(--ex-s3, 8px) 0 0;
-  opacity: 1;
-  transform: none;
+.scene-flow .scene-line.is-in {
+  display: block;
+  animation: scene-line-in 0.55s cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
 
-.scene-line:empty {
+@keyframes scene-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scene-flow .scene-line:empty {
   display: none;
 }
 
-.scene-line-trick {
-  margin-top: var(--ex-s4, 16px);
+.scene-flow .scene-line-trick {
   font-size: 14px;
   color: var(--color-text-muted);
 }
 
-.scene-line-final {
-  margin-top: var(--ex-s4, 16px);
+.scene-flow .scene-line-final {
   font-weight: 600;
 }
 

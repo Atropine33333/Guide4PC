@@ -82,6 +82,7 @@
       'force-refresh': '强制刷新',
       'download': '下载',
       'test': '测试',
+      'practice': '练习',
     },
     en: {
       'settings-title': 'Display Settings',
@@ -97,6 +98,7 @@
       'force-refresh': 'Hard Refresh',
       'download': 'Download',
       'test': 'Tests',
+      'practice': 'Practice',
     },
   };
 
