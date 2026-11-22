@@ -40,6 +40,7 @@
     items: [],
     papers: [],
     specs: {},
+    progress: {},
     page: 1,
   };
 
@@ -90,6 +91,31 @@
   }
 
   // ── 数据 ───────────────────────────────────────────────────────────────────
+  // 做题进度与草稿存在 IndexedDB（g4pc/drafts，key = lang/id），这里只读状态。
+  function loadProgress() {
+    return new Promise(function (resolve) {
+      try {
+        var req = indexedDB.open('g4pc', 1);
+        req.onupgradeneeded = function () {
+          var db = req.result;
+          if (!db.objectStoreNames.contains('drafts')) db.createObjectStore('drafts', { keyPath: 'key' });
+        };
+        req.onerror = function () { resolve({}); };
+        req.onsuccess = function () {
+          try {
+            var r = req.result.transaction('drafts', 'readonly').objectStore('drafts').getAll();
+            r.onsuccess = function () {
+              var map = {};
+              (r.result || []).forEach(function (rec) { if (rec && rec.key) map[rec.key] = rec.status || 'attempted'; });
+              resolve(map);
+            };
+            r.onerror = function () { resolve({}); };
+          } catch (e) { resolve({}); }
+        };
+      } catch (e) { resolve({}); }
+    });
+  }
+
   function loadData() {
     return Promise.all([
       fetchJSON(ROOT + 'exercise/index.json'),
@@ -101,11 +127,22 @@
         var picked = JSON.parse(localStorage.getItem('g4pc_paper') || '[]');
         picked.forEach(function (id) { state.picked[id] = true; });
       } catch (e) { /* ignore */ }
+      return loadProgress().then(function (p) { state.progress = p || {}; });
     });
   }
 
   function itemsFor(lang) {
     return state.items.filter(function (it) { return (it.dir || it.lang) === lang; });
+  }
+
+  function progressBox(it) {
+    var st = state.progress[(it.lang || 'cpp') + '/' + it.id];
+    if (!st) return null;
+    var solved = st === 'solved';
+    return h('span', {
+      class: 'es-chip es-progress ' + (solved ? 'es-progress-solved' : 'es-progress-open'),
+      text: solved ? t('已通过', 'Solved') : t('编辑中', 'In progress'),
+    });
   }
 
   // ── 页面：列表 ─────────────────────────────────────────────────────────────
@@ -230,6 +267,7 @@
         h('div', { class: 'es-item-title', text: titleOf(it) }),
         h('div', { class: 'es-meta' }, [langBox(it.lang), catBox(it.category), rankBox(it.rank),
           h('span', { class: 'es-chip es-muted', text: t(it.checks + ' 项测试', it.checks + ' checks') }),
+          progressBox(it),
         ]),
       ]));
       list.appendChild(row);

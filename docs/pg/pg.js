@@ -26,6 +26,7 @@
     compiling: ZH ? '编译中…' : 'Compiling…',
     runTest: ZH ? '运行测试' : 'Running checks',
     ready: ZH ? '就绪' : 'Ready',
+    restored: ZH ? '已恢复上次的代码' : 'Restored your last edit',
     preparing: ZH ? '准备中…' : 'Preparing…',
     warmError: ZH ? '编译器准备失败' : 'Compiler setup failed',
     tests: ZH ? '项测试' : 'tests',
@@ -411,14 +412,72 @@
     });
   }
 
-  function mountCard(mount, id, variant, spec, starter) {
+  // 草稿与做题进度：IndexedDB g4pc/drafts，key = lang/id。
+  var DraftStore = (function () {
+    var dbp = null;
+    function open() {
+      if (dbp) return dbp;
+      dbp = new Promise(function (resolve, reject) {
+        try {
+          var req = indexedDB.open('g4pc', 1);
+          req.onupgradeneeded = function () {
+            var db = req.result;
+            if (!db.objectStoreNames.contains('drafts')) db.createObjectStore('drafts', { keyPath: 'key' });
+          };
+          req.onsuccess = function () { resolve(req.result); };
+          req.onerror = function () { reject(req.error); };
+        } catch (e) { reject(e); }
+      }).catch(function () { return null; });
+      return dbp;
+    }
+    function key(lang, id) { return (lang || 'cpp') + '/' + id; }
+    function get(lang, id) {
+      return open().then(function (db) {
+        if (!db) return null;
+        return new Promise(function (resolve) {
+          var r = db.transaction('drafts', 'readonly').objectStore('drafts').get(key(lang, id));
+          r.onsuccess = function () { resolve(r.result || null); };
+          r.onerror = function () { resolve(null); };
+        });
+      });
+    }
+    function put(rec) {
+      return open().then(function (db) {
+        if (!db) return null;
+        return new Promise(function (resolve) {
+          var t = db.transaction('drafts', 'readwrite');
+          t.objectStore('drafts').put(rec);
+          t.oncomplete = function () { resolve(rec); };
+          t.onerror = function () { resolve(null); };
+        });
+      });
+    }
+    function del(lang, id) {
+      return open().then(function (db) {
+        if (!db) return null;
+        return new Promise(function (resolve) {
+          var t = db.transaction('drafts', 'readwrite');
+          t.objectStore('drafts').delete(key(lang, id));
+          t.oncomplete = function () { resolve(true); };
+          t.onerror = function () { resolve(false); };
+        });
+      });
+    }
+    return { get: get, put: put, del: del, key: key };
+  })();
+
+  function mountCard(mount, id, variant, spec, starter, draft) {
     var variantSpec = null;
     (spec.variants || []).forEach(function (v) { if (v.id === variant) variantSpec = v; });
     var title = (variantSpec && pickLabel(variantSpec.label)) || pickLabel(spec.title) || id;
     var checks = spec.checks || [];
+    var lang = spec.lang || 'cpp';
+    var initialCode = draft && typeof draft.code === 'string' && draft.code.length ? draft.code : starter;
+    var restored = initialCode !== starter;
+    var progressStatus = (draft && draft.status) || 'attempted';
 
     var editorHost = h('div', { class: 'ex-editor' });
-    var status = h('span', { class: 'ex-status', text: TEXT.preparing, 'data-tone': 'muted' });
+    var status = h('span', { class: 'ex-status', text: restored ? TEXT.restored : TEXT.preparing, 'data-tone': 'muted' });
     var runBtn = h('button', { class: 'ex-run', type: 'button', text: TEXT.run });
     var resetBtn = h('button', { class: 'ex-reset', type: 'button', text: TEXT.reset });
     var checkList = h('ol', { class: 'ex-checks' });
@@ -465,6 +524,7 @@
           spec.rank ? h('span', { class: 'ex-chip ex-chip-rank', text: 'Rank ' + spec.rank }) : null,
           h('span', { class: 'ex-chip', text: checks.length + ' ' + TEXT.tests }),
           variantSpec ? h('span', { class: 'ex-chip ex-chip-var', text: variant }) : null,
+          restored ? h('span', { class: 'ex-chip ex-chip-restored', text: TEXT.restored }) : null,
         ]),
       ]),
       progress,
@@ -703,6 +763,41 @@
       if (view && window.G4PCEditor) window.G4PCEditor.setDiagnostics(view, []);
     }
 
+    var saveTimer = 0;
+    var suppressSave = false;
+    function saveDraft() {
+      if (!view || suppressSave) return;
+      DraftStore.put({
+        key: DraftStore.key(lang, id),
+        lang: lang,
+        id: id,
+        code: view.state.doc.toString(),
+        updatedAt: Date.now(),
+        status: progressStatus,
+      });
+    }
+    function scheduleSave() {
+      if (saveTimer) clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDraft, 500);
+    }
+    function recordRun(ok, result) {
+      progressStatus = ok ? 'solved' : 'attempted';
+      if (!view) return;
+      DraftStore.put({
+        key: DraftStore.key(lang, id),
+        lang: lang,
+        id: id,
+        code: view.state.doc.toString(),
+        updatedAt: Date.now(),
+        status: progressStatus,
+        lastResult: {
+          ok: !!ok,
+          compileMs: (result && result.compileMs) || 0,
+          runMs: (result && result.runMs) || 0,
+        },
+      });
+    }
+
     // 停止输入 900ms 后编译一次；只取 clang 的 error/warning，画成行内波浪线。
     function scheduleLint() {
       if (!view) return;
@@ -817,7 +912,9 @@
             (ms ? ' · ' + (ms / 1000).toFixed(1) + 's' : ''),
           result.ok ? 'ok' : 'fail'
         );
+        recordRun(result.ok, result);
       } catch (err) {
+        recordRun(false, {});
         setProgress(null);
         if (String(err && err.message) === 'timeout') {
           showError(TEXT.timeout);
@@ -833,11 +930,15 @@
 
     function resetEditor() {
       if (!view) return;
+      suppressSave = true;
+      DraftStore.del(lang, id);
+      progressStatus = 'attempted';
       view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: starter } });
       resetChecks();
       clearLint();
       setStatus(warmup.state === 'ready' ? TEXT.ready : TEXT.preparing, 'muted');
       card.removeAttribute('data-result');
+      setTimeout(function () { suppressSave = false; }, 900);
     }
 
     runBtn.addEventListener('click', doRun);
@@ -846,8 +947,8 @@
     ensureEditorBundle().then(function () {
       view = window.G4PCEditor.createEditor({
         parent: editorHost,
-        doc: starter,
-        onDocChange: scheduleLint,
+        doc: initialCode,
+        onDocChange: function (v) { scheduleLint(); scheduleSave(); },
       });
       allViews.push(view);
     }).catch(function (err) {
@@ -876,9 +977,11 @@
       (spec.variants || []).forEach(function (v) {
         if (v.id === variant && v.starter) starterName = v.starter;
       });
-      return loadStarter(id, starterName).then(function (starter) {
+      return Promise.all([loadStarter(id, starterName), DraftStore.get(spec.lang || 'cpp', id)]).then(function (vals) {
+        var starter = vals[0];
+        var draft = vals[1];
         mount.setAttribute('data-state', 'ready');
-        var handle = mountCard(mount, id, variant, spec, starter);
+        var handle = mountCard(mount, id, variant, spec, starter, draft);
         mount._g4pc = handle;
       });
     }).catch(function (err) {
