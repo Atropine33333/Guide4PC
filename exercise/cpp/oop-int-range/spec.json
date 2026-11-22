@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-int-range",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 5,
+  "title": {
+    "chs": "自定义整数区间",
+    "en": "Custom Integer Range"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "collect",
+      "label": {
+        "chs": "范围遍历",
+        "en": "Range traversal"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空区间",
+        "en": "Empty ranges"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数区间",
+        "en": "Negative ranges"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单元素区间",
+        "en": "A one-element range"
+      }
+    },
+    {
+      "id": "algorithms",
+      "label": {
+        "chs": "标准算法",
+        "en": "Standard algorithms"
+      }
+    },
+    {
+      "id": "iterator",
+      "label": {
+        "chs": "迭代器接口",
+        "en": "Iterator interface"
+      }
+    }
+  ]
+}

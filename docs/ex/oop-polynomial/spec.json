@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-polynomial",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "title": {
+    "chs": "稠密多项式",
+    "en": "Dense Polynomial"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零多项式",
+        "en": "The zero polynomial"
+      }
+    },
+    {
+      "id": "normalize",
+      "label": {
+        "chs": "去掉高位零",
+        "en": "Trimming high zero coefficients"
+      }
+    },
+    {
+      "id": "evaluate",
+      "label": {
+        "chs": "求值",
+        "en": "Evaluation"
+      }
+    },
+    {
+      "id": "add",
+      "label": {
+        "chs": "加法与消去",
+        "en": "Addition and cancellation"
+      }
+    },
+    {
+      "id": "multiply",
+      "label": {
+        "chs": "乘法",
+        "en": "Multiplication"
+      }
+    },
+    {
+      "id": "equality",
+      "label": {
+        "chs": "相等与规范化",
+        "en": "Equality with normalization"
+      }
+    },
+    {
+      "id": "power",
+      "label": {
+        "chs": "重复乘法",
+        "en": "Repeated multiplication"
+      }
+    }
+  ]
+}

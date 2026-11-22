@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-double-entry-ledger",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "title": {
+    "chs": "原子转账账本",
+    "en": "Atomic Transfer Ledger"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "open",
+      "label": {
+        "chs": "开户与重复开户",
+        "en": "Opening accounts"
+      }
+    },
+    {
+      "id": "deposit",
+      "label": {
+        "chs": "存款校验",
+        "en": "Deposit validation"
+      }
+    },
+    {
+      "id": "withdraw",
+      "label": {
+        "chs": "取款与余额不足",
+        "en": "Withdrawals and insufficient funds"
+      }
+    },
+    {
+      "id": "transfer",
+      "label": {
+        "chs": "正常转账",
+        "en": "A normal transfer"
+      }
+    },
+    {
+      "id": "atomic",
+      "label": {
+        "chs": "失败转账的原子性",
+        "en": "Atomic failure"
+      }
+    },
+    {
+      "id": "audit",
+      "label": {
+        "chs": "总账与负数编号",
+        "en": "Audit and negative ids"
+      }
+    }
+  ]
+}

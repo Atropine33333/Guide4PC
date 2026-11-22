@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-window-average",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 3,
+  "title": {
+    "chs": "修复滑动窗口平均值",
+    "en": "Fix the Sliding-Window Average"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本窗口",
+        "en": "Basic windows"
+      }
+    },
+    {
+      "id": "size-one",
+      "label": {
+        "chs": "窗口为一个元素",
+        "en": "Window of size one"
+      }
+    },
+    {
+      "id": "invalid",
+      "label": {
+        "chs": "非法窗口大小",
+        "en": "Invalid window sizes"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数值",
+        "en": "Negative values"
+      }
+    },
+    {
+      "id": "fractional",
+      "label": {
+        "chs": "小数平均值",
+        "en": "Fractional averages"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长序列",
+        "en": "A long sequence"
+      }
+    }
+  ]
+}

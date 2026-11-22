@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-array-decay",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "数组退化与引用绑定",
+    "en": "Array Decay and Reference Binding"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "array-bytes",
+      "label": {
+        "chs": "数组引用保留完整大小",
+        "en": "Array reference keeps full size"
+      }
+    },
+    {
+      "id": "pointer-bytes",
+      "label": {
+        "chs": "指针形参只得到指针大小",
+        "en": "Pointer parameter sees pointer size"
+      }
+    },
+    {
+      "id": "overload-array",
+      "label": {
+        "chs": "数组实参选择数组重载",
+        "en": "Array argument selects array overload"
+      }
+    },
+    {
+      "id": "overload-pointer",
+      "label": {
+        "chs": "指针实参选择指针重载",
+        "en": "Pointer argument selects pointer overload"
+      }
+    },
+    {
+      "id": "sum-array",
+      "label": {
+        "chs": "数组求和",
+        "en": "Summing an array"
+      }
+    },
+    {
+      "id": "sum-range",
+      "label": {
+        "chs": "指针区间求和",
+        "en": "Summing a pointer range"
+      }
+    }
+  ]
+}

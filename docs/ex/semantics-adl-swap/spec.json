@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-adl-swap",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 4,
+  "title": {
+    "chs": "ADL 与定制 swap",
+    "en": "ADL and Customizing swap"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "adl-swap",
+      "label": {
+        "chs": "非限定调用找到定制 swap",
+        "en": "Unqualified call finds the custom swap"
+      }
+    },
+    {
+      "id": "std-swap",
+      "label": {
+        "chs": "std::swap 不会调用定制版本",
+        "en": "std::swap does not use the customization"
+      }
+    },
+    {
+      "id": "builtin-swap",
+      "label": {
+        "chs": "内建类型使用 std::swap",
+        "en": "Built-in types use std::swap"
+      }
+    },
+    {
+      "id": "counter-reset",
+      "label": {
+        "chs": "计数器可复位",
+        "en": "The counter can be reset"
+      }
+    },
+    {
+      "id": "qualified-swap",
+      "label": {
+        "chs": "限定调用定制 swap",
+        "en": "Qualified call to the custom swap"
+      }
+    }
+  ]
+}

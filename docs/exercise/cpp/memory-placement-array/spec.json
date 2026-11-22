@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-placement-array",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "title": {
+    "chs": "定位构造的对象数组",
+    "en": "Placement-Constructed Array"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "tracker",
+      "label": {
+        "chs": "直接构造与析构",
+        "en": "Direct construction and destruction"
+      }
+    },
+    {
+      "id": "push",
+      "label": {
+        "chs": "定位构造",
+        "en": "Placement construction"
+      }
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "容量已满",
+        "en": "A full buffer"
+      }
+    },
+    {
+      "id": "values",
+      "label": {
+        "chs": "元素值",
+        "en": "Element values"
+      }
+    },
+    {
+      "id": "tracker-destroyed",
+      "label": {
+        "chs": "直接对象析构计数",
+        "en": "Direct destruction accounting"
+      }
+    },
+    {
+      "id": "destruction",
+      "label": {
+        "chs": "缓冲区析构",
+        "en": "Buffer destruction"
+      }
+    },
+    {
+      "id": "edge",
+      "label": {
+        "chs": "零容量与多个对象",
+        "en": "Zero capacity and multiple buffers"
+      }
+    },
+    {
+      "id": "multiple",
+      "label": {
+        "chs": "多个缓冲区同时存活",
+        "en": "Multiple live buffers"
+      }
+    },
+    {
+      "id": "multiple-destroyed",
+      "label": {
+        "chs": "多个缓冲区全部释放",
+        "en": "All buffers released"
+      }
+    }
+  ]
+}

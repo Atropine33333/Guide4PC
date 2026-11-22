@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-idempotent-gateway",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": {
+    "chs": "幂等提交网关",
+    "en": "Idempotent Submission Gateway"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "accepted",
+      "label": {
+        "chs": "首次提交",
+        "en": "First submission"
+      }
+    },
+    {
+      "id": "duplicate",
+      "label": {
+        "chs": "相同金额重复提交",
+        "en": "Duplicate with the same amount"
+      }
+    },
+    {
+      "id": "conflict",
+      "label": {
+        "chs": "相同编号不同金额",
+        "en": "Same id with a different amount"
+      }
+    },
+    {
+      "id": "complete",
+      "label": {
+        "chs": "完成与结果",
+        "en": "Completion and result"
+      }
+    },
+    {
+      "id": "after-complete",
+      "label": {
+        "chs": "完成后的幂等性",
+        "en": "Idempotency after completion"
+      }
+    },
+    {
+      "id": "multiple",
+      "label": {
+        "chs": "多个编号",
+        "en": "Multiple ids"
+      }
+    }
+  ]
+}

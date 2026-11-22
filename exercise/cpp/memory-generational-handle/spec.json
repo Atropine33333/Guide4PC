@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-generational-handle",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 5,
+  "title": {
+    "chs": "带代际句柄的槽位表",
+    "en": "Generational Handle Store"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "分配与读取",
+        "en": "Allocation and access"
+      }
+    },
+    {
+      "id": "stale",
+      "label": {
+        "chs": "销毁后的旧句柄",
+        "en": "Stale handles after destruction"
+      }
+    },
+    {
+      "id": "invalid",
+      "label": {
+        "chs": "非法与越界句柄",
+        "en": "Invalid and out-of-range handles"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "重复销毁",
+        "en": "Double destruction"
+      }
+    },
+    {
+      "id": "capacity",
+      "label": {
+        "chs": "容量与复用",
+        "en": "Capacity and reuse"
+      }
+    },
+    {
+      "id": "const",
+      "label": {
+        "chs": "常量访问",
+        "en": "Const access"
+      }
+    }
+  ]
+}

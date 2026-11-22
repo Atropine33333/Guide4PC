@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-compose",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": {
+    "chs": "函数组合",
+    "en": "Function Composition"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本组合",
+        "en": "Basic composition"
+      }
+    },
+    {
+      "id": "types",
+      "label": {
+        "chs": "不同返回类型",
+        "en": "Different return types"
+      }
+    },
+    {
+      "id": "function-pointer",
+      "label": {
+        "chs": "函数指针",
+        "en": "Function pointers"
+      }
+    },
+    {
+      "id": "nested",
+      "label": {
+        "chs": "嵌套组合",
+        "en": "Nested composition"
+      }
+    },
+    {
+      "id": "functor",
+      "label": {
+        "chs": "函数对象",
+        "en": "Function objects"
+      }
+    },
+    {
+      "id": "stateful",
+      "label": {
+        "chs": "带状态的可调用对象",
+        "en": "Stateful callables"
+      }
+    }
+  ]
+}

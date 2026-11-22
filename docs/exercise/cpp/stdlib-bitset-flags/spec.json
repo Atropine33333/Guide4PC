@@ -1,0 +1,151 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-bitset-flags",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "64 位标志寄存器",
+    "en": "64-bit Flag Register"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "set-test",
+      "label": {
+        "chs": "置位与边界查询",
+        "en": "Setting bits and testing the boundaries"
+      },
+      "cases": [
+        {
+          "in": [
+            "8",
+            "set 0",
+            "set 63",
+            "test 0",
+            "test 63",
+            "test 1",
+            "count",
+            "first",
+            "last"
+          ],
+          "out": [
+            "1",
+            "1",
+            "0",
+            "2",
+            "0",
+            "63"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reset-flip",
+      "label": {
+        "chs": "复位与翻转",
+        "en": "Resetting and flipping"
+      },
+      "cases": [
+        {
+          "in": [
+            "9",
+            "set 5",
+            "set 5",
+            "reset 5",
+            "test 5",
+            "flip 7",
+            "test 7",
+            "flip 7",
+            "test 7",
+            "count"
+          ],
+          "out": [
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "label": {
+        "chs": "计数",
+        "en": "Counting set bits"
+      },
+      "cases": [
+        {
+          "in": [
+            "9",
+            "set 1",
+            "set 2",
+            "set 3",
+            "set 62",
+            "count",
+            "reset 2",
+            "count",
+            "set 0",
+            "count"
+          ],
+          "out": [
+            "4",
+            "3",
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空寄存器",
+        "en": "An empty register"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "count",
+            "first",
+            "last",
+            "any"
+          ],
+          "out": [
+            "0",
+            "-1",
+            "-1",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "full",
+      "label": {
+        "chs": "全部置位",
+        "en": "All bits set"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "fill",
+            "count",
+            "first",
+            "last"
+          ],
+          "out": [
+            "64",
+            "0",
+            "63"
+          ]
+        }
+      ]
+    }
+  ]
+}

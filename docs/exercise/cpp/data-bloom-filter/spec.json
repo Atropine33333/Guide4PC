@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-bloom-filter",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "布隆过滤器",
+    "en": "Bloom Filter"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "插入与查询",
+        "en": "Insert and query"
+      }
+    },
+    {
+      "id": "no-false-negative",
+      "label": {
+        "chs": "无假阴性",
+        "en": "No false negatives"
+      }
+    },
+    {
+      "id": "duplicate",
+      "label": {
+        "chs": "重复插入不变",
+        "en": "Duplicate inserts do not change bits"
+      }
+    },
+    {
+      "id": "tiny",
+      "label": {
+        "chs": "单桶与少量桶",
+        "en": "One bucket and few buckets"
+      }
+    },
+    {
+      "id": "empty-string",
+      "label": {
+        "chs": "空串与长串",
+        "en": "Empty and long strings"
+      }
+    },
+    {
+      "id": "dense",
+      "label": {
+        "chs": "接近填满",
+        "en": "A nearly full filter"
+      }
+    }
+  ]
+}

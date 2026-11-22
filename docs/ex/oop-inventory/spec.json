@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-inventory",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 2,
+  "title": {
+    "chs": "库存账本",
+    "en": "Inventory Ledger"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空库存",
+        "en": "An empty inventory"
+      }
+    },
+    {
+      "id": "add",
+      "label": {
+        "chs": "累加数量",
+        "en": "Accumulating quantities"
+      }
+    },
+    {
+      "id": "remove",
+      "label": {
+        "chs": "部分与全部移除",
+        "en": "Partial and full removal"
+      }
+    },
+    {
+      "id": "failure",
+      "label": {
+        "chs": "失败操作不改变状态",
+        "en": "Failed operations change nothing"
+      }
+    },
+    {
+      "id": "names",
+      "label": {
+        "chs": "特殊名称",
+        "en": "Unusual names"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "较大量",
+        "en": "A larger amount"
+      }
+    }
+  ]
+}

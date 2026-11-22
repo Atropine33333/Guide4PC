@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-set-window",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 3,
+  "title": {
+    "chs": "有序集合的区间查询",
+    "en": "Range Queries on an Ordered Set"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "inclusive",
+      "label": {
+        "chs": "包含两端",
+        "en": "Both endpoints are included"
+      }
+    },
+    {
+      "id": "case-empty",
+      "label": {
+        "chs": "空集合",
+        "en": "Empty set"
+      }
+    },
+    {
+      "id": "outside",
+      "label": {
+        "chs": "区间外",
+        "en": "Outside the range"
+      }
+    },
+    {
+      "id": "reversed",
+      "label": {
+        "chs": "下界大于上界",
+        "en": "Lower bound above upper bound"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单元素集合",
+        "en": "Single-element set"
+      }
+    },
+    {
+      "id": "sparse",
+      "label": {
+        "chs": "稀疏集合",
+        "en": "Sparse set"
+      }
+    }
+  ]
+}

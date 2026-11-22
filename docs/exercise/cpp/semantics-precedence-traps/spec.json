@@ -1,0 +1,175 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-precedence-traps",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 1,
+  "title": {
+    "chs": "运算符优先级陷阱",
+    "en": "Operator Precedence Traps"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "arithmetic",
+      "label": {
+        "chs": "算术与结合性",
+        "en": "Arithmetic and associativity"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 2 3 4"
+          ],
+          "out": [
+            "14"
+          ]
+        },
+        {
+          "in": [
+            "2 2 3 4"
+          ],
+          "out": [
+            "20"
+          ]
+        },
+        {
+          "in": [
+            "7 2 3 4"
+          ],
+          "out": [
+            "-5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shift",
+      "label": {
+        "chs": "移位与加减",
+        "en": "Shift versus addition"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 5 2 7"
+          ],
+          "out": [
+            "10"
+          ]
+        },
+        {
+          "in": [
+            "3 2 3 4"
+          ],
+          "out": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bitwise",
+      "label": {
+        "chs": "位运算优先级",
+        "en": "Bitwise precedence"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 2 3 4"
+          ],
+          "out": [
+            "6"
+          ]
+        },
+        {
+          "in": [
+            "4 9 8 7"
+          ],
+          "out": [
+            "15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "relational",
+      "label": {
+        "chs": "关系与相等",
+        "en": "Relational and equality operators"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 2 3 4"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "5 5 2 7"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unary",
+      "label": {
+        "chs": "一元负号",
+        "en": "Unary minus"
+      },
+      "cases": [
+        {
+          "in": [
+            "6 2 3 4"
+          ],
+          "out": [
+            "6"
+          ]
+        },
+        {
+          "in": [
+            "6 9 8 7"
+          ],
+          "out": [
+            "72"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ternary",
+      "label": {
+        "chs": "条件运算符",
+        "en": "Conditional operator"
+      },
+      "cases": [
+        {
+          "in": [
+            "8 2 3 4"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "8 1 1 1"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    }
+  ]
+}

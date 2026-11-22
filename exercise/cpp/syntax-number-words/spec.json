@@ -1,0 +1,215 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-number-words",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "整数转英文单词",
+    "en": "Integer to English Words"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "零",
+        "en": "Zero"
+      },
+      "cases": [
+        {
+          "in": [
+            "0"
+          ],
+          "out": [
+            "zero"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small",
+      "label": {
+        "chs": "小于二十",
+        "en": "Below twenty"
+      },
+      "cases": [
+        {
+          "in": [
+            "7"
+          ],
+          "out": [
+            "seven"
+          ]
+        },
+        {
+          "in": [
+            "13"
+          ],
+          "out": [
+            "thirteen"
+          ]
+        },
+        {
+          "in": [
+            "19"
+          ],
+          "out": [
+            "nineteen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tens",
+      "label": {
+        "chs": "整十与两位数",
+        "en": "Tens and two-digit numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "20"
+          ],
+          "out": [
+            "twenty"
+          ]
+        },
+        {
+          "in": [
+            "42"
+          ],
+          "out": [
+            "forty two"
+          ]
+        },
+        {
+          "in": [
+            "99"
+          ],
+          "out": [
+            "ninety nine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hundreds",
+      "label": {
+        "chs": "整百与三位数",
+        "en": "Hundreds and three-digit numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "100"
+          ],
+          "out": [
+            "one hundred"
+          ]
+        },
+        {
+          "in": [
+            "101"
+          ],
+          "out": [
+            "one hundred one"
+          ]
+        },
+        {
+          "in": [
+            "110"
+          ],
+          "out": [
+            "one hundred ten"
+          ]
+        },
+        {
+          "in": [
+            "999"
+          ],
+          "out": [
+            "nine hundred ninety nine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thousands",
+      "label": {
+        "chs": "整千与四位数",
+        "en": "Thousands and four-digit numbers"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000"
+          ],
+          "out": [
+            "one thousand"
+          ]
+        },
+        {
+          "in": [
+            "1001"
+          ],
+          "out": [
+            "one thousand one"
+          ]
+        },
+        {
+          "in": [
+            "1010"
+          ],
+          "out": [
+            "one thousand ten"
+          ]
+        },
+        {
+          "in": [
+            "1100"
+          ],
+          "out": [
+            "one thousand one hundred"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合位数",
+        "en": "Mixed magnitudes"
+      },
+      "cases": [
+        {
+          "in": [
+            "123456"
+          ],
+          "out": [
+            "one hundred twenty three thousand four hundred fifty six"
+          ]
+        },
+        {
+          "in": [
+            "999999"
+          ],
+          "out": [
+            "nine hundred ninety nine thousand nine hundred ninety nine"
+          ]
+        },
+        {
+          "in": [
+            "100000"
+          ],
+          "out": [
+            "one hundred thousand"
+          ]
+        }
+      ]
+    }
+  ]
+}

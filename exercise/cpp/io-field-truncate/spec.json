@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-field-truncate",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": {
+    "chs": "字段截断与居中",
+    "en": "Field Truncation and Centering"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "truncate-long",
+      "label": {
+        "chs": "截断过长文本",
+        "en": "Truncating long text"
+      }
+    },
+    {
+      "id": "truncate-short",
+      "label": {
+        "chs": "短文本不截断",
+        "en": "Short text is unchanged"
+      }
+    },
+    {
+      "id": "center-even",
+      "label": {
+        "chs": "偶数宽度差",
+        "en": "Even padding difference"
+      }
+    },
+    {
+      "id": "center-odd",
+      "label": {
+        "chs": "奇数个补空格",
+        "en": "Odd total padding"
+      }
+    },
+    {
+      "id": "center-truncate",
+      "label": {
+        "chs": "超长文本居中",
+        "en": "Centering text that is too long"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空文本与零宽度",
+        "en": "Empty text and zero width"
+      }
+    }
+  ]
+}

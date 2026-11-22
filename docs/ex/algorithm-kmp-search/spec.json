@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-kmp-search",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "title": {
+    "chs": "KMP 查找所有出现位置",
+    "en": "KMP: Find All Occurrences"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本匹配",
+        "en": "Basic matches"
+      }
+    },
+    {
+      "id": "overlap",
+      "label": {
+        "chs": "重叠匹配",
+        "en": "Overlapping matches"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空模式与超长模式",
+        "en": "Empty and too-long patterns"
+      }
+    },
+    {
+      "id": "edges",
+      "label": {
+        "chs": "文本首尾",
+        "en": "Matches at the text edges"
+      }
+    },
+    {
+      "id": "repeated",
+      "label": {
+        "chs": "重复字符",
+        "en": "Repeated characters"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长文本",
+        "en": "Long text"
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-round-half-even",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "银行家舍入",
+    "en": "Banker's Rounding"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "positive-ties",
+      "label": {
+        "chs": "正数半值",
+        "en": "Positive ties"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "0.5 1.5 2.5 3.5 4.5"
+          ],
+          "out": [
+            "0",
+            "2",
+            "2",
+            "4",
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-ties",
+      "label": {
+        "chs": "负数半值",
+        "en": "Negative ties"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "-0.5 -1.5 -2.5 -3.5"
+          ],
+          "out": [
+            "0",
+            "-2",
+            "-2",
+            "-4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "near-ties",
+      "label": {
+        "chs": "半值两侧",
+        "en": "Just below and above a tie"
+      },
+      "cases": [
+        {
+          "in": [
+            "6",
+            "0.499 0.5001 2.4999 2.5001 -1.4999 -1.5001"
+          ],
+          "out": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "-1",
+            "-2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "integers",
+      "label": {
+        "chs": "已经是整数",
+        "en": "Already integral"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "0 7 -7 -0.0"
+          ],
+          "out": [
+            "0",
+            "7",
+            "-7",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大数半值",
+        "en": "Large ties"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "123456.5 123457.5 -123455.5 999999.5"
+          ],
+          "out": [
+            "123456",
+            "123458",
+            "-123456",
+            "1000000"
+          ]
+        }
+      ]
+    }
+  ]
+}

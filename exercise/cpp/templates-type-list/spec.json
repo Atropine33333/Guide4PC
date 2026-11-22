@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-type-list",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 5,
+  "title": {
+    "chs": "编译期类型列表",
+    "en": "Compile-Time Type List"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "size",
+      "label": {
+        "chs": "元素个数",
+        "en": "Element count"
+      }
+    },
+    {
+      "id": "front",
+      "label": {
+        "chs": "首元素",
+        "en": "Front element"
+      }
+    },
+    {
+      "id": "push-front",
+      "label": {
+        "chs": "前置插入",
+        "en": "Push front"
+      }
+    },
+    {
+      "id": "contains",
+      "label": {
+        "chs": "类型查询",
+        "en": "Type membership"
+      }
+    },
+    {
+      "id": "at",
+      "label": {
+        "chs": "按下标访问",
+        "en": "Indexed access"
+      }
+    },
+    {
+      "id": "chain",
+      "label": {
+        "chs": "链式组合",
+        "en": "Chained composition"
+      }
+    }
+  ]
+}

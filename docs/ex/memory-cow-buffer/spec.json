@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-cow-buffer",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 4,
+  "title": {
+    "chs": "写时复制缓冲区",
+    "en": "Copy-on-Write Buffer"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "initial",
+      "label": {
+        "chs": "初始共享",
+        "en": "Initial sharing"
+      }
+    },
+    {
+      "id": "copy",
+      "label": {
+        "chs": "拷贝共享存储",
+        "en": "Copies share storage"
+      }
+    },
+    {
+      "id": "detach",
+      "label": {
+        "chs": "写入时分离",
+        "en": "Detach on write"
+      }
+    },
+    {
+      "id": "assign",
+      "label": {
+        "chs": "赋值与自赋值",
+        "en": "Assignment and self-assignment"
+      }
+    },
+    {
+      "id": "destroy",
+      "label": {
+        "chs": "共享块计数",
+        "en": "Live block accounting"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空缓冲区",
+        "en": "Empty buffers"
+      }
+    }
+  ]
+}

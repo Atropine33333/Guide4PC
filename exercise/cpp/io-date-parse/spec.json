@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-date-parse",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "解析并格式化日期",
+    "en": "Parsing and Formatting Dates"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "valid",
+      "label": {
+        "chs": "合法日期",
+        "en": "Valid dates"
+      }
+    },
+    {
+      "id": "leap",
+      "label": {
+        "chs": "闰年规则",
+        "en": "Leap-year rules"
+      }
+    },
+    {
+      "id": "month-length",
+      "label": {
+        "chs": "各月天数",
+        "en": "Days in each month"
+      }
+    },
+    {
+      "id": "reject-shape",
+      "label": {
+        "chs": "拒绝错误形状",
+        "en": "Rejecting malformed input"
+      }
+    },
+    {
+      "id": "reject-values",
+      "label": {
+        "chs": "拒绝越界字段",
+        "en": "Rejecting out-of-range fields"
+      }
+    },
+    {
+      "id": "format",
+      "label": {
+        "chs": "短格式输出",
+        "en": "Short-format output"
+      }
+    }
+  ]
+}

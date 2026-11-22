@@ -1,0 +1,113 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-dna-hamming",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "title": {
+    "chs": "DNA 汉明距离与反向互补",
+    "en": "DNA Hamming Distance and Reverse Complement"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "identical",
+      "label": {
+        "chs": "完全相同",
+        "en": "Identical strands"
+      },
+      "cases": [
+        {
+          "in": [
+            "ACGT",
+            "ACGT"
+          ],
+          "out": [
+            "0",
+            "ACGT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单字符",
+        "en": "Single characters"
+      },
+      "cases": [
+        {
+          "in": [
+            "A",
+            "C"
+          ],
+          "out": [
+            "1",
+            "T"
+          ]
+        },
+        {
+          "in": [
+            "G",
+            "G"
+          ],
+          "out": [
+            "0",
+            "C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all-mismatch",
+      "label": {
+        "chs": "全部不同",
+        "en": "Every position differs"
+      },
+      "cases": [
+        {
+          "in": [
+            "AAAA",
+            "TTTT"
+          ],
+          "out": [
+            "4",
+            "TTTT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合链",
+        "en": "A mixed strand"
+      },
+      "cases": [
+        {
+          "in": [
+            "AACG",
+            "TAGC"
+          ],
+          "out": [
+            "3",
+            "CGTT"
+          ]
+        },
+        {
+          "in": [
+            "GATTACA",
+            "CTGTAAG"
+          ],
+          "out": [
+            "5",
+            "TGTAATC"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-endian-swap",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": {
+    "chs": "32 位字节序翻转",
+    "en": "32-bit Byte Order Reversal"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "全零",
+        "en": "All zero bits"
+      },
+      "cases": [
+        {
+          "in": [
+            "0"
+          ],
+          "out": [
+            "0 0 0 0",
+            "0x00000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "low-byte",
+      "label": {
+        "chs": "最低字节",
+        "en": "Only the lowest byte is set"
+      },
+      "cases": [
+        {
+          "in": [
+            "255"
+          ],
+          "out": [
+            "255 0 0 0",
+            "0xff000000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "high-bit",
+      "label": {
+        "chs": "最高位",
+        "en": "Only the highest bit is set"
+      },
+      "cases": [
+        {
+          "in": [
+            "2147483648"
+          ],
+          "out": [
+            "0 0 0 128",
+            "0x00000080"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "四个不同字节",
+        "en": "Four different bytes"
+      },
+      "cases": [
+        {
+          "in": [
+            "16909060"
+          ],
+          "out": [
+            "4 3 2 1",
+            "0x04030201"
+          ]
+        },
+        {
+          "in": [
+            "305419896"
+          ],
+          "out": [
+            "120 86 52 18",
+            "0x78563412"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "max",
+      "label": {
+        "chs": "全一",
+        "en": "All bits set"
+      },
+      "cases": [
+        {
+          "in": [
+            "4294967295"
+          ],
+          "out": [
+            "255 255 255 255",
+            "0xffffffff"
+          ]
+        }
+      ]
+    }
+  ]
+}

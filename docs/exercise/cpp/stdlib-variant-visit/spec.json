@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-variant-visit",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 4,
+  "title": {
+    "chs": "variant 与 visit",
+    "en": "variant and visit"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "kind",
+      "label": {
+        "chs": "判断当前类型",
+        "en": "Identifying the active type"
+      }
+    },
+    {
+      "id": "as-double",
+      "label": {
+        "chs": "统一的数值视图",
+        "en": "A uniform numeric view"
+      }
+    },
+    {
+      "id": "describe-int",
+      "label": {
+        "chs": "整数描述",
+        "en": "Integer descriptions"
+      }
+    },
+    {
+      "id": "describe-double",
+      "label": {
+        "chs": "小数描述",
+        "en": "Double descriptions"
+      }
+    },
+    {
+      "id": "describe-string",
+      "label": {
+        "chs": "字符串描述",
+        "en": "String descriptions"
+      }
+    },
+    {
+      "id": "reassign",
+      "label": {
+        "chs": "重新赋值后的类型",
+        "en": "Type after reassignment"
+      }
+    }
+  ]
+}

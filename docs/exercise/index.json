@@ -20,6 +20,24 @@
       }
     },
     {
+      "id": "algorithm-dijkstra",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "非负权单源最短路",
+        "en": "Single-Source Shortest Paths"
+      },
+      "category": "algorithm",
+      "rank": 5,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "algorithm-edit-distance",
       "dir": "cpp",
       "lang": "cpp",
@@ -85,6 +103,42 @@
       "rank": 4,
       "checks": 6,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-kmp-search",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "KMP 查找所有出现位置",
+        "en": "KMP: Find All Occurrences"
+      },
+      "category": "algorithm",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "algorithm-knapsack",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "0/1 背包",
+        "en": "0/1 Knapsack"
+      },
+      "category": "algorithm",
+      "rank": 3,
+      "checks": 6,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,
@@ -316,6 +370,24 @@
       }
     },
     {
+      "id": "data-bloom-filter",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "布隆过滤器",
+        "en": "Bloom Filter"
+      },
+      "category": "data",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "data-bst-height",
       "dir": "cpp",
       "lang": "cpp",
@@ -379,6 +451,24 @@
       },
       "category": "data",
       "rank": 2,
+      "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-huffman-code",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "哈夫曼编码",
+        "en": "Huffman Coding"
+      },
+      "category": "data",
+      "rank": 5,
       "checks": 6,
       "harness": false,
       "variants": [],
@@ -453,6 +543,24 @@
       "rank": 1,
       "checks": 6,
       "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "data-sliding-max",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "滑动窗口最大值",
+        "en": "Sliding Window Maximum"
+      },
+      "category": "data",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
       "variants": [],
       "problem": {
         "chs": true,
@@ -658,6 +766,42 @@
       }
     },
     {
+      "id": "debugging-leap-year",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "修复闰年判断",
+        "en": "Fix the Leap-Year Test"
+      },
+      "category": "debugging",
+      "rank": 1,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "debugging-matrix-transpose",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "修复矩阵转置",
+        "en": "Fix the Matrix Transpose"
+      },
+      "category": "debugging",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "debugging-mode-tie",
       "dir": "cpp",
       "lang": "cpp",
@@ -766,6 +910,24 @@
       }
     },
     {
+      "id": "debugging-window-average",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "修复滑动窗口平均值",
+        "en": "Fix the Sliding-Window Average"
+      },
+      "category": "debugging",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "debugging-word-count",
       "dir": "cpp",
       "lang": "cpp",
@@ -794,6 +956,24 @@
       "category": "engineering",
       "rank": 4,
       "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-batch-accumulator",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "批量累加器",
+        "en": "Batch Accumulator"
+      },
+      "category": "engineering",
+      "rank": 3,
+      "checks": 6,
       "harness": true,
       "variants": [],
       "problem": {
@@ -856,6 +1036,24 @@
       }
     },
     {
+      "id": "engineering-double-entry-ledger",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "原子转账账本",
+        "en": "Atomic Transfer Ledger"
+      },
+      "category": "engineering",
+      "rank": 5,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "engineering-event-bus",
       "dir": "cpp",
       "lang": "cpp",
@@ -902,6 +1100,24 @@
       "category": "engineering",
       "rank": 5,
       "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "engineering-idempotent-gateway",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "幂等提交网关",
+        "en": "Idempotent Submission Gateway"
+      },
+      "category": "engineering",
+      "rank": 4,
+      "checks": 6,
       "harness": true,
       "variants": [],
       "problem": {
@@ -1108,6 +1324,24 @@
       }
     },
     {
+      "id": "io-date-parse",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "解析并格式化日期",
+        "en": "Parsing and Formatting Dates"
+      },
+      "category": "io",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "io-duration-format",
       "dir": "cpp",
       "lang": "cpp",
@@ -1162,6 +1396,24 @@
       }
     },
     {
+      "id": "io-field-truncate",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "字段截断与居中",
+        "en": "Field Truncation and Centering"
+      },
+      "category": "io",
+      "rank": 2,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "io-float-table",
       "dir": "cpp",
       "lang": "cpp",
@@ -1190,6 +1442,24 @@
       "category": "io",
       "rank": 4,
       "checks": 6,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "io-line-numbering",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "按总行数对齐的行号",
+        "en": "Line Numbers Aligned to the Total"
+      },
+      "category": "io",
+      "rank": 1,
+      "checks": 7,
       "harness": false,
       "variants": [],
       "problem": {
@@ -1360,6 +1630,24 @@
       }
     },
     {
+      "id": "memory-cow-buffer",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "写时复制缓冲区",
+        "en": "Copy-on-Write Buffer"
+      },
+      "category": "memory",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "memory-deep-copy",
       "dir": "cpp",
       "lang": "cpp",
@@ -1388,6 +1676,24 @@
       "category": "memory",
       "rank": 2,
       "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-generational-handle",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "带代际句柄的槽位表",
+        "en": "Generational Handle Store"
+      },
+      "category": "memory",
+      "rank": 5,
+      "checks": 6,
       "harness": true,
       "variants": [],
       "problem": {
@@ -1460,6 +1766,24 @@
       "category": "memory",
       "rank": 2,
       "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "memory-placement-array",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "定位构造的对象数组",
+        "en": "Placement-Constructed Array"
+      },
+      "category": "memory",
+      "rank": 3,
+      "checks": 9,
       "harness": true,
       "variants": [],
       "problem": {
@@ -1630,6 +1954,24 @@
       }
     },
     {
+      "id": "oop-int-range",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "自定义整数区间",
+        "en": "Custom Integer Range"
+      },
+      "category": "oop",
+      "rank": 5,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "oop-interval",
       "dir": "cpp",
       "lang": "cpp",
@@ -1639,6 +1981,24 @@
       },
       "category": "oop",
       "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-inventory",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "库存账本",
+        "en": "Inventory Ledger"
+      },
+      "category": "oop",
+      "rank": 2,
       "checks": 6,
       "harness": true,
       "variants": [],
@@ -1676,6 +2036,24 @@
       "category": "oop",
       "rank": 1,
       "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "oop-polynomial",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "稠密多项式",
+        "en": "Dense Polynomial"
+      },
+      "category": "oop",
+      "rank": 4,
+      "checks": 7,
       "harness": true,
       "variants": [],
       "problem": {
@@ -1828,6 +2206,42 @@
       }
     },
     {
+      "id": "semantics-adl-swap",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "ADL 与定制 swap",
+        "en": "ADL and Customizing swap"
+      },
+      "category": "semantics",
+      "rank": 4,
+      "checks": 5,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-array-decay",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "数组退化与引用绑定",
+        "en": "Array Decay and Reference Binding"
+      },
+      "category": "semantics",
+      "rank": 2,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "semantics-byte-classify",
       "dir": "cpp",
       "lang": "cpp",
@@ -1893,6 +2307,24 @@
       "rank": 3,
       "checks": 6,
       "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "semantics-precedence-traps",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "运算符优先级陷阱",
+        "en": "Operator Precedence Traps"
+      },
+      "category": "semantics",
+      "rank": 1,
+      "checks": 6,
+      "harness": false,
       "variants": [],
       "problem": {
         "chs": true,
@@ -2098,6 +2530,24 @@
       }
     },
     {
+      "id": "stdlib-bitset-flags",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "64 位标志寄存器",
+        "en": "64-bit Flag Register"
+      },
+      "category": "stdlib",
+      "rank": 2,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "stdlib-bracket-balance",
       "dir": "cpp",
       "lang": "cpp",
@@ -2242,6 +2692,24 @@
       }
     },
     {
+      "id": "stdlib-set-window",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "有序集合的区间查询",
+        "en": "Range Queries on an Ordered Set"
+      },
+      "category": "stdlib",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "stdlib-sort-records",
       "dir": "cpp",
       "lang": "cpp",
@@ -2288,6 +2756,24 @@
       "category": "stdlib",
       "rank": 4,
       "checks": 7,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "stdlib-variant-visit",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "variant 与 visit",
+        "en": "variant and visit"
+      },
+      "category": "stdlib",
+      "rank": 4,
+      "checks": 6,
       "harness": true,
       "variants": [],
       "problem": {
@@ -2440,6 +2926,24 @@
       }
     },
     {
+      "id": "syntax-dna-hamming",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "DNA 汉明距离与反向互补",
+        "en": "DNA Hamming Distance and Reverse Complement"
+      },
+      "category": "syntax",
+      "rank": 1,
+      "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "syntax-grade-band",
       "dir": "cpp",
       "lang": "cpp",
@@ -2450,6 +2954,42 @@
       "category": "syntax",
       "rank": 1,
       "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-luhn-check",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "Luhn 校验与校验位",
+        "en": "Luhn Validation and Check Digit"
+      },
+      "category": "syntax",
+      "rank": 2,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "syntax-number-words",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "整数转英文单词",
+        "en": "Integer to English Words"
+      },
+      "category": "syntax",
+      "rank": 3,
+      "checks": 6,
       "harness": false,
       "variants": [],
       "problem": {
@@ -2620,6 +3160,24 @@
       }
     },
     {
+      "id": "templates-compose",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "函数组合",
+        "en": "Function Composition"
+      },
+      "category": "templates",
+      "rank": 3,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "templates-concept-numeric",
       "dir": "cpp",
       "lang": "cpp",
@@ -2746,6 +3304,24 @@
       }
     },
     {
+      "id": "templates-tuple-map",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "元组逐元素映射",
+        "en": "Tuple Map"
+      },
+      "category": "templates",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "templates-type-label",
       "dir": "cpp",
       "lang": "cpp",
@@ -2755,6 +3331,24 @@
       },
       "category": "templates",
       "rank": 4,
+      "checks": 6,
+      "harness": true,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "templates-type-list",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "编译期类型列表",
+        "en": "Compile-Time Type List"
+      },
+      "category": "templates",
+      "rank": 5,
       "checks": 6,
       "harness": true,
       "variants": [],
@@ -2846,6 +3440,24 @@
       "category": "types",
       "rank": 1,
       "checks": 4,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-endian-swap",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "32 位字节序翻转",
+        "en": "32-bit Byte Order Reversal"
+      },
+      "category": "types",
+      "rank": 2,
+      "checks": 5,
       "harness": false,
       "variants": [],
       "problem": {
@@ -2980,6 +3592,24 @@
       }
     },
     {
+      "id": "types-round-half-even",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "银行家舍入",
+        "en": "Banker's Rounding"
+      },
+      "category": "types",
+      "rank": 3,
+      "checks": 5,
+      "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
       "id": "types-safe-add",
       "dir": "cpp",
       "lang": "cpp",
@@ -3027,6 +3657,24 @@
       "rank": 1,
       "checks": 5,
       "harness": false,
+      "variants": [],
+      "problem": {
+        "chs": true,
+        "en": true
+      }
+    },
+    {
+      "id": "types-varint",
+      "dir": "cpp",
+      "lang": "cpp",
+      "title": {
+        "chs": "LEB128 变长整数",
+        "en": "LEB128 Variable-Length Integers"
+      },
+      "category": "types",
+      "rank": 4,
+      "checks": 6,
+      "harness": true,
       "variants": [],
       "problem": {
         "chs": true,

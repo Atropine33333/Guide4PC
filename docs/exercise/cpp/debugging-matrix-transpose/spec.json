@@ -1,0 +1,120 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-matrix-transpose",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 2,
+  "title": {
+    "chs": "修复矩阵转置",
+    "en": "Fix the Matrix Transpose"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "rect",
+      "label": {
+        "chs": "长方形矩阵",
+        "en": "A rectangular matrix"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 3",
+            "1 2 3",
+            "4 5 6"
+          ],
+          "out": [
+            "1 4",
+            "2 5",
+            "3 6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "One element"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 1",
+            "-7"
+          ],
+          "out": [
+            "-7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "row",
+      "label": {
+        "chs": "单行矩阵",
+        "en": "A single row"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 4",
+            "10 20 30 40"
+          ],
+          "out": [
+            "10",
+            "20",
+            "30",
+            "40"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "column",
+      "label": {
+        "chs": "单列矩阵",
+        "en": "A single column"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 1",
+            "9",
+            "8",
+            "7",
+            "6"
+          ],
+          "out": [
+            "9 8 7 6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "square",
+      "label": {
+        "chs": "方阵",
+        "en": "A square matrix"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 3",
+            "1 2 3",
+            "4 5 6",
+            "7 8 9"
+          ],
+          "out": [
+            "1 4 7",
+            "2 5 8",
+            "3 6 9"
+          ]
+        }
+      ]
+    }
+  ]
+}

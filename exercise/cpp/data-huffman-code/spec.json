@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-huffman-code",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 5,
+  "title": {
+    "chs": "哈夫曼编码",
+    "en": "Huffman Coding"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "example",
+      "label": {
+        "chs": "混合频率",
+        "en": "Mixed frequencies"
+      },
+      "cases": [
+        {
+          "in": [
+            "aabbbcccc"
+          ],
+          "out": [
+            "10101111110000",
+            "a 10",
+            "b 11",
+            "c 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一种字符",
+        "en": "A single distinct character"
+      },
+      "cases": [
+        {
+          "in": [
+            "aaaa"
+          ],
+          "out": [
+            "0000",
+            "a 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two",
+      "label": {
+        "chs": "两种字符",
+        "en": "Two distinct characters"
+      },
+      "cases": [
+        {
+          "in": [
+            "ab"
+          ],
+          "out": [
+            "01",
+            "a 0",
+            "b 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tie",
+      "label": {
+        "chs": "频率相同",
+        "en": "Equal frequencies"
+      },
+      "cases": [
+        {
+          "in": [
+            "aabbcc"
+          ],
+          "out": [
+            "1010111100",
+            "a 10",
+            "b 11",
+            "c 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "varied",
+      "label": {
+        "chs": "字母顺序与频率",
+        "en": "Letter order and frequencies"
+      },
+      "cases": [
+        {
+          "in": [
+            "huffman"
+          ],
+          "out": [
+            "011001010110010111",
+            "a 010",
+            "f 10",
+            "h 011",
+            "m 110",
+            "n 111",
+            "u 00"
+          ]
+        },
+        {
+          "in": [
+            "zyxzyx"
+          ],
+          "out": [
+            "0111001110",
+            "x 10",
+            "y 11",
+            "z 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空输入",
+        "en": "Empty input"
+      },
+      "cases": [
+        {
+          "in": [],
+          "out": []
+        }
+      ]
+    }
+  ]
+}

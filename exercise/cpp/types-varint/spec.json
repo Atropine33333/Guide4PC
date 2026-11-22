@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-varint",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 4,
+  "title": {
+    "chs": "LEB128 变长整数",
+    "en": "LEB128 Variable-Length Integers"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "encode-small",
+      "label": {
+        "chs": "小编码",
+        "en": "Small encodings"
+      }
+    },
+    {
+      "id": "encode-boundaries",
+      "label": {
+        "chs": "边界编码",
+        "en": "Boundary encodings"
+      }
+    },
+    {
+      "id": "roundtrip",
+      "label": {
+        "chs": "固定序列往返",
+        "en": "Round-trip over a fixed sequence"
+      }
+    },
+    {
+      "id": "decode-truncated",
+      "label": {
+        "chs": "截断输入",
+        "en": "Truncated input"
+      }
+    },
+    {
+      "id": "decode-canonical",
+      "label": {
+        "chs": "非规范与溢出",
+        "en": "Non-canonical and overflowing input"
+      }
+    },
+    {
+      "id": "decode-consumed",
+      "label": {
+        "chs": "消费字节数",
+        "en": "Consumed byte count"
+      }
+    }
+  ]
+}

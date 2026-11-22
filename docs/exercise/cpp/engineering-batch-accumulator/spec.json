@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-batch-accumulator",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": {
+    "chs": "批量累加器",
+    "en": "Batch Accumulator"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "满批与半批",
+        "en": "Full and partial batches"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "批大小为 1",
+        "en": "Batch size one"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空操作",
+        "en": "Empty operations"
+      }
+    },
+    {
+      "id": "multiple",
+      "label": {
+        "chs": "连续多批",
+        "en": "Several consecutive batches"
+      }
+    },
+    {
+      "id": "clamp",
+      "label": {
+        "chs": "批大小为零",
+        "en": "Zero batch size"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数值",
+        "en": "Negative values"
+      }
+    }
+  ]
+}

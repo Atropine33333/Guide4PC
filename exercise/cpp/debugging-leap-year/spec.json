@@ -1,0 +1,134 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-leap-year",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 1,
+  "title": {
+    "chs": "修复闰年判断",
+    "en": "Fix the Leap-Year Test"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "modern",
+      "label": {
+        "chs": "常见闰年",
+        "en": "A common leap year"
+      },
+      "cases": [
+        {
+          "in": [
+            "2024"
+          ],
+          "out": [
+            "leap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "common",
+      "label": {
+        "chs": "常见平年",
+        "en": "A common non-leap year"
+      },
+      "cases": [
+        {
+          "in": [
+            "2023"
+          ],
+          "out": [
+            "common"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "century",
+      "label": {
+        "chs": "整百年规则",
+        "en": "Century rule"
+      },
+      "cases": [
+        {
+          "in": [
+            "1900"
+          ],
+          "out": [
+            "common"
+          ]
+        },
+        {
+          "in": [
+            "2000"
+          ],
+          "out": [
+            "leap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ancient",
+      "label": {
+        "chs": "更早的整百年",
+        "en": "Earlier century years"
+      },
+      "cases": [
+        {
+          "in": [
+            "1600"
+          ],
+          "out": [
+            "leap"
+          ]
+        },
+        {
+          "in": [
+            "2100"
+          ],
+          "out": [
+            "common"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boundary",
+      "label": {
+        "chs": "小年份与最大年份",
+        "en": "Small and maximum years"
+      },
+      "cases": [
+        {
+          "in": [
+            "1"
+          ],
+          "out": [
+            "common"
+          ]
+        },
+        {
+          "in": [
+            "4"
+          ],
+          "out": [
+            "leap"
+          ]
+        },
+        {
+          "in": [
+            "9999"
+          ],
+          "out": [
+            "common"
+          ]
+        }
+      ]
+    }
+  ]
+}

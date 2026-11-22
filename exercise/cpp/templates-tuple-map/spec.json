@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-tuple-map",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "title": {
+    "chs": "元组逐元素映射",
+    "en": "Tuple Map"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "homogeneous",
+      "label": {
+        "chs": "同类型元组",
+        "en": "A homogeneous tuple"
+      }
+    },
+    {
+      "id": "heterogeneous",
+      "label": {
+        "chs": "不同类型元组",
+        "en": "A heterogeneous tuple"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空元组",
+        "en": "The empty tuple"
+      }
+    },
+    {
+      "id": "const",
+      "label": {
+        "chs": "常量元组",
+        "en": "A const tuple"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单元素元组",
+        "en": "A single-element tuple"
+      }
+    },
+    {
+      "id": "function-pointer",
+      "label": {
+        "chs": "函数指针作为映射",
+        "en": "A function-pointer mapper"
+      }
+    }
+  ]
+}

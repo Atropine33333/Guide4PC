@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-luhn-check",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "Luhn 校验与校验位",
+    "en": "Luhn Validation and Check Digit"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "valid",
+      "label": {
+        "chs": "合法号码",
+        "en": "Valid numbers"
+      }
+    },
+    {
+      "id": "invalid",
+      "label": {
+        "chs": "非法号码",
+        "en": "Invalid numbers"
+      }
+    },
+    {
+      "id": "check-digit",
+      "label": {
+        "chs": "计算校验位",
+        "en": "Computing a check digit"
+      }
+    },
+    {
+      "id": "ignore-separators",
+      "label": {
+        "chs": "忽略空格和连字符",
+        "en": "Ignoring spaces and hyphens"
+      }
+    },
+    {
+      "id": "short",
+      "label": {
+        "chs": "空串与短串",
+        "en": "Empty and short strings"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长号码",
+        "en": "A long number"
+      }
+    }
+  ]
+}

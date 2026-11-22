@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-sliding-max",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": {
+    "chs": "滑动窗口最大值",
+    "en": "Sliding Window Maximum"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "基本窗口",
+        "en": "Basic windows"
+      }
+    },
+    {
+      "id": "sizes",
+      "label": {
+        "chs": "窗口为 1 与整段",
+        "en": "Window of one and the whole array"
+      }
+    },
+    {
+      "id": "invalid",
+      "label": {
+        "chs": "非法窗口",
+        "en": "Invalid window sizes"
+      }
+    },
+    {
+      "id": "negatives",
+      "label": {
+        "chs": "负数与重复值",
+        "en": "Negatives and duplicates"
+      }
+    },
+    {
+      "id": "monotone",
+      "label": {
+        "chs": "单调序列",
+        "en": "Monotone sequences"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "较长序列",
+        "en": "A longer sequence"
+      }
+    }
+  ]
+}
