@@ -820,3 +820,17 @@
 .ex-card .cm-diagnostic-warning {
   border-left: 2px solid var(--ex-warn);
 }
+
+/* RE/MLE 判定横幅：代码 + 一句话标题，下面接 human 与原始信息。 */
+.ex-verdict {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in oklch, var(--ex-fail) 45%, transparent);
+  background: color-mix(in oklch, var(--ex-fail) 8%, transparent);
+  color: var(--ex-fail);
+  font-family: var(--font-sans);
+  font-size: var(--ex-fs-xs);
+  font-weight: 600;
+  letter-spacing: .02em;
+}

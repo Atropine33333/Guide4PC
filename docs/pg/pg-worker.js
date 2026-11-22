@@ -188,11 +188,53 @@ function parseHarnessOutput(stdout) {
   return { seen, doneInfo, program: programLines.join('\n') };
 }
 
+
+/** 把 wasm 运行时错误归类成可读的 RE / MLE 判定（标题与建议由前端按语言渲染）。 */
+function classifyTrap(err) {
+  const raw = String((err && (err.stack || err.message)) || err);
+  const msg = String((err && err.message) || err).split('\n')[0];
+  let kind = 're';
+  let code = 'RE';
+  if (/divide by zero/i.test(raw)) kind = 'div0';
+  else if (/memory access out of bounds|out of bounds/i.test(raw)) kind = 'oob';
+  else if (/__assert_fail/.test(raw)) kind = 'assert';
+  else if (/__throw_out_of_range/.test(raw)) kind = 'oob-checked';
+  else if (/__throw_length_error/.test(raw)) kind = 'length';
+  else if (/__throw_bad_alloc|bad_alloc|bad_array_new_length|allocation failed|Cannot enlarge memory|maximum memory size exceeded|memory\.grow|out of memory/i.test(raw)) { kind = 'mle'; code = 'MLE'; }
+  else if (/call stack exhausted|stack overflow|Maximum call stack/i.test(raw)) kind = 'stack';
+  else if (/indirect call|signature mismatch|null function/i.test(raw)) kind = 'indirect';
+  return { kind: kind, code: code, message: msg.slice(0, 240) };
+}
+
+function trapResult(mode, trap, spec, compileMs, runMs) {
+  const checks = (spec.checks || []).map(function (c) {
+    return { id: c.id, ok: false, detail: { trap: trap.kind }, reported: false };
+  });
+  return {
+    mode: mode,
+    ok: false,
+    checks: checks,
+    diagnostics: [],
+    compileMs: compileMs || 0,
+    runMs: runMs || 0,
+    exitCode: null,
+    stdout: '',
+    stderr: '',
+    truncated: false,
+    trap: trap,
+  };
+}
+
 async function runHarness(compiler, spec, code, harnessCode, limits) {
   const source = code + '\n' + (harnessCode || '');
   const totalChecks = (spec.checks || []).length;
   send('phase', { phase: 'compile', total: totalChecks });
-  const r = await compiler.run(source, '', { compileArgs: ['-O1', '-Wall'] });
+  let r;
+  try {
+    r = await compiler.run(source, '', { compileArgs: ['-O1', '-Wall'] });
+  } catch (e) {
+    return trapResult('harness', classifyTrap(e), spec, 0, 0);
+  }
   if (r.errors && r.errors.length) {
     return {
       mode: 'harness',
@@ -243,6 +285,7 @@ async function runCases(compiler, spec, code, limits) {
   let firstFail = null;
   let lastStdout = '';
   let lastStderr = '';
+  let firstTrap = null;
 
   const allChecks = spec.checks || [];
   for (let checkIndex = 0; checkIndex < allChecks.length; ++checkIndex) {
@@ -260,7 +303,15 @@ async function runCases(compiler, spec, code, limits) {
         total: totalCases,
         check: check.id,
       });
-      const r = await compiler.run(code, input, { compileArgs: ['-O1', '-Wall'] });
+      let r;
+      try {
+        r = await compiler.run(code, input, { compileArgs: ['-O1', '-Wall'] });
+      } catch (e) {
+        firstTrap = classifyTrap(e);
+        ok = false;
+        detail = { caseIndex: i, input: input, expected: normalize(toInput(testCase.out)), actual: null, trap: firstTrap.kind };
+        break;
+      }
       compileMs += r.compileMs || 0;
       runMs += r.runMs || 0;
       lastStdout = r.stdout || '';
@@ -287,6 +338,12 @@ async function runCases(compiler, spec, code, limits) {
       }
     }
     checks.push({ id: check.id, ok, detail });
+    if (firstTrap) {
+      for (let rest = checkIndex + 1; rest < allChecks.length; ++rest) {
+        checks.push({ id: allChecks[rest].id, ok: false, detail: { trap: firstTrap.kind } });
+      }
+      break;
+    }
     send('check', { id: check.id, ok, detail });
     if (firstDiagnostics) {
       // 编译失败时后面的检查根本跑不到，仍按“未通过”补齐，清单不缩水。
@@ -311,6 +368,7 @@ async function runCases(compiler, spec, code, limits) {
     stdout: limitText(lastStdout, maxBytes).text,
     stderr: limitText(lastStderr, maxBytes).text,
     truncated: limitText(lastStdout, maxBytes).truncated || limitText(lastStderr, maxBytes).truncated,
+    trap: firstTrap,
   };
 }
 

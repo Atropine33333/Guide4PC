@@ -14,6 +14,20 @@
   'use strict';
 
   var ZH = /^zh/i.test(document.documentElement.lang || '');
+  var TRAP_TEXT = {
+    div0: { chs: '整数除零', en: 'Integer divide by zero', hint: '除数是 0。检查除法/取模的分母，先判断再算。', hintEn: 'The divisor is 0. Check the denominator before dividing.' },
+    oob: { chs: '越界访问', en: 'Out-of-bounds access', hint: '下标或指针越界。C++ 的 [] 不检查越界，越界就是未定义行为。', hintEn: 'Index or pointer out of range; [] does not bounds-check in C++.' },
+    'oob-checked': { chs: '越界访问（带检查）', en: 'Out-of-bounds (checked)', hint: '.at() 等带检查的访问越界了，先检查索引范围。', hintEn: 'A checked access such as .at() went out of range.' },
+    assert: { chs: '断言失败', en: 'Assertion failed', hint: 'assert 条件为假。先想清楚它该不该成立，再决定改代码还是改断言。', hintEn: 'An assert() condition was false.' },
+    length: { chs: '容器尺寸非法', en: 'Invalid container size', hint: '请求的尺寸超过容器上限，换更小的规模或检查参数。', hintEn: 'Requested size exceeds the container limit.' },
+    mle: { chs: '内存超限', en: 'Memory limit exceeded', hint: '申请的内存超过 wasm 可用上限（通常 1–4GB），换更省内存的写法。', hintEn: 'Allocation exceeded the wasm memory limit.' },
+    stack: { chs: '栈溢出', en: 'Stack overflow', hint: '递归太深或没有终止条件，检查 base case。', hintEn: 'Recursion went too deep; check the base case.' },
+    indirect: { chs: '函数指针调用失败', en: 'Bad indirect call', hint: '函数指针为空或签名不匹配。', hintEn: 'Function pointer is null or its signature mismatches.' },
+    re: { chs: '运行时错误', en: 'Runtime error', hint: '程序在运行中崩溃了，看原始信息定位。', hintEn: 'The program crashed at runtime; see the raw message.' },
+  };
+  function trapInfo(trap) { return TRAP_TEXT[(trap && trap.kind) || 're'] || TRAP_TEXT.re; }
+  function trapTitle(trap) { var m = trapInfo(trap); return ZH ? m.chs : m.en; }
+  function trapHint(trap) { var m = trapInfo(trap); return ZH ? m.hint : m.hintEn; }
   var TEXT = {
     badge: ZH ? '在线练习' : 'Playground',
     run: ZH ? '运行' : 'Run',
@@ -699,13 +713,23 @@
       if (result.diagnostics && result.diagnostics.length) {
         showDiagnostics(result.diagnostics);
       }
-      if (result && (result.exitCode != null || result.stdout || result.stderr)) {
+      if (result.trap) {
+        diagBox.innerHTML = '';
+        diagBox.hidden = false;
+        diagBox.appendChild(h('div', { class: 'ex-diag' }, [
+          h('div', { class: 'ex-verdict', text: result.trap.code + ' · ' + trapTitle(result.trap) }),
+          h('div', { class: 'ex-diag-human', text: trapHint(result.trap) }),
+          h('code', { class: 'ex-diag-raw', text: result.trap.message || '' }),
+        ]));
+      }
+      if (result && (result.exitCode != null || result.stdout || result.stderr || result.trap)) {
         outputBox.hidden = false;
         outputBody.textContent = result.stdout || (ZH ? '（没有标准输出）' : '(no stdout)');
         outputErr.textContent = result.stderr || '';
         outputErr.hidden = !result.stderr;
         var bits = [];
-        if (result.exitCode != null) bits.push('exit ' + result.exitCode);
+        if (result.trap) bits.push(result.trap.code + ' · ' + trapTitle(result.trap));
+        else if (result.exitCode != null) bits.push('exit ' + result.exitCode);
         if (typeof result.runMs === 'number') bits.push(Math.round(result.runMs) + ' ms');
         outputMeta.textContent = bits.join(' · ');
       }
@@ -907,6 +931,11 @@
         setProgress(null);
         renderChecks(result);
         var ms = (result.compileMs || 0) + (result.runMs || 0);
+        if (result.trap) {
+          setStatus(result.trap.code + ' · ' + trapTitle(result.trap) + (ms ? ' · ' + (ms / 1000).toFixed(1) + 's' : ''), 'fail');
+          recordRun(false, result);
+          return;
+        }
         setStatus(
           (result.ok ? '✓ ' + (ZH ? '全部通过' : 'all checks passed') : (ZH ? '未全部通过' : 'not all passed')) +
             (ms ? ' · ' + (ms / 1000).toFixed(1) + 's' : ''),
