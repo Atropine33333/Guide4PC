@@ -31,7 +31,16 @@
   const $topbar     = document.querySelector('.topbar');
   const $toastContainer = document.getElementById('toast-container');
   const $downloadBtn = document.getElementById('download-btn');
-  const $settingsToggle = document.getElementById('settings-toggle');
+  const $licensesOpen = document.getElementById('licenses-open');
+const $licensesDialog = document.getElementById('licenses-dialog');
+const $licensesClose = document.getElementById('licenses-close');
+if ($licensesOpen && $licensesDialog) {
+  $licensesOpen.addEventListener('click', () => { if (typeof $licensesDialog.showModal === 'function') $licensesDialog.showModal(); });
+  $licensesClose.addEventListener('click', () => $licensesDialog.close());
+  $licensesDialog.addEventListener('click', (e) => { if (e.target === $licensesDialog) $licensesDialog.close(); });
+}
+
+const $settingsToggle = document.getElementById('settings-toggle');
   const $settingsPanel = document.getElementById('settings-panel');
   const $settingsClose = document.getElementById('settings-close');
   const $fontScale = document.getElementById('font-scale');
@@ -98,6 +107,8 @@
       'force-refresh': 'Hard Refresh',
       'download': 'Download',
       'test': 'Tests',
+      'licenses': 'Licenses',
+      'licenses-title': 'Third-party Components',
       'practice': 'Practice',
     },
   };
