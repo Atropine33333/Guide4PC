@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 1,
   "title": {
-    "chs": "修复闰年判断",
-    "en": "Fix the Leap-Year Test"
+    "chs": "闰年判定法",
+    "en": "The Leap Year Statute"
   },
   "limits": {
     "timeoutMs": 5000,

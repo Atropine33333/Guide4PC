@@ -1,4 +1,24 @@
-这一题不读 stdin，也不写 stdout。实现对指针和长度做对齐运算的三个函数，测试在隐藏的 harness 里。
+欢迎来到对齐营地。
+
+营地里的每条规则都是真的，只是常识在这里不落地。
+
+规则一：界线只有 1、2、4、8 这些级数。`alignment` 为 2 的幂时，一切按界线办事。
+
+规则二：`align_up` 把人送到不小于 `value` 的第一道界线；`padding_for` 报告还差几级台阶，数目恰为 `align_up(used, alignment) - used`。
+
+规则三：`is_aligned` 只看门牌号能否被 `alignment` 整除；门牌号得先转成 `std::uintptr_t`。
+
+规则四：界线为零时营地不设界线：`align_up` 原样放人，`padding_for` 报 0，`is_aligned` 一律答 `false`。
+
+规则五：空地址站在零号门牌上；`alignment` 为正的 2 的幂时，`is_aligned(nullptr, alignment)` 答 `true`。
+
+规则六：`alignment` 非 2 的幂时，`is_aligned` 答 `false`，另外两个只要不炸即合规矩。
+
+规则七：有人跨到 `std::size_t` 尽头之外，营地不发回绕票，只给 `SIZE_MAX`。
+
+规则八：营地不开正门。别写 `main`。
+
+**人话**：实现三个函数：`align_up` 返回不小于 `value` 的最小对齐值，`padding_for` 返回补齐字节数，`is_aligned` 判断地址是否为 `alignment` 的整数倍。`alignment == 0` 时分别返回 `value`、`0`、`false`；`is_aligned(nullptr, 正的 2 的幂)` 返回 `true`；非 2 的幂时 `is_aligned` 返回 `false`，另外两个只需不崩溃；超出 `std::size_t` 上限返回 `SIZE_MAX`。本题不读 stdin，不写 stdout。
 
 ```cpp
 #include <cstddef>
@@ -7,19 +27,6 @@ std::size_t align_up(std::size_t value, std::size_t alignment);
 bool is_aligned(const void* pointer, std::size_t alignment);
 std::size_t padding_for(std::size_t used, std::size_t alignment);
 ```
-
-规则：
-
-- `alignment` 是 2 的幂（1、2、4、8……）时按对齐语义计算。
-- `align_up(value, alignment)` 返回不小于 `value` 的最小对齐值。
-- `padding_for(used, alignment)` 返回从 `used` 补齐到对齐需要加上的字节数，即 `align_up(used, alignment) - used`。
-- `is_aligned(pointer, alignment)` 判断指针地址是否是 `alignment` 的整数倍。
-- 特殊情况：
-  - `alignment == 0` 时，`align_up` 原样返回 `value`，`padding_for` 返回 0，`is_aligned` 返回 `false`。
-  - `is_aligned(nullptr, alignment)` 在 `alignment` 是正数且为 2 的幂时返回 `true`。
-  - `alignment` 不是 2 的幂时，`is_aligned` 返回 `false`；`align_up` 和 `padding_for` 只保证不崩溃（可以按位掩码公式计算）。
-  - `align_up` 的结果超过 `std::size_t` 上限时返回 `SIZE_MAX`，不要回绕成小数。
-- 不要写 `main`。
 
 ### 示例
 
@@ -33,4 +40,4 @@ std::size_t padding_for(std::size_t used, std::size_t alignment);
 
 ### 提示
 
-判断 2 的幂：`alignment != 0 && (alignment & (alignment - 1)) == 0`。指针地址转成 `std::uintptr_t` 再取模。`align_up` 先判断 `value > SIZE_MAX - (alignment - 1)`，再算 `(value + alignment - 1) & ~(alignment - 1)`。
+2 的幂用 `alignment != 0 && (alignment & (alignment - 1)) == 0` 判断。`align_up` 先查 `value > SIZE_MAX - (alignment - 1)`，再算 `(value + alignment - 1) & ~(alignment - 1)`。

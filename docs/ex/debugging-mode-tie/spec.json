@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 4,
   "title": {
-    "chs": "修好众数",
-    "en": "Fix the Mode"
+    "chs": "众数之牌",
+    "en": "The Card That Comes Up Most"
   },
   "limits": {
     "timeoutMs": 5000,

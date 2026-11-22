@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 4,
   "title": {
-    "chs": "树状数组区间查询",
-    "en": "Fenwick Tree Queries"
+    "chs": "数列问和术",
+    "en": "A Method for Summing a Sequence"
   },
   "limits": {
     "timeoutMs": 4000,

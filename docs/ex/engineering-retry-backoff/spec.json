@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 4,
   "title": {
-    "chs": "重试退避",
-    "en": "Retry Backoff"
+    "chs": "退避之棰",
+    "en": "The Backoff Rod"
   },
   "limits": {
     "timeoutMs": 5000,

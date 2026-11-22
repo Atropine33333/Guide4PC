@@ -1,4 +1,22 @@
-The function below should rotate `values` left by `k` positions: a positive `k` rotates left, a negative `k` rotates right, and `|k|` may be large. It returns wrong results for some inputs. Fix it.
+Welcome to the Left-Rotation Corridor.
+
+Every rule here is true. The corridor does not lie; when you hand it a negative number, it simply brings out a bigger hand to catch it.
+
+Rule One: `size_t` in this corridor has no minus sign. Hand it `-1` and it hands back a number past eighteen quintillion. Where that lands after a modulo is anybody's guess.
+
+Rule Two: to let a negative through, send it home to the positive side first. Before or after the modulo, bring `k` into `0` to `n - 1`; the corridor honours that range.
+
+Rule Three: a vector of length 0 is a locked door. No rotation happens, and nothing behind it can be lost.
+
+Rule Four: a one-element vector is the same person inside and outside the door. Rotate it as often as you like and it is still him.
+
+Rule Five: the corridor's echo answers only to `values`. When the function returns, the caller's vector must already be rotated.
+
+Rule Six: the door opens from the outside. Do not write `main`, and do not change the signature.
+
+If you catch yourself computing "eighteen quintillion modulo five", put the pen down and read Rule Two again.
+
+**In plain words**: implement `rotate_left(values, k)`: rotate left when `k` is positive and right when it is negative, with `|k|` possibly huge. Reduce the shift into `[0, n)` first: after taking the modulo by `n`, add `n` if the result is negative. Return an empty or single-element vector unchanged. The starter casts `k` straight to `size_t` and then takes the modulo, which turns negatives into astronomical values; fix that arithmetic and do not write `main`.
 
 ```cpp
 void rotate_left(std::vector<int>& values, int k) {
@@ -12,7 +30,7 @@ void rotate_left(std::vector<int>& values, int k) {
 }
 ```
 
-Requirements:
+**Requirements**:
 
 - `{1,2,3,4,5}` rotated left twice becomes `{3,4,5,1,2}`;
 - `k == -1` means rotating right once;

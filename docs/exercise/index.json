@@ -42,8 +42,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最少硬币数",
-        "en": "Minimum Coin Change"
+        "chs": "王与仆人的账",
+        "en": "The King and the Servant's Debt"
       },
       "category": "algorithm",
       "rank": 3,
@@ -60,8 +60,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "非负权单源最短路",
-        "en": "Single-Source Shortest Paths"
+        "chs": "且说这图上最近的路",
+        "en": "The Shortest Road, as the Storyteller Tells It"
       },
       "category": "algorithm",
       "rank": 5,
@@ -78,8 +78,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "编辑距离与最长公共子序列",
-        "en": "Edit Distance and LCS"
+        "chs": "两个词的账，如何勾销",
+        "en": "How Two Words Settle a Debt"
       },
       "category": "algorithm",
       "rank": 4,
@@ -96,8 +96,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "快速幂取模",
-        "en": "Modular Fast Power"
+        "chs": "一尺之棰",
+        "en": "The Rod of a Foot"
       },
       "category": "algorithm",
       "rank": 2,
@@ -114,8 +114,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最大公约数与最小公倍数",
-        "en": "GCD and LCM"
+        "chs": "方田铺砖与二鼓同鸣",
+        "en": "Paving the Field, Beating the Drums"
       },
       "category": "algorithm",
       "rank": 1,
@@ -132,8 +132,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "统计逆序对",
-        "en": "Counting Inversions"
+        "chs": "牌阵里错位的对子",
+        "en": "Misordered Pairs in the Spread"
       },
       "category": "algorithm",
       "rank": 4,
@@ -150,8 +150,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "KMP 查找所有出现位置",
-        "en": "KMP: Find All Occurrences"
+        "chs": "哦，亲爱的，它藏在哪儿",
+        "en": "Oh, Darling, Where Is It Hiding?"
       },
       "category": "algorithm",
       "rank": 4,
@@ -168,8 +168,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "0/1 背包",
-        "en": "0/1 Knapsack"
+        "chs": "背包里的相声",
+        "en": "Crosstalk in the Knapsack"
       },
       "category": "algorithm",
       "rank": 3,
@@ -222,12 +222,12 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最大子段和",
-        "en": "Maximum Subarray Sum"
+        "chs": "删一个数的最大子段和",
+        "en": "Maximum Subarray Sum with One Deletion"
       },
       "category": "algorithm",
-      "rank": 3,
-      "checks": 6,
+      "rank": 4,
+      "checks": 7,
       "harness": false,
       "variants": [],
       "problem": {
@@ -240,8 +240,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "会议室最多场次",
-        "en": "Most Meetings in One Room"
+        "chs": "会议室里排座次",
+        "en": "A Queue at the Meeting Room"
       },
       "category": "algorithm",
       "rank": 3,
@@ -276,8 +276,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "合并区间",
-        "en": "Merge Intervals"
+        "chs": "各支派的营地连成一片",
+        "en": "When the Camps of the Tribes Join"
       },
       "category": "algorithm",
       "rank": 4,
@@ -294,8 +294,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "质因数分解",
-        "en": "Prime Factorization"
+        "chs": "分与质数之民",
+        "en": "Divided Among the Primes"
       },
       "category": "algorithm",
       "rank": 2,
@@ -312,8 +312,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "素数筛",
-        "en": "Prime Sieve"
+        "chs": "数阵筛之，问素数几何",
+        "en": "Sifting the Number Array for Primes"
       },
       "category": "algorithm",
       "rank": 2,
@@ -330,8 +330,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最短达标子段",
-        "en": "Shortest Qualifying Window"
+        "chs": "走廊尽头的窗口守则",
+        "en": "House Rules for the Window at the Corridor's End"
       },
       "category": "algorithm",
       "rank": 3,
@@ -388,18 +388,10 @@
         "en": "Count Digit Occurrences"
       },
       "category": "syntax",
-      "rank": 1,
-      "checks": 3,
+      "rank": 3,
+      "checks": 6,
       "harness": false,
-      "variants": [
-        {
-          "id": "no-string",
-          "label": {
-            "chs": "测试机没有 <string>",
-            "en": "No <string> on the school machine"
-          }
-        }
-      ],
+      "variants": [],
       "problem": {
         "chs": true,
         "en": true
@@ -410,8 +402,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "逗号分隔行的和",
-        "en": "Sums of CSV Rows"
+        "chs": "点数各家的数目",
+        "en": "A Census by Tribe and Row"
       },
       "category": "io",
       "rank": 2,
@@ -428,8 +420,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "布隆过滤器",
-        "en": "Bloom Filter"
+        "chs": "布隆过滤器守则",
+        "en": "Rules of the Bloom Filter"
       },
       "category": "data",
       "rank": 4,
@@ -446,8 +438,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "二叉搜索树",
-        "en": "Binary Search Tree"
+        "chs": "惠子问树",
+        "en": "Hui Shi Asks About a Tree"
       },
       "category": "data",
       "rank": 4,
@@ -482,8 +474,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "树状数组区间查询",
-        "en": "Fenwick Tree Queries"
+        "chs": "数列问和术",
+        "en": "A Method for Summing a Sequence"
       },
       "category": "data",
       "rank": 4,
@@ -518,8 +510,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "链地址法哈希表",
-        "en": "Chained Hash Table"
+        "chs": "两个桶的对话",
+        "en": "A Word Between Two Buckets"
       },
       "category": "data",
       "rank": 2,
@@ -536,8 +528,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "哈夫曼编码",
-        "en": "Huffman Coding"
+        "chs": "天国称字录",
+        "en": "The Parable of Weighed Letters"
       },
       "category": "data",
       "rank": 5,
@@ -554,8 +546,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "链表反转",
-        "en": "Reversing a Linked List"
+        "chs": "倒转长链",
+        "en": "Turning the Long Chain Around"
       },
       "category": "data",
       "rank": 3,
@@ -572,8 +564,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "手写最小堆",
-        "en": "Hand-written Min-Heap"
+        "chs": "最小堆实现通知",
+        "en": "Notice on Implementing a Min-Heap"
       },
       "category": "data",
       "rank": 3,
@@ -608,8 +600,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "开放寻址哈希表",
-        "en": "Open-Addressing Hash Map"
+        "chs": "开放寻址守则",
+        "en": "Rules for Open Addressing"
       },
       "category": "data",
       "rank": 4,
@@ -626,8 +618,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "逆波兰表达式求值",
-        "en": "Evaluate Reverse Polish Notation"
+        "chs": "亲爱的后缀式",
+        "en": "My Dear Postfix Expression"
       },
       "category": "data",
       "rank": 1,
@@ -662,8 +654,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最大的 k 个数",
-        "en": "The k Largest Values"
+        "chs": "塔罗牌阵",
+        "en": "The Tarot Spread"
       },
       "category": "data",
       "rank": 4,
@@ -680,8 +672,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "字典序最小拓扑序",
-        "en": "Lexicographically Smallest Topological Order"
+        "chs": "拓扑序条令",
+        "en": "Ordinance on Topological Order"
       },
       "category": "data",
       "rank": 3,
@@ -716,12 +708,12 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "两个栈实现队列",
-        "en": "Queue from Two Stacks"
+        "chs": "双栈队列若干规定",
+        "en": "Provisions on a Two-Stack Queue"
       },
       "category": "data",
-      "rank": 2,
-      "checks": 6,
+      "rank": 3,
+      "checks": 7,
       "harness": true,
       "variants": [],
       "problem": {
@@ -734,8 +726,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "并查集",
-        "en": "Disjoint Set Union"
+        "chs": "会众归并录",
+        "en": "The Register of Merged Tribes"
       },
       "category": "data",
       "rank": 3,
@@ -752,8 +744,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修好这个求和",
-        "en": "Fix This Sum"
+        "chs": "溢出走廊",
+        "en": "The Overflow Corridor"
       },
       "category": "debugging",
       "rank": 2,
@@ -770,8 +762,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修好记分板",
-        "en": "Fix the Scoreboard"
+        "chs": "记分板上的比喻",
+        "en": "The Parable of the Scoreboard"
       },
       "category": "debugging",
       "rank": 3,
@@ -788,8 +780,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "大整数乘法的进位",
-        "en": "Big Integer Multiplication"
+        "chs": "竖乘进位术",
+        "en": "The Art of Carrying in Long Multiplication"
       },
       "category": "debugging",
       "rank": 4,
@@ -806,8 +798,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "下界查找（找错）",
-        "en": "Lower Bound (Debug)"
+        "chs": "下界这点事儿",
+        "en": "A Word on Lower Bounds"
       },
       "category": "debugging",
       "rank": 4,
@@ -860,8 +852,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "表达式求值修复",
-        "en": "Fix Expression Evaluation"
+        "chs": "濠上之算",
+        "en": "Reckoning on the Hao Bridge"
       },
       "category": "debugging",
       "rank": 4,
@@ -878,8 +870,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "固定容量队列（找错）",
-        "en": "Fixed-Capacity Queue (Debug)"
+        "chs": "环形缓冲管理办法",
+        "en": "Measures for the Ring Buffer"
       },
       "category": "debugging",
       "rank": 3,
@@ -896,8 +888,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修复闰年判断",
-        "en": "Fix the Leap-Year Test"
+        "chs": "闰年判定法",
+        "en": "The Leap Year Statute"
       },
       "category": "debugging",
       "rank": 1,
@@ -932,8 +924,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "矩阵乘法修复",
-        "en": "Fix Matrix Multiplication"
+        "chs": "方阵相乘之术",
+        "en": "The Art of Multiplying Two Arrays"
       },
       "category": "debugging",
       "rank": 3,
@@ -968,8 +960,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修好众数",
-        "en": "Fix the Mode"
+        "chs": "众数之牌",
+        "en": "The Card That Comes Up Most"
       },
       "category": "debugging",
       "rank": 4,
@@ -1004,8 +996,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "左旋数组的负数位移",
-        "en": "Rotate Left with Negative Shifts"
+        "chs": "左旋走廊",
+        "en": "The Left-Rotation Corridor"
       },
       "category": "debugging",
       "rank": 3,
@@ -1022,8 +1014,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "游程编码（找错）",
-        "en": "Run-Length Encoding (Debug)"
+        "chs": "游程编码一段书",
+        "en": "A Tale of Run-Length Encoding"
       },
       "category": "debugging",
       "rank": 2,
@@ -1040,8 +1032,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修好归并",
-        "en": "Fix the Merge"
+        "chs": "二营合流",
+        "en": "When Two Camps Become One"
       },
       "category": "debugging",
       "rank": 2,
@@ -1094,8 +1086,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "修好多空格与空行的统计",
-        "en": "Fix the Word Counting"
+        "chs": "亲爱的，那些空格",
+        "en": "Oh, My Dear, Those Spaces"
       },
       "category": "debugging",
       "rank": 2,
@@ -1112,8 +1104,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "线性分配器",
-        "en": "Arena Allocator"
+        "chs": "关于线性分配器的通知",
+        "en": "Уведомление о линейном аллокаторе"
       },
       "category": "engineering",
       "rank": 4,
@@ -1148,8 +1140,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "熔断器",
-        "en": "Circuit Breaker"
+        "chs": "熔断走廊守则",
+        "en": "Rules of the Circuit Breaker Corridor"
       },
       "category": "engineering",
       "rank": 5,
@@ -1184,8 +1176,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "合并配置项",
-        "en": "Merge Configuration"
+        "chs": "合并配置的越洋电话",
+        "en": "Config Merge, Long Distance"
       },
       "category": "engineering",
       "rank": 3,
@@ -1202,8 +1194,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "原子转账账本",
-        "en": "Atomic Transfer Ledger"
+        "chs": "账房里的天平",
+        "en": "A Parable of the Ledger"
       },
       "category": "engineering",
       "rank": 5,
@@ -1220,8 +1212,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "事件总线",
-        "en": "Event Bus"
+        "chs": "会幕里的号角",
+        "en": "The Event Bus in the Wilderness"
       },
       "category": "engineering",
       "rank": 5,
@@ -1238,8 +1230,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "固定容量对象池",
-        "en": "Fixed-Capacity Object Pool"
+        "chs": "固定池管理办法",
+        "en": "Measures for the Fixed Integer Pool"
       },
       "category": "engineering",
       "rank": 5,
@@ -1256,8 +1248,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "一致性哈希环",
-        "en": "Consistent Hash Ring"
+        "chs": "环上问卜",
+        "en": "Divination on the Ring"
       },
       "category": "engineering",
       "rank": 5,
@@ -1292,8 +1284,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "幂等提交网关",
-        "en": "Idempotent Submission Gateway"
+        "chs": "幂等提交条例",
+        "en": "Ordinance on Idempotent Submission"
       },
       "category": "engineering",
       "rank": 4,
@@ -1310,8 +1302,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "事务日志重放",
-        "en": "Journal Replay"
+        "chs": "日志出埃及记",
+        "en": "The Journal's Exodus"
       },
       "category": "engineering",
       "rank": 5,
@@ -1346,8 +1338,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "重试退避",
-        "en": "Retry Backoff"
+        "chs": "退避之棰",
+        "en": "The Backoff Rod"
       },
       "category": "engineering",
       "rank": 4,
@@ -1364,8 +1356,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "订单状态机",
-        "en": "Order State Machine"
+        "chs": "订单状态机演义",
+        "en": "The Tale of the Order State Machine"
       },
       "category": "engineering",
       "rank": 4,
@@ -1400,8 +1392,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "令牌桶限流",
-        "en": "Token Bucket Rate Limiter"
+        "chs": "令牌桶，限量发售",
+        "en": "Token Bucket, As Seen on TV"
       },
       "category": "engineering",
       "rank": 4,
@@ -1418,8 +1410,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "版本号排序",
-        "en": "Sorting Version Strings"
+        "chs": "今有版本若干",
+        "en": "Now There Are Versions"
       },
       "category": "engineering",
       "rank": 3,
@@ -1490,8 +1482,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "画文本框",
-        "en": "Draw a Text Box"
+        "chs": "关于统一外框绘制规格的通知",
+        "en": "Notice on Uniform Frame Specifications"
       },
       "category": "io",
       "rank": 2,
@@ -1508,8 +1500,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "名字与分数两列",
-        "en": "Two-Column Report"
+        "chs": "名册该怎么排",
+        "en": "How to Set the Ledger Columns"
       },
       "category": "io",
       "rank": 2,
@@ -1526,8 +1518,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "CSV 字段的引号规则",
-        "en": "CSV Field Quoting"
+        "chs": "CSV 字段引号法典",
+        "en": "Code of CSV Field Quoting"
       },
       "category": "io",
       "rank": 3,
@@ -1544,8 +1536,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "解析并格式化日期",
-        "en": "Parsing and Formatting Dates"
+        "chs": "日期校勘处值夜守则",
+        "en": "Night-Shift Orders of the Date Bureau"
       },
       "category": "io",
       "rank": 3,
@@ -1562,8 +1554,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "时长格式化",
-        "en": "Format a Duration"
+        "chs": "亲爱的，把秒数说体面些",
+        "en": "Make the Seconds Presentable, My Dear"
       },
       "category": "io",
       "rank": 1,
@@ -1580,8 +1572,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "读到文件末尾",
-        "en": "Read Until End of Input"
+        "chs": "数到没有牌为止",
+        "en": "Count Until the Cards Run Out"
       },
       "category": "io",
       "rank": 1,
@@ -1598,8 +1590,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "展开转义序列",
-        "en": "Expanding Escape Sequences"
+        "chs": "亲爱的，把反斜杠念对",
+        "en": "Read That Backslash Properly, My Dear"
       },
       "category": "io",
       "rank": 3,
@@ -1670,8 +1662,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "十六进制转储",
-        "en": "Hex Dump"
+        "chs": "誊一份十六格的账",
+        "en": "Copying the Ledger, Sixteen Bytes a Line"
       },
       "category": "io",
       "rank": 4,
@@ -1688,8 +1680,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "按总行数对齐的行号",
-        "en": "Line Numbers Aligned to the Total"
+        "chs": "先数行，后编号",
+        "en": "Count the Lines Before Numbering"
       },
       "category": "io",
       "rank": 1,
@@ -1724,8 +1716,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "文本进度条",
-        "en": "Text Progress Bar"
+        "chs": "往下抹，别四舍五入",
+        "en": "Round Down, Do Not Round Off"
       },
       "category": "io",
       "rank": 1,
@@ -1778,8 +1770,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "千位分隔符",
-        "en": "Thousands Separator"
+        "chs": "要你命三千",
+        "en": "The Comma-Matic 3000"
       },
       "category": "io",
       "rank": 2,
@@ -1796,8 +1788,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "按宽度折行",
-        "en": "Word Wrap"
+        "chs": "背篓里的单词",
+        "en": "The Words That Fit the Basket"
       },
       "category": "io",
       "rank": 3,
@@ -1832,8 +1824,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "对象生命周期账本",
-        "en": "Lifetime Ledger"
+        "chs": "关于存活对象登记的通知",
+        "en": "Notice on Live Object Registration"
       },
       "category": "memory",
       "rank": 3,
@@ -1850,8 +1842,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "最近最少使用缓存",
-        "en": "LRU Cache"
+        "chs": "甲乙说缓存",
+        "en": "Two Comedians on Caching"
       },
       "category": "engineering",
       "rank": 4,
@@ -1868,8 +1860,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "对齐计算",
-        "en": "Alignment Arithmetic"
+        "chs": "对齐营地规则",
+        "en": "Rules of the Alignment Camp"
       },
       "category": "memory",
       "rank": 3,
@@ -1886,8 +1878,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "不拥有数据的数组视图",
-        "en": "Non-Owning Array View"
+        "chs": "只看不养的视图",
+        "en": "A View That Owns Nothing"
       },
       "category": "memory",
       "rank": 2,
@@ -1904,8 +1896,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "写时复制缓冲区",
-        "en": "Copy-on-Write Buffer"
+        "chs": "写时复制的一叠纸",
+        "en": "The Sheet We Share Until We Write"
       },
       "category": "memory",
       "rank": 4,
@@ -1940,8 +1932,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "析构顺序记录",
-        "en": "Destruction Order"
+        "chs": "析构次序法典",
+        "en": "Code of Destruction Order"
       },
       "category": "memory",
       "rank": 2,
@@ -1958,8 +1950,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "运行时尺寸网格",
-        "en": "Run-Time Sized Grid"
+        "chs": "行优先的方田",
+        "en": "A Field Laid Out Row by Row"
       },
       "category": "memory",
       "rank": 4,
@@ -1976,8 +1968,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "带代际句柄的槽位表",
-        "en": "Generational Handle Store"
+        "chs": "八席牌的代际",
+        "en": "The Eight Seats and Their Generations"
       },
       "category": "memory",
       "rank": 5,
@@ -2030,8 +2022,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "侵入式双向链表",
-        "en": "Intrusive Doubly Linked List"
+        "chs": "只认人不养人的队",
+        "en": "A List That Owns No One"
       },
       "category": "memory",
       "rank": 3,
@@ -2066,8 +2058,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "空指针保护",
-        "en": "Null Pointer Guards"
+        "chs": "指针三件套 19.99",
+        "en": "The Pointer Trio, $19.99"
       },
       "category": "memory",
       "rank": 2,
@@ -2102,8 +2094,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "五法则资源类",
-        "en": "Rule of Five Resource"
+        "chs": "五法则对口",
+        "en": "A Crosstalk on the Rule of Five"
       },
       "category": "memory",
       "rank": 4,
@@ -2120,8 +2112,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "零规则笔记本",
-        "en": "Rule-of-Zero Notebook"
+        "chs": "笔记本的无为之治",
+        "en": "The Notebook That Does Nothing Itself"
       },
       "category": "memory",
       "rank": 2,
@@ -2156,8 +2148,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "共享引用计数",
-        "en": "Shared Reference Count"
+        "chs": "共用一个数的比喻",
+        "en": "The Parable of the Shared Number"
       },
       "category": "memory",
       "rank": 5,
@@ -2174,8 +2166,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "弱引用断开环",
-        "en": "Breaking Cycles with Weak References"
+        "chs": "弱绳出埃及",
+        "en": "The Chain That Looks Back"
       },
       "category": "memory",
       "rank": 4,
@@ -2588,8 +2580,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "ADL 与定制 swap",
-        "en": "ADL and Customizing swap"
+        "chs": "出埃及记·ADL 与定制 swap",
+        "en": "Exodus: ADL and the Custom swap"
       },
       "category": "semantics",
       "rank": 4,
@@ -2732,8 +2724,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "运算符优先级陷阱",
-        "en": "Operator Precedence Traps"
+        "chs": "运算符优先级法典",
+        "en": "The Code of Operator Precedence"
       },
       "category": "semantics",
       "rank": 1,
@@ -2768,8 +2760,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "余数的符号",
-        "en": "Sign of the Remainder"
+        "chs": "九章算术·余数",
+        "en": "Remainders in the Nine Chapters"
       },
       "category": "semantics",
       "rank": 1,
@@ -2876,8 +2868,8 @@
       "dir": "cpp",
       "lang": "cpp",
       "title": {
-        "chs": "无符号数的陷阱",
-        "en": "Unsigned Traps"
+        "chs": "无符号走廊",
+        "en": "The Unsigned Corridor"
       },
       "category": "semantics",
       "rank": 3,

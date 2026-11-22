@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 4,
   "title": {
-    "chs": "下界查找（找错）",
-    "en": "Lower Bound (Debug)"
+    "chs": "下界这点事儿",
+    "en": "A Word on Lower Bounds"
   },
   "harness": "harness.cpp",
   "limits": {

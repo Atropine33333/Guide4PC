@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 5,
   "title": {
-    "chs": "非负权单源最短路",
-    "en": "Single-Source Shortest Paths"
+    "chs": "且说这图上最近的路",
+    "en": "The Shortest Road, as the Storyteller Tells It"
   },
   "limits": {
     "timeoutMs": 5000,

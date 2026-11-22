@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 2,
   "title": {
-    "chs": "千位分隔符",
-    "en": "Thousands Separator"
+    "chs": "要你命三千",
+    "en": "The Comma-Matic 3000"
   },
   "limits": {
     "timeoutMs": 5000,

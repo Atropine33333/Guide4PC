@@ -5,8 +5,8 @@
   "category": "semantics",
   "rank": 1,
   "title": {
-    "chs": "运算符优先级陷阱",
-    "en": "Operator Precedence Traps"
+    "chs": "运算符优先级法典",
+    "en": "The Code of Operator Precedence"
   },
   "limits": {
     "timeoutMs": 5000,

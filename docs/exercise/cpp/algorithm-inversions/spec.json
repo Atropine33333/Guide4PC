@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 4,
   "title": {
-    "chs": "统计逆序对",
-    "en": "Counting Inversions"
+    "chs": "牌阵里错位的对子",
+    "en": "Misordered Pairs in the Spread"
   },
   "limits": {
     "timeoutMs": 5000,

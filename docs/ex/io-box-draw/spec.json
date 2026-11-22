@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 2,
   "title": {
-    "chs": "画文本框",
-    "en": "Draw a Text Box"
+    "chs": "关于统一外框绘制规格的通知",
+    "en": "Notice on Uniform Frame Specifications"
   },
   "limits": {
     "timeoutMs": 5000,

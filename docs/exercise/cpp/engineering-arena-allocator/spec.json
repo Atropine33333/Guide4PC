@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 4,
   "title": {
-    "chs": "线性分配器",
-    "en": "Arena Allocator"
+    "chs": "关于线性分配器的通知",
+    "en": "Уведомление о линейном аллокаторе"
   },
   "harness": "harness.cpp",
   "limits": {

@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "io",
   "rank": 2,
-  "title": { "chs": "逗号分隔行的和", "en": "Sums of CSV Rows" },
+  "title": { "chs": "点数各家的数目", "en": "A Census by Tribe and Row" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

@@ -1,17 +1,28 @@
-Read a non-negative integer and a digit (0–9); count how many times the digit appears in the integer.
+Count how many times the decimal digit `d` occurs in all integers from 1 through `n`.
 
-**Input**: two lines — the integer, then the digit.
+**Input**: two lines — the integer `n` (`0 ≤ n ≤ 10^17`), then the digit `d` (`0`–`9`).
 
-**Output**: one integer — the number of occurrences.
+**Output**: one integer, the number of occurrences. When `n = 0` the range is empty and the answer is `0`.
 
-For example, given `676767` and `6`, print `3`:
+### Example
+
+Input:
 
 ```text
-676767
-6
-3
+20
+1
 ```
 
-### Extension: no `<string>`
+Output:
 
-Converting the integer with `std::string` and comparing character by character is perfectly fine — unless the school judge ships headers without `<string>`. This variant exists for exactly that case: solve it without the string library. Switch to the “No `<string>` on the school machine” variant.
+```text
+12
+```
+
+The digit `1` appears in 1, 10, 11, 12, …, 19: once in 1, once in 10, twice in 11, and once in each of 12–19, for a total of 12.
+
+### Constraints
+
+- Zero counts only in valid positions: the zeros in 10, 20 and 100 count, leading zeros do not.
+- The count can exceed 32 bits; use a 64-bit integer.
+- Work digit by digit in `O(log n)`; do not enumerate 1 through `n`.

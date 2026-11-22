@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "debugging",
   "rank": 2,
-  "title": { "chs": "修好这个求和", "en": "Fix This Sum" },
+  "title": { "chs": "溢出走廊", "en": "The Overflow Corridor" },
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [
     {

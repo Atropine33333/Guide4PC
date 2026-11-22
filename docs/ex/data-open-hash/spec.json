@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 4,
   "title": {
-    "chs": "开放寻址哈希表",
-    "en": "Open-Addressing Hash Map"
+    "chs": "开放寻址守则",
+    "en": "Rules for Open Addressing"
   },
   "limits": {
     "timeoutMs": 5000,

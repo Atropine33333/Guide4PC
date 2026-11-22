@@ -1,12 +1,18 @@
-There is a single meeting room and `n` meeting requests, each given by a start and an end time. Two meetings can both be scheduled if the earlier one ends no later than the later one starts. Find the maximum number of meetings that can be scheduled.
+Now hear ye the tale of the company's one meeting room, and the long queue of departments that would fain possess it.
+
+Each meeting hath a start and an end; when one is dismissed, the next may enter. End to end—one ends as the next begins—is no quarrel. A meeting may begin and end in the same hour, taking no time, yet it counteth as one.
+
+How many meetings, at most, can be held in a day?
+
+**In plain words**: given `n` intervals `[s, e]`, select the largest set of mutually non-overlapping intervals and output its size.
 
 ### Input
 
-The first line holds one integer `n`. The next `n` lines each hold two integers `s` and `e`, a meeting running from `s` to `e`. `s == e` is allowed: such a meeting occupies no time but still counts as scheduled.
+The first line contains an integer `n`. The next `n` lines each contain two integers `s` and `e`, meaning a meeting starts at `s` and ends at `e`. `s == e` is allowed: such a meeting takes no time but still counts as scheduled.
 
 ### Output
 
-One integer: the maximum number of meetings.
+One integer: the maximum number of meetings that can be scheduled.
 
 ### Example
 
@@ -23,7 +29,7 @@ Output:
 3
 ```
 
-The three meetings touch end to start, so all can run.
+They touch end to end, so all three fit.
 
 ### Constraints
 

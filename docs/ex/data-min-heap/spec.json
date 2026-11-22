@@ -6,8 +6,8 @@
   "rank": 3,
   "harness": "harness.cpp",
   "title": {
-    "chs": "手写最小堆",
-    "en": "Hand-written Min-Heap"
+    "chs": "最小堆实现通知",
+    "en": "Notice on Implementing a Min-Heap"
   },
   "limits": {
     "timeoutMs": 5000,

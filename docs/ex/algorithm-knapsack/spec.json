@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 3,
   "title": {
-    "chs": "0/1 背包",
-    "en": "0/1 Knapsack"
+    "chs": "背包里的相声",
+    "en": "Crosstalk in the Knapsack"
   },
   "limits": {
     "timeoutMs": 5000,

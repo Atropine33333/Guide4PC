@@ -1,18 +1,24 @@
-This exercise reads no stdin and writes no stdout. Implement three "pointer + length" functions that must return safely on a null pointer or a non-positive length, tested by a hidden harness.
+(A late-night studio. A man in a beige blazer raises three small stainless-steel gadgets.)
+
+Tired of pointers that vanish in the night? The Pointer Trio — three functions, one price: $19.99!
+
+`sum_or_zero`: hand it a pointer and a length, and it hands back the sum. Give it `nullptr` or `count <= 0` and it answers `0` without touching a single byte of memory.
+
+But wait, there's more! `max_or` finds the largest value, and on empty input it returns the `fallback` you supplied. No crash, no phone call at three in the morning.
+
+And `count_even`? It counts the even ones. Negative evens count too: `-4` is in, `-3` is out.
+
+Order now and we'll throw in a guard clause, free: `if (data == nullptr || count <= 0) return ...;` — written before the loop, at no extra charge.
+
+Operators are standing by. Do not write `main`. Void where prohibited.
+
+**In plain words**: implement three pointer-plus-length functions. When `data == nullptr` or `count <= 0` they return `0`, `fallback`, and `0`, and must not touch `data`. `sum_or_zero` sums into a `long long`; `max_or` returns the largest element; `count_even` counts even values, negatives included. This exercise reads no stdin and writes no stdout.
 
 ```cpp
 long long sum_or_zero(const int* data, int count);
 int max_or(const int* data, int count, int fallback);
 int count_even(const int* data, int count);
 ```
-
-Rules:
-
-- When `data == nullptr` or `count <= 0`, the three functions return `0`, `fallback`, and `0` respectively, and must not touch `data`.
-- `sum_or_zero` returns the sum of all elements as a `long long`.
-- `max_or` returns the largest element; an empty input returns `fallback`.
-- `count_even` counts even values; negative even values count too (`-4` is even, `-3` is not).
-- Do not write `main`.
 
 ### Example
 

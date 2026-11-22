@@ -1,4 +1,12 @@
-这一题不读 stdin，也不写 stdout。请在 `gadget` 命名空间中实现一个定制的 `swap`，并观察实参依赖查找（ADL）如何影响非限定调用。
+《出埃及记》第十九章
+
+耶和华晓谕摩西说：你晓谕以色列全会众，说，凡呼一名，不可只在本家寻找，也要往实参所出的族里去寻；在那里寻见的，便是那一族的律例。这律例叫作实参依赖查找。
+
+耶和华又晓谕摩西说：你要在 `gadget` 族中设立一个 `swap`，凡其族人两两相易，须数点一人，记在册上；`reset_swap_calls` 拂去册上的数目。凡连名带姓呼 `std::swap` 的，便绕过了族中的律例；至于外邦的 `int`，仍归 `std::swap` 管辖。
+
+于是摩西在 `gadget` 中设立了 `swap`，并数点其中人数，正如耶和华所吩咐的。
+
+**人话**：这题不读 stdin，也不写 stdout。在 `gadget` 命名空间里实现定制的 `swap(Widget&, Widget&)`：交换两个成员的 `id` 与 `value`，每调用一次就让 `swap_calls()` 加一；再实现 `swap_calls()` 与 `reset_swap_calls()`，计数器初始为 0。harness 用三种调用方式检验：非限定调用应当选中定制版本，`std::swap` 应当绕过它，两个 `int` 之间仍由 `std::swap` 处理。
 
 ```cpp
 namespace gadget {
@@ -17,7 +25,7 @@ void swap(Widget& a, Widget& b);
 }  // namespace gadget
 ```
 
-规则：
+### 规则
 
 - `gadget::swap(Widget&, Widget&)` 交换两个成员的 `id` 与 `value`，每调用一次，`swap_calls()` 就加 1。
 - `reset_swap_calls()` 把计数清零。

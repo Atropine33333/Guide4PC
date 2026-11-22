@@ -7,59 +7,23 @@
   },
   "lang": "cpp",
   "category": "syntax",
-  "rank": 1,
+  "rank": 3,
   "limits": {
     "timeoutMs": 5000,
     "outputBytes": 65536
   },
   "checks": [
     {
-      "id": "basic",
+      "id": "empty-range",
       "label": {
-        "chs": "普通正整数",
-        "en": "Ordinary positive integer"
-      },
-      "cases": [
-        {
-          "in": [
-            "676767",
-            "6"
-          ],
-          "out": [
-            "3"
-          ]
-        },
-        {
-          "in": [
-            "1020",
-            "0"
-          ],
-          "out": [
-            "2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "edge",
-      "label": {
-        "chs": "边界",
-        "en": "Boundary"
+        "chs": "空区间",
+        "en": "An empty range"
       },
       "cases": [
         {
           "in": [
             "0",
-            "0"
-          ],
-          "out": [
-            "1"
-          ]
-        },
-        {
-          "in": [
-            "12345",
-            "9"
+            "3"
           ],
           "out": [
             "0"
@@ -68,45 +32,93 @@
       ]
     },
     {
-      "id": "repeated-digit",
+      "id": "single",
       "label": {
-        "chs": "重复数字与 0",
-        "en": "Repeated digits and zeros"
+        "chs": "只有一位",
+        "en": "A single digit"
       },
       "cases": [
         {
           "in": [
-            "11111",
+            "7",
+            "7"
+          ],
+          "out": [
             "1"
-          ],
-          "out": [
-            "5"
-          ]
-        },
-        {
-          "in": [
-            "1000",
-            "0"
-          ],
-          "out": [
-            "3"
           ]
         }
       ]
-    }
-  ],
-  "variants": [
+    },
     {
-      "id": "no-string",
+      "id": "example",
       "label": {
-        "chs": "测试机没有 <string>",
-        "en": "No <string> on the school machine"
+        "chs": "1 到 20",
+        "en": "One through twenty"
       },
-      "starter": "starter-no-string.cpp",
-      "forbidPatterns": [
-        "#include\\s*<string>",
-        "\\bstd::string\\b",
-        "\\bstd::basic_string\\b"
+      "cases": [
+        {
+          "in": [
+            "20",
+            "1"
+          ],
+          "out": [
+            "12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": {
+        "chs": "数字 0 与前导零",
+        "en": "Zeros and leading zeros"
+      },
+      "cases": [
+        {
+          "in": [
+            "100",
+            "0"
+          ],
+          "out": [
+            "11"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nines",
+      "label": {
+        "chs": "全是 9",
+        "en": "All nines"
+      },
+      "cases": [
+        {
+          "in": [
+            "99",
+            "9"
+          ],
+          "out": [
+            "20"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大范围",
+        "en": "A large range"
+      },
+      "cases": [
+        {
+          "in": [
+            "100000000000000000",
+            "1"
+          ],
+          "out": [
+            "170000000000000001"
+          ]
+        }
       ]
     }
   ]

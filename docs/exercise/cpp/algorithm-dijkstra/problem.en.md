@@ -1,4 +1,8 @@
-Given a directed graph with `n` vertices and `m` edges with non-negative weights, find the shortest path length from vertex `0` to every vertex. Print `-1` for unreachable vertices.
+Now hear the tale of the night the graph grew restless. There were `n` cities, numbered zero through `n-1`, and `m` roads, every one of them one-way; some were short, some were long, none ran backwards.
+
+The storyteller rapped his table on the zero city. "City zero: fare zero," he said, and sent a scout down every road out of it. The scout came back with news: this city is near, that one is far. Another rap of the table: the nearest city still unclaimed was settled, and from it a fresh scout set out; wherever a detour came out cheaper, the old fare was crossed out and the new one written. Rap by rap, scout by scout, until no city was left to explore and every fare stood final. Cities with no road to them got a single word — "none" — written `-1`.
+
+**In plain words**: given a directed graph with `n` vertices and `m` edges of non-negative weight, find the shortest path length from vertex `0` to every vertex; print `-1` for unreachable vertices. Use Dijkstra with a priority queue, and store distances in 64-bit integers.
 
 ### Input
 

@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 5,
   "title": {
-    "chs": "事务日志重放",
-    "en": "Journal Replay"
+    "chs": "日志出埃及记",
+    "en": "The Journal's Exodus"
   },
   "limits": {
     "timeoutMs": 5000,

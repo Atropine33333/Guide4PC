@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 5,
   "title": {
-    "chs": "共享引用计数",
-    "en": "Shared Reference Count"
+    "chs": "共用一个数的比喻",
+    "en": "The Parable of the Shared Number"
   },
   "harness": "harness.cpp",
   "limits": {

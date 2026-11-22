@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 5,
   "title": {
-    "chs": "固定容量对象池",
-    "en": "Fixed-Capacity Object Pool"
+    "chs": "固定池管理办法",
+    "en": "Measures for the Fixed Integer Pool"
   },
   "limits": {
     "timeoutMs": 5000,

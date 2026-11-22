@@ -24,6 +24,11 @@ public:
         return 0;  // TODO
     }
 
+    int min() const {
+        // TODO: 空队列返回 -1，否则返回队内最小值。
+        return -1;
+    }
+
 private:
     std::vector<int> in_;
     std::vector<int> out_;

@@ -227,7 +227,7 @@
     var afterLine = h('p', { class: 'scene-line scene-line-after', text: lines['after-early'] || '' });
     var finalLine = h('p', { class: 'scene-line scene-line-final', text: lines.final || '' });
 
-    flow.append(small, action, nowLine, trickLine, afterLine, arrowRow, finalLine);
+    flow.append(small, action, nowLine, afterLine, trickLine, arrowRow, finalLine);
     section.append(stage, flow);
     mount.appendChild(section);
 
@@ -332,7 +332,7 @@
       state.arrowHidden = true;
       arrow.disabled = true;
       arrowRow.classList.add('is-gone');
-      // 点箭头才揭穿：这句话插在「后续……」这一行之前。
+      // 点箭头才揭穿：这句话排在「后续……」这一行下面。
       reveal(trickLine, 140);
       later(armAnywhere, 900);
     }

@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 2,
   "title": {
-    "chs": "链地址法哈希表",
-    "en": "Chained Hash Table"
+    "chs": "两个桶的对话",
+    "en": "A Word Between Two Buckets"
   },
   "limits": {
     "timeoutMs": 3000,

@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 3,
   "title": {
-    "chs": "侵入式双向链表",
-    "en": "Intrusive Doubly Linked List"
+    "chs": "只认人不养人的队",
+    "en": "A List That Owns No One"
   },
   "limits": {
     "timeoutMs": 5000,

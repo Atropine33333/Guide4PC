@@ -1,15 +1,26 @@
-Read an expression number `q` and three positive integers `a`, `b`, and `c`, then evaluate expression `q` below. The expressions deliberately omit parentheses; follow C++ precedence and associativity exactly.
+THE CODE OF C++ OPERATOR PRECEDENCE
 
-```text
-1: a + b * c
-2: (a + b) * c
-3: a << b - 1
-4: a & b ^ c
-5: a < b == c > a
-6: -a * -b
-7: a - b - c
-8: a ? b : c
-```
+Article 1 (Purpose). This Code sets out the binding order of operators where parentheses are omitted.
+
+Article 2 (Multiplication). In `a + b * c`, multiplication binds before addition; it is equivalent to `a + (b * c)`.
+
+Article 3 (Parentheses). In `(a + b) * c`, the addition inside the parentheses comes first.
+
+Article 4 (Shift and Subtraction). In `a << b - 1`, subtraction binds before the left shift; it is equivalent to `a << (b - 1)`.
+
+Article 5 (Bitwise AND and XOR). In `a & b ^ c`, bitwise AND binds before XOR; it is equivalent to `(a & b) ^ c`.
+
+Article 6 (Relational and Equality). In `a < b == c > a`, relational operators bind before equality; it is equivalent to `(a < b) == (c > a)`.
+
+Article 7 (Unary Minus). In `-a * -b`, unary minus binds before multiplication; it is equivalent to `(-a) * (-b)`.
+
+Article 8 (Subtraction Associativity). In `a - b - c`, subtraction is left-associative; it is equivalent to `(a - b) - c`.
+
+Article 9 (Conditional Operator). In `a ? b : c`, the conditional operator is right-associative; this exercise contains only one conditional operator.
+
+Article 10 (Supplementary). Matters not provided in this Code are governed by the C++ standard. No expression may be given parentheses of one's own, nor may the habits of another language be invoked.
+
+**In plain words**: read `q a b c` and evaluate expression `q` under C++ precedence and associativity; do not add parentheses of your own. Every intermediate result fits in `int`, so nothing overflows.
 
 ### Input
 

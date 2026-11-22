@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 3,
   "title": {
-    "chs": "会议室最多场次",
-    "en": "Most Meetings in One Room"
+    "chs": "会议室里排座次",
+    "en": "A Queue at the Meeting Room"
   },
   "limits": {
     "timeoutMs": 3000,

@@ -1,4 +1,28 @@
-这一题不读 stdin，也不写 stdout。实现一个不拥有数据的数组视图类，测试在隐藏的 harness 里。
+甲：今儿说个 `IntView`。这位爷不养孩子，只替人看孩子。
+
+乙：怎么个看法？
+
+甲：构造它，得递上 `int* data` 和一串 `count`。`data` 是空指针，或者 `count <= 0`，它就两手一摊，报一个空视图：`data()` 得 `nullptr`，`size()` 得 0。
+
+乙：干脆，省粮。
+
+甲：视图不拷贝数据，只把指针和长度揣兜里。所以 `operator[]` 一改，原数组也跟着变——本来就是一回事。
+
+乙：借人家的锅，炒自家的菜。
+
+甲：`slice(begin, count)` 更省事：从 `begin` 起切一段，还是那块内存，跟原视图合穿一条裤子，原视图一根毫毛不动。
+
+乙：那要是切到墙外头呢？
+
+甲：`begin < 0`、`count < 0`、`begin >= size()`、`begin + count > size()`，或者 `count == 0`，它就还你一个空视图，一声不吭。
+
+乙：得，白跑一趟。
+
+甲：`operator[]` 的下标是保证合法的，只管取，不必设卡；`empty()` 见 `size() == 0` 就报 `true`。
+
+乙：得嘞，齐活。
+
+**人话**：实现 `IntView`：默认构造为空视图；构造函数在 `data == nullptr` 或 `count <= 0` 时也构造空视图。视图只保存指针与长度，不拷贝数据，通过视图改元素会改原数组。`slice(begin, count)` 返回与原视图共享内存的新视图，不修改原视图；越界或 `count == 0` 时返回空视图。`operator[]` 的下标保证合法，无需检查。本题不读 stdin，不写 stdout；不写 `main`。
 
 ```cpp
 class IntView {
@@ -16,17 +40,3 @@ public:
     IntView slice(int begin, int count) const;
 };
 ```
-
-规则：
-
-- 默认构造的视图为空：`data()` 为 `nullptr`，`size()` 为 0。
-- 构造函数在 `data == nullptr` 或 `count <= 0` 时也构造空视图。
-- 视图不拷贝数据，只保存指针和长度；通过视图修改元素会修改原数组。
-- `slice(begin, count)` 返回从 `begin` 开始、长度为 `count` 的视图，与原视图共享内存；`slice` 不能修改原视图。
-- 切片越界（`begin < 0`、`count < 0`、`begin >= size()`、`begin + count > size()`）或 `count == 0` 时返回空视图。
-- `operator[]` 的下标保证合法，不需要做边界检查。
-- 不要写 `main`。
-
-### 提示
-
-`slice` 返回的视图只需要保存 `data_ + begin` 和 `count`。检查 `begin + count` 时注意不要用可能溢出的类型累加。

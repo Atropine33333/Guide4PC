@@ -1,4 +1,12 @@
-This task reads no stdin and writes no stdout. Implement a custom `swap` inside namespace `gadget` and observe how argument-dependent lookup (ADL) affects unqualified calls.
+THE BOOK OF EXODUS, CHAPTER XIX
+
+And the LORD spake unto Moses, saying: Speak unto all the congregation of the children of Israel, and say, When a name is called, seek it not only in its own house, but also among the tribe from which the argument came; and that which is found there is the law of that tribe. This law is called argument-dependent lookup.
+
+And the LORD spake unto Moses again, saying: Set a `swap` among the people of `gadget`, and when two of them are exchanged, number one and write it in the book; and `reset_swap_calls` shall wipe the number from the book. He that calls `std::swap` by its full name passes by the law of the tribe; and the stranger `int` remains under the hand of `std::swap`.
+
+And Moses set the `swap` among `gadget`, and numbered the people, as the LORD had commanded.
+
+**In plain words**: this task reads no stdin and writes no stdout. Inside namespace `gadget`, implement a custom `swap(Widget&, Widget&)` that exchanges the `id` and `value` members and increments `swap_calls()` once per call; also implement `swap_calls()` and `reset_swap_calls()`, with the counter starting at 0. The harness tests three call forms: the unqualified call must pick the customization, `std::swap` must bypass it, and two `int` values must stay with `std::swap`.
 
 ```cpp
 namespace gadget {
@@ -17,7 +25,7 @@ void swap(Widget& a, Widget& b);
 }  // namespace gadget
 ```
 
-Rules:
+### Rules
 
 - `gadget::swap(Widget&, Widget&)` swaps the `id` and `value` members and increments the counter returned by `swap_calls()` once per call.
 - `reset_swap_calls()` resets the counter to zero.

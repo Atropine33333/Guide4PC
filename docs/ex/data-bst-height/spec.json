@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 4,
   "title": {
-    "chs": "二叉搜索树",
-    "en": "Binary Search Tree"
+    "chs": "惠子问树",
+    "en": "Hui Shi Asks About a Tree"
   },
   "harness": "harness.cpp",
   "limits": {

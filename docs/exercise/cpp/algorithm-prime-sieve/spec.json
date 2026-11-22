@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 2,
   "title": {
-    "chs": "素数筛",
-    "en": "Prime Sieve"
+    "chs": "数阵筛之，问素数几何",
+    "en": "Sifting the Number Array for Primes"
   },
   "limits": {
     "timeoutMs": 5000,

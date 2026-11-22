@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 3,
   "title": {
-    "chs": "链表反转",
-    "en": "Reversing a Linked List"
+    "chs": "倒转长链",
+    "en": "Turning the Long Chain Around"
   },
   "limits": {
     "timeoutMs": 5000,

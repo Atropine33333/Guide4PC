@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 3,
   "title": {
-    "chs": "固定容量队列（找错）",
-    "en": "Fixed-Capacity Queue (Debug)"
+    "chs": "环形缓冲管理办法",
+    "en": "Measures for the Ring Buffer"
   },
   "limits": {
     "timeoutMs": 5000,

@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 2,
   "title": {
-    "chs": "名字与分数两列",
-    "en": "Two-Column Report"
+    "chs": "名册该怎么排",
+    "en": "How to Set the Ledger Columns"
   },
   "limits": {
     "timeoutMs": 5000,

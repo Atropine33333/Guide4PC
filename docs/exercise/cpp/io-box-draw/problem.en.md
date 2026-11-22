@@ -1,4 +1,26 @@
-Read several lines of text and put them inside a left-aligned rectangular frame.
+**Documents Office Circular No. 7 of 2026**
+
+**Notice on the Uniform Specification for Drawing Text Frames**
+
+To all sections and directly subordinate units:
+
+For the orderly presentation of incoming papers, the following provisions on drawing frames are hereby issued.
+
+1. A submission first reports the number of lines `n` (`1 ≤ n ≤ 50`); the `n` lines below it are the body. Each may be empty, may contain spaces, and is at most 40 characters long.
+
+2. The frame has `n + 2` lines in all. The first and last are made of `+`, several `-`, and `+`, the number of `-` being "length of the longest line + 2".
+
+3. Every middle line is written as `| `, the text, padding spaces, and ` |`. Text is left-aligned and padded on the right so that every body row has the width of the longest line.
+
+4. If all body lines are empty, the longest length is 0, the frame is `+--+`, and every content row is `|  |`.
+
+5. A newline still follows the first `n`; consume it before reading the body lines.
+
+Please carry out the specification above accordingly.
+
+cc: Records Room.
+
+**In plain words**: read `n` lines of text and place them inside a left-aligned rectangular frame, printing `n + 2` lines in the format above.
 
 **Input**:
 

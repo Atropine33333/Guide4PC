@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 4,
   "title": {
-    "chs": "弱引用断开环",
-    "en": "Breaking Cycles with Weak References"
+    "chs": "弱绳出埃及",
+    "en": "The Chain That Looks Back"
   },
   "limits": {
     "timeoutMs": 5000,

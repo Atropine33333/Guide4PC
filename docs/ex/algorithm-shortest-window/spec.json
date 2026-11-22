@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 3,
   "title": {
-    "chs": "最短达标子段",
-    "en": "Shortest Qualifying Window"
+    "chs": "走廊尽头的窗口守则",
+    "en": "House Rules for the Window at the Corridor's End"
   },
   "limits": {
     "timeoutMs": 5000,

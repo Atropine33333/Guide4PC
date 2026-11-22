@@ -5,8 +5,8 @@
   "category": "algorithm",
   "rank": 2,
   "title": {
-    "chs": "质因数分解",
-    "en": "Prime Factorization"
+    "chs": "分与质数之民",
+    "en": "Divided Among the Primes"
   },
   "limits": {
     "timeoutMs": 5000,

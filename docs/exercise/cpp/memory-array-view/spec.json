@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 2,
   "title": {
-    "chs": "不拥有数据的数组视图",
-    "en": "Non-Owning Array View"
+    "chs": "只看不养的视图",
+    "en": "A View That Owns Nothing"
   },
   "limits": {
     "timeoutMs": 5000,

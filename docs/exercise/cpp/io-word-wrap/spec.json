@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 3,
   "title": {
-    "chs": "按宽度折行",
-    "en": "Word Wrap"
+    "chs": "背篓里的单词",
+    "en": "The Words That Fit the Basket"
   },
   "limits": {
     "timeoutMs": 5000,

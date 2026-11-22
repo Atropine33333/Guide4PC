@@ -1,4 +1,18 @@
-This exercise reads no stdin and writes no stdout. Implement a token bucket rate limiter; a hidden harness runs the tests.
+(Late night. Studio lights glare. The host lifts a gleaming bucket.)
+
+"Friends, are you tired of endless requests? Look at this — the token bucket!"
+
+"At construction the bucket is full: `tokens()` equals `capacity`. Zero capacity? Zero refill? We sell those too."
+
+"When `advance(elapsed)` comes around, the bucket gains `refill * elapsed` tokens. Too many to hold? No problem — we fill it only to the brim."
+
+"`take(elapsed)` is even better: refill first, then take. Got a token? Take one and return `true`. Empty? Return `false`. That simple!"
+
+"Capacity zero? `take` always says `false`. Refill zero? Tokens never grow. You get exactly what you pay for."
+
+"Big numbers? `refill` and `elapsed` both reach a billion. Use 64-bit integers, multiply first, then compare with the capacity. But wait, there's more — all this can be yours the moment you write it!"
+
+**In plain words**: Complete `TokenBucket`. Store the token count in `long long`; `advance` adds `1LL * refill_ * elapsed` and caps at `capacity_`; `take` refills before consuming. Do not write `main`.
 
 ```cpp
 class TokenBucket {
@@ -11,7 +25,7 @@ public:
 };
 ```
 
-Rules:
+### Rules
 
 - The bucket starts full: `tokens() == capacity`; `capacity >= 0` and `refill >= 0`.
 - `elapsed` is the number of time units since the previous operation, `elapsed >= 0`.

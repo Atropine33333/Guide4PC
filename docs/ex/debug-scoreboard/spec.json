@@ -4,7 +4,7 @@
   "lang": "cpp",
   "category": "debugging",
   "rank": 3,
-  "title": { "chs": "修好记分板", "en": "Fix the Scoreboard" },
+  "title": { "chs": "记分板上的比喻", "en": "The Parable of the Scoreboard" },
   "harness": "harness.cpp",
   "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
   "checks": [

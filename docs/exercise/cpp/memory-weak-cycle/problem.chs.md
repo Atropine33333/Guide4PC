@@ -1,4 +1,20 @@
-这一题不读 stdin，也不写 stdout。用 `shared_ptr` 和 `weak_ptr` 搭一条双向可回看的链，确保不会形成所有权环，测试在隐藏的 harness 里。
+《出埃及记·链》
+
+耶和华晓谕摩西说：
+
+“你要为百姓造一条链，每节向前，只许向后望一眼。向后望的，算作看见，不算作拥有。”
+
+摩西问：“若有人向后望而伸手抓住呢？”
+
+耶和华说：“不可。向后伸手，链便成环，环上的都不肯放手，末后一节也必不熄灭。你要使后望之绳为弱绳：望得见，拿不走。”
+
+“链有几节由 `length` 定，节上刻数自 `0` 起，依次加一。头一节向后望，望的是空；末一节向前望，望的也是空。”
+
+“数节的人顺向前的绳走，走一节数一节，到空处便止。查链的人要看每节向后望时是否望见前一节，头一节向后望时必须已经看不见。”
+
+“出营的时候，不可为自己造 `main`。”
+
+**人话**：实现三个函数。`build_chain(length)` 造一条长度恰为 `length` 的双向链，节点 `value` 依次为 `0` 到 `length - 1`；`next` 是 `shared_ptr`，`previous` 必须是 `weak_ptr`，不增加所有权；`length <= 0` 返回空指针。`chain_length(head)` 沿 `next` 数节点，空指针返回 0。`links_consistent(head)` 检查每条非空 `next` 的后继，其 `previous.lock()` 必须指回自己，头节点的 `previous` 必须已失效；空指针视为一致。不写 `main`。
 
 ```cpp
 #include <memory>
@@ -14,16 +30,6 @@ std::size_t chain_length(const std::shared_ptr<Node>& head);
 bool links_consistent(const std::shared_ptr<Node>& head);
 ```
 
-规则：
-
-- `build_chain(length)` 创建一条长度恰好为 `length` 的链，节点的 `value` 依次为 `0, 1, ..., length - 1`。
-- 每个节点的 `next` 指向后一个节点，最后一个节点的 `next` 为空。
-- 每个节点的 `previous` 指向前一个节点，第一个节点的 `previous` 为空；`previous` 必须是弱引用，不能增加所有权。
-- `length <= 0` 时返回空指针。
-- `chain_length(head)` 沿 `next` 数节点个数；空指针返回 0。
-- `links_consistent(head)` 检查双向链接是否一致：每个 `next` 非空的节点，其后继的 `previous.lock()` 必须正好指回它；头节点的 `previous` 必须已经失效。空指针视为一致。
-- 不要写 `main`。
-
 ### 示例
 
 | 调用 | 结果 |
@@ -34,4 +40,4 @@ bool links_consistent(const std::shared_ptr<Node>& head);
 
 ### 提示
 
-构造时用 `node->previous = current;` 把 `shared_ptr` 赋给 `weak_ptr`。链尾的 `previous` 是弱引用，所以整条链只由头部的 `shared_ptr` 拥有；头指针释放后，链尾的 `previous.lock()` 会返回空。`links_consistent` 比较地址时用 `.get()`。
+造链时用 `node->previous = current;` 把 `shared_ptr` 赋给 `weak_ptr`。末节的 `previous` 是弱引用，整条链只由头部的 `shared_ptr` 拥有；头指针释放之后，链尾的 `previous.lock()` 返回空。比较地址时用 `.get()`。

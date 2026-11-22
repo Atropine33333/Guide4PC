@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 3,
   "title": {
-    "chs": "字典序最小拓扑序",
-    "en": "Lexicographically Smallest Topological Order"
+    "chs": "拓扑序条令",
+    "en": "Ordinance on Topological Order"
   },
   "limits": {
     "timeoutMs": 5000,

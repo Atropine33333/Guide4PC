@@ -5,8 +5,8 @@
   "category": "debugging",
   "rank": 4,
   "title": {
-    "chs": "大整数乘法的进位",
-    "en": "Big Integer Multiplication"
+    "chs": "竖乘进位术",
+    "en": "The Art of Carrying in Long Multiplication"
   },
   "limits": {
     "timeoutMs": 4000,

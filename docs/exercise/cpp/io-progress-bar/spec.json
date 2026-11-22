@@ -5,8 +5,8 @@
   "category": "io",
   "rank": 1,
   "title": {
-    "chs": "文本进度条",
-    "en": "Text Progress Bar"
+    "chs": "往下抹，别四舍五入",
+    "en": "Round Down, Do Not Round Off"
   },
   "limits": {
     "timeoutMs": 5000,

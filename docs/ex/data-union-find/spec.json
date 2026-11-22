@@ -5,8 +5,8 @@
   "category": "data",
   "rank": 3,
   "title": {
-    "chs": "并查集",
-    "en": "Disjoint Set Union"
+    "chs": "会众归并录",
+    "en": "The Register of Merged Tribes"
   },
   "harness": "harness.cpp",
   "limits": {

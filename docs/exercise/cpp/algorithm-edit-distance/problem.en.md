@@ -1,4 +1,10 @@
-Implement two dynamic-programming functions over strings.
+**Chapter Eighteen**
+
+The kingdom of heaven is like a man who held two words, one called `a` and one called `b`, each owing the other. The master said, "Make `a` into `b`. Each letter changed is a penny repaid; each letter added, each letter struck out, each letter swapped, counts as a penny also. Reckon the least you can pay."
+
+So the man set the words letter against letter and wrote the account on a sheet, one row across and one column down. Then the master asked, "And how many letters do the two words hold in common, keeping their order?" The man answered, "That is a second ledger; it shall be reckoned too."
+
+**In plain words**: implement two dynamic-programming functions: `edit_distance` returns the minimum number of single-character operations that turn `a` into `b` (insertion, deletion, and substitution each count as one step), and `longest_common_subsequence` returns the length of their longest common subsequence. Do not write `main`; the judge calls the functions directly.
 
 Required interface (do not write `main`):
 

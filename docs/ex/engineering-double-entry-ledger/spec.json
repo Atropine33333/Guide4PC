@@ -5,8 +5,8 @@
   "category": "engineering",
   "rank": 5,
   "title": {
-    "chs": "原子转账账本",
-    "en": "Atomic Transfer Ledger"
+    "chs": "账房里的天平",
+    "en": "A Parable of the Ledger"
   },
   "limits": {
     "timeoutMs": 5000,

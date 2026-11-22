@@ -5,8 +5,8 @@
   "category": "memory",
   "rank": 5,
   "title": {
-    "chs": "带代际句柄的槽位表",
-    "en": "Generational Handle Store"
+    "chs": "八席牌的代际",
+    "en": "The Eight Seats and Their Generations"
   },
   "limits": {
     "timeoutMs": 5000,
