@@ -40,6 +40,7 @@
     items: [],
     papers: [],
     specs: {},
+    page: 1,
   };
 
   // ── helpers ────────────────────────────────────────────────────────────────
@@ -110,6 +111,8 @@
   // ── 页面：列表 ─────────────────────────────────────────────────────────────
   function renderList() {
     var all = itemsFor(state.lang);
+    var fsig = state.lang + '|' + state.q + '|' + JSON.stringify(state.cats) + '|' + JSON.stringify(state.ranks);
+    if (state._fsig !== fsig) { state._fsig = fsig; state.page = 1; }
     var shown = all.filter(function (it) {
       if (state.q) {
         var hay = (titleOf(it) + ' ' + it.id + ' ' + catLabel(it.category)).toLowerCase();
@@ -196,9 +199,23 @@
     });
     app.appendChild(h('div', { class: 'es-search-row' }, [search]));
 
+    // 结果计数
+    var totalCount = all.length;
+    var countText = shown.length === totalCount
+      ? t('共 ' + totalCount + ' 题', totalCount + ' exercises')
+      : t('筛出 ' + shown.length + ' / ' + totalCount + ' 题', shown.length + ' of ' + totalCount + ' exercises');
+    app.appendChild(h('div', { class: 'es-result-count', text: countText }));
+
+    // 分页
+    var PAGE_SIZE = 30;
+    var totalPages = Math.max(1, Math.ceil(shown.length / PAGE_SIZE));
+    if (!state.page || state.page < 1) state.page = 1;
+    if (state.page > totalPages) state.page = totalPages;
+    var pageItems = shown.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
+
     // 列表
     var list = h('div', { class: 'es-list' });
-    shown.forEach(function (it) {
+    pageItems.forEach(function (it) {
       var row = h('div', { class: 'es-item' });
       if (state.composing) {
         var cb = h('input', { type: 'checkbox', class: 'es-pick', 'aria-label': t('加入卷子', 'Add to paper') });
@@ -219,6 +236,17 @@
     });
     if (!shown.length) list.appendChild(h('div', { class: 'es-empty', text: t('没有符合条件的题目。', 'No exercises match these filters.') }));
     app.appendChild(list);
+
+    // 分页条
+    if (totalPages > 1) {
+      app.appendChild(h('div', { class: 'es-pager' }, [
+        h('button', { class: 'es-btn', text: t('上一页', 'Prev'), disabled: state.page <= 1 ? 'disabled' : null,
+          onclick: function () { state.page -= 1; renderList(); window.scrollTo(0, 0); } }),
+        h('span', { class: 'es-count', text: t('第 ' + state.page + ' / ' + totalPages + ' 页', 'Page ' + state.page + ' of ' + totalPages) }),
+        h('button', { class: 'es-btn', text: t('下一页', 'Next'), disabled: state.page >= totalPages ? 'disabled' : null,
+          onclick: function () { state.page += 1; renderList(); window.scrollTo(0, 0); } }),
+      ]));
+    }
 
     // 组卷
     var pickedCount = Object.keys(state.picked).length;
