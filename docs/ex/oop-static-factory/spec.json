@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-static-factory",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 4,
+  "title": {
+    "chs": "静态工厂与校验",
+    "en": "Static Factory with Validation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "valid",
+      "label": {
+        "chs": "合法用户名",
+        "en": "Valid usernames"
+      }
+    },
+    {
+      "id": "length",
+      "label": {
+        "chs": "长度边界",
+        "en": "Length boundaries"
+      }
+    },
+    {
+      "id": "first-char",
+      "label": {
+        "chs": "首字符规则",
+        "en": "The first-character rule"
+      }
+    },
+    {
+      "id": "characters",
+      "label": {
+        "chs": "其余字符规则",
+        "en": "The remaining-character rule"
+      }
+    },
+    {
+      "id": "equality",
+      "label": {
+        "chs": "相等比较",
+        "en": "Equality comparison"
+      }
+    },
+    {
+      "id": "boundaries",
+      "label": {
+        "chs": "16 字符边界",
+        "en": "The 16-character boundary"
+      }
+    }
+  ]
+}

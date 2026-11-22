@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-lis",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 4,
+  "title": {
+    "chs": "最长上升子序列",
+    "en": "Longest Increasing Subsequence"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空序列",
+        "en": "An empty sequence"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单元素",
+        "en": "One element"
+      }
+    },
+    {
+      "id": "increasing",
+      "label": {
+        "chs": "严格递增",
+        "en": "Strictly increasing"
+      }
+    },
+    {
+      "id": "decreasing",
+      "label": {
+        "chs": "严格递减",
+        "en": "Strictly decreasing"
+      }
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复值不算上升",
+        "en": "Duplicates do not count"
+      }
+    },
+    {
+      "id": "classic",
+      "label": {
+        "chs": "经典序列",
+        "en": "Classic sequences"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "与 O(n^2) 参考解对比",
+        "en": "Compared with an O(n^2) reference"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "二十万个元素",
+        "en": "Two hundred thousand elements"
+      }
+    }
+  ]
+}

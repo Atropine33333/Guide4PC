@@ -1,0 +1,133 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-grade-band",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 1,
+  "title": {
+    "chs": "成绩等级",
+    "en": "Letter Grade Band"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "top-band",
+      "label": {
+        "chs": "满分与 A 边界",
+        "en": "Full marks and the A boundary"
+      },
+      "cases": [
+        {
+          "in": [
+            "90"
+          ],
+          "out": [
+            "A"
+          ]
+        },
+        {
+          "in": [
+            "100"
+          ],
+          "out": [
+            "A"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b-band",
+      "label": {
+        "chs": "B 档边界",
+        "en": "The B band boundaries"
+      },
+      "cases": [
+        {
+          "in": [
+            "89"
+          ],
+          "out": [
+            "B"
+          ]
+        },
+        {
+          "in": [
+            "80"
+          ],
+          "out": [
+            "B"
+          ]
+        },
+        {
+          "in": [
+            "79"
+          ],
+          "out": [
+            "C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lower-bands",
+      "label": {
+        "chs": "C 与 D 档",
+        "en": "The C and D bands"
+      },
+      "cases": [
+        {
+          "in": [
+            "70"
+          ],
+          "out": [
+            "C"
+          ]
+        },
+        {
+          "in": [
+            "69"
+          ],
+          "out": [
+            "D"
+          ]
+        },
+        {
+          "in": [
+            "60"
+          ],
+          "out": [
+            "D"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-band",
+      "label": {
+        "chs": "F 档边界",
+        "en": "The F band boundaries"
+      },
+      "cases": [
+        {
+          "in": [
+            "59"
+          ],
+          "out": [
+            "F"
+          ]
+        },
+        {
+          "in": [
+            "0"
+          ],
+          "out": [
+            "F"
+          ]
+        }
+      ]
+    }
+  ]
+}

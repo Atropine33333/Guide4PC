@@ -18,6 +18,24 @@
     }
   },
   {
+    "id": "algorithm-fast-pow",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "快速幂取模",
+      "en": "Modular Fast Power"
+    },
+    "category": "algorithm",
+    "rank": 2,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "algorithm-gcd-lcm",
     "dir": "cpp",
     "lang": "cpp",
@@ -46,6 +64,24 @@
     "category": "algorithm",
     "rank": 4,
     "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "algorithm-lis",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "最长上升子序列",
+      "en": "Longest Increasing Subsequence"
+    },
+    "category": "algorithm",
+    "rank": 4,
+    "checks": 8,
     "harness": true,
     "variants": [],
     "problem": {
@@ -118,6 +154,24 @@
     "category": "algorithm",
     "rank": 2,
     "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "algorithm-shortest-window",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "最短达标子段",
+      "en": "Shortest Qualifying Window"
+    },
+    "category": "algorithm",
+    "rank": 3,
+    "checks": 6,
     "harness": false,
     "variants": [],
     "problem": {
@@ -260,6 +314,24 @@
     }
   },
   {
+    "id": "data-next-greater",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "下一个更大元素",
+      "en": "Next Greater Element"
+    },
+    "category": "data",
+    "rank": 2,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "data-rpn-eval",
     "dir": "cpp",
     "lang": "cpp",
@@ -289,6 +361,42 @@
     "rank": 4,
     "checks": 6,
     "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "data-topo-order",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "字典序最小拓扑序",
+      "en": "Lexicographically Smallest Topological Order"
+    },
+    "category": "data",
+    "rank": 3,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "data-trie-prefix",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "前缀树计数",
+      "en": "Trie Prefix Counting"
+    },
+    "category": "data",
+    "rank": 4,
+    "checks": 7,
+    "harness": true,
     "variants": [],
     "problem": {
       "chs": true,
@@ -386,6 +494,24 @@
     }
   },
   {
+    "id": "debugging-distinct-count",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "修好去重计数",
+      "en": "Fix the Distinct Count"
+    },
+    "category": "debugging",
+    "rank": 3,
+    "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "debugging-fixed-queue",
     "dir": "cpp",
     "lang": "cpp",
@@ -397,6 +523,24 @@
     "rank": 3,
     "checks": 8,
     "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "debugging-mode-tie",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "修好众数",
+      "en": "Fix the Mode"
+    },
+    "category": "debugging",
+    "rank": 4,
+    "checks": 7,
+    "harness": false,
     "variants": [],
     "problem": {
       "chs": true,
@@ -440,6 +584,24 @@
     }
   },
   {
+    "id": "debugging-stable-merge",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "修好归并",
+      "en": "Fix the Merge"
+    },
+    "category": "debugging",
+    "rank": 2,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "debugging-vowel-tally",
     "dir": "cpp",
     "lang": "cpp",
@@ -468,6 +630,42 @@
     "category": "engineering",
     "rank": 4,
     "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "engineering-circuit-breaker",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "熔断器",
+      "en": "Circuit Breaker"
+    },
+    "category": "engineering",
+    "rank": 5,
+    "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "engineering-command-router",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "命令路由表",
+      "en": "Command Router"
+    },
+    "category": "engineering",
+    "rank": 3,
+    "checks": 6,
     "harness": true,
     "variants": [],
     "problem": {
@@ -522,6 +720,24 @@
     "category": "engineering",
     "rank": 5,
     "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "engineering-retry-backoff",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "重试退避",
+      "en": "Retry Backoff"
+    },
+    "category": "engineering",
+    "rank": 4,
+    "checks": 6,
     "harness": true,
     "variants": [],
     "problem": {
@@ -620,6 +836,24 @@
     }
   },
   {
+    "id": "io-box-draw",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "画文本框",
+      "en": "Draw a Text Box"
+    },
+    "category": "io",
+    "rank": 2,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "io-column-report",
     "dir": "cpp",
     "lang": "cpp",
@@ -656,6 +890,24 @@
     }
   },
   {
+    "id": "io-eof-tally",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "读到文件末尾",
+      "en": "Read Until End of Input"
+    },
+    "category": "io",
+    "rank": 1,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "io-escape-expand",
     "dir": "cpp",
     "lang": "cpp",
@@ -685,6 +937,24 @@
     "rank": 1,
     "checks": 5,
     "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "io-row-formatter",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "定宽表格行",
+      "en": "Fixed-Width Table Row"
+    },
+    "category": "io",
+    "rank": 3,
+    "checks": 6,
+    "harness": true,
     "variants": [],
     "problem": {
       "chs": true,
@@ -773,6 +1043,24 @@
     },
     "category": "engineering",
     "rank": 4,
+    "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "memory-alignment",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "对齐计算",
+      "en": "Alignment Arithmetic"
+    },
+    "category": "memory",
+    "rank": 3,
     "checks": 7,
     "harness": true,
     "variants": [],
@@ -872,6 +1160,24 @@
     }
   },
   {
+    "id": "memory-null-pointer",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "空指针保护",
+      "en": "Null Pointer Guards"
+    },
+    "category": "memory",
+    "rank": 2,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "memory-shared-ref",
     "dir": "cpp",
     "lang": "cpp",
@@ -882,6 +1188,24 @@
     "category": "memory",
     "rank": 5,
     "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "memory-weak-cycle",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "弱引用断开环",
+      "en": "Breaking Cycles with Weak References"
+    },
+    "category": "memory",
+    "rank": 4,
+    "checks": 6,
     "harness": true,
     "variants": [],
     "problem": {
@@ -962,6 +1286,24 @@
     }
   },
   {
+    "id": "oop-interval",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "闭区间",
+      "en": "Closed Interval"
+    },
+    "category": "oop",
+    "rank": 3,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "oop-pixel-class",
     "dir": "cpp",
     "lang": "cpp",
@@ -998,6 +1340,24 @@
     }
   },
   {
+    "id": "oop-static-factory",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "静态工厂与校验",
+      "en": "Static Factory with Validation"
+    },
+    "category": "oop",
+    "rank": 4,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "oop-text-builder",
     "dir": "cpp",
     "lang": "cpp",
@@ -1008,6 +1368,24 @@
     "category": "oop",
     "rank": 4,
     "checks": 8,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "oop-traffic-light",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "交通灯",
+      "en": "Traffic Light"
+    },
+    "category": "oop",
+    "rank": 1,
+    "checks": 6,
     "harness": true,
     "variants": [],
     "problem": {
@@ -1124,6 +1502,24 @@
     }
   },
   {
+    "id": "semantics-range-modify",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "原地修改",
+      "en": "In-Place Range Modification"
+    },
+    "category": "semantics",
+    "rank": 2,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "semantics-remainder-sign",
     "dir": "cpp",
     "lang": "cpp",
@@ -1134,6 +1530,42 @@
     "category": "semantics",
     "rank": 1,
     "checks": 5,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "semantics-rvalue-overload",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "左值与右值重载",
+      "en": "Lvalue and Rvalue Overloads"
+    },
+    "category": "semantics",
+    "rank": 3,
+    "checks": 5,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "semantics-short-circuit",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "短路求值",
+      "en": "Short-Circuit Evaluation"
+    },
+    "category": "semantics",
+    "rank": 1,
+    "checks": 4,
     "harness": false,
     "variants": [],
     "problem": {
@@ -1250,6 +1682,24 @@
     }
   },
   {
+    "id": "stdlib-erase-remove",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "筛掉区间外的数",
+      "en": "Remove Out-of-Range Values"
+    },
+    "category": "stdlib",
+    "rank": 1,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "stdlib-next-permutation",
     "dir": "cpp",
     "lang": "cpp",
@@ -1260,6 +1710,42 @@
     "category": "stdlib",
     "rank": 3,
     "checks": 7,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "stdlib-optional-parse",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "可选值解析",
+      "en": "Optional Integer Parsing"
+    },
+    "category": "stdlib",
+    "rank": 3,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "stdlib-replace-all",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "替换全部",
+      "en": "Replace All Occurrences"
+    },
+    "category": "stdlib",
+    "rank": 2,
+    "checks": 6,
     "harness": false,
     "variants": [],
     "problem": {
@@ -1394,12 +1880,48 @@
     }
   },
   {
+    "id": "syntax-coin-greedy",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "贪心找零",
+      "en": "Greedy Coin Counting"
+    },
+    "category": "syntax",
+    "rank": 3,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "syntax-collatz-steps",
     "dir": "cpp",
     "lang": "cpp",
     "title": {
       "chs": "考拉兹步数",
       "en": "Collatz Steps"
+    },
+    "category": "syntax",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "syntax-grade-band",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "成绩等级",
+      "en": "Letter Grade Band"
     },
     "category": "syntax",
     "rank": 1,
@@ -1440,6 +1962,24 @@
     "category": "syntax",
     "rank": 3,
     "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "syntax-triangle-kind",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "三角形分类",
+      "en": "Triangle Classification"
+    },
+    "category": "syntax",
+    "rank": 2,
+    "checks": 4,
     "harness": false,
     "variants": [],
     "problem": {
@@ -1520,6 +2060,24 @@
     }
   },
   {
+    "id": "templates-concept-numeric",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "数值概念约束",
+      "en": "Numeric Concept Constraint"
+    },
+    "category": "templates",
+    "rank": 5,
+    "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "templates-fixed-array",
     "dir": "cpp",
     "lang": "cpp",
@@ -1530,6 +2088,42 @@
     "category": "templates",
     "rank": 3,
     "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "templates-generic-join",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "泛型拼接",
+      "en": "Generic Join"
+    },
+    "category": "templates",
+    "rank": 3,
+    "checks": 7,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "templates-matrix-fixed",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "定长矩阵",
+      "en": "Fixed-Size Matrix"
+    },
+    "category": "templates",
+    "rank": 4,
+    "checks": 6,
     "harness": true,
     "variants": [],
     "problem": {
@@ -1664,6 +2258,24 @@
     }
   },
   {
+    "id": "types-fixed-point",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "定点金额",
+      "en": "Fixed-Point Money"
+    },
+    "category": "types",
+    "rank": 3,
+    "checks": 6,
+    "harness": false,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
     "id": "types-narrow-bounds",
     "dir": "cpp",
     "lang": "cpp",
@@ -1673,6 +2285,24 @@
     },
     "category": "types",
     "rank": 3,
+    "checks": 6,
+    "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "types-near-equal",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "近似相等",
+      "en": "Nearly Equal"
+    },
+    "category": "types",
+    "rank": 2,
     "checks": 6,
     "harness": true,
     "variants": [],
@@ -1711,6 +2341,24 @@
     "rank": 4,
     "checks": 7,
     "harness": true,
+    "variants": [],
+    "problem": {
+      "chs": true,
+      "en": true
+    }
+  },
+  {
+    "id": "types-size-diff",
+    "dir": "cpp",
+    "lang": "cpp",
+    "title": {
+      "chs": "无符号差值",
+      "en": "Unsigned Difference"
+    },
+    "category": "types",
+    "rank": 1,
+    "checks": 4,
+    "harness": false,
     "variants": [],
     "problem": {
       "chs": true,

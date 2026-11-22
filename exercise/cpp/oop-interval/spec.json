@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-interval",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 3,
+  "title": {
+    "chs": "闭区间",
+    "en": "Closed Interval"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "normalize",
+      "label": {
+        "chs": "端点顺序归一化",
+        "en": "Normalizing endpoint order"
+      }
+    },
+    {
+      "id": "contains",
+      "label": {
+        "chs": "闭区间包含",
+        "en": "Closed interval containment"
+      }
+    },
+    {
+      "id": "overlaps",
+      "label": {
+        "chs": "重叠与端点相接",
+        "en": "Overlap and touching endpoints"
+      }
+    },
+    {
+      "id": "united",
+      "label": {
+        "chs": "区间并集",
+        "en": "Interval unions"
+      }
+    },
+    {
+      "id": "equality",
+      "label": {
+        "chs": "区间相等",
+        "en": "Interval equality"
+      }
+    },
+    {
+      "id": "point",
+      "label": {
+        "chs": "单点区间",
+        "en": "A single-point interval"
+      }
+    }
+  ]
+}

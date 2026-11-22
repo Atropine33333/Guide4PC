@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-optional-parse",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 3,
+  "title": {
+    "chs": "可选值解析",
+    "en": "Optional Integer Parsing"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "valid",
+      "label": {
+        "chs": "合法写法",
+        "en": "Valid spellings"
+      }
+    },
+    {
+      "id": "whitespace",
+      "label": {
+        "chs": "空白与空串",
+        "en": "Whitespace and empty text"
+      }
+    },
+    {
+      "id": "syntax",
+      "label": {
+        "chs": "非法字符",
+        "en": "Illegal characters"
+      }
+    },
+    {
+      "id": "range",
+      "label": {
+        "chs": "int 范围边界",
+        "en": "The int range boundaries"
+      }
+    },
+    {
+      "id": "negative-zero",
+      "label": {
+        "chs": "负零与前导零",
+        "en": "Negative zero and leading zeros"
+      }
+    },
+    {
+      "id": "parse-or",
+      "label": {
+        "chs": "带回退的解析",
+        "en": "Parsing with a fallback"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-retry-backoff",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 4,
+  "title": {
+    "chs": "重试退避",
+    "en": "Retry Backoff"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "no-attempts",
+      "label": {
+        "chs": "不允许重试",
+        "en": "No attempts allowed"
+      }
+    },
+    {
+      "id": "sequence",
+      "label": {
+        "chs": "逐次翻倍并封顶",
+        "en": "Doubling until the cap"
+      }
+    },
+    {
+      "id": "zero-base",
+      "label": {
+        "chs": "基础延迟为零",
+        "en": "A zero base delay"
+      }
+    },
+    {
+      "id": "flat",
+      "label": {
+        "chs": "上限等于基础值",
+        "en": "The cap equals the base"
+      }
+    },
+    {
+      "id": "reset",
+      "label": {
+        "chs": "重置计数",
+        "en": "Resetting the counter"
+      }
+    },
+    {
+      "id": "cap",
+      "label": {
+        "chs": "接近 int 上限",
+        "en": "Near the int limit"
+      }
+    }
+  ]
+}

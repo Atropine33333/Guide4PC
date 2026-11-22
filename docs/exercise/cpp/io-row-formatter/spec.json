@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-row-formatter",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 3,
+  "title": {
+    "chs": "定宽表格行",
+    "en": "Fixed-Width Table Row"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "short",
+      "label": {
+        "chs": "短名称与短金额",
+        "en": "Short names and amounts"
+      }
+    },
+    {
+      "id": "exact",
+      "label": {
+        "chs": "恰好填满宽度",
+        "en": "Exactly filling the widths"
+      }
+    },
+    {
+      "id": "zero",
+      "label": {
+        "chs": "空名称与零",
+        "en": "An empty name and zero"
+      }
+    },
+    {
+      "id": "longer",
+      "label": {
+        "chs": "超出宽度不截断",
+        "en": "Longer content is not truncated"
+      }
+    },
+    {
+      "id": "max",
+      "label": {
+        "chs": "64 位整数边界",
+        "en": "64-bit integer boundaries"
+      }
+    },
+    {
+      "id": "print-row",
+      "label": {
+        "chs": "写入传入的流",
+        "en": "Writing to the given stream"
+      }
+    }
+  ]
+}

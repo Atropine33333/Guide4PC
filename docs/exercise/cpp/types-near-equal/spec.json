@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-near-equal",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 2,
+  "title": {
+    "chs": "近似相等",
+    "en": "Nearly Equal"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "identical",
+      "label": {
+        "chs": "完全相等",
+        "en": "Exactly equal"
+      }
+    },
+    {
+      "id": "within",
+      "label": {
+        "chs": "容差之内",
+        "en": "Inside the tolerance"
+      }
+    },
+    {
+      "id": "outside",
+      "label": {
+        "chs": "容差之外",
+        "en": "Outside the tolerance"
+      }
+    },
+    {
+      "id": "zero-tolerance",
+      "label": {
+        "chs": "零容差",
+        "en": "Zero tolerance"
+      }
+    },
+    {
+      "id": "infinity",
+      "label": {
+        "chs": "无穷大",
+        "en": "Infinities"
+      }
+    },
+    {
+      "id": "nan",
+      "label": {
+        "chs": "NaN",
+        "en": "NaN values"
+      }
+    }
+  ]
+}

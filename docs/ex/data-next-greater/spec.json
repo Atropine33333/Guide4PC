@@ -1,0 +1,134 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-next-greater",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 2,
+  "title": {
+    "chs": "下一个更大元素",
+    "en": "Next Greater Element"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "混合大小",
+        "en": "A mix of values"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "2 1 2 4 3"
+          ],
+          "out": [
+            "4 2 4 -1 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decreasing",
+      "label": {
+        "chs": "严格递减",
+        "en": "Strictly decreasing"
+      },
+      "cases": [
+        {
+          "in": [
+            "5",
+            "5 4 3 2 1"
+          ],
+          "out": [
+            "-1 -1 -1 -1 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "increasing",
+      "label": {
+        "chs": "严格递增",
+        "en": "Strictly increasing"
+      },
+      "cases": [
+        {
+          "in": [
+            "4",
+            "1 2 3 4"
+          ],
+          "out": [
+            "2 3 4 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "相等不算更大",
+        "en": "Equal values do not count"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "3 3 3"
+          ],
+          "out": [
+            "-1 -1 -1"
+          ]
+        },
+        {
+          "in": [
+            "5",
+            "2 2 3 2 3"
+          ],
+          "out": [
+            "3 3 -1 3 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数",
+        "en": "Negative values"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "-1 -5 0"
+          ],
+          "out": [
+            "0 0 -1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "A single element"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "7"
+          ],
+          "out": [
+            "-1"
+          ]
+        }
+      ]
+    }
+  ]
+}

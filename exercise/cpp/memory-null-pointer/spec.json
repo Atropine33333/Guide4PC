@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-null-pointer",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 2,
+  "title": {
+    "chs": "空指针保护",
+    "en": "Null Pointer Guards"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "null",
+      "label": {
+        "chs": "空指针",
+        "en": "A null pointer"
+      }
+    },
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通正负数",
+        "en": "Ordinary positive and negative values"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "全为负数",
+        "en": "All negative"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "One element"
+      }
+    },
+    {
+      "id": "non-positive",
+      "label": {
+        "chs": "长度为零或负数",
+        "en": "Zero and negative lengths"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "十万个元素",
+        "en": "One hundred thousand values"
+      }
+    }
+  ]
+}

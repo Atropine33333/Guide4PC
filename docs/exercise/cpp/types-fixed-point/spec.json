@@ -1,0 +1,179 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-fixed-point",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 3,
+  "title": {
+    "chs": "定点金额",
+    "en": "Fixed-Point Money"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "simple",
+      "label": {
+        "chs": "普通求和",
+        "en": "Ordinary sum"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "1.10",
+            "2.20"
+          ],
+          "out": [
+            "3.30"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "label": {
+        "chs": "分位进位",
+        "en": "Carry into the next unit"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "0.99",
+            "0.02"
+          ],
+          "out": [
+            "1.01"
+          ]
+        },
+        {
+          "in": [
+            "3",
+            "9.99",
+            "0.01",
+            "0.00"
+          ],
+          "out": [
+            "10.00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sign",
+      "label": {
+        "chs": "正负相消",
+        "en": "Positive and negative amounts"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "-1.50",
+            "1.00"
+          ],
+          "out": [
+            "-0.50"
+          ]
+        },
+        {
+          "in": [
+            "2",
+            "-0.50",
+            "0.50"
+          ],
+          "out": [
+            "0.00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decimals",
+      "label": {
+        "chs": "一位与整数写法",
+        "en": "One-digit and integer forms"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "0.1",
+            "0.2"
+          ],
+          "out": [
+            "0.30"
+          ]
+        },
+        {
+          "in": [
+            "2",
+            "3",
+            "0.7"
+          ],
+          "out": [
+            "3.70"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "接近金额上限",
+        "en": "Near the amount limit"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "999999999.99",
+            "0.01"
+          ],
+          "out": [
+            "1000000000.00"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "-999999999.99"
+          ],
+          "out": [
+            "-999999999.99"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个金额",
+        "en": "A single amount"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "0.05"
+          ],
+          "out": [
+            "0.05"
+          ]
+        },
+        {
+          "in": [
+            "1",
+            "0"
+          ],
+          "out": [
+            "0.00"
+          ]
+        }
+      ]
+    }
+  ]
+}

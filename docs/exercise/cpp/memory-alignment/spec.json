@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-alignment",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 3,
+  "title": {
+    "chs": "对齐计算",
+    "en": "Alignment Arithmetic"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "align-basic",
+      "label": {
+        "chs": "向上对齐",
+        "en": "Aligning upward"
+      }
+    },
+    {
+      "id": "align-zero",
+      "label": {
+        "chs": "对齐值为 0",
+        "en": "A zero alignment"
+      }
+    },
+    {
+      "id": "align-overflow",
+      "label": {
+        "chs": "超过 size_t 上限",
+        "en": "Beyond the size_t limit"
+      }
+    },
+    {
+      "id": "is-aligned",
+      "label": {
+        "chs": "指针地址判断",
+        "en": "Pointer address checks"
+      }
+    },
+    {
+      "id": "padding",
+      "label": {
+        "chs": "补齐字节数",
+        "en": "Padding byte counts"
+      }
+    },
+    {
+      "id": "padding-max",
+      "label": {
+        "chs": "上限附近的补齐",
+        "en": "Padding near the limit"
+      }
+    },
+    {
+      "id": "consistency",
+      "label": {
+        "chs": "对齐与补齐互相印证",
+        "en": "Alignment and padding agree"
+      }
+    }
+  ]
+}

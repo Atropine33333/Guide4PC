@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-trie-prefix",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 4,
+  "title": {
+    "chs": "前缀树计数",
+    "en": "Trie Prefix Counting"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空树",
+        "en": "An empty trie"
+      }
+    },
+    {
+      "id": "chain",
+      "label": {
+        "chs": "一条链上的单词",
+        "en": "Words on one chain"
+      }
+    },
+    {
+      "id": "duplicates",
+      "label": {
+        "chs": "重复插入",
+        "en": "Repeated insertions"
+      }
+    },
+    {
+      "id": "branching",
+      "label": {
+        "chs": "分叉与前缀",
+        "en": "Branching and prefixes"
+      }
+    },
+    {
+      "id": "empty-word",
+      "label": {
+        "chs": "空单词",
+        "en": "The empty word"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "长单词",
+        "en": "A long word"
+      }
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "大量重复",
+        "en": "Many repetitions"
+      }
+    }
+  ]
+}

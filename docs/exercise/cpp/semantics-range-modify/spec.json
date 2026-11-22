@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-range-modify",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 2,
+  "title": {
+    "chs": "原地修改",
+    "en": "In-Place Range Modification"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "scale-basic",
+      "label": {
+        "chs": "正数缩放",
+        "en": "Scaling positive values"
+      }
+    },
+    {
+      "id": "scale-negative",
+      "label": {
+        "chs": "负数与零",
+        "en": "Negatives and zero"
+      }
+    },
+    {
+      "id": "scale-zero",
+      "label": {
+        "chs": "乘以 0",
+        "en": "Multiplying by zero"
+      }
+    },
+    {
+      "id": "scale-empty",
+      "label": {
+        "chs": "空序列",
+        "en": "An empty sequence"
+      }
+    },
+    {
+      "id": "sum-positive",
+      "label": {
+        "chs": "正数求和",
+        "en": "Summing positive values"
+      }
+    },
+    {
+      "id": "multiples",
+      "label": {
+        "chs": "整除计数",
+        "en": "Counting multiples"
+      }
+    }
+  ]
+}

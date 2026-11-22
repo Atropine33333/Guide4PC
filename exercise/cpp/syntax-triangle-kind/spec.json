@@ -1,0 +1,133 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-triangle-kind",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 2,
+  "title": {
+    "chs": "三角形分类",
+    "en": "Triangle Classification"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "not-triangle",
+      "label": {
+        "chs": "不能组成三角形",
+        "en": "Not a triangle"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 2 3"
+          ],
+          "out": [
+            "NOT_TRIANGLE"
+          ]
+        },
+        {
+          "in": [
+            "1 1 2"
+          ],
+          "out": [
+            "NOT_TRIANGLE"
+          ]
+        },
+        {
+          "in": [
+            "3 4 10"
+          ],
+          "out": [
+            "NOT_TRIANGLE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equilateral",
+      "label": {
+        "chs": "等边三角形",
+        "en": "Equilateral"
+      },
+      "cases": [
+        {
+          "in": [
+            "7 7 7"
+          ],
+          "out": [
+            "EQUILATERAL"
+          ]
+        },
+        {
+          "in": [
+            "1000000000 1000000000 1000000000"
+          ],
+          "out": [
+            "EQUILATERAL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "isosceles",
+      "label": {
+        "chs": "等腰三角形",
+        "en": "Isosceles"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 5 8"
+          ],
+          "out": [
+            "ISOSCELES"
+          ]
+        },
+        {
+          "in": [
+            "8 5 5"
+          ],
+          "out": [
+            "ISOSCELES"
+          ]
+        },
+        {
+          "in": [
+            "1000000000 1000000000 1999999999"
+          ],
+          "out": [
+            "ISOSCELES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scalene",
+      "label": {
+        "chs": "不等边三角形",
+        "en": "Scalene"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 4 5"
+          ],
+          "out": [
+            "SCALENE"
+          ]
+        },
+        {
+          "in": [
+            "1000000000 999999999 2"
+          ],
+          "out": [
+            "SCALENE"
+          ]
+        }
+      ]
+    }
+  ]
+}

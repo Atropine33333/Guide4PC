@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "syntax-coin-greedy",
+  "lang": "cpp",
+  "category": "syntax",
+  "rank": 3,
+  "title": {
+    "chs": "贪心找零",
+    "en": "Greedy Coin Counting"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "zero",
+      "label": {
+        "chs": "金额为 0",
+        "en": "Zero amount"
+      }
+    },
+    {
+      "id": "small",
+      "label": {
+        "chs": "小面额",
+        "en": "Small amounts"
+      }
+    },
+    {
+      "id": "boundary",
+      "label": {
+        "chs": "面额切换边界",
+        "en": "Denomination boundaries"
+      }
+    },
+    {
+      "id": "greedy",
+      "label": {
+        "chs": "贪心次序",
+        "en": "Greedy order"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "10^18 分",
+        "en": "10^18 cents"
+      }
+    },
+    {
+      "id": "near-max",
+      "label": {
+        "chs": "接近上限",
+        "en": "Near the limit"
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "$schema": "../../schema.json",
+  "id": "stdlib-replace-all",
+  "lang": "cpp",
+  "category": "stdlib",
+  "rank": 2,
+  "title": {
+    "chs": "替换全部",
+    "en": "Replace All Occurrences"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "single",
+      "label": {
+        "chs": "一处匹配",
+        "en": "One occurrence"
+      },
+      "cases": [
+        {
+          "in": [
+            "one two one",
+            "one",
+            "1"
+          ],
+          "out": [
+            "1 two 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "多处匹配与空格",
+        "en": "Several matches with spaces"
+      },
+      "cases": [
+        {
+          "in": [
+            "a.b.c.d",
+            ".",
+            "-"
+          ],
+          "out": [
+            "a-b-c-d"
+          ]
+        },
+        {
+          "in": [
+            "x  y  x",
+            "x",
+            "z"
+          ],
+          "out": [
+            "z  y  z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adjacent",
+      "label": {
+        "chs": "首尾与相邻匹配",
+        "en": "Matches at the ends and back to back"
+      },
+      "cases": [
+        {
+          "in": [
+            "aaaa",
+            "aa",
+            "b"
+          ],
+          "out": [
+            "bb"
+          ]
+        },
+        {
+          "in": [
+            "xabcx",
+            "x",
+            "YY"
+          ],
+          "out": [
+            "YYabcYY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-rescan",
+      "label": {
+        "chs": "不在替换结果里重新匹配",
+        "en": "Do not rescan the replacement"
+      },
+      "cases": [
+        {
+          "in": [
+            "aaa",
+            "a",
+            "aa"
+          ],
+          "out": [
+            "aaaaaa"
+          ]
+        },
+        {
+          "in": [
+            "abab",
+            "ab",
+            "ba"
+          ],
+          "out": [
+            "baba"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "delete",
+      "label": {
+        "chs": "替换为空串",
+        "en": "An empty replacement deletes matches"
+      },
+      "cases": [
+        {
+          "in": [
+            "abcbc",
+            "bc",
+            ""
+          ],
+          "out": [
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edge",
+      "label": {
+        "chs": "模式更长与空原文",
+        "en": "Pattern longer than text, and empty text"
+      },
+      "cases": [
+        {
+          "in": [
+            "abc",
+            "abcd",
+            "z"
+          ],
+          "out": [
+            "abc"
+          ]
+        },
+        {
+          "in": [
+            "",
+            "a",
+            "b"
+          ],
+          "out": [
+            ""
+          ]
+        },
+        {
+          "in": [
+            "hello",
+            "hello",
+            "bye"
+          ],
+          "out": [
+            "bye"
+          ]
+        }
+      ]
+    }
+  ]
+}

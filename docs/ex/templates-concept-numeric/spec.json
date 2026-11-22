@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-concept-numeric",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 5,
+  "title": {
+    "chs": "数值概念约束",
+    "en": "Numeric Concept Constraint"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "concept",
+      "label": {
+        "chs": "概念的静态断言",
+        "en": "The concept's static assertions"
+      }
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空序列回退值",
+        "en": "Fallback for an empty sequence"
+      }
+    },
+    {
+      "id": "int",
+      "label": {
+        "chs": "整数平均值",
+        "en": "Integer averages"
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数截断方向",
+        "en": "Truncation of negative averages"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "浮点平均值",
+        "en": "Floating-point averages"
+      }
+    },
+    {
+      "id": "unsigned",
+      "label": {
+        "chs": "无符号平均值",
+        "en": "Unsigned averages"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "64 位总和",
+        "en": "A 64-bit sum"
+      }
+    }
+  ]
+}

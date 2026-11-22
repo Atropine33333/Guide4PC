@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-generic-join",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 3,
+  "title": {
+    "chs": "泛型拼接",
+    "en": "Generic Join"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空容器",
+        "en": "Empty containers"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "A single element"
+      }
+    },
+    {
+      "id": "ints",
+      "label": {
+        "chs": "整数与空分隔符",
+        "en": "Integers and an empty separator"
+      }
+    },
+    {
+      "id": "strings",
+      "label": {
+        "chs": "字符串与空元素",
+        "en": "Strings and empty elements"
+      }
+    },
+    {
+      "id": "deque",
+      "label": {
+        "chs": "另一种容器",
+        "en": "A different container"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "浮点元素",
+        "en": "Floating-point elements"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "较长的序列",
+        "en": "A longer sequence"
+      }
+    }
+  ]
+}

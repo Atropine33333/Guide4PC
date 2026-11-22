@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "debugging-distinct-count",
+  "lang": "cpp",
+  "category": "debugging",
+  "rank": 3,
+  "title": {
+    "chs": "修好去重计数",
+    "en": "Fix the Distinct Count"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空序列",
+        "en": "An empty sequence"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素",
+        "en": "One element"
+      }
+    },
+    {
+      "id": "same",
+      "label": {
+        "chs": "全部相同",
+        "en": "All equal"
+      }
+    },
+    {
+      "id": "all-distinct",
+      "label": {
+        "chs": "全部不同",
+        "en": "All distinct"
+      }
+    },
+    {
+      "id": "mixed",
+      "label": {
+        "chs": "混合重复",
+        "en": "A mix of duplicates"
+      }
+    },
+    {
+      "id": "random",
+      "label": {
+        "chs": "随机数排序后对比集合大小",
+        "en": "Random values compared with a set"
+      }
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "十万个元素",
+        "en": "One hundred thousand elements"
+      }
+    }
+  ]
+}

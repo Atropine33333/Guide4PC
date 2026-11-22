@@ -1,0 +1,149 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-short-circuit",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 1,
+  "title": {
+    "chs": "短路求值",
+    "en": "Short-Circuit Evaluation"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "ordinary",
+      "label": {
+        "chs": "普通比较",
+        "en": "Ordinary comparison"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 3"
+          ],
+          "out": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ]
+        },
+        {
+          "in": [
+            "3 9"
+          ],
+          "out": [
+            "true",
+            "false",
+            "false",
+            "true",
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero-divisor",
+      "label": {
+        "chs": "除数为零",
+        "en": "Zero divisor"
+      },
+      "cases": [
+        {
+          "in": [
+            "0 5"
+          ],
+          "out": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "true"
+          ]
+        },
+        {
+          "in": [
+            "0 0"
+          ],
+          "out": [
+            "false",
+            "true",
+            "true",
+            "false",
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "负数与负余数",
+        "en": "Negatives and negative remainders"
+      },
+      "cases": [
+        {
+          "in": [
+            "-2 4"
+          ],
+          "out": [
+            "true",
+            "false",
+            "true",
+            "false",
+            "true"
+          ]
+        },
+        {
+          "in": [
+            "1 -5"
+          ],
+          "out": [
+            "false",
+            "false",
+            "false",
+            "false",
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "两数相等",
+        "en": "Equal values"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 5"
+          ],
+          "out": [
+            "false",
+            "true",
+            "false",
+            "false",
+            "true"
+          ]
+        },
+        {
+          "in": [
+            "-4 -4"
+          ],
+          "out": [
+            "false",
+            "true",
+            "true",
+            "false",
+            "true"
+          ]
+        }
+      ]
+    }
+  ]
+}

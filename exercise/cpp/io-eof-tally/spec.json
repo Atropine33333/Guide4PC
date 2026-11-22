@@ -1,0 +1,134 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-eof-tally",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 1,
+  "title": {
+    "chs": "读到文件末尾",
+    "en": "Read Until End of Input"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "multiline",
+      "label": {
+        "chs": "跨多行求和",
+        "en": "Summing across lines"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 2",
+            "3",
+            "4 5"
+          ],
+          "out": [
+            "5",
+            "15",
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "只有一个数",
+        "en": "A single value"
+      },
+      "cases": [
+        {
+          "in": [
+            "7"
+          ],
+          "out": [
+            "1",
+            "7",
+            "7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": {
+        "chs": "全为负数",
+        "en": "All negative"
+      },
+      "cases": [
+        {
+          "in": [
+            "-3 -9",
+            "-1"
+          ],
+          "out": [
+            "3",
+            "-13",
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空输入",
+        "en": "Empty input"
+      },
+      "cases": [
+        {
+          "in": [
+            ""
+          ],
+          "out": [
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zeros",
+      "label": {
+        "chs": "全为零",
+        "en": "All zeros"
+      },
+      "cases": [
+        {
+          "in": [
+            "0 0 0"
+          ],
+          "out": [
+            "3",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "总和超过 int",
+        "en": "A sum beyond int"
+      },
+      "cases": [
+        {
+          "in": [
+            "1000000000 1000000000 1000000000"
+          ],
+          "out": [
+            "3",
+            "3000000000",
+            "1000000000"
+          ]
+        }
+      ]
+    }
+  ]
+}

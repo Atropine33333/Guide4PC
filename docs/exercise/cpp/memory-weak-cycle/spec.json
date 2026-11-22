@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "memory-weak-cycle",
+  "lang": "cpp",
+  "category": "memory",
+  "rank": 4,
+  "title": {
+    "chs": "弱引用断开环",
+    "en": "Breaking Cycles with Weak References"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空链",
+        "en": "An empty chain"
+      }
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单节点",
+        "en": "A single node"
+      }
+    },
+    {
+      "id": "values",
+      "label": {
+        "chs": "节点值与链长",
+        "en": "Node values and chain length"
+      }
+    },
+    {
+      "id": "weak-release",
+      "label": {
+        "chs": "弱引用不延长生命周期",
+        "en": "Weak references do not extend lifetime"
+      }
+    },
+    {
+      "id": "broken-link",
+      "label": {
+        "chs": "链接一致性的检查",
+        "en": "Link consistency checks"
+      }
+    },
+    {
+      "id": "long",
+      "label": {
+        "chs": "一千个节点",
+        "en": "One thousand nodes"
+      }
+    }
+  ]
+}

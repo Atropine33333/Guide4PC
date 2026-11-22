@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-circuit-breaker",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 5,
+  "title": {
+    "chs": "熔断器",
+    "en": "Circuit Breaker"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "initial",
+      "label": {
+        "chs": "初始状态",
+        "en": "The initial state"
+      }
+    },
+    {
+      "id": "trip",
+      "label": {
+        "chs": "连续失败触发熔断",
+        "en": "Consecutive failures trip it"
+      }
+    },
+    {
+      "id": "success-resets",
+      "label": {
+        "chs": "成功清零",
+        "en": "Success clears the count"
+      }
+    },
+    {
+      "id": "cooldown",
+      "label": {
+        "chs": "冷却后进入半开",
+        "en": "Cooldown leads to half-open"
+      }
+    },
+    {
+      "id": "zero-cooldown",
+      "label": {
+        "chs": "零冷却",
+        "en": "A zero cooldown"
+      }
+    },
+    {
+      "id": "half-open",
+      "label": {
+        "chs": "半开后的成功与失败",
+        "en": "Half-open success and failure"
+      }
+    },
+    {
+      "id": "ignored",
+      "label": {
+        "chs": "Open 时忽略记录",
+        "en": "Records are ignored while open"
+      }
+    }
+  ]
+}

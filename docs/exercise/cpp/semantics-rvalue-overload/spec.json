@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema.json",
+  "id": "semantics-rvalue-overload",
+  "lang": "cpp",
+  "category": "semantics",
+  "rank": 3,
+  "title": {
+    "chs": "左值与右值重载",
+    "en": "Lvalue and Rvalue Overloads"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "lvalue",
+      "label": {
+        "chs": "非 const 左值",
+        "en": "A non-const lvalue"
+      }
+    },
+    {
+      "id": "const-lvalue",
+      "label": {
+        "chs": "const 左值",
+        "en": "A const lvalue"
+      }
+    },
+    {
+      "id": "rvalue",
+      "label": {
+        "chs": "临时对象",
+        "en": "Temporaries"
+      }
+    },
+    {
+      "id": "move",
+      "label": {
+        "chs": "std::move",
+        "en": "std::move"
+      }
+    },
+    {
+      "id": "unchanged",
+      "label": {
+        "chs": "参数不被修改",
+        "en": "The argument is unchanged"
+      }
+    }
+  ]
+}

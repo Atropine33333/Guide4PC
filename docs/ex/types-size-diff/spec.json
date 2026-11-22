@@ -1,0 +1,117 @@
+{
+  "$schema": "../../schema.json",
+  "id": "types-size-diff",
+  "lang": "cpp",
+  "category": "types",
+  "rank": 1,
+  "title": {
+    "chs": "无符号差值",
+    "en": "Unsigned Difference"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "normal",
+      "label": {
+        "chs": "较大者在前",
+        "en": "Larger value first"
+      },
+      "cases": [
+        {
+          "in": [
+            "9 4"
+          ],
+          "out": [
+            "5"
+          ]
+        },
+        {
+          "in": [
+            "7 0"
+          ],
+          "out": [
+            "7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "underflow",
+      "label": {
+        "chs": "较小者在前",
+        "en": "Smaller value first"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 9"
+          ],
+          "out": [
+            "0"
+          ]
+        },
+        {
+          "in": [
+            "0 10000000000000000000"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equal",
+      "label": {
+        "chs": "两数相等",
+        "en": "Equal values"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 5"
+          ],
+          "out": [
+            "0"
+          ]
+        },
+        {
+          "in": [
+            "0 0"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "接近无符号上限",
+        "en": "Near the unsigned limit"
+      },
+      "cases": [
+        {
+          "in": [
+            "10000000000000000000 9999999999999999999"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "9999999999999999999 10000000000000000000"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    }
+  ]
+}

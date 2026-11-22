@@ -1,0 +1,158 @@
+{
+  "$schema": "../../schema.json",
+  "id": "data-topo-order",
+  "lang": "cpp",
+  "category": "data",
+  "rank": 3,
+  "title": {
+    "chs": "字典序最小拓扑序",
+    "en": "Lexicographically Smallest Topological Order"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通 DAG",
+        "en": "An ordinary DAG"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 4",
+            "1 2",
+            "1 3",
+            "2 4",
+            "3 4"
+          ],
+          "out": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tie",
+      "label": {
+        "chs": "多个起点与汇点",
+        "en": "Several sources and sinks"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 4",
+            "1 5",
+            "2 4",
+            "3 4",
+            "3 5"
+          ],
+          "out": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disconnected",
+      "label": {
+        "chs": "不连通图",
+        "en": "A disconnected graph"
+      },
+      "cases": [
+        {
+          "in": [
+            "4 1",
+            "2 4"
+          ],
+          "out": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "in": [
+            "3 0"
+          ],
+          "out": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parallel-edges",
+      "label": {
+        "chs": "重边累加入度",
+        "en": "Parallel edges add to the in-degree"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 3",
+            "1 2",
+            "1 2",
+            "2 3"
+          ],
+          "out": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cycle",
+      "label": {
+        "chs": "有向环",
+        "en": "A directed cycle"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 3",
+            "1 2",
+            "2 3",
+            "3 1"
+          ],
+          "out": [
+            "cycle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "self-loop",
+      "label": {
+        "chs": "自环",
+        "en": "A self-loop"
+      },
+      "cases": [
+        {
+          "in": [
+            "2 2",
+            "1 1",
+            "1 2"
+          ],
+          "out": [
+            "cycle"
+          ]
+        }
+      ]
+    }
+  ]
+}

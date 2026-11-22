@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "templates-matrix-fixed",
+  "lang": "cpp",
+  "category": "templates",
+  "rank": 4,
+  "title": {
+    "chs": "定长矩阵",
+    "en": "Fixed-Size Matrix"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "default",
+      "label": {
+        "chs": "默认构造",
+        "en": "Default construction"
+      }
+    },
+    {
+      "id": "fill",
+      "label": {
+        "chs": "填充与求和",
+        "en": "Filling and summing"
+      }
+    },
+    {
+      "id": "at",
+      "label": {
+        "chs": "读写元素与 const 访问",
+        "en": "Reading, writing, and const access"
+      }
+    },
+    {
+      "id": "double",
+      "label": {
+        "chs": "浮点元素",
+        "en": "Floating-point elements"
+      }
+    },
+    {
+      "id": "long-long",
+      "label": {
+        "chs": "64 位求和",
+        "en": "A 64-bit sum"
+      }
+    },
+    {
+      "id": "shape",
+      "label": {
+        "chs": "非方阵维度",
+        "en": "Non-square dimensions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "oop-traffic-light",
+  "lang": "cpp",
+  "category": "oop",
+  "rank": 1,
+  "title": {
+    "chs": "交通灯",
+    "en": "Traffic Light"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "initial",
+      "label": {
+        "chs": "初始状态",
+        "en": "The initial state"
+      }
+    },
+    {
+      "id": "cycle",
+      "label": {
+        "chs": "三次切换回到红灯",
+        "en": "Three switches return to red"
+      }
+    },
+    {
+      "id": "steps",
+      "label": {
+        "chs": "一次切换多步",
+        "en": "Several steps at once"
+      }
+    },
+    {
+      "id": "zero-steps",
+      "label": {
+        "chs": "切换零步",
+        "en": "Zero steps"
+      }
+    },
+    {
+      "id": "names",
+      "label": {
+        "chs": "颜色名称",
+        "en": "Color names"
+      }
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "多次循环",
+        "en": "Many cycles"
+      }
+    }
+  ]
+}

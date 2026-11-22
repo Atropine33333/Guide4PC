@@ -1,0 +1,151 @@
+{
+  "$schema": "../../schema.json",
+  "id": "io-box-draw",
+  "lang": "cpp",
+  "category": "io",
+  "rank": 2,
+  "title": {
+    "chs": "画文本框",
+    "en": "Draw a Text Box"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "equal",
+      "label": {
+        "chs": "等长文本行",
+        "en": "Lines of equal length"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "cat",
+            "hi",
+            "dog"
+          ],
+          "out": [
+            "+-----+",
+            "| cat |",
+            "| hi  |",
+            "| dog |",
+            "+-----+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spaces",
+      "label": {
+        "chs": "行内空格",
+        "en": "Spaces inside a line"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "hello world",
+            "a b"
+          ],
+          "out": [
+            "+-------------+",
+            "| hello world |",
+            "| a b         |",
+            "+-------------+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-line",
+      "label": {
+        "chs": "包含空行",
+        "en": "An empty line among the text"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "",
+            "ab"
+          ],
+          "out": [
+            "+----+",
+            "|    |",
+            "| ab |",
+            "+----+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "all-empty",
+      "label": {
+        "chs": "所有行都为空",
+        "en": "Every line is empty"
+      },
+      "cases": [
+        {
+          "in": [
+            "2",
+            "",
+            ""
+          ],
+          "out": [
+            "+--+",
+            "|  |",
+            "|  |",
+            "+--+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单行单字符",
+        "en": "One line with one character"
+      },
+      "cases": [
+        {
+          "in": [
+            "1",
+            "x"
+          ],
+          "out": [
+            "+---+",
+            "| x |",
+            "+---+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "longest-last",
+      "label": {
+        "chs": "最长行在最后",
+        "en": "The longest line comes last"
+      },
+      "cases": [
+        {
+          "in": [
+            "3",
+            "a",
+            "bb",
+            "cccc"
+          ],
+          "out": [
+            "+------+",
+            "| a    |",
+            "| bb   |",
+            "| cccc |",
+            "+------+"
+          ]
+        }
+      ]
+    }
+  ]
+}

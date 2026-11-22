@@ -1,0 +1,170 @@
+{
+  "$schema": "../../schema.json",
+  "id": "algorithm-shortest-window",
+  "lang": "cpp",
+  "category": "algorithm",
+  "rank": 3,
+  "title": {
+    "chs": "最短达标子段",
+    "en": "Shortest Qualifying Window"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "checks": [
+    {
+      "id": "basic",
+      "label": {
+        "chs": "普通窗口",
+        "en": "An ordinary window"
+      },
+      "cases": [
+        {
+          "in": [
+            "6 7",
+            "2 3 1 2 4 3"
+          ],
+          "out": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "label": {
+        "chs": "单个元素达标",
+        "en": "A single element is enough"
+      },
+      "cases": [
+        {
+          "in": [
+            "1 5",
+            "5"
+          ],
+          "out": [
+            "1"
+          ]
+        },
+        {
+          "in": [
+            "4 1",
+            "1 9 9 9"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "none",
+      "label": {
+        "chs": "不存在达标子段",
+        "en": "No qualifying window"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 10",
+            "1 1 1"
+          ],
+          "out": [
+            "0"
+          ]
+        },
+        {
+          "in": [
+            "1 1000000000",
+            "9999"
+          ],
+          "out": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "whole",
+      "label": {
+        "chs": "必须取整个序列",
+        "en": "The whole sequence is needed"
+      },
+      "cases": [
+        {
+          "in": [
+            "3 6",
+            "1 2 3"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "5 15",
+            "1 2 3 4 5"
+          ],
+          "out": [
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "suffix",
+      "label": {
+        "chs": "最优窗口在末尾",
+        "en": "The best window is at the end"
+      },
+      "cases": [
+        {
+          "in": [
+            "5 11",
+            "1 2 3 4 5"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "7 100",
+            "1 1 1 1 100 1 1"
+          ],
+          "out": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large",
+      "label": {
+        "chs": "大规模数据",
+        "en": "Large input"
+      },
+      "cases": [
+        {
+          "in": [
+            "6 18",
+            "3 4 5 6 7 8"
+          ],
+          "out": [
+            "3"
+          ]
+        },
+        {
+          "in": [
+            "3 6",
+            "2 2 2"
+          ],
+          "out": [
+            "3"
+          ]
+        }
+      ]
+    }
+  ]
+}

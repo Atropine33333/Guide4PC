@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema.json",
+  "id": "engineering-command-router",
+  "lang": "cpp",
+  "category": "engineering",
+  "rank": 3,
+  "title": {
+    "chs": "命令路由表",
+    "en": "Command Router"
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "outputBytes": 65536
+  },
+  "harness": "harness.cpp",
+  "checks": [
+    {
+      "id": "empty",
+      "label": {
+        "chs": "空路由表",
+        "en": "An empty router"
+      }
+    },
+    {
+      "id": "echo",
+      "label": {
+        "chs": "注册与调用",
+        "en": "Registering and calling"
+      }
+    },
+    {
+      "id": "replace",
+      "label": {
+        "chs": "同名命令替换",
+        "en": "Replacing a command"
+      }
+    },
+    {
+      "id": "many",
+      "label": {
+        "chs": "多个命令互不干扰",
+        "en": "Several independent commands"
+      }
+    },
+    {
+      "id": "capture",
+      "label": {
+        "chs": "处理函数捕获状态",
+        "en": "Handlers capturing state"
+      }
+    },
+    {
+      "id": "const",
+      "label": {
+        "chs": "const 访问",
+        "en": "Const access"
+      }
+    }
+  ]
+}
