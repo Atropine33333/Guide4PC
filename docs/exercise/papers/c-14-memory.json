@@ -1,0 +1,15 @@
+{
+  "id": "c-14-memory",
+  "lang": "c",
+  "title": {
+    "chs": "内存与资源卷",
+    "en": "Memory and Resources"
+  },
+  "items": [
+    "c-malloc-string",
+    "c-2d-array",
+    "c-string-arena",
+    "c-alloc-counter",
+    "c-aligned-alloc"
+  ]
+}

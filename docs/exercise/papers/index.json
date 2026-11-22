@@ -1,5 +1,277 @@
 [
   {
+    "file": "c-01-syntax-first.json",
+    "id": "c-01-syntax-first",
+    "lang": "c",
+    "title": {
+      "chs": "语法起步卷",
+      "en": "Syntax: First Steps"
+    },
+    "items": [
+      "c-letter-camp",
+      "c-char-pyramid",
+      "c-printf-escapes",
+      "c-printf-table",
+      "c-scanf-pairs"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-02-syntax-solid.json",
+    "id": "c-02-syntax-solid",
+    "lang": "c",
+    "title": {
+      "chs": "语法巩固卷",
+      "en": "Syntax: Steady Ground"
+    },
+    "items": [
+      "c-ternary-grade",
+      "c-sizeof-array",
+      "c-char-literals",
+      "c-increment-side-effects",
+      "c-printf-width"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-03-syntax-speed.json",
+    "id": "c-03-syntax-speed",
+    "lang": "c",
+    "title": {
+      "chs": "语法提速卷",
+      "en": "Syntax: Picking Up Speed"
+    },
+    "items": [
+      "c-bitmask-flags",
+      "c-macro-side-effect",
+      "c-shift-ub",
+      "c-switch-fallthrough",
+      "c-comma-operator"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-04-syntax-types.json",
+    "id": "c-04-syntax-types",
+    "lang": "c",
+    "title": {
+      "chs": "语法与类型入门卷",
+      "en": "Syntax Meets Types"
+    },
+    "items": [
+      "c-u8-wrap",
+      "c-int-promotion",
+      "c-unsigned-underflow",
+      "c-enum-ordinal",
+      "c-typedef-chain"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-05-syntax-final.json",
+    "id": "c-05-syntax-final",
+    "lang": "c",
+    "title": {
+      "chs": "语法收官卷",
+      "en": "Syntax: Final Round"
+    },
+    "items": [
+      "c-size-t",
+      "c-long-long",
+      "c-goto-cleanup",
+      "c-struct-padding",
+      "c-varargs-sum"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-06-types.json",
+    "id": "c-06-types",
+    "lang": "c",
+    "title": {
+      "chs": "类型与数值卷",
+      "en": "Types and Numbers"
+    },
+    "items": [
+      "c-float-rounding",
+      "c-bit-reverse",
+      "c-double-compare",
+      "c-implicit-convert",
+      "c-union-punning"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-07-semantics.json",
+    "id": "c-07-semantics",
+    "lang": "c",
+    "title": {
+      "chs": "语义与控制流卷",
+      "en": "Semantics and Control Flow"
+    },
+    "items": [
+      "c-char-signedness",
+      "c-division-rules",
+      "c-scope-shadow",
+      "c-short-circuit",
+      "c-volatile-flag"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-08-io.json",
+    "id": "c-08-io",
+    "lang": "c",
+    "title": {
+      "chs": "输入输出卷",
+      "en": "Input and Output"
+    },
+    "items": [
+      "c-getchar-count",
+      "c-scanf-skip",
+      "c-blank-lines",
+      "c-fgets-lines",
+      "c-two-column"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-09-stdlib.json",
+    "id": "c-09-stdlib",
+    "lang": "c",
+    "title": {
+      "chs": "标准库卷",
+      "en": "The Standard Library"
+    },
+    "items": [
+      "c-atoi-manual",
+      "c-qsort-words",
+      "c-strchr-count",
+      "c-strtol-base",
+      "c-qsort-struct"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-10-debugging.json",
+    "id": "c-10-debugging",
+    "lang": "c",
+    "title": {
+      "chs": "调试排错卷",
+      "en": "Debugging"
+    },
+    "items": [
+      "c-find-bug-loop",
+      "c-find-bug-swap",
+      "c-bug-format",
+      "c-bug-pointer",
+      "c-bug-malloc"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-11-algorithm-basic.json",
+    "id": "c-11-algorithm-basic",
+    "lang": "c",
+    "title": {
+      "chs": "算法基础卷",
+      "en": "Algorithms: Foundations"
+    },
+    "items": [
+      "c-gcd-stones",
+      "c-fast-pow",
+      "c-bubble-sort",
+      "c-binary-search",
+      "c-merge-sorted"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-12-data.json",
+    "id": "c-12-data",
+    "lang": "c",
+    "title": {
+      "chs": "数据结构卷",
+      "en": "Data Structures"
+    },
+    "items": [
+      "c-int-stack",
+      "c-queue",
+      "c-linked-list",
+      "c-hash-linear",
+      "c-heap-sift"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-13-algorithm-advanced.json",
+    "id": "c-13-algorithm-advanced",
+    "lang": "c",
+    "title": {
+      "chs": "算法进阶卷",
+      "en": "Algorithms: Advanced"
+    },
+    "items": [
+      "c-sieve",
+      "c-hanoi-moves",
+      "c-lcs-length",
+      "c-matrix-multiply",
+      "c-nqueens-count"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-14-memory.json",
+    "id": "c-14-memory",
+    "lang": "c",
+    "title": {
+      "chs": "内存与资源卷",
+      "en": "Memory and Resources"
+    },
+    "items": [
+      "c-malloc-string",
+      "c-2d-array",
+      "c-string-arena",
+      "c-alloc-counter",
+      "c-aligned-alloc"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-15-engineering.json",
+    "id": "c-15-engineering",
+    "lang": "c",
+    "title": {
+      "chs": "工程综合卷",
+      "en": "Engineering"
+    },
+    "items": [
+      "c-macro-max",
+      "c-version-compare",
+      "c-error-code",
+      "c-crc16",
+      "c-ini-reader"
+    ],
+    "count": 5
+  },
+  {
+    "file": "c-16-mixed.json",
+    "id": "c-16-mixed",
+    "lang": "c",
+    "title": {
+      "chs": "综合验收卷",
+      "en": "Mixed Review"
+    },
+    "items": [
+      "c-roman-encode",
+      "c-calloc-zero",
+      "c-recursion-trace",
+      "c-bst-insert",
+      "c-pool-alloc"
+    ],
+    "count": 5
+  },
+  {
     "file": "cpp-01-syntax-first.json",
     "id": "cpp-01-syntax-first",
     "lang": "cpp",

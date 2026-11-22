@@ -1,0 +1,15 @@
+{
+  "id": "c-16-mixed",
+  "lang": "c",
+  "title": {
+    "chs": "综合验收卷",
+    "en": "Mixed Review"
+  },
+  "items": [
+    "c-roman-encode",
+    "c-calloc-zero",
+    "c-recursion-trace",
+    "c-bst-insert",
+    "c-pool-alloc"
+  ]
+}

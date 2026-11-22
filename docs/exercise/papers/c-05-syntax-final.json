@@ -1,0 +1,15 @@
+{
+  "id": "c-05-syntax-final",
+  "lang": "c",
+  "title": {
+    "chs": "语法收官卷",
+    "en": "Syntax: Final Round"
+  },
+  "items": [
+    "c-size-t",
+    "c-long-long",
+    "c-goto-cleanup",
+    "c-struct-padding",
+    "c-varargs-sum"
+  ]
+}

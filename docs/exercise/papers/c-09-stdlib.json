@@ -1,0 +1,15 @@
+{
+  "id": "c-09-stdlib",
+  "lang": "c",
+  "title": {
+    "chs": "标准库卷",
+    "en": "The Standard Library"
+  },
+  "items": [
+    "c-atoi-manual",
+    "c-qsort-words",
+    "c-strchr-count",
+    "c-strtol-base",
+    "c-qsort-struct"
+  ]
+}

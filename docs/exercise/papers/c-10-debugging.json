@@ -1,0 +1,15 @@
+{
+  "id": "c-10-debugging",
+  "lang": "c",
+  "title": {
+    "chs": "调试排错卷",
+    "en": "Debugging"
+  },
+  "items": [
+    "c-find-bug-loop",
+    "c-find-bug-swap",
+    "c-bug-format",
+    "c-bug-pointer",
+    "c-bug-malloc"
+  ]
+}

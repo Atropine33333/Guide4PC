@@ -27,6 +27,21 @@
   const $sidebarToggle = document.getElementById('sidebar-toggle');
   const $langSwitch = document.getElementById('lang-switch');
   const $langSwitchText = document.getElementById('lang-switch-text');
+
+  // ─── Remembered UI language (shared with the exercise site) ─────────────
+  const LANG_STORE_KEY = 'guide4pc_lang';
+  function readStoredLang() {
+    try {
+      const v = localStorage.getItem(LANG_STORE_KEY);
+      return (v === 'chs' || v === 'en') ? v : null;
+    } catch (e) {
+      return null;
+    }
+  }
+  function rememberLang(lang) {
+    if (lang !== 'chs' && lang !== 'en') return;
+    try { localStorage.setItem(LANG_STORE_KEY, lang); } catch (e) { /* ignore */ }
+  }
   const $content    = document.getElementById('content');
   const $topbar     = document.querySelector('.topbar');
   const $toastContainer = document.getElementById('toast-container');
@@ -396,7 +411,7 @@ const $settingsToggle = document.getElementById('settings-toggle');
   // ─── Hash parsing ───────────────────────────────────────────────────────
   function parseHash() {
     const hash = window.location.hash.slice(1); // remove #
-    if (!hash) return { lang: 'chs', path: null };
+    if (!hash) return { lang: null, path: null };
 
     const slashIdx = hash.indexOf('/');
     if (slashIdx === -1) {
@@ -854,6 +869,7 @@ const $settingsToggle = document.getElementById('settings-toggle');
   function navigateTo(lang, docPath) {
     currentLang = lang;
     currentPath = docPath;
+    rememberLang(lang);
     currentKey = getPairKey(lang, docPath);
     document.documentElement.lang = (lang === 'chs') ? 'zh-Hans' : 'en';
 
@@ -1298,6 +1314,7 @@ const $settingsToggle = document.getElementById('settings-toggle');
     currentLang = targetLang;
     currentPath = targetPath;
     currentKey = getPairKey(targetLang, targetPath);
+    rememberLang(targetLang);
     setHash(targetLang, targetPath);
     updateLangSwitchButton();
     translateUI(targetLang);
@@ -1385,7 +1402,8 @@ const $settingsToggle = document.getElementById('settings-toggle');
   // Hash change (browser back/forward)
   window.addEventListener('hashchange', () => {
     const { lang, path } = parseHash();
-    const targetLang = (lang === 'chs' || lang === 'en') ? lang : 'chs';
+    const targetLang = (lang === 'chs' || lang === 'en') ? lang : (readStoredLang() || 'chs');
+    rememberLang(targetLang);
     let targetPath = path;
 
     // Validate lang
@@ -1530,7 +1548,8 @@ const $settingsToggle = document.getElementById('settings-toggle');
 
       // Parse initial hash
       const { lang, path } = parseHash();
-      currentLang = (lang === 'chs' || lang === 'en') ? lang : 'chs';
+      currentLang = (lang === 'chs' || lang === 'en') ? lang : (readStoredLang() || 'chs');
+      rememberLang(currentLang);
       document.documentElement.lang = (currentLang === 'chs') ? 'zh-Hans' : 'en';
       currentPath = path;
       currentKey = currentPath ? getPairKey(currentLang, currentPath) : null;
@@ -1544,8 +1563,7 @@ const $settingsToggle = document.getElementById('settings-toggle');
       // Load initial document or default to home
       if (!currentPath) {
         // Default to Chinese welcome
-        currentPath = getPairedDoc('home', 'chs') || '0_WelcomeLetter.md';
-        currentLang = 'chs';
+        currentPath = getPairedDoc('home', currentLang) || getPairedDoc('home', 'chs') || '0_WelcomeLetter.md';
         currentKey = 'home';
         setHash(currentLang, currentPath);
         updateLangSwitchButton();

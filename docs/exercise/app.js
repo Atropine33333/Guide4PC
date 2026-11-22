@@ -19,6 +19,8 @@
   var initialLang = (qsLang || savedLang || document.documentElement.lang || 'zh').toLowerCase();
   var LOCALE = initialLang.indexOf('en') === 0 ? 'en' : 'chs';
   try { document.documentElement.lang = LOCALE === 'chs' ? 'zh-CN' : 'en'; } catch (e) { /* ignore */ }
+  // 与主站共用语言记忆
+  try { localStorage.setItem('guide4pc_lang', LOCALE); } catch (e) { /* ignore */ }
   var CATEGORY = {
     syntax: ['语法', 'Syntax'],
     semantics: ['语义', 'Semantics'],
@@ -514,7 +516,7 @@
   }
   function playerVer() {
     var v = window.GUIDE4PC_VERSION;
-    return v && v !== '1370990e2b' ? '?v=' + encodeURIComponent(v) : '';
+    return v && v !== 'ce02fb2019' ? '?v=' + encodeURIComponent(v) : '';
   }
   function ensurePlayground() {
     window.G4PC_BASE = ROOT;

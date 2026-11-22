@@ -1,0 +1,15 @@
+{
+  "id": "c-03-syntax-speed",
+  "lang": "c",
+  "title": {
+    "chs": "语法提速卷",
+    "en": "Syntax: Picking Up Speed"
+  },
+  "items": [
+    "c-bitmask-flags",
+    "c-macro-side-effect",
+    "c-shift-ub",
+    "c-switch-fallthrough",
+    "c-comma-operator"
+  ]
+}
