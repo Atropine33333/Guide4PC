@@ -30,3 +30,6 @@ ref/
 .dev.mjs
 .smoke.mjs
 .shot-*.png
+
+# v1 诊断文案（已迁移到 diagnostics/rules/，仅本地保留）
+diagnostics/messages.json
