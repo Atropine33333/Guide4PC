@@ -1,0 +1,72 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-division-rules",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 2,
+  "title": { "chs": "商余法条", "en": "Articles of Quotient and Remainder" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "positive-both",
+      "label": { "chs": "正数除以正数", "en": "Positive by positive" },
+      "cases": [
+        { "in": ["7 3"], "out": ["2 1"] },
+        { "in": ["20 6"], "out": ["3 2"] }
+      ]
+    },
+    {
+      "id": "negative-dividend",
+      "label": { "chs": "负被除数", "en": "Negative dividend" },
+      "cases": [
+        { "in": ["-7 3"], "out": ["-2 -1"] },
+        { "in": ["-20 6"], "out": ["-3 -2"] }
+      ]
+    },
+    {
+      "id": "negative-divisor",
+      "label": { "chs": "负除数", "en": "Negative divisor" },
+      "cases": [
+        { "in": ["7 -3"], "out": ["-2 1"] },
+        { "in": ["20 -6"], "out": ["-3 2"] }
+      ]
+    },
+    {
+      "id": "both-negative",
+      "label": { "chs": "两数皆负", "en": "Both negative" },
+      "cases": [
+        { "in": ["-7 -3"], "out": ["2 -1"] },
+        { "in": ["-20 -6"], "out": ["3 -2"] }
+      ]
+    },
+    {
+      "id": "exact-division",
+      "label": { "chs": "能整除", "en": "Exact division" },
+      "cases": [
+        { "in": ["6 3"], "out": ["2 0"] },
+        { "in": ["-6 3"], "out": ["-2 0"] },
+        { "in": ["0 5"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "smaller-magnitude",
+      "label": { "chs": "被除数绝对值更小", "en": "Dividend smaller in magnitude" },
+      "cases": [
+        { "in": ["2 5"], "out": ["0 2"] },
+        { "in": ["-2 5"], "out": ["0 -2"] },
+        { "in": ["2 -5"], "out": ["0 2"] },
+        { "in": ["-2 -5"], "out": ["0 -2"] }
+      ]
+    },
+    {
+      "id": "near-limits",
+      "label": { "chs": "接近取值范围两端", "en": "Near the ends of the range" },
+      "cases": [
+        { "in": ["1000000000 7"], "out": ["142857142 6"] },
+        { "in": ["-1000000000 7"], "out": ["-142857142 -6"] },
+        { "in": ["1000000000 -7"], "out": ["-142857142 6"] },
+        { "in": ["-1000000000 -7"], "out": ["142857142 -6"] }
+      ]
+    }
+  ]
+}

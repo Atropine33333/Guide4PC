@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-matrix-multiply",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 4,
+  "title": { "chs": "矩阵相乘", "en": "Multiplying Matrices" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "rectangular",
+      "label": { "chs": "长方阵相乘", "en": "Rectangular factors" },
+      "cases": [
+        {
+          "in": ["2 3 2", "1 2 3", "4 5 6", "7 8", "9 10", "11 12"],
+          "out": ["58 64", "139 154"]
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "label": { "chs": "乘单位阵", "en": "Times the identity" },
+      "cases": [
+        { "in": ["2 2 2", "1 2", "3 4", "1 0", "0 1"], "out": ["1 2", "3 4"] }
+      ]
+    },
+    {
+      "id": "single-cell",
+      "label": { "chs": "一个元素", "en": "A single element" },
+      "cases": [
+        { "in": ["1 1 1", "5", "7"], "out": ["35"] }
+      ]
+    },
+    {
+      "id": "signs",
+      "label": { "chs": "含负数", "en": "With negative entries" },
+      "cases": [
+        { "in": ["1 2 1", "-1 2", "3", "-4"], "out": ["-11"] },
+        { "in": ["2 2 2", "0 0", "0 0", "1 2", "3 4"], "out": ["0 0", "0 0"] }
+      ]
+    },
+    {
+      "id": "wide-result",
+      "label": { "chs": "结果比两边都宽", "en": "A result wider than both factors" },
+      "cases": [
+        {
+          "in": ["3 2 3", "1 -2", "3 4", "0 5", "2 1 0", "-1 3 2"],
+          "out": ["4 -5 -4", "2 15 8", "-5 15 10"]
+        }
+      ]
+    }
+  ]
+}

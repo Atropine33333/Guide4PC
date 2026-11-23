@@ -1,0 +1,15 @@
+{
+  "id": "c-02-syntax-solid",
+  "lang": "c",
+  "title": {
+    "chs": "语法巩固卷",
+    "en": "Syntax: Steady Ground"
+  },
+  "items": [
+    "c-ternary-grade",
+    "c-sizeof-array",
+    "c-char-literals",
+    "c-increment-side-effects",
+    "c-printf-width"
+  ]
+}

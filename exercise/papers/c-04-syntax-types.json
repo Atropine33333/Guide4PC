@@ -1,0 +1,15 @@
+{
+  "id": "c-04-syntax-types",
+  "lang": "c",
+  "title": {
+    "chs": "语法与类型入门卷",
+    "en": "Syntax Meets Types"
+  },
+  "items": [
+    "c-u8-wrap",
+    "c-int-promotion",
+    "c-unsigned-underflow",
+    "c-enum-ordinal",
+    "c-typedef-chain"
+  ]
+}

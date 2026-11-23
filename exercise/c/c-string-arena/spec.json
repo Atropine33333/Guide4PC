@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-string-arena",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "字符串的营地", "en": "The String Camp" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "init-empty", "label": { "chs": "开局一块空地", "en": "One patch, nothing used" } },
+    { "id": "carve-and-reset", "label": { "chs": "依次切分与整块复位", "en": "Carving in order, then resetting" } },
+    { "id": "strdup-content", "label": { "chs": "字符串落在营地里", "en": "Strings land inside the camp" } },
+    { "id": "no-room", "label": { "chs": "地方不够就拒绝", "en": "Refusing what does not fit" } },
+    { "id": "free-safe", "label": { "chs": "整块归还后可重开", "en": "Giving the patch back and reopening" } }
+  ]
+}

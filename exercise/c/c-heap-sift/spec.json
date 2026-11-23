@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-heap-sift",
+  "lang": "c",
+  "category": "data",
+  "rank": 5,
+  "title": { "chs": "下沉的堆", "en": "The Sinking Heap" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "build-property", "label": { "chs": "建堆后处处小顶", "en": "Building yields the heap property" } },
+    { "id": "sift-repairs", "label": { "chs": "一次下沉修复塔尖", "en": "One sift repairs the root" } },
+    { "id": "extract-sorted", "label": { "chs": "逐个取出得到升序", "en": "Extracting yields ascending order" } },
+    { "id": "duplicates", "label": { "chs": "重复值也能排好", "en": "Duplicates come out sorted" } },
+    { "id": "empty-and-single", "label": { "chs": "空堆与单元素堆", "en": "Empty and single-element heaps" } }
+  ]
+}

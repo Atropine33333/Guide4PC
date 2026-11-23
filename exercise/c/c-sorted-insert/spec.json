@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-sorted-insert",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "插进队伍", "en": "Into the Line" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-and-single", "label": { "chs": "空数组与第一个数", "en": "An empty array and its first value" } },
+    { "id": "keeps-order", "label": { "chs": "乱序插入后仍有序", "en": "Order survives random inserts" } },
+    { "id": "duplicates", "label": { "chs": "重复的数都要留下", "en": "Duplicates all stay" } },
+    { "id": "full", "label": { "chs": "满了拒绝插入", "en": "A full array refuses inserts" } },
+    { "id": "negatives", "label": { "chs": "负数与极值", "en": "Negatives and extreme values" } }
+  ]
+}

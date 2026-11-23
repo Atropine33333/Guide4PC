@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-calloc-zero",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 3,
+  "title": { "chs": "干净的席子", "en": "A Clean Mat" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "zero-filled", "label": { "chs": "每一格都是零", "en": "Every slot starts at zero" } },
+    { "id": "writable", "label": { "chs": "写入后互不影响", "en": "Written slots stay independent" } },
+    { "id": "zero-count", "label": { "chs": "零张的请求", "en": "A request for zero" } },
+    { "id": "large-block", "label": { "chs": "一大片席子", "en": "A large block" } },
+    { "id": "separate-blocks", "label": { "chs": "两次申请互不相通", "en": "Two separate blocks" } }
+  ]
+}

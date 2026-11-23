@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-static-local",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 3,
+  "title": { "chs": "会记住的计数器", "en": "The Counter That Remembers" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "first-sequence", "label": { "chs": "第一次连号", "en": "The first run of numbers" } },
+    { "id": "keeps-counting", "label": { "chs": "跨调用继续数", "en": "Counting on across calls" } },
+    { "id": "reset-restarts", "label": { "chs": "复位后从头数", "en": "Starting over after a reset" } },
+    { "id": "reset-twice", "label": { "chs": "连按两次复位", "en": "Pressing reset twice" } },
+    { "id": "long-run", "label": { "chs": "连取一百个号", "en": "One hundred numbers in a row" } }
+  ]
+}

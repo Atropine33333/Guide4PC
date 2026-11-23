@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-sieve",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 3,
+  "title": { "chs": "筛子", "en": "The Sieve" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "below-two",
+      "label": { "chs": "零与一", "en": "Zero and one" },
+      "cases": [
+        { "in": ["0"], "out": ["0"] },
+        { "in": ["1"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "smallest-primes",
+      "label": { "chs": "最小的素数", "en": "The smallest primes" },
+      "cases": [
+        { "in": ["2"], "out": ["1"] },
+        { "in": ["3"], "out": ["2"] }
+      ]
+    },
+    {
+      "id": "within-hundred",
+      "label": { "chs": "百以内", "en": "Within a hundred" },
+      "cases": [
+        { "in": ["100"], "out": ["25"] }
+      ]
+    },
+    {
+      "id": "within-ten-thousand",
+      "label": { "chs": "万以内", "en": "Within ten thousand" },
+      "cases": [
+        { "in": ["10000"], "out": ["1229"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "接近上限", "en": "Near the upper bound" },
+      "cases": [
+        { "in": ["1000000"], "out": ["78498"] },
+        { "in": ["999983"], "out": ["78498"] }
+      ]
+    }
+  ]
+}

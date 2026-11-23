@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-do-while-read",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 3,
+  "title": { "chs": "先做一次", "en": "Do It Once" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "empty",
+      "label": { "chs": "第一个就是零", "en": "The first value is zero" },
+      "cases": [
+        { "in": ["0"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "simple",
+      "label": { "chs": "几个正数", "en": "A few positive values" },
+      "cases": [
+        { "in": ["3 5 -2 0"], "out": ["3 6"] },
+        { "in": ["1 2 3 4 0"], "out": ["4 10"] }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "全是负数", "en": "All negative" },
+      "cases": [
+        { "in": ["-7 -8 0"], "out": ["2 -15"] },
+        { "in": ["-1 0"], "out": ["1 -1"] }
+      ]
+    },
+    {
+      "id": "large-sum",
+      "label": { "chs": "大数之和", "en": "A large total" },
+      "cases": [
+        { "in": ["1000000000 1000000000 1000000000 0"], "out": ["3 3000000000"] },
+        { "in": ["1000000000 -1000000000 999999999 0"], "out": ["3 999999999"] }
+      ]
+    }
+  ]
+}

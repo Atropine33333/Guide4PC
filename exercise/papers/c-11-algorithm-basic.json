@@ -1,0 +1,15 @@
+{
+  "id": "c-11-algorithm-basic",
+  "lang": "c",
+  "title": {
+    "chs": "算法基础卷",
+    "en": "Algorithms: Foundations"
+  },
+  "items": [
+    "c-gcd-stones",
+    "c-fast-pow",
+    "c-bubble-sort",
+    "c-binary-search",
+    "c-merge-sorted"
+  ]
+}

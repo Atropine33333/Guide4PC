@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-volatile-flag",
+  "lang": "c",
+  "category": "semantics",
+  "rank": 4,
+  "title": { "chs": "会被改的灯", "en": "The Lamp That Can Change" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "cleared-returns-zero", "label": { "chs": "灯灭着等满次数", "en": "Waiting out the limit on a dark lamp" } },
+    { "id": "already-set", "label": { "chs": "灯已经亮着", "en": "The lamp is already on" } },
+    { "id": "zero-limit", "label": { "chs": "次数为零", "en": "A limit of zero" } },
+    { "id": "toggle", "label": { "chs": "开关来回切换", "en": "Toggling back and forth" } },
+    { "id": "long-wait", "label": { "chs": "很长的等待也会结束", "en": "A long wait still ends" } }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-scanf-skip",
+  "lang": "c",
+  "category": "io",
+  "rank": 2,
+  "title": { "chs": "跳过噪音", "en": "Skipping the Noise" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "spaces",
+      "label": { "chs": "空格分隔", "en": "Separated by spaces" },
+      "cases": [
+        { "in": ["a=12 b=34"], "out": ["46"] },
+        { "in": ["a = 5 b = -7"], "out": ["-2"] }
+      ]
+    },
+    {
+      "id": "commas",
+      "label": { "chs": "逗号分隔", "en": "Separated by commas" },
+      "cases": [
+        { "in": ["a=100,b=-250"], "out": ["-150"] },
+        { "in": ["a = 3 , b = 4"], "out": ["7"] }
+      ]
+    },
+    {
+      "id": "mixed",
+      "label": { "chs": "空格与逗号混用", "en": "Spaces and commas mixed" },
+      "cases": [
+        { "in": ["a  =  8 ,  b  =  2"], "out": ["10"] },
+        { "in": ["a=-1,b=1"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "zero",
+      "label": { "chs": "两个零", "en": "Both values zero" },
+      "cases": [
+        { "in": ["a=0 b=0"], "out": ["0"] }
+      ]
+    }
+  ]
+}

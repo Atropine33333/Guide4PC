@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-list-reverse",
+  "lang": "c",
+  "category": "data",
+  "rank": 3,
+  "title": { "chs": "倒着点名", "en": "Calling Backwards" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-list", "label": { "chs": "空链表", "en": "An empty list" } },
+    { "id": "single-node", "label": { "chs": "只有一个节点", "en": "A single node" } },
+    { "id": "two-nodes", "label": { "chs": "两个节点", "en": "Two nodes" } },
+    { "id": "many-nodes", "label": { "chs": "十个节点", "en": "Ten nodes" } },
+    { "id": "nodes-reused", "label": { "chs": "原地重接，节点不换", "en": "The same nodes, relinked" } }
+  ]
+}

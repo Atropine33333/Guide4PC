@@ -1,0 +1,15 @@
+{
+  "id": "c-13-algorithm-advanced",
+  "lang": "c",
+  "title": {
+    "chs": "算法进阶卷",
+    "en": "Algorithms: Advanced"
+  },
+  "items": [
+    "c-sieve",
+    "c-hanoi-moves",
+    "c-lcs-length",
+    "c-matrix-multiply",
+    "c-nqueens-count"
+  ]
+}

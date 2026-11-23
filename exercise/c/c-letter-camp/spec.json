@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-letter-camp",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 1,
+  "title": { "chs": "三营点兵", "en": "Mustering the Three Camps" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "mixed",
+      "label": { "chs": "大小写与数字混合", "en": "Mixed case and digits" },
+      "cases": [
+        { "in": ["Hello123"], "out": ["1 4 3"] },
+        { "in": ["abc123ABC"], "out": ["3 3 3"] }
+      ]
+    },
+    {
+      "id": "letters-only",
+      "label": { "chs": "只有字母", "en": "Letters only" },
+      "cases": [
+        { "in": ["abcXYZ"], "out": ["3 3 0"] }
+      ]
+    },
+    {
+      "id": "single-digit",
+      "label": { "chs": "只有一个数字", "en": "A single digit" },
+      "cases": [
+        { "in": ["0"], "out": ["0 0 1"] }
+      ]
+    },
+    {
+      "id": "uppercase-only",
+      "label": { "chs": "全是大写", "en": "All uppercase" },
+      "cases": [
+        { "in": ["QWERTY"], "out": ["6 0 0"] }
+      ]
+    }
+  ]
+}

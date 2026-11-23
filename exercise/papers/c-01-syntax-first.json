@@ -1,0 +1,15 @@
+{
+  "id": "c-01-syntax-first",
+  "lang": "c",
+  "title": {
+    "chs": "语法起步卷",
+    "en": "Syntax: First Steps"
+  },
+  "items": [
+    "c-letter-camp",
+    "c-char-pyramid",
+    "c-printf-escapes",
+    "c-printf-table",
+    "c-scanf-pairs"
+  ]
+}

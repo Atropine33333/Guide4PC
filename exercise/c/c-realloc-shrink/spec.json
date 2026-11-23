@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-realloc-shrink",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "收小盒子", "en": "Shrinking the Box" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "shrink-keeps-prefix", "label": { "chs": "缩容保住前几件", "en": "The first items survive a shrink" } },
+    { "id": "shrink-to-one", "label": { "chs": "只留一件", "en": "Leaving a single item" } },
+    { "id": "free-all", "label": { "chs": "一件不留", "en": "Leaving nothing behind" } },
+    { "id": "reject-out-of-range", "label": { "chs": "数目不对就回绝", "en": "Rejecting impossible sizes" } },
+    { "id": "repeated-shrink", "label": { "chs": "连着缩两回", "en": "Shrinking twice in a row" } }
+  ]
+}

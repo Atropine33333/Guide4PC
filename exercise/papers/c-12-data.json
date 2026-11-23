@@ -1,0 +1,15 @@
+{
+  "id": "c-12-data",
+  "lang": "c",
+  "title": {
+    "chs": "数据结构卷",
+    "en": "Data Structures"
+  },
+  "items": [
+    "c-int-stack",
+    "c-queue",
+    "c-linked-list",
+    "c-hash-linear",
+    "c-heap-sift"
+  ]
+}

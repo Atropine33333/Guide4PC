@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-getchar-count",
+  "lang": "c",
+  "category": "io",
+  "rank": 2,
+  "title": { "chs": "数一数", "en": "Count Them" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "one-line",
+      "label": { "chs": "一行里的两个词", "en": "Two words on one line" },
+      "cases": [
+        { "in": ["hello world"], "out": ["12 1 2"] }
+      ]
+    },
+    {
+      "id": "multi-line",
+      "label": { "chs": "多行含空行", "en": "Several lines with a blank one" },
+      "cases": [
+        { "in": ["one two", "", "three"], "out": ["15 3 3"] }
+      ]
+    },
+    {
+      "id": "blank-only",
+      "label": { "chs": "只有空白", "en": "Nothing but whitespace" },
+      "cases": [
+        { "in": ["", "  "], "out": ["4 2 0"] }
+      ]
+    },
+    {
+      "id": "punctuation",
+      "label": { "chs": "标点贴着单词", "en": "Punctuation stuck to words" },
+      "cases": [
+        { "in": ["a,b c."], "out": ["7 1 2"] }
+      ]
+    },
+    {
+      "id": "single-word",
+      "label": { "chs": "单个词", "en": "A single word" },
+      "cases": [
+        { "in": ["solo"], "out": ["5 1 1"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-float-rounding",
+  "lang": "c",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "小数点的四舍五入", "en": "Rounding the Point" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "ticket-as-is",
+      "label": { "chs": "小票价照抄两位", "en": "The ticket keeps two places" },
+      "cases": [
+        { "in": ["19.99"], "out": ["19.99 20"] },
+        { "in": ["0"], "out": ["0.00 0"] },
+        { "in": ["100"], "out": ["100.00 100"] }
+      ]
+    },
+    {
+      "id": "carry",
+      "label": { "chs": "第三位进位", "en": "Carrying from the third place" },
+      "cases": [
+        { "in": ["9.876"], "out": ["9.88 10"] },
+        { "in": ["4.567"], "out": ["4.57 5"] }
+      ]
+    },
+    {
+      "id": "negative",
+      "label": { "chs": "负数同样照办", "en": "Negative prices round the same way" },
+      "cases": [
+        { "in": ["-3.456"], "out": ["-3.46 -3"] },
+        { "in": ["-0.6"], "out": ["-0.60 -1"] }
+      ]
+    },
+    {
+      "id": "halfway",
+      "label": { "chs": "刚好一半", "en": "Exactly halfway" },
+      "cases": [
+        { "in": ["2.5"], "out": ["2.50 2"] },
+        { "in": ["3.5"], "out": ["3.50 4"] }
+      ]
+    }
+  ]
+}

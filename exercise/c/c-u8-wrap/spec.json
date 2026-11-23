@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-u8-wrap",
+  "lang": "c",
+  "category": "types",
+  "rank": 1,
+  "title": { "chs": "八位累加器的回绕", "en": "The Eight-Bit Accumulator Wraps" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "no-overflow",
+      "label": { "chs": "不溢出", "en": "No overflow" },
+      "cases": [
+        { "in": ["4", "1 2 3 4"], "out": ["1", "3", "6", "10"] },
+        { "in": ["3", "0 0 0"], "out": ["0", "0", "0"] }
+      ]
+    },
+    {
+      "id": "exactly-255",
+      "label": { "chs": "恰好到 255", "en": "Exactly reaching 255" },
+      "cases": [
+        { "in": ["2", "128 127"], "out": ["128", "255"] },
+        { "in": ["3", "255 0 0"], "out": ["255", "255", "255"] }
+      ]
+    },
+    {
+      "id": "wrap-once",
+      "label": { "chs": "回绕一次", "en": "Wrapping once" },
+      "cases": [
+        { "in": ["3", "250 10 5"], "out": ["250", "4", "9"] },
+        { "in": ["2", "255 1"], "out": ["255", "0"] }
+      ]
+    },
+    {
+      "id": "wrap-many",
+      "label": { "chs": "多次回绕", "en": "Wrapping many times" },
+      "cases": [
+        { "in": ["5", "200 200 200 100 56"], "out": ["200", "144", "88", "188", "244"] },
+        { "in": ["4", "255 255 255 255"], "out": ["255", "254", "253", "252"] }
+      ]
+    }
+  ]
+}

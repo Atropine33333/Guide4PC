@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bst-insert",
+  "lang": "c",
+  "category": "data",
+  "rank": 4,
+  "title": { "chs": "左小右大的树", "en": "The Ordered Tree" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "empty-tree", "label": { "chs": "空树的查询", "en": "Queries on an empty tree" } },
+    { "id": "insert-search", "label": { "chs": "插入与查找", "en": "Insert and search" } },
+    { "id": "inorder-sorted", "label": { "chs": "中序导出有序", "en": "Inorder export is sorted" } },
+    { "id": "duplicates", "label": { "chs": "重复键只留一份", "en": "Duplicates kept once" } },
+    { "id": "free-and-rebuild", "label": { "chs": "释放后重建", "en": "Free, then rebuild" } }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-sizeof-array",
+  "lang": "c",
+  "category": "syntax",
+  "rank": 2,
+  "title": { "chs": "数组的尺子", "en": "The Ruler of Arrays" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "one-element",
+      "label": { "chs": "只填一个数", "en": "Only one slot filled" },
+      "cases": [
+        { "in": ["1 42"], "out": ["10 4"] },
+        { "in": ["1 -7"], "out": ["10 4"] }
+      ]
+    },
+    {
+      "id": "small-count",
+      "label": { "chs": "填一部分", "en": "Part of the array in use" },
+      "cases": [
+        { "in": ["3 5 -1 0"], "out": ["10 4"] },
+        { "in": ["5 100 -100 0 7 9"], "out": ["10 4"] }
+      ]
+    },
+    {
+      "id": "full-array",
+      "label": { "chs": "十个格子全填满", "en": "All ten slots filled" },
+      "cases": [
+        { "in": ["10 9 8 7 6 5 4 3 2 1"], "out": ["10 4"] },
+        { "in": ["10 0 0 0 0 0 0 0 0 0 0"], "out": ["10 4"] }
+      ]
+    }
+  ]
+}

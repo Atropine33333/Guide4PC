@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-version-compare",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 2,
+  "title": { "chs": "版本号逐段对账", "en": "Version Numbers Compared Segment by Segment" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "equal",
+      "label": { "chs": "两版相等", "en": "The two versions are equal" },
+      "cases": [
+        { "in": ["1.2.3", "1.2.3"], "out": ["0"] },
+        { "in": ["0.0.0.0", "0.0.0.0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "prefix",
+      "label": { "chs": "一方是另一方的前缀", "en": "One version is a prefix of the other" },
+      "cases": [
+        { "in": ["1.2", "1.2.0"], "out": ["0"] },
+        { "in": ["1.2.3", "1.2"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "segment-count",
+      "label": { "chs": "段数不同", "en": "Different segment counts" },
+      "cases": [
+        { "in": ["7", "7.0.0.0"], "out": ["0"] },
+        { "in": ["2", "1.9.9.9"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "numeric-order",
+      "label": { "chs": "按数值比大小", "en": "Comparing by numeric value" },
+      "cases": [
+        { "in": ["1.10", "1.9"], "out": ["1"] },
+        { "in": ["1.9.0", "1.10"], "out": ["-1"] },
+        { "in": ["2", "10"], "out": ["-1"] }
+      ]
+    },
+    {
+      "id": "leading-zero",
+      "label": { "chs": "段内允许前导零", "en": "Leading zeros inside a segment" },
+      "cases": [
+        { "in": ["1.007", "1.7"], "out": ["0"] },
+        { "in": ["001.2", "1.10"], "out": ["-1"] }
+      ]
+    }
+  ]
+}

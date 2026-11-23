@@ -1,0 +1,15 @@
+{
+  "id": "c-08-io",
+  "lang": "c",
+  "title": {
+    "chs": "输入输出卷",
+    "en": "Input and Output"
+  },
+  "items": [
+    "c-getchar-count",
+    "c-scanf-skip",
+    "c-blank-lines",
+    "c-fgets-lines",
+    "c-two-column"
+  ]
+}

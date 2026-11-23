@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-unsigned-underflow",
+  "lang": "c",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "借位的坑", "en": "The Borrow Pit" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "no-borrow",
+      "label": { "chs": "够减", "en": "Nothing to borrow" },
+      "cases": [
+        { "in": ["7 3"], "out": ["4 4"] },
+        { "in": ["100 100"], "out": ["0 0"] }
+      ]
+    },
+    {
+      "id": "single-borrow",
+      "label": { "chs": "差一点点", "en": "Short by a little" },
+      "cases": [
+        { "in": ["3 5"], "out": ["4294967294 -2"] },
+        { "in": ["0 1"], "out": ["4294967295 -1"] }
+      ]
+    },
+    {
+      "id": "deep-borrow",
+      "label": { "chs": "差一大截", "en": "Short by a lot" },
+      "cases": [
+        { "in": ["0 100"], "out": ["4294967196 -100"] }
+      ]
+    },
+    {
+      "id": "extremes",
+      "label": { "chs": "两端与零", "en": "Both ends and zero" },
+      "cases": [
+        { "in": ["100 0"], "out": ["100 100"] },
+        { "in": ["0 0"], "out": ["0 0"] }
+      ]
+    }
+  ]
+}

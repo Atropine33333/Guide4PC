@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-lcs-length",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 4,
+  "title": { "chs": "共同的老底", "en": "Common Ground" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "basic",
+      "label": { "chs": "常规两串", "en": "Ordinary pairs" },
+      "cases": [
+        { "in": ["abcbdab", "bdcaba"], "out": ["4"] },
+        { "in": ["abcde", "ace"], "out": ["3"] }
+      ]
+    },
+    {
+      "id": "disjoint",
+      "label": { "chs": "没有共同字符", "en": "No shared characters" },
+      "cases": [
+        { "in": ["abc", "def"], "out": ["0"] },
+        { "in": ["a", "b"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "single",
+      "label": { "chs": "单字符相同", "en": "One shared character" },
+      "cases": [
+        { "in": ["a", "a"], "out": ["1"] }
+      ]
+    },
+    {
+      "id": "repeating",
+      "label": { "chs": "重复图案", "en": "Repeating patterns" },
+      "cases": [
+        { "in": ["abababababababababab", "babababababababababa"], "out": ["19"] },
+        { "in": ["hellohellohellohellohello", "hellohellohellohellohello"], "out": ["25"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-puts-lines",
+  "lang": "c",
+  "category": "io",
+  "rank": 3,
+  "title": { "chs": "逐行念白", "en": "Line by Line" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "two-lines",
+      "label": { "chs": "两行台词", "en": "Two lines of dialogue" },
+      "cases": [
+        {
+          "in": ["Call me Ishmael.", "The sea was calm."],
+          "out": ["L1: Call me Ishmael.", "L2: The sea was calm."]
+        }
+      ]
+    },
+    {
+      "id": "blank-line",
+      "label": { "chs": "中间夹着空行", "en": "A blank line in the middle" },
+      "cases": [
+        {
+          "in": ["first", "", "third"],
+          "out": ["L1: first", "L2:", "L3: third"]
+        }
+      ]
+    },
+    {
+      "id": "single-line",
+      "label": { "chs": "只有一行", "en": "A single line" },
+      "cases": [
+        { "in": ["Just one line."], "out": ["L1: Just one line."] }
+      ]
+    },
+    {
+      "id": "leading-spaces",
+      "label": { "chs": "行首空格保留", "en": "Leading spaces kept" },
+      "cases": [
+        {
+          "in": ["  spaces stay", "tail."],
+          "out": ["L1:   spaces stay", "L2: tail."]
+        }
+      ]
+    }
+  ]
+}

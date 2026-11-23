@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-counting-sort",
+  "lang": "c",
+  "category": "algorithm",
+  "rank": 3,
+  "title": { "chs": "点名的顺序", "en": "Order by Naming" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "mixed",
+      "label": { "chs": "混杂的号码", "en": "Mixed numbers" },
+      "cases": [
+        { "in": ["6", "3 1 2 3 1 2"], "out": ["1 1 2 2 3 3"] },
+        { "in": ["8", "5 0 9 5 1 9 0 5"], "out": ["0 0 1 5 5 5 9 9"] }
+      ]
+    },
+    {
+      "id": "same",
+      "label": { "chs": "全是同一个号", "en": "All the same number" },
+      "cases": [
+        { "in": ["5", "50 50 50 50 50"], "out": ["50 50 50 50 50"] }
+      ]
+    },
+    {
+      "id": "edges",
+      "label": { "chs": "两端的号码", "en": "Numbers at both ends" },
+      "cases": [
+        { "in": ["5", "0 100 100 0 50"], "out": ["0 0 50 100 100"] },
+        { "in": ["1", "0"], "out": ["0"] }
+      ]
+    },
+    {
+      "id": "empty",
+      "label": { "chs": "空名册", "en": "An empty roster" },
+      "cases": [
+        { "in": ["0"], "out": [] }
+      ]
+    },
+    {
+      "id": "reverse",
+      "label": { "chs": "倒着报数", "en": "Counted down" },
+      "cases": [
+        { "in": ["10", "9 8 7 6 5 4 3 2 1 0"], "out": ["0 1 2 3 4 5 6 7 8 9"] }
+      ]
+    }
+  ]
+}

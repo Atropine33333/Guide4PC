@@ -1,0 +1,15 @@
+{
+  "id": "c-07-semantics",
+  "lang": "c",
+  "title": {
+    "chs": "语义与控制流卷",
+    "en": "Semantics and Control Flow"
+  },
+  "items": [
+    "c-char-signedness",
+    "c-division-rules",
+    "c-scope-shadow",
+    "c-short-circuit",
+    "c-volatile-flag"
+  ]
+}

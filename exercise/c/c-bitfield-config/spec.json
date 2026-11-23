@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-bitfield-config",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 4,
+  "title": { "chs": "配置的位", "en": "Bits of Configuration" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "init-clears", "label": { "chs": "清空三个字段", "en": "Clearing all three fields" } },
+    { "id": "mode-limits", "label": { "chs": "模式字段的上界", "en": "The upper bound of the mode field" } },
+    { "id": "level-limits", "label": { "chs": "档位字段的上界", "en": "The upper bound of the level field" } },
+    { "id": "enabled-toggle", "label": { "chs": "总开关只能取 0 或 1", "en": "The master switch takes 0 or 1 only" } },
+    { "id": "neighbours-kept", "label": { "chs": "改一个字段不动其他字段", "en": "Writing one field leaves the others alone" } }
+  ]
+}

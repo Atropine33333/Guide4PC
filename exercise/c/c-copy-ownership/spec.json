@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-copy-ownership",
+  "lang": "c",
+  "category": "memory",
+  "rank": 4,
+  "title": { "chs": "谁的字符串", "en": "Whose String" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "fields-copied", "label": { "chs": "字段逐份复制", "en": "Every field is copied" } },
+    { "id": "edit-isolated", "label": { "chs": "改副本不动原件", "en": "Editing the copy leaves the original" } },
+    { "id": "source-copied", "label": { "chs": "名字存的是副本", "en": "The name is stored as a copy" } },
+    { "id": "independent-lifetime", "label": { "chs": "两份各自归还", "en": "Each copy is freed on its own" } },
+    { "id": "null-handling", "label": { "chs": "空指针与空串", "en": "Null pointers and the empty string" } }
+  ]
+}

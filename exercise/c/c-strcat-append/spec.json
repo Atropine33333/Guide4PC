@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-strcat-append",
+  "lang": "c",
+  "category": "stdlib",
+  "rank": 2,
+  "title": { "chs": "接尾巴", "en": "Attaching the Tail" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "simple-append", "label": { "chs": "普通拼接", "en": "An ordinary append" } },
+    { "id": "exact-fit", "label": { "chs": "刚好装满", "en": "An exact fit" } },
+    { "id": "too-long", "label": { "chs": "装不下就不动", "en": "Too long leaves it unchanged" } },
+    { "id": "empty-string", "label": { "chs": "接一个空串", "en": "Appending an empty string" } },
+    { "id": "empty-buffer", "label": { "chs": "从空缓冲区开始", "en": "Starting from an empty buffer" } }
+  ]
+}

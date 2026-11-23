@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-int-promotion",
+  "lang": "c",
+  "category": "types",
+  "rank": 2,
+  "title": { "chs": "整数提升", "en": "Integer Promotion" },
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    {
+      "id": "small-values",
+      "label": { "chs": "两个小值", "en": "Two small values" },
+      "cases": [
+        { "in": ["0 0"], "out": ["0 4 44"] },
+        { "in": ["1 2"], "out": ["3 4 44"] }
+      ]
+    },
+    {
+      "id": "upper-bound",
+      "label": { "chs": "取到上界", "en": "Both at the upper bound" },
+      "cases": [
+        { "in": ["127 127"], "out": ["254 4 44"] }
+      ]
+    },
+    {
+      "id": "past-char-range",
+      "label": { "chs": "和超出 char 的范围", "en": "A sum past the char range" },
+      "cases": [
+        { "in": ["64 64"], "out": ["128 4 44"] },
+        { "in": ["100 50"], "out": ["150 4 44"] }
+      ]
+    },
+    {
+      "id": "one-zero",
+      "label": { "chs": "带一个零", "en": "One operand is zero" },
+      "cases": [
+        { "in": ["0 127"], "out": ["127 4 44"] }
+      ]
+    }
+  ]
+}

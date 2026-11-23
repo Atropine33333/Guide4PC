@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-null-free",
+  "lang": "c",
+  "category": "memory",
+  "rank": 3,
+  "title": { "chs": "空着也能收", "en": "Freeing Nothing" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "frees-and-clears", "label": { "chs": "收下并置空", "en": "Takes the box and clears the slip" } },
+    { "id": "double-call-safe", "label": { "chs": "同一张单子递两回", "en": "The same slip handed over twice" } },
+    { "id": "null-pointer", "label": { "chs": "单子没递过来", "en": "No slip at all" } },
+    { "id": "null-value", "label": { "chs": "单子上写着空", "en": "A slip that already reads empty" } },
+    { "id": "neighbour-slots", "label": { "chs": "两个槽位各收各的", "en": "Two slots handled separately" } }
+  ]
+}

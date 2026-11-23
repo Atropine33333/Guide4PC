@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema.json",
+  "id": "c-logging-macro",
+  "lang": "c",
+  "category": "engineering",
+  "rank": 4,
+  "title": { "chs": "会记账的宏", "en": "The Logging Macro" },
+  "harness": "harness.c",
+  "limits": { "timeoutMs": 5000, "outputBytes": 65536 },
+  "checks": [
+    { "id": "basic-line", "label": { "chs": "拼出一行日志", "en": "Assembling one log line" } },
+    { "id": "level-names", "label": { "chs": "四个档位的名字", "en": "The names of the four levels" } },
+    { "id": "format-args", "label": { "chs": "正文里的格式参数", "en": "Format arguments in the body" } },
+    { "id": "truncate", "label": { "chs": "缓冲区不够时截断", "en": "Truncating when the buffer is short" } },
+    { "id": "bad-args", "label": { "chs": "参数不合法", "en": "Invalid arguments" } }
+  ]
+}
