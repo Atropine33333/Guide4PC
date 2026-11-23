@@ -79,7 +79,6 @@
   var activeRun = null;
 
   // 编译诊断（红波浪线）：单独的 worker，只编译不运行，卡住也不影响练习卡。
-  var lintWorker = null;
   var lintSeq = 0;
   var lintPending = Object.create(null);
   var specs = new Map();
@@ -275,6 +274,14 @@
     worker = new Worker(url('pg/pg-worker.js'));
     worker.onmessage = function (event) {
       var msg = event.data || {};
+      if (msg.type === 'lint-result') {
+        var lintDone = lintPending[msg.id];
+        if (lintDone) {
+          delete lintPending[msg.id];
+          lintDone(msg);
+        }
+        return;
+      }
       if (msg.type === 'progress') {
         warmup.state = 'loading';
         warmup.value = msg.value || 0;
@@ -311,6 +318,7 @@
       if (!activeRun || !activeRun.onError) return;
       activeRun.onError((event && event.message) || 'worker error');
     };
+    startIdleWatch();
     return worker;
   }
 
@@ -323,6 +331,32 @@
       warmup.kicked = false;
       warmup.state = 'idle';
     }
+  }
+
+  // 空闲回收：一套 Clang 运行时就是几百 MB，长时间不用就收掉，下次运行再从 HTTP 缓存重建。
+  var lastActivity = Date.now();
+  var idleWatch = null;
+  var hiddenAt = 0;
+  function touchActivity() { lastActivity = Date.now(); }
+  function sleepWorker() {
+    if (!worker) return;
+    worker.terminate();
+    worker = null;
+    warmup.kicked = false;
+  }
+  function startIdleWatch() {
+    if (idleWatch) return;
+    idleWatch = setInterval(function () {
+      if (!worker || activeRun) return;
+      if (Object.keys(lintPending).length) return;
+      if (Date.now() - lastActivity > 90000) sleepWorker();
+    }, 15000);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { hiddenAt = Date.now(); return; }
+      var hiddenFor = hiddenAt ? Date.now() - hiddenAt : 0;
+      hiddenAt = 0;
+      if (hiddenFor > 30000 && worker && !activeRun && !Object.keys(lintPending).length) sleepWorker();
+    });
   }
 
   // 页面一出现练习就预先下载编译器；用户点“运行”时通常已经就绪。
@@ -380,32 +414,10 @@
 
   // ------------------------------------------------------------------ DOM
 
-  function ensureLintWorker() {
-    if (lintWorker) return lintWorker;
-    lintWorker = new Worker(url('pg/pg-lint-worker.js'));
-    lintWorker.onmessage = function (evt) {
-      var msg = evt.data || {};
-      var done = lintPending[msg.id];
-      if (!done) return;
-      delete lintPending[msg.id];
-      done(msg);
-    };
-    lintWorker.onerror = function () {
-      // 诊断是锦上添花：起不来就放弃这一轮，不打断练习。
-      lintWorker = null;
-      var ids = Object.keys(lintPending);
-      for (var i = 0; i < ids.length; ++i) {
-        var done = lintPending[ids[i]];
-        delete lintPending[ids[i]];
-        done(null);
-      }
-    };
-    return lintWorker;
-  }
-
+  // 诊断也走同一个 worker：共用一套 Clang 运行时，省掉第二套 ~250MB 的内存。
   function lintCode(code, timeoutMs) {
     return new Promise(function (resolve) {
-      var w = ensureLintWorker();
+      var w = ensureWorker();
       var id = ++lintSeq;
       var timer = setTimeout(function () {
         if (!lintPending[id]) return;
@@ -551,7 +563,7 @@
       h('div', { class: 'ex-editor-wrap' }, [
         h('div', { class: 'ex-file' }, [
           h('i', { class: 'ex-dot' }),
-          h('span', { class: 'ex-file-name', text: 'main.cpp' }),
+          h('span', { class: 'ex-file-name', text: 'main.' + (spec.lang === 'c' ? 'c' : 'cpp') }),
           spec.harness ? h('span', { class: 'ex-file-note', text: '+ ' + spec.harness }) : null,
         ]),
         editorHost,
@@ -868,6 +880,7 @@
 
     async function doRun() {
       if (busy || !view) return;
+      touchActivity();
       var code = view.state.doc.toString();
       if (!code.trim()) return;
 
@@ -977,7 +990,7 @@
       view = window.G4PCEditor.createEditor({
         parent: editorHost,
         doc: initialCode,
-        onDocChange: function (v) { scheduleLint(); scheduleSave(); },
+        onDocChange: function (v) { touchActivity(); scheduleLint(); scheduleSave(); },
       });
       allViews.push(view);
     }).catch(function (err) {
@@ -985,6 +998,7 @@
     });
 
     return {
+      lang: lang,
       run: doRun,
       reset: resetEditor,
       setCode: function (code) {
@@ -1002,7 +1016,7 @@
 
     Promise.all([loadSpec(id), loadDiagnostics()]).then(function (values) {
       var spec = values[0];
-      var starterName = 'starter.cpp';
+      var starterName = spec.lang === 'c' ? 'starter.c' : 'starter.cpp';
       (spec.variants || []).forEach(function (v) {
         if (v.id === variant && v.starter) starterName = v.starter;
       });
@@ -1076,7 +1090,7 @@
       handle.reset();
       if (useSolution) {
         try {
-          var solution = await fetchText('ex/' + id + '/solution.cpp');
+          var solution = await fetchText('ex/' + id + '/solution.' + (handle.lang === 'c' ? 'c' : 'cpp'));
           handle.setCode(solution);
         } catch (e) { /* 没有参考实现就按 starter 跑 */ }
       }

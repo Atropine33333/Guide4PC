@@ -23,6 +23,7 @@
 /* global clangWasm */
 
 importScripts('vendor/clang-wasm.global.js');
+importScripts('vendor/clang-wasm-toolchain.global.js');
 
 // 编译器资产（约 29MB）走 jsDelivr；本地化时改成 'pg/clang/' 或绝对地址即可。
 const ASSET_BASE = 'https://cdn.jsdelivr.net/npm/@live-codes/clang-wasm@0.3.0/assets/';
@@ -35,7 +36,7 @@ const ASSET_FILES = ['bin/memfs.wasm.gz', 'bin/clang.wasm.gz', 'bin/lld.wasm.gz'
 const ASSET_TIMEOUT_MS = 240000;
 const originalFetch = typeof self.fetch === 'function' ? self.fetch.bind(self) : null;
 
-let compilerPromise = null;
+const compilerPromises = new Map();
 let assetBytes = null;
 let fetchPatched = false;
 
@@ -118,9 +119,10 @@ async function prefetchAssets() {
   }
 }
 
-function ensureCompiler() {
-  if (!compilerPromise) {
-    compilerPromise = (async () => {
+function ensureCompiler(lang) {
+  const key = lang === 'c' ? 'c' : 'cpp';
+  if (!compilerPromises.has(key)) {
+    compilerPromises.set(key, (async () => {
       send('phase', { phase: 'loading' });
       try {
         await prefetchAssets();
@@ -128,18 +130,18 @@ function ensureCompiler() {
         send('download-error', { message: String((err && err.message) || err) });
       }
       send('phase', { phase: 'install' });
-      const compiler = await self.clangWasm.createCompiler('cpp', {
+      const compiler = await self.clangWasm.createCompiler(key, {
         baseUrl: ASSET_BASE,
         std: null,
-        compileArgs: ['-O1', '-Wall'],
+        compileArgs: key === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'],
       });
       // 编译器已经把资产解包进自己的内存；放掉压缩字节，闭包里只留空 Map。
       if (assetBytes) assetBytes.clear();
       assetBytes = null;
       return compiler;
-    })();
+    })());
   }
-  return compilerPromise;
+  return compilerPromises.get(key);
 }
 
 /** 把 spec 里的行数组/字符串统一成 stdin 文本。 */
@@ -231,7 +233,7 @@ async function runHarness(compiler, spec, code, harnessCode, limits) {
   send('phase', { phase: 'compile', total: totalChecks });
   let r;
   try {
-    r = await compiler.run(source, '', { compileArgs: ['-O1', '-Wall'] });
+    r = await compiler.run(source, '', { compileArgs: spec.lang === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'] });
   } catch (e) {
     return trapResult('harness', classifyTrap(e), spec, 0, 0);
   }
@@ -305,7 +307,7 @@ async function runCases(compiler, spec, code, limits) {
       });
       let r;
       try {
-        r = await compiler.run(code, input, { compileArgs: ['-O1', '-Wall'] });
+        r = await compiler.run(code, input, { compileArgs: spec.lang === 'c' ? ['-O1', '-Wall', '-std=c11'] : ['-O1', '-Wall'] });
       } catch (e) {
         firstTrap = classifyTrap(e);
         ok = false;
@@ -372,29 +374,110 @@ async function runCases(compiler, spec, code, limits) {
   };
 }
 
-self.onmessage = async (event) => {
+// ---- 语法诊断：与运行共用同一个 Clang 运行时（createToolchain 按资产源复用 runtime） ----
+let toolchainPromise = null;
+function ensureToolchain() {
+  if (!toolchainPromise) {
+    toolchainPromise = self.clangWasmToolchain
+      .createToolchain({ baseUrl: ASSET_BASE })
+      .catch(function (err) { toolchainPromise = null; throw err; });
+  }
+  return toolchainPromise;
+}
+
+const DIAG_RE = /^(?:[A-Za-z]:)?[^:\n]*?main\.cpp:(\d+):(\d+):\s+(error|warning):\s+(.+)$/;
+const MAX_DIAGNOSTICS = 30;
+
+/* 波浪线落点：clang 的列号常落在空白上（缺分号时指向空格），这时标前一个词。 */
+function markAt(codeLines, line, col) {
+  const text = codeLines[line - 1] || '';
+  const start = Math.max(0, Math.min(col - 1, text.length));
+  const wordRe = /[A-Za-z_][A-Za-z0-9_]*|\d+/;
+  const rest = text.slice(start);
+  const here = wordRe.exec(rest);
+  if (here && here.index === 0) return { col: start + 1, len: here[0].length };
+  const before = text.slice(0, start);
+  let prev = null;
+  const re = /[A-Za-z_][A-Za-z0-9_]*|\d+/g;
+  let m;
+  while ((m = re.exec(before))) prev = m;
+  if (prev) return { col: prev.index + 1, len: prev[0].length };
+  const next = wordRe.exec(rest);
+  if (next) return { col: start + next.index + 1, len: next[0].length };
+  return { col: start + 1, len: 1 };
+}
+
+function parseLint(lines, code) {
+  const codeLines = String(code || '').split('\n');
+  const out = [];
+  for (let i = 0; i < lines.length; ++i) {
+    const m = DIAG_RE.exec(lines[i]);
+    if (!m) continue;
+    const line = parseInt(m[1], 10);
+    const mark = markAt(codeLines, line, parseInt(m[2], 10));
+    out.push({ line: line, col: mark.col, length: mark.len, severity: m[3], message: m[4] });
+    if (out.length >= MAX_DIAGNOSTICS) break;
+  }
+  return out;
+}
+
+async function runLint(code) {
+  const tool = await ensureToolchain();
+  const out = await tool.captureCompilerOutput(function () {
+    return tool.runtime.compile({
+      input: 'main.cpp',
+      code: code,
+      obj: 'lint.o',
+      language: 'CPP',
+      compileArgs: ['-Wall', '-Wextra'],
+    });
+  });
+  const cleaned = self.clangWasmToolchain.compilerDiagnostics((out && out.raw) || '');
+  return parseLint(cleaned, code);
+}
+
+// 运行和诊断共用同一个 runtime，一把锁：串行执行，避免互相覆盖虚拟文件。
+let queue = Promise.resolve();
+function serialize(task) {
+  const next = queue.then(task, task);
+  queue = next.catch(function () {});
+  return next;
+}
+
+self.onmessage = function (event) {
   const msg = event.data || {};
+
   if (msg.type === 'warmup') {
-    try {
-      await ensureCompiler();
-      send('ready');
-    } catch (err) {
+    serialize(function () {
+      return ensureCompiler('cpp').then(function () { send('ready'); });
+    }).catch(function (err) {
       send('warmup-error', { message: String((err && err.message) || err) });
-    }
+    });
     return;
   }
+
+  if (msg.type === 'lint') {
+    serialize(function () { return runLint(msg.code); })
+      .then(function (diagnostics) { send('lint-result', { id: msg.id, diagnostics: diagnostics }); })
+      .catch(function (err) {
+        send('lint-result', { id: msg.id, diagnostics: [], error: String((err && err.message) || err) });
+      });
+    return;
+  }
+
   if (msg.type !== 'run') return;
-  try {
+
+  serialize(async function () {
     const payload = msg.payload || {};
     const spec = payload.spec || {};
     const limits = spec.limits || {};
-    const compiler = await ensureCompiler();
+    const compiler = await ensureCompiler(spec.lang === 'c' ? 'c' : 'cpp');
     const result = spec.harness
       ? await runHarness(compiler, spec, payload.code || '', payload.harnessCode, limits)
       : await runCases(compiler, spec, payload.code || '', limits);
     send('phase', { phase: 'done' });
     send('done', { result });
-  } catch (err) {
+  }).catch(function (err) {
     send('error', { message: String((err && err.stack) || err) });
-  }
+  });
 };
