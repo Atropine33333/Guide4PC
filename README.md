@@ -17,7 +17,7 @@ A bilingual (Chinese/English) static documentation website powered by Markdown f
 
 ```
 Guide4PC/
-├── sourcecode/          # Content (you edit this)
+├── content/          # Content (you edit this)
 │   ├── chs/             # Chinese Markdown files
 │   ├── en/              # English Markdown files
 │   └── img/             # Shared images
@@ -82,12 +82,12 @@ Create a workflow that runs `./update.sh` and deploys `dist/` automatically on p
 
 ## Adding New Documents
 
-1. Create your Markdown file in `sourcecode/chs/` or `sourcecode/en/`.
+1. Create your Markdown file in `content/chs/` or `content/en/`.
 2. Follow the naming convention: `Prefix_Title.md` (e.g., `Appendix5_networking.md`).
 3. For bilingual pairing, use matching numeric prefixes in both languages:
    - Chinese: `附录5_网络.md`
    - English: `Appendix5_networking.md`
-4. Images go in `sourcecode/img/` and are referenced as `../img/filename.png`.
+4. Images go in `content/img/` and are referenced as `../img/filename.png`.
 5. Run `./update.sh` to rebuild.
 
 ## File Naming Rules

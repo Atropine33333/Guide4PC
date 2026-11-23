@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SRC = path.join(ROOT, 'sourcecode');
+const SRC = path.join(ROOT, 'content');
 const DIST = path.join(ROOT, 'docs');
 const CACHE_FILE = path.join(ROOT, '.build-cache.json');
 
@@ -467,7 +467,7 @@ function syncManifestVersion() {
   }
 }
 
-/** Generate dl/files.json manifest from sourcecode/dl/ directory structure. */
+/** Generate dl/files.json manifest from content/dl/ directory structure. */
 function buildDlManifest(srcDlDir) {
   const manifest = {};
   if (!fs.existsSync(srcDlDir)) return manifest;
@@ -737,33 +737,33 @@ function syncAllStatics(cache) {
     }
   }
 
-  // sourcecode/img/**
+  // content/img/**
   changed.push(...syncDir(
     path.join(SRC, 'img'),
     path.join(DIST, 'img'),
-    'sourcecode/img', cache
+    'content/img', cache
   ));
 
-  // sourcecode/favicon/** → dist root (not dist/favicon/)
+  // content/favicon/** → dist root (not dist/favicon/)
   const favDir = path.join(SRC, 'favicon');
   if (fs.existsSync(favDir)) {
     for (const f of fs.readdirSync(favDir)) {
       const r = syncOne(
         path.join(favDir, f),
         path.join(DIST, f),
-        `sourcecode/favicon/${f}`, cache
+        `content/favicon/${f}`, cache
       );
       if (r) changed.push(r);
     }
   }
 
-  // sourcecode/dl/** → dist/dl/ (downloadable files)
+  // content/dl/** → dist/dl/ (downloadable files)
   changed.push(...syncDir(
     path.join(SRC, 'dl'),
     path.join(DIST, 'dl'),
-    'sourcecode/dl', cache
+    'content/dl', cache
   ));
-  // Always regenerate dl/files.json (it reflects current state of sourcecode/dl/)
+  // Always regenerate dl/files.json (it reflects current state of content/dl/)
   const srcDlDir = path.join(SRC, 'dl');
   if (fs.existsSync(srcDlDir)) {
     const dlManifest = buildDlManifest(srcDlDir);
@@ -795,7 +795,8 @@ function validateExerciseSpec(spec, dir, lang, id) {
   if (![1, 2, 3, 4, 5].includes(spec.rank)) errs.push('rank 需为 1-5');
   if (!Array.isArray(spec.checks) || !spec.checks.length) errs.push('checks 至少 1 条');
   if (!spec.title || typeof spec.title !== 'object' || !(spec.title.chs || spec.title.en)) errs.push('title 需要 chs 或 en');
-  if (!fs.existsSync(path.join(dir, 'starter.cpp'))) errs.push('缺少 starter.cpp');
+  const srcExt = lang === 'c' ? 'c' : lang === 'python' ? 'py' : 'cpp';
+  if (!fs.existsSync(path.join(dir, `starter.${srcExt}`))) errs.push(`缺少 starter.${srcExt}`);
   if (spec.harness && !fs.existsSync(path.join(dir, spec.harness))) errs.push(`缺少 ${spec.harness}`);
   for (const v of spec.variants || []) {
     if (!v || typeof v.id !== 'string' || !v.id) { errs.push('variant 缺少 id'); continue; }
@@ -871,7 +872,7 @@ function syncPlayground() {
           const src = path.join(dir, f);
           if (!fs.statSync(src).isFile()) continue;
           copyFile(src, path.join(DIST, 'exercise', lang, id, f));
-          if (f === 'spec.json' || f.endsWith('.cpp')) {
+          if (f === 'spec.json' || /\.(c|cc|cpp|h|hpp|py)$/.test(f)) {
             copyFile(src, path.join(DIST, 'ex', id, f));
           }
         }
