@@ -3,7 +3,7 @@
 // 独立 Playground 的编译/运行 worker：只编译并运行当前程序，不做判题。
 var ASSET_BASE = 'https://cdn.jsdelivr.net/npm/@live-codes/clang-wasm@0.3.0/assets/';
 
-self.importScripts('../docs/pg/vendor/clang-wasm.global.js');
+self.importScripts(new URL('../../pg/vendor/clang-wasm.global.js', self.location).href);
 
 var compilerPromise = null;
 

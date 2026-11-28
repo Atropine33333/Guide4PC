@@ -74,7 +74,7 @@
   function ensureEditor() {
     if (!window.G4PCEditor || typeof window.G4PCEditor.createEditor !== 'function') {
       setStatus('编辑器加载失败', 'bad');
-      setError('找不到 G4PCEditor.createEditor，请确认 docs/pg/vendor/editor.bundle.js 存在。');
+      setError('找不到 G4PCEditor.createEditor，请确认 pg/vendor/editor.bundle.js 存在。');
       return false;
     }
     view = window.G4PCEditor.createEditor({ parent: editorHost, doc: loadDraft() });
@@ -90,7 +90,7 @@
 
   function ensureWorker() {
     if (worker) return worker;
-    worker = new Worker('lab-worker.js');
+    worker = new Worker('lab-worker.js?v=' + encodeURIComponent(window.GUIDE4PC_VERSION || ''));
     worker.onmessage = function (ev) {
       var msg = ev.data || {};
       if (msg.type === 'progress') {

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ Playground · Guide4PC</title>
+<link rel="stylesheet" href="playground.css">
+</head>
+<body>
+<header class="lab-head">
+  <div class="lab-brand">
+    <a class="lab-back" href="../">← 练习站</a>
+    <h1>C++ Playground</h1>
+    <span class="lab-sub">wasm 编译 · 只运行不判题</span>
+  </div>
+  <div class="lab-actions">
+    <span id="status" class="lab-status" data-tone="idle">编译器待命</span>
+    <button id="btn-run" class="lab-btn lab-btn-run" type="button">运行 <kbd>Ctrl</kbd><kbd>↵</kbd></button>
+    <button id="btn-reset" class="lab-btn" type="button">重置代码</button>
+  </div>
+</header>
+
+<main class="lab-main">
+  <section class="lab-pane lab-pane-editor">
+    <div class="lab-pane-head"><span>main.cpp</span><span class="lab-hint">Tab 缩进 · Ctrl/Cmd+Enter 运行</span></div>
+    <div id="editor" class="lab-editor"></div>
+  </section>
+
+  <section class="lab-pane lab-pane-side">
+    <label class="lab-stdin">
+      <span>标准输入（可选）</span>
+      <textarea id="stdin" rows="3" spellcheck="false" placeholder="运行前可在这里填 cin 的输入"></textarea>
+    </label>
+
+    <div class="lab-out-head">
+      <span>运行结果</span>
+      <button id="btn-clear" class="lab-linkbtn" type="button">清空</button>
+    </div>
+    <pre id="out" class="lab-out">（还没有运行）</pre>
+    <pre id="err" class="lab-err" hidden></pre>
+    <div id="meta" class="lab-meta"></div>
+  </section>
+</main>
+
+<script>window.GUIDE4PC_VERSION = '4d082bf94b';</script>
+<script src="../../pg/vendor/editor.bundle.js"></script>
+<script src="lab.js"></script>
+</body>
+</html>

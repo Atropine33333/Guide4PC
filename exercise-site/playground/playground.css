@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Maple Mono NF CN';
+  src: url('../../css/fonts/maple-mono-nf-cn-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Maple Mono NF CN';
+  src: url('../../css/fonts/maple-mono-nf-cn-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 :root {
   --bg: oklch(0.975 0 0);
   --surface: oklch(1 0 0);
@@ -12,18 +24,6 @@
   --sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
 }
 
-@font-face {
-  font-family: 'Maple Mono NF CN';
-  src: url('../css/fonts/maple-mono-nf-cn-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Maple Mono NF CN';
-  src: url('../css/fonts/maple-mono-nf-cn-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -170,3 +170,12 @@ body {
   .lab-head { height: auto; padding: 12px 14px; flex-wrap: wrap; }
   .lab-actions { flex-wrap: wrap; }
 }
+
+.lab-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  margin-right: 6px;
+}
+.lab-back:hover { color: var(--text); text-decoration: underline; }
